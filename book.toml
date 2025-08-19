@@ -1,0 +1,70 @@
+# The Ruchy Programming Language Book Configuration
+# Implementation-first documentation aligned with compiler version
+
+[book]
+title = "The Ruchy Programming Language"
+authors = ["PAIML Team"]
+description = "The official book for the Ruchy language - implementation-first documentation"
+language = "en"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "book"
+create-missing = false  # Prevent accidental file creation
+
+[preprocessor.index]
+
+[preprocessor.links]
+
+# Custom Ruchy preprocessor for code validation
+# [preprocessor.ruchy]
+# command = "./tools/ruchy-preprocessor"
+# renderer = ["html"]
+
+[output.html]
+# theme = "theme"  # Use default theme for now
+default-theme = "rust"
+preferred-dark-theme = "coal"
+smart-punctuation = true
+mathjax-support = false
+copy-fonts = true
+# additional-css = ["theme/ruchy.css"]
+# additional-js = ["theme/ruchy.js"]
+git-repository-url = "https://github.com/paiml/ruchy-book"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/paiml/ruchy-book/edit/main/{path}"
+site-url = "https://book.ruchy.org/"
+cname = "book.ruchy.org"
+# input-404 = "404.md"  # Will add later
+
+[output.html.print]
+enable = true
+page-break = true
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.playground]
+editable = true
+copyable = true
+copy-js = true
+line-numbers = true
+runnable = true
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+copy-js = true
+
+# Rust configuration for Ruchy
+[rust]
+edition = "2021"
