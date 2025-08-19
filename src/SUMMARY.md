@@ -36,4 +36,9 @@
 
 ## Level 4: Production Systems
 
+- [Testing & Quality](./ch16-00-testing-quality.md)
+- [Documentation](./ch17-00-documentation.md)
+- [Deployment & DevOps](./ch18-00-deployment-devops.md)
+- [Real-World Projects](./ch19-00-real-world-projects.md)
+
 ## Appendices
