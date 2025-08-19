@@ -48,16 +48,7 @@ serve: install-deps
 # Test all listings compile
 test:
 	@echo "🧪 Testing all code listings..."
-	@if [ -f book/Cargo.toml ]; then \
-		cargo test --manifest-path book/Cargo.toml; \
-	else \
-		echo "⚠️  book/Cargo.toml not found - skipping listing tests"; \
-	fi
-	@if [ -f tools/test-listings.sh ]; then \
-		./tools/test-listings.sh; \
-	else \
-		echo "⚠️  tools/test-listings.sh not found - skipping script tests"; \
-	fi
+	@cargo test --tests
 	@echo "✅ All tests passed"
 
 # Lint for quality issues

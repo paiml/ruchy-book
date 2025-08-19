@@ -1,0 +1,4 @@
+// The classic first program
+fn main() {
+    println("Hello, Ruchy!")
+}
