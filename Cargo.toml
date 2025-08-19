@@ -1,0 +1,42 @@
+[package]
+name = "ruchy-book-tests"
+version = "0.1.0"
+edition = "2021"
+authors = ["PAIML Team"]
+description = "Test framework for Ruchy book code examples"
+
+[dependencies]
+# Exact version pinning - no ranges allowed
+ruchy = "=0.4.13"
+
+[dev-dependencies]
+# Test utilities
+insta = "1.39"
+tempfile = "3.10"
+walkdir = "2.5"
+
+[[test]]
+name = "listings"
+path = "tests/listings.rs"
+
+[features]
+# Unstable features for future chapters (when available)
+# unstable = ["ruchy/unstable"]
+
+[workspace]
+# This is the root workspace
+members = []
+
+# Workspace configuration
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["PAIML Team"]
+
+[profile.dev]
+# Fast compilation for development
+opt-level = 0
+
+[profile.test]
+# Optimize tests for faster execution
+opt-level = 2

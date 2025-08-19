@@ -68,8 +68,8 @@ fi
 # GATE 4: Test all listings compile (if test framework exists)
 echo ""
 echo "Gate 4: Testing code listings..."
-if [ -f book/Cargo.toml ]; then
-    if cargo test --manifest-path book/Cargo.toml 2>/dev/null; then
+if [ -f Cargo.toml ]; then
+    if cargo test --tests 2>/dev/null; then
         echo -e "${GREEN}✅ All listings compile${NC}"
     else
         echo -e "${RED}❌ BLOCKED: Code examples don't compile${NC}"
