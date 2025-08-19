@@ -14,7 +14,7 @@
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
 | BOOK-0001 | Create Makefile with quality gates | [x] | Low | P0 |
-| BOOK-0002 | Set up mdBook project structure | [ ] | Low | P0 |
+| BOOK-0002 | Set up mdBook project structure | [x] | Low | P0 |
 | BOOK-0003 | Implement ruchy preprocessor for code validation | [ ] | High | P0 |
 | BOOK-0004 | Create listing test framework | [ ] | Medium | P0 |
 | BOOK-0005 | Set up CI/CD pipeline with GitHub Actions | [ ] | Medium | P0 |
