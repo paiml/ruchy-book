@@ -1,0 +1,19 @@
+// Try It Yourself - Interactive experiments
+println("=== Try Different Data Types ===")
+
+// Numbers and types
+println("The answer is", 42)
+println("Pi is approximately", 3.14159)
+println("Is Ruchy awesome?", true)
+
+println()
+println("=== Experiment with Your Data ===")
+
+// Personal customization
+let my_name = "Student"
+let my_age = 25
+let learning_ruchy = true
+
+println(f"Hi, I'm {my_name}")
+println(f"I'm {my_age} years old")
+println(f"Am I learning Ruchy? {learning_ruchy}")

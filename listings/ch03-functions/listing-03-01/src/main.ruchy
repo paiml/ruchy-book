@@ -1,0 +1,7 @@
+// Simple function examples
+let name = "Alice"
+let a = 15
+let b = 27
+
+println(f"Hello, {name}! Welcome to Ruchy!")
+println(f"{a} + {b} = {a + b}")
