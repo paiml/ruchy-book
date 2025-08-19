@@ -1,50 +1,57 @@
 # Ruchy Book Development Roadmap
 
-## Current Sprint: Book Infrastructure Setup
+## Current Sprint: Level 0 Content Development (PAIML Style Integration)
 - **Duration**: 3 days (estimated)
-- **Priority**: P0 - CRITICAL Foundation
-- **Specification**: docs/ruchy-book-spec.md
-- **Quality Gates**: All examples must compile with current ruchy version
+- **Priority**: P0 - CRITICAL Foundation Content
+- **Goal**: Complete Chapters 1-3 for immediate productivity using PAIML book patterns
+- **Style**: Implementation-first, YAGNI approach, progressive disclosure
+- **Quality Gates**: All examples must compile, be tested, and follow PAIML structure
 
 ## Task Tracking (BOOK-XXXX Format)
 
 ### Phase 1: Infrastructure & Tooling Setup 🚧
 
-#### Core Infrastructure
+#### Core Infrastructure ✅ COMPLETE
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
 | BOOK-0001 | Create Makefile with quality gates | [x] | Low | P0 |
 | BOOK-0002 | Set up mdBook project structure | [x] | Low | P0 |
-| BOOK-0003 | Implement ruchy preprocessor for code validation | [ ] | High | P0 |
+| BOOK-0003 | Implement ruchy preprocessor for code validation | [DEFERRED] | High | P1 |
 | BOOK-0004 | Create listing test framework | [x] | Medium | P0 |
 | BOOK-0005 | Set up CI/CD pipeline with GitHub Actions | [x] | Medium | P0 |
 | BOOK-0006 | Configure pre-commit hooks | [x] | Low | P0 |
 | BOOK-0007 | Create version sync workflow | [x] | Medium | P0 |
-| BOOK-0008 | Upgrade to ruchy 0.4.14 for testing module | [ ] | Low | P0 |
+| BOOK-0008 | Configure ruchy.org domain and DNS | [x] | Medium | P0 |
+| BOOK-0009 | Integrate PAIML book style specification | [x] | Medium | P0 |
 
 ### Phase 2: Level 0 Content (Immediate Productivity) 📋
 
-#### Chapter 1: Hello World
+#### Chapter 1: Hello World (PAIML Style)
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| BOOK-0100 | Write ch01-00-hello-world.md | [x] | Low | P0 |
-| BOOK-0101 | Create hello world listing with test | [ ] | Low | P0 |
-| BOOK-0102 | Add transpilation insight section | [ ] | Low | P0 |
+| BOOK-0100 | Refactor ch01-02-hello-world.md to PAIML structure | [x] | Medium | P0 |
+| BOOK-0101 | Create hello world listings with automated tests | [ ] | Low | P0 |
+| BOOK-0102 | Add "Generated Code Insight" section (transpilation) | [ ] | Low | P0 |
+| BOOK-0103 | Add "Try It Yourself" interactive exercises | [ ] | Medium | P0 |
+| BOOK-0104 | Include personal anecdotes and war stories | [ ] | Low | P0 |
 
-#### Chapter 2: Variables and Types
+#### Chapter 2: Variables and Types (PAIML Style)
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| BOOK-0200 | Write ch02-00-variables-types.md | [ ] | Medium | P0 |
-| BOOK-0201 | Create variable examples with tests | [ ] | Medium | P0 |
-| BOOK-0202 | Document type inference behavior | [ ] | Medium | P0 |
+| BOOK-0200 | Write ch02-00-variables-types.md with PAIML structure | [ ] | Medium | P0 |
+| BOOK-0201 | Create progressive variable examples with REPL sessions | [ ] | Medium | P0 |
+| BOOK-0202 | Add "Common Pitfalls" section for type errors | [ ] | Medium | P0 |
+| BOOK-0203 | Include practical data storage patterns | [ ] | Medium | P0 |
+| BOOK-0204 | Add automated listing tests for all examples | [ ] | Low | P0 |
 
-#### Chapter 3: Functions and Control Flow
+#### Chapter 3: Functions and Testing (PAIML Style) 
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| BOOK-0300 | Write ch03-00-functions.md | [ ] | Medium | P0 |
-| BOOK-0301 | Write ch03-01-control-flow.md | [ ] | Medium | P0 |
-| BOOK-0302 | Create function examples with tests | [ ] | Medium | P0 |
-| BOOK-0303 | Create control flow examples with tests | [ ] | Medium | P0 |
+| BOOK-0300 | Write ch03-00-functions.md following "store logic into functions" | [ ] | Medium | P0 |
+| BOOK-0301 | Write ch03-01-testing-functions.md (PAIML testing approach) | [ ] | Medium | P0 |
+| BOOK-0302 | Create progressive function examples with REPL workflow | [ ] | Medium | P0 |
+| BOOK-0303 | Add testing framework integration and examples | [ ] | High | P0 |
+| BOOK-0304 | Include control flow within function context | [ ] | Medium | P0 |
 
 ### Phase 3: Level 1 Content (Real-World Programs) 📋
 

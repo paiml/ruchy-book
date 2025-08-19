@@ -1,0 +1,7 @@
+// Basic variable usage
+let name = "Alice"
+let age = 25
+let is_learning = true
+
+println(f"Hi {name}, you're {age} years old!")
+println(f"Currently learning Ruchy: {is_learning}")

@@ -1,0 +1,12 @@
+// REPL-style interactive examples
+println("Hello, Ruchy!")
+
+// Multiple arguments  
+println("Hello", "World", "from", "Ruchy")
+
+// Variables and interpolation
+let name = "Alice"
+println("Hello,", name)
+
+// String interpolation
+println(f"Hello, {name}!")
