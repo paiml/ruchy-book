@@ -19,6 +19,7 @@ create-missing = false  # Prevent accidental file creation
 
 [output.linkcheck]
 # Automated link checking
+optional = true
 follow-web-links = false
 traverse-parent-directories = false
 
