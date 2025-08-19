@@ -144,15 +144,14 @@ Key differences:
 
 </details>
 
-## Exercises
+## Try It Yourself
 
-1. **Greeting Program**: Write a program that prints a personalized greeting with your name.
+Now that you understand `println`, experiment in the REPL:
+- Try printing your name with a greeting
+- Print multiple values separated by commas
+- Mix different data types in one println call
 
-2. **Multiple Lines**: Create a program that prints a short poem or message across multiple lines.
-
-3. **Calculator**: Print the result of a simple math calculation along with explanatory text.
-
-**Solutions are in [Appendix G](appendix-07-solutions.md#chapter-1-exercises)**
+The REPL is perfect for experimentation!
 
 ## Summary
 
