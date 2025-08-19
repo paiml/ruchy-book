@@ -17,6 +17,11 @@ create-missing = false  # Prevent accidental file creation
 
 [preprocessor.links]
 
+[output.linkcheck]
+# Automated link checking
+follow-web-links = false
+traverse-parent-directories = false
+
 # Custom Ruchy preprocessor for code validation
 # [preprocessor.ruchy]
 # command = "./tools/ruchy-preprocessor"
