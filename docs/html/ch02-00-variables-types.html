@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Variables and Types - The Ruchy Programming Language</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="The official book for the Ruchy language - implementation-first documentation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "rust";
+            const default_dark_theme = "coal";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Ruchy Programming Language</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/paiml/ruchy-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/paiml/ruchy-book/edit/main/src/ch02-00-variables-types.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="variables-and-types"><a class="header" href="#variables-and-types">Variables and Types</a></h1>
+<p><em>“The biggest mistake I made learning programming was thinking variables were like algebra. In programming, variables are more like labeled boxes where you can store different things. Once I understood this, everything clicked.”</em> - Noah Gift</p>
+<h2 id="the-problem"><a class="header" href="#the-problem">The Problem</a></h2>
+<p>You’ve mastered printing output, but programs need memory - places to store information, work with data, and build complex logic. How do you tell a computer to “remember this number” or “store this name for later”?</p>
+<p>In most languages, this involves type declarations, memory management, and complex syntax. In Ruchy, storing information should be as natural as thinking it.</p>
+<h2 id="quick-example"><a class="header" href="#quick-example">Quick Example</a></h2>
+<p>Here’s how you store and use data in Ruchy:</p>
+<pre><code class="language-ruchy">let name = "Alice"
+let age = 25
+let is_learning = true
+
+println(f"Hi {name}, you're {age} years old!")
+println(f"Currently learning Ruchy: {is_learning}")
+</code></pre>
+<p>Output:</p>
+<pre><code>Hi Alice, you're 25 years old!
+Currently learning Ruchy: true
+</code></pre>
+<p>That’s it! No type annotations, no memory management, just store and use.</p>
+<h2 id="core-concepts"><a class="header" href="#core-concepts">Core Concepts</a></h2>
+<h3 id="the-let-keyword"><a class="header" href="#the-let-keyword">The let Keyword</a></h3>
+<p><code>let</code> creates a new variable in Ruchy. It:</p>
+<ul>
+<li>Declares a new variable name</li>
+<li>Stores a value in memory</li>
+<li>Automatically infers the type from the value</li>
+<li>Makes the variable available for the rest of the scope</li>
+</ul>
+<h3 id="type-inference"><a class="header" href="#type-inference">Type Inference</a></h3>
+<p>Ruchy looks at your value and figures out the type:</p>
+<ul>
+<li><code>"text"</code> → String type</li>
+<li><code>42</code> → Integer type</li>
+<li><code>3.14</code> → Float type</li>
+<li><code>true</code>/<code>false</code> → Boolean type</li>
+</ul>
+<h3 id="variable-naming"><a class="header" href="#variable-naming">Variable Naming</a></h3>
+<p>Variables in Ruchy follow simple rules:</p>
+<ul>
+<li>Start with a letter or underscore</li>
+<li>Use letters, numbers, and underscores</li>
+<li>Case sensitive (<code>name</code> ≠ <code>Name</code>)</li>
+<li>Use snake_case by convention</li>
+</ul>
+<h2 id="practical-usage"><a class="header" href="#practical-usage">Practical Usage</a></h2>
+<h3 id="different-data-types"><a class="header" href="#different-data-types">Different Data Types</a></h3>
+<pre><code class="language-ruchy">// Text data
+let first_name = "John"
+let last_name = "Doe"
+let full_name = f"{first_name} {last_name}"
+
+// Numeric data
+let score = 95
+let percentage = 95.5
+let temperature = -10
+
+// Boolean (true/false) data
+let is_student = true
+let has_graduated = false
+let is_enrolled = !has_graduated
+
+println(f"Student: {full_name}")
+println(f"Score: {score} ({percentage}%)")
+println(f"Temperature: {temperature}°C")
+println(f"Status: student={is_student}, graduated={has_graduated}")
+</code></pre>
+<h3 id="working-with-variables"><a class="header" href="#working-with-variables">Working with Variables</a></h3>
+<pre><code class="language-ruchy">// Store user information
+let username = "programmer2024"
+let login_count = 1
+let is_premium = false
+
+// Use variables in calculations
+let welcome_bonus = 100
+let total_points = welcome_bonus + (login_count * 10)
+
+// Update information (variables are mutable by default)
+login_count = login_count + 1
+is_premium = total_points &gt; 150
+
+println(f"Welcome back, {username}!")
+println(f"Logins: {login_count}, Points: {total_points}")
+println(f"Premium status: {is_premium}")
+</code></pre>
+<h3 id="collections-and-lists"><a class="header" href="#collections-and-lists">Collections and Lists</a></h3>
+<pre><code class="language-ruchy">// Store multiple values
+let favorite_languages = ["Python", "Rust", "Ruchy"]
+let daily_temperatures = [22.5, 25.0, 23.8, 26.2]
+let task_completed = [true, false, true, true]
+
+// Access items by index (starting from 0)
+println(f"First language: {favorite_languages[0]}")
+println(f"Today's temp: {daily_temperatures[0]}°C")
+
+// Get list length
+println(f"I know {favorite_languages.len()} languages")
+</code></pre>
+<h2 id="common-pitfalls"><a class="header" href="#common-pitfalls">Common Pitfalls</a></h2>
+<h3 id="forgetting-let-for-new-variables"><a class="header" href="#forgetting-let-for-new-variables">Forgetting let for New Variables</a></h3>
+<pre><code class="language-ruchy">// ❌ This won't work
+user_name = "Alice"
+</code></pre>
+<p>Error: <code>user_name</code> is not declared. Use <code>let user_name = "Alice"</code> first.</p>
+<h3 id="mixing-data-types-incorrectly"><a class="header" href="#mixing-data-types-incorrectly">Mixing Data Types Incorrectly</a></h3>
+<pre><code class="language-ruchy">// ❌ This might not work as expected
+let age = "25"
+let next_year = age + 1
+</code></pre>
+<p>Error: Can’t add number to string. Use <code>let age = 25</code> (without quotes).</p>
+<h3 id="case-sensitivity-confusion"><a class="header" href="#case-sensitivity-confusion">Case Sensitivity Confusion</a></h3>
+<pre><code class="language-ruchy">// ❌ These are different variables
+let userName = "Alice"
+let username = "Bob"
+println(userName)  // Prints "Alice", not "Bob"
+</code></pre>
+<p>Warning: Stick to snake_case: <code>user_name</code>.</p>
+<h2 id="generated-code-insight"><a class="header" href="#generated-code-insight">Generated Code Insight</a></h2>
+<p>Ever wonder how Ruchy’s simple variables become efficient compiled code?</p>
+<details>
+<summary>🔍 View Generated Rust Code (click to expand)</summary>
+<p>Your Ruchy code:</p>
+<pre><code class="language-ruchy">let name = "Alice"
+let age = 25
+println(f"Hi {name}, age {age}")
+</code></pre>
+<p>Becomes this optimized Rust:</p>
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
+    let name: &amp;str = "Alice";
+    let age: i32 = 25;
+    println!("Hi {}, age {}", name, age);
+}</code></pre></pre>
+<p><strong>What’s happening:</strong></p>
+<ul>
+<li>Ruchy’s type inference becomes explicit Rust types</li>
+<li>String interpolation becomes format string macros</li>
+<li>All types are resolved at compile time for maximum performance</li>
+<li>Zero runtime overhead for type checking</li>
+</ul>
+<p><strong>Why this matters:</strong></p>
+<ul>
+<li>You get static typing benefits without writing types</li>
+<li>Compiler catches type errors before your code runs</li>
+<li>Performance is identical to hand-written Rust</li>
+<li>Your simple code becomes memory-safe systems code</li>
+</ul>
+</details>
+<p><strong>The Bottom Line:</strong> Write Python-simple variable code, get C++-fast compiled performance.</p>
+<h2 id="try-it-yourself"><a class="header" href="#try-it-yourself">Try It Yourself</a></h2>
+<p>Time for hands-on experimentation! Open the REPL and create your own data:</p>
+<pre><code class="language-bash">$ ruchy repl
+&gt;&gt;&gt; # Start with personal info
+&gt;&gt;&gt; let my_name = "[YOUR NAME]"
+&gt;&gt;&gt; let my_age = [YOUR AGE]
+&gt;&gt;&gt; let my_hobby = "[SOMETHING YOU ENJOY]"
+&gt;&gt;&gt; 
+&gt;&gt;&gt; # Try different types
+&gt;&gt;&gt; let lucky_number = 7
+&gt;&gt;&gt; let pi_estimate = 3.14
+&gt;&gt;&gt; let is_learning_fast = true
+&gt;&gt;&gt; 
+&gt;&gt;&gt; # Combine them creatively
+&gt;&gt;&gt; println(f"I'm {my_name}, {my_age}, and I love {my_hobby}")
+&gt;&gt;&gt; println(f"My lucky number {lucky_number} is {'even' if lucky_number % 2 == 0 else 'odd'}")
+</code></pre>
+<p><strong>Your Challenges:</strong></p>
+<ol>
+<li><strong>Personal Profile</strong>: Create 5 variables that describe you (name, age, city, hobby, goal)</li>
+<li><strong>Data Calculator</strong>: Store two numbers, calculate their sum, difference, and average</li>
+<li><strong>Text Manipulation</strong>: Store your first and last name, create username and email</li>
+<li><strong>Boolean Logic</strong>: Create variables for different conditions and combine them</li>
+</ol>
+<p><strong>Example Solution:</strong></p>
+<pre><code class="language-ruchy">// Personal profile
+let name = "Alex"
+let age = 28
+let city = "San Francisco"
+let hobby = "rock climbing"
+let goal = "master Ruchy in 30 days"
+
+// Data calculator  
+let num1 = 15
+let num2 = 25
+let sum = num1 + num2
+let difference = num1 - num2
+let average = (num1 + num2) / 2
+
+// Text manipulation
+let first_name = "Alex"
+let last_name = "Johnson"
+let username = f"{first_name.lower()}_{last_name.lower()}"
+let email = f"{username}@example.com"
+
+// Boolean logic
+let is_adult = age &gt;= 18
+let lives_in_tech_city = city == "San Francisco"
+let ready_for_job = is_adult &amp;&amp; lives_in_tech_city
+</code></pre>
+<p>Play with different combinations - this is where programming gets creative!</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<ul>
+<li><code>let</code> creates variables that store data</li>
+<li>Ruchy automatically figures out data types for you</li>
+<li>Variables can store text, numbers, true/false values, and collections</li>
+<li>Use <code>f""</code> strings to combine variables with text</li>
+<li>Variables are mutable by default - you can change their values</li>
+<li>All type checking happens at compile time for maximum performance</li>
+</ul>
+<p>You now have the power to store and manipulate information! Next, let’s learn how to organize this logic into reusable functions.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch01-02-hello-world.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ch03-00-functions.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch01-02-hello-world.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ch03-00-functions.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="editor.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

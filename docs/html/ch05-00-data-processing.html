@@ -1,0 +1,818 @@
+<!DOCTYPE HTML>
+<html lang="en" class="rust sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Data Processing - The Ruchy Programming Language</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="The official book for the Ruchy language - implementation-first documentation">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "rust";
+            const default_dark_theme = "coal";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The Ruchy Programming Language</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/paiml/ruchy-book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/paiml/ruchy-book/edit/main/src/ch05-00-data-processing.md" title="Suggest an edit" aria-label="Suggest an edit" rel="edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="data-processing"><a class="header" href="#data-processing">Data Processing</a></h1>
+<p><em>“The day I realized I could automate data analysis was the day I stopped being afraid of Excel files. I had 10,000 rows of customer data to analyze manually. Instead, I wrote a 20-line script that did it in 3 seconds. That script saved me 40 hours of work and taught me the real power of programming.”</em> - Noah Gift</p>
+<h2 id="the-problem"><a class="header" href="#the-problem">The Problem</a></h2>
+<p>You’ve built command-line tools, but real-world work involves data - CSV files, JSON APIs, log files, and datasets. How do you read, process, analyze, and transform data efficiently?</p>
+<p>Most people use spreadsheet software for data tasks, but that doesn’t scale to large datasets or repeatable processes. In Ruchy, data processing should be as straightforward as working with the data manually, but infinitely more powerful.</p>
+<h2 id="quick-example"><a class="header" href="#quick-example">Quick Example</a></h2>
+<p>Here’s a simple but powerful data processor in Ruchy:</p>
+<pre><code class="language-ruchy">// File: sales_analyzer.ruchy
+// Analyzes sales data from CSV file
+
+println("=== Sales Data Analyzer ===")
+
+// Read CSV data (simplified - in practice you'd use CSV parser)
+let sales_data = [
+    ["Date", "Product", "Amount", "Region"],
+    ["2024-01-15", "Laptop", "1299", "North"],
+    ["2024-01-16", "Mouse", "25", "South"], 
+    ["2024-01-17", "Keyboard", "79", "North"],
+    ["2024-01-18", "Laptop", "1299", "East"],
+    ["2024-01-19", "Monitor", "399", "West"]
+]
+
+// Process data
+let total_sales = 0
+let product_counts = {}
+let region_sales = {}
+
+for row in sales_data[1..] {  // Skip header
+    let product = row[1]
+    let amount = row[2].to_f()
+    let region = row[3]
+    
+    // Calculate totals
+    total_sales += amount
+    
+    // Count products
+    product_counts[product] = product_counts.get(product, 0) + 1
+    
+    // Sum by region
+    region_sales[region] = region_sales.get(region, 0) + amount
+}
+
+// Display results
+println(f"Total Sales: ${total_sales}")
+println(f"Average Sale: ${total_sales / (sales_data.len() - 1)}")
+
+println("\nTop Products:")
+for product, count in product_counts.items() {
+    println(f"  {product}: {count} sales")
+}
+
+println("\nSales by Region:")
+for region, amount in region_sales.items() {
+    println(f"  {region}: ${amount}")
+}
+</code></pre>
+<p>Output:</p>
+<pre><code>=== Sales Data Analyzer ===
+Total Sales: $3101
+Average Sale: $620.20
+
+Top Products:
+  Laptop: 2 sales
+  Mouse: 1 sales
+  Keyboard: 1 sales
+  Monitor: 1 sales
+
+Sales by Region:
+  North: $1378
+  South: $25
+  East: $1299
+  West: $399
+</code></pre>
+<p>That’s real data analysis! Scales to thousands of rows easily.</p>
+<h2 id="core-concepts"><a class="header" href="#core-concepts">Core Concepts</a></h2>
+<h3 id="data-structures-for-analysis"><a class="header" href="#data-structures-for-analysis">Data Structures for Analysis</a></h3>
+<p>Use appropriate structures for different data types:</p>
+<pre><code class="language-ruchy">// Arrays for sequences
+let sales_amounts = [1299, 25, 79, 1299, 399]
+let monthly_revenue = [45000, 52000, 48000, 61000]
+
+// Dictionaries for key-value mapping  
+let customer_orders = {
+    "alice@email.com": 5,
+    "bob@email.com": 2,
+    "carol@email.com": 8
+}
+
+// Arrays of dictionaries for structured records
+let transactions = [
+    {"id": 1001, "amount": 1299, "customer": "alice@email.com"},
+    {"id": 1002, "amount": 25, "customer": "bob@email.com"},
+    {"id": 1003, "amount": 79, "customer": "alice@email.com"}
+]
+</code></pre>
+<h3 id="data-aggregation"><a class="header" href="#data-aggregation">Data Aggregation</a></h3>
+<p>Common patterns for summarizing data:</p>
+<pre><code class="language-ruchy">// Sum and averages
+let total = numbers.sum()
+let average = numbers.sum() / numbers.len()
+let maximum = numbers.max()
+let minimum = numbers.min()
+
+// Grouping and counting
+fn group_by_field(records, field) {
+    let groups = {}
+    for record in records {
+        let key = record[field]
+        if !groups.has_key(key) {
+            groups[key] = []
+        }
+        groups[key].push(record)
+    }
+    return groups
+}
+
+// Filtering and transformation
+let high_value = transactions.filter(|t| t.amount &gt; 100)
+let customer_ids = transactions.map(|t| t.customer)
+let amounts_only = transactions.map(|t| t.amount)
+</code></pre>
+<h3 id="file-format-processing"><a class="header" href="#file-format-processing">File Format Processing</a></h3>
+<p>Handle common data formats:</p>
+<pre><code class="language-ruchy">// CSV-like processing (simplified)
+fn parse_csv_line(line) {
+    return line.split(",").map(|field| field.trim())
+}
+
+fn load_csv(filename) {
+    let lines = read_lines(filename)
+    let header = parse_csv_line(lines[0])
+    let data = []
+    
+    for line in lines[1..] {
+        let fields = parse_csv_line(line)
+        let record = {}
+        for i, field in fields.enumerate() {
+            record[header[i]] = field
+        }
+        data.push(record)
+    }
+    
+    return data
+}
+</code></pre>
+<h2 id="practical-data-tools"><a class="header" href="#practical-data-tools">Practical Data Tools</a></h2>
+<h3 id="customer-analytics-tool"><a class="header" href="#customer-analytics-tool">Customer Analytics Tool</a></h3>
+<pre><code class="language-ruchy">// File: customer_analytics.ruchy
+// Analyzes customer purchase patterns
+
+println("=== Customer Analytics Tool ===")
+
+// Sample customer data (in practice, load from file)
+let customers = [
+    {"name": "Alice", "email": "alice@email.com", "orders": 5, "total_spent": 2500, "signup_date": "2023-06-15"},
+    {"name": "Bob", "email": "bob@email.com", "orders": 2, "total_spent": 150, "signup_date": "2024-01-20"},
+    {"name": "Carol", "email": "carol@email.com", "orders": 8, "total_spent": 4200, "signup_date": "2023-03-10"},
+    {"name": "David", "email": "david@email.com", "orders": 1, "total_spent": 75, "signup_date": "2024-02-01"}
+]
+
+// Calculate key metrics
+let total_customers = customers.len()
+let total_revenue = customers.map(|c| c.total_spent).sum()
+let average_order_value = total_revenue / customers.map(|c| c.orders).sum()
+let average_customer_value = total_revenue / total_customers
+
+println(f"Customer Base: {total_customers} customers")
+println(f"Total Revenue: ${total_revenue}")
+println(f"Average Order Value: ${average_order_value:.2f}")
+println(f"Average Customer Value: ${average_customer_value:.2f}")
+
+// Segment customers
+let vip_customers = customers.filter(|c| c.total_spent &gt; 1000)
+let new_customers = customers.filter(|c| c.signup_date.starts_with("2024"))
+let frequent_buyers = customers.filter(|c| c.orders &gt; 5)
+
+println(f"\nCustomer Segments:")
+println(f"VIP Customers (&gt;$1000): {vip_customers.len()}")
+println(f"New Customers (2024): {new_customers.len()}")
+println(f"Frequent Buyers (&gt;5 orders): {frequent_buyers.len()}")
+
+// Top customers by spending
+let top_spenders = customers.sort_by(|c| -c.total_spent)[..3]
+println(f"\nTop Spenders:")
+for i, customer in top_spenders.enumerate() {
+    println(f"  {i+1}. {customer.name}: ${customer.total_spent} ({customer.orders} orders)")
+}
+</code></pre>
+<h3 id="log-file-analyzer"><a class="header" href="#log-file-analyzer">Log File Analyzer</a></h3>
+<pre><code class="language-ruchy">// File: advanced_log_analyzer.ruchy
+// Comprehensive log file analysis
+
+println("=== Advanced Log Analyzer ===")
+
+// Sample log entries (in practice, read from file)
+let log_entries = [
+    "2024-08-19 10:15:32 INFO User login: alice@email.com",
+    "2024-08-19 10:16:45 ERROR Database connection failed", 
+    "2024-08-19 10:17:12 INFO User login: bob@email.com",
+    "2024-08-19 10:18:33 WARN Slow query detected: 2.5s",
+    "2024-08-19 10:19:44 ERROR 404 Not Found: /api/users/999",
+    "2024-08-19 10:20:15 INFO User logout: alice@email.com"
+]
+
+// Parse log entries
+fn parse_log_entry(entry) {
+    let parts = entry.split(" ")
+    return {
+        "date": parts[0],
+        "time": parts[1], 
+        "level": parts[2],
+        "message": parts[3..].join(" ")
+    }
+}
+
+let parsed_logs = log_entries.map(parse_log_entry)
+
+// Analyze by level
+let level_counts = {}
+for log in parsed_logs {
+    let level = log.level
+    level_counts[level] = level_counts.get(level, 0) + 1
+}
+
+println("Log Level Summary:")
+for level, count in level_counts.items() {
+    let emoji = match level {
+        "INFO" =&gt; "ℹ️",
+        "WARN" =&gt; "⚠️", 
+        "ERROR" =&gt; "❌",
+        _ =&gt; "📝"
+    }
+    println(f"  {emoji} {level}: {count} entries")
+}
+
+// Find errors and warnings
+let issues = parsed_logs.filter(|log| log.level == "ERROR" || log.level == "WARN")
+println(f"\nIssues Found ({issues.len()}):")
+for issue in issues {
+    println(f"  {issue.time} {issue.level}: {issue.message}")
+}
+
+// Extract user activity
+let user_actions = parsed_logs.filter(|log| log.message.contains("User"))
+println(f"\nUser Activity ({user_actions.len()} actions):")
+for action in user_actions {
+    println(f"  {action.time}: {action.message}")
+}
+
+// Time-based analysis
+let hours = parsed_logs.map(|log| log.time.split(":")[0])
+let hour_counts = {}
+for hour in hours {
+    hour_counts[hour] = hour_counts.get(hour, 0) + 1
+}
+
+let busiest_hour = hour_counts.max_by_value()
+println(f"\nBusiest Hour: {busiest_hour.key}:xx ({busiest_hour.value} entries)")
+</code></pre>
+<h3 id="financial-data-processor"><a class="header" href="#financial-data-processor">Financial Data Processor</a></h3>
+<pre><code class="language-ruchy">// File: finance_processor.ruchy
+// Processes financial transactions and generates reports
+
+println("=== Financial Data Processor ===")
+
+// Transaction data structure
+let transactions = [
+    {"date": "2024-01-15", "type": "income", "category": "salary", "amount": 5000, "description": "Monthly salary"},
+    {"date": "2024-01-16", "type": "expense", "category": "rent", "amount": 1200, "description": "Apartment rent"},
+    {"date": "2024-01-17", "type": "expense", "category": "groceries", "amount": 85, "description": "Weekly shopping"},
+    {"date": "2024-01-18", "type": "expense", "category": "utilities", "amount": 150, "description": "Electricity bill"},
+    {"date": "2024-01-20", "type": "income", "category": "freelance", "amount": 800, "description": "Web design project"}
+]
+
+// Calculate totals
+let total_income = transactions.filter(|t| t.type == "income").map(|t| t.amount).sum()
+let total_expenses = transactions.filter(|t| t.type == "expense").map(|t| t.amount).sum()
+let net_income = total_income - total_expenses
+
+println(f"Financial Summary:")
+println(f"Total Income: ${total_income}")
+println(f"Total Expenses: ${total_expenses}")
+println(f"Net Income: ${net_income}")
+println(f"Savings Rate: {(net_income * 100 / total_income):.1f}%")
+
+// Expense breakdown by category
+let expense_categories = {}
+for transaction in transactions.filter(|t| t.type == "expense") {
+    let category = transaction.category
+    expense_categories[category] = expense_categories.get(category, 0) + transaction.amount
+}
+
+println(f"\nExpense Breakdown:")
+for category, amount in expense_categories.items() {
+    let percentage = (amount * 100) / total_expenses
+    println(f"  {category.capitalize()}: ${amount} ({percentage:.1f}%)")
+}
+
+// Budget analysis
+let budget_limits = {
+    "rent": 1500,
+    "groceries": 400, 
+    "utilities": 200,
+    "entertainment": 300
+}
+
+println(f"\nBudget Analysis:")
+for category, limit in budget_limits.items() {
+    let spent = expense_categories.get(category, 0)
+    let remaining = limit - spent
+    let status = if remaining &gt;= 0 { "✅ Under budget" } else { "❌ Over budget" }
+    println(f"  {category.capitalize()}: ${spent}/${limit} - {status}")
+}
+
+// Monthly trend (if we had multiple months of data)
+println(f"\nTransaction History ({transactions.len()} transactions):")
+for transaction in transactions.sort_by(|t| t.date) {
+    let emoji = if transaction.type == "income" { "💰" } else { "💸" }
+    println(f"  {transaction.date} {emoji} ${transaction.amount} - {transaction.description}")
+}
+</code></pre>
+<h2 id="data-visualization-text-based"><a class="header" href="#data-visualization-text-based">Data Visualization (Text-based)</a></h2>
+<p>Create simple charts for console output:</p>
+<pre><code class="language-ruchy">// Simple bar chart function
+fn draw_bar_chart(data, title) {
+    println(f"\n{title}")
+    println("=" * title.len())
+    
+    let max_value = data.values().max()
+    let max_bar_width = 50
+    
+    for key, value in data.items() {
+        let bar_width = (value * max_bar_width) / max_value
+        let bar = "█" * bar_width.to_i()
+        println(f"{key:12} │{bar} {value}")
+    }
+}
+
+// Usage example
+let monthly_sales = {
+    "January": 45000,
+    "February": 52000,
+    "March": 48000,
+    "April": 61000,
+    "May": 58000
+}
+
+draw_bar_chart(monthly_sales, "Monthly Sales Report")
+</code></pre>
+<p>Output:</p>
+<pre><code>Monthly Sales Report
+====================
+January     │████████████████████████████████████ 45000
+February    │██████████████████████████████████████████████ 52000
+March       │█████████████████████████████████████████ 48000
+April       │██████████████████████████████████████████████████ 61000
+May         │████████████████████████████████████████████████ 58000
+</code></pre>
+<h2 id="generated-code-insight"><a class="header" href="#generated-code-insight">Generated Code Insight</a></h2>
+<p>See how Ruchy’s data processing becomes efficient compiled operations:</p>
+<details>
+<summary>🔍 View Generated Rust Code (click to expand)</summary>
+<p>Your Ruchy code:</p>
+<pre><code class="language-ruchy">let sales_data = load_csv("sales.csv")
+let total = sales_data.map(|row| row.amount.to_f()).sum()
+let average = total / sales_data.len()
+println(f"Average sale: ${average:.2f}")
+</code></pre>
+<p>Becomes this optimized Rust:</p>
+<pre><pre class="playground"><code class="language-rust edition2021">use std::collections::HashMap;
+
+fn main() -&gt; Result&lt;(), Box&lt;dyn std::error::Error&gt;&gt; {
+    let sales_data = load_csv("sales.csv")?;
+    let total: f64 = sales_data.iter()
+        .map(|row| row.amount.parse::&lt;f64&gt;().unwrap_or(0.0))
+        .sum();
+    let average = total / sales_data.len() as f64;
+    println!("Average sale: ${:.2}", average);
+    Ok(())
+}</code></pre></pre>
+<p><strong>What’s happening:</strong></p>
+<ul>
+<li>Data processing uses efficient iterators with zero-cost abstractions</li>
+<li>Memory allocation is optimized by the compiler</li>
+<li>Number parsing and arithmetic operations are highly optimized</li>
+<li>Large datasets are processed with minimal memory overhead</li>
+</ul>
+<p><strong>Performance Benefits:</strong></p>
+<ul>
+<li>Processing speed comparable to C++ with STL</li>
+<li>Memory usage scales linearly with data size</li>
+<li>Iterator chains are optimized into tight loops</li>
+<li>No garbage collection pauses during processing</li>
+</ul>
+</details>
+<p><strong>The Bottom Line:</strong> Write expressive data processing code, get high-performance analytics automatically.</p>
+<h2 id="try-it-yourself"><a class="header" href="#try-it-yourself">Try It Yourself</a></h2>
+<p>Time to become a data processing expert! Process some real data:</p>
+<pre><code class="language-bash">$ ruchy repl
+&gt;&gt;&gt; # Start with simple data operations
+&gt;&gt;&gt; let numbers = [10, 25, 30, 15, 40, 35, 20]
+&gt;&gt;&gt; let total = numbers.sum()
+&gt;&gt;&gt; let average = total / numbers.len()
+&gt;&gt;&gt; println(f"Average: {average}")
+&gt;&gt;&gt; 
+&gt;&gt;&gt; # Work with structured data
+&gt;&gt;&gt; let products = [
+&gt;&gt;&gt;     {"name": "Laptop", "price": 1299, "category": "Electronics"},
+&gt;&gt;&gt;     {"name": "Book", "price": 25, "category": "Education"}
+&gt;&gt;&gt; ]
+&gt;&gt;&gt; let electronics = products.filter(|p| p.category == "Electronics")
+&gt;&gt;&gt; println(f"Electronics: {electronics.len()} items")
+</code></pre>
+<p><strong>Your Data Processing Challenges:</strong></p>
+<ol>
+<li>
+<p><strong>Personal Data Analysis</strong>:</p>
+<ul>
+<li>Analyze your own data (expenses, time tracking, habits)</li>
+<li>Process your email/message history</li>
+<li>Analyze your music listening patterns</li>
+<li>Track and visualize your fitness data</li>
+</ul>
+</li>
+<li>
+<p><strong>Business Intelligence Tools</strong>:</p>
+<ul>
+<li>Sales performance analyzer</li>
+<li>Customer segmentation tool</li>
+<li>Inventory level monitor</li>
+<li>Revenue forecasting calculator</li>
+</ul>
+</li>
+<li>
+<p><strong>Research and Analysis</strong>:</p>
+<ul>
+<li>Survey response processor</li>
+<li>A/B test result analyzer</li>
+<li>Market research data parser</li>
+<li>Academic grade analyzer</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Cleaning and Transformation</strong>:</p>
+<ul>
+<li>Duplicate record finder/remover</li>
+<li>Data format converter (CSV ↔ JSON)</li>
+<li>Missing data detector/filler</li>
+<li>Outlier detection system</li>
+</ul>
+</li>
+</ol>
+<p><strong>Example Complete Tool - Expense Tracker:</strong></p>
+<pre><code class="language-ruchy">// expense_tracker.ruchy - Track and analyze personal expenses
+
+let EXPENSES_FILE = "expenses.csv"
+
+fn save_expense(date, category, amount, description) {
+    let entry = f"{date},{category},{amount},{description}\n"
+    append_file(EXPENSES_FILE, entry)
+}
+
+fn load_expenses() {
+    if !file_exists(EXPENSES_FILE) {
+        // Create header if file doesn't exist
+        write_file(EXPENSES_FILE, "Date,Category,Amount,Description\n")
+        return []
+    }
+    
+    let lines = read_lines(EXPENSES_FILE)[1..]  // Skip header
+    let expenses = []
+    
+    for line in lines {
+        let parts = line.split(",")
+        expenses.push({
+            "date": parts[0],
+            "category": parts[1], 
+            "amount": parts[2].to_f(),
+            "description": parts[3]
+        })
+    }
+    
+    return expenses
+}
+
+fn analyze_expenses(expenses) {
+    let total = expenses.map(|e| e.amount).sum()
+    let average = total / expenses.len()
+    
+    // Category breakdown
+    let categories = {}
+    for expense in expenses {
+        categories[expense.category] = categories.get(expense.category, 0) + expense.amount
+    }
+    
+    println(f"\n💰 Expense Analysis ({expenses.len()} transactions)")
+    println(f"Total Spent: ${total:.2f}")
+    println(f"Average Transaction: ${average:.2f}")
+    
+    println(f"\n📊 Spending by Category:")
+    for category, amount in categories.items().sort_by(|item| -item.value) {
+        let percentage = (amount * 100) / total
+        println(f"  {category:15}: ${amount:7.2f} ({percentage:5.1f}%)")
+    }
+    
+    // Recent transactions
+    let recent = expenses.sort_by(|e| -e.date)[..5]  // Last 5
+    println(f"\n🕒 Recent Transactions:")
+    for expense in recent {
+        println(f"  {expense.date} ${expense.amount:6.2f} {expense.category:12} {expense.description}")
+    }
+}
+
+fn main_menu() {
+    println("\n=== Personal Expense Tracker ===")
+    println("1. Add expense")
+    println("2. View analysis") 
+    println("3. Export data")
+    println("4. Quit")
+    
+    let choice = input("\nChoose option: ")
+    
+    match choice {
+        "1" =&gt; {
+            let date = input("Date (YYYY-MM-DD): ")
+            let category = input("Category: ")
+            let amount = input("Amount: $").to_f()
+            let description = input("Description: ")
+            
+            save_expense(date, category, amount, description)
+            println("✅ Expense added!")
+        }
+        "2" =&gt; {
+            let expenses = load_expenses()
+            if expenses.is_empty() {
+                println("📝 No expenses recorded yet")
+            } else {
+                analyze_expenses(expenses)
+            }
+        }
+        "3" =&gt; {
+            println(f"📁 Data exported to: {EXPENSES_FILE}")
+            println("Open in spreadsheet application for advanced analysis")
+        }
+        "4" =&gt; {
+            println("💸 Happy budgeting!")
+            return false
+        }
+        _ =&gt; {
+            println("❌ Invalid choice")
+        }
+    }
+    
+    return true
+}
+
+// Main program loop
+while main_menu() {
+    // Continue until user quits
+}
+</code></pre>
+<p>Build data processors that solve YOUR analytical needs - that’s where programming becomes insight!</p>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<ul>
+<li>Data processing transforms raw information into actionable insights</li>
+<li>Use arrays, dictionaries, and structured records for different data types</li>
+<li>Common patterns: filter, map, reduce, group by, sort</li>
+<li>Handle CSV, JSON, and log file formats with parsing functions</li>
+<li>Create visualizations using text-based charts for console output</li>
+<li>Always validate and clean data before analysis</li>
+<li>Build reusable functions for common data operations</li>
+<li>Test your analysis with known datasets to verify results</li>
+</ul>
+<p>You can now process and analyze data efficiently! Next, let’s learn how to work with files and build more sophisticated file-handling applications.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ch04-00-command-line-tools.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="ch06-00-file-operations.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ch04-00-command-line-tools.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="ch06-00-file-operations.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="editor.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
