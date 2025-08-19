@@ -376,7 +376,7 @@ $ ruchy repl
 **Your Tool-Building Challenges:**
 
 1. **Personal Productivity Tools**:
-   - Todo list manager (add, remove, mark complete)
+   - Task list manager (add, remove, mark complete)
    - Time tracker (log activities with timestamps)
    - Password generator (customizable length and characters)
    - File organizer (sort files by type/date)
@@ -399,85 +399,85 @@ $ ruchy repl
    - Image metadata extractor
    - Recipe manager (search, add, categorize)
 
-**Example Complete Tool - Todo Manager:**
+**Example Complete Tool - Task Manager:**
 
 ```ruchy
-// todo_manager.ruchy - A simple but useful todo tool
+// task_manager.ruchy - A simple but useful task management tool
 
-let TODO_FILE = "todos.txt"
+let TASK_FILE = "tasks.txt"
 
 fn show_menu() {
-    println("\n=== Todo Manager ===")
-    println("1. List todos")
-    println("2. Add todo")
-    println("3. Complete todo")
-    println("4. Delete todo")
+    println("\n=== Task Manager ===")
+    println("1. List tasks")
+    println("2. Add task")
+    println("3. Complete task")
+    println("4. Delete task")
     println("5. Quit")
 }
 
-fn load_todos() {
-    if file_exists(TODO_FILE) {
-        return read_lines(TODO_FILE)
+fn load_tasks() {
+    if file_exists(TASK_FILE) {
+        return read_lines(TASK_FILE)
     }
     return []
 }
 
-fn save_todos(todos) {
-    let content = todos.join("\n")
-    write_file(TODO_FILE, content)
+fn save_tasks(tasks) {
+    let content = tasks.join("\n")
+    write_file(TASK_FILE, content)
 }
 
-fn list_todos(todos) {
-    if todos.is_empty() {
-        println("\n📝 No todos yet!")
+fn list_tasks(tasks) {
+    if tasks.is_empty() {
+        println("\n📝 No tasks yet!")
         return
     }
     
-    println(f"\n📋 Your Todos ({todos.len()} items):")
-    for i, todo in todos.enumerate() {
-        let status = if todo.starts_with("✅") { "DONE" } else { "TODO" }
-        println(f"{i + 1:2}. {todo}")
+    println(f"\n📋 Your Tasks ({tasks.len()} items):")
+    for i, task in tasks.enumerate() {
+        let status = if task.starts_with("✅") { "DONE" } else { "PENDING" }
+        println(f"{i + 1:2}. {task}")
     }
 }
 
-fn add_todo(todos) {
-    let new_todo = input("\nWhat do you want to add? ")
-    todos.push(f"📌 {new_todo}")
-    save_todos(todos)
-    println("✅ Todo added!")
+fn add_task(tasks) {
+    let new_task = input("\nWhat do you want to add? ")
+    tasks.push(f"📌 {new_task}")
+    save_tasks(tasks)
+    println("✅ Task added!")
 }
 
-fn complete_todo(todos) {
-    list_todos(todos)
-    let index = input("\nWhich todo to complete? (number): ").to_i() - 1
+fn complete_task(tasks) {
+    list_tasks(tasks)
+    let index = input("\nWhich task to complete? (number): ").to_i() - 1
     
-    if index >= 0 && index < todos.len() {
-        todos[index] = todos[index].replace("📌", "✅")
-        save_todos(todos)
-        println("🎉 Todo completed!")
+    if index >= 0 && index < tasks.len() {
+        tasks[index] = tasks[index].replace("📌", "✅")
+        save_tasks(tasks)
+        println("🎉 Task completed!")
     } else {
-        println("❌ Invalid todo number")
+        println("❌ Invalid task number")
     }
 }
 
 // Main program loop
-let todos = load_todos()
+let tasks = load_tasks()
 
 loop {
     show_menu()
     let choice = input("\nChoose option: ")
     
     match choice {
-        "1" => list_todos(todos)
-        "2" => add_todo(todos)
-        "3" => complete_todo(todos)
+        "1" => list_tasks(tasks)
+        "2" => add_task(tasks)
+        "3" => complete_task(tasks)
         "4" => {
-            list_todos(todos)
-            let index = input("Which todo to delete? (number): ").to_i() - 1
-            if index >= 0 && index < todos.len() {
-                todos.remove(index)
-                save_todos(todos)
-                println("🗑️  Todo deleted!")
+            list_tasks(tasks)
+            let index = input("Which task to delete? (number): ").to_i() - 1
+            if index >= 0 && index < tasks.len() {
+                tasks.remove(index)
+                save_tasks(tasks)
+                println("🗑️  Task deleted!")
             }
         }
         "5" => {
@@ -491,18 +491,18 @@ loop {
 
 **Usage:**
 ```bash
-$ ruchy run todo_manager.ruchy
+$ ruchy run task_manager.ruchy
 
-=== Todo Manager ===
-1. List todos
-2. Add todo  
-3. Complete todo
-4. Delete todo
+=== Task Manager ===
+1. List tasks
+2. Add task  
+3. Complete task
+4. Delete task
 5. Quit
 
 Choose option: 2
 What do you want to add? Learn Ruchy command-line tools
-✅ Todo added!
+✅ Task added!
 ```
 
 Build tools that solve YOUR daily problems - that's where programming becomes powerful!
