@@ -1,0 +1,2 @@
+// Multiple arguments example
+println("Hello", "World", "from", "Ruchy")

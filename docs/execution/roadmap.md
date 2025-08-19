@@ -19,7 +19,7 @@
 | BOOK-0004 | Create listing test framework | [x] | Medium | P0 |
 | BOOK-0005 | Set up CI/CD pipeline with GitHub Actions | [x] | Medium | P0 |
 | BOOK-0006 | Configure pre-commit hooks | [x] | Low | P0 |
-| BOOK-0007 | Create version sync workflow | [ ] | Medium | P0 |
+| BOOK-0007 | Create version sync workflow | [x] | Medium | P0 |
 | BOOK-0008 | Upgrade to ruchy 0.4.14 for testing module | [ ] | Low | P0 |
 
 ### Phase 2: Level 0 Content (Immediate Productivity) 📋
@@ -27,7 +27,7 @@
 #### Chapter 1: Hello World
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| BOOK-0100 | Write ch01-00-hello-world.md | [ ] | Low | P0 |
+| BOOK-0100 | Write ch01-00-hello-world.md | [x] | Low | P0 |
 | BOOK-0101 | Create hello world listing with test | [ ] | Low | P0 |
 | BOOK-0102 | Add transpilation insight section | [ ] | Low | P0 |
 
