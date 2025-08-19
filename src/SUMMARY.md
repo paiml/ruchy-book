@@ -20,7 +20,12 @@
 - [File Operations](ch06-00-file-operations.md)
 - [Building Applications](ch07-00-building-applications.md)
 
-## Level 2: Systems Programming
+## Level 2: Systems & Performance
+
+- [Systems Programming](./ch08-00-systems-programming.md)
+- [Network Programming](./ch09-00-network-programming.md)
+- [Performance & Optimization](./ch10-00-performance-optimization.md)
+- [Advanced Patterns](./ch11-00-advanced-patterns.md)
 
 ## Level 3: Advanced Features
 
