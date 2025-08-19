@@ -1,0 +1,21 @@
+// Sales data analyzer demonstration
+println("=== Sales Data Analyzer ===")
+
+// Simulate sales data processing
+let total_sales = 3101
+let num_transactions = 5
+let average_sale = 620
+
+println(f"Total Sales: ${total_sales}")
+println(f"Transactions: {num_transactions}")
+println(f"Average Sale: ${average_sale}")
+
+println("\nTop Products:")
+println("  Laptop: 2 sales")
+println("  Mouse: 1 sales")
+println("  Keyboard: 1 sales")
+
+println("\nSales by Region:")
+println("  North: $1378")
+println("  South: $25")
+println("  East: $1299")

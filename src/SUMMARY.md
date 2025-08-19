@@ -15,6 +15,9 @@
 
 ## Level 1: Real-World Programs
 
+- [Command-Line Tools](ch04-00-command-line-tools.md)
+- [Data Processing](ch05-00-data-processing.md)
+
 ## Level 2: Systems Programming
 
 ## Level 3: Advanced Features
