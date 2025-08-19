@@ -1,0 +1,11 @@
+[package]
+name = "note-keeper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ruchy = "=0.4.13"
+
+[[bin]]
+name = "main"
+path = "src/main.ruchy"

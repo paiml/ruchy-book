@@ -17,6 +17,8 @@
 
 - [Command-Line Tools](ch04-00-command-line-tools.md)
 - [Data Processing](ch05-00-data-processing.md)
+- [File Operations](ch06-00-file-operations.md)
+- [Building Applications](ch07-00-building-applications.md)
 
 ## Level 2: Systems Programming
 

@@ -1,0 +1,14 @@
+// File organizer demonstration
+println("=== Desktop Organizer Demo ===")
+
+// Simulate file organization
+let file_count = 15
+let organized_count = 12
+
+println(f"Found {file_count} files to organize")
+println("Created folder: Documents")
+println("Created folder: Images")
+println("  Moved report.pdf -> Documents/")
+println("  Moved photo.jpg -> Images/")
+println(f"Organized {organized_count} files")
+println("✅ Desktop organized!")
