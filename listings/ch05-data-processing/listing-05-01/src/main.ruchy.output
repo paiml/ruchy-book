@@ -1,0 +1,14 @@
+=== Sales Data Analyzer ===
+Total Sales: $3101
+Transactions: 5
+Average Sale: $620
+
+Top Products:
+  Laptop: 2 sales
+  Mouse: 1 sales
+  Keyboard: 1 sales
+
+Sales by Region:
+  North: $1378
+  South: $25
+  East: $1299
