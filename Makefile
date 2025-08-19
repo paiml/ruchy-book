@@ -181,10 +181,6 @@ status:
 # Install pre-commit hook
 install-hooks:
 	@echo "🪝 Installing pre-commit hooks..."
-	@mkdir -p .git/hooks
-	@echo '#!/bin/bash' > .git/hooks/pre-commit
-	@echo 'make pre-commit' >> .git/hooks/pre-commit
-	@chmod +x .git/hooks/pre-commit
-	@echo "✅ Pre-commit hooks installed"
+	@./scripts/install-hooks.sh
 
 .DEFAULT_GOAL := help
