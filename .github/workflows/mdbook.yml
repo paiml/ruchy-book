@@ -77,6 +77,9 @@ jobs:
           echo "📚 Building Ruchy book..."
           mdbook build
           
+          # Add custom domain CNAME
+          echo "book.ruchy.org" > book/CNAME
+          
           # Add build info
           BUILD_TIME=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           COMMIT_SHA=${GITHUB_SHA:0:7}
