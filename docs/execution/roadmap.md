@@ -17,9 +17,10 @@
 | BOOK-0002 | Set up mdBook project structure | [x] | Low | P0 |
 | BOOK-0003 | Implement ruchy preprocessor for code validation | [ ] | High | P0 |
 | BOOK-0004 | Create listing test framework | [x] | Medium | P0 |
-| BOOK-0005 | Set up CI/CD pipeline with GitHub Actions | [ ] | Medium | P0 |
+| BOOK-0005 | Set up CI/CD pipeline with GitHub Actions | [x] | Medium | P0 |
 | BOOK-0006 | Configure pre-commit hooks | [x] | Low | P0 |
 | BOOK-0007 | Create version sync workflow | [ ] | Medium | P0 |
+| BOOK-0008 | Upgrade to ruchy 0.4.14 for testing module | [ ] | Low | P0 |
 
 ### Phase 2: Level 0 Content (Immediate Productivity) 📋
 
