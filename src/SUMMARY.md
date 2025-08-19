@@ -29,4 +29,11 @@
 
 ## Level 3: Advanced Features
 
+- [Traits and Generics](./ch12-00-traits-generics.md)
+- [Error Handling](./ch13-00-error-handling.md)
+- [Concurrency](./ch14-00-concurrency.md)
+- [Macros and Metaprogramming](./ch15-00-macros-metaprogramming.md)
+
+## Level 4: Production Systems
+
 ## Appendices
