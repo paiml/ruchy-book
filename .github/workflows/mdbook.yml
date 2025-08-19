@@ -80,10 +80,17 @@ jobs:
           # Add custom domain CNAME
           echo "book.ruchy.org" > book/CNAME
           
-          # Add build info
+          # Add build info footer to all HTML files
           BUILD_TIME=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
           COMMIT_SHA=${GITHUB_SHA:0:7}
-          echo "<hr><p style='text-align: center; color: #666; font-size: 0.8em; margin-top: 2em;'>Built $BUILD_TIME | <a href='${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}'>$COMMIT_SHA</a> | <a href='https://github.com/paiml/ruchy'>Ruchy Language</a></p>" >> book/index.html
+          FOOTER="<hr><p style='text-align: center; color: #666; font-size: 0.8em; margin-top: 2em;'>Built $BUILD_TIME | <a href='${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/commit/${GITHUB_SHA}'>$COMMIT_SHA</a> | <a href='https://github.com/paiml/ruchy'>Ruchy Language</a></p>"
+          
+          # Insert footer before closing body tag in all HTML files
+          for html_file in book/*.html; do
+            if [ -f "$html_file" ]; then
+              sed -i "s|</body>|${FOOTER}</body>|" "$html_file"
+            fi
+          done
           
           echo "✅ Book built successfully"
       
