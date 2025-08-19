@@ -7,6 +7,8 @@
 ## Level 0: Immediate Productivity
 
 - [Getting Started](ch01-00-getting-started.md)
+    - [Installation](ch01-01-installation.md)
+    - [Hello, World!](ch01-02-hello-world.md)
 
 ## Level 1: Real-World Programs
 

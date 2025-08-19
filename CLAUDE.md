@@ -354,3 +354,5 @@ pre-commit: validate
 ## Remember
 
 **Implementation-first documentation**: Every line of example code must compile and run correctly with the current Ruchy compiler. The book is a living proof that Ruchy works, not a promise of what it might do.
+- toyota way.  never allow shortcuts.
+- if it isn't automated. consider it broken.  no manual "hacks".
