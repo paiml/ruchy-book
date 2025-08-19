@@ -41,7 +41,7 @@ git-repository-url = "https://github.com/paiml/ruchy-book"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/paiml/ruchy-book/edit/main/{path}"
 site-url = "https://book.ruchy.org/"
-# cname = "book.ruchy.org"  # Temporarily disabled for testing
+cname = "book.ruchy.org"
 # input-404 = "404.md"  # Will add later
 
 [output.html.print]
