@@ -42,3 +42,9 @@
 - [Real-World Projects](./ch19-00-real-world-projects.md)
 
 ## Appendices
+
+- [Appendix A: Installation Guide](./appendix-a-installation.md)
+- [Appendix B: Syntax Reference](./appendix-b-syntax-reference.md)
+- [Appendix C: Troubleshooting Guide](./appendix-c-troubleshooting.md)
+- [Appendix D: Glossary](./appendix-d-glossary.md)
+- [Appendix E: Learning Resources](./appendix-e-resources.md)
