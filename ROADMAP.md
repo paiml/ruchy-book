@@ -11,7 +11,7 @@ The book is fully complete with 19 chapters and 5 appendices, covering the entir
 ### Q3 2025 - Quality & Polish
 
 #### 🎨 **Syntax Highlighting Improvements**
-- [ ] Custom Ruchy language grammar for mdBook
+- [x] Custom Ruchy language grammar for mdBook
 - [ ] Enhanced syntax highlighting for code blocks
 - [ ] IDE-quality syntax coloring with semantic highlighting
 - [ ] Dark/light theme optimizations for code readability
