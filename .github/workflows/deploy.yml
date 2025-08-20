@@ -75,11 +75,6 @@ jobs:
       run: |
         echo "🎉 Deployment completed!"
         echo "📍 Site URL: ${{ steps.deployment.outputs.page_url }}"
-        echo "🌐 Custom domain: https://book.ruchy.org"
-        
-        # Wait a moment for DNS propagation
-        echo "⏳ Waiting 30 seconds for DNS propagation..."
-        sleep 30
         
         # Test the deployment
         echo "🧪 Testing deployment..."
@@ -88,14 +83,5 @@ jobs:
         if curl -f -s "${{ steps.deployment.outputs.page_url }}" > /dev/null; then
           echo "✅ GitHub Pages URL is accessible"
         else
-          echo "❌ GitHub Pages URL failed"
+          echo "⚠️ GitHub Pages URL not immediately accessible (may take a moment)"
         fi
-        
-        # Test custom domain
-        if curl -f -s -L --max-redirs 5 --connect-timeout 30 "https://book.ruchy.org" > /dev/null; then
-          echo "✅ Custom domain book.ruchy.org is accessible"
-        else
-          echo "⚠️  Custom domain book.ruchy.org not yet accessible (DNS may still be propagating)"
-        fi
-
-    # Deployment status logging (issue creation removed - insufficient permissions)

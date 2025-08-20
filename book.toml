@@ -40,8 +40,8 @@ additional-js = ["theme/highlight-ruchy.js", "theme/code-enhancements.js", "them
 git-repository-url = "https://github.com/paiml/ruchy-book"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/paiml/ruchy-book/edit/main/{path}"
-site-url = "https://book.ruchy.org/"
-cname = "book.ruchy.org"
+# site-url = "https://book.ruchy.org/"  # Domain not available yet
+# cname = "book.ruchy.org"  # Domain not available yet
 # input-404 = "404.md"  # Will add later
 
 [output.html.print]
