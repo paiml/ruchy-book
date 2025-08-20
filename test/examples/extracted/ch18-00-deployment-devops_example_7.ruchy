@@ -1,1 +1,2 @@
     health_check: "/health",
+    health_check: "/health",

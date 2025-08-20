@@ -1,1 +1,2 @@
     let (sender, receiver) = channel()
+    let (sender, receiver) = channel()

@@ -1,0 +1,202 @@
+name: Upstream Compatibility Sync
+
+on:
+  schedule:
+    # Run weekly on Mondays
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**/*.md'
+      - 'tests/**/*.rs'
+
+jobs:
+  compatibility-check:
+    name: Check Ruchy Compiler Compatibility
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout book
+        uses: actions/checkout@v4
+        with:
+          path: book
+      
+      - name: Checkout Ruchy compiler
+        uses: actions/checkout@v4
+        with:
+          repository: paiml/ruchy
+          path: ruchy
+          token: ${{ secrets.RUCHY_ACCESS_TOKEN }}
+      
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+      
+      - name: Build Ruchy compiler
+        run: |
+          cd ruchy
+          cargo build --release
+          echo "RUCHY_VERSION=$(cargo metadata --format-version 1 | jq -r '.packages[] | select(.name=="ruchy") | .version')" >> $GITHUB_ENV
+      
+      - name: Run compatibility tests
+        id: test
+        run: |
+          cd book
+          
+          # Run tests and capture results
+          cargo test test_all_examples -- --nocapture 2>&1 | tee test_output.txt || true
+          
+          # Extract metrics
+          TOTAL=$(grep -r '```ruchy' src/ | wc -l)
+          PASSED=$(grep "✅" test_output.txt | wc -l || echo 0)
+          FAILED=$(grep "❌" test_output.txt | wc -l || echo 0)
+          RATE=$((PASSED * 100 / TOTAL))
+          
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "passed=$PASSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "rate=$RATE" >> $GITHUB_OUTPUT
+      
+      - name: Generate compatibility report
+        run: |
+          cd book
+          
+          cat > compatibility-report.json << EOF
+          {
+            "timestamp": "$(date -Iseconds)",
+            "book_commit": "$(git rev-parse HEAD)",
+            "ruchy_version": "${{ env.RUCHY_VERSION }}",
+            "metrics": {
+              "total_examples": ${{ steps.test.outputs.total }},
+              "passing": ${{ steps.test.outputs.passed }},
+              "failing": ${{ steps.test.outputs.failed }},
+              "compatibility_rate": ${{ steps.test.outputs.rate }}
+            }
+          }
+          EOF
+      
+      - name: Update Ruchy repo with results
+        if: steps.test.outputs.rate < 90
+        run: |
+          cd ruchy
+          
+          # Create compatibility tracking file
+          mkdir -p .book-compatibility
+          cp ../book/compatibility-report.json .book-compatibility/latest.json
+          
+          # Create or update tracking branch
+          git config user.name "Book Compatibility Bot"
+          git config user.email "bot@ruchy-book.org"
+          
+          git checkout -b book-compatibility-tracking || git checkout book-compatibility-tracking
+          git add .book-compatibility/
+          git commit -m "Book compatibility: ${{ steps.test.outputs.rate }}% (ruchy v${{ env.RUCHY_VERSION }})"
+          git push origin book-compatibility-tracking
+      
+      - name: Create issue if compatibility drops
+        if: steps.test.outputs.rate < 20
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.RUCHY_ACCESS_TOKEN }}
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: 'paiml',
+              repo: 'ruchy',
+              title: `Book compatibility dropped to ${{ steps.test.outputs.rate }}%`,
+              body: `## ⚠️ Book Example Compatibility Alert
+              
+              The compatibility between book examples and the Ruchy compiler has dropped below 20%.
+              
+              ### Current Status
+              - **Total Examples**: ${{ steps.test.outputs.total }}
+              - **Passing**: ${{ steps.test.outputs.passed }}
+              - **Failing**: ${{ steps.test.outputs.failed }}
+              - **Compatibility Rate**: ${{ steps.test.outputs.rate }}%
+              
+              ### Action Required
+              1. Review failing examples in the [book repository](https://github.com/paiml/ruchy-book)
+              2. Prioritize syntax features needed by the book
+              3. Run \`make test-book\` locally to reproduce
+              
+              ### Automated Report
+              Full report available at: https://github.com/paiml/ruchy-book/actions/runs/${{ github.run_id }}
+              `,
+              labels: ['book-compatibility', 'automated', 'priority-high']
+            });
+      
+      - name: Comment on Ruchy PRs
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.RUCHY_ACCESS_TOKEN }}
+          script: |
+            // Find recent PRs in Ruchy repo
+            const prs = await github.rest.pulls.list({
+              owner: 'paiml',
+              repo: 'ruchy',
+              state: 'open',
+              sort: 'created',
+              direction: 'desc',
+              per_page: 5
+            });
+            
+            for (const pr of prs.data) {
+              // Check if PR affects parser/compiler
+              const files = await github.rest.pulls.listFiles({
+                owner: 'paiml',
+                repo: 'ruchy',
+                pull_number: pr.number
+              });
+              
+              const affectsCompiler = files.data.some(f => 
+                f.filename.includes('parser') || 
+                f.filename.includes('compiler') ||
+                f.filename.includes('transpiler')
+              );
+              
+              if (affectsCompiler) {
+                await github.rest.issues.createComment({
+                  owner: 'paiml',
+                  repo: 'ruchy',
+                  issue_number: pr.number,
+                  body: `## 📚 Book Compatibility Report
+                  
+                  This PR may affect book example compatibility.
+                  
+                  **Current compatibility**: ${{ steps.test.outputs.rate }}% (${{ steps.test.outputs.passed }}/${{ steps.test.outputs.total }} examples)
+                  
+                  To test locally:
+                  \`\`\`bash
+                  git clone https://github.com/paiml/ruchy-book
+                  cd ruchy-book
+                  cargo test test_all_examples
+                  \`\`\`
+                  `
+                });
+              }
+            }
+      
+      - name: Update compatibility badge
+        run: |
+          cd book
+          
+          # Update README with dynamic badge
+          BADGE_COLOR="red"
+          if [ ${{ steps.test.outputs.rate }} -gt 80 ]; then
+            BADGE_COLOR="green"
+          elif [ ${{ steps.test.outputs.rate }} -gt 50 ]; then
+            BADGE_COLOR="yellow"
+          fi
+          
+          # Create badge URL
+          BADGE_URL="https://img.shields.io/badge/Ruchy%20Compatibility-${{ steps.test.outputs.rate }}%25-${BADGE_COLOR}"
+          
+          # Update README if needed
+          sed -i "s|https://img.shields.io/badge/Ruchy%20Compatibility-.*|${BADGE_URL}|g" README.md || true
+          
+          if git diff --quiet README.md; then
+            echo "Badge unchanged"
+          else
+            git add README.md
+            git commit -m "Update compatibility badge: ${{ steps.test.outputs.rate }}%"
+            git push
+          fi

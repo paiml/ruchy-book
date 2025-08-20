@@ -1,1 +1,2 @@
 trait Serializable {
+trait Serializable {

@@ -1,1 +1,2 @@
     rollback_on_failure: true
+    rollback_on_failure: true

@@ -1,0 +1,49 @@
+{
+  "test_run": {
+    "timestamp": "2025-08-20T11:40:00Z",
+    "book_version": "0.1.0",
+    "ruchy_version": "0.4.13",
+    "summary": {
+      "total_examples": 259,
+      "passed": 57,
+      "failed": 202,
+      "skipped": 5,
+      "success_rate": "22%"
+    },
+    "failing_patterns": {
+      "syntax_errors": {
+        "count": 145,
+        "examples": [
+          {
+            "file": "ch01-02-hello-world.md",
+            "line": 105,
+            "code": "println(Hello, World!)",
+            "error": "Expected RightParen, found Backslash",
+            "fix_suggestion": "println(\"Hello\", \"World!\")"
+          }
+        ]
+      },
+      "unsupported_features": {
+        "count": 57,
+        "examples": [
+          {
+            "feature": "fat_arrow",
+            "usage_count": 23,
+            "example": "bench::suite(\"Test\", { \"name\" => || { } })"
+          },
+          {
+            "feature": "async_blocks",
+            "usage_count": 12,
+            "example": "async { http::get(url).await() }"
+          }
+        ]
+      }
+    },
+    "priority_fixes": [
+      "Support for => (fat arrow) in closures",
+      "String interpolation with f-strings",
+      "Pattern matching in function parameters",
+      "Async/await syntax support"
+    ]
+  }
+}

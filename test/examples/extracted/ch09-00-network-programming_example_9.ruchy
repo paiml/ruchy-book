@@ -1,1 +1,2 @@
     let duration = current_time_ms() - start
+    let duration = current_time_ms() - start

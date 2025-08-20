@@ -1,1 +1,2 @@
     write_file(path, serialized)
+    write_file(path, serialized)

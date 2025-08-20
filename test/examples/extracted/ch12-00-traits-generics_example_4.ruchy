@@ -1,1 +1,2 @@
     fn deserialize(String) -> Self
+    fn deserialize(String) -> Self

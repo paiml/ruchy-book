@@ -1,1 +1,2 @@
     strategy: BlueGreen,
+    strategy: BlueGreen,

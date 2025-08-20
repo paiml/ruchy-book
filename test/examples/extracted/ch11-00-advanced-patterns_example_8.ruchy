@@ -1,1 +1,2 @@
     fn on(event, handler) {
+    fn on(event, handler) {
