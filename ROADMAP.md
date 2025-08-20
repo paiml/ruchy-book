@@ -15,7 +15,7 @@ The book is fully complete with 19 chapters and 5 appendices, covering the entir
 - [x] Enhanced syntax highlighting for code blocks
 - [x] IDE-quality syntax coloring with semantic highlighting
 - [x] Dark/light theme optimizations for code readability
-- [ ] Inline code highlighting improvements
+- [x] Inline code highlighting improvements
 - [ ] Support for highlighting Ruchy-specific keywords and patterns
 
 #### 📝 **Grammar & Copy Editing**
