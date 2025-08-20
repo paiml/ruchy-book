@@ -1,1 +1,2 @@
 let hostname = system::hostname()
+let hostname = system::hostname()

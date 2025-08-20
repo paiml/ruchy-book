@@ -1,1 +1,2 @@
     let serialized = item.serialize()
+    let serialized = item.serialize()

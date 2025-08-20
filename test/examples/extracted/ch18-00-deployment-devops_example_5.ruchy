@@ -1,1 +1,2 @@
     environment: env::var("DEPLOY_ENV"),  // staging/production
+    environment: env::var("DEPLOY_ENV"),  // staging/production

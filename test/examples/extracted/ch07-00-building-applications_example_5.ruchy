@@ -1,1 +1,2 @@
 let NOTES_DIR = expand_home("~/.notes")
+let NOTES_DIR = expand_home("~/.notes")

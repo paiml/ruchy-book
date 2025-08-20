@@ -1,1 +1,2 @@
 server.use(|req, res, next| {
+server.use(|req, res, next| {

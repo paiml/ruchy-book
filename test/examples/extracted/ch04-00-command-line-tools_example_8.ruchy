@@ -1,1 +1,2 @@
 let content = read_file(filename)
+let content = read_file(filename)
