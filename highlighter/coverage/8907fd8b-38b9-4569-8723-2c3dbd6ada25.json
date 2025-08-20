@@ -1,0 +1,41 @@
+{
+  "scriptId": "365",
+  "url": "file:///home/noah/src/ruchy-book/highlighter/src/utils/escape.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 1396, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "escapeHTML",
+      "ranges": [{ "startOffset": 121, "endOffset": 344, "count": 350 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 317, "endOffset": 340, "count": 27 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "unescapeHTML",
+      "ranges": [{ "startOffset": 386, "endOffset": 645, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "sanitizeInput",
+      "ranges": [{ "startOffset": 710, "endOffset": 1134, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "tabsToSpaces",
+      "ranges": [{ "startOffset": 1176, "endOffset": 1269, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "normalizeLineEndings",
+      "ranges": [{ "startOffset": 1317, "endOffset": 1395, "count": 0 }],
+      "isBlockCoverage": false
+    }
+  ]
+}

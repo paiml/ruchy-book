@@ -1,0 +1,16 @@
+{
+  "scriptId": "362",
+  "url": "file:///home/noah/src/ruchy-book/highlighter/src/tokenizer/tokens.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 11279, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 150, "endOffset": 4903, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

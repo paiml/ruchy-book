@@ -1,0 +1,166 @@
+{
+  "scriptId": "337",
+  "url": "file:///home/noah/src/ruchy-book/highlighter/src/repl/index.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 7912, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "fg256",
+      "ranges": [{ "startOffset": 1158, "endOffset": 1180, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "bg256",
+      "ranges": [{ "startOffset": 1191, "endOffset": 1213, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "rgbFg",
+      "ranges": [{ "startOffset": 1256, "endOffset": 1294, "count": 8 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "rgbBg",
+      "ranges": [{ "startOffset": 1305, "endOffset": 1343, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "hexToAnsi",
+      "ranges": [
+        { "startOffset": 1387, "endOffset": 2324, "count": 8 },
+        { "startOffset": 1734, "endOffset": 2322, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 2393, "endOffset": 2430, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "ReplHighlighter",
+      "ranges": [
+        { "startOffset": 2434, "endOffset": 2638, "count": 1 },
+        { "startOffset": 2563, "endOffset": 2578, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "highlight",
+      "ranges": [
+        { "startOffset": 2687, "endOffset": 3656, "count": 1 },
+        { "startOffset": 2734, "endOffset": 2744, "count": 0 },
+        { "startOffset": 2922, "endOffset": 3405, "count": 6 },
+        { "startOffset": 2964, "endOffset": 2973, "count": 1 },
+        { "startOffset": 2973, "endOffset": 3044, "count": 5 },
+        { "startOffset": 3044, "endOffset": 3105, "count": 3 },
+        { "startOffset": 3105, "endOffset": 3247, "count": 5 },
+        { "startOffset": 3247, "endOffset": 3255, "count": 1 },
+        { "startOffset": 3257, "endOffset": 3326, "count": 4 },
+        { "startOffset": 3326, "endOffset": 3372, "count": 1 },
+        { "startOffset": 3372, "endOffset": 3405, "count": 5 },
+        { "startOffset": 3467, "endOffset": 3511, "count": 0 },
+        { "startOffset": 3582, "endOffset": 3633, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getTokenColor",
+      "ranges": [
+        { "startOffset": 3704, "endOffset": 4782, "count": 5 },
+        { "startOffset": 3846, "endOffset": 3912, "count": 2 },
+        { "startOffset": 3912, "endOffset": 4763, "count": 3 },
+        { "startOffset": 3955, "endOffset": 4020, "count": 0 },
+        { "startOffset": 4063, "endOffset": 4128, "count": 0 },
+        { "startOffset": 4172, "endOffset": 4238, "count": 0 },
+        { "startOffset": 4285, "endOffset": 4395, "count": 1 },
+        { "startOffset": 4395, "endOffset": 4763, "count": 2 },
+        { "startOffset": 4448, "endOffset": 4515, "count": 0 },
+        { "startOffset": 4563, "endOffset": 4654, "count": 1 },
+        { "startOffset": 4607, "endOffset": 4627, "count": 0 },
+        { "startOffset": 4654, "endOffset": 4763, "count": 1 },
+        { "startOffset": 4700, "endOffset": 4763, "count": 0 },
+        { "startOffset": 4763, "endOffset": 4781, "count": 1 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getTokenStyle",
+      "ranges": [
+        { "startOffset": 4830, "endOffset": 5174, "count": 5 },
+        { "startOffset": 4953, "endOffset": 4986, "count": 2 },
+        { "startOffset": 4986, "endOffset": 5152, "count": 3 },
+        { "startOffset": 5030, "endOffset": 5065, "count": 0 },
+        { "startOffset": 5117, "endOffset": 5152, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "addLineNumbers",
+      "ranges": [{ "startOffset": 5219, "endOffset": 5651, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "setTheme",
+      "ranges": [{ "startOffset": 5679, "endOffset": 5752, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getTheme",
+      "ranges": [{ "startOffset": 5788, "endOffset": 5827, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getAvailableThemes",
+      "ranges": [{ "startOffset": 5866, "endOffset": 5938, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "createPrompt",
+      "ranges": [
+        { "startOffset": 5997, "endOffset": 6189, "count": 1 },
+        { "startOffset": 6089, "endOffset": 6101, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "formatError",
+      "ranges": [
+        { "startOffset": 6227, "endOffset": 6683, "count": 1 },
+        { "startOffset": 6535, "endOffset": 6547, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "formatWarning",
+      "ranges": [{ "startOffset": 6723, "endOffset": 7206, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "formatSuccess",
+      "ranges": [
+        { "startOffset": 7246, "endOffset": 7436, "count": 1 },
+        { "startOffset": 7332, "endOffset": 7344, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "clearScreen",
+      "ranges": [{ "startOffset": 7474, "endOffset": 7521, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "moveCursor",
+      "ranges": [{ "startOffset": 7558, "endOffset": 7610, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "highlightForRepl",
+      "ranges": [{ "startOffset": 7661, "endOffset": 7855, "count": 0 }],
+      "isBlockCoverage": false
+    }
+  ]
+}
