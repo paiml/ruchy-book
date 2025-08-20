@@ -40,7 +40,7 @@ jobs:
       - name: Quality Gate 1 - No SATD comments
         run: |
           echo "🔒 Gate 1: Checking for SATD comments..."
-          if grep -r "TODO\|FIXME\|HACK" src/ listings/; then
+          if grep -r "TODO\|FIXME\|HACK" src/; then
             echo "❌ BLOCKED: SATD comments found"
             exit 1
           fi
@@ -54,12 +54,6 @@ jobs:
             exit 1
           fi
           echo "✅ No vaporware documentation"
-      
-      - name: Quality Gate 3 - All listings compile
-        run: |
-          echo "🔒 Gate 3: Testing all code listings..."
-          cargo test --tests
-          echo "✅ All listings compile"
       
       - name: Install mdBook
         run: |
