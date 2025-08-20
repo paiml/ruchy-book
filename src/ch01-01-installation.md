@@ -2,168 +2,147 @@
 
 ## The Problem
 
-Before you can write Ruchy code, you need the Ruchy compiler installed on your system. We'll get you set up quickly so you can start coding in minutes, not hours.
+Before you can write Ruchy code, you need the Ruchy compiler installed on your system. Currently, Ruchy must be built from source as there are no pre-built binaries or package manager distributions yet.
 
-## Quick Start
+## Current Status
 
-The fastest way to get Ruchy:
+**⚠️ Important:** Ruchy is in early development. There are:
+- ❌ No pre-built binaries
+- ❌ No `cargo install ruchy` (not published to crates.io)
+- ❌ No package manager support
+
+You must build from source.
+
+## Building from Source
+
+### Prerequisites
+
+You need the Rust toolchain installed:
 
 ```bash
-# Install via cargo (requires Rust toolchain)
-cargo install ruchy
+# Install Rust if you don't have it
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# Verify installation
+# Reload your shell configuration
+source ~/.bashrc  # or ~/.zshrc on macOS
+
+# Verify Rust is installed
+rustc --version
+cargo --version
+```
+
+### Build Steps
+
+```bash
+# Clone the Ruchy compiler repository
+git clone https://github.com/paiml/ruchy.git
+cd ruchy
+
+# Build the compiler in release mode
+cargo build --release
+
+# After successful build, find the binary at:
+# target/release/ruchy
+```
+
+### Installation Options
+
+#### Option 1: Copy to System Path
+
+```bash
+# Copy the binary to a system location (Unix-like systems)
+sudo cp target/release/ruchy /usr/local/bin/
+
+# Verify it's accessible
 ruchy --version
 ```
 
-## Installation Methods
-
-### Method 1: Cargo Install (Recommended)
-
-If you have Rust installed:
+#### Option 2: Add to PATH
 
 ```bash
-cargo install ruchy
+# Add the build directory to your PATH
+export PATH="$PWD/target/release:$PATH"
+
+# Make it permanent by adding to your shell profile
+echo 'export PATH="'$PWD'/target/release:$PATH"' >> ~/.bashrc
 ```
 
-This installs the latest stable version from crates.io.
-
-### Method 2: Download Pre-built Binaries
-
-Visit [https://github.com/paiml/ruchy/releases](https://github.com/paiml/ruchy/releases) and download the binary for your platform:
-
-- **Linux**: `ruchy-x86_64-unknown-linux-gnu.tar.gz`
-- **macOS**: `ruchy-x86_64-apple-darwin.tar.gz`  
-- **Windows**: `ruchy-x86_64-pc-windows-msvc.zip`
-
-Extract and add to your PATH.
-
-### Method 3: Build from Source
-
-For the latest development version:
+#### Option 3: Create Alias
 
 ```bash
-git clone https://github.com/paiml/ruchy.git
-cd ruchy
-cargo build --release
+# Create an alias
+alias ruchy="$PWD/target/release/ruchy"
 
-# The binary is at target/release/ruchy
-```
-
-## Prerequisites
-
-Ruchy requires:
-- **Rust toolchain** (for compilation backend)
-- **LLVM** (provided by rustc)
-
-### Installing Rust
-
-If you don't have Rust:
-
-```bash
-# Install rustup (Rust installer)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Reload shell
-source ~/.bashrc  # or ~/.zshrc
-
-# Verify
-rustc --version
+# Add to shell profile for persistence
+echo 'alias ruchy="'$PWD'/target/release/ruchy"' >> ~/.bashrc
 ```
 
 ## Verification
 
-Test your installation:
+After installation, verify Ruchy works:
 
 ```bash
-# Check version
-ruchy --version
+# Check the compiler is accessible
+ruchy --help
 
-# Start the REPL
-ruchy repl
+# Create a test file
+echo 'fun main() { println("Hello, Ruchy!") }' > test.ruchy
 
-# Run a quick test
-echo 'println("Ruchy is working!")' | ruchy repl
-```
+# Transpile to Rust
+ruchy transpile test.ruchy -o test.rs
 
-You should see:
-```
-Ruchy is working!
-```
+# View the generated Rust code
+cat test.rs
 
-## Development Environment Setup
-
-### VS Code (Recommended)
-
-Install the Ruchy extension for syntax highlighting:
-
-1. Open VS Code
-2. Install "Ruchy Language Support" extension
-3. Create a file with `.ruchy` extension
-4. Enjoy syntax highlighting and basic IntelliSense
-
-### Other Editors
-
-- **Vim/Neovim**: Use the `ruchy.vim` syntax file from the repository
-- **Emacs**: Basic syntax highlighting available in `ruchy-mode`
-- **Sublime Text**: Package available through Package Control
-
-## Project Setup
-
-Create your first Ruchy project:
-
-```bash
-mkdir my-ruchy-project
-cd my-ruchy-project
-
-# Create main file
-echo 'println("Hello from my project!")' > main.ruchy
-
-# Run it
-ruchy run main.ruchy
+# Compile and run
+rustc test.rs -o test
+./test
+# Should output: Hello, Ruchy!
 ```
 
 ## Troubleshooting
 
-### Command not found
+### "ruchy: command not found"
 
-If `ruchy` command isn't found:
+The binary isn't in your PATH. Either:
+1. Use the full path: `./target/release/ruchy`
+2. Add to PATH as shown above
+3. Copy to `/usr/local/bin/`
 
+### Build Fails
+
+Common issues:
+- **Old Rust version**: Update with `rustup update`
+- **Missing dependencies**: Install build-essential (Linux) or Xcode tools (macOS)
+- **Compilation errors**: The main branch might be broken; try a tagged release
+
+### Permission Denied
+
+Make the binary executable:
 ```bash
-# Check if it's in PATH
-which ruchy
-
-# If installed via cargo, add to PATH:
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Make permanent by adding to ~/.bashrc or ~/.zshrc
-echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
+chmod +x target/release/ruchy
 ```
 
-### Compilation Errors
+## Development Setup
 
-If you see "rustc not found":
-
-```bash
-# Install Rust if missing
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Update if outdated
-rustup update
-```
-
-### Permission Errors
-
-On Unix systems:
+For active development:
 
 ```bash
-# Make binary executable
-chmod +x ruchy
+# Run tests
+cargo test
 
-# Or install with proper permissions
-sudo cargo install ruchy
+# Run with debug output
+RUST_LOG=debug cargo run -- transpile test.ruchy
+
+# Use the REPL
+cargo run --bin ruchy repl
 ```
 
-## What's Next
+## Next Steps
 
-Now that Ruchy is installed, let's write your first program: [Hello, World!](ch01-02-hello-world.md)
+With Ruchy installed, you're ready to:
+1. Write your first program (next section)
+2. Explore the REPL
+3. Study how Ruchy transpiles to Rust
+
+Remember: Ruchy is experimental. The installation process will improve as the project matures.
