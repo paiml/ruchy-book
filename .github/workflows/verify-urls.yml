@@ -94,24 +94,4 @@ jobs:
             echo "Check the deployment and DNS configuration" >> $GITHUB_STEP_SUMMARY
           fi
       
-      - name: Create Issue on Failure
-        if: failure()
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const issues = await github.rest.issues.listForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              state: 'open',
-              labels: 'url-verification-failure'
-            });
-            
-            if (issues.data.length === 0) {
-              await github.rest.issues.create({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                title: '🔴 CRITICAL: book.ruchy.org is not accessible',
-                body: `The URL verification check has failed.\n\n**Time:** ${new Date().toISOString()}\n**Workflow:** ${context.workflow}\n**Run:** ${context.runId}\n\nThe site book.ruchy.org is returning 404 or not serving correct content.\n\nPlease check:\n1. GitHub Pages deployment status\n2. DNS configuration\n3. Workflow artifacts\n4. CNAME file presence`,
-                labels: ['url-verification-failure', 'critical', 'production']
-              });
-            }
+      # Issue creation removed - insufficient permissions in GitHub Actions
