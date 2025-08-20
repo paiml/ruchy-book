@@ -1,0 +1,1 @@
+let words = content.split_whitespace()

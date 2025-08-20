@@ -1,0 +1,98 @@
+name: Test All Book Examples
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    # Run daily to catch regressions
+    - cron: '0 3 * * *'
+
+jobs:
+  test-examples:
+    name: Test Ruchy Examples
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout book repository
+        uses: actions/checkout@v4
+        with:
+          path: ruchy-book
+      
+      - name: Checkout Ruchy compiler
+        uses: actions/checkout@v4
+        with:
+          repository: paiml/ruchy
+          path: ruchy
+      
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+      
+      - name: Cache Rust dependencies
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            ruchy -> target
+            ruchy-book -> target
+      
+      - name: Build Ruchy compiler
+        run: |
+          cd ruchy
+          cargo build --release
+          echo "✅ Ruchy compiler built successfully"
+      
+      - name: Run quality gates
+        run: |
+          cd ruchy-book
+          ./test/quality-gates.sh
+      
+      - name: Test all examples
+        run: |
+          cd ruchy-book
+          cargo test --test test_all_examples -- --nocapture
+        continue-on-error: true
+      
+      - name: Generate test report
+        if: always()
+        run: |
+          cd ruchy-book
+          echo "## 📊 Example Test Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Count examples
+          TOTAL=$(grep -r '```ruchy' src/ | wc -l)
+          echo "- Total Ruchy examples: $TOTAL" >> $GITHUB_STEP_SUMMARY
+          
+          # Run tests and capture output
+          if cargo test --test test_all_examples 2>&1 | tee test_output.txt; then
+            echo "- Status: ✅ All tests passed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- Status: ⚠️ Some tests failed" >> $GITHUB_STEP_SUMMARY
+            
+            # Extract failure count
+            FAILED=$(grep "❌ Failed:" test_output.txt | awk '{print $3}' || echo "0")
+            PASSED=$(grep "✅ Passed:" test_output.txt | awk '{print $3}' || echo "0")
+            
+            echo "- Passed: $PASSED" >> $GITHUB_STEP_SUMMARY
+            echo "- Failed: $FAILED" >> $GITHUB_STEP_SUMMARY
+            
+            if [ "$FAILED" -gt 0 ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### ❌ Failed Examples" >> $GITHUB_STEP_SUMMARY
+              grep -A 5 "❌ FAIL" test_output.txt | head -20 >> $GITHUB_STEP_SUMMARY
+            fi
+          fi
+      
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failures
+          path: |
+            ruchy-book/test_output.txt
+            ruchy-book/examples/
+          retention-days: 7

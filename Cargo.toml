@@ -19,6 +19,10 @@ walkdir = "2.5"
 name = "listings"
 path = "tests/listings.rs"
 
+[[test]]
+name = "test_all_examples"
+path = "tests/test_all_examples.rs"
+
 [features]
 # Unstable features for future chapters (when available)
 # unstable = ["ruchy/unstable"]
