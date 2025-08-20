@@ -1,0 +1,465 @@
+/* Ruchy-Specific Pattern Highlighting Styles */
+
+/* Actor System Patterns */
+.ruchy-actor-keyword {
+  color: #ff6b6b;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(255, 107, 107, 0.1), transparent);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.ruchy-actor-name {
+  color: #ff9f43;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+.ruchy-actor-var {
+  color: #ee5a6f;
+}
+
+.ruchy-actor-method {
+  color: #ff6348;
+  font-weight: 500;
+}
+
+.ruchy-actor-function {
+  color: #ff6b9d;
+  font-weight: bold;
+}
+
+.ruchy-message-keyword {
+  color: #c44569;
+  font-weight: bold;
+}
+
+.ruchy-message-name {
+  color: #f8b500;
+  font-weight: 600;
+}
+
+/* DataFrame Patterns */
+.ruchy-df-macro {
+  color: #0984e3;
+  font-weight: bold;
+  background: linear-gradient(90deg, rgba(9, 132, 227, 0.1), transparent);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.ruchy-df-content {
+  color: #74b9ff;
+  font-style: italic;
+}
+
+.ruchy-df-method {
+  color: #00b894;
+  font-weight: 600;
+}
+
+/* Async Patterns */
+.ruchy-async-keyword {
+  color: #a29bfe;
+  font-weight: bold;
+  font-style: italic;
+  background: rgba(162, 155, 254, 0.1);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+.ruchy-async-macro {
+  color: #6c5ce7;
+  font-weight: bold;
+}
+
+.ruchy-function-name {
+  color: #5f27cd;
+  font-weight: 500;
+}
+
+/* Error Handling Patterns */
+.ruchy-result-type,
+.ruchy-option-type {
+  color: #ff7675;
+  font-weight: 600;
+  background: rgba(255, 118, 117, 0.05);
+  padding: 0 2px;
+}
+
+.ruchy-type-param {
+  color: #fd79a8;
+  font-style: italic;
+}
+
+.ruchy-error-type {
+  color: #d63031;
+  font-weight: bold;
+}
+
+.ruchy-question-mark {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1.1em;
+  background: rgba(255, 0, 0, 0.1);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.ruchy-ok-variant {
+  color: #00b894;
+  font-weight: bold;
+}
+
+.ruchy-err-variant {
+  color: #d63031;
+  font-weight: bold;
+}
+
+.ruchy-some-variant {
+  color: #0984e3;
+  font-weight: bold;
+}
+
+.ruchy-none-variant {
+  color: #636e72;
+  font-weight: bold;
+}
+
+/* Memory Management Patterns */
+.ruchy-smart-pointer {
+  color: #fdcb6e;
+  font-weight: 600;
+  background: rgba(253, 203, 110, 0.1);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+.ruchy-constructor {
+  color: #f39c12;
+  font-weight: 500;
+}
+
+.ruchy-cell-type {
+  color: #e17055;
+  font-weight: 600;
+}
+
+.ruchy-sync-type {
+  color: #00cec9;
+  font-weight: 600;
+  background: rgba(0, 206, 201, 0.1);
+  padding: 0 3px;
+}
+
+.ruchy-clone-method {
+  color: #55efc4;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Type System Patterns */
+.ruchy-where-keyword {
+  color: #6c5ce7;
+  font-weight: bold;
+}
+
+.ruchy-where-clause {
+  color: #a29bfe;
+  font-style: italic;
+}
+
+.ruchy-impl-keyword {
+  color: #0984e3;
+  font-weight: bold;
+}
+
+.ruchy-trait-name {
+  color: #00b894;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ruchy-for-keyword {
+  color: #636e72;
+  font-weight: 500;
+}
+
+.ruchy-type-name {
+  color: #00cec9;
+  font-weight: 600;
+}
+
+.ruchy-lifetime {
+  color: #fdcb6e;
+  font-style: italic;
+  font-weight: 500;
+  background: rgba(253, 203, 110, 0.1);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Macro Patterns */
+.ruchy-macro-keyword {
+  color: #e84393;
+  font-weight: bold;
+}
+
+.ruchy-macro-name {
+  color: #fd79a8;
+  font-weight: 600;
+}
+
+.ruchy-derive-attr {
+  color: #00b894;
+  font-style: italic;
+  background: rgba(0, 184, 148, 0.1);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.ruchy-format-macro {
+  color: #0984e3;
+  font-weight: bold;
+}
+
+.ruchy-assert-macro {
+  color: #fdcb6e;
+  font-weight: bold;
+}
+
+.ruchy-panic-macro {
+  color: #d63031;
+  font-weight: bold;
+  background: rgba(214, 48, 49, 0.1);
+  padding: 0 3px;
+  border-radius: 2px;
+}
+
+/* Module System Patterns */
+.ruchy-use-keyword,
+.ruchy-mod-keyword {
+  color: #6c5ce7;
+  font-weight: bold;
+}
+
+.ruchy-module-path,
+.ruchy-module-name {
+  color: #00cec9;
+  font-style: italic;
+}
+
+.ruchy-pub-keyword {
+  color: #00b894;
+  font-weight: bold;
+  background: rgba(0, 184, 148, 0.05);
+  padding: 0 2px;
+}
+
+.ruchy-pub-restriction {
+  color: #55efc4;
+  font-style: italic;
+}
+
+.ruchy-item-keyword {
+  color: #0984e3;
+  font-weight: 600;
+}
+
+/* Testing Patterns */
+.ruchy-test-attr {
+  color: #10ac84;
+  font-weight: bold;
+  background: rgba(16, 172, 132, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(16, 172, 132, 0.3);
+}
+
+/* Unsafe Patterns */
+.ruchy-unsafe-keyword {
+  color: #ff0000;
+  font-weight: bold;
+  background: rgba(255, 0, 0, 0.1);
+  padding: 0 4px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ff6b6b;
+}
+
+.ruchy-raw-pointer {
+  color: #ee5a24;
+  font-weight: bold;
+  background: rgba(238, 90, 36, 0.1);
+  padding: 0 2px;
+}
+
+/* Dark Theme Adjustments */
+.coal .ruchy-actor-keyword,
+.navy .ruchy-actor-keyword,
+.ayu .ruchy-actor-keyword {
+  color: #ff8787;
+  background: linear-gradient(90deg, rgba(255, 135, 135, 0.2), transparent);
+}
+
+.coal .ruchy-df-macro,
+.navy .ruchy-df-macro,
+.ayu .ruchy-df-macro {
+  color: #74b9ff;
+  background: linear-gradient(90deg, rgba(116, 185, 255, 0.2), transparent);
+}
+
+.coal .ruchy-async-keyword,
+.navy .ruchy-async-keyword,
+.ayu .ruchy-async-keyword {
+  color: #c7b3ff;
+  background: rgba(199, 179, 255, 0.2);
+}
+
+.coal .ruchy-unsafe-keyword,
+.navy .ruchy-unsafe-keyword,
+.ayu .ruchy-unsafe-keyword {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+}
+
+.coal .ruchy-question-mark,
+.navy .ruchy-question-mark,
+.ayu .ruchy-question-mark {
+  color: #ff8787;
+  background: rgba(255, 135, 135, 0.2);
+}
+
+.coal .ruchy-smart-pointer,
+.navy .ruchy-smart-pointer,
+.ayu .ruchy-smart-pointer {
+  color: #ffeaa7;
+  background: rgba(255, 234, 167, 0.2);
+}
+
+.coal .ruchy-lifetime,
+.navy .ruchy-lifetime,
+.ayu .ruchy-lifetime {
+  color: #ffeaa7;
+  background: rgba(255, 234, 167, 0.2);
+}
+
+/* Special Effects */
+
+/* Pulse animation for async/await */
+@keyframes async-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.ruchy-async-keyword,
+.ruchy-async-macro {
+  animation: async-pulse 2s ease-in-out infinite;
+}
+
+/* Glow effect for unsafe code */
+@keyframes unsafe-glow {
+  0%, 100% { box-shadow: 0 0 2px rgba(255, 0, 0, 0.5); }
+  50% { box-shadow: 0 0 8px rgba(255, 0, 0, 0.8); }
+}
+
+.ruchy-unsafe-keyword {
+  animation: unsafe-glow 1.5s ease-in-out infinite;
+}
+
+/* Highlight actor communication */
+.ruchy-actor-method {
+  position: relative;
+}
+
+.ruchy-actor-method::after {
+  content: '→';
+  position: absolute;
+  right: -15px;
+  color: #ff6348;
+  font-size: 0.8em;
+  animation: send-arrow 1s ease-in-out infinite;
+}
+
+@keyframes send-arrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+/* DataFrame operation chaining visual */
+.ruchy-df-method {
+  position: relative;
+  padding: 0 3px;
+}
+
+.ruchy-df-method::before {
+  content: '⟫';
+  position: absolute;
+  left: -8px;
+  color: #00b894;
+  opacity: 0.5;
+}
+
+/* Smart pointer allocation visual */
+.ruchy-smart-pointer::before {
+  content: '▣';
+  margin-right: 2px;
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Test attribute badge style */
+.ruchy-test-attr {
+  position: relative;
+  padding-left: 20px;
+}
+
+.ruchy-test-attr::before {
+  content: '✓';
+  position: absolute;
+  left: 4px;
+  color: #10ac84;
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Disable animations on mobile */
+  .ruchy-async-keyword,
+  .ruchy-async-macro,
+  .ruchy-unsafe-keyword {
+    animation: none;
+  }
+  
+  /* Simplify visual effects */
+  .ruchy-actor-method::after,
+  .ruchy-df-method::before,
+  .ruchy-smart-pointer::before,
+  .ruchy-test-attr::before {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  /* Remove animations and effects for print */
+  .ruchy-async-keyword,
+  .ruchy-async-macro,
+  .ruchy-unsafe-keyword {
+    animation: none;
+  }
+  
+  /* Increase contrast for print */
+  .ruchy-actor-keyword,
+  .ruchy-df-macro,
+  .ruchy-async-keyword,
+  .ruchy-unsafe-keyword {
+    background: none;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
