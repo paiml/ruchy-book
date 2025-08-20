@@ -258,6 +258,7 @@ This book represents hundreds of hours of collaborative work by the PAIML (Pract
 - 📖 **Live Book**: [paiml.github.io/ruchy-book](https://paiml.github.io/ruchy-book/)
 - 🐙 **GitHub Repository**: [github.com/paiml/ruchy-book](https://github.com/paiml/ruchy-book)
 - 🚀 **Deployment Status**: [Actions](https://github.com/paiml/ruchy-book/actions)
+- 🗺️ **Roadmap**: [Future Plans](ROADMAP.md)
 
 ### **Community**  
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/paiml/ruchy-book/discussions)
