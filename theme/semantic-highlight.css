@@ -1,0 +1,302 @@
+/* Semantic Highlighting Styles for Ruchy */
+
+/* Base semantic token types */
+.sem-variable { color: #001080; }
+.sem-parameter { color: #001080; font-style: italic; }
+.sem-constant { color: #0000ff; font-weight: 600; }
+.sem-mutable { color: #001080; text-decoration: underline; text-decoration-style: dotted; }
+
+.sem-function { color: #795e26; font-weight: 500; }
+.sem-method { color: #795e26; font-style: italic; }
+.sem-macro { color: #0000ff; font-weight: bold; }
+.sem-builtin { color: #267f99; font-weight: 500; }
+
+.sem-type { color: #267f99; }
+.sem-trait { color: #267f99; font-style: italic; }
+.sem-struct { color: #267f99; font-weight: 600; }
+.sem-enum { color: #267f99; font-weight: 600; }
+.sem-generic { color: #267f99; font-style: italic; }
+
+.sem-control-flow { color: #af00db; font-weight: bold; }
+.sem-async { color: #af00db; font-weight: bold; font-style: italic; }
+
+.sem-string { color: #a31515; }
+.sem-number { color: #098658; }
+.sem-boolean { color: #0000ff; font-weight: bold; }
+
+.sem-self { color: #0000ff; font-style: italic; font-weight: 600; }
+.sem-lifetime { color: #267f99; font-style: italic; }
+.sem-attribute { color: #267f99; font-style: italic; }
+.sem-unsafe { color: #ff0000; font-weight: bold; }
+
+.sem-comment { color: #008000; font-style: italic; }
+.sem-doc-comment { color: #008000; font-weight: 500; }
+
+/* Semantic modifiers */
+.sem-mod-declaration { font-weight: bold; }
+.sem-mod-definition { text-decoration: underline; text-decoration-style: solid; }
+.sem-mod-readonly { opacity: 0.9; }
+.sem-mod-static { font-weight: bold; text-transform: uppercase; font-size: 0.95em; }
+.sem-mod-deprecated { text-decoration: line-through; opacity: 0.6; }
+.sem-mod-async { background-color: rgba(175, 0, 219, 0.05); }
+.sem-mod-modification { background-color: rgba(255, 235, 59, 0.1); }
+.sem-mod-documentation { background-color: rgba(0, 128, 0, 0.05); }
+.sem-mod-defaultLibrary { font-weight: 600; }
+
+/* Dark theme semantic highlighting */
+.coal .sem-variable,
+.navy .sem-variable,
+.ayu .sem-variable { color: #9cdcfe; }
+
+.coal .sem-parameter,
+.navy .sem-parameter,
+.ayu .sem-parameter { color: #9cdcfe; font-style: italic; }
+
+.coal .sem-constant,
+.navy .sem-constant,
+.ayu .sem-constant { color: #4fc1ff; font-weight: 600; }
+
+.coal .sem-mutable,
+.navy .sem-mutable,
+.ayu .sem-mutable { color: #9cdcfe; text-decoration: underline; text-decoration-style: dotted; }
+
+.coal .sem-function,
+.navy .sem-function,
+.ayu .sem-function { color: #dcdcaa; font-weight: 500; }
+
+.coal .sem-method,
+.navy .sem-method,
+.ayu .sem-method { color: #dcdcaa; font-style: italic; }
+
+.coal .sem-macro,
+.navy .sem-macro,
+.ayu .sem-macro { color: #4fc1ff; font-weight: bold; }
+
+.coal .sem-builtin,
+.navy .sem-builtin,
+.ayu .sem-builtin { color: #4ec9b0; font-weight: 500; }
+
+.coal .sem-type,
+.navy .sem-type,
+.ayu .sem-type { color: #4ec9b0; }
+
+.coal .sem-trait,
+.navy .sem-trait,
+.ayu .sem-trait { color: #4ec9b0; font-style: italic; }
+
+.coal .sem-struct,
+.navy .sem-struct,
+.ayu .sem-struct { color: #4ec9b0; font-weight: 600; }
+
+.coal .sem-enum,
+.navy .sem-enum,
+.ayu .sem-enum { color: #4ec9b0; font-weight: 600; }
+
+.coal .sem-generic,
+.navy .sem-generic,
+.ayu .sem-generic { color: #4ec9b0; font-style: italic; }
+
+.coal .sem-control-flow,
+.navy .sem-control-flow,
+.ayu .sem-control-flow { color: #c586c0; font-weight: bold; }
+
+.coal .sem-async,
+.navy .sem-async,
+.ayu .sem-async { color: #c586c0; font-weight: bold; font-style: italic; }
+
+.coal .sem-string,
+.navy .sem-string,
+.ayu .sem-string { color: #ce9178; }
+
+.coal .sem-number,
+.navy .sem-number,
+.ayu .sem-number { color: #b5cea8; }
+
+.coal .sem-boolean,
+.navy .sem-boolean,
+.ayu .sem-boolean { color: #569cd6; font-weight: bold; }
+
+.coal .sem-self,
+.navy .sem-self,
+.ayu .sem-self { color: #569cd6; font-style: italic; font-weight: 600; }
+
+.coal .sem-lifetime,
+.navy .sem-lifetime,
+.ayu .sem-lifetime { color: #4ec9b0; font-style: italic; }
+
+.coal .sem-attribute,
+.navy .sem-attribute,
+.ayu .sem-attribute { color: #4ec9b0; font-style: italic; }
+
+.coal .sem-unsafe,
+.navy .sem-unsafe,
+.ayu .sem-unsafe { color: #ff6b6b; font-weight: bold; }
+
+.coal .sem-comment,
+.navy .sem-comment,
+.ayu .sem-comment { color: #6a9955; font-style: italic; }
+
+.coal .sem-doc-comment,
+.navy .sem-doc-comment,
+.ayu .sem-doc-comment { color: #6a9955; font-weight: 500; }
+
+/* Dark theme modifiers */
+.coal .sem-mod-async,
+.navy .sem-mod-async,
+.ayu .sem-mod-async { background-color: rgba(197, 134, 192, 0.1); }
+
+.coal .sem-mod-modification,
+.navy .sem-mod-modification,
+.ayu .sem-mod-modification { background-color: rgba(255, 235, 59, 0.05); }
+
+.coal .sem-mod-documentation,
+.navy .sem-mod-documentation,
+.ayu .sem-mod-documentation { background-color: rgba(106, 153, 85, 0.1); }
+
+/* Hover effects for semantic tokens */
+.sem-function:hover,
+.sem-method:hover,
+.sem-type:hover,
+.sem-trait:hover,
+.sem-struct:hover,
+.sem-enum:hover {
+  text-decoration: underline;
+  cursor: help;
+}
+
+/* Special highlighting for certain patterns */
+
+/* Unsafe blocks */
+.sem-unsafe + .sem-control-flow {
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Actor patterns */
+.sem-type:has-text("Actor"),
+.sem-type:has-text("Message") {
+  background: linear-gradient(90deg, rgba(78, 201, 176, 0.1), rgba(78, 201, 176, 0.2));
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* DataFrame patterns */
+.sem-type:has-text("DataFrame"),
+.sem-type:has-text("Series") {
+  background: linear-gradient(90deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Error and Result types */
+.sem-type:has-text("Result"),
+.sem-type:has-text("Option"),
+.sem-type:has-text("Error") {
+  font-weight: 600;
+  background-color: rgba(255, 152, 0, 0.05);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Animation for async/await */
+@keyframes async-pulse {
+  0% { background-color: rgba(175, 0, 219, 0.05); }
+  50% { background-color: rgba(175, 0, 219, 0.15); }
+  100% { background-color: rgba(175, 0, 219, 0.05); }
+}
+
+.sem-async {
+  animation: async-pulse 2s ease-in-out infinite;
+}
+
+/* Rainbow effect for macros */
+@keyframes macro-rainbow {
+  0% { color: #ff0000; }
+  16% { color: #ff8800; }
+  33% { color: #ffff00; }
+  50% { color: #00ff00; }
+  66% { color: #0088ff; }
+  83% { color: #0000ff; }
+  100% { color: #ff00ff; }
+}
+
+.sem-macro:hover {
+  animation: macro-rainbow 2s linear infinite;
+}
+
+/* Semantic scope indicators */
+.semantic-highlighted {
+  position: relative;
+}
+
+/* Scope depth visualization (for nested blocks) */
+.sem-scope-1 { padding-left: 1em; }
+.sem-scope-2 { padding-left: 2em; }
+.sem-scope-3 { padding-left: 3em; }
+.sem-scope-4 { padding-left: 4em; }
+.sem-scope-5 { padding-left: 5em; }
+
+/* Type inference hints */
+.sem-inferred {
+  position: relative;
+}
+
+.sem-inferred::after {
+  content: attr(data-type);
+  position: absolute;
+  top: -1.2em;
+  left: 0;
+  font-size: 0.75em;
+  color: #999;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sem-inferred:hover::after {
+  opacity: 1;
+}
+
+/* Diagnostic underlining */
+.sem-error {
+  text-decoration: wavy underline red;
+  text-decoration-thickness: 2px;
+}
+
+.sem-warning {
+  text-decoration: wavy underline orange;
+  text-decoration-thickness: 1.5px;
+}
+
+.sem-info {
+  text-decoration: wavy underline blue;
+  text-decoration-thickness: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Simplify on mobile */
+  .sem-mod-async,
+  .sem-mod-modification,
+  .sem-mod-documentation {
+    background-color: transparent;
+  }
+  
+  .sem-async {
+    animation: none;
+  }
+  
+  .sem-macro:hover {
+    animation: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .sem-variable { font-weight: normal; }
+  .sem-function { font-weight: bold; }
+  .sem-type { font-style: italic; }
+  .sem-control-flow { text-decoration: underline; }
+  .sem-comment { font-style: italic; opacity: 0.7; }
+}
