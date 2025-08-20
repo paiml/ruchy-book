@@ -45,7 +45,8 @@ The book is fully complete with 19 chapters and 5 appendices, covering the entir
 ### Q1 2026 - Interactive Features
 
 #### 💻 **Interactive Learning**
-- [ ] Embedded Ruchy playground in each chapter
+- [ ] Embedded Ruchy playground in each chapter (requires https://play.ruchy.org)
+- [ ] Run button for code blocks (pending playground deployment)
 - [ ] Interactive exercises with instant feedback
 - [ ] Code challenges and solutions
 - [ ] Progress tracking system
