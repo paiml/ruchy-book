@@ -1,0 +1,33 @@
+// Ruchy One-Liner Test Suite
+// This file contains all tested one-liner examples for the chapter
+
+// Basic arithmetic and math
+let basic_math = 2 + 2;
+let percentage_calc = 100.0 * 1.08;  
+let compound_interest = 1000.0 * (1.0 + 0.05) * (1.0 + 0.05);
+
+// String operations
+let string_concat = "Hello" + " " + "World";
+let string_length = "test".len();
+
+// Conditional expressions
+let max_value = if 10 > 5 { 10 } else { 5 };
+let boolean_result = if 100.0 > 50.0 { "expensive" } else { "cheap" };
+
+// Variable declarations and calculations
+let price = 99.99;
+let tax_rate = 0.08;
+let total = price * (1.0 + tax_rate);
+
+// Print statements
+println("Basic calculations work!");
+println(total);
+
+// Complex expressions
+let result = if price > 100.0 { 
+    price * 0.9  // 10% discount
+} else { 
+    price * (1.0 + tax_rate)  // add tax
+};
+
+println(result);

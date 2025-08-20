@@ -16,6 +16,7 @@
 ## Level 1: Real-World Programs
 
 - [Command-Line Tools](ch04-00-command-line-tools.md)
+    - [One-Liners: Data Science Powerhouse](ch04-01-one-liners.md)
 - [Data Processing](ch05-00-data-processing.md)
 - [File Operations](ch06-00-file-operations.md)
 - [Building Applications](ch07-00-building-applications.md)
