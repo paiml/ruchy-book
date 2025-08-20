@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "lib": ["deno.window", "dom"]
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"],
+      "include": ["ban-untagged-todo", "no-unused-vars", "camelcase"],
+      "exclude": ["no-explicit-any"]
+    }
+  },
+  "fmt": {
+    "options": {
+      "lineWidth": 100,
+      "indentWidth": 2,
+      "singleQuote": true,
+      "proseWrap": "preserve"
+    }
+  },
+  "test": {
+    "files": {
+      "include": ["tests/"],
+      "exclude": ["tests/fixtures/"]
+    }
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-read src/dev.ts",
+    "test": "deno test --allow-read --coverage=coverage",
+    "test:unit": "deno test tests/unit/ --allow-read",
+    "test:integration": "deno test tests/integration/ --allow-read",
+    "test:performance": "deno test tests/performance/ --allow-read",
+    "coverage": "deno coverage coverage --lcov > coverage.lcov && deno run --allow-read scripts/check-coverage.ts",
+    "bench": "deno bench benchmarks/",
+    "lint": "deno lint src/ tests/",
+    "fmt": "deno fmt src/ tests/",
+    "fmt:check": "deno fmt --check src/ tests/",
+    "build": "deno task build:highlighter && deno task build:repl",
+    "build:highlighter": "deno bundle src/index.ts dist/highlighter.js",
+    "build:repl": "deno bundle src/repl/index.ts dist/repl.js",
+    "check": "deno task lint && deno task fmt:check && deno task test"
+  }
+}

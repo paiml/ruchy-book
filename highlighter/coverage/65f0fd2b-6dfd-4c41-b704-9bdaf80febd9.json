@@ -1,0 +1,21 @@
+{
+  "scriptId": "334",
+  "url": "file:///home/noah/src/ruchy-book/highlighter/src/index.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 1290, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "highlight",
+      "ranges": [{ "startOffset": 839, "endOffset": 999, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "highlightTerminal",
+      "ranges": [{ "startOffset": 1056, "endOffset": 1216, "count": 1 }],
+      "isBlockCoverage": true
+    }
+  ]
+}

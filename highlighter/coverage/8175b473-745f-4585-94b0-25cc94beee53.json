@@ -1,0 +1,111 @@
+{
+  "scriptId": "364",
+  "url": "file:///home/noah/src/ruchy-book/highlighter/src/highlighter/themes.ts",
+  "functions": [
+    {
+      "functionName": "",
+      "ranges": [{ "startOffset": 0, "endOffset": 7985, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "<instance_members_initializer>",
+      "ranges": [{ "startOffset": 3069, "endOffset": 3075, "count": 17 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "ThemeManager",
+      "ranges": [{ "startOffset": 3079, "endOffset": 3359, "count": 17 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "registerTheme",
+      "ranges": [{ "startOffset": 3398, "endOffset": 3495, "count": 85 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getTheme",
+      "ranges": [
+        { "startOffset": 3533, "endOffset": 3895, "count": 18 },
+        { "startOffset": 3598, "endOffset": 3631, "count": 0 },
+        { "startOffset": 3696, "endOffset": 3873, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getThemeNames",
+      "ranges": [{ "startOffset": 3933, "endOffset": 3997, "count": 1 }],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "getAllThemes",
+      "ranges": [{ "startOffset": 4030, "endOffset": 4095, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "removeTheme",
+      "ranges": [{ "startOffset": 4128, "endOffset": 4468, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "hasTheme",
+      "ranges": [{ "startOffset": 4510, "endOffset": 4564, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "createTheme",
+      "ranges": [{ "startOffset": 4623, "endOffset": 4942, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "validateTheme",
+      "ranges": [
+        { "startOffset": 4999, "endOffset": 5756, "count": 85 },
+        { "startOffset": 5306, "endOffset": 5434, "count": 1105 },
+        { "startOffset": 5338, "endOffset": 5428, "count": 0 },
+        { "startOffset": 5547, "endOffset": 5752, "count": 1615 },
+        { "startOffset": 5636, "endOffset": 5738, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "isValidColor",
+      "ranges": [
+        { "startOffset": 5807, "endOffset": 6197, "count": 1615 },
+        { "startOffset": 6112, "endOffset": 6137, "count": 0 },
+        { "startOffset": 6138, "endOffset": 6164, "count": 0 },
+        { "startOffset": 6165, "endOffset": 6192, "count": 0 }
+      ],
+      "isBlockCoverage": true
+    },
+    {
+      "functionName": "isNamedColor",
+      "ranges": [{ "startOffset": 6259, "endOffset": 6674, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "exportTheme",
+      "ranges": [{ "startOffset": 6713, "endOffset": 6818, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "importTheme",
+      "ranges": [{ "startOffset": 6859, "endOffset": 6998, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "checkContrast",
+      "ranges": [{ "startOffset": 7066, "endOffset": 7533, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "hexToRgb",
+      "ranges": [{ "startOffset": 7536, "endOffset": 7757, "count": 0 }],
+      "isBlockCoverage": false
+    },
+    {
+      "functionName": "getLuminance",
+      "ranges": [{ "startOffset": 7760, "endOffset": 7982, "count": 0 }],
+      "isBlockCoverage": false
+    }
+  ]
+}
