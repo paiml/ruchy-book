@@ -1,0 +1,194 @@
+/* Ruchy Language Custom Syntax Highlighting Styles */
+/* Based on Ruchy Grammar Specification v4.0 */
+
+/* Light theme styles */
+.hljs {
+  color: #333;
+  background: #f8f8f8;
+}
+
+/* Ruchy-specific syntax highlighting */
+.language-ruchy .hljs-keyword,
+.language-ruc .hljs-keyword {
+  color: #a626a4;
+  font-weight: bold;
+}
+
+.language-ruchy .hljs-type,
+.language-ruc .hljs-type {
+  color: #e45649;
+}
+
+.language-ruchy .hljs-string,
+.language-ruc .hljs-string {
+  color: #50a14f;
+}
+
+.language-ruchy .hljs-number,
+.language-ruc .hljs-number {
+  color: #986801;
+}
+
+.language-ruchy .hljs-comment,
+.language-ruc .hljs-comment {
+  color: #a0a1a7;
+  font-style: italic;
+}
+
+.language-ruchy .hljs-function .hljs-title,
+.language-ruc .hljs-function .hljs-title {
+  color: #4078f2;
+  font-weight: bold;
+}
+
+.language-ruchy .hljs-class .hljs-title,
+.language-ruc .hljs-class .hljs-title {
+  color: #c18401;
+  font-weight: bold;
+}
+
+.language-ruchy .hljs-literal,
+.language-ruc .hljs-literal {
+  color: #0184bc;
+}
+
+.language-ruchy .hljs-operator,
+.language-ruc .hljs-operator {
+  color: #383a42;
+}
+
+.language-ruchy .hljs-meta,
+.language-ruc .hljs-meta {
+  color: #7c7c7c;
+}
+
+/* String interpolation highlighting */
+.language-ruchy .hljs-string .hljs-subst,
+.language-ruc .hljs-string .hljs-subst {
+  color: #e45649;
+  background-color: rgba(228, 86, 73, 0.1);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* Dark theme overrides */
+.coal .language-ruchy .hljs-keyword,
+.navy .language-ruchy .hljs-keyword,
+.ayu .language-ruchy .hljs-keyword,
+.coal .language-ruc .hljs-keyword,
+.navy .language-ruc .hljs-keyword,
+.ayu .language-ruc .hljs-keyword {
+  color: #c678dd;
+}
+
+.coal .language-ruchy .hljs-type,
+.navy .language-ruchy .hljs-type,
+.ayu .language-ruchy .hljs-type,
+.coal .language-ruc .hljs-type,
+.navy .language-ruc .hljs-type,
+.ayu .language-ruc .hljs-type {
+  color: #e06c75;
+}
+
+.coal .language-ruchy .hljs-string,
+.navy .language-ruchy .hljs-string,
+.ayu .language-ruchy .hljs-string,
+.coal .language-ruc .hljs-string,
+.navy .language-ruc .hljs-string,
+.ayu .language-ruc .hljs-string {
+  color: #98c379;
+}
+
+.coal .language-ruchy .hljs-number,
+.navy .language-ruchy .hljs-number,
+.ayu .language-ruchy .hljs-number,
+.coal .language-ruc .hljs-number,
+.navy .language-ruc .hljs-number,
+.ayu .language-ruc .hljs-number {
+  color: #d19a66;
+}
+
+.coal .language-ruchy .hljs-comment,
+.navy .language-ruchy .hljs-comment,
+.ayu .language-ruchy .hljs-comment,
+.coal .language-ruc .hljs-comment,
+.navy .language-ruc .hljs-comment,
+.ayu .language-ruc .hljs-comment {
+  color: #5c6370;
+}
+
+.coal .language-ruchy .hljs-function .hljs-title,
+.navy .language-ruchy .hljs-function .hljs-title,
+.ayu .language-ruchy .hljs-function .hljs-title,
+.coal .language-ruc .hljs-function .hljs-title,
+.navy .language-ruc .hljs-function .hljs-title,
+.ayu .language-ruc .hljs-function .hljs-title {
+  color: #61afef;
+}
+
+.coal .language-ruchy .hljs-class .hljs-title,
+.navy .language-ruchy .hljs-class .hljs-title,
+.ayu .language-ruchy .hljs-class .hljs-title,
+.coal .language-ruc .hljs-class .hljs-title,
+.navy .language-ruc .hljs-class .hljs-title,
+.ayu .language-ruc .hljs-class .hljs-title {
+  color: #e5c07b;
+}
+
+.coal .language-ruchy .hljs-literal,
+.navy .language-ruchy .hljs-literal,
+.ayu .language-ruchy .hljs-literal,
+.coal .language-ruc .hljs-literal,
+.navy .language-ruc .hljs-literal,
+.ayu .language-ruc .hljs-literal {
+  color: #56b6c2;
+}
+
+.coal .language-ruchy .hljs-operator,
+.navy .language-ruchy .hljs-operator,
+.ayu .language-ruchy .hljs-operator,
+.coal .language-ruc .hljs-operator,
+.navy .language-ruc .hljs-operator,
+.ayu .language-ruc .hljs-operator {
+  color: #abb2bf;
+}
+
+/* Dark theme string interpolation */
+.coal .language-ruchy .hljs-string .hljs-subst,
+.navy .language-ruchy .hljs-string .hljs-subst,
+.ayu .language-ruchy .hljs-string .hljs-subst,
+.coal .language-ruc .hljs-string .hljs-subst,
+.navy .language-ruc .hljs-string .hljs-subst,
+.ayu .language-ruc .hljs-string .hljs-subst {
+  color: #e06c75;
+  background-color: rgba(224, 108, 117, 0.1);
+}
+
+/* Code block enhancements */
+.language-ruchy,
+.language-ruc {
+  position: relative;
+}
+
+.language-ruchy::before,
+.language-ruc::before {
+  content: "Ruchy";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 8px;
+  font-size: 0.75em;
+  background: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 4px;
+}
+
+.coal .language-ruchy::before,
+.navy .language-ruchy::before,
+.ayu .language-ruchy::before,
+.coal .language-ruc::before,
+.navy .language-ruc::before,
+.ayu .language-ruc::before {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}

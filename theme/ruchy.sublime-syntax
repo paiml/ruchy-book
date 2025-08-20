@@ -1,0 +1,154 @@
+%YAML 1.2
+---
+# Ruchy Language Syntax Definition for mdBook
+# Based on Ruchy Grammar Specification v4.0
+# See: ../ruchy/docs/architecture/grammer.md
+
+name: Ruchy
+file_extensions:
+  - ruchy
+  - ruc
+scope: source.ruchy
+
+variables:
+  identifier: '[a-zA-Z_][a-zA-Z0-9_]*'
+  
+contexts:
+  main:
+    # Comments
+    - match: '//'
+      scope: punctuation.definition.comment.ruchy
+      push: line_comment
+    
+    - match: '/\*'
+      scope: punctuation.definition.comment.begin.ruchy
+      push: block_comment
+    
+    # String literals with interpolation
+    - match: 'f"'
+      scope: punctuation.definition.string.begin.ruchy
+      push: interpolated_string
+    
+    - match: '"'
+      scope: punctuation.definition.string.begin.ruchy
+      push: double_quoted_string
+    
+    - match: "'"
+      scope: punctuation.definition.string.begin.ruchy
+      push: single_quoted_char
+    
+    # Keywords (37 total from grammar spec)
+    - match: '\b(actor|as|async|await|break|const|continue|defer|else|enum|false|for|fun|guard|if|impl|import|in|let|loop|match|mod|mut|pub|return|self|Self|static|struct|super|trait|true|type|use|where|while)\b'
+      scope: keyword.control.ruchy
+    
+    # Primitive types
+    - match: '\b(i8|i16|i32|i64|i128|isize|u8|u16|u32|u64|u128|usize|f32|f64|bool|char|str|String|Result|Option)\b'
+      scope: storage.type.primitive.ruchy
+    
+    # Boolean literals
+    - match: '\b(true|false)\b'
+      scope: constant.language.boolean.ruchy
+    
+    # Numeric literals
+    - match: '\b0x[0-9a-fA-F_]+\b'
+      scope: constant.numeric.hex.ruchy
+    
+    - match: '\b0o[0-7_]+\b'
+      scope: constant.numeric.octal.ruchy
+    
+    - match: '\b0b[01_]+\b'
+      scope: constant.numeric.binary.ruchy
+    
+    - match: '\b[0-9][0-9_]*(\.[0-9_]+)?([eE][+-]?[0-9_]+)?\b'
+      scope: constant.numeric.ruchy
+    
+    # Function definitions
+    - match: '\b(fun)\s+({{identifier}})'
+      captures:
+        1: keyword.declaration.function.ruchy
+        2: entity.name.function.ruchy
+    
+    # Struct/Enum/Trait declarations
+    - match: '\b(struct|enum|trait)\s+({{identifier}})'
+      captures:
+        1: keyword.declaration.type.ruchy
+        2: entity.name.type.ruchy
+    
+    # Impl blocks
+    - match: '\b(impl)\b'
+      scope: keyword.declaration.impl.ruchy
+    
+    # Operators
+    - match: '(==|!=|<=|>=|<|>|\|\||&&|!)'
+      scope: keyword.operator.logical.ruchy
+    
+    - match: '(\+|-|\*|/|%|=|\+=|-=|\*=|/=|%=)'
+      scope: keyword.operator.arithmetic.ruchy
+    
+    - match: '(&|\||\^|<<|>>)'
+      scope: keyword.operator.bitwise.ruchy
+    
+    - match: '(->|=>|::|\.\.|\.)'
+      scope: keyword.operator.ruchy
+    
+    # Punctuation
+    - match: '[;,]'
+      scope: punctuation.separator.ruchy
+    
+    - match: '[{}]'
+      scope: punctuation.section.braces.ruchy
+    
+    - match: '[\[\]]'
+      scope: punctuation.section.brackets.ruchy
+    
+    - match: '[()]'
+      scope: punctuation.section.parens.ruchy
+    
+    # Identifiers
+    - match: '{{identifier}}'
+      scope: variable.other.ruchy
+
+  line_comment:
+    - meta_scope: comment.line.double-slash.ruchy
+    - match: $
+      pop: true
+
+  block_comment:
+    - meta_scope: comment.block.ruchy
+    - match: '\*/'
+      scope: punctuation.definition.comment.end.ruchy
+      pop: true
+
+  double_quoted_string:
+    - meta_scope: string.quoted.double.ruchy
+    - match: '\\.'
+      scope: constant.character.escape.ruchy
+    - match: '"'
+      scope: punctuation.definition.string.end.ruchy
+      pop: true
+
+  interpolated_string:
+    - meta_scope: string.quoted.double.interpolated.ruchy
+    - match: '\\.'
+      scope: constant.character.escape.ruchy
+    - match: '\{'
+      scope: punctuation.section.interpolation.begin.ruchy
+      push: interpolation_expression
+    - match: '"'
+      scope: punctuation.definition.string.end.ruchy
+      pop: true
+
+  interpolation_expression:
+    - clear_scopes: 1
+    - match: '\}'
+      scope: punctuation.section.interpolation.end.ruchy
+      pop: true
+    - include: main
+
+  single_quoted_char:
+    - meta_scope: string.quoted.single.ruchy
+    - match: '\\.'
+      scope: constant.character.escape.ruchy
+    - match: "'"
+      scope: punctuation.definition.string.end.ruchy
+      pop: true

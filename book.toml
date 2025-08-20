@@ -29,14 +29,14 @@ create-missing = false  # Prevent accidental file creation
 # renderer = ["html"]
 
 [output.html]
-# theme = "theme"  # Use default theme for now
+theme = "theme"
 default-theme = "rust"
 preferred-dark-theme = "coal"
 smart-punctuation = true
 mathjax-support = false
 copy-fonts = true
-# additional-css = ["theme/ruchy.css"]
-# additional-js = ["theme/ruchy.js"]
+additional-css = ["theme/ruchy.css"]
+additional-js = ["theme/highlight-ruchy.js"]
 git-repository-url = "https://github.com/paiml/ruchy-book"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/paiml/ruchy-book/edit/main/{path}"
