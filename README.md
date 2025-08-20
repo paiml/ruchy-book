@@ -7,6 +7,17 @@
 
 ## 🌐 **[Read the Book Online →](https://paiml.github.io/ruchy-book/)**
 
+## 🔗 For Ruchy Compiler Integration
+
+**Testing Book Examples Against Your Compiler:**
+- **Integration Guide**: See [`INTEGRATION.md`](./INTEGRATION.md) for testing all 259 book examples
+- **Current Compatibility**: 22% (57/259 examples pass) - [View Dashboard](./compatibility-dashboard.html)
+- **Test Command**: `cargo test test_all_examples` 
+- **Top Issues**: Fat arrow syntax (`=>`), f-string interpolation, async/await blocks
+- **CI Integration**: Add `.github/workflows/upstream-sync.yml` to your repo
+
+This book has comprehensive testing infrastructure that validates all code examples against the Ruchy compiler. Use it to ensure your compiler changes don't break existing documentation.
+
 ## 📊 Book Status: **COMPLETE** ✅
 
 **All 24 sections finished:**
