@@ -1,0 +1,1 @@
+let cpu_count = system::cpu_count()

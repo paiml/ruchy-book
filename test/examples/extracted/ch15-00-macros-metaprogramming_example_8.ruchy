@@ -1,0 +1,1 @@
+                map.insert(stringify!($key), json!($value))

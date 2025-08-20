@@ -1,0 +1,1 @@
+fn process_files(files: Vec<String>) -> Vec<Result> {

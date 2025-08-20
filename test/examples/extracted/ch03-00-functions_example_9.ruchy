@@ -1,0 +1,1 @@
+let result_message = f"{a} + {b} = {sum}"

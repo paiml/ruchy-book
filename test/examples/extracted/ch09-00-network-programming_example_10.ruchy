@@ -1,0 +1,1 @@
+    println(f"{req.method} {req.path} - {res.status} ({duration}ms)")
