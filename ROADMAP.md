@@ -14,7 +14,7 @@ The book is fully complete with 19 chapters and 5 appendices, covering the entir
 - [x] Custom Ruchy language grammar for mdBook
 - [x] Enhanced syntax highlighting for code blocks
 - [x] IDE-quality syntax coloring with semantic highlighting
-- [ ] Dark/light theme optimizations for code readability
+- [x] Dark/light theme optimizations for code readability
 - [ ] Inline code highlighting improvements
 - [ ] Support for highlighting Ruchy-specific keywords and patterns
 
