@@ -1,0 +1,267 @@
+/* Enhanced Code Block Styles for Ruchy Book */
+
+/* Line numbers styling */
+.line-numbers {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5em;
+  background: rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  user-select: none;
+  pointer-events: none;
+  min-width: 3em;
+  text-align: right;
+}
+
+.line-number {
+  display: block;
+  color: #999;
+  font-size: 0.9em;
+  line-height: 1.5;
+  font-family: monospace;
+}
+
+code.has-line-numbers {
+  padding-left: 4em !important;
+}
+
+/* Enhanced copy button */
+.copy-button {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.copy-button:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.copy-button.copy-success {
+  background: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important;
+}
+
+.copy-button.copy-error {
+  background: #f44336 !important;
+  color: white !important;
+  border-color: #f44336 !important;
+}
+
+/* Run button styling */
+.run-button {
+  position: absolute;
+  top: 0.5em;
+  right: 4em;
+  padding: 0.3em 0.8em;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85em;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.run-button:hover {
+  opacity: 1;
+  background: #45a049;
+  transform: scale(1.05);
+}
+
+/* Code metadata */
+.code-metadata {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: 0.5em;
+  padding: 0.3em;
+  background: rgba(0, 0, 0, 0.05);
+  border-top-left-radius: 3px;
+  font-size: 0.75em;
+  opacity: 0.6;
+}
+
+.code-metadata span {
+  padding: 0.2em 0.5em;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.language-badge {
+  background: #2196f3 !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Syntax validation indicators */
+.syntax-validation {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  width: 16px;
+}
+
+.syntax-warning,
+.syntax-error,
+.syntax-info {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: help;
+}
+
+.syntax-warning {
+  background: #ff9800;
+}
+
+.syntax-error {
+  background: #f44336;
+}
+
+.syntax-info {
+  background: #2196f3;
+}
+
+/* Line highlighting */
+.code-line {
+  display: inline-block;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.code-line.highlight {
+  background-color: rgba(255, 235, 59, 0.2);
+}
+
+/* Dark theme adjustments */
+.coal .line-numbers,
+.navy .line-numbers,
+.ayu .line-numbers {
+  background: rgba(255, 255, 255, 0.05);
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.coal .line-number,
+.navy .line-number,
+.ayu .line-number {
+  color: #666;
+}
+
+.coal .code-metadata,
+.navy .code-metadata,
+.ayu .code-metadata {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.coal .code-metadata span,
+.navy .code-metadata span,
+.ayu .code-metadata span {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.coal .language-badge,
+.navy .language-badge,
+.ayu .language-badge {
+  background: #1976d2 !important;
+}
+
+.coal .code-line.highlight,
+.navy .code-line.highlight,
+.ayu .code-line.highlight {
+  background-color: rgba(255, 235, 59, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .line-numbers {
+    min-width: 2.5em;
+    font-size: 0.85em;
+  }
+  
+  code.has-line-numbers {
+    padding-left: 3.5em !important;
+  }
+  
+  .run-button {
+    display: none; /* Hide run button on mobile */
+  }
+  
+  .code-metadata {
+    font-size: 0.7em;
+  }
+}
+
+/* Animation for syntax indicators */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(255, 152, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+  }
+}
+
+.syntax-warning {
+  animation: pulse 2s infinite;
+}
+
+/* Code block container improvements */
+pre {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  padding: 1em;
+  line-height: 1.5;
+}
+
+/* Scrollbar styling */
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Dark theme scrollbar */
+.coal pre::-webkit-scrollbar-track,
+.navy pre::-webkit-scrollbar-track,
+.ayu pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.coal pre::-webkit-scrollbar-thumb,
+.navy pre::-webkit-scrollbar-thumb,
+.ayu pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.coal pre::-webkit-scrollbar-thumb:hover,
+.navy pre::-webkit-scrollbar-thumb:hover,
+.ayu pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
