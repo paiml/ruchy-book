@@ -1,0 +1,353 @@
+/* Inline Code Highlighting Styles for Ruchy */
+
+/* Base inline code styling */
+:not(pre) > code {
+  font-family: 'Source Code Pro', 'Monaco', 'Consolas', monospace;
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+/* Inline syntax highlighting classes */
+.inline-keyword {
+  color: #d73a49;
+  font-weight: 600;
+}
+
+.inline-type {
+  color: #22863a;
+  font-weight: 500;
+}
+
+.inline-type-custom {
+  color: #22863a;
+  font-style: italic;
+}
+
+.inline-function {
+  color: #6f42c1;
+  font-weight: 500;
+}
+
+.inline-function-custom {
+  color: #6f42c1;
+}
+
+.inline-macro {
+  color: #005cc5;
+  font-weight: bold;
+}
+
+.inline-macro-custom {
+  color: #005cc5;
+  font-style: italic;
+}
+
+.inline-string {
+  color: #032f62;
+}
+
+.inline-number {
+  color: #005cc5;
+}
+
+.inline-variable {
+  color: #e36209;
+}
+
+.inline-path {
+  color: #6f42c1;
+}
+
+.inline-attribute {
+  color: #22863a;
+  font-style: italic;
+}
+
+.inline-punct {
+  color: #586069;
+  font-weight: normal;
+}
+
+.inline-comment {
+  color: #6a737d;
+  font-style: italic;
+}
+
+/* Hover effects for inline code */
+:not(pre) > code:hover {
+  background-color: rgba(255, 235, 59, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Special styling for specific patterns */
+
+/* Self keyword */
+code:not(pre code) .inline-keyword:has-text("self"),
+code:not(pre code) .inline-keyword:has-text("Self") {
+  color: #0366d6;
+  font-style: italic;
+}
+
+/* Unsafe keyword */
+code:not(pre code) .inline-keyword:has-text("unsafe") {
+  color: #d73a49;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ffa500;
+}
+
+/* Lifetime parameters */
+code:not(pre code):has-text("'") {
+  color: #22863a;
+  font-style: italic;
+}
+
+/* Dark theme adjustments */
+.coal :not(pre) > code,
+.navy :not(pre) > code,
+.ayu :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coal .inline-keyword,
+.navy .inline-keyword,
+.ayu .inline-keyword {
+  color: #f97583;
+  font-weight: 600;
+}
+
+.coal .inline-type,
+.navy .inline-type,
+.ayu .inline-type {
+  color: #79d4fd;
+  font-weight: 500;
+}
+
+.coal .inline-type-custom,
+.navy .inline-type-custom,
+.ayu .inline-type-custom {
+  color: #79d4fd;
+  font-style: italic;
+}
+
+.coal .inline-function,
+.navy .inline-function,
+.ayu .inline-function {
+  color: #b392f0;
+  font-weight: 500;
+}
+
+.coal .inline-function-custom,
+.navy .inline-function-custom,
+.ayu .inline-function-custom {
+  color: #b392f0;
+}
+
+.coal .inline-macro,
+.navy .inline-macro,
+.ayu .inline-macro {
+  color: #79b8ff;
+  font-weight: bold;
+}
+
+.coal .inline-macro-custom,
+.navy .inline-macro-custom,
+.ayu .inline-macro-custom {
+  color: #79b8ff;
+  font-style: italic;
+}
+
+.coal .inline-string,
+.navy .inline-string,
+.ayu .inline-string {
+  color: #9ecbff;
+}
+
+.coal .inline-number,
+.navy .inline-number,
+.ayu .inline-number {
+  color: #79b8ff;
+}
+
+.coal .inline-variable,
+.navy .inline-variable,
+.ayu .inline-variable {
+  color: #ffab70;
+}
+
+.coal .inline-path,
+.navy .inline-path,
+.ayu .inline-path {
+  color: #b392f0;
+}
+
+.coal .inline-attribute,
+.navy .inline-attribute,
+.ayu .inline-attribute {
+  color: #85e89d;
+  font-style: italic;
+}
+
+.coal .inline-punct,
+.navy .inline-punct,
+.ayu .inline-punct {
+  color: #959da5;
+}
+
+.coal .inline-comment,
+.navy .inline-comment,
+.ayu .inline-comment {
+  color: #6a737d;
+  font-style: italic;
+}
+
+/* Dark theme hover effects */
+.coal :not(pre) > code:hover,
+.navy :not(pre) > code:hover,
+.ayu :not(pre) > code:hover {
+  background-color: rgba(255, 235, 59, 0.1);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Contextual highlighting */
+
+/* Inline code in headings */
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: 0.85em;
+  font-weight: inherit;
+  background-color: transparent;
+  padding: 0 0.2em;
+}
+
+/* Inline code in emphasis */
+em code, strong code {
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+/* Inline code in links */
+a code {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+a:hover code {
+  text-decoration: underline;
+}
+
+/* Inline code in lists */
+li code {
+  margin: 0 0.1em;
+}
+
+/* Inline code in tables */
+td code, th code {
+  white-space: nowrap;
+}
+
+/* Animation for newly highlighted code */
+@keyframes highlight-fade-in {
+  from {
+    background-color: rgba(255, 235, 59, 0.5);
+  }
+  to {
+    background-color: inherit;
+  }
+}
+
+.inline-highlighted {
+  animation: highlight-fade-in 0.5s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :not(pre) > code {
+    font-size: 0.85em;
+    padding: 0.15em 0.3em;
+  }
+  
+  /* Disable hover effects on mobile */
+  :not(pre) > code:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .inline-keyword {
+    font-weight: bold;
+  }
+  
+  .inline-type {
+    font-style: italic;
+  }
+  
+  .inline-function {
+    text-decoration: underline;
+  }
+  
+  :not(pre) > code {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  :not(pre) > code {
+    transition: none;
+  }
+  
+  .inline-highlighted {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :not(pre) > code {
+    border: 2px solid currentColor;
+    font-weight: 500;
+  }
+  
+  .inline-keyword {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+  
+  .inline-type {
+    font-weight: bold;
+  }
+}
+
+/* Colorblind-friendly palette option */
+.colorblind-mode .inline-keyword {
+  color: #0072b2;
+}
+
+.colorblind-mode .inline-type {
+  color: #009e73;
+}
+
+.colorblind-mode .inline-function {
+  color: #cc79a7;
+}
+
+.colorblind-mode .inline-string {
+  color: #d55e00;
+}
+
+.colorblind-mode .inline-number {
+  color: #56b4e9;
+}
+
+.colorblind-mode .inline-variable {
+  color: #e69f00;
+}
