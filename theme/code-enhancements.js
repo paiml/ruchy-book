@@ -11,7 +11,7 @@
     enableLineNumbers: true,
     enableEnhancedCopy: true,
     enableSyntaxValidation: true,
-    enableRunButton: true,
+    enableRunButton: false, // Disabled until playground is available
     ruchyKeywords: new Set([
       'actor', 'as', 'async', 'await', 'break', 'const', 'continue', 
       'defer', 'else', 'enum', 'false', 'for', 'fun', 'guard', 'if', 
@@ -81,8 +81,14 @@
 
   /**
    * Add run button for Ruchy code blocks
+   * TODO: Enable when Ruchy playground is available at https://play.ruchy.org
+   * Moved to future roadmap - never ship untested features
    */
   function addRunButton(codeBlock) {
+    // Disabled until playground exists
+    return;
+    
+    /*
     const wrapper = codeBlock.parentElement;
     
     const runButton = document.createElement('button');
@@ -100,6 +106,7 @@
     });
     
     wrapper.appendChild(runButton);
+    */
   }
 
   /**
