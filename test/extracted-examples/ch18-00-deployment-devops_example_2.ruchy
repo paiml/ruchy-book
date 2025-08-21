@@ -1,0 +1,36 @@
+// blue_green.ruchy
+fn deploy_blue_green(new_version: String) {
+    // Current production is "blue"
+    let blue = Environment::current()
+    
+    // Provision identical "green" environment
+    let green = Environment::provision(new_version)
+    
+    // Deploy to green
+    green.deploy()
+    green.run_health_checks()
+    green.run_smoke_tests()
+    
+    // Verify green is healthy
+    if !green.is_healthy() {
+        green.destroy()
+        panic!("Green environment unhealthy")
+    }
+    
+    // Switch traffic to green
+    LoadBalancer::switch_to(green)
+    
+    // Monitor for issues
+    sleep(Duration::from_mins(5))
+    
+    if green.error_rate() > 0.01 {
+        // Rollback
+        LoadBalancer::switch_to(blue)
+        green.destroy()
+        panic!("High error rate, rolled back")
+    }
+    
+    // Success - green is now production
+    blue.destroy()
+    println!("✅ Deployed version {}", new_version)
+}

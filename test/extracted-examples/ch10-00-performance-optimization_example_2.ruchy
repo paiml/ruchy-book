@@ -1,0 +1,33 @@
+// CPU profiling
+let profiler = perf::CpuProfiler::new()
+profiler.start()
+
+// Your code here
+complex_operation()
+
+profiler.stop()
+let report = profiler.report()
+
+println("=== CPU Profile ===")
+for func in report.top_functions(10) {
+    println(f"{func.name}: {func.self_time}ms ({func.percent}%)")
+}
+
+// Memory profiling
+let mem_profiler = perf::MemoryProfiler::new()
+mem_profiler.start()
+
+// Your code here
+memory_intensive_operation()
+
+mem_profiler.stop()
+let mem_report = mem_profiler.report()
+
+println("\n=== Memory Profile ===")
+println(f"Peak memory: {format_size(mem_report.peak_usage)}")
+println(f"Allocations: {mem_report.allocation_count}")
+println(f"Largest allocation: {format_size(mem_report.largest_allocation)}")
+
+// Flame graph generation
+profiler.generate_flamegraph("profile.svg")
+println("Flame graph saved to profile.svg")

@@ -1,0 +1,14 @@
+use std::collections::HashMap         // Single import
+use std::fs::{File, OpenOptions}      // Multiple imports
+use std::io::*                        // Glob import
+use std::collections::HashMap as Map  // Alias
+
+// Re-exports
+pub use internal::public_api
+
+// Conditional compilation
+#[cfg(unix)]
+use unix_specific::module
+
+#[cfg(windows)]  
+use windows_specific::module

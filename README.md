@@ -11,10 +11,11 @@
 
 **Testing Book Examples Against Your Compiler:**
 - **Integration Guide**: See [`INTEGRATION.md`](./INTEGRATION.md) for testing all 259 book examples
-- **Current Compatibility**: 22% (57/259 examples pass) - [View Dashboard](./compatibility-dashboard.html)
-- **Test Command**: `cargo test test_all_examples` 
-- **Top Issues**: Fat arrow syntax (`=>`), f-string interpolation, async/await blocks
-- **CI Integration**: Add `.github/workflows/upstream-sync.yml` to your repo
+- **Current Compatibility**: 39% (107/272 examples pass) + 100% (20/20 one-liners) - [View Status](./reports/status-report.md)
+- **Test Command**: `deno task extract-examples` 
+- **Ruchy Version**: v0.9.0 - Array indexing fixed, significant improvements
+- **Key Fixed**: Array indexing `x[0]`, improved function support, better parsing
+- **CI Integration**: Runs every 6 hours via GitHub Actions
 
 This book has comprehensive testing infrastructure that validates all code examples against the Ruchy compiler. Use it to ensure your compiler changes don't break existing documentation.
 

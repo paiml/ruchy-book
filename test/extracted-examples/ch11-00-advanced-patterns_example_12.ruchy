@@ -1,0 +1,50 @@
+class CircuitBreaker {
+    let failure_threshold = 5
+    let timeout = 30000
+    let failure_count = 0
+    let last_failure_time = 0
+    let state = "closed"  // closed, open, half_open
+    
+    fn call(operation) {
+        if state == "open" {
+            if current_time() - last_failure_time > timeout {
+                state = "half_open"
+            } else {
+                throw "Circuit breaker is open"
+            }
+        }
+        
+        try {
+            let result = operation()
+            
+            if state == "half_open" {
+                state = "closed"
+                failure_count = 0
+            }
+            
+            return result
+        } catch error {
+            failure_count += 1
+            last_failure_time = current_time()
+            
+            if failure_count >= failure_threshold {
+                state = "open"
+                println(f"Circuit breaker opened after {failure_count} failures")
+            }
+            
+            throw error
+        }
+    }
+}
+
+// Use circuit breaker for external service
+let api_breaker = CircuitBreaker::new()
+
+fn call_external_api(data) {
+    return api_breaker.call(|| {
+        http::post("https://api.external.com/endpoint")
+            .json(data)
+            .timeout(5000)
+            .send()
+    })
+}

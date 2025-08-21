@@ -1,0 +1,17 @@
+// String literals
+"hello world"
+"unicode: αβγ"
+"escapes: \n \t \r \\ \" \'"
+
+// Raw strings (no escapes)
+r"raw string with \n literal backslashes"
+r#"can contain "quotes" with # delimiters"#
+r##"even more "# nested # delimiters"##
+
+// Multi-line strings
+"line one\
+line two"
+
+// Format strings
+f"Hello, {name}!"
+f"Result: {value:2.2}"

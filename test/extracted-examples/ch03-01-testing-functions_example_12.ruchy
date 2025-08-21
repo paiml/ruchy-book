@@ -1,0 +1,28 @@
+// 1. Write failing tests first
+#[test]
+fn test_is_strong_password() {
+    assert!(is_strong_password("MyPass123!"))      // Valid
+    assert!(!is_strong_password("weak"))           // Too short
+    assert!(!is_strong_password("NoNumbers!"))     // No digits
+    assert!(!is_strong_password("nonumbers123"))   // No special chars
+}
+
+// 2. Write minimal code to pass
+fn is_strong_password(password) {
+    if password.len() < 8 { return false }
+    
+    let has_digit = password.chars().any(|c| c.is_digit())
+    let has_special = password.chars().any(|c| "!@#$%^&*".contains(c))
+    
+    return has_digit && has_special
+}
+
+// 3. Run tests - they should all pass now!
+
+// 4. Add more edge case tests
+#[test]
+fn test_password_edge_cases() {
+    assert!(!is_strong_password(""))              // Empty
+    assert!(!is_strong_password("12345678"))      // Only digits
+    assert!(!is_strong_password("!!!!!!!!"))      // Only special
+}

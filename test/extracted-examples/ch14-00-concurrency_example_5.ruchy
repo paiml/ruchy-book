@@ -1,0 +1,31 @@
+// Async function
+async fn fetch_user(id: i32) -> Result<User, Error> {
+    let response = http::get(f"/api/users/{id}").await?
+    let user = parse_json(response.body).await?
+    return Ok(user)
+}
+
+// Await multiple futures
+async fn fetch_all_users(ids: Vec<i32>) -> Vec<User> {
+    let futures = ids.map(|id| fetch_user(id))
+    let results = join_all(futures).await
+    
+    return results
+        .filter_map(|r| r.ok())
+        .collect()
+}
+
+// Select first to complete
+async fn fetch_with_timeout(url: String) -> Result<Data, Error> {
+    select! {
+        result = fetch_data(url) => result,
+        _ = sleep(5000) => Err(Error::Timeout)
+    }
+}
+
+// Async streams
+async fn process_stream(stream: AsyncStream<Item>) {
+    while let Some(item) = stream.next().await {
+        process_item(item).await
+    }
+}

@@ -1,0 +1,12 @@
+// Monitor network traffic
+let monitor = net::PacketCapture::new("eth0")
+
+monitor.on_packet(|packet| {
+    if packet.protocol == "TCP" {
+        println(f"TCP: {packet.src}:{packet.src_port} -> {packet.dst}:{packet.dst_port}")
+    } else if packet.protocol == "UDP" {
+        println(f"UDP: {packet.src} -> {packet.dst} ({packet.size} bytes)")
+    }
+})
+
+monitor.start()

@@ -1,0 +1,14 @@
+// ❌ Error
+let s = String::from("hello")
+takes_ownership(s)
+println(s)  // Error: s was moved
+
+// ✅ Fixed - Option 1: Clone
+let s = String::from("hello")
+takes_ownership(s.clone())
+println(s)  // s still valid
+
+// ✅ Fixed - Option 2: Borrow
+let s = String::from("hello")
+borrows_value(&s)
+println(s)  // s still valid

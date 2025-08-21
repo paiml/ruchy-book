@@ -1,0 +1,45 @@
+// File: desktop_organizer.ruchy
+// Organizes files by type into folders
+
+println("=== Desktop Organizer ===")
+
+// Define organization rules
+let file_categories = {
+    "Documents": [".pdf", ".doc", ".docx", ".txt"],
+    "Images": [".jpg", ".jpeg", ".png", ".gif", ".svg"],
+    "Videos": [".mp4", ".avi", ".mov", ".mkv"],
+    "Code": [".py", ".js", ".rs", ".ruchy", ".cpp"],
+    "Data": [".csv", ".json", ".xml", ".xlsx"]
+}
+
+let source_dir = "~/Desktop"
+let files = list_files(source_dir)
+
+println(f"Found {files.len()} files to organize")
+
+// Organize files
+for file in files {
+    let extension = get_extension(file).lower()
+    
+    for category, extensions in file_categories.items() {
+        if extensions.contains(extension) {
+            let target_dir = join_path(source_dir, category)
+            
+            // Create category folder if needed
+            if !dir_exists(target_dir) {
+                create_dir(target_dir)
+                println(f"Created folder: {category}")
+            }
+            
+            // Move file to appropriate folder
+            let source = join_path(source_dir, file)
+            let destination = join_path(target_dir, file)
+            
+            move_file(source, destination)
+            println(f"  Moved {file} -> {category}/")
+            break
+        }
+    }
+}
+
+println("✅ Desktop organized!")

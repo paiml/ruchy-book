@@ -1,0 +1,25 @@
+// Basic trait
+trait Draw {
+    fn draw(&self)
+}
+
+// Trait with default implementation
+trait Summary {
+    fn summarize_author(&self) -> String
+    
+    fn summarize(&self) -> String {
+        f"(Read more from {}...)", self.summarize_author())
+    }
+}
+
+// Trait with associated types
+trait Iterator {
+    type Item
+    
+    fn next(&mut self) -> Option<Self::Item>
+}
+
+// Trait with generic parameters
+trait From<T> {
+    fn from(value: T) -> Self
+}

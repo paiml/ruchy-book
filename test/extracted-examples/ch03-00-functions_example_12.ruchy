@@ -1,0 +1,48 @@
+// Personal calculator
+fn celsius_to_fahrenheit(celsius) {
+    return (celsius * 9 / 5) + 32
+}
+
+fn calculate_bmi(weight_kg, height_m) {
+    return weight_kg / (height_m * height_m)
+}
+
+fn apply_discount(price, discount_percent) {
+    let discount = price * (discount_percent / 100)
+    return price - discount
+}
+
+// Text tools
+fn word_count(text) {
+    return text.split(" ").len()
+}
+
+fn reverse_text(text) {
+    return text.chars().reverse().collect().join("")
+}
+
+fn get_initials(full_name) {
+    let words = full_name.split(" ")
+    let initials = ""
+    for word in words {
+        initials = initials + word[0].upper()
+    }
+    return initials
+}
+
+// Decision makers
+fn recommend_activity(energy_level, available_time) {
+    if energy_level > 7 && available_time > 60 {
+        return "Go for a run or hit the gym!"
+    } else if energy_level > 5 && available_time > 30 {
+        return "Perfect time for a walk"
+    } else {
+        return "Maybe just relax and read"
+    }
+}
+
+// Test your functions!
+println(celsius_to_fahrenheit(20))  // 68
+println(calculate_bmi(70, 1.75))    // 22.86
+println(get_initials("Alice Johnson"))  // "AJ"
+println(recommend_activity(8, 45))

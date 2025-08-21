@@ -1,5 +1,20 @@
 # Command-Line Tools
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/14 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 14 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The first time I built a command-line tool that actually solved a real problem, I felt like I had superpowers. It took a tedious 2-hour manual task and turned it into a 5-second command. That's when I realized programming isn't about writing code - it's about automating your life."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most people think command-line tools are complex, requiring deep system knowledg
 Here's a simple but useful command-line tool in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: word_counter.ruchy
 // Simple word counter tool
 
@@ -33,6 +50,7 @@ println(f"\nFile Analysis: {filename}")
 println(f"Characters: {char_count}")
 println(f"Words: {word_count}")  
 println(f"Lines: {line_count}")
+
 ```
 
 Run it:
@@ -55,15 +73,20 @@ That's a real tool! It solves a common problem with simple code.
 
 Get information from users with `input()`:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let name = input("What's your name? ")
 let age = input("How old are you? ").to_i()
 let is_student = input("Are you a student? (y/n) ") == "y"
+
 ```
 
 ### File Operations
 
 Work with files using built-in functions:
 ```ruchy  
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Reading files
 let content = read_file("data.txt")
 let lines = read_lines("data.txt")
@@ -75,12 +98,15 @@ append_file("log.txt", "New entry: " + timestamp())
 // File information
 let exists = file_exists("config.txt")
 let size = file_size("data.txt")
+
 ```
 
 ### Command Arguments
 
 Access command-line arguments:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Usage: ruchy run script.ruchy file1.txt file2.txt
 let args = command_args()
 let program_name = args[0]
@@ -88,6 +114,7 @@ let first_file = args[1]
 let second_file = args[2]
 
 println(f"Processing: {first_file} and {second_file}")
+
 ```
 
 ## Practical Tools
@@ -95,6 +122,8 @@ println(f"Processing: {first_file} and {second_file}")
 ### File Processor
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: text_processor.ruchy
 // Processes text files with various operations
 
@@ -146,11 +175,14 @@ match choice {
         println("Invalid choice!")
     }
 }
+
 ```
 
 ### Log Analyzer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: log_analyzer.ruchy
 // Analyzes server log files
 
@@ -195,11 +227,14 @@ for line in lines {
 
 let busiest_hour = hour_counts.max_by_value().key
 println(f"Busiest Hour: {busiest_hour}:00")
+
 ```
 
 ### Batch File Renamer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: batch_renamer.ruchy  
 // Renames multiple files with patterns
 
@@ -227,6 +262,7 @@ for file in files {
 }
 
 println(f"\nRenamed {renamed_count} files")
+
 ```
 
 ## Error Handling
@@ -234,6 +270,8 @@ println(f"\nRenamed {renamed_count} files")
 Real tools need proper error handling:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Robust file processor with error handling
 
 fn process_file(filename) {
@@ -271,6 +309,7 @@ if process_file(filename) {
     println("Processing failed!")
     exit(1)
 }
+
 ```
 
 ## User Experience
@@ -278,6 +317,8 @@ if process_file(filename) {
 Make your tools user-friendly:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Good CLI tool practices
 
 fn show_help() {
@@ -311,6 +352,7 @@ fn process_with_progress(files) {
     
     println("\n✅ All files processed!")
 }
+
 ```
 
 ## Generated Code Insight
@@ -322,9 +364,12 @@ See how Ruchy's simple file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let content = read_file("data.txt")
 let lines = content.lines().len()
 println(f"File has {lines} lines")
+
 ```
 
 Becomes this optimized Rust:
@@ -402,6 +447,8 @@ $ ruchy repl
 **Example Complete Tool - Task Manager:**
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // task_manager.ruchy - A simple but useful task management tool
 
 let TASK_FILE = "tasks.txt"
@@ -487,6 +534,7 @@ loop {
         _ => println("❌ Invalid choice")
     }
 }
+
 ```
 
 **Usage:**
@@ -511,22 +559,31 @@ Build tools that solve YOUR daily problems - that's where programming becomes po
 
 ### No Error Handling
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This will crash if file doesn't exist
 let content = read_file("missing.txt")
+
 ```
 
 ### Poor User Experience
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Confusing and unhelpful
 println("Enter thing:")
 let thing = input()
 // What thing? What format?
+
 ```
 
 ### Hardcoded Paths
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Only works on your computer
 let data = read_file("/Users/noah/Desktop/data.txt")
+
 ```
 
 ## Summary

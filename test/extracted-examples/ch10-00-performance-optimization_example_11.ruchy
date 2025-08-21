@@ -1,0 +1,25 @@
+// 1. Measure first
+perf::profile {
+    suspicious_function()
+}
+
+// 2. Optimize the right thing
+// Focus on the bottleneck, not random code
+
+// 3. Use the right algorithm
+// O(n) beats O(n²) even with overhead
+
+// 4. Batch operations
+// 1 operation on 1000 items > 1000 operations on 1 item
+
+// 5. Cache expensive computations
+let cache = memoize(expensive_function)
+
+// 6. Parallelize independent work
+parallel::map(items, process)
+
+// 7. Use async for I/O
+async::wait_all(io_operations)
+
+// 8. Profile in production
+// Dev performance ≠ Production performance

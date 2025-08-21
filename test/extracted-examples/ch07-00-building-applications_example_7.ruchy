@@ -1,0 +1,57 @@
+// Development project scaffolding tool
+let TEMPLATES = {
+    "python": {
+        "files": ["main.py", "requirements.txt", "README.md", ".gitignore"],
+        "folders": ["src", "tests", "docs"]
+    },
+    "javascript": {
+        "files": ["index.js", "package.json", "README.md", ".gitignore"],
+        "folders": ["src", "test", "public"]
+    },
+    "ruchy": {
+        "files": ["main.ruchy", "Cargo.toml", "README.md", ".gitignore"],
+        "folders": ["src", "tests", "docs"]
+    }
+}
+
+fn create_project(name, language) {
+    let project_dir = name
+    
+    if dir_exists(project_dir) {
+        println(f"❌ Directory {project_dir} already exists")
+        return
+    }
+    
+    create_dir(project_dir)
+    println(f"📁 Created project: {name}")
+    
+    let template = TEMPLATES[language]
+    
+    // Create folder structure
+    for folder in template.folders {
+        create_dir(join_path(project_dir, folder))
+        println(f"  📂 {folder}/")
+    }
+    
+    // Create files from templates
+    for file in template.files {
+        let template_content = get_template_content(language, file)
+        let content = template_content
+            .replace("{{PROJECT_NAME}}", name)
+            .replace("{{DATE}}", current_date())
+            .replace("{{AUTHOR}}", get_git_user())
+        
+        write_file(join_path(project_dir, file), content)
+        println(f"  📄 {file}")
+    }
+    
+    // Initialize git
+    run_command("git init", project_dir)
+    run_command("git add .", project_dir)
+    run_command('git commit -m "Initial commit"', project_dir)
+    
+    println(f"\n✅ Project {name} created successfully!")
+    println(f"Next steps:")
+    println(f"  cd {project_dir}")
+    println(f"  {get_run_command(language)}")
+}

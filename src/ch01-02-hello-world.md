@@ -1,5 +1,20 @@
 # Hello, World!
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/8 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"I still remember the first time I made a computer print 'Hello, World!' It was magical - like teaching a very literal friend to speak. That same feeling of wonder drove me to create Ruchy, where your first program works immediately, not after hours of setup."* - Noah Gift
 
 ## The Problem
@@ -13,7 +28,10 @@ In Ruchy, we believe this first step should be immediate and rewarding, not buri
 Here's your first Ruchy program:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 println("Hello, World!")
+
 ```
 
 That's it! Save this in a file called `hello.ruchy` and run it with:
@@ -60,7 +78,10 @@ The syntax `println(...)` is a function call:
 ### Multiple Arguments
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 println("Hello", "World", "from", "Ruchy")
+
 ```
 
 Output:
@@ -71,11 +92,14 @@ Hello World from Ruchy
 ### Variables and Interpolation
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let name = "Alice"
 println("Hello,", name)
 
 // Or with string interpolation
 println(f"Hello, {name}!")
+
 ```
 
 Output:
@@ -87,9 +111,12 @@ Hello, Alice!
 ### Numbers and Other Types
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 println("The answer is", 42)
 println("Pi is approximately", 3.14159)
 println("Is Ruchy awesome?", true)
+
 ```
 
 Output:
@@ -103,22 +130,31 @@ Is Ruchy awesome? true
 
 ### Forgetting Quotes
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This won't work
 println(Hello, World!)
+
 ```
 Error: `Hello` and `World` are treated as variables, not text.
 
 ### Mixing Quote Types
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Quotes don't match
 println("Hello, World!')
+
 ```
 Error: String not properly closed.
 
 ### Case Sensitivity
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Wrong capitalization
 PrintLn("Hello, World!")
+
 ```
 Error: `PrintLn` is not defined. Ruchy function names are lowercase.
 
@@ -131,7 +167,10 @@ Ever wonder what happens "under the hood" when you write Ruchy code? Let's peek 
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 println("Hello, World!")
+
 ```
 
 Transpiles to this optimized Rust:

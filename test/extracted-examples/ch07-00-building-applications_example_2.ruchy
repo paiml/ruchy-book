@@ -1,0 +1,41 @@
+// Application structure
+let APP = {
+    "name": "MyApp",
+    "version": "1.0.0",
+    "config_dir": "~/.config/myapp",
+    "data_dir": "~/.local/share/myapp",
+    "cache_dir": "~/.cache/myapp"
+}
+
+// Separate concerns into modules
+// models.ruchy - Data structures
+let User = {
+    "id": null,
+    "name": "",
+    "email": "",
+    "created": null
+}
+
+// services.ruchy - Business logic
+fn create_user(name, email) {
+    let user = User.copy()
+    user.id = generate_uuid()
+    user.name = name
+    user.email = email
+    user.created = current_datetime()
+    return user
+}
+
+// ui.ruchy - User interface
+fn display_user(user) {
+    println(f"User: {user.name} ({user.email})")
+    println(f"Member since: {user.created}")
+}
+
+// main.ruchy - Application entry point
+fn main() {
+    init_app()
+    load_config()
+    run_event_loop()
+    cleanup()
+}

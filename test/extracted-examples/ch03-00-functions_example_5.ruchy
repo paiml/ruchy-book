@@ -1,0 +1,27 @@
+// Mathematical operations
+fn square(x) {
+    return x * x
+}
+
+fn circle_area(radius) {
+    let pi = 3.14159
+    return pi * square(radius)
+}
+
+// Text processing
+fn make_username(first_name, last_name) {
+    return f"{first_name.lower()}_{last_name.lower()}"
+}
+
+fn shout(message) {
+    return message.upper() + "!!!"
+}
+
+// Use them together
+let area = circle_area(5)
+let username = make_username("Alice", "Johnson") 
+let excited = shout("I love functions")
+
+println(f"Circle area: {area}")
+println(f"Username: {username}")
+println(excited)

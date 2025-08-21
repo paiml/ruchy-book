@@ -1,0 +1,33 @@
+fn calculate_grade(score) {
+    if score >= 90 { return "A" }
+    if score >= 80 { return "B" } 
+    if score >= 70 { return "C" }
+    if score >= 60 { return "D" }
+    return "F"
+}
+
+fn can_vote(age, is_citizen) {
+    return age >= 18 && is_citizen
+}
+
+#[test]
+fn test_calculate_grade() {
+    // Boundary testing
+    assert_eq!(calculate_grade(95), "A")
+    assert_eq!(calculate_grade(90), "A")  // Exactly 90
+    assert_eq!(calculate_grade(89), "B")  // Just below A
+    assert_eq!(calculate_grade(80), "B")  // Exactly 80
+    assert_eq!(calculate_grade(79), "C")  // Just below B
+    assert_eq!(calculate_grade(59), "F")  // Failing grade
+    assert_eq!(calculate_grade(0), "F")   // Very low
+}
+
+#[test]
+fn test_can_vote() {
+    // All combinations
+    assert!(can_vote(18, true))      // Minimum age, citizen
+    assert!(can_vote(25, true))      // Adult citizen
+    assert!(!can_vote(17, true))     // Too young
+    assert!(!can_vote(25, false))    // Not citizen
+    assert!(!can_vote(17, false))    // Too young AND not citizen
+}

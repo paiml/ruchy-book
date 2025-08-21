@@ -1,0 +1,39 @@
+// Debug print with variable names
+macro! dbg {
+    ($($x:expr),*) => {
+        $(
+            eprintln!("{} = {:?}", stringify!($x), $x)
+        )*
+    }
+}
+
+let x = 42
+let y = "hello"
+dbg!(x, y, x + 10)
+// Prints:
+// x = 42
+// y = "hello"
+// x + 10 = 52
+
+// Trace macro for function calls
+macro! trace {
+    ($func:expr) => {
+        {
+            println(f"Entering {stringify!($func)}")
+            let result = $func
+            println(f"Leaving {stringify!($func)}: {result:?}")
+            result
+        }
+    }
+}
+
+let result = trace!(expensive_calculation())
+
+// Assert with custom messages
+macro! assert_eq_msg {
+    ($left:expr, $right:expr, $msg:expr) => {
+        if $left != $right {
+            panic(f"{$msg}\nLeft: {$left:?}\nRight: {$right:?}")
+        }
+    }
+}

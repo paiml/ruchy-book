@@ -1,0 +1,3 @@
+// ❌ This might not work as expected
+let age = "25"
+let next_year = age + 1

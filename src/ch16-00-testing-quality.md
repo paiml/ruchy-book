@@ -1,5 +1,20 @@
 # Testing & Quality
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/11 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 11 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"I learned to love testing the day it saved me from shipping a bug that would have cost millions. Tests aren't about proving your code works - they're about proving it still works after you change it. Write tests like your future self will thank you, because they will."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most developers test manually and hope for the best. In Ruchy, testing is built 
 Here's comprehensive testing in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Unit test with multiple assertions
 #[test]
 fn test_user_validation() {
@@ -70,6 +87,7 @@ fn bench_data_processing(b: &mut Bencher) {
         process_data(data.clone())
     })
 }
+
 ```
 
 That's testing with confidence!
@@ -81,6 +99,8 @@ That's testing with confidence!
 Test individual components:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Basic test
 #[test]
 fn test_addition() {
@@ -136,6 +156,7 @@ mod calculator_tests {
     #[test]
     fn test_multiply() { /* ... */ }
 }
+
 ```
 
 ### Test Fixtures
@@ -143,6 +164,8 @@ mod calculator_tests {
 Reusable test setup:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Fixture trait
 trait TestFixture {
     fn setup() -> Self
@@ -196,6 +219,7 @@ fn test_with_auto_cleanup(fixture: DatabaseFixture) {
     let user = fixture.db.find_user("Alice")
     assert!(user.is_some())
 }
+
 ```
 
 ### Mocking
@@ -203,6 +227,8 @@ fn test_with_auto_cleanup(fixture: DatabaseFixture) {
 Test in isolation:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Mock trait
 trait EmailService {
     fn send_email(to: String, subject: String, body: String) -> Result<(), Error>
@@ -256,6 +282,7 @@ fn test_with_stub() {
     let result = service_using_stub.process()
     assert_eq!(result, expected)
 }
+
 ```
 
 ### Property-Based Testing
@@ -263,6 +290,8 @@ fn test_with_stub() {
 Test with generated inputs:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 use proptest::prelude::*
 
 // Generate arbitrary test data
@@ -313,6 +342,7 @@ fn test_database_consistency(operations: Vec<DbOperation>) {
     prop_assert!(db.is_consistent())
     prop_assert_eq!(db.total_balance(), INITIAL_BALANCE)
 }
+
 ```
 
 ## Integration Testing
@@ -320,6 +350,8 @@ fn test_database_consistency(operations: Vec<DbOperation>) {
 Test complete workflows:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Integration test in tests/ directory
 #[integration_test]
 async fn test_full_api_flow() {
@@ -386,6 +418,7 @@ fn test_database_transactions() {
     // Verify rollback worked
     assert_eq!(db.count_users(), 0)
 }
+
 ```
 
 ## Performance Testing
@@ -393,6 +426,8 @@ fn test_database_transactions() {
 Measure and optimize:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Benchmarks
 #[bench]
 fn bench_sorting_algorithms(b: &mut Bencher) {
@@ -458,6 +493,7 @@ fn test_with_profiling() {
     // Generate flame graph
     report.save_flamegraph("profile.svg")
 }
+
 ```
 
 ## Quality Tools
@@ -465,6 +501,8 @@ fn test_with_profiling() {
 ### Code Coverage
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Run tests with coverage
 $ ruchy test --coverage
 
@@ -493,11 +531,14 @@ fn test_all_branches() {
 fn debug_function() {
     // Not included in coverage metrics
 }
+
 ```
 
 ### Mutation Testing
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Mutation testing finds gaps in tests
 $ ruchy mutate
 
@@ -512,11 +553,14 @@ Status: SURVIVED ❌
 fn test_addition_not_subtraction() {
     assert_ne!(add(5, 3), subtract(5, 3))
 }
+
 ```
 
 ### Fuzzing
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Fuzz testing for security
 #[fuzz_test]
 fn fuzz_parser(data: &[u8]) {
@@ -545,6 +589,7 @@ fn fuzz_api_endpoint(input: FuzzInput) {
     assert!(response.status() < 600)
     assert!(response.body().len() < 10_000_000)
 }
+
 ```
 
 ## Continuous Quality
@@ -584,6 +629,8 @@ jobs:
 ### Quality Gates
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // quality.ruchy - Quality gate script
 fn main() {
     let mut passed = true
@@ -624,6 +671,7 @@ fn main() {
     
     println("✅ All quality gates passed!")
 }
+
 ```
 
 ## Try It Yourself

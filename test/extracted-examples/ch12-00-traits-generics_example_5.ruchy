@@ -1,0 +1,40 @@
+// Generic struct
+struct Pair<T> {
+    first: T
+    second: T
+}
+
+impl<T> Pair<T> {
+    fn new(first: T, second: T) -> Pair<T> {
+        return Pair{first, second}
+    }
+    
+    fn swap(mut self) {
+        let temp = self.first
+        self.first = self.second
+        self.second = temp
+    }
+}
+
+// Generic enum
+enum Option<T> {
+    Some(T)
+    None
+}
+
+enum Result<T, E> {
+    Ok(T)
+    Err(E)
+}
+
+// Generic with constraints
+struct SortedVec<T: Ord> {
+    items: Vec<T>
+}
+
+impl<T: Ord> SortedVec<T> {
+    fn insert(mut self, item: T) {
+        let pos = self.items.binary_search(item)
+        self.items.insert(pos, item)
+    }
+}

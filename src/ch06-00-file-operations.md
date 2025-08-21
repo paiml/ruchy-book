@@ -1,5 +1,20 @@
 # File Operations
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 10 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The first time I automated file organization on my cluttered desktop, I felt like a digital janitor who just got superpowers. What took me hours of manual sorting now happens in seconds. Files are the lifeblood of computing - master them, and you master your digital world."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most people manually manage files through graphical interfaces, but that doesn't
 Here's a practical file organizer in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: desktop_organizer.ruchy
 // Organizes files by type into folders
 
@@ -58,6 +75,7 @@ for file in files {
 }
 
 println("✅ Desktop organized!")
+
 ```
 
 That's file automation! Hours of manual work done in seconds.
@@ -68,6 +86,8 @@ That's file automation! Hours of manual work done in seconds.
 
 Navigate and query the file system:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Current directory operations
 let current_dir = get_current_dir()
 set_current_dir("/home/user/projects")
@@ -81,12 +101,15 @@ let extension = file_extension(full_path)
 // Path joining and normalization
 let project_path = join_path(home_dir(), "projects", "my_app")
 let clean_path = normalize_path(".././data//file.txt")
+
 ```
 
 ### File Information
 
 Get detailed file metadata:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Check file properties
 let exists = file_exists("config.json")
 let size = file_size("data.csv")  // In bytes
@@ -102,12 +125,15 @@ let is_symlink = is_symbolic_link(path)
 let can_read = is_readable(path)
 let can_write = is_writable(path)
 let can_execute = is_executable(path)
+
 ```
 
 ### Directory Operations
 
 Work with directories efficiently:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Create and remove directories
 create_dir("new_folder")
 create_dir_all("path/to/nested/folder")  // Creates parent dirs
@@ -131,6 +157,7 @@ fn walk_directory(dir) {
         }
     }
 }
+
 ```
 
 ## Practical File Tools
@@ -138,6 +165,8 @@ fn walk_directory(dir) {
 ### Backup System
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: smart_backup.ruchy
 // Creates timestamped backups of important files
 
@@ -207,11 +236,14 @@ Categories: {backup_config.keys().join(', ')}
 "
 
 write_file(join_path(backup_dir, "summary.txt"), summary)
+
 ```
 
 ### Duplicate File Finder
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: find_duplicates.ruchy
 // Finds duplicate files based on content hash
 
@@ -288,11 +320,14 @@ if duplicates.is_empty() {
         println(f"\n✅ Freed {format_size(total_wasted)} of space!")
     }
 }
+
 ```
 
 ### Log Rotation System
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: log_rotator.ruchy
 // Manages log files with size-based rotation
 
@@ -347,11 +382,14 @@ for log_file in log_files {
 }
 
 println("\n✅ Log rotation complete!")
+
 ```
 
 ### Configuration File Manager
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: config_manager.ruchy
 // Manages application configuration files
 
@@ -451,6 +489,7 @@ loop {
         _ => println("Invalid choice")
     }
 }
+
 ```
 
 ## Error Handling
@@ -458,6 +497,8 @@ loop {
 Robust file operations need proper error handling:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn safe_file_operation(path) {
     // Check permissions first
     if !file_exists(path) {
@@ -486,6 +527,7 @@ fn safe_file_operation(path) {
         return false
     }
 }
+
 ```
 
 ## Generated Code Insight
@@ -497,6 +539,8 @@ See how Ruchy's file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let files = list_files("data")
 for file in files {
     let size = file_size(file)
@@ -504,6 +548,7 @@ for file in files {
         move_file(file, "large_files/" + file)
     }
 }
+
 ```
 
 Becomes this optimized Rust:

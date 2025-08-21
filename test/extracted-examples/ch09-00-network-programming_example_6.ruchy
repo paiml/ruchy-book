@@ -1,0 +1,119 @@
+// File: chat_server.ruchy
+// Multi-room chat server with history
+
+use std::net::ws;
+
+let server = ws::Server::new("0.0.0.0:8080")
+let rooms = {}
+let users = {}
+
+fn broadcast_to_room(room_id, message, exclude_user = null) {
+    if rooms.has_key(room_id) {
+        for user_id in rooms[room_id] {
+            if user_id != exclude_user {
+                users[user_id].socket.send(message)
+            }
+        }
+    }
+}
+
+server.on_connection(|socket| {
+    let user = {
+        id: generate_id(),
+        socket: socket,
+        name: null,
+        room: null,
+        joined_at: current_datetime()
+    }
+    
+    users[user.id] = user
+    
+    socket.send(json({
+        type: "welcome",
+        user_id: user.id,
+        message: "Welcome to chat! Send /help for commands"
+    }))
+    
+    socket.on("message", |data| {
+        let msg = parse_json(data)
+        
+        match msg.type {
+            "join" => {
+                user.name = msg.name
+                user.room = msg.room
+                
+                // Add user to room
+                if !rooms.has_key(msg.room) {
+                    rooms[msg.room] = []
+                }
+                rooms[msg.room].push(user.id)
+                
+                // Notify room
+                broadcast_to_room(msg.room, json({
+                    type: "user_joined",
+                    user: user.name,
+                    time: current_datetime()
+                }))
+                
+                // Send room history
+                let history = get_room_history(msg.room)
+                socket.send(json({
+                    type: "history",
+                    messages: history
+                }))
+            }
+            
+            "message" => {
+                let chat_msg = {
+                    type: "message",
+                    user: user.name,
+                    text: msg.text,
+                    time: current_datetime()
+                }
+                
+                // Save to history
+                save_message(user.room, chat_msg)
+                
+                // Broadcast to room
+                broadcast_to_room(user.room, json(chat_msg))
+            }
+            
+            "private" => {
+                let target = find_user_by_name(msg.to)
+                if target {
+                    target.socket.send(json({
+                        type: "private",
+                        from: user.name,
+                        text: msg.text,
+                        time: current_datetime()
+                    }))
+                }
+            }
+            
+            "typing" => {
+                broadcast_to_room(user.room, json({
+                    type: "typing",
+                    user: user.name
+                }), user.id)
+            }
+        }
+    })
+    
+    socket.on("close", || {
+        // Remove from room
+        if user.room && rooms.has_key(user.room) {
+            rooms[user.room] = rooms[user.room].filter(|id| id != user.id)
+            
+            broadcast_to_room(user.room, json({
+                type: "user_left",
+                user: user.name,
+                time: current_datetime()
+            }))
+        }
+        
+        users.remove(user.id)
+    })
+})
+
+println("💬 Chat server running on ws://localhost:8080")
+server.listen()

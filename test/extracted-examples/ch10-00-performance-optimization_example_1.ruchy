@@ -1,0 +1,58 @@
+// File: optimize_data_processing.ruchy
+// Before and after optimization
+
+use std::perf;
+use std::parallel;
+
+// Naive version - slow
+fn process_data_naive(data) {
+    let results = []
+    for item in data {
+        // Expensive computation
+        let processed = expensive_transform(item)
+        for existing in results {
+            if similar(processed, existing) {
+                processed.merge(existing)
+            }
+        }
+        results.push(processed)
+    }
+    return results
+}
+
+// Optimized version - fast
+fn process_data_optimized(data) {
+    // 1. Parallel processing
+    let results = parallel::map(data, |item| {
+        expensive_transform(item)
+    })
+    
+    // 2. Use hash map for lookups
+    let lookup = {}
+    for item in results {
+        let key = item.hash_key()
+        if lookup.has_key(key) {
+            lookup[key].merge(item)
+        } else {
+            lookup[key] = item
+        }
+    }
+    
+    return lookup.values()
+}
+
+// Benchmark both versions
+let data = generate_test_data(10000)
+
+let naive_time = perf::measure {
+    process_data_naive(data)
+}
+
+let optimized_time = perf::measure {
+    process_data_optimized(data)
+}
+
+println(f"Naive: {naive_time}ms")
+println(f"Optimized: {optimized_time}ms")
+println(f"Speedup: {naive_time / optimized_time:.1}x")
+// Output: Speedup: 42.3x

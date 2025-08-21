@@ -1,5 +1,20 @@
 # Building Applications
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The day I shipped my first real application was terrifying and exhilarating. It wasn't perfect, but it solved a real problem for real people. That's when I learned that 'done' beats 'perfect' every time. Ship early, iterate often, and let your users teach you what they really need."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most tutorials teach syntax but not software. In Ruchy, building applications sh
 Here's a complete, useful application in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: note_keeper.ruchy
 // A complete note-taking application
 
@@ -307,6 +324,7 @@ fn main() {
 
 // Run the application
 main()
+
 ```
 
 That's a complete application! It has data persistence, search, export, and a user-friendly interface.
@@ -318,6 +336,8 @@ That's a complete application! It has data persistence, search, export, and a us
 Organize larger applications effectively:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Application structure
 let APP = {
     "name": "MyApp",
@@ -359,6 +379,7 @@ fn main() {
     run_event_loop()
     cleanup()
 }
+
 ```
 
 ### State Management
@@ -366,6 +387,8 @@ fn main() {
 Handle application state properly:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Global application state
 let STATE = {
     "users": [],
@@ -395,6 +418,7 @@ fn load_state() {
         STATE = parse_json(read_file(state_file))
     }
 }
+
 ```
 
 ### Error Recovery
@@ -402,6 +426,8 @@ fn load_state() {
 Build resilient applications:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn safe_operation(operation_fn, fallback_value) {
     try {
         return operation_fn()
@@ -427,6 +453,7 @@ fn with_retry(operation_fn, max_attempts = 3) {
         }
     }
 }
+
 ```
 
 ## Real-World Applications
@@ -434,6 +461,8 @@ fn with_retry(operation_fn, max_attempts = 3) {
 ### Password Manager
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple password manager with encryption
 let MASTER_KEY = null
 let PASSWORDS_FILE = "~/.passwords.enc"
@@ -482,11 +511,14 @@ fn get_password(site) {
         println(f"❌ No password found for {site}")
     }
 }
+
 ```
 
 ### Budget Tracker
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Personal finance tracker
 let TRANSACTIONS_FILE = "~/.budget/transactions.csv"
 let CATEGORIES = ["Food", "Transport", "Bills", "Entertainment", "Other"]
@@ -535,11 +567,14 @@ fn generate_report(month) {
     generate_pdf(report_file, report_data)
     println(f"\n📄 Report saved to {report_file}")
 }
+
 ```
 
 ### Project Generator
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Development project scaffolding tool
 let TEMPLATES = {
     "python": {
@@ -597,6 +632,7 @@ fn create_project(name, language) {
     println(f"  cd {project_dir}")
     println(f"  {get_run_command(language)}")
 }
+
 ```
 
 ## Testing Your Application
@@ -604,6 +640,8 @@ fn create_project(name, language) {
 Build confidence with testing:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // test_app.ruchy - Application test suite
 
 fn test_user_creation() {
@@ -644,6 +682,7 @@ fn run_all_tests() {
     
     println("\n✅ All tests passed!")
 }
+
 ```
 
 ## Deployment
@@ -651,6 +690,8 @@ fn run_all_tests() {
 Package and distribute your application:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // build.ruchy - Build and package script
 
 fn build_release() {
@@ -685,6 +726,7 @@ echo 'Installation complete! Run {APP_NAME} to start.'
     
     println(f"✅ Release built: {APP_NAME}-{VERSION}.tar.gz")
 }
+
 ```
 
 ## Try It Yourself

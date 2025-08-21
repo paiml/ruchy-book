@@ -1,5 +1,20 @@
 # Real-World Projects
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/4 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 4 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"After 20 years of building software, I've learned that the best way to master a language isn't through tutorials - it's by building something real that solves actual problems. Every project teaches you something new. Build things people need, ship them, learn from feedback, iterate. That's how you become a real developer."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ This chapter presents complete, real-world projects you can build, deploy, and u
 A complete productivity tool:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // taskmaster.ruchy - Complete task management system
 use std::cli::{App, Arg, SubCommand};
 use std::fs;
@@ -261,6 +278,7 @@ fn main() -> Result<()> {
     
     Ok(())
 }
+
 ```
 
 ## Project 2: Web API Service
@@ -268,6 +286,8 @@ fn main() -> Result<()> {
 A production-ready REST API:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // api_server.ruchy - Complete web service
 use warp::{Filter, Reply, Rejection};
 use sqlx::{PgPool, FromRow};
@@ -434,6 +454,7 @@ async fn main() -> Result<()> {
     
     Ok(())
 }
+
 ```
 
 ## Project 3: System Monitor
@@ -441,6 +462,8 @@ async fn main() -> Result<()> {
 Real-time system monitoring tool:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // sysmon.ruchy - System monitoring dashboard
 use sysinfo::{System, SystemExt, ProcessExt, CpuExt};
 use tui::{Terminal, Frame, backend::CrosstermBackend};
@@ -660,6 +683,7 @@ async fn main() -> Result<()> {
     
     Ok(())
 }
+
 ```
 
 ## Project Ideas
@@ -701,6 +725,8 @@ Build these to master Ruchy:
 When building real projects:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // 1. Project structure
 my-project/
 ├── src/
@@ -781,6 +807,7 @@ mod tests {
         assert_eq!(result, expected);
     }
 }
+
 ```
 
 ## Deployment Checklist

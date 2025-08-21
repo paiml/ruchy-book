@@ -1,0 +1,33 @@
+fn parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
+    if items.len() <= 1 {
+        return items
+    }
+    
+    let mid = items.len() / 2
+    let right = items.split_off(mid)
+    
+    // Fork: sort halves in parallel
+    let (left_sorted, right_sorted) = join(
+        || parallel_merge_sort(items),
+        || parallel_merge_sort(right)
+    )
+    
+    // Join: merge sorted halves
+    return merge(left_sorted, right_sorted)
+}
+
+// Parallel reduce
+fn parallel_sum(numbers: Vec<i32>) -> i32 {
+    if numbers.len() <= 1000 {
+        return numbers.sum()  // Sequential for small inputs
+    }
+    
+    let chunk_size = numbers.len() / num_cpus()
+    let chunks = numbers.chunks(chunk_size)
+    
+    let sums = chunks
+        .parallel_map(|chunk| chunk.sum())
+        .collect()
+    
+    return sums.sum()
+}

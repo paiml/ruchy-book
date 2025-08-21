@@ -1,0 +1,12 @@
+// ❌ This test will always pass
+#[test]
+fn test_useless() {
+    let result = add(2, 3)
+    assert!(result > 0)  // Too vague!
+}
+
+// ✅ This test verifies exact behavior
+#[test]  
+fn test_useful() {
+    assert_eq!(add(2, 3), 5)  // Exact expectation
+}

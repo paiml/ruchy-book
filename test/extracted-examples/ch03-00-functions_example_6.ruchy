@@ -1,0 +1,28 @@
+fn is_even(number) {
+    return number % 2 == 0
+}
+
+fn grade_letter(score) {
+    if score >= 90 {
+        return "A"
+    } else if score >= 80 {
+        return "B"
+    } else if score >= 70 {
+        return "C"
+    } else if score >= 60 {
+        return "D"
+    } else {
+        return "F"
+    }
+}
+
+fn describe_number(n) {
+    let even_odd = if is_even(n) { "even" } else { "odd" }
+    let size = if n > 100 { "large" } else { "small" }
+    return f"{n} is a {size} {even_odd} number"
+}
+
+// Test your functions
+println(describe_number(42))   // "42 is a small even number"
+println(describe_number(150))  // "150 is a large even number"
+println(grade_letter(85))      // "B"

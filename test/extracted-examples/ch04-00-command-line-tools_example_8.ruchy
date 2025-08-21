@@ -1,0 +1,33 @@
+// Good CLI tool practices
+
+fn show_help() {
+    println("File Statistics Tool v1.0")
+    println("")
+    println("Usage:")
+    println("  ruchy run file_stats.ruchy <filename>")
+    println("")
+    println("Examples:")
+    println("  ruchy run file_stats.ruchy document.txt")
+    println("  ruchy run file_stats.ruchy data/*.csv")
+    println("")
+    println("Options:")
+    println("  --help     Show this help message")
+    println("  --verbose  Show detailed output")
+}
+
+fn process_with_progress(files) {
+    let total = files.len()
+    
+    for i, file in files.enumerate() {
+        let progress = ((i + 1) * 100) / total
+        print(f"\rProcessing... [{progress}%] {file}")
+        
+        // Do the actual work
+        process_file(file)
+        
+        // Small delay to show progress
+        sleep(100)  // 100ms
+    }
+    
+    println("\n✅ All files processed!")
+}

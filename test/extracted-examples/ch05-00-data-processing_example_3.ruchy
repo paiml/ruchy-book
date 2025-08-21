@@ -1,0 +1,23 @@
+// Sum and averages
+let total = numbers.sum()
+let average = numbers.sum() / numbers.len()
+let maximum = numbers.max()
+let minimum = numbers.min()
+
+// Grouping and counting
+fn group_by_field(records, field) {
+    let groups = {}
+    for record in records {
+        let key = record[field]
+        if !groups.has_key(key) {
+            groups[key] = []
+        }
+        groups[key].push(record)
+    }
+    return groups
+}
+
+// Filtering and transformation
+let high_value = transactions.filter(|t| t.amount > 100)
+let customer_ids = transactions.map(|t| t.customer)
+let amounts_only = transactions.map(|t| t.amount)

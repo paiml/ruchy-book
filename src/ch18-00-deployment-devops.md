@@ -1,5 +1,20 @@
 # Deployment & DevOps
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/8 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"Deployment used to terrify me - one wrong command and production was down. Then I learned to automate everything. Now deployment is boring, and boring is beautiful. When deployment is a single command that can't fail, you can focus on building features instead of fighting fires."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most deployments are manual, error-prone nightmares. In Ruchy, deployment is aut
 Here's modern deployment in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // deploy.ruchy - One-command deployment
 use std::deploy;
 
@@ -45,6 +62,7 @@ if deployment.is_healthy() {
     deployment.rollback()
     println("⚠️  Rolled back to previous version")
 }
+
 ```
 
 That's deployment without drama!
@@ -254,6 +272,8 @@ spec:
 Zero-downtime deployment:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // blue_green.ruchy
 fn deploy_blue_green(new_version: String) {
     // Current production is "blue"
@@ -290,6 +310,7 @@ fn deploy_blue_green(new_version: String) {
     blue.destroy()
     println!("✅ Deployed version {}", new_version)
 }
+
 ```
 
 ### Canary Deployment
@@ -297,6 +318,8 @@ fn deploy_blue_green(new_version: String) {
 Gradual rollout:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // canary.ruchy
 fn deploy_canary(new_version: String) {
     let deployment = CanaryDeployment::new(new_version)
@@ -330,6 +353,7 @@ fn deploy_canary(new_version: String) {
     
     deployment.finalize()
 }
+
 ```
 
 ### Feature Flags
@@ -337,6 +361,8 @@ fn deploy_canary(new_version: String) {
 Deploy code without releasing features:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // feature_flags.ruchy
 use feature_flags::{Client, Flag};
 
@@ -368,6 +394,7 @@ for percentage in [10, 25, 50, 75, 100] {
         break
     }
 }
+
 ```
 
 ## Infrastructure as Code
@@ -434,6 +461,8 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
 ### Metrics
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // metrics.ruchy
 use metrics::{counter, gauge, histogram};
 
@@ -472,11 +501,14 @@ let dashboard = json!({
         }
     ]
 })
+
 ```
 
 ### Logging
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // logging.ruchy
 use tracing::{info, warn, error, debug, span, Level};
 
@@ -522,11 +554,14 @@ let config = json!({
         }
     }
 })
+
 ```
 
 ### Distributed Tracing
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // tracing.ruchy
 use opentelemetry::{global, sdk, trace::Tracer};
 
@@ -552,6 +587,7 @@ async fn handle_request(req: Request, db: &Database) -> Result<Response> {
     
     Ok(Response::new(data))
 }
+
 ```
 
 ## CI/CD Pipeline
@@ -613,6 +649,8 @@ deploy:production:
 ## Secret Management
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // secrets.ruchy
 use vault::Client;
 
@@ -630,6 +668,7 @@ vault.rotate("secret/database/password").await?
 // Environment injection
 env::set_var("DATABASE_URL", 
     format!("postgres://user:{}@host/db", db_password))
+
 ```
 
 ## Try It Yourself

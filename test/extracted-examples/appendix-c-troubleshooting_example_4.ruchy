@@ -1,0 +1,9 @@
+// ❌ Error
+let x: i32 = "string"
+
+// Error: expected `i32`, found `&str`
+
+// ✅ Fixed
+let x: i32 = 42
+// or
+let x = "string"  // Let compiler infer type

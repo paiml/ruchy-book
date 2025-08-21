@@ -1,5 +1,20 @@
 # Macros and Metaprogramming
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The day I wrote my first macro, I realized I wasn't just writing code anymore - I was writing code that writes code. It's like teaching the compiler new tricks. Use macros wisely, and you can eliminate entire categories of boilerplate. Use them poorly, and you'll create a maintenance nightmare. The power is intoxicating; the responsibility is real."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most languages limit you to their built-in syntax. In Ruchy, macros let you exte
 Here's the magic of macros:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Define a macro for JSON-like syntax
 macro! json {
     // Match JSON-like input
@@ -54,6 +71,7 @@ struct User {
 }
 
 // The derive macro generates all the boilerplate!
+
 ```
 
 That's code writing code!
@@ -65,6 +83,8 @@ That's code writing code!
 Pattern-based code generation:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple macro
 macro! say_hello {
     () => {
@@ -113,6 +133,7 @@ handle_codes! {
     404 => "Not Found",
     500 => "Internal Error"
 }
+
 ```
 
 ### Procedural Macros
@@ -120,6 +141,8 @@ handle_codes! {
 Function-like macros with full power:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Derive macro for automatic implementation
 #[proc_macro_derive(Builder)]
 fn derive_builder(input: TokenStream) -> TokenStream {
@@ -182,6 +205,7 @@ let config = Config::builder()
     .port(8080)
     .workers(4)
     .build()?
+
 ```
 
 ### Attribute Macros
@@ -189,6 +213,8 @@ let config = Config::builder()
 Modify items with attributes:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Attribute macro for benchmarking
 #[proc_macro_attribute]
 fn bench(args: TokenStream, input: TokenStream) -> TokenStream {
@@ -227,6 +253,7 @@ async fn get_user(id: i32) -> Response {
 fn test_addition(a: i32, b: i32, expected: i32) {
     assert_eq!(a + b, expected)
 }
+
 ```
 
 ### Syntax Extensions
@@ -234,6 +261,8 @@ fn test_addition(a: i32, b: i32, expected: i32) {
 Create domain-specific languages:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // SQL-like macro
 macro! sql {
     (SELECT $($field:ident),* FROM $table:ident WHERE $($cond:tt)*) => {
@@ -281,6 +310,7 @@ macro! regex {
 }
 
 let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
+
 ```
 
 ## Practical Macros
@@ -288,6 +318,8 @@ let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 ### Debugging Macros
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Debug print with variable names
 macro! dbg {
     ($($x:expr),*) => {
@@ -327,11 +359,14 @@ macro! assert_eq_msg {
         }
     }
 }
+
 ```
 
 ### Code Generation Macros
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generate getters and setters
 macro! accessors {
     ($struct_name:ident { $($field:ident : $type:ty),* }) => {
@@ -390,11 +425,14 @@ define_opcodes! {
     JMP = 0x10,
     JEQ = 0x11
 }
+
 ```
 
 ### DSL Macros
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // State machine DSL
 macro! state_machine {
     (
@@ -477,11 +515,14 @@ let config = config! {
         pool_size: 20
     }
 }
+
 ```
 
 ## Hygiene and Best Practices
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Hygienic macros prevent name collisions
 macro! safe_swap {
     ($a:expr, $b:expr) => {
@@ -537,6 +578,7 @@ fn test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }
+
 ```
 
 ## Try It Yourself

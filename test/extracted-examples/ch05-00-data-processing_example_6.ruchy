@@ -1,0 +1,69 @@
+// File: advanced_log_analyzer.ruchy
+// Comprehensive log file analysis
+
+println("=== Advanced Log Analyzer ===")
+
+// Sample log entries (in practice, read from file)
+let log_entries = [
+    "2024-08-19 10:15:32 INFO User login: alice@email.com",
+    "2024-08-19 10:16:45 ERROR Database connection failed", 
+    "2024-08-19 10:17:12 INFO User login: bob@email.com",
+    "2024-08-19 10:18:33 WARN Slow query detected: 2.5s",
+    "2024-08-19 10:19:44 ERROR 404 Not Found: /api/users/999",
+    "2024-08-19 10:20:15 INFO User logout: alice@email.com"
+]
+
+// Parse log entries
+fn parse_log_entry(entry) {
+    let parts = entry.split(" ")
+    return {
+        "date": parts[0],
+        "time": parts[1], 
+        "level": parts[2],
+        "message": parts[3..].join(" ")
+    }
+}
+
+let parsed_logs = log_entries.map(parse_log_entry)
+
+// Analyze by level
+let level_counts = {}
+for log in parsed_logs {
+    let level = log.level
+    level_counts[level] = level_counts.get(level, 0) + 1
+}
+
+println("Log Level Summary:")
+for level, count in level_counts.items() {
+    let emoji = match level {
+        "INFO" => "ℹ️",
+        "WARN" => "⚠️", 
+        "ERROR" => "❌",
+        _ => "📝"
+    }
+    println(f"  {emoji} {level}: {count} entries")
+}
+
+// Find errors and warnings
+let issues = parsed_logs.filter(|log| log.level == "ERROR" || log.level == "WARN")
+println(f"\nIssues Found ({issues.len()}):")
+for issue in issues {
+    println(f"  {issue.time} {issue.level}: {issue.message}")
+}
+
+// Extract user activity
+let user_actions = parsed_logs.filter(|log| log.message.contains("User"))
+println(f"\nUser Activity ({user_actions.len()} actions):")
+for action in user_actions {
+    println(f"  {action.time}: {action.message}")
+}
+
+// Time-based analysis
+let hours = parsed_logs.map(|log| log.time.split(":")[0])
+let hour_counts = {}
+for hour in hours {
+    hour_counts[hour] = hour_counts.get(hour, 0) + 1
+}
+
+let busiest_hour = hour_counts.max_by_value()
+println(f"\nBusiest Hour: {busiest_hour.key}:xx ({busiest_hour.value} entries)")

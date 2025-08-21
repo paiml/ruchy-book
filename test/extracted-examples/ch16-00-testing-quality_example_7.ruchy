@@ -1,0 +1,65 @@
+// Benchmarks
+#[bench]
+fn bench_sorting_algorithms(b: &mut Bencher) {
+    let data = generate_random_vec(10000)
+    
+    b.iter(|| {
+        let mut copy = data.clone()
+        copy.sort()
+    })
+}
+
+// Comparative benchmarks
+#[bench_group]
+mod sorting_benchmarks {
+    #[bench]
+    fn quick_sort(b: &mut Bencher) {
+        let data = generate_data()
+        b.iter(|| quick_sort(data.clone()))
+    }
+    
+    #[bench]
+    fn merge_sort(b: &mut Bencher) {
+        let data = generate_data()
+        b.iter(|| merge_sort(data.clone()))
+    }
+    
+    #[bench]
+    fn heap_sort(b: &mut Bencher) {
+        let data = generate_data()
+        b.iter(|| heap_sort(data.clone()))
+    }
+}
+
+// Load testing
+#[load_test]
+async fn test_api_under_load() {
+    let config = LoadTestConfig {
+        concurrent_users: 1000,
+        requests_per_user: 100,
+        ramp_up_time: Duration::from_secs(10)
+    }
+    
+    let results = load_test(config, |client| async {
+        client.get("/api/endpoint").send().await
+    }).await
+    
+    assert!(results.median_response_time < Duration::from_millis(100))
+    assert!(results.p99_response_time < Duration::from_millis(500))
+    assert!(results.error_rate < 0.01)
+}
+
+// Profiling in tests
+#[test]
+#[profile]
+fn test_with_profiling() {
+    let profiler = CpuProfiler::start()
+    
+    expensive_operation()
+    
+    let report = profiler.report()
+    assert!(report.total_time < Duration::from_secs(1))
+    
+    // Generate flame graph
+    report.save_flamegraph("profile.svg")
+}

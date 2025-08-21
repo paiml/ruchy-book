@@ -1,0 +1,22 @@
+// Custom protocol over TCP
+fn send_packet(socket, type, data) {
+    let packet = {
+        version: 1,
+        type: type,
+        timestamp: current_time_ms(),
+        data: data
+    }
+    
+    let json = to_json(packet)
+    let length = json.len()
+    
+    // Send length-prefixed message
+    socket.write_u32(length)
+    socket.write(json)
+}
+
+fn receive_packet(socket) {
+    let length = socket.read_u32()
+    let json = socket.read(length)
+    return parse_json(json)
+}

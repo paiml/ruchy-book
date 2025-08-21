@@ -1,0 +1,30 @@
+fn calculate_total(prices) {
+    let total = 0
+    for price in prices {
+        total = total + price
+    }
+    return total
+}
+
+fn find_max(numbers) {
+    let max_val = numbers[0]
+    for num in numbers {
+        if num > max_val {
+            max_val = num
+        }
+    }
+    return max_val
+}
+
+fn count_words(text) {
+    return text.split(" ").len()
+}
+
+// Real-world usage
+let shopping_cart = [19.99, 5.50, 12.00, 8.75]
+let test_scores = [85, 92, 78, 96, 88]
+let essay = "Functions make code reusable and testable"
+
+println(f"Total cost: ${calculate_total(shopping_cart)}")
+println(f"Highest score: {find_max(test_scores)}")
+println(f"Word count: {count_words(essay)}")

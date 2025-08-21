@@ -1,0 +1,9 @@
+// Unconditional panic
+panic!("Something went wrong!")
+
+// Conditional panic
+assert!(condition, "Condition must be true")
+assert_eq!(left, right, "Values must be equal")
+
+// Debug assertions (only in debug builds)
+debug_assert!(expensive_check())

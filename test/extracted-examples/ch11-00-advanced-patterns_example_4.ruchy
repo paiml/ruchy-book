@@ -1,0 +1,68 @@
+// Middleware chain for request processing
+class MiddlewareChain {
+    let middlewares = []
+    
+    fn use(middleware) {
+        middlewares.push(middleware)
+    }
+    
+    fn execute(request, response) {
+        let index = 0
+        
+        fn next() {
+            if index < middlewares.len() {
+                let middleware = middlewares[index]
+                index += 1
+                middleware(request, response, next)
+            }
+        }
+        
+        next()
+    }
+}
+
+// Define middleware
+fn auth_middleware(req, res, next) {
+    let token = req.header("Authorization")
+    if !token {
+        return res.status(401).json({error: "Unauthorized"})
+    }
+    
+    req.user = validate_token(token)
+    next()
+}
+
+fn rate_limit_middleware(req, res, next) {
+    let key = req.ip
+    if rate_limiter.exceeded(key) {
+        return res.status(429).json({error: "Too many requests"})
+    }
+    
+    rate_limiter.increment(key)
+    next()
+}
+
+fn cache_middleware(req, res, next) {
+    let cache_key = req.url
+    if cache.has(cache_key) {
+        return res.send(cache.get(cache_key))
+    }
+    
+    // Intercept response to cache it
+    let original_send = res.send
+    res.send = |data| {
+        cache.set(cache_key, data)
+        original_send(data)
+    }
+    
+    next()
+}
+
+// Build the chain
+let chain = MiddlewareChain::new()
+chain.use(rate_limit_middleware)
+chain.use(auth_middleware)
+chain.use(cache_middleware)
+chain.use(route_handler)
+
+chain.execute(request, response)

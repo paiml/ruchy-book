@@ -1,0 +1,18 @@
+/// Interactive API endpoint documentation
+/// 
+/// <playground>
+/// {
+///   "endpoint": "/api/users",
+///   "method": "POST",
+///   "body": {
+///     "name": "Alice",
+///     "email": "alice@example.com"
+///   }
+/// }
+/// </playground>
+#[post("/api/users")]
+pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
+    // Implementation
+}
+
+// Generates interactive API tester in docs

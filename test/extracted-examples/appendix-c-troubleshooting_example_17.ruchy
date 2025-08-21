@@ -1,0 +1,7 @@
+// ❌ Error: no method named `json` found for type `Response`
+let response = reqwest::get(url).await?
+let data = response.json().await?  // Feature not enabled
+
+// ✅ Enable required features in Cargo.toml
+// [dependencies]
+// reqwest = { version = "0.11", features = ["json"] }

@@ -1,0 +1,10 @@
+// Template: greeting with name
+let user_name = "Alice"
+let greeting_template = f"Hello, {user_name}! Welcome!"
+
+// Template: calculation display
+let num1 = 15
+let num2 = 27  
+let operation = "addition"
+let calc_result = num1 + num2
+let calc_display = f"{operation}: {num1} + {num2} = {calc_result}"

@@ -1,0 +1,20 @@
+// Generate documentation from code
+#[doc_gen]
+impl ConfigBuilder {
+    // Automatically documents builder pattern
+}
+
+// Generate diagrams from code
+#[diagram(sequence)]
+async fn request_flow() {
+    client.send_request()
+    server.validate()
+    server.process()
+    server.respond()
+}
+
+// Generates:
+// Client -> Server: send_request()
+// Server -> Server: validate()
+// Server -> Server: process()
+// Server -> Client: respond()

@@ -1,0 +1,11 @@
+// ❌ Unclear what this tests
+#[test]
+fn test1() {
+    assert_eq!(is_valid("abc"), false)
+}
+
+// ✅ Clear, descriptive name
+#[test]
+fn test_password_too_short() {
+    assert_eq!(is_valid_password("abc"), false)
+}

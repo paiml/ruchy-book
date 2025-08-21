@@ -1,0 +1,36 @@
+{
+  "config": {
+    "MD013": {
+      "line_length": 120,
+      "code_blocks": false,
+      "tables": false,
+      "headings": false
+    },
+    "MD033": {
+      "allowed_elements": ["details", "summary", "br", "div", "span"]
+    },
+    "MD041": false,
+    "MD024": {
+      "siblings_only": true
+    },
+    "MD025": false,
+    "MD026": {
+      "punctuation": ".,;:!?"
+    },
+    "MD029": {
+      "style": "ordered"
+    },
+    "MD036": false
+  },
+  "globs": [
+    "src/**/*.md",
+    "docs/**/*.md",
+    "*.md"
+  ],
+  "ignores": [
+    "node_modules/**",
+    "target/**",
+    "book/**",
+    "test/extracted-examples/**"
+  ]
+}

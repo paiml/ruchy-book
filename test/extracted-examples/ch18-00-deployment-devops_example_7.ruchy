@@ -1,0 +1,25 @@
+// tracing.ruchy
+use opentelemetry::{global, sdk, trace::Tracer};
+
+// Initialize tracing
+let tracer = global::tracer("my-app")
+
+// Trace requests
+#[instrument(skip(db))]
+async fn handle_request(req: Request, db: &Database) -> Result<Response> {
+    let span = tracer.start("handle_request")
+    
+    // Trace database query
+    let user = db.with_span("fetch_user", |db| {
+        db.query_one("SELECT * FROM users WHERE id = $1", &[req.user_id()])
+    }).await?
+    
+    // Trace external API call
+    let data = http_client.with_span("fetch_external_data", |client| {
+        client.get("https://api.example.com/data").send()
+    }).await?
+    
+    span.end()
+    
+    Ok(Response::new(data))
+}

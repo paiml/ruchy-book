@@ -1,0 +1,30 @@
+// TCP Server
+let server = net::TcpListener::bind("127.0.0.1:9000")
+println("Server listening on port 9000")
+
+loop {
+    let client = server.accept()
+    
+    // Handle each client in a separate thread
+    spawn {
+        println(f"Client connected: {client.remote_addr()}")
+        
+        loop {
+            let message = client.read_line()
+            if message.is_empty() {
+                break
+            }
+            
+            println(f"Received: {message}")
+            client.write(f"Echo: {message}\n")
+        }
+        
+        println("Client disconnected")
+    }
+}
+
+// TCP Client
+let client = net::TcpStream::connect("127.0.0.1:9000")
+client.write("Hello, server!\n")
+let response = client.read_line()
+println(f"Server replied: {response}")

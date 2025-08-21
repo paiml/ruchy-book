@@ -1,0 +1,19 @@
+// Immutable by default
+let x = 42
+let name = "Alice"
+
+// Explicit type annotation
+let count: i32 = 100
+let score: f64 = 95.5
+
+// Mutable variables
+let mut counter = 0
+counter += 1
+
+// Pattern destructuring
+let (x, y) = (10, 20)
+let [first, second, ..] = [1, 2, 3, 4, 5]
+
+// Shadowing
+let x = 42
+let x = "now a string"  // Shadows previous x

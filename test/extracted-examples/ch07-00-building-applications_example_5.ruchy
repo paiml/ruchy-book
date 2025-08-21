@@ -1,0 +1,48 @@
+// Simple password manager with encryption
+let MASTER_KEY = null
+let PASSWORDS_FILE = "~/.passwords.enc"
+
+fn encrypt(text, key) {
+    // Simple XOR encryption (use real encryption in production!)
+    let encrypted = []
+    for i, char in text.chars().enumerate() {
+        let key_char = key[i % key.len()]
+        encrypted.push(char.code() ^ key_char.code())
+    }
+    return base64_encode(encrypted)
+}
+
+fn decrypt(encrypted, key) {
+    let bytes = base64_decode(encrypted)
+    let decrypted = []
+    for i, byte in bytes.enumerate() {
+        let key_char = key[i % key.len()]
+        decrypted.push(char_from_code(byte ^ key_char.code()))
+    }
+    return decrypted.join("")
+}
+
+fn add_password(site, username, password) {
+    let passwords = load_passwords()
+    passwords[site] = {
+        "username": username,
+        "password": encrypt(password, MASTER_KEY),
+        "created": current_datetime()
+    }
+    save_passwords(passwords)
+}
+
+fn get_password(site) {
+    let passwords = load_passwords()
+    if passwords.has_key(site) {
+        let entry = passwords[site]
+        let password = decrypt(entry.password, MASTER_KEY)
+        copy_to_clipboard(password)
+        println("✅ Password copied to clipboard!")
+        
+        // Clear clipboard after 30 seconds
+        spawn_after(30000, || clear_clipboard())
+    } else {
+        println(f"❌ No password found for {site}")
+    }
+}

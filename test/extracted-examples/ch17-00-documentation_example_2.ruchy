@@ -1,0 +1,65 @@
+/// Single line summary of what this does.
+/// 
+/// More detailed explanation that provides context,
+/// use cases, and important information.
+/// 
+/// # Arguments
+/// 
+/// * `param1` - Description of first parameter
+/// * `param2` - Description of second parameter
+/// 
+/// # Returns
+/// 
+/// Description of return value and what it represents.
+/// 
+/// # Errors
+/// 
+/// * `ErrorType1` - When this error occurs
+/// * `ErrorType2` - When that error occurs
+/// 
+/// # Examples
+/// 
+/// ```
+/// let result = function(arg1, arg2)?
+/// assert_eq!(result, expected)
+/// ```
+/// 
+/// # Safety
+/// 
+/// This function is safe to call from multiple threads.
+/// 
+/// # Performance
+/// 
+/// Time: O(n log n)
+/// Space: O(n)
+pub fn documented_function(param1: Type1, param2: Type2) -> Result<Return, Error> {
+    // Implementation
+}
+
+// Module-level documentation
+//! # Module Name
+//! 
+//! This module provides functionality for...
+//! 
+//! ## Overview
+//! 
+//! Explain the module's purpose and main components.
+//! 
+//! ## Usage
+//! 
+//! ```
+//! use mylib::module
+//! 
+//! let thing = module::Thing::new()
+//! thing.do_stuff()
+//! ```
+
+// Inner documentation
+impl Struct {
+    fn method(&self) {
+        //! This method does...
+        
+        // Regular comment for implementation details
+        let temp = calculate_something()
+    }
+}

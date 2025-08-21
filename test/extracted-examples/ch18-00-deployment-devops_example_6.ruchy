@@ -1,0 +1,45 @@
+// logging.ruchy
+use tracing::{info, warn, error, debug, span, Level};
+
+// Structured logging
+#[instrument]
+async fn process_request(req: Request) -> Result<Response, Error> {
+    let span = span!(Level::INFO, "request", 
+        method = %req.method(),
+        path = %req.path(),
+        request_id = %generate_id()
+    );
+    
+    let _enter = span.enter();
+    
+    info!("Processing request");
+    
+    let result = match handle_request(req).await {
+        Ok(response) => {
+            info!(status = response.status(), "Request successful");
+            Ok(response)
+        }
+        Err(e) => {
+            error!(error = ?e, "Request failed");
+            Err(e)
+        }
+    };
+    
+    result
+}
+
+// Log aggregation config
+let config = json!({
+    "sinks": {
+        "elasticsearch": {
+            "type": "elasticsearch",
+            "endpoints": ["http://elasticsearch:9200"],
+            "index": "logs-%Y.%m.%d"
+        },
+        "s3": {
+            "type": "aws_s3",
+            "bucket": "my-app-logs",
+            "compression": "gzip"
+        }
+    }
+})

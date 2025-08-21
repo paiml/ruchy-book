@@ -1,5 +1,20 @@
 # Concurrency
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/13 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 13 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"Concurrency clicked for me when I stopped thinking about threads and started thinking about tasks. It's not about doing everything at once; it's about never waiting when you don't have to. Master concurrency, and your programs will feel like they have superpowers - responsive, scalable, and efficient."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most languages make concurrency dangerous - data races, deadlocks, mysterious cr
 Here's safe, elegant concurrency in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 use std::sync;
 use std::async;
 
@@ -54,6 +71,7 @@ let pool = ThreadPool::new(num_cpus())
 let results = pool.parallel_map(items, |item| {
     expensive_computation(item)
 })
+
 ```
 
 That's concurrency without fear!
@@ -65,6 +83,8 @@ That's concurrency without fear!
 OS-level parallelism:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Spawn a thread
 let handle = spawn {
     println("Running in parallel!")
@@ -88,6 +108,7 @@ let handle = Thread::builder()
     .spawn(|| {
         heavy_computation()
     })
+
 ```
 
 ### Channels
@@ -95,6 +116,8 @@ let handle = Thread::builder()
 Message passing between threads:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Create a channel
 let (sender, receiver) = channel()
 
@@ -131,6 +154,7 @@ loop {
         }
     }
 }
+
 ```
 
 ### Shared State
@@ -138,6 +162,8 @@ loop {
 Safe sharing with synchronization:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Mutex for mutual exclusion
 let counter = Arc::new(Mutex::new(0))
 
@@ -176,6 +202,7 @@ spawn move {
 // Atomic operations for lock-free programming
 let counter = Arc::new(AtomicI32::new(0))
 counter.fetch_add(1, Ordering::SeqCst)
+
 ```
 
 ### Async/Await
@@ -183,6 +210,8 @@ counter.fetch_add(1, Ordering::SeqCst)
 Cooperative concurrency:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Async function
 async fn fetch_user(id: i32) -> Result<User, Error> {
     let response = http::get(f"/api/users/{id}").await?
@@ -214,6 +243,7 @@ async fn process_stream(stream: AsyncStream<Item>) {
         process_item(item).await
     }
 }
+
 ```
 
 ## Concurrency Patterns
@@ -223,6 +253,8 @@ async fn process_stream(stream: AsyncStream<Item>) {
 Reuse threads efficiently:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 struct ThreadPool {
     workers: Vec<Worker>
     sender: Sender<Job>
@@ -282,6 +314,7 @@ for i in range(100) {
         heavy_work()
     })
 }
+
 ```
 
 ### Producer-Consumer
@@ -289,6 +322,8 @@ for i in range(100) {
 Decouple work production from consumption:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn producer_consumer_pipeline<T>() {
     let (tx, rx) = channel()
     
@@ -332,6 +367,7 @@ fn bounded_pipeline() {
         }
     }
 }
+
 ```
 
 ### Fork-Join
@@ -339,6 +375,8 @@ fn bounded_pipeline() {
 Split work, process parallel, combine results:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
     if items.len() <= 1 {
         return items
@@ -372,6 +410,7 @@ fn parallel_sum(numbers: Vec<i32>) -> i32 {
     
     return sums.sum()
 }
+
 ```
 
 ### Actor Model
@@ -379,6 +418,8 @@ fn parallel_sum(numbers: Vec<i32>) -> i32 {
 Isolated units with message passing:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Actor trait
 trait Actor {
     type Message
@@ -440,6 +481,7 @@ let (tx, rx) = channel()
 counter.send(Get(tx))
 let count = rx.recv()
 println(f"Count: {count}")  // 2
+
 ```
 
 ## Real-World Concurrency
@@ -449,6 +491,8 @@ println(f"Count: {count}")  // 2
 Handle thousands of concurrent requests:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 async fn web_server() {
     let listener = TcpListener::bind("0.0.0.0:8080").await
     
@@ -483,6 +527,7 @@ async fn handle_request(req: Request) -> Response {
     
     Response::json(data)
 }
+
 ```
 
 ### Parallel Data Processing
@@ -490,6 +535,8 @@ async fn handle_request(req: Request) -> Response {
 Process large datasets efficiently:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn process_dataset(data: Vec<Record>) -> Vec<Result> {
     // Partition data for parallel processing
     let chunk_size = data.len() / num_cpus()
@@ -521,6 +568,7 @@ fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
         .parallel_flat_map(stage3, workers: 4)
         .collect()
 }
+
 ```
 
 ### Concurrent Testing
@@ -528,6 +576,8 @@ fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
 Test with parallelism:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 #[test]
 fn test_concurrent_access() {
     let shared = Arc::new(Mutex::new(Vec::new()))
@@ -562,11 +612,14 @@ async fn test_async_operations() {
     
     assert!(results.all(|r| r.is_ok()))
 }
+
 ```
 
 ## Performance Tips
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // 1. Choose the right abstraction
 // Threads: OS parallelism, CPU-bound work
 // Async: I/O-bound work, many concurrent tasks
@@ -594,6 +647,7 @@ instead_of {
 do {
     channel.send(items)  // One batch send
 }
+
 ```
 
 ## Try It Yourself

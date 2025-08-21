@@ -1,0 +1,53 @@
+// Mock trait
+trait EmailService {
+    fn send_email(to: String, subject: String, body: String) -> Result<(), Error>
+}
+
+// Mock implementation
+#[mockable]
+struct MockEmailService {
+    sent_emails: RefCell<Vec<Email>>
+}
+
+impl EmailService for MockEmailService {
+    fn send_email(to: String, subject: String, body: String) -> Result<(), Error> {
+        self.sent_emails.borrow_mut().push(Email { to, subject, body })
+        Ok(())
+    }
+}
+
+// Test with mock
+#[test]
+fn test_user_registration() {
+    let email_service = MockEmailService::new()
+    let user_service = UserService::new(email_service)
+    
+    user_service.register_user("alice@example.com")
+    
+    // Verify email was sent
+    assert_eq!(email_service.sent_emails.borrow().len(), 1)
+    assert_eq!(email_service.sent_emails.borrow()[0].subject, "Welcome!")
+}
+
+// Spy to verify behavior
+#[test]
+fn test_with_spy() {
+    let spy = Spy::new(RealService::new())
+    
+    spy.method_call()
+    
+    assert!(spy.was_called("method_call"))
+    assert_eq!(spy.call_count("method_call"), 1)
+    assert_eq!(spy.last_args("method_call"), expected_args)
+}
+
+// Stub for predetermined responses
+#[test]
+fn test_with_stub() {
+    let stub = Stub::new()
+        .with_response("get_user", User::test_user())
+        .with_error("network_call", NetworkError)
+    
+    let result = service_using_stub.process()
+    assert_eq!(result, expected)
+}

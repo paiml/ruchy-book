@@ -1,0 +1,35 @@
+// Simple generic function
+fn swap<T>(a: mut T, b: mut T) {
+    let temp = a
+    a = b
+    b = temp
+}
+
+// Multiple type parameters
+fn pair<K, V>(key: K, value: V) -> (K, V) {
+    return (key, value)
+}
+
+// Trait bounds
+fn print_all<T: Display>(items: Vec<T>) {
+    for item in items {
+        println(item)  // Works because T implements Display
+    }
+}
+
+// Multiple bounds
+fn process<T: Clone + Debug + Send>(item: T) {
+    let copy = item.clone()
+    debug(copy)
+    send_to_thread(item)
+}
+
+// Where clauses for complex bounds
+fn complex_function<T, U>(x: T, y: U) -> Vec<T>
+where
+    T: Clone + From<U>,
+    U: Display + Into<String>
+{
+    let converted: T = T::from(y)
+    return vec![x.clone(), converted]
+}

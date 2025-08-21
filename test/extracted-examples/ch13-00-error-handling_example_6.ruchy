@@ -1,0 +1,17 @@
+fn validate_user(user: User) -> Result<User, ValidationError> {
+    // Early return on validation failures
+    if user.name.is_empty() {
+        return Err(ValidationError::EmptyName)
+    }
+    
+    if !is_valid_email(user.email) {
+        return Err(ValidationError::InvalidEmail(user.email))
+    }
+    
+    if user.age < 0 || user.age > 150 {
+        return Err(ValidationError::InvalidAge(user.age))
+    }
+    
+    // All validations passed
+    return Ok(user)
+}

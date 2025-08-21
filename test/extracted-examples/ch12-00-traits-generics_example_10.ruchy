@@ -1,0 +1,22 @@
+// Generics are monomorphized - no runtime cost
+fn generic_add<T: Add>(a: T, b: T) -> T {
+    return a + b  // Compiles to specific add instruction
+}
+
+// This generates two functions at compile time:
+let int_result = generic_add(5, 10)      // Generates add_i32
+let float_result = generic_add(5.0, 10.0) // Generates add_f64
+
+// Trait bounds are checked at compile time
+fn process<T: Send + Sync>(item: T) {
+    // Can safely send to another thread
+    spawn(|| {
+        use_item(item)
+    })
+}
+
+// Inline hints for performance
+#[inline]
+fn hot_path<T: Copy>(x: T) -> T {
+    return x  // Will be inlined
+}

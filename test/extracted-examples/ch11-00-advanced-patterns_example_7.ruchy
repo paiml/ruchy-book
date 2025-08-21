@@ -1,0 +1,74 @@
+// Lazy sequences
+class LazySeq {
+    let generator
+    let cache = []
+    let index = 0
+    
+    fn next() {
+        if index >= cache.len() {
+            let value = generator()
+            if value != null {
+                cache.push(value)
+            }
+        }
+        
+        if index < cache.len() {
+            let value = cache[index]
+            index += 1
+            return value
+        }
+        
+        return null
+    }
+    
+    fn take(n) {
+        let result = []
+        for i in range(n) {
+            let value = next()
+            if value == null {
+                break
+            }
+            result.push(value)
+        }
+        return result
+    }
+    
+    fn map(f) {
+        return LazySeq::new(|| {
+            let value = next()
+            if value != null {
+                return f(value)
+            }
+            return null
+        })
+    }
+    
+    fn filter(predicate) {
+        return LazySeq::new(|| {
+            loop {
+                let value = next()
+                if value == null {
+                    return null
+                }
+                if predicate(value) {
+                    return value
+                }
+            }
+        })
+    }
+}
+
+// Infinite sequence
+let fibonacci = LazySeq::new(|| {
+    static let a = 0
+    static let b = 1
+    let next = a
+    a = b
+    b = next + b
+    return next
+})
+
+// Only computes what's needed
+let first_10_even = fibonacci
+    .filter(|n| n % 2 == 0)
+    .take(10)

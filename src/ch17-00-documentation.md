@@ -1,5 +1,20 @@
 # Documentation
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 10 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"Documentation is a love letter to your future self. I can't count the times I've been saved by a comment I wrote six months earlier. Good documentation isn't about explaining what the code does - the code does that. It's about explaining why it exists and how to use it. Document like you'll forget everything, because you will."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most documentation is either missing, wrong, or incomprehensible. In Ruchy, docu
 Here's documentation done right:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// A high-performance cache with automatic eviction.
 /// 
 /// # Examples
@@ -87,6 +104,7 @@ impl<K, V> Cache<K, V> {
         }
     }
 }
+
 ```
 
 That's documentation that actually helps!
@@ -98,6 +116,8 @@ That's documentation that actually helps!
 Write documentation in the code:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// Single line summary of what this does.
 /// 
 /// More detailed explanation that provides context,
@@ -163,6 +183,7 @@ impl Struct {
         let temp = calculate_something()
     }
 }
+
 ```
 
 ### Documentation Tests
@@ -170,6 +191,8 @@ impl Struct {
 Ensure examples work:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// Calculates the factorial of a number.
 /// 
 /// # Examples
@@ -208,6 +231,7 @@ test src/lib.rs - factorial (line 13) ... ok
 test src/lib.rs - factorial (line 17) ... ignored
 
 test result: ok. 3 passed; 0 failed; 1 ignored
+
 ```
 
 ### API Documentation
@@ -215,6 +239,8 @@ test result: ok. 3 passed; 0 failed; 1 ignored
 Generate beautiful API docs:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// Configuration for the application.
 /// 
 /// This struct holds all configuration values needed to run
@@ -265,6 +291,7 @@ $ ruchy doc --open
 Documenting mylib v0.1.0
     Finished documentation
     Opening docs/mylib/index.html
+
 ```
 
 ### Architecture Documentation
@@ -272,6 +299,8 @@ Documenting mylib v0.1.0
 Document the big picture:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 //! # System Architecture
 //! 
 //! ## Overview
@@ -339,6 +368,7 @@ pub mod services {
     //! Services contain all business rules and orchestrate
     //! operations across multiple repositories.
 }
+
 ```
 
 ## Documentation Patterns
@@ -462,6 +492,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Code Examples
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// # Examples Section
 /// 
 /// ## Basic Usage
@@ -519,6 +551,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ///     Ok(())
 /// }
 /// ```
+
 ```
 
 ## Interactive Documentation
@@ -526,6 +559,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Documentation Site
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generate interactive documentation site
 $ ruchy doc --format html --output docs/
 
@@ -535,11 +570,14 @@ $ ruchy doc --features search,playground,examples
 // Serve documentation locally
 $ ruchy doc --serve --port 8080
 Serving documentation at http://localhost:8080
+
 ```
 
 ### API Playground
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 /// Interactive API endpoint documentation
 /// 
 /// <playground>
@@ -558,6 +596,7 @@ pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
 }
 
 // Generates interactive API tester in docs
+
 ```
 
 ## Documentation Tools
@@ -565,6 +604,8 @@ pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
 ### Auto-generation
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generate documentation from code
 #[doc_gen]
 impl ConfigBuilder {
@@ -585,11 +626,14 @@ async fn request_flow() {
 // Server -> Server: validate()
 // Server -> Server: process()
 // Server -> Client: respond()
+
 ```
 
 ### Documentation Linting
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Check documentation quality
 $ ruchy doc-lint
 Checking documentation...
@@ -603,6 +647,7 @@ Documentation score: 87/100
 
 // Enforce in CI
 $ ruchy doc-lint --min-score 90
+
 ```
 
 ## Try It Yourself

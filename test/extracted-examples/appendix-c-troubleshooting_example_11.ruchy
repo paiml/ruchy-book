@@ -1,0 +1,22 @@
+// ❌ Runtime panic
+fn divide(a: i32, b: i32) -> i32 {
+    a / b  // Panic if b is 0
+}
+
+// ✅ Safe division
+fn safe_divide(a: i32, b: i32) -> Option<i32> {
+    if b != 0 {
+        Some(a / b)
+    } else {
+        None
+    }
+}
+
+// ✅ Or return Result
+fn divide_result(a: i32, b: i32) -> Result<i32, String> {
+    if b != 0 {
+        Ok(a / b)
+    } else {
+        Err("Division by zero".to_string())
+    }
+}

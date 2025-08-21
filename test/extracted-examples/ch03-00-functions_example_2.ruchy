@@ -1,0 +1,11 @@
+// Store inputs
+let input1 = 10
+let input2 = 20
+
+// Organize calculations  
+let sum = input1 + input2
+let product = input1 * input2
+let average = sum / 2
+
+// Organize output
+let result = f"Sum: {sum}, Product: {product}, Average: {average}"

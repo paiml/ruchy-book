@@ -1,0 +1,13 @@
+// Creating instances
+let origin = Point { x: 0.0, y: 0.0 }
+let red = Color(255, 0, 0)
+
+// Field access
+let x_coord = origin.x
+
+// Struct update syntax
+let point2 = Point { x: 1.0, ..origin }
+
+// Destructuring
+let Point { x, y } = origin
+let Color(r, g, b) = red

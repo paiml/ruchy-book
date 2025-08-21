@@ -1,0 +1,2 @@
+// ❌ Only works on your computer
+let data = read_file("/Users/noah/Desktop/data.txt")

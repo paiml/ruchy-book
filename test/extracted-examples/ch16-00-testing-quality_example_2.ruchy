@@ -1,0 +1,55 @@
+// Basic test
+#[test]
+fn test_addition() {
+    assert_eq!(2 + 2, 4)
+}
+
+// Test with setup
+#[test]
+fn test_calculator() {
+    // Arrange
+    let calc = Calculator::new()
+    
+    // Act
+    let result = calc.add(5, 3)
+    
+    // Assert
+    assert_eq!(result, 8)
+}
+
+// Test expected failures
+#[test]
+#[should_panic(expected = "Division by zero")]
+fn test_divide_by_zero() {
+    divide(10, 0)
+}
+
+// Async tests
+#[async_test]
+async fn test_async_operation() {
+    let result = fetch_data().await
+    assert!(result.is_ok())
+}
+
+// Parameterized tests
+#[test_case(0, 0, 0)]
+#[test_case(1, 1, 2)]
+#[test_case(-1, 1, 0)]
+#[test_case(100, 200, 300)]
+fn test_add_parameterized(a: i32, b: i32, expected: i32) {
+    assert_eq!(add(a, b), expected)
+}
+
+// Test groups
+mod calculator_tests {
+    use super::*
+    
+    #[test]
+    fn test_add() { /* ... */ }
+    
+    #[test]
+    fn test_subtract() { /* ... */ }
+    
+    #[test]
+    fn test_multiply() { /* ... */ }
+}

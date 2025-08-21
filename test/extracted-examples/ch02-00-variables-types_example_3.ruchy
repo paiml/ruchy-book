@@ -1,0 +1,16 @@
+// Store user information
+let username = "programmer2024"
+let login_count = 1
+let is_premium = false
+
+// Use variables in calculations
+let welcome_bonus = 100
+let total_points = welcome_bonus + (login_count * 10)
+
+// Update information (variables are mutable by default)
+login_count = login_count + 1
+is_premium = total_points > 150
+
+println(f"Welcome back, {username}!")
+println(f"Logins: {login_count}, Points: {total_points}")
+println(f"Premium status: {is_premium}")

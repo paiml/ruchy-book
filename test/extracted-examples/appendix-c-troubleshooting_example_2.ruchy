@@ -1,0 +1,9 @@
+// ❌ Error
+if condition {
+    do_something()
+// Missing closing brace
+
+// ✅ Fixed  
+if condition {
+    do_something()
+}

@@ -1,0 +1,25 @@
+// Automated system maintenance
+fn auto_cleanup() {
+    // Clean temp files older than 7 days
+    let temp_dir = "/tmp"
+    let cutoff_time = current_time() - days(7)
+    
+    for file in fs::walk(temp_dir) {
+        if fs::modified_time(file) < cutoff_time {
+            fs::remove(file)
+            println(f"Cleaned: {file}")
+        }
+    }
+    
+    // Clear package manager cache
+    if fs::dir_size("/var/cache/apt") > gb(1) {
+        run_command("apt-get clean")
+    }
+    
+    // Rotate logs
+    for log in fs::glob("/var/log/*.log") {
+        if fs::size(log) > mb(100) {
+            fs::rotate_log(log, keep_count: 5)
+        }
+    }
+}

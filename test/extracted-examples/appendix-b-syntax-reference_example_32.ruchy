@@ -1,0 +1,13 @@
+// Declarative macro
+macro_rules! say_hello {
+    () => {
+        println!("Hello!")
+    };
+    ($name:expr) => {
+        println!("Hello, {}!", $name)
+    };
+}
+
+// Usage
+say_hello!()
+say_hello!("World")

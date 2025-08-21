@@ -1,5 +1,20 @@
 # Systems Programming
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The first time I wrote a system monitor that could track CPU usage, memory consumption, and disk I/O in real-time, I finally understood what my computer was actually doing. Systems programming isn't about fighting the OS - it's about dancing with it. Learn the steps, and your programs can do things you never imagined."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most high-level languages abstract away the system, but real power comes from un
 Here's a system resource monitor in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: system_monitor.ruchy
 // Real-time system resource monitoring
 
@@ -73,6 +90,7 @@ loop {
     
     sleep(1000)  // Update every second
 }
+
 ```
 
 That's systems programming - direct access to OS resources with safety!
@@ -84,6 +102,8 @@ That's systems programming - direct access to OS resources with safety!
 Work with processes at the system level:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Current process information
 let pid = process::current_pid()
 let ppid = process::parent_pid()
@@ -113,6 +133,7 @@ proc.kill()     // Force kill
 let child = process::spawn("ls", ["-la"])
 let output = child.wait_with_output()
 println(output.stdout)
+
 ```
 
 ### Signal Handling
@@ -120,6 +141,8 @@ println(output.stdout)
 Respond to system signals properly:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Register signal handlers
 signal::on(SIGINT, || {
     println("\nGracefully shutting down...")
@@ -144,6 +167,7 @@ signal::send(target_pid, SIGUSR1)
 signal::block([SIGPIPE])
 critical_operation()
 signal::unblock([SIGPIPE])
+
 ```
 
 ### Memory Management
@@ -151,6 +175,8 @@ signal::unblock([SIGPIPE])
 Monitor and control memory usage:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Get memory information
 let mem_info = system::memory_info()
 println(f"Total: {mem_info.total}")
@@ -177,6 +203,7 @@ shared.write(0, data)
 // In another process
 let shared = memory::open_shared("my_buffer")
 let data = shared.read(0, 1024)
+
 ```
 
 ## Practical System Tools
@@ -184,6 +211,8 @@ let data = shared.read(0, 1024)
 ### Service Manager
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: service_manager.ruchy
 // Manage system services
 
@@ -294,11 +323,14 @@ loop {
         _ => println("Unknown command")
     }
 }
+
 ```
 
 ### System Health Checker
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: health_check.ruchy
 // Monitor system health and alert on issues
 
@@ -438,11 +470,14 @@ loop {
     
     sleep(5000)  // Check every 5 seconds
 }
+
 ```
 
 ### Process Tree Visualizer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: process_tree.ruchy
 // Visualize process hierarchy
 
@@ -497,6 +532,7 @@ let total_cpu = all_procs.map(|p| p.cpu_percent).sum()
 println(f"\nTotal Processes: {all_procs.len()}")
 println(f"Total Memory: {format_size(total_memory)}")
 println(f"Total CPU: {total_cpu:.1}%")
+
 ```
 
 ## Advanced System Features
@@ -506,6 +542,8 @@ println(f"Total CPU: {total_cpu:.1}%")
 Monitor file system changes in real-time:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Watch for file system events
 let watcher = fs::watch("/path/to/watch", RECURSIVE)
 
@@ -523,11 +561,14 @@ watcher.on("deleted", |path| {
 })
 
 watcher.start()
+
 ```
 
 ### System Automation
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Automated system maintenance
 fn auto_cleanup() {
     // Clean temp files older than 7 days
@@ -553,6 +594,7 @@ fn auto_cleanup() {
         }
     }
 }
+
 ```
 
 ## Try It Yourself

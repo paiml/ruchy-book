@@ -1,5 +1,20 @@
 # Variables and Types
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The biggest mistake I made learning programming was thinking variables were like algebra. In programming, variables are more like labeled boxes where you can store different things. Once I understood this, everything clicked."* - Noah Gift
 
 ## The Problem
@@ -13,12 +28,15 @@ In most languages, this involves type declarations, memory management, and compl
 Here's how you store and use data in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let name = "Alice"
 let age = 25
 let is_learning = true
 
 println(f"Hi {name}, you're {age} years old!")
 println(f"Currently learning Ruchy: {is_learning}")
+
 ```
 
 Output:
@@ -60,6 +78,8 @@ Variables in Ruchy follow simple rules:
 ### Different Data Types
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Text data
 let first_name = "John"
 let last_name = "Doe"
@@ -79,11 +99,14 @@ println(f"Student: {full_name}")
 println(f"Score: {score} ({percentage}%)")
 println(f"Temperature: {temperature}°C")
 println(f"Status: student={is_student}, graduated={has_graduated}")
+
 ```
 
 ### Working with Variables
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Store user information
 let username = "programmer2024"
 let login_count = 1
@@ -100,11 +123,14 @@ is_premium = total_points > 150
 println(f"Welcome back, {username}!")
 println(f"Logins: {login_count}, Points: {total_points}")
 println(f"Premium status: {is_premium}")
+
 ```
 
 ### Collections and Lists
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Store multiple values
 let favorite_languages = ["Python", "Rust", "Ruchy"]
 let daily_temperatures = [22.5, 25.0, 23.8, 26.2]
@@ -116,31 +142,41 @@ println(f"Today's temp: {daily_temperatures[0]}°C")
 
 // Get list length
 println(f"I know {favorite_languages.len()} languages")
+
 ```
 
 ## Common Pitfalls
 
 ### Forgetting let for New Variables
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This won't work
 user_name = "Alice"
+
 ```
 Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
 
 ### Mixing Data Types Incorrectly
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This might not work as expected
 let age = "25"
 let next_year = age + 1
+
 ```
 Error: Can't add number to string. Use `let age = 25` (without quotes).
 
 ### Case Sensitivity Confusion
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ These are different variables
 let userName = "Alice"
 let username = "Bob"
 println(userName)  // Prints "Alice", not "Bob"
+
 ```
 Warning: Stick to snake_case: `user_name`.
 
@@ -153,9 +189,12 @@ Ever wonder how Ruchy's simple variables become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let name = "Alice"
 let age = 25
 println(f"Hi {name}, age {age}")
+
 ```
 
 Becomes this optimized Rust:
@@ -212,6 +251,8 @@ $ ruchy repl
 
 **Example Solution:**
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Personal profile
 let name = "Alex"
 let age = 28
@@ -236,6 +277,7 @@ let email = f"{username}@example.com"
 let is_adult = age >= 18
 let lives_in_tech_city = city == "San Francisco"
 let ready_for_job = is_adult && lives_in_tech_city
+
 ```
 
 Play with different combinations - this is where programming gets creative!

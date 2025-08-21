@@ -1,0 +1,19 @@
+// Text data
+let first_name = "John"
+let last_name = "Doe"
+let full_name = f"{first_name} {last_name}"
+
+// Numeric data
+let score = 95
+let percentage = 95.5
+let temperature = -10
+
+// Boolean (true/false) data
+let is_student = true
+let has_graduated = false
+let is_enrolled = !has_graduated
+
+println(f"Student: {full_name}")
+println(f"Score: {score} ({percentage}%)")
+println(f"Temperature: {temperature}°C")
+println(f"Status: student={is_student}, graduated={has_graduated}")

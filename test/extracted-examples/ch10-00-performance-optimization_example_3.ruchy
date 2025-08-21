@@ -1,0 +1,51 @@
+// Micro-benchmarks
+use std::bench;
+
+bench::suite("String Operations", {
+    "concatenation" => || {
+        let s = ""
+        for i in range(1000) {
+            s += i.to_s()
+        }
+    },
+    
+    "string builder" => || {
+        let builder = StringBuilder::new()
+        for i in range(1000) {
+            builder.append(i.to_s())
+        }
+        builder.to_string()
+    },
+    
+    "join" => || {
+        range(1000).map(|i| i.to_s()).join("")
+    }
+})
+
+// Results:
+// String Operations
+//   concatenation:  2.3ms ± 0.1ms
+//   string builder: 0.4ms ± 0.02ms  [FASTEST]
+//   join:          0.6ms ± 0.03ms
+
+// Custom benchmarks
+fn benchmark_algorithm(name, func, data) {
+    let times = []
+    
+    // Warmup
+    for i in range(5) {
+        func(data)
+    }
+    
+    // Measure
+    for i in range(100) {
+        let time = perf::measure {
+            func(data)
+        }
+        times.push(time)
+    }
+    
+    let avg = times.mean()
+    let std = times.std_dev()
+    println(f"{name}: {avg:.2}ms ± {std:.2}ms")
+}
