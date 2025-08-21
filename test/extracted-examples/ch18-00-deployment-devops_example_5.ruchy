@@ -1,0 +1,38 @@
+// metrics.ruchy
+use metrics::{counter, gauge, histogram};
+
+// Application metrics
+counter!("requests_total", 1, "endpoint" => "/api/users")
+histogram!("request_duration_seconds", duration.as_secs_f64())
+gauge!("active_connections", connections.len() as f64)
+
+// Prometheus endpoint
+#[get("/metrics")]
+async fn metrics_endpoint() -> String {
+    prometheus::gather()
+}
+
+// Grafana dashboard configuration
+let dashboard = json!({
+    "title": "Application Metrics",
+    "panels": [
+        {
+            "title": "Request Rate",
+            "targets": [{
+                "expr": "rate(requests_total[5m])"
+            }]
+        },
+        {
+            "title": "Error Rate",
+            "targets": [{
+                "expr": "rate(requests_total{status=~'5..'}[5m])"
+            }]
+        },
+        {
+            "title": "P99 Latency",
+            "targets": [{
+                "expr": "histogram_quantile(0.99, request_duration_seconds)"
+            }]
+        }
+    ]
+})

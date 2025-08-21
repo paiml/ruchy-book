@@ -1,5 +1,20 @@
 # Error Handling
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/12 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 12 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"Errors aren't failures - they're information. The best code doesn't avoid errors; it embraces them, learns from them, and handles them gracefully. I've seen more systems fail from ignored errors than from actual bugs. Handle your errors like a professional, and your software will run like a dream."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most languages treat errors as afterthoughts - exceptions thrown into the void. 
 Here's robust error handling in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Define error types
 enum AppError {
     NetworkError(String)
@@ -56,6 +73,7 @@ match fetch_user(123) {
         return_default_user()
     }
 }
+
 ```
 
 That's explicit, recoverable error handling!
@@ -67,6 +85,8 @@ That's explicit, recoverable error handling!
 The foundation of error handling:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Result is an enum with two variants
 enum Result<T, E> {
     Ok(T)    // Success with value
@@ -94,6 +114,7 @@ match divide(10.0, 0.0) {
     Ok(value) => println(f"Success: {value}")
     Err(error) => println(f"Failed: {error}")
 }
+
 ```
 
 ### Option Type
@@ -101,6 +122,8 @@ match divide(10.0, 0.0) {
 Handle absent values safely:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Option represents nullable values
 enum Option<T> {
     Some(T)  // Value present
@@ -130,6 +153,7 @@ if let Some(u) = user {
 let email = find_user("Bob")
     .map(|u| u.email)
     .unwrap_or("no-email@example.com")
+
 ```
 
 ### Error Propagation
@@ -137,6 +161,8 @@ let email = find_user("Bob")
 The ? operator makes error handling elegant:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Without ? operator - verbose
 fn process_file_verbose(path: String) -> Result<String, Error> {
     let file = match open_file(path) {
@@ -174,6 +200,7 @@ fn complex_operation() -> Result<Data, Error> {
     
     return Ok(data)
 }
+
 ```
 
 ### Custom Error Types
@@ -181,6 +208,8 @@ fn complex_operation() -> Result<Data, Error> {
 Build rich error information:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Detailed error enum
 enum DatabaseError {
     ConnectionFailed { host: String, port: i32 }
@@ -239,6 +268,7 @@ impl Error {
         return messages
     }
 }
+
 ```
 
 ## Error Handling Patterns
@@ -248,6 +278,8 @@ impl Error {
 Exit early on errors:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn validate_user(user: User) -> Result<User, ValidationError> {
     // Early return on validation failures
     if user.name.is_empty() {
@@ -265,6 +297,7 @@ fn validate_user(user: User) -> Result<User, ValidationError> {
     // All validations passed
     return Ok(user)
 }
+
 ```
 
 ### Error Recovery
@@ -272,6 +305,8 @@ fn validate_user(user: User) -> Result<User, ValidationError> {
 Gracefully recover from errors:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Retry with exponential backoff
 fn fetch_with_retry<T>(
     operation: Fn() -> Result<T, Error>,
@@ -336,6 +371,7 @@ impl CircuitBreaker {
         }
     }
 }
+
 ```
 
 ### Error Context
@@ -343,6 +379,8 @@ impl CircuitBreaker {
 Add context to errors:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Trait for adding context
 trait Context<T> {
     fn context(self, msg: String) -> Result<T, Error>
@@ -381,6 +419,7 @@ fn process_order(order_id: i32) -> Result<Order, Error> {
     
     return Ok(processed)
 }
+
 ```
 
 ## Real-World Error Handling
@@ -388,6 +427,8 @@ fn process_order(order_id: i32) -> Result<Order, Error> {
 ### API Error Responses
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Structured API errors
 struct ApiError {
     status: i32
@@ -437,11 +478,14 @@ impl IntoResponse for ApiError {
             .json(self)
     }
 }
+
 ```
 
 ### Validation Pipeline
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Composable validators
 type Validator<T> = Fn(T) -> Result<T, ValidationError>
 
@@ -482,11 +526,14 @@ match validate_pipeline(user, user_validators) {
         }
     }
 }
+
 ```
 
 ### Async Error Handling
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Async Result type
 async fn fetch_data(url: String) -> Result<Data, Error> {
     let response = http::get(url).await?
@@ -520,11 +567,14 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
     let futures = urls.map(|url| fetch_data(url))
     return join_all(futures).await
 }
+
 ```
 
 ## Testing Error Cases
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 #[test]
 fn test_error_handling() {
     // Test expected errors
@@ -552,6 +602,7 @@ fn test_panic_condition() {
 fn never_panics(input: RandomInput) {
     let _ = safe_process(input)  // Should never panic
 }
+
 ```
 
 ## Try It Yourself

@@ -1,0 +1,48 @@
+// Simple macro
+macro! say_hello {
+    () => {
+        println("Hello, World!")
+    }
+    ($name:expr) => {
+        println(f"Hello, {$name}!")
+    }
+}
+
+say_hello!()           // Prints: Hello, World!
+say_hello!("Alice")    // Prints: Hello, Alice!
+
+// Macro with repetition
+macro! vec_of_strings {
+    ($($x:expr),*) => {
+        vec![$(String::from($x)),*]
+    }
+}
+
+let strings = vec_of_strings!["one", "two", "three"]
+
+// Recursive macro
+macro! count {
+    () => { 0 }
+    ($head:expr) => { 1 }
+    ($head:expr, $($tail:expr),*) => {
+        1 + count!($($tail),*)
+    }
+}
+
+let n = count!(a, b, c, d)  // 4
+
+// Macro generating match arms
+macro! handle_codes {
+    ($($code:expr => $message:expr),*) => {
+        match status_code {
+            $($code => println($message)),*
+            _ => println("Unknown status")
+        }
+    }
+}
+
+handle_codes! {
+    200 => "OK",
+    404 => "Not Found",
+    500 => "Internal Error"
+}

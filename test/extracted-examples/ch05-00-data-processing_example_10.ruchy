@@ -1,0 +1,107 @@
+// expense_tracker.ruchy - Track and analyze personal expenses
+
+let EXPENSES_FILE = "expenses.csv"
+
+fn save_expense(date, category, amount, description) {
+    let entry = f"{date},{category},{amount},{description}\n"
+    append_file(EXPENSES_FILE, entry)
+}
+
+fn load_expenses() {
+    if !file_exists(EXPENSES_FILE) {
+        // Create header if file doesn't exist
+        write_file(EXPENSES_FILE, "Date,Category,Amount,Description\n")
+        return []
+    }
+    
+    let lines = read_lines(EXPENSES_FILE)[1..]  // Skip header
+    let expenses = []
+    
+    for line in lines {
+        let parts = line.split(",")
+        expenses.push({
+            "date": parts[0],
+            "category": parts[1], 
+            "amount": parts[2].to_f(),
+            "description": parts[3]
+        })
+    }
+    
+    return expenses
+}
+
+fn analyze_expenses(expenses) {
+    let total = expenses.map(|e| e.amount).sum()
+    let average = total / expenses.len()
+    
+    // Category breakdown
+    let categories = {}
+    for expense in expenses {
+        categories[expense.category] = categories.get(expense.category, 0) + expense.amount
+    }
+    
+    println(f"\n💰 Expense Analysis ({expenses.len()} transactions)")
+    println(f"Total Spent: ${total:.2f}")
+    println(f"Average Transaction: ${average:.2f}")
+    
+    println(f"\n📊 Spending by Category:")
+    for category, amount in categories.items().sort_by(|item| -item.value) {
+        let percentage = (amount * 100) / total
+        println(f"  {category:15}: ${amount:7.2f} ({percentage:5.1f}%)")
+    }
+    
+    // Recent transactions
+    let recent = expenses.sort_by(|e| -e.date)[..5]  // Last 5
+    println(f"\n🕒 Recent Transactions:")
+    for expense in recent {
+        println(f"  {expense.date} ${expense.amount:6.2f} {expense.category:12} {expense.description}")
+    }
+}
+
+fn main_menu() {
+    println("\n=== Personal Expense Tracker ===")
+    println("1. Add expense")
+    println("2. View analysis") 
+    println("3. Export data")
+    println("4. Quit")
+    
+    let choice = input("\nChoose option: ")
+    
+    match choice {
+        "1" => {
+            let date = input("Date (YYYY-MM-DD): ")
+            let category = input("Category: ")
+            let amount = input("Amount: $").to_f()
+            let description = input("Description: ")
+            
+            save_expense(date, category, amount, description)
+            println("✅ Expense added!")
+        }
+        "2" => {
+            let expenses = load_expenses()
+            if expenses.is_empty() {
+                println("📝 No expenses recorded yet")
+            } else {
+                analyze_expenses(expenses)
+            }
+        }
+        "3" => {
+            println(f"📁 Data exported to: {EXPENSES_FILE}")
+            println("Open in spreadsheet application for advanced analysis")
+        }
+        "4" => {
+            println("💸 Happy budgeting!")
+            return false
+        }
+        _ => {
+            println("❌ Invalid choice")
+        }
+    }
+    
+    return true
+}
+
+// Main program loop
+while main_menu() {
+    // Continue until user quits
+}

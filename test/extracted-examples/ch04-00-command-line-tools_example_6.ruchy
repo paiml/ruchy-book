@@ -1,0 +1,27 @@
+// File: batch_renamer.ruchy  
+// Renames multiple files with patterns
+
+println("=== Batch File Renamer ===")
+let directory = input("Enter directory path: ")
+let pattern = input("Enter pattern to find: ")
+let replacement = input("Enter replacement: ")
+
+let files = list_files(directory)
+let renamed_count = 0
+
+for file in files {
+    if file.contains(pattern) {
+        let new_name = file.replace(pattern, replacement)
+        let old_path = join_path(directory, file)
+        let new_path = join_path(directory, new_name)
+        
+        if rename_file(old_path, new_path) {
+            println(f"Renamed: {file} -> {new_name}")
+            renamed_count += 1
+        } else {
+            println(f"Failed to rename: {file}")
+        }
+    }
+}
+
+println(f"\nRenamed {renamed_count} files")

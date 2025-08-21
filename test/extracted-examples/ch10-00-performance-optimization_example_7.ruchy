@@ -1,0 +1,46 @@
+// File: io_optimization.ruchy
+// Speed up I/O operations
+
+// 1. Buffered I/O
+fn process_file_naive(path) {
+    let file = open(path)
+    while !file.eof() {
+        let byte = file.read_byte()  // Syscall for each byte
+        process(byte)
+    }
+}
+
+fn process_file_optimized(path) {
+    let file = BufferedReader::new(open(path), 8192)
+    while !file.eof() {
+        let byte = file.read_byte()  // Reads from buffer
+        process(byte)
+    }
+}
+
+// 2. Async I/O
+async fn fetch_all_naive(urls) {
+    let results = []
+    for url in urls {
+        let data = http::get(url).await()  // Sequential
+        results.push(data)
+    }
+    return results
+}
+
+async fn fetch_all_optimized(urls) {
+    let futures = urls.map(|url| {
+        http::get(url)  // Concurrent
+    })
+    return async::wait_all(futures)
+}
+
+// 3. Memory-mapped files
+fn process_huge_file(path) {
+    let mmap = MemoryMap::open(path)
+    
+    // Process in parallel chunks
+    parallel::for_chunks(mmap, 1_000_000, |chunk| {
+        process_chunk(chunk)
+    })
+}

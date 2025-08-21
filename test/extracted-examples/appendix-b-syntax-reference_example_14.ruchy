@@ -1,0 +1,24 @@
+// By value (move)
+fn take_ownership(s: String) {
+    // s is moved here
+}
+
+// By reference (borrow)
+fn borrow_value(s: &String) -> usize {
+    s.len()  // s is borrowed
+}
+
+// Mutable reference
+fn modify_value(s: &mut String) {
+    s.push_str(" modified")
+}
+
+// Default parameters
+fn connect(host: String, port: u16 = 8080, timeout: u64 = 5000) {
+    // Implementation
+}
+
+// Variable arguments
+fn sum(numbers: &[i32]) -> i32 {
+    numbers.iter().sum()
+}

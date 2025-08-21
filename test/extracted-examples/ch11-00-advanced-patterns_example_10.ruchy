@@ -1,0 +1,59 @@
+// Command side - writes
+class CommandBus {
+    let handlers = {}
+    
+    fn register(command_type, handler) {
+        handlers[command_type] = handler
+    }
+    
+    fn dispatch(command) {
+        let handler = handlers[command.type]
+        if !handler {
+            throw f"No handler for command: {command.type}"
+        }
+        
+        return handler(command)
+    }
+}
+
+// Query side - reads
+class QueryBus {
+    let handlers = {}
+    
+    fn register(query_type, handler) {
+        handlers[query_type] = handler
+    }
+    
+    fn query(query) {
+        let handler = handlers[query.type]
+        if !handler {
+            throw f"No handler for query: {query.type}"
+        }
+        
+        return handler(query)
+    }
+}
+
+// Commands modify state
+command_bus.register("CreateOrder", |cmd| {
+    let order = Order::new(cmd.data)
+    order.validate()
+    event_store.append(OrderPlaced::new(order))
+    return order.id
+})
+
+// Queries read projections
+query_bus.register("GetOrdersByCustomer", |query| {
+    return read_model.get_customer_orders(query.customer_id)
+})
+
+// Usage
+let order_id = command_bus.dispatch({
+    type: "CreateOrder",
+    data: {customer: 123, items: [...]}
+})
+
+let orders = query_bus.query({
+    type: "GetOrdersByCustomer",
+    customer_id: 123
+})

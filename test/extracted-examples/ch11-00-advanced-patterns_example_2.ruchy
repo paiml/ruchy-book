@@ -1,0 +1,53 @@
+// Fluent interface for configuration
+class ServerBuilder {
+    let config = {
+        port: 8080,
+        host: "localhost",
+        threads: 4,
+        timeout: 30000,
+        middleware: [],
+        routes: {}
+    }
+    
+    fn port(p) {
+        config.port = p
+        return self  // Enable chaining
+    }
+    
+    fn host(h) {
+        config.host = h
+        return self
+    }
+    
+    fn threads(t) {
+        config.threads = t
+        return self
+    }
+    
+    fn use(middleware) {
+        config.middleware.push(middleware)
+        return self
+    }
+    
+    fn route(path, handler) {
+        config.routes[path] = handler
+        return self
+    }
+    
+    fn build() {
+        validate_config()
+        return Server::new(config)
+    }
+}
+
+// Clean, readable configuration
+let server = ServerBuilder::new()
+    .port(3000)
+    .host("0.0.0.0")
+    .threads(8)
+    .use(cors())
+    .use(auth())
+    .use(logging())
+    .route("/", home_handler)
+    .route("/api", api_handler)
+    .build()

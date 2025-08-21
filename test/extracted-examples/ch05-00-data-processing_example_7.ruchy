@@ -1,0 +1,60 @@
+// File: finance_processor.ruchy
+// Processes financial transactions and generates reports
+
+println("=== Financial Data Processor ===")
+
+// Transaction data structure
+let transactions = [
+    {"date": "2024-01-15", "type": "income", "category": "salary", "amount": 5000, "description": "Monthly salary"},
+    {"date": "2024-01-16", "type": "expense", "category": "rent", "amount": 1200, "description": "Apartment rent"},
+    {"date": "2024-01-17", "type": "expense", "category": "groceries", "amount": 85, "description": "Weekly shopping"},
+    {"date": "2024-01-18", "type": "expense", "category": "utilities", "amount": 150, "description": "Electricity bill"},
+    {"date": "2024-01-20", "type": "income", "category": "freelance", "amount": 800, "description": "Web design project"}
+]
+
+// Calculate totals
+let total_income = transactions.filter(|t| t.type == "income").map(|t| t.amount).sum()
+let total_expenses = transactions.filter(|t| t.type == "expense").map(|t| t.amount).sum()
+let net_income = total_income - total_expenses
+
+println(f"Financial Summary:")
+println(f"Total Income: ${total_income}")
+println(f"Total Expenses: ${total_expenses}")
+println(f"Net Income: ${net_income}")
+println(f"Savings Rate: {(net_income * 100 / total_income):.1f}%")
+
+// Expense breakdown by category
+let expense_categories = {}
+for transaction in transactions.filter(|t| t.type == "expense") {
+    let category = transaction.category
+    expense_categories[category] = expense_categories.get(category, 0) + transaction.amount
+}
+
+println(f"\nExpense Breakdown:")
+for category, amount in expense_categories.items() {
+    let percentage = (amount * 100) / total_expenses
+    println(f"  {category.capitalize()}: ${amount} ({percentage:.1f}%)")
+}
+
+// Budget analysis
+let budget_limits = {
+    "rent": 1500,
+    "groceries": 400, 
+    "utilities": 200,
+    "entertainment": 300
+}
+
+println(f"\nBudget Analysis:")
+for category, limit in budget_limits.items() {
+    let spent = expense_categories.get(category, 0)
+    let remaining = limit - spent
+    let status = if remaining >= 0 { "✅ Under budget" } else { "❌ Over budget" }
+    println(f"  {category.capitalize()}: ${spent}/${limit} - {status}")
+}
+
+// Monthly trend (if we had multiple months of data)
+println(f"\nTransaction History ({transactions.len()} transactions):")
+for transaction in transactions.sort_by(|t| t.date) {
+    let emoji = if transaction.type == "income" { "💰" } else { "💸" }
+    println(f"  {transaction.date} {emoji} ${transaction.amount} - {transaction.description}")
+}

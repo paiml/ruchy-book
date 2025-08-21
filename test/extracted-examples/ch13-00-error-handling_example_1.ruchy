@@ -1,0 +1,43 @@
+// Define error types
+enum AppError {
+    NetworkError(String)
+    ParseError(String)
+    NotFound(String)
+    Unauthorized
+}
+
+// Functions return Result
+fn fetch_user(id: i32) -> Result<User, AppError> {
+    let response = http::get(f"/api/users/{id}")?  // ? propagates errors
+    
+    if response.status == 404 {
+        return Err(AppError::NotFound(f"User {id} not found"))
+    }
+    
+    if response.status == 401 {
+        return Err(AppError::Unauthorized)
+    }
+    
+    let user = parse_json(response.body)
+        .map_err(|e| AppError::ParseError(e.to_string()))?
+    
+    return Ok(user)
+}
+
+// Handle errors explicitly
+match fetch_user(123) {
+    Ok(user) => {
+        println(f"Found user: {user.name}")
+    }
+    Err(AppError::NotFound(msg)) => {
+        println(f"User not found: {msg}")
+    }
+    Err(AppError::NetworkError(e)) => {
+        println(f"Network problem: {e}")
+        retry_with_backoff()
+    }
+    Err(e) => {
+        log_error(e)
+        return_default_user()
+    }
+}

@@ -1,0 +1,37 @@
+// Robust file processor with error handling
+
+fn process_file(filename) {
+    // Check if file exists
+    if !file_exists(filename) {
+        println(f"❌ Error: File '{filename}' does not exist")
+        return false
+    }
+    
+    // Check if file is readable
+    if !file_readable(filename) {
+        println(f"❌ Error: Cannot read file '{filename}' (permission denied?)")
+        return false
+    }
+    
+    // Try to read file
+    let content = try {
+        read_file(filename)
+    } catch error {
+        println(f"❌ Error reading file: {error}")
+        return false
+    }
+    
+    // Process content
+    let word_count = content.split_whitespace().len()
+    println(f"✅ File processed: {word_count} words")
+    return true
+}
+
+// Main program
+let filename = input("Enter filename: ")
+if process_file(filename) {
+    println("Processing completed successfully!")
+} else {
+    println("Processing failed!")
+    exit(1)
+}

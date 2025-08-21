@@ -1,0 +1,17 @@
+// Closure syntax
+let add = |a, b| a + b
+let result = add(5, 3)
+
+// Explicit types
+let multiply: fn(i32, i32) -> i32 = |a, b| a * b
+
+// Capturing environment
+let x = 10
+let add_x = |y| x + y  // Captures x
+let result = add_x(5)  // 15
+
+// Move capture
+let name = String::from("Alice")
+let greeter = move |greeting| {
+    f"{greeting}, {name}!"  // name is moved into closure
+}

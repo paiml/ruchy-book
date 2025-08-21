@@ -1,5 +1,20 @@
 # Traits and Generics
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/11 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 11 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The moment I understood traits and generics, programming became like building with LEGO blocks - every piece fits perfectly with every other piece. It's not about writing less code; it's about writing code once that works everywhere. That's the real power of abstraction."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most languages force you to choose between type safety and flexibility. In Ruchy
 Here's the power of traits and generics:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Define behavior with traits
 trait Serializable {
     fn serialize(self) -> String
@@ -51,6 +68,7 @@ impl Serializable for User {
 let user = User{name: "Alice", email: "alice@example.com", age: 30}
 save_to_file(user, "user.json")  // Generic function, specific type
 let loaded: User = load_from_file("user.json")  // Type safe!
+
 ```
 
 That's abstraction without compromise!
@@ -62,6 +80,8 @@ That's abstraction without compromise!
 Traits define shared behavior:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple trait
 trait Drawable {
     fn draw(self)
@@ -104,6 +124,7 @@ trait Animal {
 trait Dog: Animal {
     fn wag_tail(self)
 }
+
 ```
 
 ### Implementing Traits
@@ -111,6 +132,8 @@ trait Dog: Animal {
 Give types new capabilities:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 struct Point {
     x: f64
     y: f64
@@ -148,6 +171,7 @@ impl Drawable for String {
 }
 
 "Hello".draw()  // Extension methods!
+
 ```
 
 ### Generic Functions
@@ -155,6 +179,8 @@ impl Drawable for String {
 Write once, use with any type:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple generic function
 fn swap<T>(a: mut T, b: mut T) {
     let temp = a
@@ -190,6 +216,7 @@ where
     let converted: T = T::from(y)
     return vec![x.clone(), converted]
 }
+
 ```
 
 ### Generic Types
@@ -197,6 +224,8 @@ where
 Build flexible data structures:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generic struct
 struct Pair<T> {
     first: T
@@ -237,6 +266,7 @@ impl<T: Ord> SortedVec<T> {
         self.items.insert(pos, item)
     }
 }
+
 ```
 
 ## Practical Applications
@@ -244,6 +274,8 @@ impl<T: Ord> SortedVec<T> {
 ### Generic Collections
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Custom collection with traits
 struct Cache<K: Hash + Eq, V> {
     map: HashMap<K, V>
@@ -288,6 +320,7 @@ cache.put("alice", alice_user)
 
 let cache2: Cache<i32, Vec<String>> = Cache::new(50)
 cache2.put(1, vec!["data"])
+
 ```
 
 ### Trait Objects
@@ -295,6 +328,8 @@ cache2.put(1, vec!["data"])
 Dynamic dispatch when needed:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Trait for plugins
 trait Plugin {
     fn name(self) -> String
@@ -327,11 +362,14 @@ let plugins: Vec<Box<dyn Plugin>> = vec![
 for plugin in plugins {
     plugin.execute(context)?
 }
+
 ```
 
 ### Builder Pattern with Generics
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generic builder
 struct Builder<T> {
     value: T
@@ -365,11 +403,14 @@ let user = Builder::new(User::new())
     .with(|u| { u.name = "Alice"; u })
     .with(|u| { u.role = Role::Admin; u })
     .build()
+
 ```
 
 ### Advanced Trait Patterns
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Associated types pattern
 trait Graph {
     type Node
@@ -423,6 +464,7 @@ let post_id: Id<Post> = Id::new("post_456")
 
 // Won't compile - type safety!
 // let wrong = user_id == post_id
+
 ```
 
 ## Performance Considerations
@@ -430,6 +472,8 @@ let post_id: Id<Post> = Id::new("post_456")
 ### Zero-Cost Abstractions
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generics are monomorphized - no runtime cost
 fn generic_add<T: Add>(a: T, b: T) -> T {
     return a + b  // Compiles to specific add instruction
@@ -452,11 +496,14 @@ fn process<T: Send + Sync>(item: T) {
 fn hot_path<T: Copy>(x: T) -> T {
     return x  // Will be inlined
 }
+
 ```
 
 ### Static vs Dynamic Dispatch
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Static dispatch (faster)
 fn static_dispatch<T: Display>(item: T) {
     println(item)  // Direct call, no indirection
@@ -470,6 +517,7 @@ fn dynamic_dispatch(item: Box<dyn Display>) {
 // Choose based on needs:
 // - Static: Known types, performance critical
 // - Dynamic: Plugin systems, heterogeneous collections
+
 ```
 
 ## Try It Yourself

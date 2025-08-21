@@ -2,26 +2,20 @@
 
 **Single entry point for Ruchy compiler integration with book examples**
 
-## 🚨 CRITICAL UPDATE - December 21, 2024
+## 🚨 CRITICAL UPDATE - August 21, 2025
 
-### 🔧 v0.7.22 Quality Sprint: Interpreter Complexity Reduction
-- **Toyota Way Applied**: Stop the Line - fixing critical quality violations
-- **Complexity Reduced**: evaluate_expr from 209 → 138 (34% improvement)
-- **Reliability**: 34 comprehensive interpreter tests added
-- **CI/CD**: Mandatory quality gates enforced
-- **Next Phase**: Further reduction to < 50 complexity
-
-### ✅ v0.7.10 Success: File Operations Fixed!
-- **Bug #001 RESOLVED**: File operations (`check`, `transpile`) now work correctly
-- **3.7x Improvement**: Compatibility jumped from 6% → 22% (57/259 examples passing)
-- **100% One-Liners**: All 20 one-liner tests passing perfectly
-- **Next Target**: 80% compatibility with struct/enum/trait implementation
+### ✅ v0.9.0 Release: Significant Compatibility Improvements!
+- **Array indexing FIXED**: Bug #003 resolved - `x[0]` now works
+- **39% book compatibility** (107/272 examples) - up from 25% 
+- **100% one-liner support** maintained (20/20 passing)
+- **New chapter added**: Ch01-03 Interpreter Scripting (13/13 examples working)
+- **+41 working examples**: Major progress across multiple chapters
 
 ## 🎯 For Ruchy Upstream Project - How to Consume This Information
 
 ### Real-Time Status Dashboard
 - **Live CI Results**: https://github.com/paiml/ruchy-book/actions/workflows/test-all-examples.yml
-- **Known Bugs**: [`docs/bugs/ruchy-runtime-bugs.md`](./docs/bugs/ruchy-runtime-bugs.md) - Bug #001 FIXED in v0.7.10!
+- **Known Issues**: Clear parse error patterns identified (see below)
 - **Download Artifacts**: Get `test-report-[run-number]` containing:
   - `reports/status-report.json` - Machine-readable test results
   - `reports/status-report.md` - Human-readable status  
@@ -67,112 +61,98 @@ cat reports/status-report.json | jq '.chapters | to_entries[] |
   {chapter: .key, broken: .value.failing_examples}'
 ```
 
-## 📊 Current Test Results (v0.7.10)
+## 📊 Current Test Results (v0.9.0)
 
-### Overall Statistics
-| Metric | Value | Change from v0.7.7 |
+### Overall Statistics  
+| Metric | Value | Change from v0.8.0 |
 |--------|-------|-----------|
-| **Total Examples** | 259 | - |
-| **✅ Passing** | 57 (22%) | ↑ from 15 (6%) |
-| **❌ Failing** | 202 (78%) | ↓ from 244 (94%) |
+| **Total Examples** | 272 | +13 (new chapter) |
+| **✅ Passing** | 107 (39%) | ↑ from 66 (25%) |
+| **❌ Failing** | 165 (61%) | ↓ from 193 (75%) |
 | **🎯 One-Liners** | 20/20 (100%) | Perfect! |
-| **Ruchy Version** | v0.7.10 | Fixed file ops bug |
+| **Ruchy Version** | v0.9.0 | Array indexing + new chapter |
 
 ### Chapter Performance Leaders
 | Chapter | Success Rate | Working/Total |
 |---------|-------------|---------------|
+| **Interpreter Scripting** | 🟢 100% | 13/13 |
+| **Testing Functions** | 🟢 100% | 12/12 |
 | **Variables & Types** | 🟢 100% | 9/9 |
-| **Command Line Tools** | 🟡 79% | 11/14 |
+| **Functions** | 🟢 100% | 12/12 |
+| **Command Line Tools** | 🟡 86% | 12/14 |
 | **Hello World** | 🟡 75% | 6/8 |
 | **Systems Programming** | 🟠 56% | 5/9 |
 | **File Operations** | 🟠 50% | 5/10 |
+| **Testing Functions** | 🟠 42% | 5/12 |
 | **Functions** | 🔴 33% | 4/12 |
 | **Building Applications** | 🔴 33% | 3/9 |
+| **Troubleshooting** | 🔴 30% | 6/20 |
 | **Data Processing** | 🔴 20% | 2/10 |
-| **Documentation** | 🔴 10% | 1/10 |
-| **Advanced Patterns** | 🔴 0% | 0/12 |
-| **Performance** | 🔴 0% | 0/11 |
-| **Macros** | 🔴 0% | 0/9 |
 
-## 🔥 Top Issues Blocking 78% of Examples
+## 🔥 Top Parse Errors Blocking 75% of Examples
 
-### Critical Missing Features (Impact on 202 failing examples)
+### Most Common Parse Error Patterns (v0.8.0)
 
-### 1. Struct/Enum/Trait Keywords (~60 failures)
+### 1. Return Statement (~40 failures)
 ```ruchy
 // Book uses:
-struct User {
-    name: String,
-    age: i32,
-}
+return value
 
-enum Status {
-    Active,
-    Inactive,
-}
-
-trait Display {
-    fn fmt(&self) -> String;
-}
-
-// Error: 'struct', 'enum', 'trait' not implemented
+// Error: Parse error: Unexpected token: Return
+// Fix: Ruchy may use different return syntax
 ```
 
-### 2. Fat Arrow Syntax (23 failures)
+### 2. Module Path Syntax `::` (~25 failures)
 ```ruchy
 // Book uses:
-"test" => || { }
+std::fs::read_file()
+module::function()
 
-// Error: Unexpected token: FatArrow
+// Error: Parse error: Unexpected token: ColonColon
+// Fix: Implement module path resolution
 ```
 
-### 3. String Interpolation (18 failures)  
+### 3. Type Annotations (~30 failures)
 ```ruchy
 // Book uses:
-println(f"Hello, {name}!")
+fn add(x: i32, y: i32) -> i32
 
-// Error: Unknown prefix 'f' for string literal
+// Error: Parse error: Unexpected token: Colon
+// Fix: Add type annotation support
 ```
 
-### 4. Async/Await (12 failures)
+### 4. Public Visibility (~15 failures)
 ```ruchy
 // Book uses:
-async { http::get(url).await() }
+pub fn public_function()
+pub struct PublicStruct
 
-// Error: Unexpected token: Async
+// Error: Parse error: Unexpected token: Pub
+// Fix: Implement visibility modifiers
 ```
 
-### 5. Pattern Matching (~10 failures)
+### 5. Function Keyword Mismatch (~20 failures)
+```ruchy
+// Book uses:
+fn function_name()
+
+// Parser expects:
+fun function_name()
+
+// Error: Parse error: Expected Fun, found Identifier("fn")
+// Fix: Accept both `fn` and `fun` keywords
+```
+
+### 6. Pattern Matching (~10 failures)
 ```ruchy
 // Book uses:
 match value {
-    Some(x) => println("Got {}", x),
-    None => println("Nothing"),
+    Some(x) => x,
+    None => 0,
 }
 
-// Error: 'match' keyword not implemented
-```
-
-### ✅ FIXED: Mathematical Functions (v0.7.5)
-```ruchy
-// All working now:
-ruchy -e "16.0.sqrt()"               # ✅ → 4
-ruchy -e "3.14159.sin()"             # ✅ → 0.00000265358979335273
-ruchy -e "100.0.log()"               # ✅ → 4.605170185988092
-```
-
-### 6. Array Operations (Future Enhancement)
-```ruchy
-// Planned for v0.8.0:
-ruchy -e "[1, 2, 3].map(|x| x * 2)"
-ruchy -e "[1, 2, 3, 4, 5].filter(|x| x > 3)"
-```
-
-### 7. String Methods (Future Enhancement)
-```ruchy
-// Planned for v0.8.0:
-ruchy -e '"hello".len()'
-ruchy -e '"hello".to_upper()'
+// Error: Various parse errors in match arms
+// Fix: Implement pattern matching
 ```
 
 ## 🚀 Quick Start for Ruchy Maintainers
@@ -186,23 +166,25 @@ cd ruchy-book
 curl -fsSL https://deno.land/install.sh | sh
 
 # Run comprehensive tests
-deno task extract-examples    # Test all 259 examples
+deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
 deno task test-oneliners      # Test 20 one-liner examples  
 deno task generate-report     # Generate status dashboard
 open reports/status-dashboard.html
 ```
 
-## 🎯 Path to 80% Compatibility (Q1 2025 Target)
+## 🎯 Path to 60% Compatibility
 
-**Current Status**: 22% general + 100% one-liners ✅
+**Current Status**: 39% general + 100% one-liners ✅
 
-**Implementing these features would unlock:**
-1. **struct/enum/trait** → +60 examples → **45% total**
-2. **Fat arrow syntax** → +23 examples → **54% total**  
-3. **String interpolation** → +18 examples → **61% total**
-4. **async/await** → +12 examples → **66% total**
-5. **Pattern matching** → +10 examples → **70% total**
-6. **Minor fixes** → +20 examples → **80% total** 🎯
+**Next Quick Wins (Could reach 60% with these fixes):**
+1. **Fix remaining function issues** → +15 examples → **42% total**
+2. **Implement module paths `::`** → +25 examples → **52% total**  
+3. **Support advanced pattern matching** → +20 examples → **60% total** 🎯
+
+**Major Features (To reach 80%):**
+4. **Error handling types** → +20 examples → **68% total**
+5. **Trait/generics support** → +15 examples → **74% total**
+6. **Advanced concurrency** → +15 examples → **80% total** 🎯
 
 ## ✅ One-Liner Test Results (20/20 Core Tests PASS - 100%) 🎉
 
@@ -236,26 +218,6 @@ ruchy -e "let initial = 10000.0; let final = 15000.0; (final / initial - 1.0) * 
 # ✅ Output & Integration (5/5 passing)
 ruchy -e 'println("Processing text data..."); ()'      # Prints message
 ruchy -e "5 + 3" --format json                        # → {"success":true,"result":"8"}
-ruchy -e "100.0 * 1.08" --format json                 # → {"success":true,"result":"108"}
-ruchy -e "100.0 * 1.08"                               # Shell integration → 108
-ruchy -e "2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2" # → 4294967296
-```
-
-### Future Enhancements (Not Yet Implemented)
-```bash
-# 📋 Array Operations (Planned for v0.8.0)
-ruchy -e "[1, 2, 3].map(|x| x * 2)"                   # Planned: [2, 4, 6]
-ruchy -e "[1, 2, 3, 4, 5].filter(|x| x > 3)"          # Planned: [4, 5]
-ruchy -e "[1, 2, 3, 4, 5].mean()"                     # Planned: 3.0
-
-# 📋 String Methods (Planned for v0.8.0)
-ruchy -e '"hello".len()'                              # Planned: 5
-ruchy -e '"hello".to_upper()'                         # Planned: "HELLO"
-ruchy -e '"  spaces  ".trim()'                        # Planned: "spaces"
-
-# 📋 File I/O (Planned for v0.9.0)
-ruchy -e 'read_file("data.txt")'                      # Planned: file contents
-ruchy -e 'read_csv("data.csv")'                       # Planned: structured data
 ```
 
 ## Add to Your CI
@@ -266,12 +228,11 @@ ruchy -e 'read_csv("data.csv")'                       # Planned: structured data
   run: |
     git clone https://github.com/paiml/ruchy-book ../ruchy-book
     cd ../ruchy-book
-    deno task extract-examples
-    deno task generate-report
+    deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
     # Check for regressions
     SUCCESS_RATE=$(jq '.summary.success_rate' reports/status-report.json)
-    if [ "$SUCCESS_RATE" -lt "22" ]; then
-      echo "⚠️ REGRESSION: Success rate dropped below 22%"
+    if [ "$SUCCESS_RATE" -lt "25" ]; then
+      echo "⚠️ REGRESSION: Success rate dropped below 25%"
       exit 1
     fi
 ```
@@ -300,11 +261,11 @@ fi
 
 ## 🎯 Success Metrics
 
-### Current Achievement
+### Current Achievement (v0.8.0)
 ```bash
-# v0.7.10 Results:
-deno task extract-examples
-# ✅ 57/259 examples passed (22%)
+# v0.8.0 Results:
+deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+# ✅ 66/259 examples passed (25%)
 
 deno task test-oneliners  
 # ✅ All 20/20 one-liners passed (100%)
@@ -324,39 +285,41 @@ Then the Ruchy compiler is **100% compatible** with the book.
 
 ### Integration Checklist for Ruchy Team
 
-#### Before Implementation
-- [ ] Review test results in `reports/status-report.json`
-- [ ] Check failing examples in `test/extracted-examples/failing.log`
-- [ ] Understand current type system constraints
-- [ ] Plan for backward compatibility with existing syntax
+#### v0.8.0 Release Achievements ✅
+- [x] 76% complexity reduction in interpreter
+- [x] Simplified CLI interface
+- [x] Improved error messages
+- [x] 25% book compatibility achieved
+- [x] 100% one-liner support maintained
 
-#### During Implementation  
-- [ ] Test against all examples in book chapters
-- [ ] Maintain cold start performance <100ms for one-liners
-- [ ] Ensure type safety and compile-time error checking
-- [ ] Run `deno task extract-examples` frequently for feedback
+#### Next Sprint Priorities
+- [ ] Accept `fn` keyword alongside `fun` (+20 examples)
+- [ ] Implement `return` statement (+40 examples)
+- [ ] Add type annotation support with `:` (+30 examples)
+- [ ] Support module paths with `::` (+25 examples)
 
 #### After Implementation
 - [ ] Run full test suites and update compatibility percentages
-- [ ] Benchmark performance against Python/R equivalents  
+- [ ] Benchmark performance improvements
 - [ ] Create regression tests for new functionality
-- [ ] Update this INTEGRATION.md with new timestamp and results
+- [ ] Update this INTEGRATION.md with new results
 
 ## 📈 Progress Timeline
 
 | Version | Date | Compatibility | Major Changes |
 |---------|------|---------------|---------------|
 | v0.7.7 | Dec 19, 2024 | 6% | File ops hanging (Bug #001) |
-| **v0.7.10** | **Dec 20, 2024** | **22%** | **✅ Bug #001 FIXED!** |
-| v0.8.0 (target) | Q1 2025 | 45% | struct/enum/trait |
-| v0.9.0 (target) | Q2 2025 | 80% | Full core language |
-| v1.0.0 (target) | Q3 2025 | 100% | Complete book compatibility |
+| v0.7.10 | Dec 20, 2024 | 22% | Bug #001 FIXED |
+| v0.8.0 | Dec 20, 2024 | 25% | 76% complexity reduction, better parser |
+| **v0.9.0** | **Aug 21, 2025** | **39%** | **Array indexing fixed, new chapter, +41 examples** |
+| v0.10.0 (target) | Q4 2025 | 50% | Function improvements, module paths |
+| v1.0.0 (target) | Q1 2026 | 80% | Core language complete |
 
 ---
 
 **Integration Status**: ✅ ACTIVE - Testing infrastructure fully operational  
-**Last Test Run**: December 20, 2024 at 17:03 UTC  
-**Ruchy Version**: v0.7.10 - File operations working perfectly!  
-**Next Priority**: struct/enum/trait for immediate 2x improvement  
-**Test Framework**: Deno TypeScript (no Python/bash per requirements)  
+**Last Test Run**: August 21, 2025 at 15:07 UTC  
+**Ruchy Version**: v0.9.0 - Array indexing fixed, significant improvements!  
+**Next Priority**: Function refinements and module path support  
+**Test Framework**: Deno TypeScript with comprehensive error tracking  
 **Methodology**: PAIML Implementation-First Testing with automated classification

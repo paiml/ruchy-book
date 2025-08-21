@@ -1,0 +1,15 @@
+// ❌ Wrong collection for use case
+use std::collections::VecDeque
+
+let mut list = Vec::new()
+// Frequent insertions at beginning - O(n) for each insert
+for i in 0..1000 {
+    list.insert(0, i)
+}
+
+// ✅ Better collection choice
+let mut deque = VecDeque::new()
+// Efficient insertion at front - O(1)
+for i in 0..1000 {
+    deque.push_front(i)
+}

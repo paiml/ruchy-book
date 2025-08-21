@@ -1,5 +1,20 @@
 # Data Processing  
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 10 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The day I realized I could automate data analysis was the day I stopped being afraid of Excel files. I had 10,000 rows of customer data to analyze manually. Instead, I wrote a 20-line script that did it in 3 seconds. That script saved me 40 hours of work and taught me the real power of programming."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most people use spreadsheet software for data tasks, but that doesn't scale to l
 Here's a simple but powerful data processor in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: sales_analyzer.ruchy
 // Analyzes sales data from CSV file
 
@@ -61,6 +78,7 @@ println("\nSales by Region:")
 for region, amount in region_sales.items() {
     println(f"  {region}: ${amount}")
 }
+
 ```
 
 Output:
@@ -90,6 +108,8 @@ That's real data analysis! Scales to thousands of rows easily.
 
 Use appropriate structures for different data types:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Arrays for sequences
 let sales_amounts = [1299, 25, 79, 1299, 399]
 let monthly_revenue = [45000, 52000, 48000, 61000]
@@ -107,12 +127,15 @@ let transactions = [
     {"id": 1002, "amount": 25, "customer": "bob@email.com"},
     {"id": 1003, "amount": 79, "customer": "alice@email.com"}
 ]
+
 ```
 
 ### Data Aggregation
 
 Common patterns for summarizing data:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Sum and averages
 let total = numbers.sum()
 let average = numbers.sum() / numbers.len()
@@ -136,12 +159,15 @@ fn group_by_field(records, field) {
 let high_value = transactions.filter(|t| t.amount > 100)
 let customer_ids = transactions.map(|t| t.customer)
 let amounts_only = transactions.map(|t| t.amount)
+
 ```
 
 ### File Format Processing
 
 Handle common data formats:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // CSV-like processing (simplified)
 fn parse_csv_line(line) {
     return line.split(",").map(|field| field.trim())
@@ -163,6 +189,7 @@ fn load_csv(filename) {
     
     return data
 }
+
 ```
 
 ## Practical Data Tools
@@ -170,6 +197,8 @@ fn load_csv(filename) {
 ### Customer Analytics Tool
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: customer_analytics.ruchy
 // Analyzes customer purchase patterns
 
@@ -210,11 +239,14 @@ println(f"\nTop Spenders:")
 for i, customer in top_spenders.enumerate() {
     println(f"  {i+1}. {customer.name}: ${customer.total_spent} ({customer.orders} orders)")
 }
+
 ```
 
 ### Log File Analyzer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: advanced_log_analyzer.ruchy
 // Comprehensive log file analysis
 
@@ -284,11 +316,14 @@ for hour in hours {
 
 let busiest_hour = hour_counts.max_by_value()
 println(f"\nBusiest Hour: {busiest_hour.key}:xx ({busiest_hour.value} entries)")
+
 ```
 
 ### Financial Data Processor
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: finance_processor.ruchy
 // Processes financial transactions and generates reports
 
@@ -349,6 +384,7 @@ for transaction in transactions.sort_by(|t| t.date) {
     let emoji = if transaction.type == "income" { "💰" } else { "💸" }
     println(f"  {transaction.date} {emoji} ${transaction.amount} - {transaction.description}")
 }
+
 ```
 
 ## Data Visualization (Text-based)
@@ -356,6 +392,8 @@ for transaction in transactions.sort_by(|t| t.date) {
 Create simple charts for console output:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple bar chart function
 fn draw_bar_chart(data, title) {
     println(f"\n{title}")
@@ -381,6 +419,7 @@ let monthly_sales = {
 }
 
 draw_bar_chart(monthly_sales, "Monthly Sales Report")
+
 ```
 
 Output:
@@ -403,10 +442,13 @@ See how Ruchy's data processing becomes efficient compiled operations:
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 let sales_data = load_csv("sales.csv")
 let total = sales_data.map(|row| row.amount.to_f()).sum()
 let average = total / sales_data.len()
 println(f"Average sale: ${average:.2f}")
+
 ```
 
 Becomes this optimized Rust:
@@ -490,6 +532,8 @@ $ ruchy repl
 **Example Complete Tool - Expense Tracker:**
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // expense_tracker.ruchy - Track and analyze personal expenses
 
 let EXPENSES_FILE = "expenses.csv"
@@ -597,6 +641,7 @@ fn main_menu() {
 while main_menu() {
     // Continue until user quits
 }
+
 ```
 
 Build data processors that solve YOUR analytical needs - that's where programming becomes insight!

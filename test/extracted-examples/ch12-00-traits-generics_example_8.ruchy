@@ -1,0 +1,33 @@
+// Generic builder
+struct Builder<T> {
+    value: T
+}
+
+impl<T> Builder<T> {
+    fn new(initial: T) -> Builder<T> {
+        return Builder{value: initial}
+    }
+    
+    fn with<F>(mut self, f: F) -> Builder<T>
+    where F: FnOnce(mut T) -> T
+    {
+        self.value = f(self.value)
+        return self
+    }
+    
+    fn build(self) -> T {
+        return self.value
+    }
+}
+
+// Use with any type
+let config = Builder::new(Config::default())
+    .with(|c| { c.port = 8080; c })
+    .with(|c| { c.host = "localhost"; c })
+    .with(|c| { c.workers = 4; c })
+    .build()
+
+let user = Builder::new(User::new())
+    .with(|u| { u.name = "Alice"; u })
+    .with(|u| { u.role = Role::Admin; u })
+    .build()

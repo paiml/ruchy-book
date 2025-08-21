@@ -1,5 +1,20 @@
 # Organizing Logic
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/12 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 12 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The moment I learned to organize my code into reusable pieces was the moment I stopped being a beginner. Good code organization doesn't just make your program work - it makes your thinking clearer. Each piece should do one thing well, like a well-organized toolbox."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most languages make code organization complicated with complex syntax and boiler
 Here's how you organize and reuse logic in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Organize calculations
 let name = "Alice"  
 let a = 15
@@ -27,6 +44,7 @@ let result_message = f"{a} + {b} = {sum}"
 
 println(greeting)
 println(result_message)
+
 ```
 
 Output:
@@ -43,6 +61,8 @@ That's organization! Define once, use everywhere.
 
 In Ruchy's current form, organize logic using variables and expressions:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Store inputs
 let input1 = 10
 let input2 = 20
@@ -54,12 +74,15 @@ let average = sum / 2
 
 // Organize output
 let result = f"Sum: {sum}, Product: {product}, Average: {average}"
+
 ```
 
 ### Reusable Patterns
 
 Create templates for common operations:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Template: greeting with name
 let user_name = "Alice"
 let greeting_template = f"Hello, {user_name}! Welcome!"
@@ -70,12 +93,15 @@ let num2 = 27
 let operation = "addition"
 let calc_result = num1 + num2
 let calc_display = f"{operation}: {num1} + {num2} = {calc_result}"
+
 ```
 
 ### Logic Grouping
 
 Group related operations together:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Input section
 let temperature_f = 68
 let user_location = "San Francisco"
@@ -90,6 +116,7 @@ let comfort_message = if is_comfortable { "Perfect weather!" } else { "Dress acc
 
 println(weather_report)
 println(comfort_message)
+
 ```
 
 ## Practical Usage
@@ -97,6 +124,8 @@ println(comfort_message)
 ### Pure Functions (No Side Effects)
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Mathematical operations
 fn square(x) {
     return x * x
@@ -124,11 +153,14 @@ let excited = shout("I love functions")
 println(f"Circle area: {area}")
 println(f"Username: {username}")
 println(excited)
+
 ```
 
 ### Functions with Logic
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn is_even(number) {
     return number % 2 == 0
 }
@@ -157,11 +189,14 @@ fn describe_number(n) {
 println(describe_number(42))   // "42 is a small even number"
 println(describe_number(150))  // "150 is a large even number"
 println(grade_letter(85))      // "B"
+
 ```
 
 ### Functions That Process Data
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn calculate_total(prices) {
     let total = 0
     for price in prices {
@@ -192,12 +227,15 @@ let essay = "Functions make code reusable and testable"
 println(f"Total cost: ${calculate_total(shopping_cart)}")
 println(f"Highest score: {find_max(test_scores)}")
 println(f"Word count: {count_words(essay)}")
+
 ```
 
 ## Common Pitfalls
 
 ### Forgetting Return Statement
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This returns nothing (unit type)
 fn bad_add(a, b) {
     a + b  // Missing 'return'
@@ -207,21 +245,27 @@ fn bad_add(a, b) {
 fn good_add(a, b) {
     return a + b
 }
+
 ```
 
 ### Wrong Number of Arguments
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn greet(name, age) {
     return f"Hi {name}, you're {age} years old"
 }
 
 // ❌ This won't work
 let msg = greet("Alice")  // Missing age parameter
+
 ```
 Error: Function expects 2 arguments, got 1.
 
 ### Modifying Parameters
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Parameters are read-only
 fn bad_function(x) {
     x = x + 1  // Error: can't modify parameter
@@ -233,6 +277,7 @@ fn good_function(x) {
     let result = x + 1
     return result
 }
+
 ```
 
 ## Generated Code Insight
@@ -244,12 +289,15 @@ Want to see how Ruchy functions become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn add(a, b) {
     return a + b
 }
 
 let result = add(10, 20)
 println(result)
+
 ```
 
 Becomes this optimized Rust:
@@ -330,6 +378,8 @@ $ ruchy repl
 **Example Solution Set:**
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Personal calculator
 fn celsius_to_fahrenheit(celsius) {
     return (celsius * 9 / 5) + 32
@@ -378,6 +428,7 @@ println(celsius_to_fahrenheit(20))  // 68
 println(calculate_bmi(70, 1.75))    // 22.86
 println(get_initials("Alice Johnson"))  // "AJ"
 println(recommend_activity(8, 45))
+
 ```
 
 Build functions that solve YOUR problems - this is where programming becomes personal!

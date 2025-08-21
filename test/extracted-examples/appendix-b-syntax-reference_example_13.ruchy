@@ -1,0 +1,25 @@
+// Basic function
+fn greet(name: String) -> String {
+    return f"Hello, {name}!"
+}
+
+// Implicit return (no semicolon)
+fn add(a: i32, b: i32) -> i32 {
+    a + b  // Last expression is returned
+}
+
+// Unit return type (no return value)
+fn print_message(msg: String) {
+    println(msg)
+}
+
+// Multiple parameters
+fn calculate(x: f64, y: f64, operation: char) -> f64 {
+    match operation {
+        '+' => x + y,
+        '-' => x - y,
+        '*' => x * y,
+        '/' => x / y,
+        _ => panic("Invalid operation")
+    }
+}

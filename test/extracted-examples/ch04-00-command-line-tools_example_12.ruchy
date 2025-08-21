@@ -1,0 +1,4 @@
+// ❌ Confusing and unhelpful
+println("Enter thing:")
+let thing = input()
+// What thing? What format?

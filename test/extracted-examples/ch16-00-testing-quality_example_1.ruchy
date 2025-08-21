@@ -1,0 +1,57 @@
+// Unit test with multiple assertions
+#[test]
+fn test_user_validation() {
+    // Arrange
+    let valid_user = User {
+        name: "Alice",
+        email: "alice@example.com",
+        age: 25
+    }
+    
+    // Act
+    let result = validate_user(valid_user)
+    
+    // Assert
+    assert!(result.is_ok())
+    assert_eq!(result.unwrap().name, "Alice")
+}
+
+// Property-based testing
+#[proptest]
+fn test_serialization_roundtrip(user: User) {
+    let serialized = user.serialize()
+    let deserialized = User::deserialize(serialized)
+    assert_eq!(user, deserialized)
+}
+
+// Integration test
+#[integration_test]
+async fn test_api_workflow() {
+    // Start test server
+    let server = TestServer::new()
+    
+    // Create user
+    let response = server.post("/users")
+        .json(new_user)
+        .send()
+        .await
+    
+    assert_eq!(response.status(), 201)
+    let user: User = response.json().await
+    
+    // Verify user exists
+    let get_response = server.get(f"/users/{user.id}")
+        .send()
+        .await
+    
+    assert_eq!(get_response.status(), 200)
+}
+
+// Benchmark
+#[bench]
+fn bench_data_processing(b: &mut Bencher) {
+    let data = generate_test_data(10000)
+    b.iter(|| {
+        process_data(data.clone())
+    })
+}

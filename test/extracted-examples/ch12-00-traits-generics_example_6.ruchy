@@ -1,0 +1,44 @@
+// Custom collection with traits
+struct Cache<K: Hash + Eq, V> {
+    map: HashMap<K, V>
+    max_size: usize
+    access_order: Vec<K>
+}
+
+impl<K: Hash + Eq + Clone, V: Clone> Cache<K, V> {
+    fn new(max_size: usize) -> Cache<K, V> {
+        return Cache{
+            map: HashMap::new(),
+            max_size,
+            access_order: Vec::new()
+        }
+    }
+    
+    fn get(mut self, key: K) -> Option<V> {
+        if let Some(value) = self.map.get(key) {
+            // Update access order
+            self.access_order.retain(|k| k != key)
+            self.access_order.push(key.clone())
+            return Some(value.clone())
+        }
+        return None
+    }
+    
+    fn put(mut self, key: K, value: V) {
+        if self.map.len() >= self.max_size && !self.map.contains_key(key) {
+            // Evict least recently used
+            let lru = self.access_order.remove(0)
+            self.map.remove(lru)
+        }
+        
+        self.map.insert(key.clone(), value)
+        self.access_order.push(key)
+    }
+}
+
+// Use with any hashable types
+let cache: Cache<String, User> = Cache::new(100)
+cache.put("alice", alice_user)
+
+let cache2: Cache<i32, Vec<String>> = Cache::new(50)
+cache2.put(1, vec!["data"])

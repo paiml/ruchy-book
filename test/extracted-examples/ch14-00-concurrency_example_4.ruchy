@@ -1,0 +1,38 @@
+// Mutex for mutual exclusion
+let counter = Arc::new(Mutex::new(0))
+
+let handles = Vec::new()
+for _ in range(10) {
+    let counter = counter.clone()
+    handles.push(spawn move {
+        let mut num = counter.lock()
+        *num += 1
+    })
+}
+
+for handle in handles {
+    handle.join()
+}
+
+println(f"Result: {*counter.lock()}")
+
+// RwLock for multiple readers
+let data = Arc::new(RwLock::new(HashMap::new()))
+
+// Multiple readers
+let data_clone = data.clone()
+spawn move {
+    let map = data_clone.read()  // Shared read access
+    println(f"Value: {map.get('key')}")
+}
+
+// Single writer
+let data_clone = data.clone()
+spawn move {
+    let mut map = data_clone.write()  // Exclusive write access
+    map.insert("key", "value")
+}
+
+// Atomic operations for lock-free programming
+let counter = Arc::new(AtomicI32::new(0))
+counter.fetch_add(1, Ordering::SeqCst)

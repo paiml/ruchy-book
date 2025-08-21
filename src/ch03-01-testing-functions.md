@@ -1,5 +1,20 @@
 # Testing Functions
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/12 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 12 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"I used to think testing was extra work that slowed me down. Then I spent three days debugging a function that had a one-line bug I could have caught with a 30-second test. Now I write tests first - they're my safety net and my specification all in one."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Manual testing means running your code, checking output, and hoping you didn't m
 Here's how you test functions in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Your function
 fn add(a, b) {
     return a + b
@@ -25,6 +42,7 @@ fn test_add() {
     assert_eq!(add(0, 0), 0)
     assert_eq!(add(-1, 1), 0)
 }
+
 ```
 
 Run it:
@@ -43,11 +61,14 @@ That's it! Write tests, run tests, ship with confidence.
 
 Test functions in Ruchy use the `#[test]` attribute:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 #[test]
 fn test_function_name() {
     // Test code here
     assert_eq!(actual, expected)
 }
+
 ```
 
 - `#[test]` marks the function as a test
@@ -65,6 +86,8 @@ Ruchy provides several assertion macros:
 ### Test Organization
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // tests/calculator_test.ruchy
 
 use super::*;  // Import functions from main module
@@ -78,6 +101,7 @@ fn test_addition() {
 fn test_subtraction() {
     assert_eq!(subtract(10, 4), 6)
 }
+
 ```
 
 ## Practical Testing Patterns
@@ -87,6 +111,8 @@ fn test_subtraction() {
 Pure functions are easiest to test - same input, same output:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // calculator.ruchy
 fn multiply(a, b) {
     return a * b
@@ -125,6 +151,7 @@ fn test_is_even() {
     assert!(is_even(0))        // 0 is even
     assert!(!is_even(-1))      // -1 is not even
 }
+
 ```
 
 ### Testing Edge Cases
@@ -132,6 +159,8 @@ fn test_is_even() {
 Good tests cover normal cases AND edge cases:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn find_max(numbers) {
     if numbers.is_empty() {
         return None
@@ -157,11 +186,14 @@ fn test_find_max() {
     assert_eq!(find_max([-5, -1, -10]), Some(-1))  // All negative
     assert_eq!(find_max([5, 5, 5]), Some(5))       // All same
 }
+
 ```
 
 ### Testing Text Functions
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn clean_username(raw_username) {
     return raw_username.trim().lower().replace(" ", "_")
 }
@@ -192,11 +224,14 @@ fn test_count_vowels() {
     assert_eq!(count_vowels("aeiou"), 5)      // All vowels
     assert_eq!(count_vowels(""), 0)           // Empty string
 }
+
 ```
 
 ### Testing Business Logic
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn calculate_grade(score) {
     if score >= 90 { return "A" }
     if score >= 80 { return "B" } 
@@ -230,6 +265,7 @@ fn test_can_vote() {
     assert!(!can_vote(25, false))    // Not citizen
     assert!(!can_vote(17, false))    // Too young AND not citizen
 }
+
 ```
 
 ## Test-Driven Development (TDD)
@@ -241,6 +277,8 @@ Write tests BEFORE you write code:
 3. **Refactor and improve** (Refactor)
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Step 1: Write the test first
 #[test]
 fn test_fahrenheit_to_celsius() {
@@ -256,12 +294,15 @@ fn fahrenheit_to_celsius(fahrenheit) {
 
 // Step 3: Run tests, refactor if needed
 // All tests pass! Code is ready to use.
+
 ```
 
 ## Common Testing Mistakes
 
 ### Not Testing Edge Cases
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Only testing happy path
 #[test]
 fn test_divide_bad() {
@@ -275,10 +316,13 @@ fn test_divide_good() {
     assert_eq!(divide(0, 5), 0)       // Zero dividend
     // Should handle divide by zero gracefully
 }
+
 ```
 
 ### Tests That Don't Actually Test
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ This test will always pass
 #[test]
 fn test_useless() {
@@ -291,10 +335,13 @@ fn test_useless() {
 fn test_useful() {
     assert_eq!(add(2, 3), 5)  // Exact expectation
 }
+
 ```
 
 ### Poor Test Names
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // ❌ Unclear what this tests
 #[test]
 fn test1() {
@@ -306,6 +353,7 @@ fn test1() {
 fn test_password_too_short() {
     assert_eq!(is_valid_password("abc"), false)
 }
+
 ```
 
 ## Try It Yourself
@@ -348,6 +396,8 @@ $ ruchy repl
 **Example TDD Session:**
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // 1. Write failing tests first
 #[test]
 fn test_is_strong_password() {
@@ -376,6 +426,7 @@ fn test_password_edge_cases() {
     assert!(!is_strong_password("12345678"))      // Only digits
     assert!(!is_strong_password("!!!!!!!!"))      // Only special
 }
+
 ```
 
 Testing is your superpower - use it to build software with confidence!

@@ -1,5 +1,20 @@
 # Performance & Optimization
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/11 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 11 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"I once optimized a data processing pipeline from 6 hours to 3 minutes. The secret wasn't clever tricks - it was understanding where time was actually spent. Performance isn't about premature optimization; it's about measuring, understanding, and then improving. Profile first, optimize second, celebrate third."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most developers guess at performance problems or optimize the wrong things. In R
 Here's performance optimization in action:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: optimize_data_processing.ruchy
 // Before and after optimization
 
@@ -71,6 +88,7 @@ println(f"Naive: {naive_time}ms")
 println(f"Optimized: {optimized_time}ms")
 println(f"Speedup: {naive_time / optimized_time:.1}x")
 // Output: Speedup: 42.3x
+
 ```
 
 That's the power of systematic optimization!
@@ -82,6 +100,8 @@ That's the power of systematic optimization!
 Measure before optimizing:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // CPU profiling
 let profiler = perf::CpuProfiler::new()
 profiler.start()
@@ -115,6 +135,7 @@ println(f"Largest allocation: {format_size(mem_report.largest_allocation)}")
 // Flame graph generation
 profiler.generate_flamegraph("profile.svg")
 println("Flame graph saved to profile.svg")
+
 ```
 
 ### Benchmarking
@@ -122,6 +143,8 @@ println("Flame graph saved to profile.svg")
 Compare performance systematically:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Micro-benchmarks
 use std::bench;
 
@@ -173,6 +196,7 @@ fn benchmark_algorithm(name, func, data) {
     let std = times.std_dev()
     println(f"{name}: {avg:.2}ms ± {std:.2}ms")
 }
+
 ```
 
 ### Parallel Processing
@@ -180,6 +204,8 @@ fn benchmark_algorithm(name, func, data) {
 Use multiple cores effectively:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Parallel map
 let data = range(1, 1000000)
 let results = parallel::map(data, |n| {
@@ -219,6 +245,7 @@ for url in urls {
 }
 
 let responses = async::wait_all(futures)
+
 ```
 
 ## Optimization Techniques
@@ -226,6 +253,8 @@ let responses = async::wait_all(futures)
 ### Algorithm Optimization
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: algorithm_optimization.ruchy
 // Common optimization patterns
 
@@ -292,11 +321,14 @@ fn find_first_match(items, predicate) {
     }
     return null
 }
+
 ```
 
 ### Memory Optimization
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: memory_optimization.ruchy
 // Reduce memory usage
 
@@ -348,11 +380,14 @@ struct CompactUser {
     flags: u8,      // Bit flags instead of booleans
     name: String    // Single allocation
 }
+
 ```
 
 ### I/O Optimization
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: io_optimization.ruchy
 // Speed up I/O operations
 
@@ -399,6 +434,7 @@ fn process_huge_file(path) {
         process_chunk(chunk)
     })
 }
+
 ```
 
 ## Real-World Optimization
@@ -406,6 +442,8 @@ fn process_huge_file(path) {
 ### Database Query Optimizer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: query_optimizer.ruchy
 // Optimize database queries
 
@@ -477,11 +515,14 @@ let optimized_time = perf::measure {
 }
 
 println(f"Improvement: {naive_time / optimized_time:.1}x faster")
+
 ```
 
 ### Web Server Optimization
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: web_server_optimization.ruchy
 // High-performance web server
 
@@ -556,11 +597,14 @@ println("  • HTTP/2 support")
 println("  • Gzip compression")
 
 app.listen()
+
 ```
 
 ### Data Processing Pipeline
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: data_pipeline_optimization.ruchy
 // Optimize large-scale data processing
 
@@ -621,6 +665,7 @@ monitor.track("disk_io", || system::disk_io_rate())
 process_dataset("input.jsonl", "output.jsonl")
 
 monitor.report()
+
 ```
 
 ## Performance Tips
@@ -628,6 +673,8 @@ monitor.report()
 ### Golden Rules
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // 1. Measure first
 perf::profile {
     suspicious_function()
@@ -653,6 +700,7 @@ async::wait_all(io_operations)
 
 // 8. Profile in production
 // Dev performance ≠ Production performance
+
 ```
 
 ## Try It Yourself

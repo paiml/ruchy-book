@@ -1,0 +1,29 @@
+// Current process information
+let pid = process::current_pid()
+let ppid = process::parent_pid()
+let exe_path = process::executable_path()
+let args = process::args()
+let env = process::environment()
+
+// List all processes
+let all_processes = process::list()
+for proc in all_processes {
+    println(f"PID: {proc.pid}, Name: {proc.name}, CPU: {proc.cpu_percent}%")
+}
+
+// Find specific process
+let chrome_procs = process::find_by_name("chrome")
+let high_cpu_procs = process::list()
+    .filter(|p| p.cpu_percent > 50)
+
+// Process control
+let proc = process::from_pid(1234)
+proc.suspend()  // Pause process
+proc.resume()   // Resume process
+proc.terminate() // Request termination
+proc.kill()     // Force kill
+
+// Launch new process
+let child = process::spawn("ls", ["-la"])
+let output = child.wait_with_output()
+println(output.stdout)

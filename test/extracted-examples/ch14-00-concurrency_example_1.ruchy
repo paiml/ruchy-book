@@ -1,0 +1,41 @@
+use std::sync;
+use std::async;
+
+// Parallel processing with channels
+fn process_files(files: Vec<String>) -> Vec<Result> {
+    let (sender, receiver) = channel()
+    
+    // Spawn worker for each file
+    for file in files {
+        let tx = sender.clone()
+        spawn {
+            let result = process_file(file)
+            tx.send((file, result))
+        }
+    }
+    
+    // Collect results
+    let results = Vec::new()
+    for _ in files.len() {
+        let (file, result) = receiver.recv()
+        results.push(result)
+    }
+    
+    return results
+}
+
+// Async/await for I/O
+async fn fetch_all_data(urls: Vec<String>) -> Vec<Data> {
+    let futures = urls.map(|url| async {
+        let response = http::get(url).await?
+        parse_response(response)
+    })
+    
+    return join_all(futures).await
+}
+
+// Thread pool for CPU-bound work
+let pool = ThreadPool::new(num_cpus())
+let results = pool.parallel_map(items, |item| {
+    expensive_computation(item)
+})

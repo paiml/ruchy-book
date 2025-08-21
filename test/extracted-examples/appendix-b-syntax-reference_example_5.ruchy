@@ -1,0 +1,4 @@
+'a'         // ASCII character
+'\n'        // Escape sequence
+'\x41'      // Hex escape
+'\u{1F600}' // Unicode escape

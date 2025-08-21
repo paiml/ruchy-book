@@ -1,0 +1,16 @@
+#[cfg(test)]
+mod tests {
+    use super::*
+    
+    #[test]
+    fn test_with_debug_output() {
+        let result = my_function(42)
+        
+        // Print for debugging (use -- --nocapture to see output)
+        println!("Result: {:?}", result)
+        
+        assert_eq!(result, expected)
+    }
+    
+    // Run with: cargo test -- --nocapture
+}

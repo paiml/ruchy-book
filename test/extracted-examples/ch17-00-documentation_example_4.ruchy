@@ -1,0 +1,50 @@
+/// Configuration for the application.
+/// 
+/// This struct holds all configuration values needed to run
+/// the application. It can be loaded from files, environment
+/// variables, or command-line arguments.
+/// 
+/// # Example Configuration File
+/// 
+/// ```toml
+/// [server]
+/// host = "localhost"
+/// port = 8080
+/// 
+/// [database]
+/// url = "postgres://localhost/myapp"
+/// pool_size = 20
+/// ```
+#[derive(Deserialize, Serialize, Debug)]
+pub struct Config {
+    /// Server configuration
+    pub server: ServerConfig,
+    
+    /// Database configuration  
+    pub database: DatabaseConfig,
+    
+    /// Optional cache configuration
+    pub cache: Option<CacheConfig>,
+}
+
+/// Server configuration options.
+#[derive(Deserialize, Serialize, Debug)]
+pub struct ServerConfig {
+    /// Host to bind to (default: "127.0.0.1")
+    #[serde(default = "default_host")]
+    pub host: String,
+    
+    /// Port to listen on (default: 8080)
+    #[serde(default = "default_port")]
+    pub port: u16,
+    
+    /// Number of worker threads (default: CPU cores)
+    #[serde(default = "num_cpus")]
+    pub workers: usize,
+}
+
+// Generate HTML documentation
+$ ruchy doc --open
+Documenting mylib v0.1.0
+    Finished documentation
+    Opening docs/mylib/index.html

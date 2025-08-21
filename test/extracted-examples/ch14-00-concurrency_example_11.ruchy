@@ -1,0 +1,31 @@
+fn process_dataset(data: Vec<Record>) -> Vec<Result> {
+    // Partition data for parallel processing
+    let chunk_size = data.len() / num_cpus()
+    let chunks = data.chunks(chunk_size)
+    
+    // Process chunks in parallel
+    let handles = chunks.map(|chunk| {
+        spawn move {
+            chunk.iter()
+                .map(|record| process_record(record))
+                .collect()
+        }
+    })
+    
+    // Collect results
+    let mut results = Vec::new()
+    for handle in handles {
+        results.extend(handle.join())
+    }
+    
+    return results
+}
+
+// Pipeline with stages
+fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
+    input
+        .parallel_map(stage1, workers: 4)
+        .parallel_filter(stage2, workers: 2)
+        .parallel_flat_map(stage3, workers: 4)
+        .collect()
+}

@@ -1,0 +1,38 @@
+/// Calculates the factorial of a number.
+/// 
+/// # Examples
+/// 
+/// ```
+/// assert_eq!(factorial(0), 1)
+/// assert_eq!(factorial(5), 120)
+/// assert_eq!(factorial(10), 3628800)
+/// ```
+/// 
+/// ```should_panic
+/// factorial(-1)  // Panics on negative input
+/// ```
+/// 
+/// ```no_run
+/// // Example that shouldn't be executed during tests
+/// let huge = factorial(1000000)
+/// ```
+/// 
+/// ```ignore
+/// // Example that's temporarily broken
+/// let result = factorial(non_existent_var)
+/// ```
+pub fn factorial(n: i32) -> i32 {
+    assert!(n >= 0, "Factorial undefined for negative numbers")
+    if n <= 1 { 1 } else { n * factorial(n - 1) }
+}
+
+// Run doc tests
+$ ruchy test --doc
+   Doc-tests mylib
+running 4 doc tests
+test src/lib.rs - factorial (line 5) ... ok
+test src/lib.rs - factorial (line 9) ... ok
+test src/lib.rs - factorial (line 13) ... ok
+test src/lib.rs - factorial (line 17) ... ignored
+
+test result: ok. 3 passed; 0 failed; 1 ignored

@@ -1,0 +1,13 @@
+// Valid identifiers
+variable_name
+camelCase
+PascalCase
+_private
+_internal
+snake_case_123
+τ  // Unicode allowed
+
+// Keywords (reserved)
+let mut fn if else match while for loop break continue
+return true false null struct enum trait impl use mod
+async await type where const static pub super self

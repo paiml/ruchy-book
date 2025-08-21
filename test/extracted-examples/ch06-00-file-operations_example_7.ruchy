@@ -1,0 +1,54 @@
+// File: log_rotator.ruchy
+// Manages log files with size-based rotation
+
+println("=== Log Rotation System ===")
+
+let log_config = {
+    "max_size": 10 * 1024 * 1024,  // 10MB
+    "max_backups": 5,
+    "compress": true
+}
+
+let log_dir = "/var/log/myapp"
+let log_files = glob(join_path(log_dir, "*.log"))
+
+for log_file in log_files {
+    let size = file_size(log_file)
+    
+    if size > log_config.max_size {
+        println(f"Rotating {log_file} ({format_size(size)})...")
+        
+        // Shift existing backups
+        for i in range(log_config.max_backups - 1, 0, -1) {
+            let old_backup = f"{log_file}.{i}"
+            let new_backup = f"{log_file}.{i + 1}"
+            
+            if file_exists(old_backup) {
+                if i == log_config.max_backups - 1 {
+                    // Delete oldest backup
+                    remove_file(old_backup)
+                } else {
+                    // Rename to next number
+                    rename_file(old_backup, new_backup)
+                }
+            }
+        }
+        
+        // Move current log to .1
+        let backup_path = f"{log_file}.1"
+        rename_file(log_file, backup_path)
+        
+        // Compress if configured
+        if log_config.compress {
+            compress_file(backup_path, f"{backup_path}.gz")
+            remove_file(backup_path)
+            println(f"  Compressed to {backup_path}.gz")
+        }
+        
+        // Create new empty log file
+        write_file(log_file, "")
+        println(f"  Created new {log_file}")
+    }
+}
+
+println("\n✅ Log rotation complete!")

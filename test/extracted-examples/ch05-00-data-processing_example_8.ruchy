@@ -1,0 +1,25 @@
+// Simple bar chart function
+fn draw_bar_chart(data, title) {
+    println(f"\n{title}")
+    println("=" * title.len())
+    
+    let max_value = data.values().max()
+    let max_bar_width = 50
+    
+    for key, value in data.items() {
+        let bar_width = (value * max_bar_width) / max_value
+        let bar = "█" * bar_width.to_i()
+        println(f"{key:12} │{bar} {value}")
+    }
+}
+
+// Usage example
+let monthly_sales = {
+    "January": 45000,
+    "February": 52000,
+    "March": 48000,
+    "April": 61000,
+    "May": 58000
+}
+
+draw_bar_chart(monthly_sales, "Monthly Sales Report")

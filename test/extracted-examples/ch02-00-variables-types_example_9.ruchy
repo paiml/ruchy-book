@@ -1,0 +1,24 @@
+// Personal profile
+let name = "Alex"
+let age = 28
+let city = "San Francisco"
+let hobby = "rock climbing"
+let goal = "master Ruchy in 30 days"
+
+// Data calculator  
+let num1 = 15
+let num2 = 25
+let sum = num1 + num2
+let difference = num1 - num2
+let average = (num1 + num2) / 2
+
+// Text manipulation
+let first_name = "Alex"
+let last_name = "Johnson"
+let username = f"{first_name.lower()}_{last_name.lower()}"
+let email = f"{username}@example.com"
+
+// Boolean logic
+let is_adult = age >= 18
+let lives_in_tech_city = city == "San Francisco"
+let ready_for_job = is_adult && lives_in_tech_city

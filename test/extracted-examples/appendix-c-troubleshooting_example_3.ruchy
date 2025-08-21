@@ -1,0 +1,9 @@
+// ❌ Error
+let 123invalid = "nope"
+let my-var = "no hyphens"
+let fn = "keyword"
+
+// ✅ Fixed
+let invalid_123 = "ok"
+let my_var = "underscores ok"
+let function_name = "not keyword"

@@ -1,0 +1,26 @@
+// Get memory information
+let mem_info = system::memory_info()
+println(f"Total: {mem_info.total}")
+println(f"Used: {mem_info.used}")
+println(f"Free: {mem_info.free}")
+println(f"Available: {mem_info.available}")
+println(f"Swap Used: {mem_info.swap_used}")
+
+// Monitor memory pressure
+if mem_info.available < 100_000_000 {  // Less than 100MB
+    println("WARNING: Low memory!")
+    free_caches()
+}
+
+// Memory-mapped files for large data
+let mmap = memory::map_file("huge_dataset.bin", READ_ONLY)
+let data = mmap.read_range(0, 1000000)  // Read 1MB
+mmap.close()
+
+// Shared memory between processes
+let shared = memory::create_shared("my_buffer", 1024 * 1024)
+shared.write(0, data)
+
+// In another process
+let shared = memory::open_shared("my_buffer")
+let data = shared.read(0, 1024)

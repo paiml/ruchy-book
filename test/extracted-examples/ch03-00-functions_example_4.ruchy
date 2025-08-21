@@ -1,0 +1,14 @@
+// Input section
+let temperature_f = 68
+let user_location = "San Francisco"
+
+// Processing section  
+let temperature_c = (temperature_f - 32) * 5 / 9
+let is_comfortable = temperature_c > 18 && temperature_c < 25
+
+// Output section
+let weather_report = f"Weather in {user_location}: {temperature_f}°F ({temperature_c}°C)"
+let comfort_message = if is_comfortable { "Perfect weather!" } else { "Dress accordingly" }
+
+println(weather_report)
+println(comfort_message)

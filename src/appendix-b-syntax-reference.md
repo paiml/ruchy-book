@@ -1,11 +1,28 @@
 # Appendix B: Syntax Reference
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/35 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 35 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"Syntax is the vocabulary of programming. Master the fundamentals, and complex programs become simple compositions of familiar patterns. This reference is your quick guide when memory fails and Stack Overflow is down."* - Noah Gift
 
 ## Lexical Structure
 
 ### Comments
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Single line comment
 
 /* 
@@ -17,10 +34,13 @@
 fn documented_function() {}
 
 //! Inner documentation comment for containing item
+
 ```
 
 ### Identifiers
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Valid identifiers
 variable_name
 camelCase
@@ -34,12 +54,15 @@ snake_case_123
 let mut fn if else match while for loop break continue
 return true false null struct enum trait impl use mod
 async await type where const static pub super self
+
 ```
 
 ### Literals
 
 #### Numeric Literals
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Integers
 42          // Decimal
 0xFF        // Hexadecimal  
@@ -57,10 +80,13 @@ async await type where const static pub super self
 42i32       // 32-bit integer
 3.14f64     // 64-bit float
 100u8       // Unsigned 8-bit
+
 ```
 
 #### String Literals
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // String literals
 "hello world"
 "unicode: αβγ"
@@ -78,20 +104,26 @@ line two"
 // Format strings
 f"Hello, {name}!"
 f"Result: {value:2.2}"
+
 ```
 
 #### Character Literals
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 'a'         // ASCII character
 '\n'        // Escape sequence
 '\x41'      // Hex escape
 '\u{1F600}' // Unicode escape
+
 ```
 
 ## Type System
 
 ### Primitive Types
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Boolean
 let flag: bool = true
 
@@ -117,10 +149,13 @@ let ch: char = 'A'             // Unicode scalar value
 // String
 let text: str = "hello"        // String slice
 let owned: String = "world"    // Owned string
+
 ```
 
 ### Compound Types
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Arrays (fixed size)
 let arr: [i32; 5] = [1, 2, 3, 4, 5]
 let zeros: [i32; 100] = [0; 100]
@@ -145,12 +180,15 @@ let nothing: Option<i32> = None
 // Results  
 let ok: Result<i32, String> = Ok(42)
 let err: Result<i32, String> = Err("error message")
+
 ```
 
 ## Variable Declaration
 
 ### Let Bindings
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Immutable by default
 let x = 42
 let name = "Alice"
@@ -170,10 +208,13 @@ let [first, second, ..] = [1, 2, 3, 4, 5]
 // Shadowing
 let x = 42
 let x = "now a string"  // Shadows previous x
+
 ```
 
 ### Constants
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Compile-time constants
 const MAX_SIZE: usize = 1024
 const PI: f64 = 3.14159265359
@@ -181,12 +222,15 @@ const PI: f64 = 3.14159265359
 // Static variables
 static GLOBAL_COUNTER: AtomicUsize = AtomicUsize::new(0)
 static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
+
 ```
 
 ## Control Flow
 
 ### Conditional Expressions
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // If expressions
 let result = if condition {
     "true branch"
@@ -207,10 +251,13 @@ if x > 0 {
 let Some(value) = optional else {
     return Err("No value")
 }
+
 ```
 
 ### Pattern Matching
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Match expressions
 match value {
     0 => "zero",
@@ -234,10 +281,13 @@ match number {
     n if n > 0 => "positive", 
     _ => "zero"
 }
+
 ```
 
 ### Loops
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Infinite loop
 loop {
     // Code here
@@ -277,12 +327,15 @@ for (index, item) in collection.enumerate() {
         }
     }
 }
+
 ```
 
 ## Functions
 
 ### Function Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Basic function
 fn greet(name: String) -> String {
     return f"Hello, {name}!"
@@ -308,10 +361,13 @@ fn calculate(x: f64, y: f64, operation: char) -> f64 {
         _ => panic("Invalid operation")
     }
 }
+
 ```
 
 ### Function Parameters
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // By value (move)
 fn take_ownership(s: String) {
     // s is moved here
@@ -336,10 +392,13 @@ fn connect(host: String, port: u16 = 8080, timeout: u64 = 5000) {
 fn sum(numbers: &[i32]) -> i32 {
     numbers.iter().sum()
 }
+
 ```
 
 ### Closures
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Closure syntax
 let add = |a, b| a + b
 let result = add(5, 3)
@@ -357,10 +416,13 @@ let name = String::from("Alice")
 let greeter = move |greeting| {
     f"{greeting}, {name}!"  // name is moved into closure
 }
+
 ```
 
 ### Higher-Order Functions
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Function as parameter
 fn apply_operation(x: i32, y: i32, op: fn(i32, i32) -> i32) -> i32 {
     op(x, y)
@@ -377,12 +439,15 @@ where F: Fn(T) -> U
 {
     items.into_iter().map(f).collect()
 }
+
 ```
 
 ## Structs and Enums
 
 ### Struct Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Basic struct
 struct Point {
     x: f64,
@@ -404,10 +469,13 @@ struct Container<T> {
 struct Excerpt<'a> {
     text: &'a str,
 }
+
 ```
 
 ### Struct Usage
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Creating instances
 let origin = Point { x: 0.0, y: 0.0 }
 let red = Color(255, 0, 0)
@@ -421,10 +489,13 @@ let point2 = Point { x: 1.0, ..origin }
 // Destructuring
 let Point { x, y } = origin
 let Color(r, g, b) = red
+
 ```
 
 ### Enum Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Basic enum
 enum Direction {
     North,
@@ -446,10 +517,13 @@ enum Result<T, E> {
     Ok(T),
     Err(E),
 }
+
 ```
 
 ### Implementation Blocks
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 impl Point {
     // Associated function (constructor)
     fn new(x: f64, y: f64) -> Point {
@@ -472,12 +546,15 @@ impl Point {
         (self.x, self.y)
     }
 }
+
 ```
 
 ## Traits
 
 ### Trait Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Basic trait
 trait Draw {
     fn draw(&self)
@@ -503,10 +580,13 @@ trait Iterator {
 trait From<T> {
     fn from(value: T) -> Self
 }
+
 ```
 
 ### Trait Implementation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 impl Draw for Point {
     fn draw(&self) {
         println(f"Drawing point at ({}, {})", self.x, self.y)
@@ -526,12 +606,15 @@ impl<T: Clone> Clone for Box<T> {
         // Implementation  
     }
 }
+
 ```
 
 ## Generics
 
 ### Generic Functions
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0]
     for item in list {
@@ -541,10 +624,13 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     }
     largest
 }
+
 ```
 
 ### Generic Structs
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 struct Point<T> {
     x: T,
     y: T,
@@ -561,10 +647,13 @@ impl Point<f64> {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
 }
+
 ```
 
 ### Trait Bounds
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Single bound
 fn print_it<T: Display>(item: T) {
     println("{}", item)
@@ -587,12 +676,15 @@ where
 {
     // Implementation
 }
+
 ```
 
 ## Modules and Visibility
 
 ### Module Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Inline module
 mod network {
     fn connect() {
@@ -613,10 +705,13 @@ mod graphics {
         pub fn draw_circle() {}
     }
 }
+
 ```
 
 ### Visibility
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 pub fn public_function() {}           // Public
 fn private_function() {}              // Private to module
 
@@ -628,10 +723,13 @@ pub struct PublicStruct {
 pub(crate) fn crate_visible() {}      // Visible within crate
 pub(super) fn parent_visible() {}     // Visible to parent module
 pub(in crate::utils) fn limited() {} // Visible within specific path
+
 ```
 
 ### Use Declarations
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 use std::collections::HashMap         // Single import
 use std::fs::{File, OpenOptions}      // Multiple imports
 use std::io::*                        // Glob import
@@ -646,12 +744,15 @@ use unix_specific::module
 
 #[cfg(windows)]  
 use windows_specific::module
+
 ```
 
 ## Error Handling
 
 ### Result and Option
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Result type
 enum Result<T, E> {
     Ok(T),
@@ -675,10 +776,13 @@ match result {
     Ok(value) => println("Success: {}", value),
     Err(error) => eprintln("Error: {}", error),
 }
+
 ```
 
 ### Panic
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Unconditional panic
 panic!("Something went wrong!")
 
@@ -688,12 +792,15 @@ assert_eq!(left, right, "Values must be equal")
 
 // Debug assertions (only in debug builds)
 debug_assert!(expensive_check())
+
 ```
 
 ## Macros
 
 ### Macro Invocation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Function-like macros
 println!("Hello, {}!", name)
 vec![1, 2, 3, 4, 5]
@@ -709,10 +816,13 @@ mod tests {}
 // Derive macros
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 struct Point { x: i32, y: i32 }
+
 ```
 
 ### Macro Definition
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Declarative macro
 macro_rules! say_hello {
     () => {
@@ -726,12 +836,15 @@ macro_rules! say_hello {
 // Usage
 say_hello!()
 say_hello!("World")
+
 ```
 
 ## Attributes
 
 ### Common Attributes
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Conditional compilation
 #[cfg(target_os = "linux")]
 fn linux_only() {}
@@ -768,12 +881,15 @@ fn small_function() {}
 
 #[inline(always)]
 fn always_inline() {}
+
 ```
 
 ## Async/Await
 
 ### Async Functions
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Async function
 async fn fetch_data(url: &str) -> Result<String, reqwest::Error> {
     let response = reqwest::get(url).await?
@@ -791,10 +907,13 @@ let future = async {
 let async_closure = async |x| {
     expensive_async_operation(x).await
 }
+
 ```
 
 ### Futures and Streams
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 use futures::{Future, Stream}
 
 // Implementing Future
@@ -813,6 +932,7 @@ let stream = async_stream::stream! {
         tokio::time::sleep(Duration::from_millis(100)).await
     }
 }
+
 ```
 
 This reference covers the essential syntax of Ruchy. For complete details, see the language specification.

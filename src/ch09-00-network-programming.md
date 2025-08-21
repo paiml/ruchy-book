@@ -1,5 +1,20 @@
 # Network Programming
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 10 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"The day I wrote my first networked application - a simple chat server - everything clicked. Suddenly my programs weren't isolated islands anymore; they could talk to the world. Network programming isn't about memorizing socket APIs; it's about connecting ideas across machines. Master the network, and distance disappears."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most developers fear network programming because of its complexity - protocols, 
 Here's a complete web server in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: web_server.ruchy
 // HTTP server with routing and middleware
 
@@ -55,6 +72,7 @@ server.static("/public", "./static")
 // Start server
 println(f"🚀 Server running on http://localhost:8080")
 server.listen()
+
 ```
 
 That's a production-ready web server in under 30 lines!
@@ -66,6 +84,8 @@ That's a production-ready web server in under 30 lines!
 Build reliable network connections:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // TCP Server
 let server = net::TcpListener::bind("127.0.0.1:9000")
 println("Server listening on port 9000")
@@ -96,6 +116,7 @@ let client = net::TcpStream::connect("127.0.0.1:9000")
 client.write("Hello, server!\n")
 let response = client.read_line()
 println(f"Server replied: {response}")
+
 ```
 
 ### HTTP Client
@@ -103,6 +124,8 @@ println(f"Server replied: {response}")
 Make HTTP requests easily:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Simple GET request
 let response = http::get("https://api.example.com/data")
 let data = response.json()
@@ -141,6 +164,7 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
         print(f"\rDownloading: {percent:.1}%")
     })
     .await()
+
 ```
 
 ### WebSocket Communication
@@ -148,6 +172,8 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
 Real-time bidirectional communication:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // WebSocket Server
 let ws_server = ws::Server::new("0.0.0.0:8081")
 
@@ -187,6 +213,7 @@ ws.on("message", |data| {
 ws.on("error", |err| {
     println(f"WebSocket error: {err}")
 })
+
 ```
 
 ## Practical Network Applications
@@ -194,6 +221,8 @@ ws.on("error", |err| {
 ### REST API Server
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: api_server.ruchy
 // RESTful API with database
 
@@ -300,11 +329,14 @@ app.use(|err, req, res, next| {
 
 println("🚀 API server running on http://localhost:3000")
 app.listen()
+
 ```
 
 ### Real-time Chat Application
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: chat_server.ruchy
 // Multi-room chat server with history
 
@@ -424,11 +456,14 @@ server.on_connection(|socket| {
 
 println("💬 Chat server running on ws://localhost:8080")
 server.listen()
+
 ```
 
 ### Network Scanner
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: network_scanner.ruchy
 // Scan network for open ports and services
 
@@ -532,11 +567,14 @@ if results.len() > 0 {
         println(f"{item.port:5} - {item.service}")
     }
 }
+
 ```
 
 ### Load Balancer
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: load_balancer.ruchy
 // HTTP load balancer with health checking
 
@@ -612,6 +650,7 @@ balancer.all("*", |req, res| {
 println("🔄 Load balancer running on port 80")
 println(f"Backends: {backends.len()}")
 balancer.listen()
+
 ```
 
 ## Advanced Networking
@@ -621,6 +660,8 @@ balancer.listen()
 Build custom network protocols:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Custom protocol over TCP
 fn send_packet(socket, type, data) {
     let packet = {
@@ -643,11 +684,14 @@ fn receive_packet(socket) {
     let json = socket.read(length)
     return parse_json(json)
 }
+
 ```
 
 ### Network Monitoring
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Monitor network traffic
 let monitor = net::PacketCapture::new("eth0")
 
@@ -660,6 +704,7 @@ monitor.on_packet(|packet| {
 })
 
 monitor.start()
+
 ```
 
 ## Try It Yourself

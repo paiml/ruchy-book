@@ -1,0 +1,33 @@
+// canary.ruchy
+fn deploy_canary(new_version: String) {
+    let deployment = CanaryDeployment::new(new_version)
+    
+    // Start with 5% traffic
+    deployment.set_traffic_percentage(5)
+    deployment.deploy()
+    
+    // Monitor metrics
+    let baseline = Metrics::baseline()
+    
+    // Gradually increase traffic
+    for percentage in [5, 10, 25, 50, 100] {
+        deployment.set_traffic_percentage(percentage)
+        
+        sleep(Duration::from_mins(10))
+        
+        let current = Metrics::current()
+        if current.error_rate > baseline.error_rate * 1.1 {
+            deployment.rollback()
+            panic!("Error rate increased by >10%")
+        }
+        
+        if current.p99_latency > baseline.p99_latency * 1.2 {
+            deployment.rollback()
+            panic!("Latency increased by >20%")
+        }
+        
+        println!("✅ Canary at {}% - metrics healthy", percentage)
+    }
+    
+    deployment.finalize()
+}

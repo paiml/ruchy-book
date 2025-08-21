@@ -1,0 +1,3 @@
+let content = read_file("data.txt")
+let lines = content.lines().len()
+println(f"File has {lines} lines")

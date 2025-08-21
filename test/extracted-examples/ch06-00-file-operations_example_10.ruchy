@@ -1,0 +1,7 @@
+let files = list_files("data")
+for file in files {
+    let size = file_size(file)
+    if size > 1000000 {
+        move_file(file, "large_files/" + file)
+    }
+}

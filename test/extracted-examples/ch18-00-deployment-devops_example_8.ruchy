@@ -1,0 +1,17 @@
+// secrets.ruchy
+use vault::Client;
+
+// Vault integration
+let vault = Client::new("https://vault.example.com")
+    .auth_kubernetes()  // Use K8s service account
+
+// Fetch secrets
+let db_password = vault.read("secret/database/password").await?
+let api_key = vault.read("secret/external/api_key").await?
+
+// Rotate secrets
+vault.rotate("secret/database/password").await?
+
+// Environment injection
+env::set_var("DATABASE_URL", 
+    format!("postgres://user:{}@host/db", db_password))

@@ -1,0 +1,50 @@
+// Generic repository interface
+class Repository {
+    fn find(id)
+    fn find_all()
+    fn find_where(conditions)
+    fn save(entity)
+    fn delete(id)
+}
+
+// Concrete implementation
+class UserRepository < Repository {
+    let db
+    
+    fn find(id) {
+        let row = db.query_one("SELECT * FROM users WHERE id = ?", [id])
+        return row ? User::from_row(row) : null
+    }
+    
+    fn find_where(conditions) {
+        let query = QueryBuilder::new("users")
+            .where(conditions)
+            .build()
+        
+        return db.query(query).map(|row| User::from_row(row))
+    }
+    
+    fn save(user) {
+        if user.id {
+            db.execute("UPDATE users SET ... WHERE id = ?", user.to_row())
+        } else {
+            user.id = db.execute("INSERT INTO users ... VALUES ...", user.to_row())
+        }
+        return user
+    }
+}
+
+// Use repository in service layer
+class UserService {
+    let repository
+    
+    fn get_active_users() {
+        return repository.find_where({active: true})
+    }
+    
+    fn create_user(data) {
+        let user = User::new(data)
+        user.validate()
+        return repository.save(user)
+    }
+}

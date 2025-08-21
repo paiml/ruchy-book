@@ -1,0 +1,40 @@
+// quality.ruchy - Quality gate script
+fn main() {
+    let mut passed = true
+    
+    // Test coverage gate
+    let coverage = run_coverage_analysis()
+    if coverage.percentage < 80.0 {
+        println(f"❌ Coverage too low: {coverage.percentage}%")
+        passed = false
+    }
+    
+    // Performance gate
+    let benchmarks = run_benchmarks()
+    for (name, result) in benchmarks {
+        if result.regression > 0.1 {  // 10% regression
+            println(f"❌ Performance regression in {name}: {result.regression * 100}%")
+            passed = false
+        }
+    }
+    
+    // Complexity gate
+    let complexity = analyze_complexity()
+    if complexity.max_cyclomatic > 10 {
+        println(f"❌ Complexity too high: {complexity.max_cyclomatic}")
+        passed = false
+    }
+    
+    // Security gate
+    let vulnerabilities = security_scan()
+    if !vulnerabilities.is_empty() {
+        println(f"❌ Security vulnerabilities found: {vulnerabilities.len()}")
+        passed = false
+    }
+    
+    if !passed {
+        exit(1)
+    }
+    
+    println("✅ All quality gates passed!")
+}

@@ -1,0 +1,27 @@
+// 1. Choose the right abstraction
+// Threads: OS parallelism, CPU-bound work
+// Async: I/O-bound work, many concurrent tasks
+// Channels: Decoupled communication
+// Shared state: When necessary, with proper synchronization
+
+// 2. Avoid contention
+let shards = (0..16).map(|_| Mutex::new(HashMap::new()))
+fn get_shard(key: &str) -> &Mutex<HashMap> {
+    let hash = hash(key)
+    return &shards[hash % 16]
+}
+
+// 3. Use work stealing
+let queue = WorkStealingQueue::new()
+// Threads steal work from other threads when idle
+
+// 4. Batch operations
+instead_of {
+    for item in items {
+        channel.send(item)  // Many small sends
+    }
+}
+
+do {
+    channel.send(items)  // One batch send
+}

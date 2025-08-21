@@ -1,0 +1,34 @@
+// build.ruchy - Build and package script
+
+fn build_release() {
+    println("🔨 Building release version...")
+    
+    // Run tests first
+    run_tests()
+    
+    // Create release directory
+    let release_dir = f"release_{VERSION}"
+    create_dir_all(release_dir)
+    
+    // Copy application files
+    copy_file("main.ruchy", join_path(release_dir, APP_NAME))
+    copy_dir("resources", join_path(release_dir, "resources"))
+    
+    // Generate documentation
+    generate_docs(join_path(release_dir, "docs"))
+    
+    // Create installer script
+    let installer = f"#!/bin/bash
+echo 'Installing {APP_NAME} v{VERSION}'
+mkdir -p ~/.local/bin
+cp {APP_NAME} ~/.local/bin/
+chmod +x ~/.local/bin/{APP_NAME}
+echo 'Installation complete! Run {APP_NAME} to start.'
+"
+    write_file(join_path(release_dir, "install.sh"), installer)
+    
+    // Package as archive
+    create_archive(f"{APP_NAME}-{VERSION}.tar.gz", release_dir)
+    
+    println(f"✅ Release built: {APP_NAME}-{VERSION}.tar.gz")
+}

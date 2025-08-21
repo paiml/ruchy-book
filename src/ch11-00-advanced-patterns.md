@@ -1,5 +1,20 @@
 # Advanced Patterns
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 0% Working (0/12 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 12 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-20*  
+*Ruchy version: ruchy not found*
+<!-- DOC_STATUS_END -->
+
+
 *"After 20 years of programming, I've learned that patterns aren't rules to follow blindly - they're tools in your toolbox. The art is knowing which tool to use when. Master the patterns, understand their trade-offs, then break them when it makes sense. That's when programming becomes poetry."* - Noah Gift
 
 ## The Problem
@@ -13,6 +28,8 @@ Most developers either ignore patterns (creating chaos) or over-engineer (creati
 Here's elegant pattern usage in Ruchy:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // File: event_system.ruchy
 // Event-driven architecture with multiple patterns
 
@@ -63,6 +80,7 @@ let unsubscribe = events.on("user.login", with_logging(|user| {
 }))
 
 events.emit("user.login", {name: "Alice", id: 123})
+
 ```
 
 That's patterns working together harmoniously!
@@ -74,6 +92,8 @@ That's patterns working together harmoniously!
 Construct complex objects step by step:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Fluent interface for configuration
 class ServerBuilder {
     let config = {
@@ -127,6 +147,7 @@ let server = ServerBuilder::new()
     .route("/", home_handler)
     .route("/api", api_handler)
     .build()
+
 ```
 
 ### Strategy Pattern
@@ -134,6 +155,8 @@ let server = ServerBuilder::new()
 Swap algorithms at runtime:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Different compression strategies
 class CompressionContext {
     let strategy
@@ -177,6 +200,7 @@ if file_size > mb(10) {
 }
 
 let compressed = compressor.compress(file_data)
+
 ```
 
 ### Chain of Responsibility
@@ -184,6 +208,8 @@ let compressed = compressor.compress(file_data)
 Process requests through a chain of handlers:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Middleware chain for request processing
 class MiddlewareChain {
     let middlewares = []
@@ -252,6 +278,7 @@ chain.use(cache_middleware)
 chain.use(route_handler)
 
 chain.execute(request, response)
+
 ```
 
 ## Functional Patterns
@@ -261,6 +288,8 @@ chain.execute(request, response)
 Build complex behavior from simple functions:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Function composition
 fn compose(...functions) {
     return |x| {
@@ -301,6 +330,7 @@ let result = pipeline(
     transform,
     format
 )
+
 ```
 
 ### Monadic Patterns
@@ -308,6 +338,8 @@ let result = pipeline(
 Handle errors and async elegantly:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Result monad for error handling
 class Result {
     let value
@@ -355,6 +387,7 @@ fn process_user(id) {
         .map(|user| format_user(user))
         .unwrap_or({error: "Processing failed"})
 }
+
 ```
 
 ### Lazy Evaluation
@@ -362,6 +395,8 @@ fn process_user(id) {
 Defer computation until needed:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Lazy sequences
 class LazySeq {
     let generator
@@ -436,6 +471,7 @@ let fibonacci = LazySeq::new(|| {
 let first_10_even = fibonacci
     .filter(|n| n % 2 == 0)
     .take(10)
+
 ```
 
 ## Architectural Patterns
@@ -445,6 +481,8 @@ let first_10_even = fibonacci
 Abstract data access:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Generic repository interface
 class Repository {
     fn find(id)
@@ -495,6 +533,7 @@ class UserService {
         return repository.save(user)
     }
 }
+
 ```
 
 ### Event Sourcing
@@ -502,6 +541,8 @@ class UserService {
 Store events, not state:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Event sourcing system
 class EventStore {
     let events = []
@@ -564,6 +605,7 @@ fn handle_order_placed(event) {
 
 // Rebuild state from events
 let current_state = event_store.replay()
+
 ```
 
 ### CQRS (Command Query Responsibility Segregation)
@@ -571,6 +613,8 @@ let current_state = event_store.replay()
 Separate reads from writes:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Command side - writes
 class CommandBus {
     let handlers = {}
@@ -630,6 +674,7 @@ let orders = query_bus.query({
     type: "GetOrdersByCustomer",
     customer_id: 123
 })
+
 ```
 
 ## Concurrent Patterns
@@ -639,6 +684,8 @@ let orders = query_bus.query({
 Isolated units of computation:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 // Actor system
 class Actor {
     let mailbox = Queue::new()
@@ -700,6 +747,7 @@ worker.send({
     data: work_item,
     reply_to: self
 })
+
 ```
 
 ### Circuit Breaker
@@ -707,6 +755,8 @@ worker.send({
 Prevent cascading failures:
 
 ```ruchy
+// Status: ❌ BROKEN
+// Error: Requires run access to "ruchy", run again with the --allow-run flag
 class CircuitBreaker {
     let failure_threshold = 5
     let timeout = 30000
@@ -757,6 +807,7 @@ fn call_external_api(data) {
             .send()
     })
 }
+
 ```
 
 ## Try It Yourself

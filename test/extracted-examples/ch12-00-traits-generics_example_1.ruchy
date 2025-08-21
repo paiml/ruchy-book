@@ -1,0 +1,38 @@
+// Define behavior with traits
+trait Serializable {
+    fn serialize(self) -> String
+    fn deserialize(String) -> Self
+}
+
+// Generic function works with any Serializable type
+fn save_to_file<T: Serializable>(item: T, path: String) {
+    let serialized = item.serialize()
+    write_file(path, serialized)
+}
+
+fn load_from_file<T: Serializable>(path: String) -> T {
+    let content = read_file(path)
+    return T::deserialize(content)
+}
+
+// Implement trait for your types
+struct User {
+    name: String
+    email: String
+    age: i32
+}
+
+impl Serializable for User {
+    fn serialize(self) -> String {
+        return to_json(self)
+    }
+    
+    fn deserialize(data: String) -> User {
+        return parse_json(data)
+    }
+}
+
+// Now it just works!
+let user = User{name: "Alice", email: "alice@example.com", age: 30}
+save_to_file(user, "user.json")  // Generic function, specific type
+let loaded: User = load_from_file("user.json")  // Type safe!

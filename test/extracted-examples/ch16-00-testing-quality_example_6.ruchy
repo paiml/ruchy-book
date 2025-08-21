@@ -1,0 +1,66 @@
+// Integration test in tests/ directory
+#[integration_test]
+async fn test_full_api_flow() {
+    // Start services
+    let db = TestDatabase::new()
+    let cache = TestCache::new()
+    let server = TestServer::with_services(db, cache)
+    
+    // Register user
+    let register_response = server
+        .post("/api/register")
+        .json(json!({
+            "email": "test@example.com",
+            "password": "secure123"
+        }))
+        .send()
+        .await
+    
+    assert_eq!(register_response.status(), 201)
+    let user: User = register_response.json().await
+    
+    // Login
+    let login_response = server
+        .post("/api/login")
+        .json(json!({
+            "email": "test@example.com",
+            "password": "secure123"
+        }))
+        .send()
+        .await
+    
+    assert_eq!(login_response.status(), 200)
+    let token = login_response.header("Authorization")
+    
+    // Use authenticated endpoint
+    let profile_response = server
+        .get("/api/profile")
+        .header("Authorization", token)
+        .send()
+        .await
+    
+    assert_eq!(profile_response.status(), 200)
+    let profile: Profile = profile_response.json().await
+    assert_eq!(profile.email, "test@example.com")
+}
+
+// Database integration test
+#[test]
+fn test_database_transactions() {
+    let db = Database::connect(TEST_DATABASE_URL)
+    
+    db.transaction(|tx| {
+        tx.insert_user(user1)?
+        tx.insert_user(user2)?
+        
+        // Verify within transaction
+        let count = tx.count_users()?
+        assert_eq!(count, 2)
+        
+        // Rollback for test isolation
+        Err(TestRollback)
+    })
+    
+    // Verify rollback worked
+    assert_eq!(db.count_users(), 0)
+}

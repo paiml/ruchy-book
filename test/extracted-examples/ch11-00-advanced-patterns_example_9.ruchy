@@ -1,0 +1,62 @@
+// Event sourcing system
+class EventStore {
+    let events = []
+    let snapshots = {}
+    let projections = {}
+    
+    fn append(event) {
+        event.id = generate_id()
+        event.timestamp = current_time()
+        event.version = events.len() + 1
+        
+        events.push(event)
+        update_projections(event)
+        
+        // Create snapshot every 100 events
+        if events.len() % 100 == 0 {
+            create_snapshot()
+        }
+    }
+    
+    fn replay(from_version = 0) {
+        let state = snapshots.get_latest_before(from_version) || {}
+        
+        for event in events.filter(|e| e.version > from_version) {
+            state = apply_event(state, event)
+        }
+        
+        return state
+    }
+    
+    fn get_projection(name) {
+        return projections[name]
+    }
+}
+
+// Domain events
+class OrderPlaced {
+    let order_id
+    let customer_id
+    let items
+    let total
+}
+
+class PaymentReceived {
+    let order_id
+    let amount
+    let method
+}
+
+// Event handlers update projections
+fn handle_order_placed(event) {
+    projections.orders[event.order_id] = {
+        status: "pending",
+        customer: event.customer_id,
+        total: event.total
+    }
+    
+    projections.customer_orders[event.customer_id].push(event.order_id)
+}
+
+// Rebuild state from events
+let current_state = event_store.replay()

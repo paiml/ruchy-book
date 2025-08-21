@@ -1,0 +1,47 @@
+// Result monad for error handling
+class Result {
+    let value
+    let error
+    
+    static fn ok(val) {
+        return Result{value: val, error: null}
+    }
+    
+    static fn err(e) {
+        return Result{value: null, error: e}
+    }
+    
+    fn is_ok() {
+        return error == null
+    }
+    
+    fn map(f) {
+        if is_ok() {
+            return Result::ok(f(value))
+        }
+        return self
+    }
+    
+    fn flat_map(f) {
+        if is_ok() {
+            return f(value)
+        }
+        return self
+    }
+    
+    fn unwrap_or(default) {
+        if is_ok() {
+            return value
+        }
+        return default
+    }
+}
+
+// Chain operations safely
+fn process_user(id) {
+    return fetch_user(id)
+        .map(|user| validate_user(user))
+        .flat_map(|user| enrich_user_data(user))
+        .map(|user| format_user(user))
+        .unwrap_or({error: "Processing failed"})
+}

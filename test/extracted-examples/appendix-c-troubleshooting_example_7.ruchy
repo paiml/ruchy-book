@@ -1,0 +1,16 @@
+// ❌ Error
+fn dangle() -> &String {
+    let s = String::from("hello")
+    &s  // s goes out of scope
+}
+
+// ✅ Fixed - Return owned value
+fn not_dangle() -> String {
+    let s = String::from("hello")
+    s  // Move ownership
+}
+
+// ✅ Fixed - Use static lifetime
+fn static_str() -> &'static str {
+    "hello"  // String literals have static lifetime
+}

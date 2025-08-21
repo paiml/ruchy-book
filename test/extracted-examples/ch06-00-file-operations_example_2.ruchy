@@ -1,0 +1,13 @@
+// Current directory operations
+let current_dir = get_current_dir()
+set_current_dir("/home/user/projects")
+
+// Path operations
+let full_path = absolute_path("data.txt")
+let parent = parent_dir(full_path)
+let filename = file_name(full_path)
+let extension = file_extension(full_path)
+
+// Path joining and normalization
+let project_path = join_path(home_dir(), "projects", "my_app")
+let clean_path = normalize_path(".././data//file.txt")

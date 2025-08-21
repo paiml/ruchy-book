@@ -1,0 +1,6 @@
+fn greet(name, age) {
+    return f"Hi {name}, you're {age} years old"
+}
+
+// ❌ This won't work
+let msg = greet("Alice")  // Missing age parameter

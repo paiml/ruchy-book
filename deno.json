@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "lint": {
+    "rules": {
+      "tags": ["recommended"]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "preserve"
+  },
+  "tasks": {
+    "test": "deno run --allow-read --allow-write --allow-run scripts/test-all-examples.ts",
+    "test-oneliners": "deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts",
+    "extract-examples": "deno run --allow-read --allow-write scripts/extract-examples.ts",
+    "validate-docs": "deno run --allow-read scripts/validate-docs-status.ts",
+    "lint-markdown": "deno run --allow-read --allow-write --allow-run scripts/lint-markdown.ts",
+    "update-status": "deno run --allow-read --allow-write --allow-run scripts/update-docs-status.ts",
+    "generate-report": "deno run --allow-read --allow-write scripts/generate-status-report.ts"
+  },
+  "imports": {
+    "@std/fs": "https://deno.land/std@0.224.0/fs/mod.ts",
+    "@std/path": "https://deno.land/std@0.224.0/path/mod.ts",
+    "@std/yaml": "https://deno.land/std@0.224.0/yaml/mod.ts",
+    "@std/json": "https://deno.land/std@0.224.0/json/mod.ts"
+  }
+}

@@ -1,0 +1,22 @@
+impl Point {
+    // Associated function (constructor)
+    fn new(x: f64, y: f64) -> Point {
+        Point { x, y }
+    }
+    
+    // Method (takes &self)
+    fn distance_from_origin(&self) -> f64 {
+        (self.x.powi(2) + self.y.powi(2)).sqrt()
+    }
+    
+    // Mutable method (takes &mut self)
+    fn translate(&mut self, dx: f64, dy: f64) {
+        self.x += dx
+        self.y += dy
+    }
+    
+    // Consuming method (takes self)
+    fn into_tuple(self) -> (f64, f64) {
+        (self.x, self.y)
+    }
+}

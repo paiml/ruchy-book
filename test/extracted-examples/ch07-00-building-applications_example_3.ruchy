@@ -1,0 +1,29 @@
+// Global application state
+let STATE = {
+    "users": [],
+    "current_user": null,
+    "settings": {},
+    "cache": {},
+    "dirty": false
+}
+
+fn update_state(key, value) {
+    STATE[key] = value
+    STATE.dirty = true
+    trigger_save()
+}
+
+fn save_state() {
+    if STATE.dirty {
+        let state_file = join_path(APP.data_dir, "state.json")
+        write_file(state_file, to_json(STATE))
+        STATE.dirty = false
+    }
+}
+
+fn load_state() {
+    let state_file = join_path(APP.data_dir, "state.json")
+    if file_exists(state_file) {
+        STATE = parse_json(read_file(state_file))
+    }
+}

@@ -1,0 +1,29 @@
+// Option represents nullable values
+enum Option<T> {
+    Some(T)  // Value present
+    None     // Value absent
+}
+
+// Functions that might not return a value
+fn find_user(name: String) -> Option<User> {
+    let users = load_users()
+    for user in users {
+        if user.name == name {
+            return Some(user)
+        }
+    }
+    return None
+}
+
+// Safe handling of missing values
+let user = find_user("Alice")
+if let Some(u) = user {
+    println(f"Found: {u.email}")
+} else {
+    println("User not found")
+}
+
+// Chain operations safely
+let email = find_user("Bob")
+    .map(|u| u.email)
+    .unwrap_or("no-email@example.com")

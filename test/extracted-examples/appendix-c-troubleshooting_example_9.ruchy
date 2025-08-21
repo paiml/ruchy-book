@@ -1,0 +1,15 @@
+// ❌ Runtime panic
+let v = vec![1, 2, 3]
+let item = v[5]  // Panic: index out of bounds
+
+// ✅ Safe access
+let v = vec![1, 2, 3]
+match v.get(5) {
+    Some(item) => println("Item: {}", item),
+    None => println("Index out of bounds"),
+}
+
+// ✅ Or use safe indexing
+if let Some(item) = v.get(5) {
+    println("Item: {}", item)
+}
