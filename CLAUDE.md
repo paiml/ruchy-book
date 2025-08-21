@@ -351,8 +351,67 @@ pre-commit: validate
 	@echo "✅ Ready to commit"
 ```
 
+## Bug Reporting Protocol
+
+When encountering issues with the Ruchy compiler/runtime:
+
+1. **File bugs locally first**: Create detailed reports in `docs/bugs/ruchy-runtime-bugs.md`
+2. **Include reproducibility**: Every bug must have exact steps to reproduce
+3. **Document workarounds**: If found, include them to unblock progress
+4. **Track impact**: Describe how the bug affects book testing and documentation
+5. **Version specificity**: Always include `ruchy --version` and platform details
+
+### Bug Report Template
+```markdown
+## Bug #XXX: [Title]
+
+**Filed**: [Date]
+**Ruchy Version**: v[X.Y.Z]
+**Platform**: [OS and architecture]
+**Severity**: Critical/High/Medium/Low
+**Status**: Open/Fixed/Workaround
+
+### Description
+[Clear description of the issue]
+
+### Reproduction Steps
+[Exact commands to reproduce]
+
+### Expected vs Actual
+[What should happen vs what does happen]
+
+### Impact
+[How this affects book testing]
+
+### Workaround
+[If any]
+```
+
+## Testing Commands
+
+When testing examples, always run comprehensive test suites:
+
+```bash
+# Test all 259 book examples
+deno task extract-examples
+
+# Test 20 one-liner examples  
+deno task test-oneliners
+
+# Update documentation status
+deno task update-status
+
+# Generate status reports
+deno task generate-report
+
+# Validate documentation quality
+deno task lint-markdown
+```
+
 ## Remember
 
 **Implementation-first documentation**: Every line of example code must compile and run correctly with the current Ruchy compiler. The book is a living proof that Ruchy works, not a promise of what it might do.
 - toyota way.  never allow shortcuts.
 - if it isn't automated. consider it broken.  no manual "hacks".
+- never use any scripting language but ruchy, if you cannot use ruchy, use Deno TypeScript/Node/Javascript.
+- when bugs are found in ruchy, document them thoroughly in `docs/bugs/ruchy-runtime-bugs.md`
