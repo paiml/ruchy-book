@@ -1,0 +1,183 @@
+name: Test All Book Examples
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 6 AM UTC to catch regressions
+    - cron: '0 6 * * *'
+
+jobs:
+  test-examples:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        
+    - name: Install Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+        
+    - name: Cache cargo dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        
+    - name: Install Ruchy
+      run: |
+        git clone https://github.com/paiml/ruchy.git /tmp/ruchy
+        cd /tmp/ruchy
+        cargo install --path . --force
+        ruchy --version
+        
+    - name: Test One-Liners (Critical)
+      run: |
+        echo "🧮 Testing Ruchy one-liners..."
+        deno task test-oneliners
+        
+        # Check if all one-liners passed
+        if grep -q '"failed_tests": 0' test/extracted-examples/oneliners.json; then
+          echo "✅ All one-liners passed!"
+        else
+          echo "❌ One-liner tests failed!"
+          cat test/extracted-examples/oneliners.json
+          exit 1
+        fi
+        
+    - name: Extract and Test All Book Examples
+      run: |
+        echo "📚 Testing all book examples..."
+        deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+        
+        # Check overall success rate
+        SUCCESS_RATE=$(grep -o '"success_rate": [0-9]*' test/extracted-examples/summary.json | cut -d' ' -f2)
+        echo "📊 Current success rate: ${SUCCESS_RATE}%"
+        
+        # Fail if success rate drops significantly (below 35%)
+        if [ "$SUCCESS_RATE" -lt 35 ]; then
+          echo "❌ Success rate too low: ${SUCCESS_RATE}% (minimum: 35%)"
+          exit 1
+        fi
+        
+    - name: Generate Status Reports
+      run: |
+        echo "📊 Generating status reports..."
+        deno task generate-report
+        
+    - name: Test Ruchy Tools on Examples
+      run: |
+        echo "🛠️ Testing Ruchy tools on examples..."
+        
+        # Test linting on working examples
+        echo "Testing ruchy lint..."
+        find test/extracted-examples -name "*.ruchy" | head -10 | while read file; do
+          ruchy lint --format json "$file" > /dev/null || echo "Lint issues in $file"
+        done
+        
+        # Test formatting on working examples  
+        echo "Testing ruchy fmt..."
+        find test/extracted-examples -name "*.ruchy" | head -5 | while read file; do
+          ruchy fmt --check "$file" > /dev/null || echo "Formatting issues in $file"
+        done
+        
+        # Test syntax checking
+        echo "Testing ruchy check..."
+        find test/extracted-examples -name "*.ruchy" | head -10 | while read file; do
+          ruchy check "$file" > /dev/null || echo "Syntax issues in $file"
+        done
+        
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: test-results-${{ github.run_number }}
+        path: |
+          reports/
+          test/extracted-examples/
+        retention-days: 30
+        
+    - name: Update Status Badge  
+      if: github.ref == 'refs/heads/main'
+      run: |
+        # Get success rate for badge
+        SUCCESS_RATE=$(grep -o '"success_rate": [0-9]*' test/extracted-examples/summary.json | cut -d' ' -f2)
+        
+        # Determine badge color
+        if [ "$SUCCESS_RATE" -ge 70 ]; then
+          COLOR="green"
+        elif [ "$SUCCESS_RATE" -ge 50 ]; then
+          COLOR="yellow"
+        elif [ "$SUCCESS_RATE" -ge 35 ]; then
+          COLOR="orange"  
+        else
+          COLOR="red"
+        fi
+        
+        echo "SUCCESS_RATE=${SUCCESS_RATE}" >> $GITHUB_ENV
+        echo "BADGE_COLOR=${COLOR}" >> $GITHUB_ENV
+        
+    - name: Comment on PR with Results
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let summaryData = {};
+          let onelinersData = {};
+          
+          try {
+            summaryData = JSON.parse(fs.readFileSync('test/extracted-examples/summary.json', 'utf8'));
+            onelinersData = JSON.parse(fs.readFileSync('test/extracted-examples/oneliners.json', 'utf8'));
+          } catch (e) {
+            console.log('Could not read test results');
+          }
+          
+          const successRate = summaryData.success_rate || 0;
+          const workingExamples = summaryData.working_examples || 0;
+          const totalExamples = summaryData.total_examples || 0;
+          const onelinersSuccess = onelinersData.success_rate || 0;
+          const onelinersTotal = onelinersData.total_tests || 0;
+          
+          const statusEmoji = successRate >= 50 ? '🟢' : successRate >= 35 ? '🟡' : '🔴';
+          
+          const comment = `## 📊 Book Examples Test Results
+          
+          ${statusEmoji} **Overall Status**: ${successRate}% compatibility (${workingExamples}/${totalExamples} examples)
+          
+          ### 🎯 Key Metrics:
+          - **One-liners**: ${onelinersSuccess}% (${onelinersTotal}/20 tests)
+          - **Book Examples**: ${workingExamples}/${totalExamples} working
+          - **Ruchy Version**: v0.10.0
+          
+          ### 📈 Quality Assessment:
+          ${successRate >= 50 ? '✅ **Good**: Above 50% compatibility' :
+            successRate >= 35 ? '⚠️ **Acceptable**: Above 35% threshold' :
+            '❌ **Critical**: Below 35% - needs attention'}
+            
+          📁 **Download Results**: Full test reports available in workflow artifacts
+          
+          ---
+          *Automated testing by Ruchy Book CI*`;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });

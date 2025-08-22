@@ -27,7 +27,7 @@ Parse error: Unexpected token: ColonColon
 
 
 === ch19-00-real-world-projects example 1 ===
-Parse error: Expected Greater, found RightShift
+Parse error: Expected type
 
 
 === ch19-00-real-world-projects example 2 ===
@@ -91,7 +91,7 @@ Parse error: Expected field name
 
 
 === appendix-b-syntax-reference example 2 ===
-Parse error: Expected identifier after 'let' or 'let mut'
+Parse error: Expected '(' or '[' after macro name
 
 
 === appendix-b-syntax-reference example 4 ===
@@ -175,15 +175,15 @@ Parse error: Expected Greater, found Colon
 
 
 === appendix-b-syntax-reference example 26 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
+Parse error: Expected LeftBrace, found Semicolon
 
 
 === appendix-b-syntax-reference example 27 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
+Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
 
 
 === appendix-b-syntax-reference example 28 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
+Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
 
 
 === appendix-b-syntax-reference example 29 ===
@@ -191,7 +191,7 @@ Parse error: Expected enum name
 
 
 === appendix-b-syntax-reference example 32 ===
-Parse error: Unexpected token: FatArrow
+Parse error: Expected '(' or '[' after macro name
 
 
 === appendix-b-syntax-reference example 33 ===
@@ -207,7 +207,7 @@ Parse error: Expected 'fun' or 'fn' keyword
 
 
 === ch18-00-deployment-devops example 5 ===
-Parse error: Expected RightParen, found FatArrow
+Parse error: Expected ',' or closing delimiter in macro arguments
 
 
 === ch18-00-deployment-devops example 6 ===
@@ -218,12 +218,8 @@ Parse error: Expected type
 Parse error: Expected ',' or '}' in import list
 
 
-=== ch18-00-deployment-devops example 8 ===
-Parse error: Expected RightParen, found Bang
-
-
 === ch17-00-documentation example 1 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
+Parse error: Expected RightBrace, found Identifier("items")
 
 
 === ch17-00-documentation example 2 ===
@@ -235,11 +231,7 @@ Parse error: Expected RightParen, found Integer(5)
 
 
 === ch17-00-documentation example 4 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
-
-
-=== ch17-00-documentation example 5 ===
-Parse error: Expected 'fn' or 'fun' after 'pub'
+Parse error: Expected type
 
 
 === ch17-00-documentation example 6 ===
@@ -291,39 +283,39 @@ Parse error: Expected RightParen, found Identifier("commit")
 
 
 === ch15-00-macros-metaprogramming example 1 ===
-Parse error: Expected RightParen, found Colon
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 2 ===
-Parse error: Unexpected token: FatArrow
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 3 ===
-Parse error: Expected LeftParen, found Bang
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 4 ===
-Parse error: Expected LeftParen, found Bang
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 5 ===
-Parse error: Expected RightParen, found Bang
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 6 ===
-Parse error: Expected RightParen, found Colon
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 7 ===
-Parse error: Expected RightParen, found Colon
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 8 ===
-Parse error: Expected RightParen, found Colon
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch15-00-macros-metaprogramming example 9 ===
-Parse error: Expected RightParen, found Colon
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch09-00-network-programming example 1 ===
@@ -370,6 +362,10 @@ Parse error: Unexpected token: ColonColon
 Parse error: Expected identifier after '::'
 
 
+=== ch08-00-systems-programming example 5 ===
+Parse error: Expected identifier or string key in object literal
+
+
 === ch08-00-systems-programming example 6 ===
 Parse error: Unexpected token: Colon
 
@@ -391,7 +387,7 @@ Parse error: Expected enum name
 
 
 === ch13-00-error-handling example 3 ===
-Parse error: Expected variant name
+Parse error: Expected enum name
 
 
 === ch13-00-error-handling example 4 ===
@@ -427,7 +423,7 @@ Parse error: Expected type
 
 
 === ch13-00-error-handling example 12 ===
-Parse error: Expected RightParen, found Bang
+Parse error: Unexpected token: Underscore
 
 
 === ch16-00-testing-quality example 1 ===
@@ -451,7 +447,7 @@ Parse error: Expected field name
 
 
 === ch16-00-testing-quality example 6 ===
-Parse error: Expected RightParen, found Bang
+Parse error: Expected method name or 'await' after '.'
 
 
 === ch16-00-testing-quality example 7 ===
@@ -594,12 +590,8 @@ Parse error: Expected type
 Parse error: Unexpected token: Mut
 
 
-=== appendix-c-troubleshooting example 9 ===
-Parse error: Expected FatArrow, found Some
-
-
 === appendix-c-troubleshooting example 10 ===
-Parse error: Expected FatArrow, found Some
+Parse error: Expected type
 
 
 === appendix-c-troubleshooting example 11 ===
@@ -651,7 +643,7 @@ Parse error: Unexpected token: RightBracket
 
 
 === ch01-02-hello-world example 5 ===
-Parse error: Unexpected token: RightParen
+Parse error: Expected '(' or '[' after macro name
 
 
 === ch01-02-hello-world example 6 ===

@@ -2163,9 +2163,9 @@ dependencies = [
 
 [[package]]
 name = "ruchy"
-version = "0.4.13"
+version = "0.9.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e8c7ea9451a9baf3b3091f838615320980788895b6f1ef0ad0844844261e3f73"
+checksum = "b4073bbb369d0d78ccd770d52e75292bc33dac8a1f270b73313cd5a339af8fa5"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -2186,6 +2186,7 @@ dependencies = [
  "serde",
  "serde_json",
  "sha2",
+ "smallvec",
  "syn",
  "thiserror 1.0.69",
  "tokio",

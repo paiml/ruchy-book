@@ -257,6 +257,121 @@ $ ruchy -e 'let x = [1, 2, 3]; x'
 ### Workaround
 None available. Arrays cannot be accessed by index.
 
+**Resolution**: Fixed in ruchy v0.9.0! Array indexing now works correctly:
+```bash
+$ ruchy --version
+ruchy 0.9.0
+
+$ ruchy -e 'let x = [1, 2, 3]; x[0]'
+1
+```
+
+---
+
+## Bug #004: CRITICAL - v0.9.7 Release Compilation Failure
+
+**Filed**: August 21, 2025  
+**Ruchy Version**: v0.9.7  
+**Platform**: Linux 6.8.0-78-lowlatency x86_64  
+**Severity**: **CRITICAL** - Blocking Release, Cannot Install  
+**Status**: **OPEN** - Immediate Action Required  
+
+### Description
+The v0.9.7 release cannot compile due to incomplete macro system implementation. The `Macro` variant was added to `ExprKind` enum and the type inference match arm calls `self.infer_macro(name, args)`, but the `infer_macro` method is not implemented in the `InferenceContext` struct.
+
+### Compilation Error
+```
+error[E0599]: no method named `infer_macro` found for struct `InferenceContext`
+   --> src/middleend/infer.rs:188:18
+    |
+188 |                 self.infer_macro(name, args)
+    |                      ^^^^^^^^^^^ method not found in `InferenceContext`
+```
+
+### Root Cause Analysis
+1. **Incomplete Implementation**: Macro match arm added but helper method forgotten
+2. **Missing Method**: `infer_macro(&mut self, name: &str, args: &[Expr]) -> Result<MonoType>` not implemented  
+3. **Testing Gap**: Code committed without compilation verification
+4. **Quality Gate Failure**: This should have been caught by `cargo check` before commit
+
+### Impact Assessment
+- **BREAKING**: v0.9.7 cannot be installed or used
+- **BLOCKING**: All downstream users cannot upgrade  
+- **REPUTATION**: Published broken release on crates.io
+- **WORKFLOW**: Development workflow compromised
+
+### Immediate Actions Required
+1. **URGENT**: Revert v0.9.7 from crates.io if possible
+2. **FIX**: Implement missing `infer_macro` method
+3. **TEST**: Verify compilation before any future releases
+4. **PROCESS**: Strengthen quality gates to prevent this
+
+### Required Fix
+Add the missing `infer_macro` method to `src/middleend/infer.rs`:
+
+```rust
+fn infer_macro(&mut self, name: &str, args: &[Expr]) -> Result<MonoType> {
+    // Type check macro arguments
+    for arg in args {
+        let _arg_ty = self.infer_expr(arg)?;
+    }
+    
+    // Handle common macros
+    match name {
+        "println" | "print" | "eprintln" | "eprint" => {
+            // Print macros return Unit
+            Ok(MonoType::Unit)
+        }
+        "vec" => {
+            // vec! macro returns a Vec<T> where T is inferred from elements
+            if args.is_empty() {
+                // vec![] - empty vec with fresh type variable
+                Ok(MonoType::List(Box::new(MonoType::Var(self.gen.fresh()))))
+            } else {
+                // vec![elements...] - infer element type
+                let first_ty = self.infer_expr(&args[0])?;
+                for arg in &args[1..] {
+                    let arg_ty = self.infer_expr(arg)?;
+                    self.unifier.unify(&first_ty, &arg_ty)?;
+                }
+                Ok(MonoType::List(Box::new(first_ty)))
+            }
+        }
+        _ => {
+            // Unknown macro - return fresh type variable
+            Ok(MonoType::Var(self.gen.fresh()))
+        }
+    }
+}
+```
+
+### Prevention
+- [ ] Add compilation check to CI/CD pipeline
+- [ ] Require `cargo check` pass before any commit  
+- [ ] Implement pre-commit hooks for compilation verification
+- [ ] Never commit without testing basic compilation
+
+**This is a mission-critical issue requiring immediate resolution before any further development.**
+
+**Resolution**: Fixed in ruchy v0.9.8! The missing `infer_macro` method was implemented:
+```bash
+$ ruchy --version
+ruchy 0.9.8
+
+$ ruchy -e "println!(\"Macro system works!\")"
+"Macro system works!"
+()
+
+$ ruchy -e "vec![1, 2, 3]"
+[1, 2, 3]
+```
+
+**Impact of Fix**:
+- v0.9.8 compiles and runs correctly
+- Macro system functional with `println!` and `vec!` support
+- Maintains 40% book compatibility (110/274 examples)
+- 100% one-liner support preserved
+
 ---
 
 ## Bug Reporting Guidelines
@@ -277,7 +392,8 @@ When filing a new bug:
 |-------|-------|----------|--------|---------------|-------|
 | 001 | File Operations Hang | Critical | **FIXED** | v0.7.7 | 2024-12-20 |
 | 002 | Function Definitions Cannot Be Executed | High | **Open** | v0.8.0 | 2025-08-21 |
-| 003 | Array Indexing Not Implemented | Medium | **Open** | v0.8.0 | 2025-08-21 |
+| 003 | Array Indexing Not Implemented | Medium | **FIXED** | v0.8.0 | 2025-08-21 |
+| 004 | v0.9.7 Release Compilation Failure | **CRITICAL** | **FIXED** | v0.9.7 | 2025-08-21 |
 
 ---
 

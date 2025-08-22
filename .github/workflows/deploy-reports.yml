@@ -1,0 +1,209 @@
+name: Deploy Status Reports
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Update reports daily
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  deploy-reports:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+        
+    - name: Install Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+        
+    - name: Install Ruchy
+      run: |
+        git clone https://github.com/paiml/ruchy.git /tmp/ruchy
+        cd /tmp/ruchy
+        cargo install --path . --force
+        ruchy --version
+        
+    - name: Generate Fresh Status Reports
+      run: |
+        echo "🔄 Generating fresh status reports..."
+        
+        # Test one-liners
+        deno task test-oneliners
+        
+        # Test all examples  
+        deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+        
+        # Generate reports
+        deno task generate-report
+        
+        echo "✅ Reports generated successfully"
+        
+    - name: Create GitHub Pages Site
+      run: |
+        echo "🌐 Creating GitHub Pages site..."
+        
+        mkdir -p public
+        
+        # Copy HTML dashboard as index
+        cp reports/status-dashboard.html public/index.html
+        
+        # Copy all reports
+        cp reports/* public/
+        
+        # Create API endpoints for external access
+        mkdir -p public/api
+        cp test/extracted-examples/summary.json public/api/status.json
+        cp test/extracted-examples/oneliners.json public/api/oneliners.json
+        
+        # Create downloads directory
+        mkdir -p public/downloads
+        cp test/extracted-examples/passing.log public/downloads/
+        cp test/extracted-examples/failing.log public/downloads/
+        cp test/extracted-examples/errors.log public/downloads/
+        
+        # Create a simple API index
+        cat > public/api/index.json << 'EOF'
+        {
+          "endpoints": {
+            "status": "/api/status.json",
+            "oneliners": "/api/oneliners.json"
+          },
+          "downloads": {
+            "passing_examples": "/downloads/passing.log",
+            "failing_examples": "/downloads/failing.log", 
+            "error_details": "/downloads/errors.log"
+          },
+          "generated": "$(date -Iseconds)"
+        }
+        EOF
+        
+        echo "📁 GitHub Pages site ready"
+        
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+      
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: ./public
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
+      
+    - name: Update README with Latest Results
+      run: |
+        echo "📝 Updating README with latest status..."
+        
+        # Get current stats
+        SUCCESS_RATE=$(grep -o '"success_rate": [0-9]*' test/extracted-examples/summary.json | cut -d' ' -f2)
+        WORKING_EXAMPLES=$(grep -o '"working_examples": [0-9]*' test/extracted-examples/summary.json | cut -d' ' -f2)
+        TOTAL_EXAMPLES=$(grep -o '"total_examples": [0-9]*' test/extracted-examples/summary.json | cut -d' ' -f2)
+        ONELINERS_SUCCESS=$(grep -o '"success_rate": [0-9]*' test/extracted-examples/oneliners.json | cut -d' ' -f2)
+        
+        # Determine status emoji
+        if [ "$SUCCESS_RATE" -ge 70 ]; then
+          STATUS_EMOJI="🟢"
+          STATUS_TEXT="Good"
+        elif [ "$SUCCESS_RATE" -ge 50 ]; then
+          STATUS_EMOJI="🟡" 
+          STATUS_TEXT="Moderate"
+        elif [ "$SUCCESS_RATE" -ge 35 ]; then
+          STATUS_EMOJI="🟠"
+          STATUS_TEXT="Needs Work"
+        else
+          STATUS_EMOJI="🔴"
+          STATUS_TEXT="Critical"
+        fi
+        
+        # Create status badge URLs
+        BADGE_COLOR=$(echo "$STATUS_TEXT" | tr '[:upper:]' '[:lower:]' | sed 's/ /%20/g')
+        SUCCESS_BADGE="https://img.shields.io/badge/Book%20Examples-${SUCCESS_RATE}%25-${BADGE_COLOR}"
+        ONELINERS_BADGE="https://img.shields.io/badge/One--liners-${ONELINERS_SUCCESS}%25-brightgreen"
+        
+        echo "SUCCESS_RATE=${SUCCESS_RATE}" >> $GITHUB_ENV
+        echo "STATUS_EMOJI=${STATUS_EMOJI}" >> $GITHUB_ENV
+        echo "STATUS_TEXT=${STATUS_TEXT}" >> $GITHUB_ENV
+        echo "WORKING_EXAMPLES=${WORKING_EXAMPLES}" >> $GITHUB_ENV
+        echo "TOTAL_EXAMPLES=${TOTAL_EXAMPLES}" >> $GITHUB_ENV
+        
+    - name: Commit Updated Reports
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add generated reports
+        git add reports/
+        
+        # Only commit if there are changes
+        if ! git diff --cached --quiet; then
+          git commit -m "📊 Update status reports - ${SUCCESS_RATE}% compatibility (${WORKING_EXAMPLES}/${TOTAL_EXAMPLES})"
+          git push
+        else
+          echo "No changes to reports"
+        fi
+        
+    - name: Create Release on Major Milestones
+      if: env.SUCCESS_RATE >= 50 || env.SUCCESS_RATE >= 75
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const successRate = process.env.SUCCESS_RATE;
+          const workingExamples = process.env.WORKING_EXAMPLES;
+          const totalExamples = process.env.TOTAL_EXAMPLES;
+          
+          // Check if this is a milestone
+          const milestones = [50, 75, 90];
+          const currentMilestone = milestones.find(m => successRate >= m);
+          
+          if (currentMilestone) {
+            const tagName = `milestone-${currentMilestone}pct`;
+            
+            try {
+              await github.rest.repos.createRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                tag_name: tagName,
+                name: `🎉 ${currentMilestone}% Book Compatibility Achieved!`,
+                body: `## 🚀 Major Milestone Reached!
+                
+                We've achieved **${successRate}% compatibility** with the Ruchy book examples!
+                
+                ### 📊 Statistics:
+                - **Working Examples**: ${workingExamples}/${totalExamples}
+                - **Success Rate**: ${successRate}%
+                - **Ruchy Version**: v0.10.0
+                
+                ### 🎯 What This Means:
+                ${currentMilestone >= 75 ? '🏆 **Excellent**: Most book examples work perfectly!' :
+                  currentMilestone >= 50 ? '✅ **Good**: Majority of examples are functional!' :
+                  '🎯 **Progress**: Significant compatibility achieved!'}
+                
+                📊 **View Live Dashboard**: [Status Reports](https://paiml.github.io/ruchy-book/)
+                
+                ---
+                *Generated automatically when compatibility milestones are reached*`,
+                draft: false,
+                prerelease: false
+              });
+            } catch (error) {
+              // Release might already exist, that's okay
+              console.log('Release creation failed (might already exist):', error.message);
+            }
+          }

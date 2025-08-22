@@ -7,7 +7,7 @@ description = "Test framework for Ruchy book code examples"
 
 [dependencies]
 # Exact version pinning - no ranges allowed
-ruchy = "=0.4.13"
+ruchy = "=0.9.1"
 
 [dev-dependencies]
 # Test utilities

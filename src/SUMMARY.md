@@ -42,6 +42,7 @@
 - [Documentation](./ch17-00-documentation.md)
 - [Deployment & DevOps](./ch18-00-deployment-devops.md)
 - [Real-World Projects](./ch19-00-real-world-projects.md)
+- [Developer Tooling & Workflow](./ch20-00-tooling.md)
 
 ## Appendices
 

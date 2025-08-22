@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-21T15:27:07.828Z",
-  "ruchy_version": "ruchy 0.9.0",
+  "generated_at": "2025-08-22T10:00:03.407Z",
+  "ruchy_version": "ruchy 0.10.0",
   "summary": {
     "total_chapters": 23,
-    "total_examples": 272,
-    "working_examples": 107,
-    "failing_examples": 165,
-    "success_rate": 39
+    "total_examples": 274,
+    "working_examples": 111,
+    "failing_examples": 163,
+    "success_rate": 41
   },
   "chapters": {
     "ch10-00-performance-optimization": {
@@ -59,23 +59,23 @@
     },
     "ch18-00-deployment-devops": {
       "total_examples": 8,
-      "working_examples": 4,
-      "failing_examples": 4,
-      "success_rate": 50,
+      "working_examples": 5,
+      "failing_examples": 3,
+      "success_rate": 63,
       "status_breakdown": {
-        "working": 4,
+        "working": 5,
         "not_implemented": 0,
-        "broken": 4,
+        "broken": 3,
         "planned": 0
       }
     },
     "ch01-03-interpreter-scripting": {
-      "total_examples": 13,
-      "working_examples": 13,
+      "total_examples": 15,
+      "working_examples": 15,
       "failing_examples": 0,
       "success_rate": 100,
       "status_breakdown": {
-        "working": 13,
+        "working": 15,
         "not_implemented": 0,
         "broken": 0,
         "planned": 0
@@ -83,13 +83,13 @@
     },
     "ch17-00-documentation": {
       "total_examples": 10,
-      "working_examples": 1,
-      "failing_examples": 9,
-      "success_rate": 10,
+      "working_examples": 2,
+      "failing_examples": 8,
+      "success_rate": 20,
       "status_breakdown": {
-        "working": 1,
+        "working": 2,
         "not_implemented": 0,
-        "broken": 9,
+        "broken": 8,
         "planned": 0
       }
     },
@@ -143,13 +143,13 @@
     },
     "ch08-00-systems-programming": {
       "total_examples": 9,
-      "working_examples": 5,
-      "failing_examples": 4,
-      "success_rate": 56,
+      "working_examples": 4,
+      "failing_examples": 5,
+      "success_rate": 44,
       "status_breakdown": {
-        "working": 5,
+        "working": 4,
         "not_implemented": 0,
-        "broken": 4,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -227,13 +227,13 @@
     },
     "appendix-c-troubleshooting": {
       "total_examples": 20,
-      "working_examples": 8,
-      "failing_examples": 12,
-      "success_rate": 40,
+      "working_examples": 9,
+      "failing_examples": 11,
+      "success_rate": 45,
       "status_breakdown": {
-        "working": 8,
+        "working": 9,
         "not_implemented": 0,
-        "broken": 12,
+        "broken": 11,
         "planned": 0
       }
     },
@@ -296,6 +296,6 @@
   "quality_metrics": {
     "documentation_coverage": 65.71428571428571,
     "example_testing": 100,
-    "implementation_status": 39
+    "implementation_status": 41
   }
 }
