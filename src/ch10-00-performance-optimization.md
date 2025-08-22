@@ -1,17 +1,17 @@
 # Performance & Optimization
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/11 examples)
+**Chapter Status**: ❌ 36% Working (4/11 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 4 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 11 | Known issues, needs fixing |
+| ❌ Broken | 7 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,8 +28,8 @@ Most developers guess at performance problems or optimize the wrong things. In R
 Here's performance optimization in action:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: optimize_data_processing.ruchy
 // Before and after optimization
 
@@ -89,6 +89,7 @@ println(f"Optimized: {optimized_time}ms")
 println(f"Speedup: {naive_time / optimized_time:.1}x")
 // Output: Speedup: 42.3x
 
+
 ```
 
 That's the power of systematic optimization!
@@ -101,7 +102,7 @@ Measure before optimizing:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // CPU profiling
 let profiler = perf::CpuProfiler::new()
 profiler.start()
@@ -128,13 +129,14 @@ mem_profiler.stop()
 let mem_report = mem_profiler.report()
 
 println("\n=== Memory Profile ===")
-println(f"Peak memory: {format_size(mem_report.peak_usage)}")
-println(f"Allocations: {mem_report.allocation_count}")
-println(f"Largest allocation: {format_size(mem_report.largest_allocation)}")
+println("Peak memory: " + format_size(mem_report.peak_usage))
+println("Allocations: " + mem_report.allocation_count.to_s())
+println("Largest allocation: " + format_size(mem_report.largest_allocation))
 
 // Flame graph generation
 profiler.generate_flamegraph("profile.svg")
 println("Flame graph saved to profile.svg")
+
 
 ```
 
@@ -143,8 +145,8 @@ println("Flame graph saved to profile.svg")
 Compare performance systematically:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Micro-benchmarks
 use std::bench;
 
@@ -197,6 +199,7 @@ fn benchmark_algorithm(name, func, data) {
     println(f"{name}: {avg:.2}ms ± {std:.2}ms")
 }
 
+
 ```
 
 ### Parallel Processing
@@ -205,7 +208,7 @@ Use multiple cores effectively:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // Parallel map
 let data = range(1, 1000000)
 let results = parallel::map(data, |n| {
@@ -246,6 +249,7 @@ for url in urls {
 
 let responses = async::wait_all(futures)
 
+
 ```
 
 ## Optimization Techniques
@@ -253,8 +257,8 @@ let responses = async::wait_all(futures)
 ### Algorithm Optimization
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: algorithm_optimization.ruchy
 // Common optimization patterns
 
@@ -322,13 +326,14 @@ fn find_first_match(items, predicate) {
     return null
 }
 
+
 ```
 
 ### Memory Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightParen, found Colon
 // File: memory_optimization.ruchy
 // Reduce memory usage
 
@@ -381,13 +386,14 @@ struct CompactUser {
     name: String    // Single allocation
 }
 
+
 ```
 
 ### I/O Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: io_optimization.ruchy
 // Speed up I/O operations
 
@@ -435,6 +441,7 @@ fn process_huge_file(path) {
     })
 }
 
+
 ```
 
 ## Real-World Optimization
@@ -442,8 +449,8 @@ fn process_huge_file(path) {
 ### Database Query Optimizer
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: query_optimizer.ruchy
 // Optimize database queries
 
@@ -458,8 +465,8 @@ database.log_queries(true)
 // Analyze slow queries
 fn analyze_query(sql) {
     let plan = database.explain(sql)
-    println(f"Query: {sql}")
-    println(f"Execution plan: {plan}")
+    println("Query: " + sql)
+    println("Execution plan: " + plan)
     
     // Find missing indexes
     if plan.contains("Seq Scan") {
@@ -477,7 +484,7 @@ fn analyze_query(sql) {
     
     for pattern in patterns {
         if pattern.count > 10 && pattern.similar {
-            println(f"⚠️  N+1 query pattern detected: {pattern.example}")
+            println("⚠️  N+1 query pattern detected: " + pattern.example)
             println("Consider using JOIN or batch loading")
         }
     }
@@ -516,13 +523,14 @@ let optimized_time = perf::measure {
 
 println(f"Improvement: {naive_time / optimized_time:.1}x faster")
 
+
 ```
 
 ### Web Server Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: web_server_optimization.ruchy
 // High-performance web server
 
@@ -535,7 +543,7 @@ let app = http::Server::new("0.0.0.0:8080")
 let response_cache = cache::LRU::new(1000)
 
 app.use(|req, res, next| {
-    let cache_key = f"{req.method}:{req.path}:{req.query_string}"
+    let cache_key = req.method + ":" + req.path + ":" + req.query_string
     
     if req.method == "GET" && response_cache.has(cache_key) {
         let cached = response_cache.get(cache_key)
@@ -598,13 +606,14 @@ println("  • Gzip compression")
 
 app.listen()
 
+
 ```
 
 ### Data Processing Pipeline
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: data_pipeline_optimization.ruchy
 // Optimize large-scale data processing
 
@@ -651,7 +660,7 @@ fn process_dataset(input_file, output_file) {
     let records = input.count()
     let throughput = records / duration.seconds()
     
-    println(f"Processed {records} records in {duration}")
+    println("Processed " + records.to_s() + " records in " + duration.to_s())
     println(f"Throughput: {throughput:.0} records/second")
 }
 
@@ -666,6 +675,7 @@ process_dataset("input.jsonl", "output.jsonl")
 
 monitor.report()
 
+
 ```
 
 ## Performance Tips
@@ -674,7 +684,7 @@ monitor.report()
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // 1. Measure first
 perf::profile {
     suspicious_function()
@@ -700,6 +710,7 @@ async::wait_all(io_operations)
 
 // 8. Profile in production
 // Dev performance ≠ Production performance
+
 
 ```
 

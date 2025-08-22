@@ -10,8 +10,8 @@
 | ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's elegant pattern usage in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // File: event_system.ruchy
 // Event-driven architecture with multiple patterns
 
@@ -66,20 +66,21 @@ let events = EventBus::singleton()
 // Decorator pattern for logging
 fn with_logging(handler) {
     return |data| {
-        println(f"[{current_datetime()}] Event triggered: {data}")
+        println("[" + current_datetime() + "] Event triggered: " + data)
         let result = handler(data)
-        println(f"[{current_datetime()}] Event completed")
+        println("[" + current_datetime() + "] Event completed")
         return result
     }
 }
 
 // Usage combining patterns
 let unsubscribe = events.on("user.login", with_logging(|user| {
-    println(f"User {user.name} logged in")
+    println("User " + user.name + " logged in")
     update_last_login(user)
 }))
 
 events.emit("user.login", {name: "Alice", id: 123})
+
 
 ```
 
@@ -93,7 +94,7 @@ Construct complex objects step by step:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Fluent interface for configuration
 class ServerBuilder {
     let config = {
@@ -148,6 +149,7 @@ let server = ServerBuilder::new()
     .route("/api", api_handler)
     .build()
 
+
 ```
 
 ### Strategy Pattern
@@ -156,7 +158,7 @@ Swap algorithms at runtime:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Different compression strategies
 class CompressionContext {
     let strategy
@@ -201,6 +203,7 @@ if file_size > mb(10) {
 
 let compressed = compressor.compress(file_data)
 
+
 ```
 
 ### Chain of Responsibility
@@ -209,7 +212,7 @@ Process requests through a chain of handlers:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Middleware chain for request processing
 class MiddlewareChain {
     let middlewares = []
@@ -279,6 +282,7 @@ chain.use(route_handler)
 
 chain.execute(request, response)
 
+
 ```
 
 ## Functional Patterns
@@ -289,7 +293,7 @@ Build complex behavior from simple functions:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 // Function composition
 fn compose(...functions) {
     return |x| {
@@ -331,6 +335,7 @@ let result = pipeline(
     format
 )
 
+
 ```
 
 ### Monadic Patterns
@@ -339,7 +344,7 @@ Handle errors and async elegantly:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Result monad for error handling
 class Result {
     let value
@@ -388,6 +393,7 @@ fn process_user(id) {
         .unwrap_or({error: "Processing failed"})
 }
 
+
 ```
 
 ### Lazy Evaluation
@@ -396,7 +402,7 @@ Defer computation until needed:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Lazy sequences
 class LazySeq {
     let generator
@@ -472,6 +478,7 @@ let first_10_even = fibonacci
     .filter(|n| n % 2 == 0)
     .take(10)
 
+
 ```
 
 ## Architectural Patterns
@@ -482,7 +489,7 @@ Abstract data access:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Generic repository interface
 class Repository {
     fn find(id)
@@ -534,6 +541,7 @@ class UserService {
     }
 }
 
+
 ```
 
 ### Event Sourcing
@@ -542,7 +550,7 @@ Store events, not state:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Event sourcing system
 class EventStore {
     let events = []
@@ -606,6 +614,7 @@ fn handle_order_placed(event) {
 // Rebuild state from events
 let current_state = event_store.replay()
 
+
 ```
 
 ### CQRS (Command Query Responsibility Segregation)
@@ -614,7 +623,7 @@ Separate reads from writes:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Command side - writes
 class CommandBus {
     let handlers = {}
@@ -626,7 +635,7 @@ class CommandBus {
     fn dispatch(command) {
         let handler = handlers[command.type]
         if !handler {
-            throw f"No handler for command: {command.type}"
+            throw "No handler for command: " + command.type
         }
         
         return handler(command)
@@ -644,7 +653,7 @@ class QueryBus {
     fn query(query) {
         let handler = handlers[query.type]
         if !handler {
-            throw f"No handler for query: {query.type}"
+            throw "No handler for query: " + query.type
         }
         
         return handler(query)
@@ -675,6 +684,7 @@ let orders = query_bus.query({
     customer_id: 123
 })
 
+
 ```
 
 ## Concurrent Patterns
@@ -685,7 +695,7 @@ Isolated units of computation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Actor system
 class Actor {
     let mailbox = Queue::new()
@@ -748,6 +758,7 @@ worker.send({
     reply_to: self
 })
 
+
 ```
 
 ### Circuit Breaker
@@ -756,7 +767,7 @@ Prevent cascading failures:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 class CircuitBreaker {
     let failure_threshold = 5
     let timeout = 30000
@@ -788,7 +799,7 @@ class CircuitBreaker {
             
             if failure_count >= failure_threshold {
                 state = "open"
-                println(f"Circuit breaker opened after {failure_count} failures")
+                println("Circuit breaker opened after " + failure_count.to_s() + " failures")
             }
             
             throw error
@@ -808,6 +819,7 @@ fn call_external_api(data) {
     })
 }
 
+
 ```
 
 ## Try It Yourself
@@ -818,7 +830,7 @@ Time to apply advanced patterns! Start experimenting:
 $ ruchy repl
 >>> # Create a simple event system
 >>> let events = EventBus::new()
->>> events.on("test", |data| println(f"Got: {data}"))
+>>> events.on("test", |data| println("Got: " + data))
 >>> events.emit("test", "Hello patterns!")
 >>> 
 >>> # Try functional composition

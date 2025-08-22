@@ -10,8 +10,8 @@
 | ❌ Broken | 10 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a complete web server in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: web_server.ruchy
 // HTTP server with routing and middleware
 
@@ -42,7 +42,7 @@ server.use(|req, res, next| {
     let start = current_time_ms()
     next()
     let duration = current_time_ms() - start
-    println(f"{req.method} {req.path} - {res.status} ({duration}ms)")
+    println(req.method + " " + req.path + " - " + res.status.to_s() + " (" + duration.to_s() + "ms)")
 })
 
 // Routes
@@ -60,7 +60,7 @@ server.get("/api/users", |req, res| {
 
 server.post("/api/users", |req, res| {
     let user = req.json()
-    println(f"Creating user: {user.name}")
+    println("Creating user: " + user.name)
     user.id = generate_id()
     user.created = current_datetime()
     res.status(201).json(user)
@@ -72,6 +72,7 @@ server.static("/public", "./static")
 // Start server
 println(f"🚀 Server running on http://localhost:8080")
 server.listen()
+
 
 ```
 
@@ -85,7 +86,7 @@ Build reliable network connections:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // TCP Server
 let server = net::TcpListener::bind("127.0.0.1:9000")
 println("Server listening on port 9000")
@@ -95,7 +96,7 @@ loop {
     
     // Handle each client in a separate thread
     spawn {
-        println(f"Client connected: {client.remote_addr()}")
+        println("Client connected: " + client.remote_addr())
         
         loop {
             let message = client.read_line()
@@ -103,8 +104,8 @@ loop {
                 break
             }
             
-            println(f"Received: {message}")
-            client.write(f"Echo: {message}\n")
+            println("Received: " + message)
+            client.write("Echo: " + message + "\n")
         }
         
         println("Client disconnected")
@@ -115,7 +116,8 @@ loop {
 let client = net::TcpStream::connect("127.0.0.1:9000")
 client.write("Hello, server!\n")
 let response = client.read_line()
-println(f"Server replied: {response}")
+println("Server replied: " + response)
+
 
 ```
 
@@ -125,11 +127,11 @@ Make HTTP requests easily:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected method name or 'await' after '.'
 // Simple GET request
 let response = http::get("https://api.example.com/data")
 let data = response.json()
-println(f"Got {data.items.len()} items")
+println("Got " + data.items.len().to_s() + " items")
 
 // POST with JSON
 let user = {
@@ -143,7 +145,7 @@ let response = http::post("https://api.example.com/users")
 // Advanced requests
 let response = http::request("https://api.example.com/data")
     .method("GET")
-    .header("Authorization", f"Bearer {token}")
+    .header("Authorization", "Bearer " + token)
     .header("User-Agent", "Ruchy/1.0")
     .query("page", 1)
     .query("limit", 100)
@@ -154,16 +156,17 @@ if response.is_success() {
     let data = response.json()
     process_data(data)
 } else {
-    println(f"Error: {response.status} - {response.text()}")
+    println("Error: " + response.status.to_s() + " - " + response.text())
 }
 
 // Download file with progress
 http::download("https://example.com/big-file.zip", "downloads/file.zip")
     .on_progress(|downloaded, total| {
         let percent = (downloaded / total) * 100
-        print(f"\rDownloading: {percent:.1}%")
+        print("\rDownloading: " + percent.to_s() + "%")
     })
     .await()
+
 
 ```
 
@@ -173,15 +176,15 @@ Real-time bidirectional communication:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // WebSocket Server
 let ws_server = ws::Server::new("0.0.0.0:8081")
 
 ws_server.on_connection(|socket| {
-    println(f"WebSocket connected: {socket.id}")
+    println("WebSocket connected: " + socket.id)
     
     socket.on("message", |data| {
-        println(f"Received: {data}")
+        println("Received: " + data)
         
         // Broadcast to all clients
         ws_server.broadcast({
@@ -192,7 +195,7 @@ ws_server.on_connection(|socket| {
     })
     
     socket.on("close", || {
-        println(f"WebSocket disconnected: {socket.id}")
+        println("WebSocket disconnected: " + socket.id)
     })
 })
 
@@ -207,12 +210,13 @@ ws.on("open", || {
 })
 
 ws.on("message", |data| {
-    println(f"Server says: {data}")
+    println("Server says: " + data)
 })
 
 ws.on("error", |err| {
-    println(f"WebSocket error: {err}")
+    println("WebSocket error: " + err.to_s())
 })
+
 
 ```
 
@@ -222,7 +226,7 @@ ws.on("error", |err| {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: api_server.ruchy
 // RESTful API with database
 
@@ -320,7 +324,7 @@ app.delete("/api/posts/:id", require_auth, |req, res| {
 
 // Error handling
 app.use(|err, req, res, next| {
-    console.error(f"Error: {err}")
+    console.error("Error: " + err.to_s())
     res.status(500).json({
         error: "Internal server error",
         message: err.message
@@ -330,13 +334,14 @@ app.use(|err, req, res, next| {
 println("🚀 API server running on http://localhost:3000")
 app.listen()
 
+
 ```
 
 ### Real-time Chat Application
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // File: chat_server.ruchy
 // Multi-room chat server with history
 
@@ -457,13 +462,14 @@ server.on_connection(|socket| {
 println("💬 Chat server running on ws://localhost:8080")
 server.listen()
 
+
 ```
 
 ### Network Scanner
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier, '*', or '{' after '::'
 // File: network_scanner.ruchy
 // Scan network for open ports and services
 
@@ -475,7 +481,7 @@ println("=== Network Scanner ===")
 fn scan_port(host, port, timeout = 1000) {
     try {
         let socket = net::TcpStream::connect_timeout(
-            f"{host}:{port}", 
+            host + ":" + port.to_s(), 
             timeout
         )
         socket.close()
@@ -509,7 +515,7 @@ fn identify_service(port) {
 }
 
 fn scan_host(host, ports) {
-    println(f"\nScanning {host}...")
+    println("\nScanning " + host + "...")
     let open_ports = []
     
     // Parallel port scanning
@@ -529,7 +535,7 @@ fn scan_host(host, ports) {
         if port {
             let service = identify_service(port)
             open_ports.push({port: port, service: service})
-            println(f"  ✓ Port {port:5} open - {service}")
+            println("  ✓ Port " + port.to_s() + " open - " + service)
         }
     }
     
@@ -551,22 +557,23 @@ let ports = match scan_type {
     _ => [80, 443]
 }
 
-println(f"\nScanning {ports.len()} ports on {target}...")
+println("\nScanning " + ports.len().to_s() + " ports on " + target + "...")
 let start_time = current_time_ms()
 
 let results = scan_host(target, ports)
 
 let duration = (current_time_ms() - start_time) / 1000
-println(f"\nScan complete in {duration:.1}s")
-println(f"Found {results.len()} open ports")
+println("\nScan complete in " + duration.to_s() + "s")
+println("Found " + results.len().to_s() + " open ports")
 
 // Generate report
 if results.len() > 0 {
     println("\n=== Open Services ===")
     for item in results.sort_by(|r| r.port) {
-        println(f"{item.port:5} - {item.service}")
+        println(item.port.to_s() + " - " + item.service)
     }
 }
+
 
 ```
 
@@ -574,7 +581,7 @@ if results.len() > 0 {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected method name or 'await' after '.'
 // File: load_balancer.ruchy
 // HTTP load balancer with health checking
 
@@ -604,7 +611,7 @@ fn select_backend() {
 fn health_check() {
     for backend in backends {
         try {
-            let response = http::get(f"{backend.url}/health")
+            let response = http::get(backend.url + "/health")
                 .timeout(2000)
                 .send()
             
@@ -614,7 +621,7 @@ fn health_check() {
         }
         
         let status = backend.healthy ? "✓" : "✗"
-        println(f"Health check {backend.url}: {status}")
+        println("Health check " + backend.url + ": " + status)
     }
 }
 
@@ -632,7 +639,7 @@ let balancer = http::Server::new("0.0.0.0:80")
 balancer.all("*", |req, res| {
     let backend = select_backend()
     
-    println(f"Routing {req.method} {req.path} -> {backend.url}")
+    println("Routing " + req.method + " " + req.path + " -> " + backend.url)
     
     // Forward request
     let backend_response = http::request(backend.url + req.path)
@@ -648,8 +655,9 @@ balancer.all("*", |req, res| {
 })
 
 println("🔄 Load balancer running on port 80")
-println(f"Backends: {backends.len()}")
+println("Backends: " + backends.len().to_s())
 balancer.listen()
+
 
 ```
 
@@ -661,7 +669,7 @@ Build custom network protocols:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 // Custom protocol over TCP
 fn send_packet(socket, type, data) {
     let packet = {
@@ -685,25 +693,27 @@ fn receive_packet(socket) {
     return parse_json(json)
 }
 
+
 ```
 
 ### Network Monitoring
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: ColonColon
 // Monitor network traffic
 let monitor = net::PacketCapture::new("eth0")
 
 monitor.on_packet(|packet| {
     if packet.protocol == "TCP" {
-        println(f"TCP: {packet.src}:{packet.src_port} -> {packet.dst}:{packet.dst_port}")
+        println("TCP: " + packet.src + ":" + packet.src_port.to_s() + " -> " + packet.dst + ":" + packet.dst_port.to_s())
     } else if packet.protocol == "UDP" {
-        println(f"UDP: {packet.src} -> {packet.dst} ({packet.size} bytes)")
+        println("UDP: " + packet.src + " -> " + packet.dst + " (" + packet.size.to_s() + " bytes)")
     }
 })
 
 monitor.start()
+
 
 ```
 
@@ -715,12 +725,12 @@ Time to build networked applications! Start experimenting:
 $ ruchy repl
 >>> # Quick HTTP server
 >>> http::serve(8080, |req, res| {
->>>     res.text(f"Hello from {req.path}!")
+>>>     res.text("Hello from " + req.path + "!")
 >>> })
 >>> 
 >>> # Fetch data from API
 >>> let weather = http::get("https://api.weather.com/city/london").json()
->>> println(f"Temperature: {weather.temp}°C")
+>>> println("Temperature: " + weather.temp.to_s() + "°C")
 >>> 
 >>> # Simple port check
 >>> net::is_port_open("google.com", 443)

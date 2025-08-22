@@ -1,17 +1,17 @@
 # Concurrency
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/13 examples)
+**Chapter Status**: ❌ 8% Working (1/13 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 1 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 13 | Known issues, needs fixing |
+| ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's safe, elegant concurrency in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier, '*', or '{' after '::'
 use std::sync;
 use std::async;
 
@@ -72,6 +72,7 @@ let results = pool.parallel_map(items, |item| {
     expensive_computation(item)
 })
 
+
 ```
 
 That's concurrency without fear!
@@ -83,8 +84,8 @@ That's concurrency without fear!
 OS-level parallelism:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Spawn a thread
 let handle = spawn {
     println("Running in parallel!")
@@ -98,7 +99,7 @@ let result = handle.join()
 let data = vec![1, 2, 3]
 let handle = spawn move {
     let sum = data.sum()  // data moved into thread
-    println(f"Sum: {sum}")
+    println("Sum: " + sum.to_s())
 }
 
 // Thread builder for configuration
@@ -109,6 +110,7 @@ let handle = Thread::builder()
         heavy_computation()
     })
 
+
 ```
 
 ### Channels
@@ -117,7 +119,7 @@ Message passing between threads:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 // Create a channel
 let (sender, receiver) = channel()
 
@@ -133,7 +135,7 @@ for i in range(10) {
 // Single consumer
 spawn move {
     while let Ok(result) = receiver.recv() {
-        println(f"Got: {result}")
+        println("Got: " + result.to_s())
     }
 }
 
@@ -155,6 +157,7 @@ loop {
     }
 }
 
+
 ```
 
 ### Shared State
@@ -163,7 +166,7 @@ Safe sharing with synchronization:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'for'
 // Mutex for mutual exclusion
 let counter = Arc::new(Mutex::new(0))
 
@@ -180,7 +183,7 @@ for handle in handles {
     handle.join()
 }
 
-println(f"Result: {*counter.lock()}")
+println("Result: " + (*counter.lock()).to_s())
 
 // RwLock for multiple readers
 let data = Arc::new(RwLock::new(HashMap::new()))
@@ -189,7 +192,7 @@ let data = Arc::new(RwLock::new(HashMap::new()))
 let data_clone = data.clone()
 spawn move {
     let map = data_clone.read()  // Shared read access
-    println(f"Value: {map.get('key')}")
+    println("Value: " + map.get("key").to_s())
 }
 
 // Single writer
@@ -203,6 +206,7 @@ spawn move {
 let counter = Arc::new(AtomicI32::new(0))
 counter.fetch_add(1, Ordering::SeqCst)
 
+
 ```
 
 ### Async/Await
@@ -211,10 +215,10 @@ Cooperative concurrency:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Async function
 async fn fetch_user(id: i32) -> Result<User, Error> {
-    let response = http::get(f"/api/users/{id}").await?
+    let response = http::get("/api/users/" + id.to_s()).await?
     let user = parse_json(response.body).await?
     return Ok(user)
 }
@@ -244,6 +248,7 @@ async fn process_stream(stream: AsyncStream<Item>) {
     }
 }
 
+
 ```
 
 ## Concurrency Patterns
@@ -254,7 +259,7 @@ Reuse threads efficiently:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found Identifier("sender")
 struct ThreadPool {
     workers: Vec<Worker>
     sender: Sender<Job>
@@ -310,10 +315,11 @@ let pool = ThreadPool::new(4)
 
 for i in range(100) {
     pool.execute(move || {
-        println(f"Task {i} on thread {current_thread_id()}")
+        println("Task " + i.to_s() + " on thread " + current_thread_id().to_s())
         heavy_work()
     })
 }
+
 
 ```
 
@@ -323,7 +329,7 @@ Decouple work production from consumption:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 fn producer_consumer_pipeline<T>() {
     let (tx, rx) = channel()
     
@@ -368,6 +374,7 @@ fn bounded_pipeline() {
     }
 }
 
+
 ```
 
 ### Fork-Join
@@ -376,7 +383,7 @@ Split work, process parallel, combine results:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 fn parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
     if items.len() <= 1 {
         return items
@@ -411,6 +418,7 @@ fn parallel_sum(numbers: Vec<i32>) -> i32 {
     return sums.sum()
 }
 
+
 ```
 
 ### Actor Model
@@ -419,7 +427,7 @@ Isolated units with message passing:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fun' or 'fn' keyword
 // Actor trait
 trait Actor {
     type Message
@@ -480,7 +488,8 @@ counter.send(Increment)
 let (tx, rx) = channel()
 counter.send(Get(tx))
 let count = rx.recv()
-println(f"Count: {count}")  // 2
+println("Count: " + count.to_s())  // 2
+
 
 ```
 
@@ -492,7 +501,7 @@ Handle thousands of concurrent requests:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 async fn web_server() {
     let listener = TcpListener::bind("0.0.0.0:8080").await
     
@@ -528,6 +537,7 @@ async fn handle_request(req: Request) -> Response {
     Response::json(data)
 }
 
+
 ```
 
 ### Parallel Data Processing
@@ -536,7 +546,7 @@ Process large datasets efficiently:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 fn process_dataset(data: Vec<Record>) -> Vec<Result> {
     // Partition data for parallel processing
     let chunk_size = data.len() / num_cpus()
@@ -569,6 +579,7 @@ fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
         .collect()
 }
 
+
 ```
 
 ### Concurrent Testing
@@ -577,7 +588,7 @@ Test with parallelism:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightParen, found Identifier("move")
 #[test]
 fn test_concurrent_access() {
     let shared = Arc::new(Mutex::new(Vec::new()))
@@ -613,13 +624,14 @@ async fn test_async_operations() {
     assert!(results.all(|r| r.is_ok()))
 }
 
+
 ```
 
 ## Performance Tips
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '|' after lambda parameters
 // 1. Choose the right abstraction
 // Threads: OS parallelism, CPU-bound work
 // Async: I/O-bound work, many concurrent tasks
@@ -647,6 +659,7 @@ instead_of {
 do {
     channel.send(items)  // One batch send
 }
+
 
 ```
 

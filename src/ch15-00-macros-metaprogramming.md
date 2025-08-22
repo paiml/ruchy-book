@@ -10,8 +10,8 @@
 | ❌ Broken | 9 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's the magic of macros:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Define a macro for JSON-like syntax
 macro! json {
     // Match JSON-like input
@@ -72,6 +72,7 @@ struct User {
 
 // The derive macro generates all the boilerplate!
 
+
 ```
 
 That's code writing code!
@@ -84,7 +85,7 @@ Pattern-based code generation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Simple macro
 macro! say_hello {
     () => {
@@ -134,6 +135,7 @@ handle_codes! {
     500 => "Internal Error"
 }
 
+
 ```
 
 ### Procedural Macros
@@ -142,7 +144,7 @@ Function-like macros with full power:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Derive macro for automatic implementation
 #[proc_macro_derive(Builder)]
 fn derive_builder(input: TokenStream) -> TokenStream {
@@ -178,7 +180,7 @@ fn derive_builder(input: TokenStream) -> TokenStream {
             fn build(self) -> Result<$name, String> {
                 Ok($name {
                     $($fields.name: self.$fields.name
-                        .ok_or(f"Missing field: {stringify!($fields.name)}")?,)*
+                        .ok_or("Missing field: " + stringify!($fields.name))?,)*
                 })
             }
         }
@@ -206,6 +208,7 @@ let config = Config::builder()
     .workers(4)
     .build()?
 
+
 ```
 
 ### Attribute Macros
@@ -214,7 +217,7 @@ Modify items with attributes:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Attribute macro for benchmarking
 #[proc_macro_attribute]
 fn bench(args: TokenStream, input: TokenStream) -> TokenStream {
@@ -226,7 +229,7 @@ fn bench(args: TokenStream, input: TokenStream) -> TokenStream {
             let start = Instant::now()
             let result = { $func.body }
             let duration = start.elapsed()
-            println(f"{stringify!($name)} took {duration:?}")
+            println(stringify!($name) + " took " + duration.to_s())
             result
         }
     }
@@ -254,6 +257,7 @@ fn test_addition(a: i32, b: i32, expected: i32) {
     assert_eq!(a + b, expected)
 }
 
+
 ```
 
 ### Syntax Extensions
@@ -262,7 +266,7 @@ Create domain-specific languages:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // SQL-like macro
 macro! sql {
     (SELECT $($field:ident),* FROM $table:ident WHERE $($cond:tt)*) => {
@@ -311,6 +315,7 @@ macro! regex {
 
 let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
+
 ```
 
 ## Practical Macros
@@ -319,7 +324,7 @@ let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Debug print with variable names
 macro! dbg {
     ($($x:expr),*) => {
@@ -341,9 +346,9 @@ dbg!(x, y, x + 10)
 macro! trace {
     ($func:expr) => {
         {
-            println(f"Entering {stringify!($func)}")
+            println("Entering " + stringify!($func))
             let result = $func
-            println(f"Leaving {stringify!($func)}: {result:?}")
+            println("Leaving " + stringify!($func) + ": " + result.to_s())
             result
         }
     }
@@ -355,10 +360,11 @@ let result = trace!(expensive_calculation())
 macro! assert_eq_msg {
     ($left:expr, $right:expr, $msg:expr) => {
         if $left != $right {
-            panic(f"{$msg}\nLeft: {$left:?}\nRight: {$right:?}")
+            panic($msg + "\nLeft: " + $left.to_s() + "\nRight: " + $right.to_s())
         }
     }
 }
+
 
 ```
 
@@ -366,7 +372,7 @@ macro! assert_eq_msg {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Generate getters and setters
 macro! accessors {
     ($struct_name:ident { $($field:ident : $type:ty),* }) => {
@@ -426,13 +432,14 @@ define_opcodes! {
     JEQ = 0x11
 }
 
+
 ```
 
 ### DSL Macros
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // State machine DSL
 macro! state_machine {
     (
@@ -516,13 +523,14 @@ let config = config! {
     }
 }
 
+
 ```
 
 ## Hygiene and Best Practices
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Hygienic macros prevent name collisions
 macro! safe_swap {
     ($a:expr, $b:expr) => {
@@ -578,6 +586,7 @@ fn test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }
+
 
 ```
 

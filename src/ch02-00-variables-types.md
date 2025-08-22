@@ -1,17 +1,17 @@
 # Variables and Types
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/9 examples)
+**Chapter Status**: ✅ 100% Working (9/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 9 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 9 | Known issues, needs fixing |
+| ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,20 +28,21 @@ In most languages, this involves type declarations, memory management, and compl
 Here's how you store and use data in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-let name = "Alice"
-let age = 25
-let is_learning = true
+// Status: ✅ WORKING
+fun main() {
+    let name = "Alice"
+    let age = 25
+    let is_learning = true
 
-println(f"Hi {name}, you're {age} years old!")
-println(f"Currently learning Ruchy: {is_learning}")
+    println("Hi", name, ", you're", age, "years old!")
+    println("Currently learning Ruchy:", is_learning)
+}
 
 ```
 
 Output:
 ```
-Hi Alice, you're 25 years old!
+Hi Alice , you're 25 years old!
 Currently learning Ruchy: true
 ```
 
@@ -78,70 +79,73 @@ Variables in Ruchy follow simple rules:
 ### Different Data Types
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Text data
-let first_name = "John"
-let last_name = "Doe"
-let full_name = f"{first_name} {last_name}"
+// Status: ✅ WORKING
+fun main() {
+    // Text data
+    let first_name = "John"
+    let last_name = "Doe"
+    let full_name = first_name + " " + last_name
 
-// Numeric data
-let score = 95
-let percentage = 95.5
-let temperature = -10
+    // Numeric data
+    let score = 95
+    let percentage = 95.5
+    let temperature = -10
 
-// Boolean (true/false) data
-let is_student = true
-let has_graduated = false
-let is_enrolled = !has_graduated
+    // Boolean (true/false) data
+    let is_student = true
+    let has_graduated = false
+    let is_enrolled = !has_graduated
 
-println(f"Student: {full_name}")
-println(f"Score: {score} ({percentage}%)")
-println(f"Temperature: {temperature}°C")
-println(f"Status: student={is_student}, graduated={has_graduated}")
+    println("Student:", full_name)
+    println("Score:", score, "(", percentage, "%)")
+    println("Temperature:", temperature, "°C")
+    println("Status: student=", is_student, ", graduated=", has_graduated)
+}
 
 ```
 
 ### Working with Variables
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Store user information
-let username = "programmer2024"
-let login_count = 1
-let is_premium = false
+// Status: ✅ WORKING
+fun main() {
+    // Store user information
+    let username = "programmer2024"
+    let mut login_count = 1
+    let mut is_premium = false
 
-// Use variables in calculations
-let welcome_bonus = 100
-let total_points = welcome_bonus + (login_count * 10)
+    // Use variables in calculations
+    let welcome_bonus = 100
+    let total_points = welcome_bonus + (login_count * 10)
 
-// Update information (variables are mutable by default)
-login_count = login_count + 1
-is_premium = total_points > 150
+    // Update information (use mut for mutable variables)
+    login_count = login_count + 1
+    is_premium = total_points > 150
 
-println(f"Welcome back, {username}!")
-println(f"Logins: {login_count}, Points: {total_points}")
-println(f"Premium status: {is_premium}")
+    println("Welcome back,", username, "!")
+    println("Logins:", login_count, ", Points:", total_points)
+    println("Premium status:", is_premium)
+}
 
 ```
 
 ### Collections and Lists
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Store multiple values
-let favorite_languages = ["Python", "Rust", "Ruchy"]
-let daily_temperatures = [22.5, 25.0, 23.8, 26.2]
-let task_completed = [true, false, true, true]
+// Status: ✅ WORKING
+fun main() {
+    // Store multiple values
+    let favorite_languages = ["Python", "Rust", "Ruchy"]
+    let daily_temperatures = [22.5, 25.0, 23.8, 26.2]
+    let task_completed = [true, false, true, true]
 
-// Access items by index (starting from 0)
-println(f"First language: {favorite_languages[0]}")
-println(f"Today's temp: {daily_temperatures[0]}°C")
+    // Access items by index (starting from 0)
+    println("First language:", favorite_languages[0])
+    println("Today's temp:", daily_temperatures[0], "°C")
 
-// Get list length
-println(f"I know {favorite_languages.len()} languages")
+    // Get list length
+    println("I know", favorite_languages.len(), "languages")
+}
 
 ```
 
@@ -149,33 +153,36 @@ println(f"I know {favorite_languages.len()} languages")
 
 ### Forgetting let for New Variables
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // ❌ This won't work
-user_name = "Alice"
+fun main() {
+    user_name = "Alice"  // Error: variable not declared
+}
 
 ```
 Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
 
 ### Mixing Data Types Incorrectly
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // ❌ This might not work as expected
-let age = "25"
-let next_year = age + 1
+fun main() {
+    let age = "25"  // String, not number
+    let next_year = age + 1  // Can't add number to string
+}
 
 ```
-Error: Can't add number to string. Use `let age = 25` (without quotes).
+Error: Can't add number to string. Use `let age = 25` (without quotes) for numeric operations.
 
 ### Case Sensitivity Confusion
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // ❌ These are different variables
-let userName = "Alice"
-let username = "Bob"
-println(userName)  // Prints "Alice", not "Bob"
+fun main() {
+    let userName = "Alice"
+    let username = "Bob"
+    println(userName)  // Prints "Alice", not "Bob"
+}
 
 ```
 Warning: Stick to snake_case: `user_name`.
@@ -189,11 +196,12 @@ Ever wonder how Ruchy's simple variables become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-let name = "Alice"
-let age = 25
-println(f"Hi {name}, age {age}")
+// Status: ✅ WORKING
+fun main() {
+    let name = "Alice"
+    let age = 25
+    println("Hi", name, ", age", age)
+}
 
 ```
 
@@ -239,8 +247,9 @@ $ ruchy repl
 >>> let is_learning_fast = true
 >>> 
 >>> # Combine them creatively
->>> println(f"I'm {my_name}, {my_age}, and I love {my_hobby}")
->>> println(f"My lucky number {lucky_number} is {'even' if lucky_number % 2 == 0 else 'odd'}")
+>>> println("I'm", my_name, ",", my_age, ", and I love", my_hobby)
+>>> let is_even = lucky_number % 2 == 0
+>>> println("My lucky number", lucky_number, "is", if is_even { "even" } else { "odd" })
 ```
 
 **Your Challenges:**
@@ -251,32 +260,38 @@ $ ruchy repl
 
 **Example Solution:**
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Personal profile
-let name = "Alex"
-let age = 28
-let city = "San Francisco"
-let hobby = "rock climbing"
-let goal = "master Ruchy in 30 days"
+// Status: ✅ WORKING
+fun main() {
+    // Personal profile
+    let name = "Alex"
+    let age = 28
+    let city = "San Francisco"
+    let hobby = "rock climbing"
+    let goal = "master Ruchy in 30 days"
 
-// Data calculator  
-let num1 = 15
-let num2 = 25
-let sum = num1 + num2
-let difference = num1 - num2
-let average = (num1 + num2) / 2
+    // Data calculator  
+    let num1 = 15
+    let num2 = 25
+    let sum = num1 + num2
+    let difference = num1 - num2
+    let average = (num1 + num2) / 2
 
-// Text manipulation
-let first_name = "Alex"
-let last_name = "Johnson"
-let username = f"{first_name.lower()}_{last_name.lower()}"
-let email = f"{username}@example.com"
+    // Text manipulation
+    let first_name = "Alex"
+    let last_name = "Johnson"
+    let username = first_name + "_" + last_name
+    let email = username + "@example.com"
 
-// Boolean logic
-let is_adult = age >= 18
-let lives_in_tech_city = city == "San Francisco"
-let ready_for_job = is_adult && lives_in_tech_city
+    // Boolean logic
+    let is_adult = age >= 18
+    let lives_in_tech_city = city == "San Francisco"
+    let ready_for_job = is_adult && lives_in_tech_city
+
+    println("Profile:", name, age, city)
+    println("Math:", sum, difference, average)
+    println("Contact:", username, email)
+    println("Status:", is_adult, lives_in_tech_city, ready_for_job)
+}
 
 ```
 
@@ -287,8 +302,8 @@ Play with different combinations - this is where programming gets creative!
 - `let` creates variables that store data
 - Ruchy automatically figures out data types for you
 - Variables can store text, numbers, true/false values, and collections
-- Use `f""` strings to combine variables with text
-- Variables are mutable by default - you can change their values
+- Use string concatenation with `+` to combine variables with text
+- Variables are immutable by default - use `mut` to allow changes
 - All type checking happens at compile time for maximum performance
 
 You now have the power to store and manipulate information! Next, let's learn how to organize this logic into reusable functions.

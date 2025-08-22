@@ -1,2 +1,0 @@
-// ❌ This will crash if file doesn't exist
-let content = read_file("missing.txt")

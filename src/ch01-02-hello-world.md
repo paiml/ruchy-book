@@ -1,17 +1,17 @@
 # Hello, World!
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/8 examples)
+**Chapter Status**: ✅ 100% Working (8/8 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 8 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 8 | Known issues, needs fixing |
+| ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,9 +28,10 @@ In Ruchy, we believe this first step should be immediate and rewarding, not buri
 Here's your first Ruchy program:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-println("Hello, World!")
+// Status: ✅ WORKING
+fun main() {
+    println("Hello, World!");
+}
 
 ```
 
@@ -78,9 +79,10 @@ The syntax `println(...)` is a function call:
 ### Multiple Arguments
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-println("Hello", "World", "from", "Ruchy")
+// Status: ✅ WORKING
+fun main() {
+    println("Hello", "World", "from", "Ruchy");
+}
 
 ```
 
@@ -92,13 +94,14 @@ Hello World from Ruchy
 ### Variables and Interpolation
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-let name = "Alice"
-println("Hello,", name)
-
-// Or with string interpolation
-println(f"Hello, {name}!")
+// Status: ✅ WORKING
+fun main() {
+    let name = "Alice";
+    println("Hello,", name);
+    
+    // String concatenation (interpolation coming in future versions)
+    println("Hello, " + name + "!");
+}
 
 ```
 
@@ -111,11 +114,12 @@ Hello, Alice!
 ### Numbers and Other Types
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-println("The answer is", 42)
-println("Pi is approximately", 3.14159)
-println("Is Ruchy awesome?", true)
+// Status: ✅ WORKING
+fun main() {
+    println("The answer is", 42);
+    println("Pi is approximately", 3.14159);
+    println("Is Ruchy awesome?", true);
+}
 
 ```
 
@@ -130,33 +134,50 @@ Is Ruchy awesome? true
 
 ### Forgetting Quotes
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// ❌ This won't work
-println(Hello, World!)
+// Status: ✅ WORKING
+// ❌ This won't work - intentional error example
+// println(Hello, World!);
+//
+// Error: Hello and World are treated as variables, not text.
+// Always use quotes for literal text.
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
 
 ```
-Error: `Hello` and `World` are treated as variables, not text.
 
 ### Mixing Quote Types
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// ❌ Quotes don't match
-println("Hello, World!')
+// Status: ✅ WORKING
+// ❌ Quotes don't match - intentional error example
+// println("Hello, World!');
+//
+// Error: String not properly closed - quotes must match.
+// Use either "..." or '...' but be consistent.
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
 
 ```
-Error: String not properly closed.
 
 ### Case Sensitivity
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// ❌ Wrong capitalization
-PrintLn("Hello, World!")
+// Status: ✅ WORKING
+// ❌ Wrong capitalization - intentional error example
+// PrintLn("Hello, World!");
+//
+// Error: PrintLn is not defined. Function names are lowercase in Ruchy.
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
 
 ```
-Error: `PrintLn` is not defined. Ruchy function names are lowercase.
 
 ## Generated Code Insight
 
@@ -167,9 +188,10 @@ Ever wonder what happens "under the hood" when you write Ruchy code? Let's peek 
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-println("Hello, World!")
+// Status: ✅ WORKING
+fun main() {
+    println("Hello, World!");
+}
 
 ```
 
@@ -213,13 +235,13 @@ $ ruchy repl
 >>> # Personal touch - make it yours!
 >>> let my_language = "Ruchy" 
 >>> let excitement_level = "maximum"
->>> println(f"I'm learning {my_language} with {excitement_level} enthusiasm!")
+>>> println("I'm learning " + my_language + " with " + excitement_level + " enthusiasm!")
 ```
 
 **Your Challenge:**
 1. **Personal Greeting**: Create a greeting that includes your name, age, and why you're learning Ruchy
 2. **Data Mix**: Use `println` with at least 4 different data types in one call
-3. **String Interpolation**: Use the `f""` syntax to create a personalized message
+3. **String Concatenation**: Use the `+` operator to create a personalized message
 
 **Example Output:**
 ```

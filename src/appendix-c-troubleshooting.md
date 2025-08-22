@@ -1,17 +1,17 @@
 # Appendix C: Troubleshooting Guide
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/20 examples)
+**Chapter Status**: ❌ 40% Working (8/20 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 8 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 20 | Known issues, needs fixing |
+| ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -23,8 +23,8 @@
 
 #### Missing Semicolons
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Error
 let x = 42
 let y = 24
@@ -35,12 +35,13 @@ let y = 24;
 
 // Note: Semicolons needed for statements, not expressions
 
+
 ```
 
 #### Unmatched Braces/Parentheses
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected end of input
 // ❌ Error
 if condition {
     do_something()
@@ -51,12 +52,13 @@ if condition {
     do_something()
 }
 
+
 ```
 
 #### Invalid Variable Names
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 // ❌ Error
 let 123invalid = "nope"
 let my-var = "no hyphens"
@@ -67,30 +69,32 @@ let invalid_123 = "ok"
 let my_var = "underscores ok"
 let function_name = "not keyword"
 
+
 ```
 
 ### Type Errors
 
 #### Type Mismatch
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Error
 let x: i32 = "string"
 
-// Error: expected `i32`, found `&str`
+
 
 // ✅ Fixed
 let x: i32 = 42
 // or
 let x = "string"  // Let compiler infer type
 
+
 ```
 
 #### Cannot Move Out of Borrowed Content
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Star
 // ❌ Error
 let s = String::from("hello")
 let r = &s
@@ -101,16 +105,17 @@ let s = String::from("hello")
 let r = &s
 let copied = r.clone()  // Clone instead of move
 
+
 ```
 
 #### Use After Move
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Error
 let s = String::from("hello")
 takes_ownership(s)
-println(s)  // Error: s was moved
+println(s)  
 
 // ✅ Fixed - Option 1: Clone
 let s = String::from("hello")
@@ -122,6 +127,7 @@ let s = String::from("hello")
 borrows_value(&s)
 println(s)  // s still valid
 
+
 ```
 
 ### Lifetime Errors
@@ -129,7 +135,7 @@ println(s)  // s still valid
 #### Borrowed Value Does Not Live Long Enough
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // ❌ Error
 fn dangle() -> &String {
     let s = String::from("hello")
@@ -147,16 +153,17 @@ fn static_str() -> &'static str {
     "hello"  // String literals have static lifetime
 }
 
+
 ```
 
 #### Multiple Mutable References
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Mut
 // ❌ Error
 let mut s = String::from("hello")
 let r1 = &mut s
-let r2 = &mut s  // Error: cannot borrow as mutable more than once
+let r2 = &mut s  // Error: Parse error: Unexpected token: Mut
 println(r1)
 println(r2)
 
@@ -168,6 +175,7 @@ let mut s = String::from("hello")
 }
 let r2 = &mut s  // Now ok
 
+
 ```
 
 ## Runtime Errors
@@ -176,8 +184,8 @@ let r2 = &mut s  // Now ok
 
 #### Index Out of Bounds
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Runtime panic
 let v = vec![1, 2, 3]
 let item = v[5]  // Panic: index out of bounds
@@ -194,12 +202,13 @@ if let Some(item) = v.get(5) {
     println("Item: {}", item)
 }
 
+
 ```
 
 #### Unwrap on None/Err
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // ❌ Runtime panic
 let maybe_value: Option<i32> = None
 let value = maybe_value.unwrap()  // Panic: called unwrap on None
@@ -214,12 +223,13 @@ match maybe_value {
 // ✅ Or provide default
 let value = maybe_value.unwrap_or(0)
 
+
 ```
 
 #### Division by Zero
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // ❌ Runtime panic
 fn divide(a: i32, b: i32) -> i32 {
     a / b  // Panic if b is 0
@@ -243,14 +253,15 @@ fn divide_result(a: i32, b: i32) -> Result<i32, String> {
     }
 }
 
+
 ```
 
 ### Memory Issues
 
 #### Stack Overflow
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Infinite recursion causes stack overflow
 fn infinite_recursion(n: i32) -> i32 {
     infinite_recursion(n + 1)  // No base case
@@ -274,12 +285,13 @@ fn factorial_iterative(n: i32) -> i32 {
     result
 }
 
+
 ```
 
 #### Large Stack Allocations
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBracket, found Semicolon
 // ❌ May cause stack overflow
 fn large_array() {
     let big_array: [i32; 1_000_000] = [0; 1_000_000]  // 4MB on stack
@@ -295,6 +307,7 @@ fn boxed_array() {
     let big_array: Box<[i32; 1_000_000]> = Box::new([0; 1_000_000])
 }
 
+
 ```
 
 ## Performance Issues
@@ -302,7 +315,7 @@ fn boxed_array() {
 ### Unnecessary Cloning
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // ❌ Inefficient - unnecessary clones
 fn process_strings(strings: Vec<String>) -> Vec<String> {
     strings.iter()
@@ -317,12 +330,13 @@ fn process_strings_efficient(strings: &[String]) -> Vec<String> {
         .collect()
 }
 
+
 ```
 
 ### Inefficient String Concatenation
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // ❌ Inefficient - creates many temporary strings
 fn concat_inefficient(strings: &[&str]) -> String {
     let mut result = String::new()
@@ -351,12 +365,13 @@ fn concat_with_capacity(strings: &[&str]) -> String {
     result
 }
 
+
 ```
 
 ### Inefficient Collections
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // ❌ Wrong collection for use case
 use std::collections::VecDeque
 
@@ -372,6 +387,7 @@ let mut deque = VecDeque::new()
 for i in 0..1000 {
     deque.push_front(i)
 }
+
 
 ```
 
@@ -393,7 +409,7 @@ some_crate = "1.2"  # Updated to use serde 1.0
 ### Missing Features
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Question
 // ❌ Error: no method named `json` found for type `Response`
 let response = reqwest::get(url).await?
 let data = response.json().await?  // Feature not enabled
@@ -401,6 +417,7 @@ let data = response.json().await?  // Feature not enabled
 // ✅ Enable required features in Cargo.toml
 // [dependencies]
 // reqwest = { version = "0.11", features = ["json"] }
+
 
 ```
 
@@ -509,8 +526,8 @@ sudo chown -R $(whoami) ~/.rustup
 
 ### Print Debugging
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Simple debug prints
 println!("Debug: x = {}", x)
 println!("Debug: {:?}", complex_struct)  // Debug formatting
@@ -522,6 +539,7 @@ println!("This only prints in debug builds")
 
 // Debug macro
 debug!("Variable state: x={}, y={}", x, y)
+
 
 ```
 
@@ -542,8 +560,8 @@ rust-gdb target/debug/my_program
 
 ### Logging
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 use log::{debug, info, warn, error}
 
 fn main() {
@@ -558,12 +576,13 @@ fn main() {
 // Control log level with environment variable
 // RUST_LOG=debug cargo run
 
+
 ```
 
 ### Testing and Debugging
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Hash
 #[cfg(test)]
 mod tests {
     use super::*
@@ -580,6 +599,7 @@ mod tests {
     
     // Run with: cargo test -- --nocapture
 }
+
 
 ```
 

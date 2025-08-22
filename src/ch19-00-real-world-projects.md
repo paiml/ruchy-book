@@ -10,8 +10,8 @@
 | ❌ Broken | 4 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ A complete productivity tool:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // taskmaster.ruchy - Complete task management system
 use std::cli::{App, Arg, SubCommand};
 use std::fs;
@@ -279,6 +279,7 @@ fn main() -> Result<()> {
     Ok(())
 }
 
+
 ```
 
 ## Project 2: Web API Service
@@ -287,7 +288,7 @@ A production-ready REST API:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found ColonColon
 // api_server.ruchy - Complete web service
 use warp::{Filter, Reply, Rejection};
 use sqlx::{PgPool, FromRow};
@@ -455,6 +456,7 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
+
 ```
 
 ## Project 3: System Monitor
@@ -463,7 +465,7 @@ Real-time system monitoring tool:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected ',' or '}' in import list
 // sysmon.ruchy - System monitoring dashboard
 use sysinfo::{System, SystemExt, ProcessExt, CpuExt};
 use tui::{Terminal, Frame, backend::CrosstermBackend};
@@ -684,6 +686,7 @@ async fn main() -> Result<()> {
     Ok(())
 }
 
+
 ```
 
 ## Project Ideas
@@ -726,7 +729,7 @@ When building real projects:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Dot
 // 1. Project structure
 my-project/
 ├── src/
@@ -807,6 +810,7 @@ mod tests {
         assert_eq!(result, expected);
     }
 }
+
 
 ```
 

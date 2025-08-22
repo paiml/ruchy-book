@@ -1,3 +1,0 @@
-let name = input("What's your name? ")
-let age = input("How old are you? ").to_i()
-let is_student = input("Are you a student? (y/n) ") == "y"

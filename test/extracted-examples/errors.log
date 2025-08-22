@@ -59,7 +59,7 @@ Parse error: Expected field name
 
 
 === ch11-00-advanced-patterns example 5 ===
-Parse error: Expected pattern
+Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 
 
 === ch11-00-advanced-patterns example 6 ===
@@ -118,6 +118,10 @@ Parse error: Unexpected token: Const
 Parse error: Expected identifier after 'let' or 'let mut'
 
 
+=== appendix-b-syntax-reference example 11 ===
+Parse error: Expected FatArrow, found If
+
+
 === appendix-b-syntax-reference example 12 ===
 Parse error: Expected identifier after 'for'
 
@@ -155,7 +159,7 @@ Parse error: Expected Colon, found Comma
 
 
 === appendix-b-syntax-reference example 21 ===
-Parse error: Unexpected token: Comma
+Parse error: Expected 'fun' or 'fn' keyword
 
 
 === appendix-b-syntax-reference example 22 ===
@@ -218,6 +222,10 @@ Parse error: Expected type
 Parse error: Expected ',' or '}' in import list
 
 
+=== ch18-00-deployment-devops example 8 ===
+Parse error: Unexpected token: Question
+
+
 === ch17-00-documentation example 1 ===
 Parse error: Expected RightBrace, found Identifier("items")
 
@@ -263,11 +271,7 @@ Parse error: Unexpected token: DotDot
 
 
 === ch07-00-building-applications example 1 ===
-Parse error: Expected RightParen, found Equal
-
-
-=== ch07-00-building-applications example 4 ===
-Parse error: Expected RightParen, found Equal
+Parse error: Expected In, found Comma
 
 
 === ch07-00-building-applications example 5 ===
@@ -351,7 +355,7 @@ Parse error: Expected method name or 'await' after '.'
 
 
 === ch09-00-network-programming example 9 ===
-Parse error: Expected pattern
+Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 
 
 === ch09-00-network-programming example 10 ===
@@ -367,11 +371,11 @@ Parse error: Expected identifier or string key in object literal
 
 
 === ch08-00-systems-programming example 6 ===
-Parse error: Unexpected token: Colon
+Parse error: Unexpected token: Question
 
 
 === ch08-00-systems-programming example 7 ===
-Parse error: Expected RightParen, found Equal
+Parse error: Expected In, found Comma
 
 
 === ch08-00-systems-programming example 9 ===
@@ -610,6 +614,10 @@ Parse error: Expected type
 Parse error: Expected type
 
 
+=== appendix-c-troubleshooting example 17 ===
+Parse error: Unexpected token: Question
+
+
 === appendix-c-troubleshooting example 20 ===
 Parse error: Unexpected token: Hash
 
@@ -640,12 +648,4 @@ Parse error: Expected In, found Comma
 
 === ch05-00-data-processing example 10 ===
 Parse error: Unexpected token: RightBracket
-
-
-=== ch01-02-hello-world example 5 ===
-Parse error: Expected '(' or '[' after macro name
-
-
-=== ch01-02-hello-world example 6 ===
-Parse error: Unexpected end of input
 

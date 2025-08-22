@@ -1,17 +1,17 @@
 # Documentation
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/10 examples)
+**Chapter Status**: ❌ 20% Working (2/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 2 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 10 | Known issues, needs fixing |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's documentation done right:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found Identifier("items")
 /// A high-performance cache with automatic eviction.
 /// 
 /// # Examples
@@ -105,6 +105,7 @@ impl<K, V> Cache<K, V> {
     }
 }
 
+
 ```
 
 That's documentation that actually helps!
@@ -117,7 +118,7 @@ Write documentation in the code:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 /// Single line summary of what this does.
 /// 
 /// More detailed explanation that provides context,
@@ -184,6 +185,7 @@ impl Struct {
     }
 }
 
+
 ```
 
 ### Documentation Tests
@@ -192,7 +194,7 @@ Ensure examples work:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightParen, found Integer(5)
 /// Calculates the factorial of a number.
 /// 
 /// # Examples
@@ -232,6 +234,7 @@ test src/lib.rs - factorial (line 17) ... ignored
 
 test result: ok. 3 passed; 0 failed; 1 ignored
 
+
 ```
 
 ### API Documentation
@@ -240,7 +243,7 @@ Generate beautiful API docs:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 /// Configuration for the application.
 /// 
 /// This struct holds all configuration values needed to run
@@ -292,6 +295,7 @@ Documenting mylib v0.1.0
     Finished documentation
     Opening docs/mylib/index.html
 
+
 ```
 
 ### Architecture Documentation
@@ -299,8 +303,8 @@ Documenting mylib v0.1.0
 Document the big picture:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 //! # System Architecture
 //! 
 //! ## Overview
@@ -368,6 +372,7 @@ pub mod services {
     //! Services contain all business rules and orchestrate
     //! operations across multiple repositories.
 }
+
 
 ```
 
@@ -493,7 +498,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Empty program
 /// # Examples Section
 /// 
 /// ## Basic Usage
@@ -552,6 +557,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 /// }
 /// ```
 
+
 ```
 
 ## Interactive Documentation
@@ -560,7 +566,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Comma
 // Generate interactive documentation site
 $ ruchy doc --format html --output docs/
 
@@ -571,13 +577,14 @@ $ ruchy doc --features search,playground,examples
 $ ruchy doc --serve --port 8080
 Serving documentation at http://localhost:8080
 
+
 ```
 
 ### API Playground
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightBracket
 /// Interactive API endpoint documentation
 /// 
 /// <playground>
@@ -597,6 +604,7 @@ pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
 
 // Generates interactive API tester in docs
 
+
 ```
 
 ## Documentation Tools
@@ -604,8 +612,8 @@ pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
 ### Auto-generation
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Generate documentation from code
 #[doc_gen]
 impl ConfigBuilder {
@@ -627,13 +635,14 @@ async fn request_flow() {
 // Server -> Server: process()
 // Server -> Client: respond()
 
+
 ```
 
 ### Documentation Linting
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: DotDotDot
 // Check documentation quality
 $ ruchy doc-lint
 Checking documentation...
@@ -647,6 +656,7 @@ Documentation score: 87/100
 
 // Enforce in CI
 $ ruchy doc-lint --min-score 90
+
 
 ```
 

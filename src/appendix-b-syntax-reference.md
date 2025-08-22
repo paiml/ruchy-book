@@ -1,17 +1,17 @@
 # Appendix B: Syntax Reference
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/35 examples)
+**Chapter Status**: ❌ 14% Working (5/35 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 5 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 35 | Known issues, needs fixing |
+| ❌ Broken | 30 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -21,8 +21,8 @@
 
 ### Comments
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Single line comment
 
 /* 
@@ -35,12 +35,13 @@ fn documented_function() {}
 
 //! Inner documentation comment for containing item
 
+
 ```
 
 ### Identifiers
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Valid identifiers
 variable_name
 camelCase
@@ -55,14 +56,15 @@ let mut fn if else match while for loop break continue
 return true false null struct enum trait impl use mod
 async await type where const static pub super self
 
+
 ```
 
 ### Literals
 
 #### Numeric Literals
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Integers
 42          // Decimal
 0xFF        // Hexadecimal  
@@ -81,12 +83,13 @@ async await type where const static pub super self
 3.14f64     // 64-bit float
 100u8       // Unsigned 8-bit
 
+
 ```
 
 #### String Literals
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '[' after '#'
 // String literals
 "hello world"
 "unicode: αβγ"
@@ -102,19 +105,21 @@ r##"even more "# nested # delimiters"##
 line two"
 
 // Format strings
-f"Hello, {name}!"
-f"Result: {value:2.2}"
+"Hello, " + name + "!"
+"Result: " + value.to_s()
+
 
 ```
 
 #### Character Literals
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Arrow, found Bang
 'a'         // ASCII character
 '\n'        // Escape sequence
 '\x41'      // Hex escape
 '\u{1F600}' // Unicode escape
+
 
 ```
 
@@ -122,8 +127,8 @@ f"Result: {value:2.2}"
 
 ### Primitive Types
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Boolean
 let flag: bool = true
 
@@ -150,12 +155,13 @@ let ch: char = 'A'             // Unicode scalar value
 let text: str = "hello"        // String slice
 let owned: String = "world"    // Owned string
 
+
 ```
 
 ### Compound Types
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBracket, found Semicolon
 // Arrays (fixed size)
 let arr: [i32; 5] = [1, 2, 3, 4, 5]
 let zeros: [i32; 100] = [0; 100]
@@ -181,6 +187,7 @@ let nothing: Option<i32> = None
 let ok: Result<i32, String> = Ok(42)
 let err: Result<i32, String> = Err("error message")
 
+
 ```
 
 ## Variable Declaration
@@ -188,7 +195,7 @@ let err: Result<i32, String> = Err("error message")
 ### Let Bindings
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 // Immutable by default
 let x = 42
 let name = "Alice"
@@ -209,12 +216,13 @@ let [first, second, ..] = [1, 2, 3, 4, 5]
 let x = 42
 let x = "now a string"  // Shadows previous x
 
+
 ```
 
 ### Constants
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Const
 // Compile-time constants
 const MAX_SIZE: usize = 1024
 const PI: f64 = 3.14159265359
@@ -223,6 +231,7 @@ const PI: f64 = 3.14159265359
 static GLOBAL_COUNTER: AtomicUsize = AtomicUsize::new(0)
 static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
 
+
 ```
 
 ## Control Flow
@@ -230,7 +239,7 @@ static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
 ### Conditional Expressions
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'let' or 'let mut'
 // If expressions
 let result = if condition {
     "true branch"
@@ -252,12 +261,13 @@ let Some(value) = optional else {
     return Err("No value")
 }
 
+
 ```
 
 ### Pattern Matching
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected FatArrow, found If
 // Match expressions
 match value {
     0 => "zero",
@@ -270,9 +280,9 @@ match value {
 // Destructuring patterns
 match point {
     Point { x: 0, y: 0 } => "origin",
-    Point { x, y: 0 } => f"on x-axis at {x}",
-    Point { x: 0, y } => f"on y-axis at {y}",
-    Point { x, y } => f"point at ({x}, {y})"
+    Point { x, y: 0 } => "on x-axis at " + x.to_s() + ",",
+    Point { x: 0, y } => "on y-axis at " + y.to_s() + ",",
+    Point { x, y } => "point at (" + x.to_s() + ", " + y.to_s() + ")"
 }
 
 // Guards
@@ -282,12 +292,13 @@ match number {
     _ => "zero"
 }
 
+
 ```
 
 ### Loops
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'for'
 // Infinite loop
 loop {
     // Code here
@@ -308,12 +319,12 @@ for item in collection {
 
 // For loop with range
 for i in 0..10 {
-    println(f"Count: {i}")
+    println("Count: " + i.to_s())
 }
 
 // For loop with enumerate
 for (index, item) in collection.enumerate() {
-    println(f"{index}: {item}")
+    println(index.to_s() + ": " + item)
 }
 
 // Loop labels and break/continue
@@ -328,6 +339,7 @@ for (index, item) in collection.enumerate() {
     }
 }
 
+
 ```
 
 ## Functions
@@ -335,10 +347,10 @@ for (index, item) in collection.enumerate() {
 ### Function Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected FatArrow, found Char('+')
 // Basic function
 fn greet(name: String) -> String {
-    return f"Hello, {name}!"
+    return "Hello, " + name + "!"
 }
 
 // Implicit return (no semicolon)
@@ -362,12 +374,13 @@ fn calculate(x: f64, y: f64, operation: char) -> f64 {
     }
 }
 
+
 ```
 
 ### Function Parameters
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // By value (move)
 fn take_ownership(s: String) {
     // s is moved here
@@ -393,12 +406,13 @@ fn sum(numbers: &[i32]) -> i32 {
     numbers.iter().sum()
 }
 
+
 ```
 
 ### Closures
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Closure syntax
 let add = |a, b| a + b
 let result = add(5, 3)
@@ -414,15 +428,16 @@ let result = add_x(5)  // 15
 // Move capture
 let name = String::from("Alice")
 let greeter = move |greeting| {
-    f"{greeting}, {name}!"  // name is moved into closure
+    greeting + ", " + name + "!"  // name is moved into closure
 }
+
 
 ```
 
 ### Higher-Order Functions
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Function as parameter
 fn apply_operation(x: i32, y: i32, op: fn(i32, i32) -> i32) -> i32 {
     op(x, y)
@@ -440,6 +455,7 @@ where F: Fn(T) -> U
     items.into_iter().map(f).collect()
 }
 
+
 ```
 
 ## Structs and Enums
@@ -447,7 +463,7 @@ where F: Fn(T) -> U
 ### Struct Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected LeftBrace, found LeftParen
 // Basic struct
 struct Point {
     x: f64,
@@ -470,12 +486,13 @@ struct Excerpt<'a> {
     text: &'a str,
 }
 
+
 ```
 
 ### Struct Usage
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 // Creating instances
 let origin = Point { x: 0.0, y: 0.0 }
 let red = Color(255, 0, 0)
@@ -490,12 +507,13 @@ let point2 = Point { x: 1.0, ..origin }
 let Point { x, y } = origin
 let Color(r, g, b) = red
 
+
 ```
 
 ### Enum Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found LeftBrace
 // Basic enum
 enum Direction {
     North,
@@ -518,12 +536,13 @@ enum Result<T, E> {
     Err(E),
 }
 
+
 ```
 
 ### Implementation Blocks
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Colon, found Comma
 impl Point {
     // Associated function (constructor)
     fn new(x: f64, y: f64) -> Point {
@@ -547,6 +566,7 @@ impl Point {
     }
 }
 
+
 ```
 
 ## Traits
@@ -554,7 +574,7 @@ impl Point {
 ### Trait Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fun' or 'fn' keyword
 // Basic trait
 trait Draw {
     fn draw(&self)
@@ -565,7 +585,7 @@ trait Summary {
     fn summarize_author(&self) -> String
     
     fn summarize(&self) -> String {
-        f"(Read more from {}...)", self.summarize_author())
+        "(Read more from " + self.summarize_author() + "...)"
     }
 }
 
@@ -581,15 +601,16 @@ trait From<T> {
     fn from(value: T) -> Self
 }
 
+
 ```
 
 ### Trait Implementation
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 impl Draw for Point {
     fn draw(&self) {
-        println(f"Drawing point at ({}, {})", self.x, self.y)
+        println("Drawing point at (" + self.x.to_s() + ", " + self.y.to_s() + ")")
     }
 }
 
@@ -607,6 +628,7 @@ impl<T: Clone> Clone for Box<T> {
     }
 }
 
+
 ```
 
 ## Generics
@@ -614,7 +636,7 @@ impl<T: Clone> Clone for Box<T> {
 ### Generic Functions
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 fn largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0]
     for item in list {
@@ -625,12 +647,13 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     largest
 }
 
+
 ```
 
 ### Generic Structs
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected LeftBrace, found Less
 struct Point<T> {
     x: T,
     y: T,
@@ -648,12 +671,13 @@ impl Point<f64> {
     }
 }
 
+
 ```
 
 ### Trait Bounds
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 // Single bound
 fn print_it<T: Display>(item: T) {
     println("{}", item)
@@ -677,6 +701,7 @@ where
     // Implementation
 }
 
+
 ```
 
 ## Modules and Visibility
@@ -684,7 +709,7 @@ where
 ### Module Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected LeftBrace, found Semicolon
 // Inline module
 mod network {
     fn connect() {
@@ -706,12 +731,13 @@ mod graphics {
     }
 }
 
+
 ```
 
 ### Visibility
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
 pub fn public_function() {}           // Public
 fn private_function() {}              // Private to module
 
@@ -724,12 +750,13 @@ pub(crate) fn crate_visible() {}      // Visible within crate
 pub(super) fn parent_visible() {}     // Visible to parent module
 pub(in crate::utils) fn limited() {} // Visible within specific path
 
+
 ```
 
 ### Use Declarations
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
 use std::collections::HashMap         // Single import
 use std::fs::{File, OpenOptions}      // Multiple imports
 use std::io::*                        // Glob import
@@ -745,6 +772,7 @@ use unix_specific::module
 #[cfg(windows)]  
 use windows_specific::module
 
+
 ```
 
 ## Error Handling
@@ -752,7 +780,7 @@ use windows_specific::module
 ### Result and Option
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected enum name
 // Result type
 enum Result<T, E> {
     Ok(T),
@@ -777,12 +805,13 @@ match result {
     Err(error) => eprintln("Error: {}", error),
 }
 
+
 ```
 
 ### Panic
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Unconditional panic
 panic!("Something went wrong!")
 
@@ -793,14 +822,15 @@ assert_eq!(left, right, "Values must be equal")
 // Debug assertions (only in debug builds)
 debug_assert!(expensive_check())
 
+
 ```
 
 ## Macros
 
 ### Macro Invocation
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Function-like macros
 println!("Hello, {}!", name)
 vec![1, 2, 3, 4, 5]
@@ -817,12 +847,13 @@ mod tests {}
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 struct Point { x: i32, y: i32 }
 
+
 ```
 
 ### Macro Definition
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected '(' or '[' after macro name
 // Declarative macro
 macro_rules! say_hello {
     () => {
@@ -837,6 +868,7 @@ macro_rules! say_hello {
 say_hello!()
 say_hello!("World")
 
+
 ```
 
 ## Attributes
@@ -844,7 +876,7 @@ say_hello!("World")
 ### Common Attributes
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightParen
 // Conditional compilation
 #[cfg(target_os = "linux")]
 fn linux_only() {}
@@ -882,6 +914,7 @@ fn small_function() {}
 #[inline(always)]
 fn always_inline() {}
 
+
 ```
 
 ## Async/Await
@@ -889,7 +922,7 @@ fn always_inline() {}
 ### Async Functions
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Async function
 async fn fetch_data(url: &str) -> Result<String, reqwest::Error> {
     let response = reqwest::get(url).await?
@@ -908,12 +941,13 @@ let async_closure = async |x| {
     expensive_async_operation(x).await
 }
 
+
 ```
 
 ### Futures and Streams
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fun' or 'fn' keyword
 use futures::{Future, Stream}
 
 // Implementing Future
@@ -932,6 +966,7 @@ let stream = async_stream::stream! {
         tokio::time::sleep(Duration::from_millis(100)).await
     }
 }
+
 
 ```
 
