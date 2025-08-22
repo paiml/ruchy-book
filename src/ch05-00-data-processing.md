@@ -1,17 +1,17 @@
 # Data Processing  
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/10 examples)
+**Chapter Status**: ❌ 30% Working (3/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 3 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 10 | Known issues, needs fixing |
+| ❌ Broken | 7 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a simple but powerful data processor in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightBracket
 // File: sales_analyzer.ruchy
 // Analyzes sales data from CSV file
 
@@ -66,18 +66,19 @@ for row in sales_data[1..] {  // Skip header
 }
 
 // Display results
-println(f"Total Sales: ${total_sales}")
-println(f"Average Sale: ${total_sales / (sales_data.len() - 1)}")
+println("Total Sales: $" + total_sales.to_s())
+println("Average Sale: $" + (total_sales / (sales_data.len() - 1)).to_s())
 
 println("\nTop Products:")
 for product, count in product_counts.items() {
-    println(f"  {product}: {count} sales")
+    println("  " + product + ": " + count.to_s() + " sales")
 }
 
 println("\nSales by Region:")
 for region, amount in region_sales.items() {
-    println(f"  {region}: ${amount}")
+    println("  " + region + ": $" + amount.to_s())
 }
+
 
 ```
 
@@ -108,8 +109,8 @@ That's real data analysis! Scales to thousands of rows easily.
 
 Use appropriate structures for different data types:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Arrays for sequences
 let sales_amounts = [1299, 25, 79, 1299, 399]
 let monthly_revenue = [45000, 52000, 48000, 61000]
@@ -128,14 +129,15 @@ let transactions = [
     {"id": 1003, "amount": 79, "customer": "alice@email.com"}
 ]
 
+
 ```
 
 ### Data Aggregation
 
 Common patterns for summarizing data:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Sum and averages
 let total = numbers.sum()
 let average = numbers.sum() / numbers.len()
@@ -160,6 +162,7 @@ let high_value = transactions.filter(|t| t.amount > 100)
 let customer_ids = transactions.map(|t| t.customer)
 let amounts_only = transactions.map(|t| t.amount)
 
+
 ```
 
 ### File Format Processing
@@ -167,7 +170,7 @@ let amounts_only = transactions.map(|t| t.amount)
 Handle common data formats:
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightBracket
 // CSV-like processing (simplified)
 fn parse_csv_line(line) {
     return line.split(",").map(|field| field.trim())
@@ -190,6 +193,7 @@ fn load_csv(filename) {
     return data
 }
 
+
 ```
 
 ## Practical Data Tools
@@ -198,7 +202,7 @@ fn load_csv(filename) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: DotDot
 // File: customer_analytics.ruchy
 // Analyzes customer purchase patterns
 
@@ -218,10 +222,10 @@ let total_revenue = customers.map(|c| c.total_spent).sum()
 let average_order_value = total_revenue / customers.map(|c| c.orders).sum()
 let average_customer_value = total_revenue / total_customers
 
-println(f"Customer Base: {total_customers} customers")
-println(f"Total Revenue: ${total_revenue}")
-println(f"Average Order Value: ${average_order_value:.2f}")
-println(f"Average Customer Value: ${average_customer_value:.2f}")
+println("Customer Base: " + total_customers.to_s() + " customers")
+println("Total Revenue: $" + total_revenue.to_s())
+println("Average Order Value: $" + average_order_value.to_s())
+println("Average Customer Value: $" + average_customer_value.to_s())
 
 // Segment customers
 let vip_customers = customers.filter(|c| c.total_spent > 1000)
@@ -229,16 +233,17 @@ let new_customers = customers.filter(|c| c.signup_date.starts_with("2024"))
 let frequent_buyers = customers.filter(|c| c.orders > 5)
 
 println(f"\nCustomer Segments:")
-println(f"VIP Customers (>$1000): {vip_customers.len()}")
-println(f"New Customers (2024): {new_customers.len()}")
-println(f"Frequent Buyers (>5 orders): {frequent_buyers.len()}")
+println("VIP Customers (>$1000): " + vip_customers.len().to_s())
+println("New Customers (2024): " + new_customers.len().to_s())
+println("Frequent Buyers (>5 orders): " + frequent_buyers.len().to_s())
 
 // Top customers by spending
 let top_spenders = customers.sort_by(|c| -c.total_spent)[..3]
 println(f"\nTop Spenders:")
 for i, customer in top_spenders.enumerate() {
-    println(f"  {i+1}. {customer.name}: ${customer.total_spent} ({customer.orders} orders)")
+    println("  " + (i+1).to_s() + ". " + customer.name + ": $" + customer.total_spent.to_s() + " (" + customer.orders.to_s() + " orders)")
 }
+
 
 ```
 
@@ -246,7 +251,7 @@ for i, customer in top_spenders.enumerate() {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightBracket
 // File: advanced_log_analyzer.ruchy
 // Comprehensive log file analysis
 
@@ -290,21 +295,21 @@ for level, count in level_counts.items() {
         "ERROR" => "❌",
         _ => "📝"
     }
-    println(f"  {emoji} {level}: {count} entries")
+    println("  " + emoji + " " + level + ": " + count.to_s() + " entries")
 }
 
 // Find errors and warnings
 let issues = parsed_logs.filter(|log| log.level == "ERROR" || log.level == "WARN")
-println(f"\nIssues Found ({issues.len()}):")
+println("\nIssues Found (" + issues.len().to_s() + "):")
 for issue in issues {
-    println(f"  {issue.time} {issue.level}: {issue.message}")
+    println("  " + issue.time + " " + issue.level + ": " + issue.message)
 }
 
 // Extract user activity
 let user_actions = parsed_logs.filter(|log| log.message.contains("User"))
-println(f"\nUser Activity ({user_actions.len()} actions):")
+println("\nUser Activity (" + user_actions.len().to_s() + " actions):")
 for action in user_actions {
-    println(f"  {action.time}: {action.message}")
+    println("  " + action.time + ": " + action.message)
 }
 
 // Time-based analysis
@@ -315,7 +320,8 @@ for hour in hours {
 }
 
 let busiest_hour = hour_counts.max_by_value()
-println(f"\nBusiest Hour: {busiest_hour.key}:xx ({busiest_hour.value} entries)")
+println("\nBusiest Hour: " + busiest_hour.key + ":xx (" + busiest_hour.value.to_s() + " entries)")
+
 
 ```
 
@@ -323,7 +329,7 @@ println(f"\nBusiest Hour: {busiest_hour.key}:xx ({busiest_hour.value} entries)")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected method name or 'await' after '.'
 // File: finance_processor.ruchy
 // Processes financial transactions and generates reports
 
@@ -344,10 +350,10 @@ let total_expenses = transactions.filter(|t| t.type == "expense").map(|t| t.amou
 let net_income = total_income - total_expenses
 
 println(f"Financial Summary:")
-println(f"Total Income: ${total_income}")
-println(f"Total Expenses: ${total_expenses}")
-println(f"Net Income: ${net_income}")
-println(f"Savings Rate: {(net_income * 100 / total_income):.1f}%")
+println("Total Income: $" + total_income.to_s())
+println("Total Expenses: $" + total_expenses.to_s())
+println("Net Income: $" + net_income.to_s())
+println("Savings Rate: " + (net_income * 100 / total_income).to_s() + "%")
 
 // Expense breakdown by category
 let expense_categories = {}
@@ -359,7 +365,7 @@ for transaction in transactions.filter(|t| t.type == "expense") {
 println(f"\nExpense Breakdown:")
 for category, amount in expense_categories.items() {
     let percentage = (amount * 100) / total_expenses
-    println(f"  {category.capitalize()}: ${amount} ({percentage:.1f}%)")
+    println("  " + category.capitalize() + ": $" + amount.to_s() + " (" + percentage.to_s() + "%)")
 }
 
 // Budget analysis
@@ -375,15 +381,16 @@ for category, limit in budget_limits.items() {
     let spent = expense_categories.get(category, 0)
     let remaining = limit - spent
     let status = if remaining >= 0 { "✅ Under budget" } else { "❌ Over budget" }
-    println(f"  {category.capitalize()}: ${spent}/${limit} - {status}")
+    println("  " + category.capitalize() + ": $" + spent.to_s() + "/$" + limit.to_s() + " - " + status)
 }
 
 // Monthly trend (if we had multiple months of data)
-println(f"\nTransaction History ({transactions.len()} transactions):")
+println("\nTransaction History (" + transactions.len().to_s() + " transactions):")
 for transaction in transactions.sort_by(|t| t.date) {
     let emoji = if transaction.type == "income" { "💰" } else { "💸" }
-    println(f"  {transaction.date} {emoji} ${transaction.amount} - {transaction.description}")
+    println("  " + transaction.date + " " + emoji + " $" + transaction.amount.to_s() + " - " + transaction.description)
 }
+
 
 ```
 
@@ -393,10 +400,10 @@ Create simple charts for console output:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // Simple bar chart function
 fn draw_bar_chart(data, title) {
-    println(f"\n{title}")
+    println("\n" + title)
     println("=" * title.len())
     
     let max_value = data.values().max()
@@ -405,7 +412,7 @@ fn draw_bar_chart(data, title) {
     for key, value in data.items() {
         let bar_width = (value * max_bar_width) / max_value
         let bar = "█" * bar_width.to_i()
-        println(f"{key:12} │{bar} {value}")
+        println(key + " │" + bar + " " + value.to_s())
     }
 }
 
@@ -419,6 +426,7 @@ let monthly_sales = {
 }
 
 draw_bar_chart(monthly_sales, "Monthly Sales Report")
+
 
 ```
 
@@ -442,12 +450,13 @@ See how Ruchy's data processing becomes efficient compiled operations:
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 let sales_data = load_csv("sales.csv")
 let total = sales_data.map(|row| row.amount.to_f()).sum()
 let average = total / sales_data.len()
-println(f"Average sale: ${average:.2f}")
+println("Average sale: $" + average.to_s())
+
 
 ```
 
@@ -492,7 +501,7 @@ $ ruchy repl
 >>> let numbers = [10, 25, 30, 15, 40, 35, 20]
 >>> let total = numbers.sum()
 >>> let average = total / numbers.len()
->>> println(f"Average: {average}")
+>>> println("Average: " + average.to_s())
 >>> 
 >>> # Work with structured data
 >>> let products = [
@@ -500,7 +509,7 @@ $ ruchy repl
 >>>     {"name": "Book", "price": 25, "category": "Education"}
 >>> ]
 >>> let electronics = products.filter(|p| p.category == "Electronics")
->>> println(f"Electronics: {electronics.len()} items")
+>>> println("Electronics: " + electronics.len().to_s() + " items")
 ```
 
 **Your Data Processing Challenges:**
@@ -533,13 +542,13 @@ $ ruchy repl
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightBracket
 // expense_tracker.ruchy - Track and analyze personal expenses
 
 let EXPENSES_FILE = "expenses.csv"
 
 fn save_expense(date, category, amount, description) {
-    let entry = f"{date},{category},{amount},{description}\n"
+    let entry = date + "," + category + "," + amount.to_s() + "," + description + "\n"
     append_file(EXPENSES_FILE, entry)
 }
 
@@ -576,21 +585,21 @@ fn analyze_expenses(expenses) {
         categories[expense.category] = categories.get(expense.category, 0) + expense.amount
     }
     
-    println(f"\n💰 Expense Analysis ({expenses.len()} transactions)")
-    println(f"Total Spent: ${total:.2f}")
-    println(f"Average Transaction: ${average:.2f}")
+    println("\n💰 Expense Analysis (" + expenses.len().to_s() + " transactions)")
+    println("Total Spent: $" + total.to_s())
+    println("Average Transaction: $" + average.to_s())
     
     println(f"\n📊 Spending by Category:")
     for category, amount in categories.items().sort_by(|item| -item.value) {
         let percentage = (amount * 100) / total
-        println(f"  {category:15}: ${amount:7.2f} ({percentage:5.1f}%)")
+        println("  " + category + ": $" + amount.to_s() + " (" + percentage.to_s() + "%)")
     }
     
     // Recent transactions
     let recent = expenses.sort_by(|e| -e.date)[..5]  // Last 5
     println(f"\n🕒 Recent Transactions:")
     for expense in recent {
-        println(f"  {expense.date} ${expense.amount:6.2f} {expense.category:12} {expense.description}")
+        println("  " + expense.date + " $" + expense.amount.to_s() + " " + expense.category + " " + expense.description)
     }
 }
 
@@ -622,7 +631,7 @@ fn main_menu() {
             }
         }
         "3" => {
-            println(f"📁 Data exported to: {EXPENSES_FILE}")
+            println("📁 Data exported to: " + EXPENSES_FILE)
             println("Open in spreadsheet application for advanced analysis")
         }
         "4" => {
@@ -641,6 +650,7 @@ fn main_menu() {
 while main_menu() {
     // Continue until user quits
 }
+
 
 ```
 

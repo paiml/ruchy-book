@@ -1,7 +1,0 @@
-// Usage: ruchy run script.ruchy file1.txt file2.txt
-let args = command_args()
-let program_name = args[0]
-let first_file = args[1]
-let second_file = args[2]
-
-println(f"Processing: {first_file} and {second_file}")

@@ -10,8 +10,8 @@
 | ❌ Broken | 11 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's the power of traits and generics:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 // Define behavior with traits
 trait Serializable {
     fn serialize(self) -> String
@@ -69,6 +69,7 @@ let user = User{name: "Alice", email: "alice@example.com", age: 30}
 save_to_file(user, "user.json")  // Generic function, specific type
 let loaded: User = load_from_file("user.json")  // Type safe!
 
+
 ```
 
 That's abstraction without compromise!
@@ -81,7 +82,7 @@ Traits define shared behavior:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fun' or 'fn' keyword
 // Simple trait
 trait Drawable {
     fn draw(self)
@@ -125,6 +126,7 @@ trait Dog: Animal {
     fn wag_tail(self)
 }
 
+
 ```
 
 ### Implementing Traits
@@ -133,7 +135,7 @@ Give types new capabilities:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found Identifier("y")
 struct Point {
     x: f64
     y: f64
@@ -141,7 +143,7 @@ struct Point {
 
 impl Drawable for Point {
     fn draw(self) {
-        println(f"Point at ({self.x}, {self.y})")
+        println("Point at (" + self.x.to_s() + ", " + self.y.to_s() + ")")
     }
 }
 
@@ -152,7 +154,7 @@ struct Circle {
 
 impl Drawable for Circle {
     fn draw(self) {
-        println(f"Circle at ({self.center.x}, {self.center.y}) with radius {self.radius}")
+        println("Circle at (" + self.center.x.to_s() + ", " + self.center.y.to_s() + ") with radius " + self.radius.to_s())
     }
 }
 
@@ -166,11 +168,12 @@ c.draw()  // Same interface, different implementation
 // Implement traits for existing types
 impl Drawable for String {
     fn draw(self) {
-        println(f"Text: {self}")
+        println("Text: " + self)
     }
 }
 
 "Hello".draw()  // Extension methods!
+
 
 ```
 
@@ -180,7 +183,7 @@ Write once, use with any type:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Simple generic function
 fn swap<T>(a: mut T, b: mut T) {
     let temp = a
@@ -217,6 +220,7 @@ where
     return vec![x.clone(), converted]
 }
 
+
 ```
 
 ### Generic Types
@@ -225,7 +229,7 @@ Build flexible data structures:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found Identifier("second")
 // Generic struct
 struct Pair<T> {
     first: T
@@ -267,6 +271,7 @@ impl<T: Ord> SortedVec<T> {
     }
 }
 
+
 ```
 
 ## Practical Applications
@@ -275,7 +280,7 @@ impl<T: Ord> SortedVec<T> {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 // Custom collection with traits
 struct Cache<K: Hash + Eq, V> {
     map: HashMap<K, V>
@@ -321,6 +326,7 @@ cache.put("alice", alice_user)
 let cache2: Cache<i32, Vec<String>> = Cache::new(50)
 cache2.put(1, vec!["data"])
 
+
 ```
 
 ### Trait Objects
@@ -329,7 +335,7 @@ Dynamic dispatch when needed:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Trait for plugins
 trait Plugin {
     fn name(self) -> String
@@ -363,13 +369,14 @@ for plugin in plugins {
     plugin.execute(context)?
 }
 
+
 ```
 
 ### Builder Pattern with Generics
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected LeftBrace, found Less
 // Generic builder
 struct Builder<T> {
     value: T
@@ -404,13 +411,14 @@ let user = Builder::new(User::new())
     .with(|u| { u.role = Role::Admin; u })
     .build()
 
+
 ```
 
 ### Advanced Trait Patterns
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected 'fun' or 'fn' keyword
 // Associated types pattern
 trait Graph {
     type Node
@@ -465,6 +473,7 @@ let post_id: Id<Post> = Id::new("post_456")
 // Won't compile - type safety!
 // let wrong = user_id == post_id
 
+
 ```
 
 ## Performance Considerations
@@ -473,7 +482,7 @@ let post_id: Id<Post> = Id::new("post_456")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 // Generics are monomorphized - no runtime cost
 fn generic_add<T: Add>(a: T, b: T) -> T {
     return a + b  // Compiles to specific add instruction
@@ -497,13 +506,14 @@ fn hot_path<T: Copy>(x: T) -> T {
     return x  // Will be inlined
 }
 
+
 ```
 
 ### Static vs Dynamic Dispatch
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected Greater, found Colon
 // Static dispatch (faster)
 fn static_dispatch<T: Display>(item: T) {
     println(item)  // Direct call, no indirection
@@ -517,6 +527,7 @@ fn dynamic_dispatch(item: Box<dyn Display>) {
 // Choose based on needs:
 // - Static: Known types, performance critical
 // - Dynamic: Plugin systems, heterogeneous collections
+
 
 ```
 
@@ -534,7 +545,7 @@ $ ruchy repl
 >>> # Implement for types
 >>> impl Greetable for String {
 >>>     fn greet(self) -> String {
->>>         return f"Hello, {self}!"
+>>>         return "Hello, " + self + "!"
 >>>     }
 >>> }
 >>> 

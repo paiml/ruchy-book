@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-22T10:00:03.407Z",
+  "generated_at": "2025-08-22T10:22:46.346Z",
   "ruchy_version": "ruchy 0.10.0",
   "summary": {
-    "total_chapters": 23,
-    "total_examples": 274,
-    "working_examples": 111,
-    "failing_examples": 163,
-    "success_rate": 41
+    "total_chapters": 24,
+    "total_examples": 280,
+    "working_examples": 119,
+    "failing_examples": 161,
+    "success_rate": 43
   },
   "chapters": {
     "ch10-00-performance-optimization": {
@@ -102,6 +102,18 @@
         "working": 7,
         "not_implemented": 0,
         "broken": 3,
+        "planned": 0
+      }
+    },
+    "ch20-00-tooling": {
+      "total_examples": 6,
+      "working_examples": 6,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 6,
+        "not_implemented": 0,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -251,13 +263,13 @@
     },
     "ch01-02-hello-world": {
       "total_examples": 8,
-      "working_examples": 6,
-      "failing_examples": 2,
-      "success_rate": 75,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 6,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 2,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -294,8 +306,8 @@
     "success_rate": 100
   },
   "quality_metrics": {
-    "documentation_coverage": 65.71428571428571,
+    "documentation_coverage": 68.57142857142857,
     "example_testing": 100,
-    "implementation_status": 41
+    "implementation_status": 43
   }
 }

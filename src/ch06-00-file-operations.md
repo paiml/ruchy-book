@@ -1,17 +1,17 @@
 # File Operations
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/10 examples)
+**Chapter Status**: 🟠 70% Working (7/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 7 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 10 | Known issues, needs fixing |
+| ❌ Broken | 3 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a practical file organizer in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // File: desktop_organizer.ruchy
 // Organizes files by type into folders
 
@@ -47,7 +47,7 @@ let file_categories = {
 let source_dir = "~/Desktop"
 let files = list_files(source_dir)
 
-println(f"Found {files.len()} files to organize")
+println("Found " + files.len().to_s() + " files to organize")
 
 // Organize files
 for file in files {
@@ -60,7 +60,7 @@ for file in files {
             // Create category folder if needed
             if !dir_exists(target_dir) {
                 create_dir(target_dir)
-                println(f"Created folder: {category}")
+                println("Created folder: " + category)
             }
             
             // Move file to appropriate folder
@@ -68,13 +68,14 @@ for file in files {
             let destination = join_path(target_dir, file)
             
             move_file(source, destination)
-            println(f"  Moved {file} -> {category}/")
+            println("  Moved " + file + " -> " + category + "/")
             break
         }
     }
 }
 
 println("✅ Desktop organized!")
+
 
 ```
 
@@ -86,8 +87,8 @@ That's file automation! Hours of manual work done in seconds.
 
 Navigate and query the file system:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Current directory operations
 let current_dir = get_current_dir()
 set_current_dir("/home/user/projects")
@@ -102,14 +103,15 @@ let extension = file_extension(full_path)
 let project_path = join_path(home_dir(), "projects", "my_app")
 let clean_path = normalize_path(".././data//file.txt")
 
+
 ```
 
 ### File Information
 
 Get detailed file metadata:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Check file properties
 let exists = file_exists("config.json")
 let size = file_size("data.csv")  // In bytes
@@ -126,14 +128,15 @@ let can_read = is_readable(path)
 let can_write = is_writable(path)
 let can_execute = is_executable(path)
 
+
 ```
 
 ### Directory Operations
 
 Work with directories efficiently:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Create and remove directories
 create_dir("new_folder")
 create_dir_all("path/to/nested/folder")  // Creates parent dirs
@@ -158,6 +161,7 @@ fn walk_directory(dir) {
     }
 }
 
+
 ```
 
 ## Practical File Tools
@@ -166,7 +170,7 @@ fn walk_directory(dir) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // File: smart_backup.ruchy
 // Creates timestamped backups of important files
 
@@ -180,10 +184,10 @@ let backup_config = {
 
 let backup_root = "~/Backups"
 let timestamp = current_datetime().format("%Y%m%d_%H%M%S")
-let backup_dir = join_path(backup_root, f"backup_{timestamp}")
+let backup_dir = join_path(backup_root, "backup_" + timestamp)
 
 create_dir_all(backup_dir)
-println(f"Creating backup at: {backup_dir}")
+println("Creating backup at: " + backup_dir)
 
 let total_files = 0
 let total_size = 0
@@ -195,7 +199,7 @@ for category, config in backup_config.items() {
     let category_dir = join_path(backup_dir, category)
     create_dir(category_dir)
     
-    println(f"\n📁 Backing up {category}...")
+    println("\n📁 Backing up " + category + "...")
     
     for pattern in patterns {
         let files = glob(join_path(source_dir, pattern))
@@ -216,34 +220,29 @@ for category, config in backup_config.items() {
             total_files += 1
             total_size += size
             
-            println(f"  ✓ {relative_path} ({format_size(size)})")
+            println("  ✓ " + relative_path + " (" + format_size(size) + ")")
         }
     }
 }
 
-println(f"\n✅ Backup complete!")
-println(f"Files backed up: {total_files}")
-println(f"Total size: {format_size(total_size)}")
-println(f"Location: {backup_dir}")
+println("\n✅ Backup complete!")
+println("Files backed up: " + total_files.to_s())
+println("Total size: " + format_size(total_size))
+println("Location: " + backup_dir)
 
 // Create backup summary
-let summary = f"Backup Summary
-==============
-Date: {timestamp}
-Files: {total_files}
-Size: {format_size(total_size)}
-Categories: {backup_config.keys().join(', ')}
-"
+let summary = "Backup Summary\n==============\nDate: " + timestamp + "\nFiles: " + total_files.to_s() + "\nSize: " + format_size(total_size) + "\nCategories: " + backup_config.keys().join(", ") + "\n"
 
 write_file(join_path(backup_dir, "summary.txt"), summary)
+
 
 ```
 
 ### Duplicate File Finder
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: find_duplicates.ruchy
 // Finds duplicate files based on content hash
 
@@ -252,7 +251,7 @@ println("=== Duplicate File Finder ===")
 let search_dir = input("Enter directory to search: ")
 let min_size = input("Minimum file size (bytes, 0 for all): ").to_i()
 
-println(f"\nScanning {search_dir}...")
+println("\nScanning " + search_dir + "...")
 
 // Build file hash map
 let file_hashes = {}
@@ -298,36 +297,37 @@ scan_directory(search_dir)
 if duplicates.is_empty() {
     println("\n✅ No duplicate files found!")
 } else {
-    println(f"\n⚠️  Found {duplicates.len()} duplicate files:")
+    println("\n⚠️  Found " + duplicates.len().to_s() + " duplicate files:")
     
     let total_wasted = 0
     
     for dup in duplicates {
-        println(f"\nOriginal: {dup.original}")
-        println(f"Duplicate: {dup.duplicate}")
-        println(f"Size: {format_size(dup.size)}")
+        println("\nOriginal: " + dup.original)
+        println("Duplicate: " + dup.duplicate)
+        println("Size: " + format_size(dup.size))
         total_wasted += dup.size
     }
     
-    println(f"\nTotal space wasted: {format_size(total_wasted)}")
+    println("\nTotal space wasted: " + format_size(total_wasted))
     
     let action = input("\nDelete duplicates? (y/n): ")
     if action.lower() == "y" {
         for dup in duplicates {
             remove_file(dup.duplicate)
-            println(f"Deleted: {dup.duplicate}")
+            println("Deleted: " + dup.duplicate)
         }
-        println(f"\n✅ Freed {format_size(total_wasted)} of space!")
+        println("\n✅ Freed " + format_size(total_wasted) + " of space!")
     }
 }
+
 
 ```
 
 ### Log Rotation System
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: log_rotator.ruchy
 // Manages log files with size-based rotation
 
@@ -346,12 +346,12 @@ for log_file in log_files {
     let size = file_size(log_file)
     
     if size > log_config.max_size {
-        println(f"Rotating {log_file} ({format_size(size)})...")
+        println("Rotating " + log_file + " (" + format_size(size) + ")...")
         
         // Shift existing backups
         for i in range(log_config.max_backups - 1, 0, -1) {
-            let old_backup = f"{log_file}.{i}"
-            let new_backup = f"{log_file}.{i + 1}"
+            let old_backup = log_file + "." + i.to_s()
+            let new_backup = log_file + "." + (i + 1).to_s()
             
             if file_exists(old_backup) {
                 if i == log_config.max_backups - 1 {
@@ -365,23 +365,24 @@ for log_file in log_files {
         }
         
         // Move current log to .1
-        let backup_path = f"{log_file}.1"
+        let backup_path = log_file + ".1"
         rename_file(log_file, backup_path)
         
         // Compress if configured
         if log_config.compress {
-            compress_file(backup_path, f"{backup_path}.gz")
+            compress_file(backup_path, backup_path + ".gz")
             remove_file(backup_path)
-            println(f"  Compressed to {backup_path}.gz")
+            println("  Compressed to " + backup_path + ".gz")
         }
         
         // Create new empty log file
         write_file(log_file, "")
-        println(f"  Created new {log_file}")
+        println("  Created new " + log_file)
     }
 }
 
 println("\n✅ Log rotation complete!")
+
 
 ```
 
@@ -389,7 +390,7 @@ println("\n✅ Log rotation complete!")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: DotDot
 // File: config_manager.ruchy
 // Manages application configuration files
 
@@ -401,7 +402,7 @@ let config_file = join_path(config_dir, "config.json")
 // Ensure config directory exists
 if !dir_exists(config_dir) {
     create_dir_all(config_dir)
-    println(f"Created config directory: {config_dir}")
+    println("Created config directory: " + config_dir)
 }
 
 // Load or create default configuration
@@ -449,7 +450,7 @@ fn add_recent_file(path) {
 loop {
     println("\n=== Current Configuration ===")
     for key, value in config.items() {
-        println(f"{key}: {value}")
+        println(key + ": " + value.to_s())
     }
     
     println("\nOptions:")
@@ -490,6 +491,7 @@ loop {
     }
 }
 
+
 ```
 
 ## Error Handling
@@ -497,17 +499,17 @@ loop {
 Robust file operations need proper error handling:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 fn safe_file_operation(path) {
     // Check permissions first
     if !file_exists(path) {
-        println(f"Error: File not found: {path}")
+        println("Error: File not found: " + path)
         return false
     }
     
     if !is_readable(path) {
-        println(f"Error: No read permission for: {path}")
+        println("Error: No read permission for: " + path)
         return false
     }
     
@@ -517,16 +519,17 @@ fn safe_file_operation(path) {
         process_content(content)
         return true
     } catch error {
-        println(f"Error processing file: {error}")
+        println("Error processing file: " + error.to_s())
         
         // Log error for debugging
         let error_log = "errors.log"
         let timestamp = current_datetime()
-        append_file(error_log, f"{timestamp}: {path} - {error}\n")
+        append_file(error_log, timestamp.to_s() + ": " + path + " - " + error.to_s() + "\n")
         
         return false
     }
 }
+
 
 ```
 
@@ -539,8 +542,8 @@ See how Ruchy's file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 let files = list_files("data")
 for file in files {
     let size = file_size(file)
@@ -548,6 +551,7 @@ for file in files {
         move_file(file, "large_files/" + file)
     }
 }
+
 
 ```
 
@@ -603,7 +607,7 @@ $ ruchy repl
 >>> # Explore your file system
 >>> let home = home_dir()
 >>> let files = list_files(home)
->>> println(f"You have {files.len()} files in your home directory")
+>>> println("You have " + files.len().to_s() + " files in your home directory")
 >>> 
 >>> # Create a test directory structure
 >>> create_dir("test_project")
@@ -616,7 +620,7 @@ $ ruchy repl
 >>> for file in downloads {
 >>>     let size = file_size(file)
 >>>     if size > 100_000_000 {  // 100MB
->>>         println(f"Large file: {file} ({format_size(size)})")
+>>>         println("Large file: " + file + " (" + format_size(size) + ")")
 >>>     }
 >>> }
 ```

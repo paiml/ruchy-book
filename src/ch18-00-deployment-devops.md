@@ -1,17 +1,17 @@
 # Deployment & DevOps
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/8 examples)
+**Chapter Status**: 🟠 50% Working (4/8 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 4 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 8 | Known issues, needs fixing |
+| ❌ Broken | 4 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,8 +28,8 @@ Most deployments are manual, error-prone nightmares. In Ruchy, deployment is aut
 Here's modern deployment in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // deploy.ruchy - One-command deployment
 use std::deploy;
 
@@ -62,6 +62,7 @@ if deployment.is_healthy() {
     deployment.rollback()
     println("⚠️  Rolled back to previous version")
 }
+
 
 ```
 
@@ -272,8 +273,8 @@ spec:
 Zero-downtime deployment:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // blue_green.ruchy
 fn deploy_blue_green(new_version: String) {
     // Current production is "blue"
@@ -311,6 +312,7 @@ fn deploy_blue_green(new_version: String) {
     println!("✅ Deployed version {}", new_version)
 }
 
+
 ```
 
 ### Canary Deployment
@@ -318,8 +320,8 @@ fn deploy_blue_green(new_version: String) {
 Gradual rollout:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // canary.ruchy
 fn deploy_canary(new_version: String) {
     let deployment = CanaryDeployment::new(new_version)
@@ -354,6 +356,7 @@ fn deploy_canary(new_version: String) {
     deployment.finalize()
 }
 
+
 ```
 
 ### Feature Flags
@@ -361,8 +364,8 @@ fn deploy_canary(new_version: String) {
 Deploy code without releasing features:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // feature_flags.ruchy
 use feature_flags::{Client, Flag};
 
@@ -394,6 +397,7 @@ for percentage in [10, 25, 50, 75, 100] {
         break
     }
 }
+
 
 ```
 
@@ -462,7 +466,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected ',' or closing delimiter in macro arguments
 // metrics.ruchy
 use metrics::{counter, gauge, histogram};
 
@@ -502,13 +506,14 @@ let dashboard = json!({
     ]
 })
 
+
 ```
 
 ### Logging
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // logging.ruchy
 use tracing::{info, warn, error, debug, span, Level};
 
@@ -555,13 +560,14 @@ let config = json!({
     }
 })
 
+
 ```
 
 ### Distributed Tracing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected ',' or '}' in import list
 // tracing.ruchy
 use opentelemetry::{global, sdk, trace::Tracer};
 
@@ -587,6 +593,7 @@ async fn handle_request(req: Request, db: &Database) -> Result<Response> {
     
     Ok(Response::new(data))
 }
+
 
 ```
 
@@ -650,7 +657,7 @@ deploy:production:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Question
 // secrets.ruchy
 use vault::Client;
 
@@ -668,6 +675,7 @@ vault.rotate("secret/database/password").await?
 // Environment injection
 env::set_var("DATABASE_URL", 
     format!("postgres://user:{}@host/db", db_password))
+
 
 ```
 

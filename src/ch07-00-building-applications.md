@@ -1,17 +1,17 @@
 # Building Applications
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/9 examples)
+**Chapter Status**: 🟠 56% Working (5/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 5 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 9 | Known issues, needs fixing |
+| ❌ Broken | 4 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a complete, useful application in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // File: note_keeper.ruchy
 // A complete note-taking application
 
@@ -42,7 +42,7 @@ let NOTES_INDEX = join_path(NOTES_DIR, "index.json")
 fn init_app() {
     if !dir_exists(NOTES_DIR) {
         create_dir_all(NOTES_DIR)
-        println(f"Created notes directory: {NOTES_DIR}")
+        println("Created notes directory: " + NOTES_DIR)
     }
     
     if !file_exists(NOTES_INDEX) {
@@ -74,7 +74,7 @@ fn create_note() {
     let tags = input("Tags (comma-separated): ").split(",").map(|t| t.trim())
     
     let note_id = generate_id()
-    let note_file = join_path(NOTES_DIR, f"{note_id}.md")
+    let note_file = join_path(NOTES_DIR, note_id + ".md")
     
     let note = {
         "id": note_id,
@@ -86,14 +86,7 @@ fn create_note() {
     }
     
     // Save note content
-    let markdown = f"# {title}
-
-Created: {note.created}
-Tags: {tags.join(', ')}
-
----
-
-{content}"
+    let markdown = "# " + title + "\n\nCreated: " + note.created + "\nTags: " + tags.join(", ") + "\n\n---\n\n" + content
     
     write_file(note_file, markdown)
     
@@ -103,7 +96,7 @@ Tags: {tags.join(', ')}
     index.tags = index.tags.union(tags)
     save_index(index)
     
-    println(f"✅ Note created: {title}")
+    println("✅ Note created: " + title)
 }
 
 fn list_notes(filter_tag = null) {
@@ -124,8 +117,8 @@ fn list_notes(filter_tag = null) {
     
     for i, note in notes.enumerate() {
         let age = time_ago(note.created)
-        println(f"{i+1:3}. {note.title}")
-        println(f"     Tags: {note.tags.join(', ')} | Created: {age}")
+        println((i+1).to_s() + ". " + note.title)
+        println("     Tags: " + note.tags.join(", ") + " | Created: " + age)
     }
 }
 
@@ -150,7 +143,7 @@ fn search_notes(query) {
     println(f"\n🔍 Search results for '{query}': {results.len()} matches")
     
     for note in results {
-        println(f"  • {note.title}")
+        println("  • " + note.title)
         
         // Show context
         let content = read_file(note.file)
@@ -182,7 +175,7 @@ fn view_note(index_num) {
 
 fn export_notes(format) {
     let index = load_index()
-    let export_file = f"notes_export_{current_date()}.{format}"
+    let export_file = "notes_export_" + current_date() + "." + format
     
     match format {
         "json" => {
@@ -221,12 +214,12 @@ Exported: {current_datetime()}
             write_file(export_file, markdown)
         }
         _ => {
-            println(f"❌ Unsupported format: {format}")
+            println("❌ Unsupported format: " + format)
             return
         }
     }
     
-    println(f"✅ Exported {index.notes.len()} notes to {export_file}")
+    println("✅ Exported " + index.notes.len().to_s() + " notes to " + export_file)
 }
 
 fn show_menu() {
@@ -262,10 +255,10 @@ fn show_statistics() {
     }
     
     println(f"\n📊 NoteKeeper Statistics")
-    println(f"Total notes: {total_notes}")
-    println(f"Total words: {total_words}")
-    println(f"Average words per note: {total_words / max(total_notes, 1)}")
-    println(f"Unique tags: {total_tags}")
+    println("Total notes: " + total_notes.to_s())
+    println("Total words: " + total_words.to_s())
+    println("Average words per note: " + (total_words / max(total_notes, 1)).to_s())
+    println("Unique tags: " + total_tags.to_s())
     
     if !tag_counts.is_empty() {
         println("\nTop tags:")
@@ -303,7 +296,7 @@ fn main() {
                 let index = load_index()
                 println("\nAvailable tags:")
                 for tag in index.tags {
-                    println(f"  • {tag}")
+                    println("  • " + tag)
                 }
                 let tag = input("\nFilter by tag: ")
                 list_notes(tag)
@@ -325,6 +318,7 @@ fn main() {
 // Run the application
 main()
 
+
 ```
 
 That's a complete application! It has data persistence, search, export, and a user-friendly interface.
@@ -336,8 +330,8 @@ That's a complete application! It has data persistence, search, export, and a us
 Organize larger applications effectively:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Application structure
 let APP = {
     "name": "MyApp",
@@ -369,7 +363,7 @@ fn create_user(name, email) {
 // ui.ruchy - User interface
 fn display_user(user) {
     println(f"User: {user.name} ({user.email})")
-    println(f"Member since: {user.created}")
+    println("Member since: " + user.created)
 }
 
 // main.ruchy - Application entry point
@@ -380,6 +374,7 @@ fn main() {
     cleanup()
 }
 
+
 ```
 
 ### State Management
@@ -387,8 +382,8 @@ fn main() {
 Handle application state properly:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Global application state
 let STATE = {
     "users": [],
@@ -419,6 +414,7 @@ fn load_state() {
     }
 }
 
+
 ```
 
 ### Error Recovery
@@ -426,8 +422,8 @@ fn load_state() {
 Build resilient applications:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 fn safe_operation(operation_fn, fallback_value) {
     try {
         return operation_fn()
@@ -443,7 +439,7 @@ fn with_retry(operation_fn, max_attempts = 3) {
             return operation_fn()
         } catch error {
             if attempt == max_attempts - 1 {
-                println(f"❌ Failed after {max_attempts} attempts: {error}")
+                println("❌ Failed after " + max_attempts.to_s() + " attempts: " + error.to_s())
                 throw error
             }
             
@@ -454,6 +450,7 @@ fn with_retry(operation_fn, max_attempts = 3) {
     }
 }
 
+
 ```
 
 ## Real-World Applications
@@ -462,7 +459,7 @@ fn with_retry(operation_fn, max_attempts = 3) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // Simple password manager with encryption
 let MASTER_KEY = null
 let PASSWORDS_FILE = "~/.passwords.enc"
@@ -508,9 +505,10 @@ fn get_password(site) {
         // Clear clipboard after 30 seconds
         spawn_after(30000, || clear_clipboard())
     } else {
-        println(f"❌ No password found for {site}")
+        println("❌ No password found for " + site)
     }
 }
+
 
 ```
 
@@ -518,7 +516,7 @@ fn get_password(site) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // Personal finance tracker
 let TRANSACTIONS_FILE = "~/.budget/transactions.csv"
 let CATEGORIES = ["Food", "Transport", "Bills", "Entertainment", "Other"]
@@ -539,7 +537,7 @@ fn add_transaction(amount, category, description) {
     
     if monthly_spent > budget_limit {
         send_notification(f"⚠️ Over budget for {category}!")
-        println(f"Warning: {category} spending at ${monthly_spent}/${budget_limit}")
+        println("Warning: " + category + " spending at $" + monthly_spent.to_s() + "/$" + budget_limit.to_s())
     }
 }
 
@@ -547,7 +545,7 @@ fn generate_report(month) {
     let transactions = load_transactions(month)
     let by_category = group_by(transactions, "category")
     
-    println(f"\n📊 Budget Report for {month}")
+    println("\n📊 Budget Report for " + month)
     println("="*40)
     
     let total = 0
@@ -556,17 +554,18 @@ fn generate_report(month) {
         total += category_total
         
         let bar = "█" * (category_total / 50).to_i()
-        println(f"{category:15} ${category_total:7.2f} {bar}")
+        println(category + " $" + category_total.to_s() + " " + bar)
     }
     
     println("="*40)
-    println(f"Total:          ${total:7.2f}")
+    println("Total:          $" + total.to_s())
     
     // Save report
     let report_file = f"budget_report_{month}.pdf"
     generate_pdf(report_file, report_data)
-    println(f"\n📄 Report saved to {report_file}")
+    println("\n📄 Report saved to " + report_file)
 }
+
 
 ```
 
@@ -574,7 +573,7 @@ fn generate_report(month) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightParen, found Identifier("commit")
 // Development project scaffolding tool
 let TEMPLATES = {
     "python": {
@@ -600,7 +599,7 @@ fn create_project(name, language) {
     }
     
     create_dir(project_dir)
-    println(f"📁 Created project: {name}")
+    println("📁 Created project: " + name)
     
     let template = TEMPLATES[language]
     
@@ -619,7 +618,7 @@ fn create_project(name, language) {
             .replace("{{AUTHOR}}", get_git_user())
         
         write_file(join_path(project_dir, file), content)
-        println(f"  📄 {file}")
+        println("  📄 " + file)
     }
     
     // Initialize git
@@ -629,9 +628,10 @@ fn create_project(name, language) {
     
     println(f"\n✅ Project {name} created successfully!")
     println(f"Next steps:")
-    println(f"  cd {project_dir}")
-    println(f"  {get_run_command(language)}")
+    println("  cd " + project_dir)
+    println("  " + get_run_command(language))
 }
+
 
 ```
 
@@ -640,8 +640,8 @@ fn create_project(name, language) {
 Build confidence with testing:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // test_app.ruchy - Application test suite
 
 fn test_user_creation() {
@@ -683,6 +683,7 @@ fn run_all_tests() {
     println("\n✅ All tests passed!")
 }
 
+
 ```
 
 ## Deployment
@@ -690,8 +691,8 @@ fn run_all_tests() {
 Package and distribute your application:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // build.ruchy - Build and package script
 
 fn build_release() {
@@ -701,7 +702,7 @@ fn build_release() {
     run_tests()
     
     // Create release directory
-    let release_dir = f"release_{VERSION}"
+    let release_dir = "release_" + VERSION
     create_dir_all(release_dir)
     
     // Copy application files
@@ -726,6 +727,7 @@ echo 'Installation complete! Run {APP_NAME} to start.'
     
     println(f"✅ Release built: {APP_NAME}-{VERSION}.tar.gz")
 }
+
 
 ```
 

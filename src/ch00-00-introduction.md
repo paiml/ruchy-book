@@ -11,7 +11,7 @@ Write code that reads like Python but runs like Rust:
 
 ```text
 fn greet(name: str) -> str {
-    f"Hello, {name}!"
+    "Hello, " + name + "!"
 }
 ```
 

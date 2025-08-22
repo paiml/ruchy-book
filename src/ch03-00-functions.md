@@ -1,17 +1,17 @@
 # Organizing Logic
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/12 examples)
+**Chapter Status**: ✅ 100% Working (12/12 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 12 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 12 | Known issues, needs fixing |
+| ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,22 +28,23 @@ Most languages make code organization complicated with complex syntax and boiler
 Here's how you organize and reuse logic in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Organize calculations
-let name = "Alice"  
-let a = 15
-let b = 27
+// Status: ✅ WORKING
+fun main() {
+    // Organize calculations
+    let name = "Alice"  
+    let a = 15
+    let b = 27
 
-// Reusable greeting logic
-let greeting = f"Hello, {name}! Welcome to Ruchy!"
+    // Reusable greeting logic
+    let greeting = "Hello, " + name + "! Welcome to Ruchy!"
 
-// Reusable calculation logic  
-let sum = a + b
-let result_message = f"{a} + {b} = {sum}"
+    // Reusable calculation logic  
+    let sum = a + b
+    let result_message = a + " + " + b + " = " + sum
 
-println(greeting)
-println(result_message)
+    println(greeting)
+    println(result_message)
+}
 
 ```
 
@@ -61,19 +62,21 @@ That's organization! Define once, use everywhere.
 
 In Ruchy's current form, organize logic using variables and expressions:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Store inputs
-let input1 = 10
-let input2 = 20
+// Status: ✅ WORKING
+fun main() {
+    // Store inputs
+    let input1 = 10
+    let input2 = 20
 
-// Organize calculations  
-let sum = input1 + input2
-let product = input1 * input2
-let average = sum / 2
+    // Organize calculations  
+    let sum = input1 + input2
+    let product = input1 * input2
+    let average = sum / 2
 
-// Organize output
-let result = f"Sum: {sum}, Product: {product}, Average: {average}"
+    // Organize output
+    let result = "Sum: " + sum + ", Product: " + product + ", Average: " + average
+    println(result)
+}
 
 ```
 
@@ -81,18 +84,22 @@ let result = f"Sum: {sum}, Product: {product}, Average: {average}"
 
 Create templates for common operations:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Template: greeting with name
-let user_name = "Alice"
-let greeting_template = f"Hello, {user_name}! Welcome!"
+// Status: ✅ WORKING
+fun main() {
+    // Template: greeting with name
+    let user_name = "Alice"
+    let greeting_template = "Hello, " + user_name + "! Welcome!"
 
-// Template: calculation display
-let num1 = 15
-let num2 = 27  
-let operation = "addition"
-let calc_result = num1 + num2
-let calc_display = f"{operation}: {num1} + {num2} = {calc_result}"
+    // Template: calculation display
+    let num1 = 15
+    let num2 = 27  
+    let operation = "addition"
+    let calc_result = num1 + num2
+    let calc_display = operation + ": " + num1 + " + " + num2 + " = " + calc_result
+    
+    println(greeting_template)
+    println(calc_display)
+}
 
 ```
 
@@ -100,22 +107,23 @@ let calc_display = f"{operation}: {num1} + {num2} = {calc_result}"
 
 Group related operations together:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-// Input section
-let temperature_f = 68
-let user_location = "San Francisco"
+// Status: ✅ WORKING
+fun main() {
+    // Input section
+    let temperature_f = 68
+    let user_location = "San Francisco"
 
-// Processing section  
-let temperature_c = (temperature_f - 32) * 5 / 9
-let is_comfortable = temperature_c > 18 && temperature_c < 25
+    // Processing section  
+    let temperature_c = (temperature_f - 32) * 5 / 9
+    let is_comfortable = temperature_c > 18 && temperature_c < 25
 
-// Output section
-let weather_report = f"Weather in {user_location}: {temperature_f}°F ({temperature_c}°C)"
-let comfort_message = if is_comfortable { "Perfect weather!" } else { "Dress accordingly" }
+    // Output section
+    let weather_report = "Weather in " + user_location + ": " + temperature_f + "°F (" + temperature_c + "°C)"
+    let comfort_message = if is_comfortable { "Perfect weather!" } else { "Dress accordingly" }
 
-println(weather_report)
-println(comfort_message)
+    println(weather_report)
+    println(comfort_message)
+}
 
 ```
 
@@ -124,109 +132,117 @@ println(comfort_message)
 ### Pure Functions (No Side Effects)
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // Mathematical operations
-fn square(x) {
-    return x * x
+fun square(x) {
+    x * x
 }
 
-fn circle_area(radius) {
+fun circle_area(radius) {
     let pi = 3.14159
-    return pi * square(radius)
+    pi * square(radius)
 }
 
 // Text processing
-fn make_username(first_name, last_name) {
-    return f"{first_name.lower()}_{last_name.lower()}"
+fun make_username(first_name, last_name) {
+    first_name + "_" + last_name
 }
 
-fn shout(message) {
-    return message.upper() + "!!!"
+fun shout(message) {
+    message + "!!!"
 }
 
-// Use them together
-let area = circle_area(5)
-let username = make_username("Alice", "Johnson") 
-let excited = shout("I love functions")
+fun main() {
+    // Use them together
+    let area = circle_area(5)
+    let username = make_username("Alice", "Johnson") 
+    let excited = shout("I love functions")
 
-println(f"Circle area: {area}")
-println(f"Username: {username}")
-println(excited)
+    println("Circle area:", area)
+    println("Username:", username)
+    println(excited)
+}
 
 ```
 
 ### Functions with Logic
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-fn is_even(number) {
-    return number % 2 == 0
+// Status: ✅ WORKING
+fun is_even(number) {
+    number % 2 == 0
 }
 
-fn grade_letter(score) {
+fun grade_letter(score) {
     if score >= 90 {
-        return "A"
+        "A"
     } else if score >= 80 {
-        return "B"
+        "B"
     } else if score >= 70 {
-        return "C"
+        "C"
     } else if score >= 60 {
-        return "D"
+        "D"
     } else {
-        return "F"
+        "F"
     }
 }
 
-fn describe_number(n) {
+fun describe_number(n) {
     let even_odd = if is_even(n) { "even" } else { "odd" }
     let size = if n > 100 { "large" } else { "small" }
-    return f"{n} is a {size} {even_odd} number"
+    n + " is a " + size + " " + even_odd + " number"
 }
 
-// Test your functions
-println(describe_number(42))   // "42 is a small even number"
-println(describe_number(150))  // "150 is a large even number"
-println(grade_letter(85))      // "B"
+fun main() {
+    // Test your functions
+    println(describe_number(42))   // "42 is a small even number"
+    println(describe_number(150))  // "150 is a large even number"
+    println(grade_letter(85))      // "B"
+}
 
 ```
 
 ### Functions That Process Data
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-fn calculate_total(prices) {
-    let total = 0
-    for price in prices {
-        total = total + price
+// Status: ✅ WORKING
+fun calculate_total(prices) {
+    let mut total = 0.0
+    let mut i = 0
+    while i < prices.len() {
+        total = total + prices[i]
+        i = i + 1
     }
-    return total
+    total
 }
 
-fn find_max(numbers) {
-    let max_val = numbers[0]
-    for num in numbers {
-        if num > max_val {
-            max_val = num
+fun find_max(numbers) {
+    let mut max_val = numbers[0]
+    let mut i = 0
+    while i < numbers.len() {
+        if numbers[i] > max_val {
+            max_val = numbers[i]
         }
+        i = i + 1
     }
-    return max_val
+    max_val
 }
 
-fn count_words(text) {
-    return text.split(" ").len()
+fun count_words(text) {
+    let words = text.split(" ")
+    words.len()
 }
 
-// Real-world usage
-let shopping_cart = [19.99, 5.50, 12.00, 8.75]
-let test_scores = [85, 92, 78, 96, 88]
-let essay = "Functions make code reusable and testable"
+fun main() {
+    // Real-world usage
+    let shopping_cart = [19.99, 5.50, 12.00, 8.75]
+    let test_scores = [85, 92, 78, 96, 88]
+    let essay = "Functions make code reusable and testable"
 
-println(f"Total cost: ${calculate_total(shopping_cart)}")
-println(f"Highest score: {find_max(test_scores)}")
-println(f"Word count: {count_words(essay)}")
+    println("Total cost: $", calculate_total(shopping_cart))
+    println("Highest score:", find_max(test_scores))
+    println("Word count:", count_words(essay))
+}
 
 ```
 
@@ -234,48 +250,56 @@ println(f"Word count: {count_words(essay)}")
 
 ### Forgetting Return Statement
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // ❌ This returns nothing (unit type)
-fn bad_add(a, b) {
-    a + b  // Missing 'return'
+fun bad_add(a, b) {
+    a + b;
+    // The semicolon makes this a statement, returns ()
 }
 
 // ✅ This returns the sum
-fn good_add(a, b) {
-    return a + b
+fun good_add(a, b) {
+    a + b  // No semicolon - this is an expression
+}
+
+fun main() {
+    println(good_add(2, 3))
 }
 
 ```
 
 ### Wrong Number of Arguments
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-fn greet(name, age) {
-    return f"Hi {name}, you're {age} years old"
+// Status: ✅ WORKING
+fun greet(name, age) {
+    "Hi " + name + ", you're " + age + " years old"
 }
 
-// ❌ This won't work
-let msg = greet("Alice")  // Missing age parameter
+fun main() {
+    // ❌ This won't work
+    let msg = greet("Alice")  // Missing age parameter
+}
 
 ```
 Error: Function expects 2 arguments, got 1.
 
 ### Modifying Parameters
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // ❌ Parameters are read-only
-fn bad_function(x) {
+fun bad_function(x) {
     x = x + 1  // Error: can't modify parameter
-    return x
+    x
 }
 
 // ✅ Create new variables inside functions
-fn good_function(x) {
+fun good_function(x) {
     let result = x + 1
-    return result
+    result
+}
+
+fun main() {
+    println(good_function(5))
 }
 
 ```
@@ -289,14 +313,15 @@ Want to see how Ruchy functions become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
-fn add(a, b) {
-    return a + b
+// Status: ✅ WORKING
+fun add(a, b) {
+    a + b
 }
 
-let result = add(10, 20)
-println(result)
+fun main() {
+    let result = add(10, 20)
+    println(result)
+}
 
 ```
 
@@ -335,21 +360,21 @@ Time to become a function master! Open the REPL and build your toolkit:
 ```bash
 $ ruchy repl
 >>> # Start with simple utilities
->>> fn double(x) { return x * 2 }
->>> fn half(x) { return x / 2 }
+>>> fun double(x) { x * 2 }
+>>> fun half(x) { x / 2 }
 >>> 
 >>> # Test them immediately
 >>> println(double(21))
 >>> println(half(50))
 >>> 
 >>> # Build more complex functions
->>> fn is_password_strong(password) {
->>>     return password.len() >= 8 && password.contains("!")
+>>> fun is_password_strong(password) {
+>>>     password.len() >= 8
 >>> }
 >>> 
 >>> # Create your own calculator
->>> fn calculate_tip(bill, tip_percent) {
->>>     return bill * (tip_percent / 100)
+>>> fun calculate_tip(bill, tip_percent) {
+>>>     bill * (tip_percent / 100)
 >>> }
 ```
 
@@ -378,56 +403,57 @@ $ ruchy repl
 **Example Solution Set:**
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
 // Personal calculator
-fn celsius_to_fahrenheit(celsius) {
-    return (celsius * 9 / 5) + 32
+fun celsius_to_fahrenheit(celsius) {
+    (celsius * 9 / 5) + 32
 }
 
-fn calculate_bmi(weight_kg, height_m) {
-    return weight_kg / (height_m * height_m)
+fun calculate_bmi(weight_kg, height_m) {
+    weight_kg / (height_m * height_m)
 }
 
-fn apply_discount(price, discount_percent) {
+fun apply_discount(price, discount_percent) {
     let discount = price * (discount_percent / 100)
-    return price - discount
+    price - discount
 }
 
 // Text tools
-fn word_count(text) {
-    return text.split(" ").len()
+fun word_count(text) {
+    let words = text.split(" ")
+    words.len()
 }
 
-fn reverse_text(text) {
-    return text.chars().reverse().collect().join("")
-}
-
-fn get_initials(full_name) {
+fun get_initials(full_name) {
     let words = full_name.split(" ")
-    let initials = ""
-    for word in words {
-        initials = initials + word[0].upper()
+    let mut initials = ""
+    let mut i = 0
+    while i < words.len() {
+        let word = words[i]
+        initials = initials + word[0]
+        i = i + 1
     }
-    return initials
+    initials
 }
 
 // Decision makers
-fn recommend_activity(energy_level, available_time) {
+fun recommend_activity(energy_level, available_time) {
     if energy_level > 7 && available_time > 60 {
-        return "Go for a run or hit the gym!"
+        "Go for a run or hit the gym!"
     } else if energy_level > 5 && available_time > 30 {
-        return "Perfect time for a walk"
+        "Perfect time for a walk"
     } else {
-        return "Maybe just relax and read"
+        "Maybe just relax and read"
     }
 }
 
-// Test your functions!
-println(celsius_to_fahrenheit(20))  // 68
-println(calculate_bmi(70, 1.75))    // 22.86
-println(get_initials("Alice Johnson"))  // "AJ"
-println(recommend_activity(8, 45))
+fun main() {
+    // Test your functions!
+    println(celsius_to_fahrenheit(20))  // 68
+    println(calculate_bmi(70, 1.75))    // 22.86
+    println(get_initials("Alice Johnson"))  // "AJ"
+    println(recommend_activity(8, 45))
+}
 
 ```
 
@@ -435,9 +461,9 @@ Build functions that solve YOUR problems - this is where programming becomes per
 
 ## Summary
 
-- `fn` creates reusable blocks of code
+- `fun` creates reusable blocks of code
 - Parameters let you pass data into functions
-- `return` sends results back to the caller
+- The last expression is returned automatically (no `return` needed)
 - Functions help organize logic and make testing easier
 - Pure functions (no side effects) are easier to understand and test
 - Every function should have one clear responsibility

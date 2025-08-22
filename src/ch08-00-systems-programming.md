@@ -1,17 +1,17 @@
 # Systems Programming
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/9 examples)
+**Chapter Status**: ❌ 44% Working (4/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
+| ✅ Working | 4 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 9 | Known issues, needs fixing |
+| ❌ Broken | 5 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,8 +28,8 @@ Most high-level languages abstract away the system, but real power comes from un
 Here's a system resource monitor in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // File: system_monitor.ruchy
 // Real-time system resource monitoring
 
@@ -44,10 +44,10 @@ let total_memory = system::total_memory()
 let hostname = system::hostname()
 let os_info = system::os_info()
 
-println(f"Host: {hostname}")
-println(f"OS: {os_info.name} {os_info.version}")
-println(f"CPUs: {cpu_count}")
-println(f"Memory: {format_size(total_memory)}")
+println("Host: " + hostname)
+println("OS: " + os_info.name + " " + os_info.version)
+println("CPUs: " + cpu_count.to_s())
+println("Memory: " + format_size(total_memory))
 println("")
 
 // Monitor resources in real-time
@@ -63,20 +63,20 @@ loop {
     println("=" * 50)
     
     // CPU Usage
-    println(f"CPU: {cpu_usage:.1%} |{'█' * (cpu_usage * 50).to_i()}{'░' * (50 - cpu_usage * 50).to_i()}|")
+    println("CPU: " + cpu_usage.to_s() + "% |" + ("█" * (cpu_usage * 50).to_i()) + ("░" * (50 - cpu_usage * 50).to_i()) + "|")
     
     // Memory Usage
     let mem_percent = memory_info.used / memory_info.total
-    println(f"MEM: {mem_percent:.1%} |{'█' * (mem_percent * 50).to_i()}{'░' * (50 - mem_percent * 50).to_i()}|")
-    println(f"     {format_size(memory_info.used)} / {format_size(memory_info.total)}")
+    println("MEM: " + mem_percent.to_s() + "% |" + ("█" * (mem_percent * 50).to_i()) + ("░" * (50 - mem_percent * 50).to_i()) + "|")
+    println("     " + format_size(memory_info.used) + " / " + format_size(memory_info.total))
     
     // Disk I/O
-    println(f"Disk Read:  {format_size(disk_io.read_bytes)}/s")
-    println(f"Disk Write: {format_size(disk_io.write_bytes)}/s")
+    println("Disk Read:  " + format_size(disk_io.read_bytes) + "/s")
+    println("Disk Write: " + format_size(disk_io.write_bytes) + "/s")
     
     // Network
-    println(f"Net Down: {format_size(network_stats.download_speed)}/s")
-    println(f"Net Up:   {format_size(network_stats.upload_speed)}/s")
+    println("Net Down: " + format_size(network_stats.download_speed) + "/s")
+    println("Net Up:   " + format_size(network_stats.upload_speed) + "/s")
     
     // Top processes
     println("\nTop Processes by CPU:")
@@ -85,11 +85,12 @@ loop {
         .take(5)
     
     for proc in processes {
-        println(f"  {proc.pid:6} {proc.name:20} {proc.cpu_percent:5.1}%")
+        println("  " + proc.pid.to_s() + " " + proc.name + " " + proc.cpu_percent.to_s() + "%")
     }
     
     sleep(1000)  // Update every second
 }
+
 
 ```
 
@@ -102,8 +103,8 @@ That's systems programming - direct access to OS resources with safety!
 Work with processes at the system level:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Current process information
 let pid = process::current_pid()
 let ppid = process::parent_pid()
@@ -114,7 +115,7 @@ let env = process::environment()
 // List all processes
 let all_processes = process::list()
 for proc in all_processes {
-    println(f"PID: {proc.pid}, Name: {proc.name}, CPU: {proc.cpu_percent}%")
+    println("PID: " + proc.pid.to_s() + ", Name: " + proc.name + ", CPU: " + proc.cpu_percent.to_s() + "%")
 }
 
 // Find specific process
@@ -134,6 +135,7 @@ let child = process::spawn("ls", ["-la"])
 let output = child.wait_with_output()
 println(output.stdout)
 
+
 ```
 
 ### Signal Handling
@@ -142,7 +144,7 @@ Respond to system signals properly:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after '::'
 // Register signal handlers
 signal::on(SIGINT, || {
     println("\nGracefully shutting down...")
@@ -168,6 +170,7 @@ signal::block([SIGPIPE])
 critical_operation()
 signal::unblock([SIGPIPE])
 
+
 ```
 
 ### Memory Management
@@ -175,15 +178,15 @@ signal::unblock([SIGPIPE])
 Monitor and control memory usage:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Get memory information
 let mem_info = system::memory_info()
-println(f"Total: {mem_info.total}")
-println(f"Used: {mem_info.used}")
-println(f"Free: {mem_info.free}")
-println(f"Available: {mem_info.available}")
-println(f"Swap Used: {mem_info.swap_used}")
+println("Total: " + mem_info.total.to_s())
+println("Used: " + mem_info.used.to_s())
+println("Free: " + mem_info.free.to_s())
+println("Available: " + mem_info.available.to_s())
+println("Swap Used: " + mem_info.swap_used.to_s())
 
 // Monitor memory pressure
 if mem_info.available < 100_000_000 {  // Less than 100MB
@@ -204,6 +207,7 @@ shared.write(0, data)
 let shared = memory::open_shared("my_buffer")
 let data = shared.read(0, 1024)
 
+
 ```
 
 ## Practical System Tools
@@ -212,7 +216,7 @@ let data = shared.read(0, 1024)
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier or string key in object literal
 // File: service_manager.ruchy
 // Manage system services
 
@@ -227,7 +231,7 @@ let services = [
 let running_services = {}
 
 fn start_service(service) {
-    println(f"Starting {service.name}...")
+    println("Starting " + service.name + "...")
     
     match service.name {
         "web_server" => {
@@ -240,7 +244,7 @@ fn start_service(service) {
             while !network::port_is_open("localhost", service.port) {
                 sleep(100)
             }
-            println(f"✅ {service.name} listening on port {service.port}")
+            println("✅ " + service.name + " listening on port " + service.port.to_s())
         }
         "worker" => {
             let workers = []
@@ -251,21 +255,21 @@ fn start_service(service) {
                 workers.push(proc)
             }
             running_services[service.name] = workers
-            println(f"✅ Started {service.count} workers")
+            println("✅ Started " + service.count.to_s() + " workers")
         }
         "scheduler" => {
             let proc = process::spawn(service.command, [
                 "--interval", service.interval.to_s()
             ])
             running_services[service.name] = proc
-            println(f"✅ Scheduler running every {service.interval}s")
+            println("✅ Scheduler running every " + service.interval.to_s() + "s")
         }
     }
 }
 
 fn stop_service(name) {
     if running_services.has_key(name) {
-        println(f"Stopping {name}...")
+        println("Stopping " + name + "...")
         let proc = running_services[name]
         
         if proc.is_array() {
@@ -281,7 +285,7 @@ fn stop_service(name) {
         }
         
         running_services.remove(name)
-        println(f"✅ {name} stopped")
+        println("✅ " + name + " stopped")
     }
 }
 
@@ -293,7 +297,7 @@ fn service_status() {
         } else {
             "🔴 Stopped"
         }
-        println(f"{service.name:15} {status}")
+        println(service.name + " " + status)
     }
 }
 
@@ -324,13 +328,14 @@ loop {
     }
 }
 
+
 ```
 
 ### System Health Checker
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Question
 // File: health_check.ruchy
 // Monitor system health and alert on issues
 
@@ -351,7 +356,7 @@ fn check_cpu() {
     if usage > checks.cpu_threshold {
         alerts.push({
             level: "WARNING",
-            message: f"CPU usage high: {usage:.1}%",
+            message: "CPU usage high: " + usage.to_s() + "%",
             time: current_datetime()
         })
         return false
@@ -365,7 +370,7 @@ fn check_memory() {
     if usage > checks.memory_threshold {
         alerts.push({
             level: "CRITICAL",
-            message: f"Memory usage critical: {usage:.1}%",
+            message: "Memory usage critical: " + usage.to_s() + "%",
             time: current_datetime()
         })
         return false
@@ -380,7 +385,7 @@ fn check_disk() {
         if usage > checks.disk_threshold {
             alerts.push({
                 level: "WARNING",
-                message: f"Disk {disk.mount} almost full: {usage:.1}%",
+                message: "Disk " + disk.mount + " almost full: " + usage.to_s() + "%",
                 time: current_datetime()
             })
             return false
@@ -397,7 +402,7 @@ fn check_load() {
     if normalized_load > checks.load_threshold {
         alerts.push({
             level: "WARNING",
-            message: f"System load high: {load.one_minute:.2}",
+            message: "System load high: " + load.one_minute.to_s() + ",",
             time: current_datetime()
         })
         return false
@@ -411,7 +416,7 @@ fn check_temperature() {
         if sensor.current > checks.temp_threshold {
             alerts.push({
                 level: "CRITICAL",
-                message: f"Temperature critical: {sensor.name} at {sensor.current}°C",
+                message: "Temperature critical: " + sensor.name + " at " + sensor.current.to_s() + "°C",
                 time: current_datetime()
             })
             return false
@@ -435,7 +440,7 @@ fn run_health_checks() {
 // Main monitoring loop
 loop {
     clear_screen()
-    println(f"System Health Check - {current_datetime()}")
+    println("System Health Check - " + current_datetime())
     println("=" * 50)
     
     let healthy = run_health_checks()
@@ -446,7 +451,7 @@ loop {
         println("⚠️  Issues detected:")
         for alert in alerts.last(5) {
             let icon = alert.level == "CRITICAL" ? "🔴" : "🟡"
-            println(f"{icon} [{alert.level}] {alert.message}")
+            println(icon + " [" + alert.level + "] " + alert.message)
         }
     }
     
@@ -457,9 +462,9 @@ loop {
     let mem_percent = (mem.used / mem.total) * 100
     let load = system::load_average()
     
-    println(f"CPU:    {cpu:5.1}% / {checks.cpu_threshold}%")
-    println(f"Memory: {mem_percent:5.1}% / {checks.memory_threshold}%")
-    println(f"Load:   {load.one_minute:5.2} / {checks.load_threshold}")
+    println("CPU:    " + cpu.to_s() + "% / " + checks.cpu_threshold.to_s() + "%")
+    println("Memory: " + mem_percent.to_s() + "% / " + checks.memory_threshold.to_s() + "%")
+    println("Load:   " + load.one_minute.to_s() + " / " + checks.load_threshold.to_s())
     
     // Send notifications for critical alerts
     for alert in alerts {
@@ -471,13 +476,14 @@ loop {
     sleep(5000)  // Check every 5 seconds
 }
 
+
 ```
 
 ### Process Tree Visualizer
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected In, found Comma
 // File: process_tree.ruchy
 // Visualize process hierarchy
 
@@ -509,7 +515,7 @@ fn print_tree(pid, tree, indent = "") {
         let extension = is_last ? "  " : "│ "
         
         let memory = format_size(proc.memory_info.rss)
-        println(f"{indent}{prefix} [{proc.pid}] {proc.name} ({memory}, {proc.cpu_percent:.1}%)")
+        println(indent + prefix + " [" + proc.pid.to_s() + "] " + proc.name + " (" + memory + ", " + proc.cpu_percent.to_s() + "%)")
         
         // Recursively print children
         print_tree(proc.pid, tree, indent + extension)
@@ -521,7 +527,7 @@ let tree = build_process_tree()
 
 // Start from init (PID 1) or system idle (PID 0)
 let root_pid = tree.has_key(0) ? 0 : 1
-println(f"[{root_pid}] System Root")
+println("[" + root_pid.to_s() + "] System Root")
 print_tree(root_pid, tree)
 
 // Show process statistics
@@ -529,9 +535,10 @@ let all_procs = process::list()
 let total_memory = all_procs.map(|p| p.memory_info.rss).sum()
 let total_cpu = all_procs.map(|p| p.cpu_percent).sum()
 
-println(f"\nTotal Processes: {all_procs.len()}")
-println(f"Total Memory: {format_size(total_memory)}")
-println(f"Total CPU: {total_cpu:.1}%")
+println("\nTotal Processes: " + all_procs.len().to_s())
+println("Total Memory: " + format_size(total_memory))
+println("Total CPU: " + total_cpu.to_s() + "%")
+
 
 ```
 
@@ -542,25 +549,26 @@ println(f"Total CPU: {total_cpu:.1}%")
 Monitor file system changes in real-time:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Status: ✅ WORKING
+
 // Watch for file system events
 let watcher = fs::watch("/path/to/watch", RECURSIVE)
 
 watcher.on("created", |path| {
-    println(f"File created: {path}")
+    println("File created: " + path)
 })
 
 watcher.on("modified", |path| {
-    println(f"File modified: {path}")
+    println("File modified: " + path)
     process_change(path)
 })
 
 watcher.on("deleted", |path| {
-    println(f"File deleted: {path}")
+    println("File deleted: " + path)
 })
 
 watcher.start()
+
 
 ```
 
@@ -568,7 +576,7 @@ watcher.start()
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightParen, found Colon
 // Automated system maintenance
 fn auto_cleanup() {
     // Clean temp files older than 7 days
@@ -578,7 +586,7 @@ fn auto_cleanup() {
     for file in fs::walk(temp_dir) {
         if fs::modified_time(file) < cutoff_time {
             fs::remove(file)
-            println(f"Cleaned: {file}")
+            println("Cleaned: " + file)
         }
     }
     
@@ -595,6 +603,7 @@ fn auto_cleanup() {
     }
 }
 
+
 ```
 
 ## Try It Yourself
@@ -610,14 +619,14 @@ $ ruchy repl
 >>> # Monitor resources
 >>> while true {
 >>>     let cpu = system::cpu_usage()
->>>     print(f"\rCPU: {cpu:.1%}")
+>>>     print("\rCPU: " + cpu.to_s() + "%")
 >>>     sleep(100)
 >>> }
 >>> 
 >>> # Find resource hogs
 >>> process::list()
 >>>     .filter(|p| p.cpu_percent > 10)
->>>     .map(|p| f"{p.name}: {p.cpu_percent}%")
+>>>     .map(|p| p.name + ": " + p.cpu_percent.to_s() + "%")
 ```
 
 **Your Systems Programming Challenges:**

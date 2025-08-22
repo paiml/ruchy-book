@@ -10,8 +10,8 @@
 | ❌ Broken | 11 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-20*  
-*Ruchy version: ruchy not found*
+*Last updated: 2025-08-22*  
+*Ruchy version: ruchy 0.11.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's comprehensive testing in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected method name or 'await' after '.'
 // Unit test with multiple assertions
 #[test]
 fn test_user_validation() {
@@ -72,7 +72,7 @@ async fn test_api_workflow() {
     let user: User = response.json().await
     
     // Verify user exists
-    let get_response = server.get(f"/users/{user.id}")
+    let get_response = server.get("/users/" + user.id.to_s())
         .send()
         .await
     
@@ -88,6 +88,7 @@ fn bench_data_processing(b: &mut Bencher) {
     })
 }
 
+
 ```
 
 That's testing with confidence!
@@ -100,7 +101,7 @@ Test individual components:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: RightParen
 // Basic test
 #[test]
 fn test_addition() {
@@ -157,6 +158,7 @@ mod calculator_tests {
     fn test_multiply() { /* ... */ }
 }
 
+
 ```
 
 ### Test Fixtures
@@ -165,7 +167,7 @@ Reusable test setup:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected RightBrace, found Identifier("test_data")
 // Fixture trait
 trait TestFixture {
     fn setup() -> Self
@@ -220,6 +222,7 @@ fn test_with_auto_cleanup(fixture: DatabaseFixture) {
     assert!(user.is_some())
 }
 
+
 ```
 
 ### Mocking
@@ -228,7 +231,7 @@ Test in isolation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Mock trait
 trait EmailService {
     fn send_email(to: String, subject: String, body: String) -> Result<(), Error>
@@ -283,6 +286,7 @@ fn test_with_stub() {
     assert_eq!(result, expected)
 }
 
+
 ```
 
 ### Property-Based Testing
@@ -291,7 +295,7 @@ Test with generated inputs:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected field name
 use proptest::prelude::*
 
 // Generate arbitrary test data
@@ -343,6 +347,7 @@ fn test_database_consistency(operations: Vec<DbOperation>) {
     prop_assert_eq!(db.total_balance(), INITIAL_BALANCE)
 }
 
+
 ```
 
 ## Integration Testing
@@ -351,7 +356,7 @@ Test complete workflows:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected method name or 'await' after '.'
 // Integration test in tests/ directory
 #[integration_test]
 async fn test_full_api_flow() {
@@ -419,6 +424,7 @@ fn test_database_transactions() {
     assert_eq!(db.count_users(), 0)
 }
 
+
 ```
 
 ## Performance Testing
@@ -427,7 +433,7 @@ Measure and optimize:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Benchmarks
 #[bench]
 fn bench_sorting_algorithms(b: &mut Bencher) {
@@ -494,6 +500,7 @@ fn test_with_profiling() {
     report.save_flamegraph("profile.svg")
 }
 
+
 ```
 
 ## Quality Tools
@@ -502,7 +509,7 @@ fn test_with_profiling() {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: EqualEqual
 // Run tests with coverage
 $ ruchy test --coverage
 
@@ -532,13 +539,14 @@ fn debug_function() {
     // Not included in coverage metrics
 }
 
+
 ```
 
 ### Mutation Testing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Unexpected token: Colon
 // Mutation testing finds gaps in tests
 $ ruchy mutate
 
@@ -554,13 +562,14 @@ fn test_addition_not_subtraction() {
     assert_ne!(add(5, 3), subtract(5, 3))
 }
 
+
 ```
 
 ### Fuzzing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected type
 // Fuzz testing for security
 #[fuzz_test]
 fn fuzz_parser(data: &[u8]) {
@@ -589,6 +598,7 @@ fn fuzz_api_endpoint(input: FuzzInput) {
     assert!(response.status() < 600)
     assert!(response.body().len() < 10_000_000)
 }
+
 
 ```
 
@@ -630,7 +640,7 @@ jobs:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Requires run access to "ruchy", run again with the --allow-run flag
+// Error: Parse error: Expected identifier after 'for'
 // quality.ruchy - Quality gate script
 fn main() {
     let mut passed = true
@@ -638,7 +648,7 @@ fn main() {
     // Test coverage gate
     let coverage = run_coverage_analysis()
     if coverage.percentage < 80.0 {
-        println(f"❌ Coverage too low: {coverage.percentage}%")
+        println("❌ Coverage too low: " + coverage.percentage.to_s() + "%")
         passed = false
     }
     
@@ -646,7 +656,7 @@ fn main() {
     let benchmarks = run_benchmarks()
     for (name, result) in benchmarks {
         if result.regression > 0.1 {  // 10% regression
-            println(f"❌ Performance regression in {name}: {result.regression * 100}%")
+            println("❌ Performance regression in " + name + ": " + (result.regression * 100).to_s() + "%")
             passed = false
         }
     }
@@ -654,14 +664,14 @@ fn main() {
     // Complexity gate
     let complexity = analyze_complexity()
     if complexity.max_cyclomatic > 10 {
-        println(f"❌ Complexity too high: {complexity.max_cyclomatic}")
+        println("❌ Complexity too high: " + complexity.max_cyclomatic.to_s())
         passed = false
     }
     
     // Security gate
     let vulnerabilities = security_scan()
     if !vulnerabilities.is_empty() {
-        println(f"❌ Security vulnerabilities found: {vulnerabilities.len()}")
+        println("❌ Security vulnerabilities found: " + vulnerabilities.len().to_s())
         passed = false
     }
     
@@ -671,6 +681,7 @@ fn main() {
     
     println("✅ All quality gates passed!")
 }
+
 
 ```
 
