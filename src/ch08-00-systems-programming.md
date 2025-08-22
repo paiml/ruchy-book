@@ -92,6 +92,9 @@ loop {
 }
 
 
+
+
+
 ```
 
 That's systems programming - direct access to OS resources with safety!
@@ -136,6 +139,9 @@ let output = child.wait_with_output()
 println(output.stdout)
 
 
+
+
+
 ```
 
 ### Signal Handling
@@ -169,6 +175,8 @@ signal::send(target_pid, SIGUSR1)
 signal::block([SIGPIPE])
 critical_operation()
 signal::unblock([SIGPIPE])
+
+
 
 
 ```
@@ -206,6 +214,9 @@ shared.write(0, data)
 // In another process
 let shared = memory::open_shared("my_buffer")
 let data = shared.read(0, 1024)
+
+
+
 
 
 ```
@@ -327,6 +338,8 @@ loop {
         _ => println("Unknown command")
     }
 }
+
+
 
 
 ```
@@ -477,6 +490,8 @@ loop {
 }
 
 
+
+
 ```
 
 ### Process Tree Visualizer
@@ -540,6 +555,8 @@ println("Total Memory: " + format_size(total_memory))
 println("Total CPU: " + total_cpu.to_s() + "%")
 
 
+
+
 ```
 
 ## Advanced System Features
@@ -568,6 +585,9 @@ watcher.on("deleted", |path| {
 })
 
 watcher.start()
+
+
+
 
 
 ```
@@ -602,6 +622,8 @@ fn auto_cleanup() {
         }
     }
 }
+
+
 
 
 ```

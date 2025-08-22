@@ -319,6 +319,8 @@ fn main() {
 main()
 
 
+
+
 ```
 
 That's a complete application! It has data persistence, search, export, and a user-friendly interface.
@@ -375,6 +377,9 @@ fn main() {
 }
 
 
+
+
+
 ```
 
 ### State Management
@@ -415,6 +420,9 @@ fn load_state() {
 }
 
 
+
+
+
 ```
 
 ### Error Recovery
@@ -449,6 +457,9 @@ fn with_retry(operation_fn, max_attempts = 3) {
         }
     }
 }
+
+
+
 
 
 ```
@@ -510,6 +521,8 @@ fn get_password(site) {
 }
 
 
+
+
 ```
 
 ### Budget Tracker
@@ -565,6 +578,8 @@ fn generate_report(month) {
     generate_pdf(report_file, report_data)
     println("\n📄 Report saved to " + report_file)
 }
+
+
 
 
 ```
@@ -633,6 +648,8 @@ fn create_project(name, language) {
 }
 
 
+
+
 ```
 
 ## Testing Your Application
@@ -684,6 +701,9 @@ fn run_all_tests() {
 }
 
 
+
+
+
 ```
 
 ## Deployment
@@ -727,6 +747,9 @@ echo 'Installation complete! Run {APP_NAME} to start.'
     
     println(f"✅ Release built: {APP_NAME}-{VERSION}.tar.gz")
 }
+
+
+
 
 
 ```

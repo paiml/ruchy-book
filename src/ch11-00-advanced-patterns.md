@@ -82,6 +82,8 @@ let unsubscribe = events.on("user.login", with_logging(|user| {
 events.emit("user.login", {name: "Alice", id: 123})
 
 
+
+
 ```
 
 That's patterns working together harmoniously!
@@ -150,6 +152,8 @@ let server = ServerBuilder::new()
     .build()
 
 
+
+
 ```
 
 ### Strategy Pattern
@@ -202,6 +206,8 @@ if file_size > mb(10) {
 }
 
 let compressed = compressor.compress(file_data)
+
+
 
 
 ```
@@ -283,6 +289,8 @@ chain.use(route_handler)
 chain.execute(request, response)
 
 
+
+
 ```
 
 ## Functional Patterns
@@ -334,6 +342,8 @@ let result = pipeline(
     transform,
     format
 )
+
+
 
 
 ```
@@ -392,6 +402,8 @@ fn process_user(id) {
         .map(|user| format_user(user))
         .unwrap_or({error: "Processing failed"})
 }
+
+
 
 
 ```
@@ -479,6 +491,8 @@ let first_10_even = fibonacci
     .take(10)
 
 
+
+
 ```
 
 ## Architectural Patterns
@@ -540,6 +554,8 @@ class UserService {
         return repository.save(user)
     }
 }
+
+
 
 
 ```
@@ -615,6 +631,8 @@ fn handle_order_placed(event) {
 let current_state = event_store.replay()
 
 
+
+
 ```
 
 ### CQRS (Command Query Responsibility Segregation)
@@ -683,6 +701,8 @@ let orders = query_bus.query({
     type: "GetOrdersByCustomer",
     customer_id: 123
 })
+
+
 
 
 ```
@@ -759,6 +779,8 @@ worker.send({
 })
 
 
+
+
 ```
 
 ### Circuit Breaker
@@ -818,6 +840,8 @@ fn call_external_api(data) {
             .send()
     })
 }
+
+
 
 
 ```

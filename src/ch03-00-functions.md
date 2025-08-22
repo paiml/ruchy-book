@@ -46,6 +46,9 @@ fun main() {
     println(result_message)
 }
 
+
+
+
 ```
 
 Output:
@@ -78,6 +81,9 @@ fun main() {
     println(result)
 }
 
+
+
+
 ```
 
 ### Reusable Patterns
@@ -100,6 +106,9 @@ fun main() {
     println(greeting_template)
     println(calc_display)
 }
+
+
+
 
 ```
 
@@ -124,6 +133,9 @@ fun main() {
     println(weather_report)
     println(comfort_message)
 }
+
+
+
 
 ```
 
@@ -163,6 +175,9 @@ fun main() {
     println(excited)
 }
 
+
+
+
 ```
 
 ### Functions with Logic
@@ -199,6 +214,9 @@ fun main() {
     println(describe_number(150))  // "150 is a large even number"
     println(grade_letter(85))      // "B"
 }
+
+
+
 
 ```
 
@@ -244,6 +262,9 @@ fun main() {
     println("Word count:", count_words(essay))
 }
 
+
+
+
 ```
 
 ## Common Pitfalls
@@ -266,6 +287,9 @@ fun main() {
     println(good_add(2, 3))
 }
 
+
+
+
 ```
 
 ### Wrong Number of Arguments
@@ -280,6 +304,9 @@ fun main() {
     let msg = greet("Alice")  // Missing age parameter
 }
 
+
+
+
 ```
 Error: Function expects 2 arguments, got 1.
 
@@ -288,7 +315,7 @@ Error: Function expects 2 arguments, got 1.
 // Status: ✅ WORKING
 // ❌ Parameters are read-only
 fun bad_function(x) {
-    x = x + 1  // Error: can't modify parameter
+    x = x + 1  
     x
 }
 
@@ -301,6 +328,8 @@ fun good_function(x) {
 fun main() {
     println(good_function(5))
 }
+
+
 
 ```
 
@@ -322,6 +351,9 @@ fun main() {
     let result = add(10, 20)
     println(result)
 }
+
+
+
 
 ```
 
@@ -454,6 +486,9 @@ fun main() {
     println(get_initials("Alice Johnson"))  // "AJ"
     println(recommend_activity(8, 45))
 }
+
+
+
 
 ```
 

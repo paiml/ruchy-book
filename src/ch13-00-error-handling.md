@@ -81,6 +81,8 @@ match fetch_user(123) {
 }
 
 
+
+
 ```
 
 That's explicit, recoverable error handling!
@@ -123,6 +125,8 @@ match divide(10.0, 0.0) {
 }
 
 
+
+
 ```
 
 ### Option Type
@@ -161,6 +165,8 @@ if let Some(u) = user {
 let email = find_user("Bob")
     .map(|u| u.email)
     .unwrap_or("no-email@example.com")
+
+
 
 
 ```
@@ -232,6 +238,8 @@ fn complex_operation() -> Result<Data, Error> {
 }
 
 
+
+
 ```
 
 ### Custom Error Types
@@ -301,6 +309,8 @@ impl Error {
 }
 
 
+
+
 ```
 
 ## Error Handling Patterns
@@ -329,6 +339,8 @@ fn validate_user(user: User) -> Result<User, ValidationError> {
     // All validations passed
     return Ok(user)
 }
+
+
 
 
 ```
@@ -406,6 +418,8 @@ impl CircuitBreaker {
 }
 
 
+
+
 ```
 
 ### Error Context
@@ -453,6 +467,8 @@ fn process_order(order_id: i32) -> Result<Order, Error> {
     
     return Ok(processed)
 }
+
+
 
 
 ```
@@ -515,6 +531,8 @@ impl IntoResponse for ApiError {
 }
 
 
+
+
 ```
 
 ### Validation Pipeline
@@ -564,6 +582,8 @@ match validate_pipeline(user, user_validators) {
 }
 
 
+
+
 ```
 
 ### Async Error Handling
@@ -606,6 +626,8 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
 }
 
 
+
+
 ```
 
 ## Testing Error Cases
@@ -640,6 +662,8 @@ fn test_panic_condition() {
 fn never_panics(input: RandomInput) {
     let _ = safe_process(input)  // Should never panic
 }
+
+
 
 
 ```

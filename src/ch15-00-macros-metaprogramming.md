@@ -73,6 +73,8 @@ struct User {
 // The derive macro generates all the boilerplate!
 
 
+
+
 ```
 
 That's code writing code!
@@ -134,6 +136,8 @@ handle_codes! {
     404 => "Not Found",
     500 => "Internal Error"
 }
+
+
 
 
 ```
@@ -209,6 +213,8 @@ let config = Config::builder()
     .build()?
 
 
+
+
 ```
 
 ### Attribute Macros
@@ -256,6 +262,8 @@ async fn get_user(id: i32) -> Response {
 fn test_addition(a: i32, b: i32, expected: i32) {
     assert_eq!(a + b, expected)
 }
+
+
 
 
 ```
@@ -316,6 +324,8 @@ macro! regex {
 let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
 
+
+
 ```
 
 ## Practical Macros
@@ -364,6 +374,8 @@ macro! assert_eq_msg {
         }
     }
 }
+
+
 
 
 ```
@@ -431,6 +443,8 @@ define_opcodes! {
     JMP = 0x10,
     JEQ = 0x11
 }
+
+
 
 
 ```
@@ -524,6 +538,8 @@ let config = config! {
 }
 
 
+
+
 ```
 
 ## Hygiene and Best Practices
@@ -586,6 +602,8 @@ fn test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }
+
+
 
 
 ```

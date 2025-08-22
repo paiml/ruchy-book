@@ -38,6 +38,9 @@ fun main() {
     println("Currently learning Ruchy:", is_learning)
 }
 
+
+
+
 ```
 
 Output:
@@ -102,6 +105,9 @@ fun main() {
     println("Status: student=", is_student, ", graduated=", has_graduated)
 }
 
+
+
+
 ```
 
 ### Working with Variables
@@ -127,6 +133,9 @@ fun main() {
     println("Premium status:", is_premium)
 }
 
+
+
+
 ```
 
 ### Collections and Lists
@@ -147,6 +156,9 @@ fun main() {
     println("I know", favorite_languages.len(), "languages")
 }
 
+
+
+
 ```
 
 ## Common Pitfalls
@@ -156,8 +168,10 @@ fun main() {
 // Status: ✅ WORKING
 // ❌ This won't work
 fun main() {
-    user_name = "Alice"  // Error: variable not declared
+    user_name = "Alice"  
 }
+
+
 
 ```
 Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
@@ -171,6 +185,9 @@ fun main() {
     let next_year = age + 1  // Can't add number to string
 }
 
+
+
+
 ```
 Error: Can't add number to string. Use `let age = 25` (without quotes) for numeric operations.
 
@@ -183,6 +200,9 @@ fun main() {
     let username = "Bob"
     println(userName)  // Prints "Alice", not "Bob"
 }
+
+
+
 
 ```
 Warning: Stick to snake_case: `user_name`.
@@ -202,6 +222,9 @@ fun main() {
     let age = 25
     println("Hi", name, ", age", age)
 }
+
+
+
 
 ```
 
@@ -292,6 +315,9 @@ fun main() {
     println("Contact:", username, email)
     println("Status:", is_adult, lives_in_tech_city, ready_for_job)
 }
+
+
+
 
 ```
 

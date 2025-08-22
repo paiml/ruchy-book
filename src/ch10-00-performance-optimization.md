@@ -90,6 +90,9 @@ println(f"Speedup: {naive_time / optimized_time:.1}x")
 // Output: Speedup: 42.3x
 
 
+
+
+
 ```
 
 That's the power of systematic optimization!
@@ -136,6 +139,8 @@ println("Largest allocation: " + format_size(mem_report.largest_allocation))
 // Flame graph generation
 profiler.generate_flamegraph("profile.svg")
 println("Flame graph saved to profile.svg")
+
+
 
 
 ```
@@ -200,6 +205,9 @@ fn benchmark_algorithm(name, func, data) {
 }
 
 
+
+
+
 ```
 
 ### Parallel Processing
@@ -248,6 +256,8 @@ for url in urls {
 }
 
 let responses = async::wait_all(futures)
+
+
 
 
 ```
@@ -327,6 +337,9 @@ fn find_first_match(items, predicate) {
 }
 
 
+
+
+
 ```
 
 ### Memory Optimization
@@ -387,6 +400,8 @@ struct CompactUser {
 }
 
 
+
+
 ```
 
 ### I/O Optimization
@@ -440,6 +455,8 @@ fn process_huge_file(path) {
         process_chunk(chunk)
     })
 }
+
+
 
 
 ```
@@ -522,6 +539,9 @@ let optimized_time = perf::measure {
 }
 
 println(f"Improvement: {naive_time / optimized_time:.1}x faster")
+
+
+
 
 
 ```
@@ -607,6 +627,8 @@ println("  • Gzip compression")
 app.listen()
 
 
+
+
 ```
 
 ### Data Processing Pipeline
@@ -676,6 +698,8 @@ process_dataset("input.jsonl", "output.jsonl")
 monitor.report()
 
 
+
+
 ```
 
 ## Performance Tips
@@ -710,6 +734,8 @@ async::wait_all(io_operations)
 
 // 8. Profile in production
 // Dev performance ≠ Production performance
+
+
 
 
 ```

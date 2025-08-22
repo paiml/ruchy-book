@@ -70,6 +70,8 @@ save_to_file(user, "user.json")  // Generic function, specific type
 let loaded: User = load_from_file("user.json")  // Type safe!
 
 
+
+
 ```
 
 That's abstraction without compromise!
@@ -127,6 +129,8 @@ trait Dog: Animal {
 }
 
 
+
+
 ```
 
 ### Implementing Traits
@@ -175,6 +179,8 @@ impl Drawable for String {
 "Hello".draw()  // Extension methods!
 
 
+
+
 ```
 
 ### Generic Functions
@@ -219,6 +225,8 @@ where
     let converted: T = T::from(y)
     return vec![x.clone(), converted]
 }
+
+
 
 
 ```
@@ -270,6 +278,8 @@ impl<T: Ord> SortedVec<T> {
         self.items.insert(pos, item)
     }
 }
+
+
 
 
 ```
@@ -327,6 +337,8 @@ let cache2: Cache<i32, Vec<String>> = Cache::new(50)
 cache2.put(1, vec!["data"])
 
 
+
+
 ```
 
 ### Trait Objects
@@ -370,6 +382,8 @@ for plugin in plugins {
 }
 
 
+
+
 ```
 
 ### Builder Pattern with Generics
@@ -410,6 +424,8 @@ let user = Builder::new(User::new())
     .with(|u| { u.name = "Alice"; u })
     .with(|u| { u.role = Role::Admin; u })
     .build()
+
+
 
 
 ```
@@ -474,6 +490,8 @@ let post_id: Id<Post> = Id::new("post_456")
 // let wrong = user_id == post_id
 
 
+
+
 ```
 
 ## Performance Considerations
@@ -507,6 +525,8 @@ fn hot_path<T: Copy>(x: T) -> T {
 }
 
 
+
+
 ```
 
 ### Static vs Dynamic Dispatch
@@ -527,6 +547,8 @@ fn dynamic_dispatch(item: Box<dyn Display>) {
 // Choose based on needs:
 // - Static: Known types, performance critical
 // - Dynamic: Plugin systems, heterogeneous collections
+
+
 
 
 ```

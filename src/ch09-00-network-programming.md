@@ -74,6 +74,8 @@ println(f"🚀 Server running on http://localhost:8080")
 server.listen()
 
 
+
+
 ```
 
 That's a production-ready web server in under 30 lines!
@@ -117,6 +119,8 @@ let client = net::TcpStream::connect("127.0.0.1:9000")
 client.write("Hello, server!\n")
 let response = client.read_line()
 println("Server replied: " + response)
+
+
 
 
 ```
@@ -168,6 +172,8 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
     .await()
 
 
+
+
 ```
 
 ### WebSocket Communication
@@ -216,6 +222,8 @@ ws.on("message", |data| {
 ws.on("error", |err| {
     println("WebSocket error: " + err.to_s())
 })
+
+
 
 
 ```
@@ -333,6 +341,8 @@ app.use(|err, req, res, next| {
 
 println("🚀 API server running on http://localhost:3000")
 app.listen()
+
+
 
 
 ```
@@ -463,6 +473,8 @@ println("💬 Chat server running on ws://localhost:8080")
 server.listen()
 
 
+
+
 ```
 
 ### Network Scanner
@@ -575,6 +587,8 @@ if results.len() > 0 {
 }
 
 
+
+
 ```
 
 ### Load Balancer
@@ -659,6 +673,8 @@ println("Backends: " + backends.len().to_s())
 balancer.listen()
 
 
+
+
 ```
 
 ## Advanced Networking
@@ -694,6 +710,8 @@ fn receive_packet(socket) {
 }
 
 
+
+
 ```
 
 ### Network Monitoring
@@ -713,6 +731,8 @@ monitor.on_packet(|packet| {
 })
 
 monitor.start()
+
+
 
 
 ```

@@ -106,6 +106,8 @@ impl<K, V> Cache<K, V> {
 }
 
 
+
+
 ```
 
 That's documentation that actually helps!
@@ -186,6 +188,8 @@ impl Struct {
 }
 
 
+
+
 ```
 
 ### Documentation Tests
@@ -233,6 +237,8 @@ test src/lib.rs - factorial (line 13) ... ok
 test src/lib.rs - factorial (line 17) ... ignored
 
 test result: ok. 3 passed; 0 failed; 1 ignored
+
+
 
 
 ```
@@ -294,6 +300,8 @@ $ ruchy doc --open
 Documenting mylib v0.1.0
     Finished documentation
     Opening docs/mylib/index.html
+
+
 
 
 ```
@@ -372,6 +380,9 @@ pub mod services {
     //! Services contain all business rules and orchestrate
     //! operations across multiple repositories.
 }
+
+
+
 
 
 ```
@@ -558,6 +569,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 /// ```
 
 
+
+
 ```
 
 ## Interactive Documentation
@@ -576,6 +589,8 @@ $ ruchy doc --features search,playground,examples
 // Serve documentation locally
 $ ruchy doc --serve --port 8080
 Serving documentation at http://localhost:8080
+
+
 
 
 ```
@@ -603,6 +618,8 @@ pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
 }
 
 // Generates interactive API tester in docs
+
+
 
 
 ```
@@ -636,6 +653,9 @@ async fn request_flow() {
 // Server -> Client: respond()
 
 
+
+
+
 ```
 
 ### Documentation Linting
@@ -656,6 +676,8 @@ Documentation score: 87/100
 
 // Enforce in CI
 $ ruchy doc-lint --min-score 90
+
+
 
 
 ```

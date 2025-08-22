@@ -522,14 +522,6 @@ Parse error: Expected RightParen, found Identifier("move")
 Parse error: Expected '|' after lambda parameters
 
 
-=== ch04-00-command-line-tools example 9 ===
-Parse error: Expected In, found Comma
-
-
-=== ch04-00-command-line-tools example 11 ===
-Parse error: Expected In, found Comma
-
-
 === ch12-00-traits-generics example 1 ===
 Parse error: Expected Greater, found Colon
 

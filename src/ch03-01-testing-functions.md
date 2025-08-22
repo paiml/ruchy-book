@@ -42,6 +42,9 @@ fun test_add() {
     assert_eq!(add(-1, 1), 0)
 }
 
+
+
+
 ```
 
 Run it:
@@ -66,6 +69,9 @@ fun test_function_name() {
     // Test code here
     assert_eq!(actual, expected)
 }
+
+
+
 
 ```
 
@@ -98,6 +104,9 @@ fun test_addition() {
 fun test_subtraction() {
     assert_eq!(subtract(10, 4), 6)
 }
+
+
+
 
 ```
 
@@ -149,6 +158,9 @@ fun test_is_even() {
     assert!(!is_even(-1))      // -1 is not even
 }
 
+
+
+
 ```
 
 ### Testing Edge Cases
@@ -184,6 +196,9 @@ fun test_find_max() {
     assert_eq!(find_max([-5, -1, -10]), -1)  // All negative
     assert_eq!(find_max([5, 5, 5]), 5)       // All same
 }
+
+
+
 
 ```
 
@@ -225,6 +240,9 @@ fun test_count_vowels() {
     assert_eq!(count_vowels(""), 0)           // Empty string
 }
 
+
+
+
 ```
 
 ### Testing Business Logic
@@ -265,6 +283,9 @@ fun test_can_vote() {
     assert!(!can_vote(17, false))    // Too young AND not citizen
 }
 
+
+
+
 ```
 
 ## Test-Driven Development (TDD)
@@ -295,6 +316,9 @@ fn fahrenheit_to_celsius(fahrenheit) {
 // All tests pass! Code is ready to use.
 
 
+
+
+
 ```
 
 ## Common Testing Mistakes
@@ -318,6 +342,9 @@ fn test_divide_good() {
 }
 
 
+
+
+
 ```
 
 ### Tests That Don't Actually Test
@@ -338,6 +365,9 @@ fn test_useful() {
 }
 
 
+
+
+
 ```
 
 ### Poor Test Names
@@ -355,6 +385,9 @@ fn test1() {
 fn test_password_too_short() {
     assert_eq!(is_valid_password("abc"), false)
 }
+
+
+
 
 
 ```
@@ -429,6 +462,9 @@ fn test_password_edge_cases() {
     assert!(!is_strong_password("12345678"))      // Only digits
     assert!(!is_strong_password("!!!!!!!!"))      // Only special
 }
+
+
+
 
 
 ```

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-22T10:22:46.346Z",
-  "ruchy_version": "ruchy 0.10.0",
+  "generated_at": "2025-08-22T21:50:00.875Z",
+  "ruchy_version": "ruchy 0.11.0",
   "summary": {
     "total_chapters": 24,
     "total_examples": 280,
-    "working_examples": 119,
-    "failing_examples": 161,
-    "success_rate": 43
+    "working_examples": 117,
+    "failing_examples": 163,
+    "success_rate": 42
   },
   "chapters": {
     "ch10-00-performance-optimization": {
@@ -47,25 +47,25 @@
     },
     "appendix-b-syntax-reference": {
       "total_examples": 35,
-      "working_examples": 6,
-      "failing_examples": 29,
-      "success_rate": 17,
+      "working_examples": 5,
+      "failing_examples": 30,
+      "success_rate": 14,
       "status_breakdown": {
-        "working": 6,
+        "working": 5,
         "not_implemented": 0,
-        "broken": 29,
+        "broken": 30,
         "planned": 0
       }
     },
     "ch18-00-deployment-devops": {
       "total_examples": 8,
-      "working_examples": 5,
-      "failing_examples": 3,
-      "success_rate": 63,
+      "working_examples": 4,
+      "failing_examples": 4,
+      "success_rate": 50,
       "status_breakdown": {
-        "working": 5,
+        "working": 4,
         "not_implemented": 0,
-        "broken": 3,
+        "broken": 4,
         "planned": 0
       }
     },
@@ -119,13 +119,13 @@
     },
     "ch07-00-building-applications": {
       "total_examples": 9,
-      "working_examples": 4,
-      "failing_examples": 5,
-      "success_rate": 44,
+      "working_examples": 5,
+      "failing_examples": 4,
+      "success_rate": 56,
       "status_breakdown": {
-        "working": 4,
+        "working": 5,
         "not_implemented": 0,
-        "broken": 5,
+        "broken": 4,
         "planned": 0
       }
     },
@@ -239,13 +239,13 @@
     },
     "appendix-c-troubleshooting": {
       "total_examples": 20,
-      "working_examples": 9,
-      "failing_examples": 11,
-      "success_rate": 45,
+      "working_examples": 8,
+      "failing_examples": 12,
+      "success_rate": 40,
       "status_breakdown": {
-        "working": 9,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 11,
+        "broken": 12,
         "planned": 0
       }
     },
@@ -308,6 +308,6 @@
   "quality_metrics": {
     "documentation_coverage": 68.57142857142857,
     "example_testing": 100,
-    "implementation_status": 43
+    "implementation_status": 42
   }
 }
