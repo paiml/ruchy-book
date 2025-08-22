@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-08-21T15:26:35.930Z",
-  "ruchy_version": "ruchy 0.9.0",
+  "timestamp": "2025-08-22T09:45:55.336Z",
+  "ruchy_version": "ruchy 0.10.0",
   "chapters_processed": 23,
-  "examples_found": 272,
-  "examples_working": 107,
-  "examples_failing": 165,
-  "success_rate": 39,
+  "examples_found": 274,
+  "examples_working": 111,
+  "examples_failing": 163,
+  "success_rate": 41,
   "chapters": {
     "ch10-00-performance-optimization": {
       "chapter": "ch10-00-performance-optimization",
@@ -123,7 +123,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// taskmaster.ruchy - Complete task management system\nuse std::cli::{App, Arg, SubCommand};\nuse std::fs;\nuse std::chrono::{DateTime, Local};\n\n#[derive(Serialize, Deserialize, Clone)]\nstruct Task {\n    id: String,\n    title: String,\n    description: Option<String>,\n    status: TaskStatus,\n    priority: Priority,\n    due_date: Option<DateTime<Local>>,\n    tags: Vec<String>,\n    created_at: DateTime<Local>,\n    completed_at: Option<DateTime<Local>>,\n}\n\n#[derive(Serialize, Deserialize, Clone)]\nenum TaskStatus {\n    Todo,\n    InProgress,\n    Done,\n    Archived\n}\n\n#[derive(Serialize, Deserialize, Clone)]\nenum Priority {\n    Low,\n    Medium,\n    High,\n    Critical\n}\n\nstruct TaskStore {\n    path: PathBuf,\n    tasks: Vec<Task>,\n}\n\nimpl TaskStore {\n    fn load(path: PathBuf) -> Result<Self> {\n        let tasks = if path.exists() {\n            let content = fs::read_to_string(&path)?;\n            serde_json::from_str(&content)?\n        } else {\n            Vec::new()\n        };\n        \n        Ok(TaskStore { path, tasks })\n    }\n    \n    fn save(&self) -> Result<()> {\n        let json = serde_json::to_string_pretty(&self.tasks)?;\n        fs::write(&self.path, json)?;\n        Ok(())\n    }\n    \n    fn add(&mut self, task: Task) -> Result<()> {\n        self.tasks.push(task);\n        self.save()\n    }\n    \n    fn find(&self, id: &str) -> Option<&Task> {\n        self.tasks.iter().find(|t| t.id == id)\n    }\n    \n    fn update<F>(&mut self, id: &str, updater: F) -> Result<()>\n    where F: FnOnce(&mut Task)\n    {\n        if let Some(task) = self.tasks.iter_mut().find(|t| t.id == id) {\n            updater(task);\n            self.save()?;\n        }\n        Ok(())\n    }\n    \n    fn list(&self, filter: Option<TaskFilter>) -> Vec<&Task> {\n        self.tasks.iter()\n            .filter(|t| {\n                if let Some(ref f) = filter {\n                    f.matches(t)\n                } else {\n                    true\n                }\n            })\n            .collect()\n    }\n}\n\nstruct TaskFilter {\n    status: Option<TaskStatus>,\n    priority: Option<Priority>,\n    tags: Vec<String>,\n    search: Option<String>,\n}\n\nimpl TaskFilter {\n    fn matches(&self, task: &Task) -> bool {\n        if let Some(ref status) = self.status {\n            if task.status != *status {\n                return false;\n            }\n        }\n        \n        if let Some(ref priority) = self.priority {\n            if task.priority != *priority {\n                return false;\n            }\n        }\n        \n        if !self.tags.is_empty() {\n            if !self.tags.iter().any(|tag| task.tags.contains(tag)) {\n                return false;\n            }\n        }\n        \n        if let Some(ref search) = self.search {\n            let search_lower = search.to_lowercase();\n            if !task.title.to_lowercase().contains(&search_lower) &&\n               !task.description.as_ref()\n                   .map(|d| d.to_lowercase().contains(&search_lower))\n                   .unwrap_or(false) {\n                return false;\n            }\n        }\n        \n        true\n    }\n}\n\nfn main() -> Result<()> {\n    let app = App::new(\"taskmaster\")\n        .version(\"1.0.0\")\n        .author(\"Your Name\")\n        .about(\"Powerful task management from the command line\")\n        .subcommand(\n            SubCommand::with_name(\"add\")\n                .about(\"Add a new task\")\n                .arg(Arg::with_name(\"title\").required(true))\n                .arg(Arg::with_name(\"description\").short(\"d\").takes_value(true))\n                .arg(Arg::with_name(\"priority\").short(\"p\").takes_value(true))\n                .arg(Arg::with_name(\"due\").long(\"due\").takes_value(true))\n                .arg(Arg::with_name(\"tags\").short(\"t\").multiple(true))\n        )\n        .subcommand(\n            SubCommand::with_name(\"list\")\n                .about(\"List tasks\")\n                .arg(Arg::with_name(\"status\").short(\"s\").takes_value(true))\n                .arg(Arg::with_name(\"priority\").short(\"p\").takes_value(true))\n                .arg(Arg::with_name(\"tags\").short(\"t\").multiple(true))\n        )\n        .subcommand(\n            SubCommand::with_name(\"done\")\n                .about(\"Mark task as done\")\n                .arg(Arg::with_name(\"id\").required(true))\n        )\n        .get_matches();\n    \n    let store_path = dirs::home_dir()\n        .unwrap()\n        .join(\".taskmaster\")\n        .join(\"tasks.json\");\n    \n    let mut store = TaskStore::load(store_path)?;\n    \n    match app.subcommand() {\n        (\"add\", Some(matches)) => {\n            let task = Task {\n                id: generate_id(),\n                title: matches.value_of(\"title\").unwrap().to_string(),\n                description: matches.value_of(\"description\").map(String::from),\n                status: TaskStatus::Todo,\n                priority: matches.value_of(\"priority\")\n                    .and_then(|p| p.parse().ok())\n                    .unwrap_or(Priority::Medium),\n                due_date: matches.value_of(\"due\")\n                    .and_then(|d| parse_date(d).ok()),\n                tags: matches.values_of(\"tags\")\n                    .map(|tags| tags.map(String::from).collect())\n                    .unwrap_or_default(),\n                created_at: Local::now(),\n                completed_at: None,\n            };\n            \n            store.add(task)?;\n            println!(\"✅ Task added successfully!\");\n        }\n        \n        (\"list\", Some(matches)) => {\n            let filter = TaskFilter {\n                status: matches.value_of(\"status\").and_then(|s| s.parse().ok()),\n                priority: matches.value_of(\"priority\").and_then(|p| p.parse().ok()),\n                tags: matches.values_of(\"tags\")\n                    .map(|tags| tags.map(String::from).collect())\n                    .unwrap_or_default(),\n                search: None,\n            };\n            \n            let tasks = store.list(Some(filter));\n            \n            for task in tasks {\n                let status_emoji = match task.status {\n                    TaskStatus::Todo => \"⬜\",\n                    TaskStatus::InProgress => \"🔄\",\n                    TaskStatus::Done => \"✅\",\n                    TaskStatus::Archived => \"📦\",\n                };\n                \n                let priority_marker = match task.priority {\n                    Priority::Critical => \"🔴\",\n                    Priority::High => \"🟠\",\n                    Priority::Medium => \"🟡\",\n                    Priority::Low => \"🟢\",\n                };\n                \n                println!(\"{} {} {} {}\", \n                    status_emoji, \n                    priority_marker,\n                    task.id[..8].to_string(),\n                    task.title\n                );\n                \n                if let Some(ref desc) = task.description {\n                    println!(\"    {}\", desc);\n                }\n                \n                if !task.tags.is_empty() {\n                    println!(\"    Tags: {}\", task.tags.join(\", \"));\n                }\n            }\n        }\n        \n        (\"done\", Some(matches)) => {\n            let id = matches.value_of(\"id\").unwrap();\n            store.update(id, |task| {\n                task.status = TaskStatus::Done;\n                task.completed_at = Some(Local::now());\n            })?;\n            println!(\"✅ Task marked as done!\");\n        }\n        \n        _ => {\n            println!(\"Use --help for usage information\");\n        }\n    }\n    \n    Ok(())\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected Greater, found RightShift\n"
+          "error": "Parse error: Expected type\n"
         },
         {
           "file": "src/ch19-00-real-world-projects.md",
@@ -291,7 +291,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Valid identifiers\nvariable_name\ncamelCase\nPascalCase\n_private\n_internal\nsnake_case_123\nτ  // Unicode allowed\n\n// Keywords (reserved)\nlet mut fn if else match while for loop break continue\nreturn true false null struct enum trait impl use mod\nasync await type where const static pub super self",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected identifier after 'let' or 'let mut'\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/appendix-b-syntax-reference.md",
@@ -504,7 +504,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Inline module\nmod network {\n    fn connect() {\n        // Implementation\n    }\n    \n    pub fn public_function() {\n        // Can be called from outside module\n    }\n}\n\n// File-based modules\nmod utils;  // Looks for utils.rs or utils/mod.rs\n\n// Nested modules\nmod graphics {\n    pub mod shapes {\n        pub fn draw_circle() {}\n    }\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "error": "Parse error: Expected LeftBrace, found Semicolon\n"
         },
         {
           "file": "src/appendix-b-syntax-reference.md",
@@ -513,7 +513,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\npub fn public_function() {}           // Public\nfn private_function() {}              // Private to module\n\npub struct PublicStruct {\n    pub public_field: i32,            // Public field\n    private_field: i32,               // Private field\n}\n\npub(crate) fn crate_visible() {}      // Visible within crate\npub(super) fn parent_visible() {}     // Visible to parent module\npub(in crate::utils) fn limited() {} // Visible within specific path",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "error": "Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'\n"
         },
         {
           "file": "src/appendix-b-syntax-reference.md",
@@ -522,7 +522,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\nuse std::collections::HashMap         // Single import\nuse std::fs::{File, OpenOptions}      // Multiple imports\nuse std::io::*                        // Glob import\nuse std::collections::HashMap as Map  // Alias\n\n// Re-exports\npub use internal::public_api\n\n// Conditional compilation\n#[cfg(unix)]\nuse unix_specific::module\n\n#[cfg(windows)]  \nuse windows_specific::module",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "error": "Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'\n"
         },
         {
           "file": "src/appendix-b-syntax-reference.md",
@@ -556,7 +556,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Declarative macro\nmacro_rules! say_hello {\n    () => {\n        println!(\"Hello!\")\n    };\n    ($name:expr) => {\n        println!(\"Hello, {}!\", $name)\n    };\n}\n\n// Usage\nsay_hello!()\nsay_hello!(\"World\")",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Unexpected token: FatArrow\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/appendix-b-syntax-reference.md",
@@ -590,8 +590,8 @@
     "ch18-00-deployment-devops": {
       "chapter": "ch18-00-deployment-devops",
       "total_examples": 8,
-      "working_examples": 4,
-      "failing_examples": 4,
+      "working_examples": 5,
+      "failing_examples": 3,
       "examples": [
         {
           "file": "src/ch18-00-deployment-devops.md",
@@ -632,7 +632,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// metrics.ruchy\nuse metrics::{counter, gauge, histogram};\n\n// Application metrics\ncounter!(\"requests_total\", 1, \"endpoint\" => \"/api/users\")\nhistogram!(\"request_duration_seconds\", duration.as_secs_f64())\ngauge!(\"active_connections\", connections.len() as f64)\n\n// Prometheus endpoint\n#[get(\"/metrics\")]\nasync fn metrics_endpoint() -> String {\n    prometheus::gather()\n}\n\n// Grafana dashboard configuration\nlet dashboard = json!({\n    \"title\": \"Application Metrics\",\n    \"panels\": [\n        {\n            \"title\": \"Request Rate\",\n            \"targets\": [{\n                \"expr\": \"rate(requests_total[5m])\"\n            }]\n        },\n        {\n            \"title\": \"Error Rate\",\n            \"targets\": [{\n                \"expr\": \"rate(requests_total{status=~'5..'}[5m])\"\n            }]\n        },\n        {\n            \"title\": \"P99 Latency\",\n            \"targets\": [{\n                \"expr\": \"histogram_quantile(0.99, request_duration_seconds)\"\n            }]\n        }\n    ]\n})",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found FatArrow\n"
+          "error": "Parse error: Expected ',' or closing delimiter in macro arguments\n"
         },
         {
           "file": "src/ch18-00-deployment-devops.md",
@@ -657,118 +657,133 @@
           "example_number": 8,
           "line_number": 651,
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// secrets.ruchy\nuse vault::Client;\n\n// Vault integration\nlet vault = Client::new(\"https://vault.example.com\")\n    .auth_kubernetes()  // Use K8s service account\n\n// Fetch secrets\nlet db_password = vault.read(\"secret/database/password\").await?\nlet api_key = vault.read(\"secret/external/api_key\").await?\n\n// Rotate secrets\nvault.rotate(\"secret/database/password\").await?\n\n// Environment injection\nenv::set_var(\"DATABASE_URL\", \n    format!(\"postgres://user:{}@host/db\", db_password))",
-          "passed": false,
-          "status": "broken",
-          "error": "Parse error: Expected RightParen, found Bang\n"
+          "passed": true,
+          "status": "working"
         }
       ]
     },
     "ch01-03-interpreter-scripting": {
       "chapter": "ch01-03-interpreter-scripting",
-      "total_examples": 13,
-      "working_examples": 13,
+      "total_examples": 15,
+      "working_examples": 15,
       "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 1,
-          "line_number": 11,
-          "code": "$ ruchy -e \"2 + 2\"\n4\n\n$ ruchy -e \"let name = \\\"World\\\"; \\\"Hello \\\" + name + \\\"!\\\"\"\n\"Hello World!\"\n\n$ ruchy -e \"let nums = [1, 2, 3]; nums[1]\"\n2",
+          "line_number": 13,
+          "code": "ruchy -e \"2 + 2\"",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 2,
-          "line_number": 40,
-          "code": "// Integers use inline representation (61-bit range)\nlet small_int = 42\n\n// Floats are boxed for precision\nlet pi = 3.14159\n\n// Strings have small string optimization\nlet short = \"Hello\"\nlet long = \"This is a longer string that will be heap-allocated\"\n\n// Arrays support indexing\nlet data = [1, 2, 3, 4, 5]\nprintln(data[2])  // 3",
+          "line_number": 19,
+          "code": "ruchy -e \"let name = \\\"World\\\"; \\\"Hello \\\" + name + \\\"!\\\"\"",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 3,
-          "line_number": 77,
-          "code": "// calculator.ruchy - Basic calculator functionality\n\nfun add(a, b) {\n    a + b\n}\n\nfun subtract(a, b) {\n    a - b\n}\n\nfun multiply(a, b) {\n    a * b\n}\n\nfun divide(a, b) {\n    if b == 0 {\n        println(\"Error: Division by zero\")\n        0\n    } else {\n        a / b\n    }\n}\n\n// Test our calculator\nlet x = 10\nlet y = 3\n\nprintln(\"Addition:\")\nprintln(add(x, y))\nprintln(\"Subtraction:\")\nprintln(subtract(x, y))\nprintln(\"Multiplication:\")\nprintln(multiply(x, y))\nprintln(\"Division:\")\nprintln(divide(x, y))",
+          "line_number": 25,
+          "code": "ruchy -e \"let nums = [1, 2, 3]; nums[1]\"",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 4,
-          "line_number": 122,
-          "code": "// data_processing.ruchy - Array manipulation examples\n\nlet numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n// Access elements\nprintln(\"First:\")\nprintln(numbers[0])\nprintln(\"Last:\")\nprintln(numbers[9])\n\n// Simple iteration (manual)\nlet mut sum = 0\nlet mut i = 0\nwhile i < 10 {\n    sum = sum + numbers[i]\n    i = i + 1\n}\nprintln(\"Sum:\")\nprintln(sum)\n\n// Calculate average\nlet average = sum / 10\nprintln(\"Average:\")\nprintln(average)",
+          "line_number": 49,
+          "code": "// Integer values\nlet small_int = 42\nlet result = small_int * 2\n\n// Floating point numbers  \nlet pi = 3.14159\nlet area = pi * 5.0 * 5.0\n\n// String operations\nlet greeting = \"Hello\"\nlet name = \"Ruchy\"\n\n// Arrays with indexing\nlet data = [1, 2, 3, 4, 5]\nprintln(data[2])",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 5,
-          "line_number": 153,
-          "code": "// scoping.ruchy - Variable scope examples\n\nlet global_var = \"I'm global\"\n\nfun demonstrate_scope() {\n    let local_var = \"I'm local\"\n    println(global_var)  // Can access global\n    println(local_var)   // Can access local\n    \n    // Nested function\n    fun nested() {\n        println(global_var)  // Can access global\n        println(local_var)   // Can access parent local\n        let nested_var = \"I'm nested\"\n        println(nested_var)\n    }\n    \n    nested()\n}\n\ndemonstrate_scope()",
+          "line_number": 88,
+          "code": "// calculator.ruchy - Basic calculator functionality\n\nfun add(a, b) {\n    a + b\n}\n\nfun subtract(a, b) {\n    a - b\n}\n\nfun multiply(a, b) {\n    a * b\n}\n\nfun divide(a, b) {\n    if b == 0 {\n        println(\"Error: Division by zero\")\n        0\n    } else {\n        a / b\n    }\n}\n\n// Test our calculator\nlet x = 10\nlet y = 3\n\nprintln(\"Addition:\")\nprintln(add(x, y))\nprintln(\"Subtraction:\")\nprintln(subtract(x, y))\nprintln(\"Multiplication:\")\nprintln(multiply(x, y))\nprintln(\"Division:\")\nprintln(divide(x, y))",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 6,
-          "line_number": 183,
-          "code": "let arr = [1, 2, 3]\n\n// Unsafe - may cause error if index is out of bounds\n// println(arr[5])\n\n// Better approach\nif 5 < arr.len() {\n    println(arr[5])\n} else {\n    println(\"Index out of bounds\")\n}",
+          "line_number": 133,
+          "code": "// data_processing.ruchy - Array manipulation examples\n\nlet numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\n\n// Access elements\nprintln(\"First:\")\nprintln(numbers[0])\nprintln(\"Last:\")\nprintln(numbers[9])\n\n// Simple iteration (manual)\nlet mut sum = 0\nlet mut i = 0\nwhile i < 10 {\n    sum = sum + numbers[i]\n    i = i + 1\n}\nprintln(\"Sum:\")\nprintln(sum)\n\n// Calculate average\nlet average = sum / 10\nprintln(\"Average:\")\nprintln(average)",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 7,
-          "line_number": 201,
-          "code": "let x = 5\n// x = 10  // Error! x is immutable\n\n// Use mut for mutable variables\nlet mut y = 5\ny = 10  // OK",
+          "line_number": 164,
+          "code": "// scoping.ruchy - Variable scope examples\n\nlet global_var = \"I'm global\"\n\nfun demonstrate_scope() {\n    let local_var = \"I'm local\"\n    println(global_var)  // Can access global\n    println(local_var)   // Can access local\n    \n    // Nested function\n    fun nested() {\n        println(global_var)  // Can access global\n        println(local_var)   // Can access parent local\n        let nested_var = \"I'm nested\"\n        println(nested_var)\n    }\n    \n    nested()\n}\n\ndemonstrate_scope()",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 8,
-          "line_number": 214,
-          "code": "fun get_double(x) {\n    x * 2  // This is returned (no semicolon)\n}\n\nfun process_and_print(x) {\n    let doubled = x * 2\n    println(\"Doubled:\")\n    println(doubled)\n    // No explicit return - returns unit type ()\n}",
+          "line_number": 194,
+          "code": "let arr = [1, 2, 3]\n\n// Unsafe - may cause error if index is out of bounds\n// println(arr[5])\n\n// Better approach\nif 5 < arr.len() {\n    println(arr[5])\n} else {\n    println(\"Index out of bounds\")\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 9,
-          "line_number": 273,
-          "code": "// Good: Clear, functional style\nfun calculate_tax(income, rate) {\n    income * rate\n}\n\n// Avoid: Complex nested logic (for now)",
+          "line_number": 212,
+          "code": "let x = 5\n// x = 10  // Error! x is immutable\n\n// Use mut for mutable variables\nlet mut y = 5\ny = 10  // OK",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 10,
-          "line_number": 283,
-          "code": "// Good\nlet user_count = 42\nlet total_price = calculate_price(items)\n\n// Avoid\nlet x = 42\nlet y = calc(z)",
+          "line_number": 225,
+          "code": "fun get_double(x) {\n    x * 2  // This is returned (no semicolon)\n}\n\nfun process_and_print(x) {\n    let doubled = x * 2\n    println(\"Doubled:\")\n    println(doubled)\n    // No explicit return - returns unit type ()\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 11,
-          "line_number": 296,
-          "code": "let grades = [95, 87, 92, 78, 89]\nlet first_grade = grades[0]\nlet last_grade = grades[4]",
+          "line_number": 284,
+          "code": "// Good: Clear, functional style\nfun calculate_tax(income, rate) {\n    income * rate\n}\n\n// Avoid: Complex nested logic (for now)",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 12,
-          "line_number": 305,
-          "code": "// Start simple\nlet x = 5\n\n// Add functions\nfun double(n) { n * 2 }\n\n// Combine\nlet result = double(x)\nprintln(result)",
+          "line_number": 294,
+          "code": "// Good\nlet user_count = 42\nlet total_price = calculate_price(items)\n\n// Avoid\nlet x = 42\nlet y = calc(z)",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch01-03-interpreter-scripting.md",
           "example_number": 13,
-          "line_number": 321,
+          "line_number": 307,
+          "code": "let grades = [95, 87, 92, 78, 89]\nlet first_grade = grades[0]\nlet last_grade = grades[4]",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-03-interpreter-scripting.md",
+          "example_number": 14,
+          "line_number": 316,
+          "code": "// Start simple\nlet x = 5\n\n// Add functions\nfun double(n) { n * 2 }\n\n// Combine\nlet result = double(x)\nprintln(result)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-03-interpreter-scripting.md",
+          "example_number": 15,
+          "line_number": 332,
           "code": "// test_calculator.ruchy\nfun add(a, b) { a + b }\n\n// Test cases\nlet test1 = add(2, 3) == 5\nlet test2 = add(0, 0) == 0\nlet test3 = add(-1, 1) == 0\n\nif test1 && test2 && test3 {\n    println(\"All tests passed!\")\n} else {\n    println(\"Some tests failed\")\n}",
           "passed": true,
           "status": "working"
@@ -778,8 +793,8 @@
     "ch17-00-documentation": {
       "chapter": "ch17-00-documentation",
       "total_examples": 10,
-      "working_examples": 1,
-      "failing_examples": 9,
+      "working_examples": 2,
+      "failing_examples": 8,
       "examples": [
         {
           "file": "src/ch17-00-documentation.md",
@@ -788,7 +803,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n/// A high-performance cache with automatic eviction.\n/// \n/// # Examples\n/// \n/// ```\n/// let cache = Cache::new(100)  // Max 100 items\n/// cache.insert(\"key\", \"value\")\n/// assert_eq!(cache.get(\"key\"), Some(\"value\"))\n/// ```\n/// \n/// # Performance\n/// \n/// - Insert: O(1) amortized\n/// - Get: O(1)\n/// - Memory: O(n) where n is cache size\n/// \n/// # Thread Safety\n/// \n/// This cache is thread-safe using internal locking.\n/// For better performance with multiple threads, consider\n/// using `ShardedCache` instead.\npub struct Cache<K, V> {\n    /// Maximum number of items before eviction starts\n    capacity: usize\n    \n    /// Current items in cache\n    items: HashMap<K, V>\n    \n    /// Access order for LRU eviction\n    order: LinkedList<K>\n}\n\nimpl<K, V> Cache<K, V> {\n    /// Creates a new cache with the specified capacity.\n    /// \n    /// # Arguments\n    /// \n    /// * `capacity` - Maximum items to store before eviction\n    /// \n    /// # Panics\n    /// \n    /// Panics if capacity is 0.\n    /// \n    /// # Examples\n    /// \n    /// ```\n    /// let cache = Cache::new(1000)\n    /// ```\n    pub fn new(capacity: usize) -> Self {\n        assert!(capacity > 0, \"Capacity must be positive\")\n        // Implementation\n    }\n    \n    /// Inserts a key-value pair, evicting LRU item if at capacity.\n    /// \n    /// Returns the evicted value if any.\n    /// \n    /// # Complexity\n    /// \n    /// O(1) amortized time complexity.\n    pub fn insert(&mut self, key: K, value: V) -> Option<V> {\n        // Implementation with inline comments for complex parts\n        \n        // Update access order for LRU\n        self.update_access_order(&key)\n        \n        // Check capacity and evict if necessary\n        if self.items.len() >= self.capacity {\n            // Evict least recently used\n            let lru = self.order.pop_front()\n            // ...\n        }\n    }\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "error": "Parse error: Expected RightBrace, found Identifier(\"items\")\n"
         },
         {
           "file": "src/ch17-00-documentation.md",
@@ -815,16 +830,15 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n/// Configuration for the application.\n/// \n/// This struct holds all configuration values needed to run\n/// the application. It can be loaded from files, environment\n/// variables, or command-line arguments.\n/// \n/// # Example Configuration File\n/// \n/// ```toml\n/// [server]\n/// host = \"localhost\"\n/// port = 8080\n/// \n/// [database]\n/// url = \"postgres://localhost/myapp\"\n/// pool_size = 20\n/// ```\n#[derive(Deserialize, Serialize, Debug)]\npub struct Config {\n    /// Server configuration\n    pub server: ServerConfig,\n    \n    /// Database configuration  \n    pub database: DatabaseConfig,\n    \n    /// Optional cache configuration\n    pub cache: Option<CacheConfig>,\n}\n\n/// Server configuration options.\n#[derive(Deserialize, Serialize, Debug)]\npub struct ServerConfig {\n    /// Host to bind to (default: \"127.0.0.1\")\n    #[serde(default = \"default_host\")]\n    pub host: String,\n    \n    /// Port to listen on (default: 8080)\n    #[serde(default = \"default_port\")]\n    pub port: u16,\n    \n    /// Number of worker threads (default: CPU cores)\n    #[serde(default = \"num_cpus\")]\n    pub workers: usize,\n}\n\n// Generate HTML documentation\n$ ruchy doc --open\nDocumenting mylib v0.1.0\n    Finished documentation\n    Opening docs/mylib/index.html",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "error": "Parse error: Expected type\n"
         },
         {
           "file": "src/ch17-00-documentation.md",
           "example_number": 5,
           "line_number": 301,
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n//! # System Architecture\n//! \n//! ## Overview\n//! \n//! This application follows a layered architecture:\n//! \n//! ```text\n//! ┌─────────────────────────────────┐\n//! │          HTTP Layer             │\n//! │  (Handlers, Middleware, Routes) │\n//! └─────────────┬───────────────────┘\n//!               │\n//! ┌─────────────▼───────────────────┐\n//! │        Service Layer            │\n//! │   (Business Logic, Validation)  │\n//! └─────────────┬───────────────────┘\n//!               │\n//! ┌─────────────▼───────────────────┐\n//! │      Repository Layer           │\n//! │    (Database Access, Caching)   │\n//! └─────────────┬───────────────────┘\n//!               │\n//! ┌─────────────▼───────────────────┐\n//! │         Data Layer              │\n//! │    (PostgreSQL, Redis, S3)      │\n//! └─────────────────────────────────┘\n//! ```\n//! \n//! ## Data Flow\n//! \n//! 1. Request enters through HTTP handler\n//! 2. Handler validates input and calls service\n//! 3. Service applies business logic\n//! 4. Repository handles data persistence\n//! 5. Response flows back through layers\n//! \n//! ## Key Design Decisions\n//! \n//! ### Why Layered Architecture?\n//! \n//! - **Separation of Concerns**: Each layer has a single responsibility\n//! - **Testability**: Layers can be tested independently with mocks\n//! - **Flexibility**: Easy to swap implementations (e.g., database)\n//! \n//! ### Why Event Sourcing?\n//! \n//! - **Audit Trail**: Complete history of all changes\n//! - **Time Travel**: Can reconstruct state at any point\n//! - **Event Replay**: Easy to fix bugs in event processing\n\n/// Module containing HTTP handlers\npub mod handlers {\n    //! HTTP request handlers.\n    //! \n    //! Each handler is responsible for:\n    //! - Request validation\n    //! - Calling appropriate service\n    //! - Response formatting\n}\n\n/// Module containing business logic\npub mod services {\n    //! Business logic layer.\n    //! \n    //! Services contain all business rules and orchestrate\n    //! operations across multiple repositories.\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Parse error: Expected 'fn' or 'fun' after 'pub'\n"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch17-00-documentation.md",
@@ -1061,7 +1075,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Define a macro for JSON-like syntax\nmacro! json {\n    // Match JSON-like input\n    ({ $($key:ident : $value:expr),* }) => {\n        {\n            let mut map = HashMap::new()\n            $(\n                map.insert(stringify!($key), json!($value))\n            )*\n            Value::Object(map)\n        }\n    }\n    ([ $($element:expr),* ]) => {\n        Value::Array(vec![$(json!($element)),*])\n    }\n    ($other:expr) => {\n        Value::from($other)\n    }\n}\n\n// Use it like native syntax!\nlet user = json!({\n    name: \"Alice\",\n    age: 30,\n    emails: [\"alice@example.com\", \"alice@work.com\"],\n    active: true,\n    metadata: {\n        created: \"2024-01-01\",\n        tags: [\"premium\", \"verified\"]\n    }\n})\n\n// Macro for automatic implementation\n#[derive(Debug, Clone, Serialize)]\nstruct User {\n    name: String\n    email: String\n    age: i32\n}\n\n// The derive macro generates all the boilerplate!",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Colon\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1070,7 +1084,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Simple macro\nmacro! say_hello {\n    () => {\n        println(\"Hello, World!\")\n    }\n    ($name:expr) => {\n        println(f\"Hello, {$name}!\")\n    }\n}\n\nsay_hello!()           // Prints: Hello, World!\nsay_hello!(\"Alice\")    // Prints: Hello, Alice!\n\n// Macro with repetition\nmacro! vec_of_strings {\n    ($($x:expr),*) => {\n        vec![$(String::from($x)),*]\n    }\n}\n\nlet strings = vec_of_strings![\"one\", \"two\", \"three\"]\n\n// Recursive macro\nmacro! count {\n    () => { 0 }\n    ($head:expr) => { 1 }\n    ($head:expr, $($tail:expr),*) => {\n        1 + count!($($tail),*)\n    }\n}\n\nlet n = count!(a, b, c, d)  // 4\n\n// Macro generating match arms\nmacro! handle_codes {\n    ($($code:expr => $message:expr),*) => {\n        match status_code {\n            $($code => println($message)),*\n            _ => println(\"Unknown status\")\n        }\n    }\n}\n\nhandle_codes! {\n    200 => \"OK\",\n    404 => \"Not Found\",\n    500 => \"Internal Error\"\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Unexpected token: FatArrow\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1079,7 +1093,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Derive macro for automatic implementation\n#[proc_macro_derive(Builder)]\nfn derive_builder(input: TokenStream) -> TokenStream {\n    let ast = parse(input)\n    let name = ast.name\n    let builder_name = f\"{name}Builder\"\n    \n    let fields = ast.fields.map(|f| {\n        let name = f.name\n        let ty = f.ty\n        quote! {\n            fn $name(mut self, value: $ty) -> Self {\n                self.$name = Some(value)\n                self\n            }\n        }\n    })\n    \n    quote! {\n        struct $builder_name {\n            $($fields.name: Option<$fields.ty>),*\n        }\n        \n        impl $builder_name {\n            fn new() -> Self {\n                Self {\n                    $($fields.name: None),*\n                }\n            }\n            \n            $fields\n            \n            fn build(self) -> Result<$name, String> {\n                Ok($name {\n                    $($fields.name: self.$fields.name\n                        .ok_or(f\"Missing field: {stringify!($fields.name)}\")?,)*\n                })\n            }\n        }\n        \n        impl $name {\n            fn builder() -> $builder_name {\n                $builder_name::new()\n            }\n        }\n    }\n}\n\n// Use the derive macro\n#[derive(Builder)]\nstruct Config {\n    host: String\n    port: u16\n    workers: usize\n}\n\n// Generated builder pattern!\nlet config = Config::builder()\n    .host(\"localhost\")\n    .port(8080)\n    .workers(4)\n    .build()?",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected LeftParen, found Bang\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1088,7 +1102,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Attribute macro for benchmarking\n#[proc_macro_attribute]\nfn bench(args: TokenStream, input: TokenStream) -> TokenStream {\n    let func = parse(input)\n    let name = func.name\n    \n    quote! {\n        fn $name() {\n            let start = Instant::now()\n            let result = { $func.body }\n            let duration = start.elapsed()\n            println(f\"{stringify!($name)} took {duration:?}\")\n            result\n        }\n    }\n}\n\n#[bench]\nfn expensive_operation() {\n    // Function body\n    heavy_computation()\n}\n// Automatically prints timing!\n\n// Route attribute for web framework\n#[route(GET, \"/users/:id\")]\nasync fn get_user(id: i32) -> Response {\n    let user = fetch_user(id).await?\n    Response::json(user)\n}\n\n// Test attribute with custom behavior\n#[test_case(1, 2, 3)]\n#[test_case(10, 20, 30)]\n#[test_case(-1, -2, -3)]\nfn test_addition(a: i32, b: i32, expected: i32) {\n    assert_eq!(a + b, expected)\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected LeftParen, found Bang\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1097,7 +1111,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// SQL-like macro\nmacro! sql {\n    (SELECT $($field:ident),* FROM $table:ident WHERE $($cond:tt)*) => {\n        Query::select(vec![$(stringify!($field)),*])\n            .from(stringify!($table))\n            .where(parse_condition!($($cond)*))\n    }\n}\n\nlet query = sql! {\n    SELECT name, email, age \n    FROM users \n    WHERE age > 18 AND active = true\n}\n\n// HTML templating\nmacro! html {\n    (<$tag:ident $($attr:ident = $value:expr)*> $($content:tt)* </$close:ident>) => {\n        Element::new(stringify!($tag))\n            $(.attr(stringify!($attr), $value))*\n            .children(vec![$(html!($content)),*])\n    }\n    ($text:expr) => {\n        Text::new($text)\n    }\n}\n\nlet page = html! {\n    <div class=\"container\">\n        <h1>\"Welcome\"</h1>\n        <p>\"This is \"<strong>\"Ruchy\"</strong>\" macros!\"</p>\n    </div>\n}\n\n// Regular expression literals\nmacro! regex {\n    ($pattern:expr) => {\n        {\n            static REGEX: OnceCell<Regex> = OnceCell::new()\n            REGEX.get_or_init(|| {\n                Regex::new($pattern).expect(\"Invalid regex\")\n            })\n        }\n    }\n}\n\nlet email_regex = regex!(r\"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\")",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Bang\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1106,7 +1120,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Debug print with variable names\nmacro! dbg {\n    ($($x:expr),*) => {\n        $(\n            eprintln!(\"{} = {:?}\", stringify!($x), $x)\n        )*\n    }\n}\n\nlet x = 42\nlet y = \"hello\"\ndbg!(x, y, x + 10)\n// Prints:\n// x = 42\n// y = \"hello\"\n// x + 10 = 52\n\n// Trace macro for function calls\nmacro! trace {\n    ($func:expr) => {\n        {\n            println(f\"Entering {stringify!($func)}\")\n            let result = $func\n            println(f\"Leaving {stringify!($func)}: {result:?}\")\n            result\n        }\n    }\n}\n\nlet result = trace!(expensive_calculation())\n\n// Assert with custom messages\nmacro! assert_eq_msg {\n    ($left:expr, $right:expr, $msg:expr) => {\n        if $left != $right {\n            panic(f\"{$msg}\\nLeft: {$left:?}\\nRight: {$right:?}\")\n        }\n    }\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Colon\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1115,7 +1129,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Generate getters and setters\nmacro! accessors {\n    ($struct_name:ident { $($field:ident : $type:ty),* }) => {\n        impl $struct_name {\n            $(\n                fn $field(&self) -> &$type {\n                    &self.$field\n                }\n                \n                fn set_$field(&mut self, value: $type) {\n                    self.$field = value\n                }\n            )*\n        }\n    }\n}\n\nstruct Person {\n    name: String\n    age: i32\n}\n\naccessors!(Person { name: String, age: i32 })\n\n// Now person.name() and person.set_name() exist!\n\n// Generate enum variants and matchers\nmacro! define_opcodes {\n    ($($name:ident = $value:expr),*) => {\n        enum Opcode {\n            $($name = $value),*\n        }\n        \n        impl Opcode {\n            fn from_byte(byte: u8) -> Option<Opcode> {\n                match byte {\n                    $($value => Some(Opcode::$name)),*\n                    _ => None\n                }\n            }\n            \n            fn to_string(&self) -> &str {\n                match self {\n                    $(Opcode::$name => stringify!($name)),*\n                }\n            }\n        }\n    }\n}\n\ndefine_opcodes! {\n    ADD = 0x01,\n    SUB = 0x02,\n    MUL = 0x03,\n    DIV = 0x04,\n    JMP = 0x10,\n    JEQ = 0x11\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Colon\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1124,7 +1138,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// State machine DSL\nmacro! state_machine {\n    (\n        states: [$($state:ident),*]\n        transitions: [\n            $($from:ident -> $to:ident on $event:ident),*\n        ]\n        initial: $initial:ident\n    ) => {\n        enum State {\n            $($state),*\n        }\n        \n        enum Event {\n            $($event),*\n        }\n        \n        struct StateMachine {\n            state: State\n        }\n        \n        impl StateMachine {\n            fn new() -> Self {\n                Self { state: State::$initial }\n            }\n            \n            fn transition(&mut self, event: Event) {\n                self.state = match (&self.state, event) {\n                    $(\n                        (State::$from, Event::$event) => State::$to,\n                    )*\n                    _ => panic(\"Invalid transition\")\n                }\n            }\n        }\n    }\n}\n\nstate_machine! {\n    states: [Idle, Running, Paused, Stopped]\n    transitions: [\n        Idle -> Running on Start,\n        Running -> Paused on Pause,\n        Paused -> Running on Resume,\n        Running -> Stopped on Stop,\n        Paused -> Stopped on Stop\n    ]\n    initial: Idle\n}\n\n// Configuration DSL\nmacro! config {\n    {\n        $($section:ident {\n            $($key:ident : $value:expr),*\n        })*\n    } => {\n        {\n            let mut config = Config::new()\n            $(\n                let mut section = ConfigSection::new(stringify!($section))\n                $(\n                    section.set(stringify!($key), $value)\n                )*\n                config.add_section(section)\n            )*\n            config\n        }\n    }\n}\n\nlet config = config! {\n    server {\n        host: \"localhost\",\n        port: 8080,\n        workers: 4\n    }\n    database {\n        url: \"postgres://localhost/myapp\",\n        pool_size: 20\n    }\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Colon\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch15-00-macros-metaprogramming.md",
@@ -1133,7 +1147,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Hygienic macros prevent name collisions\nmacro! safe_swap {\n    ($a:expr, $b:expr) => {\n        {\n            // Generated names won't conflict\n            let __temp = $a\n            $a = $b\n            $b = __temp\n        }\n    }\n}\n\n// Best practices:\n// 1. Keep macros simple\n// 2. Provide good error messages\nmacro! validate {\n    ($expr:expr) => {\n        if !$expr {\n            compile_error!(concat!(\n                \"Validation failed: \",\n                stringify!($expr)\n            ))\n        }\n    }\n}\n\n// 3. Document macro syntax\n/// Creates a new vector with the given elements\n/// \n/// # Example\n/// ```\n/// let v = vec![1, 2, 3]\n/// ```\nmacro! vec {\n    // Implementation\n}\n\n// 4. Use macro namespaces\nmod macros {\n    macro! internal_helper {\n        // Not exported\n    }\n    \n    #[macro_export]\n    macro! public_macro {\n        // Exported\n    }\n}\n\n// 5. Test macros thoroughly\n#[test]\nfn test_macro() {\n    let result = my_macro!(input)\n    assert_eq!(result, expected)\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Colon\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         }
       ]
     },
@@ -1238,8 +1252,8 @@
     "ch08-00-systems-programming": {
       "chapter": "ch08-00-systems-programming",
       "total_examples": 9,
-      "working_examples": 5,
-      "failing_examples": 4,
+      "working_examples": 4,
+      "failing_examples": 5,
       "examples": [
         {
           "file": "src/ch08-00-systems-programming.md",
@@ -1279,8 +1293,9 @@
           "example_number": 5,
           "line_number": 213,
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// File: service_manager.ruchy\n// Manage system services\n\nprintln(\"=== Service Manager ===\")\n\nlet services = [\n    {name: \"web_server\", command: \"./server\", port: 8080},\n    {name: \"worker\", command: \"./worker\", count: 4},\n    {name: \"scheduler\", command: \"./scheduler\", interval: 60}\n]\n\nlet running_services = {}\n\nfn start_service(service) {\n    println(f\"Starting {service.name}...\")\n    \n    match service.name {\n        \"web_server\" => {\n            let proc = process::spawn(service.command, [\n                \"--port\", service.port.to_s()\n            ])\n            running_services[service.name] = proc\n            \n            // Wait for port to be available\n            while !network::port_is_open(\"localhost\", service.port) {\n                sleep(100)\n            }\n            println(f\"✅ {service.name} listening on port {service.port}\")\n        }\n        \"worker\" => {\n            let workers = []\n            for i in range(service.count) {\n                let proc = process::spawn(service.command, [\n                    \"--id\", i.to_s()\n                ])\n                workers.push(proc)\n            }\n            running_services[service.name] = workers\n            println(f\"✅ Started {service.count} workers\")\n        }\n        \"scheduler\" => {\n            let proc = process::spawn(service.command, [\n                \"--interval\", service.interval.to_s()\n            ])\n            running_services[service.name] = proc\n            println(f\"✅ Scheduler running every {service.interval}s\")\n        }\n    }\n}\n\nfn stop_service(name) {\n    if running_services.has_key(name) {\n        println(f\"Stopping {name}...\")\n        let proc = running_services[name]\n        \n        if proc.is_array() {\n            // Multiple processes (workers)\n            for p in proc {\n                p.terminate()\n                p.wait()\n            }\n        } else {\n            // Single process\n            proc.terminate()\n            proc.wait()\n        }\n        \n        running_services.remove(name)\n        println(f\"✅ {name} stopped\")\n    }\n}\n\nfn service_status() {\n    println(\"\\n=== Service Status ===\")\n    for service in services {\n        let status = if running_services.has_key(service.name) {\n            \"🟢 Running\"\n        } else {\n            \"🔴 Stopped\"\n        }\n        println(f\"{service.name:15} {status}\")\n    }\n}\n\n// Handle shutdown gracefully\nsignal::on(SIGTERM, || {\n    println(\"\\nShutting down all services...\")\n    for name in running_services.keys() {\n        stop_service(name)\n    }\n    exit(0)\n})\n\n// Interactive management\nloop {\n    service_status()\n    println(\"\\nCommands: start <name>, stop <name>, restart <name>, quit\")\n    let command = input(\"> \").split(\" \")\n    \n    match command[0] {\n        \"start\" => start_service(services.find(|s| s.name == command[1]))\n        \"stop\" => stop_service(command[1])\n        \"restart\" => {\n            stop_service(command[1])\n            start_service(services.find(|s| s.name == command[1]))\n        }\n        \"quit\" => break\n        _ => println(\"Unknown command\")\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Parse error: Expected identifier or string key in object literal\n"
         },
         {
           "file": "src/ch08-00-systems-programming.md",
@@ -1350,7 +1365,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Option represents nullable values\nenum Option<T> {\n    Some(T)  // Value present\n    None     // Value absent\n}\n\n// Functions that might not return a value\nfn find_user(name: String) -> Option<User> {\n    let users = load_users()\n    for user in users {\n        if user.name == name {\n            return Some(user)\n        }\n    }\n    return None\n}\n\n// Safe handling of missing values\nlet user = find_user(\"Alice\")\nif let Some(u) = user {\n    println(f\"Found: {u.email}\")\n} else {\n    println(\"User not found\")\n}\n\n// Chain operations safely\nlet email = find_user(\"Bob\")\n    .map(|u| u.email)\n    .unwrap_or(\"no-email@example.com\")",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected variant name\n"
+          "error": "Parse error: Expected enum name\n"
         },
         {
           "file": "src/ch13-00-error-handling.md",
@@ -1431,7 +1446,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n#[test]\nfn test_error_handling() {\n    // Test expected errors\n    let result = divide(10.0, 0.0)\n    assert!(result.is_err())\n    assert_eq!(result.unwrap_err(), \"Division by zero\")\n    \n    // Test error propagation\n    let result = process_invalid_file()\n    assert!(matches!(result, Err(FileError::NotFound(_))))\n    \n    // Test recovery\n    let config = get_config_with_fallback()\n    assert!(config.is_valid())  // Should always succeed\n}\n\n#[test]\n#[should_panic(expected = \"assertion failed\")]\nfn test_panic_condition() {\n    unsafe_operation()\n}\n\n// Property-based testing for error conditions\n#[property_test]\nfn never_panics(input: RandomInput) {\n    let _ = safe_process(input)  // Should never panic\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Bang\n"
+          "error": "Parse error: Unexpected token: Underscore\n"
         }
       ]
     },
@@ -1597,7 +1612,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// Integration test in tests/ directory\n#[integration_test]\nasync fn test_full_api_flow() {\n    // Start services\n    let db = TestDatabase::new()\n    let cache = TestCache::new()\n    let server = TestServer::with_services(db, cache)\n    \n    // Register user\n    let register_response = server\n        .post(\"/api/register\")\n        .json(json!({\n            \"email\": \"test@example.com\",\n            \"password\": \"secure123\"\n        }))\n        .send()\n        .await\n    \n    assert_eq!(register_response.status(), 201)\n    let user: User = register_response.json().await\n    \n    // Login\n    let login_response = server\n        .post(\"/api/login\")\n        .json(json!({\n            \"email\": \"test@example.com\",\n            \"password\": \"secure123\"\n        }))\n        .send()\n        .await\n    \n    assert_eq!(login_response.status(), 200)\n    let token = login_response.header(\"Authorization\")\n    \n    // Use authenticated endpoint\n    let profile_response = server\n        .get(\"/api/profile\")\n        .header(\"Authorization\", token)\n        .send()\n        .await\n    \n    assert_eq!(profile_response.status(), 200)\n    let profile: Profile = profile_response.json().await\n    assert_eq!(profile.email, \"test@example.com\")\n}\n\n// Database integration test\n#[test]\nfn test_database_transactions() {\n    let db = Database::connect(TEST_DATABASE_URL)\n    \n    db.transaction(|tx| {\n        tx.insert_user(user1)?\n        tx.insert_user(user2)?\n        \n        // Verify within transaction\n        let count = tx.count_users()?\n        assert_eq!(count, 2)\n        \n        // Rollback for test isolation\n        Err(TestRollback)\n    })\n    \n    // Verify rollback worked\n    assert_eq!(db.count_users(), 0)\n}",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected RightParen, found Bang\n"
+          "error": "Parse error: Expected method name or 'await' after '.'\n"
         },
         {
           "file": "src/ch16-00-testing-quality.md",
@@ -2002,8 +2017,8 @@
     "appendix-c-troubleshooting": {
       "chapter": "appendix-c-troubleshooting",
       "total_examples": 20,
-      "working_examples": 8,
-      "failing_examples": 12,
+      "working_examples": 9,
+      "failing_examples": 11,
       "examples": [
         {
           "file": "src/appendix-c-troubleshooting.md",
@@ -2079,9 +2094,8 @@
           "example_number": 9,
           "line_number": 178,
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// ❌ Runtime panic\nlet v = vec![1, 2, 3]\nlet item = v[5]  // Panic: index out of bounds\n\n// ✅ Safe access\nlet v = vec![1, 2, 3]\nmatch v.get(5) {\n    Some(item) => println(\"Item: {}\", item),\n    None => println(\"Index out of bounds\"),\n}\n\n// ✅ Or use safe indexing\nif let Some(item) = v.get(5) {\n    println(\"Item: {}\", item)\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Parse error: Expected FatArrow, found Some\n"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/appendix-c-troubleshooting.md",
@@ -2090,7 +2104,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// ❌ Runtime panic\nlet maybe_value: Option<i32> = None\nlet value = maybe_value.unwrap()  // Panic: called unwrap on None\n\n// ✅ Safe handling\nlet maybe_value: Option<i32> = None\nmatch maybe_value {\n    Some(value) => println(\"Value: {}\", value),\n    None => println(\"No value\"),\n}\n\n// ✅ Or provide default\nlet value = maybe_value.unwrap_or(0)",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Expected FatArrow, found Some\n"
+          "error": "Parse error: Expected type\n"
         },
         {
           "file": "src/appendix-c-troubleshooting.md",
@@ -2319,7 +2333,7 @@
           "code": "// Status: ❌ BROKEN\n// Error: Requires run access to \"ruchy\", run again with the --allow-run flag\n// ❌ This won't work\nprintln(Hello, World!)",
           "passed": false,
           "status": "broken",
-          "error": "Parse error: Unexpected token: RightParen\n"
+          "error": "Parse error: Expected '(' or '[' after macro name\n"
         },
         {
           "file": "src/ch01-02-hello-world.md",

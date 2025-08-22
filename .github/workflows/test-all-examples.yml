@@ -1,463 +1,120 @@
-name: 📊 Test All Book Examples
+name: Book Compatibility Testing
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   schedule:
-    # Run every 6 hours to catch ruchy compiler changes  
+    # Run tests every 6 hours to track compatibility changes
     - cron: '0 */6 * * *'
-  workflow_dispatch:
-    inputs:
-      ruchy_version:
-        description: 'Ruchy version to test against (default: latest)'
-        required: false
-        default: 'latest'
-        type: string
-
-env:
-  RUCHY_VERSION: ${{ inputs.ruchy_version || 'latest' }}
 
 jobs:
-  test-all-examples:
-    name: 🧪 Test All Examples
+  test-book-examples:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
     
     steps:
-    - name: 📥 Checkout Repository
-      uses: actions/checkout@v4
-      
-    - name: 🦀 Setup Rust Toolchain  
-      uses: actions-rust-lang/setup-rust-toolchain@v1
-      with:
-        toolchain: stable
-        components: rustfmt, clippy
+      - name: Checkout ruchy-book
+        uses: actions/checkout@v4
         
-    - name: 🟦 Setup Deno Runtime
-      uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
-        
-    - name: ⚡ Cache Cargo Dependencies
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cargo/bin/
-          ~/.cargo/registry/index/
-          ~/.cargo/registry/cache/
-          ~/.cargo/git/db/
-          target/
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-
+      - name: Checkout ruchy compiler
+        uses: actions/checkout@v4
+        with:
+          repository: paiml/ruchy
+          path: ruchy
           
-    - name: 📦 Install Ruchy Compiler
-      run: |
-        if [ "${{ env.RUCHY_VERSION }}" = "latest" ]; then
-          echo "Installing latest ruchy version..."
-          cargo install ruchy
-        else
-          echo "Installing ruchy version ${{ env.RUCHY_VERSION }}..."
-          cargo install ruchy --version ${{ env.RUCHY_VERSION }}
-        fi
-        
-        echo "Installed ruchy version:"
-        ruchy --version
-        
-    - name: 📊 Generate Test Report Metadata  
-      run: |
-        echo "# 📊 Book Examples Test Report" > test-report.md
-        echo "" >> test-report.md
-        echo "**Generated**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> test-report.md
-        echo "**Ruchy Version**: $(ruchy --version)" >> test-report.md
-        echo "**Commit**: ${{ github.sha }}" >> test-report.md
-        echo "**Branch**: ${{ github.ref_name }}" >> test-report.md
-        echo "**Workflow**: ${{ github.workflow }}" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 🧮 Test One-Liners (Chapter 4.1) 
-      continue-on-error: true
-      run: |
-        echo "## 🧮 One-Liner Examples (Chapter 4.1)" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Run comprehensive one-liner tests using Deno TypeScript
-        if deno task test-oneliners > oneliner-results.txt 2>&1; then
-          echo "✅ **One-liner tests completed successfully**" >> test-report.md
-        else
-          echo "⚠️ **One-liner tests completed with some planned features**" >> test-report.md
-        fi
-        
-        # Extract summary
-        echo "" >> test-report.md
-        echo "### Summary" >> test-report.md
-        echo "" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        tail -10 oneliner-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Extract detailed results
-        echo "<details>" >> test-report.md
-        echo "<summary>📋 Detailed One-Liner Results</summary>" >> test-report.md
-        echo "" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        cat oneliner-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-        echo "</details>" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 📚 Extract and Test ALL Chapter Examples
-      continue-on-error: true
-      run: |
-        echo "## 📚 All Chapter Examples (Comprehensive)" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Run comprehensive extraction and testing using Deno TypeScript
-        if deno task extract-examples > extraction-results.txt 2>&1; then
-          echo "✅ **Chapter examples extraction and testing completed successfully**" >> test-report.md
-        else
-          echo "⚠️ **Chapter examples extraction completed with expected failures**" >> test-report.md
-        fi
-        
-        # Extract summary from JSON
-        if [ -f test/extracted-examples/summary.json ]; then
-          echo "" >> test-report.md
-          echo "### Extraction Summary" >> test-report.md
-          echo "" >> test-report.md
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
           
-          CHAPTERS=$(jq -r '.chapters_processed' test/extracted-examples/summary.json)
-          TOTAL=$(jq -r '.examples_found' test/extracted-examples/summary.json)
-          WORKING=$(jq -r '.examples_working' test/extracted-examples/summary.json)
-          FAILING=$(jq -r '.examples_failing' test/extracted-examples/summary.json)
-          RATE=$(jq -r '.success_rate' test/extracted-examples/summary.json)
+      - name: Cache Rust dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            ruchy/target
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           
-          echo "| Metric | Value |" >> test-report.md
-          echo "|--------|-------|" >> test-report.md
-          echo "| 📄 **Chapters Processed** | $CHAPTERS |" >> test-report.md
-          echo "| 💻 **Examples Found** | $TOTAL |" >> test-report.md
-          echo "| ✅ **Examples Working** | $WORKING |" >> test-report.md
-          echo "| ❌ **Examples Failing** | $FAILING |" >> test-report.md
-          echo "| 📈 **Success Rate** | $RATE% |" >> test-report.md
-          echo "" >> test-report.md
-        fi
-        
-        # Show working examples
-        if [ -f test/extracted-examples/passing.log ]; then
-          PASSING_COUNT=$(wc -l < test/extracted-examples/passing.log)
-          echo "### ✅ Working Examples ($PASSING_COUNT)" >> test-report.md
-          echo "" >> test-report.md
-          echo "<details>" >> test-report.md
-          echo "<summary>View working examples</summary>" >> test-report.md
-          echo "" >> test-report.md
-          echo "\`\`\`" >> test-report.md
-          cat test/extracted-examples/passing.log >> test-report.md
-          echo "\`\`\`" >> test-report.md
-          echo "</details>" >> test-report.md
-          echo "" >> test-report.md
-        fi
-        
-        # Show failing examples
-        if [ -f test/extracted-examples/failing.log ]; then
-          FAILING_COUNT=$(wc -l < test/extracted-examples/failing.log)
-          echo "### ❌ Failing Examples ($FAILING_COUNT)" >> test-report.md
-          echo "" >> test-report.md
-          echo "<details>" >> test-report.md
-          echo "<summary>View failing examples</summary>" >> test-report.md
-          echo "" >> test-report.md
-          echo "\`\`\`" >> test-report.md
-          head -50 test/extracted-examples/failing.log >> test-report.md
-          if [ $(wc -l < test/extracted-examples/failing.log) -gt 50 ]; then
-            echo "... (truncated - see artifacts for full list)" >> test-report.md
+      - name: Build ruchy compiler
+        run: |
+          cd ruchy
+          cargo build --release
+          
+      - name: Install Deno for example extraction
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+          
+      - name: Extract examples from book
+        run: |
+          deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+          
+      - name: Run book compatibility tests
+        run: |
+          cargo test --test test_all_examples -- --nocapture
+          
+      - name: Generate status report
+        run: |
+          deno task generate-report
+          
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-compatibility-${{ github.run_number }}
+          path: |
+            reports/
+            test/extracted-examples/
+          retention-days: 30
+          
+      - name: Test one-liner examples
+        run: |
+          deno task test-oneliners
+          
+      - name: Check compatibility regression
+        run: |
+          # Extract success rate from reports
+          SUCCESS_RATE=$(jq -r '.summary.success_rate' reports/status-report.json)
+          echo "Current success rate: ${SUCCESS_RATE}%"
+          
+          # Fail if success rate drops below 25% (current baseline)
+          if (( $(echo "$SUCCESS_RATE < 25" | bc -l) )); then
+            echo "❌ REGRESSION: Success rate dropped below 25% baseline"
+            exit 1
           fi
-          echo "\`\`\`" >> test-report.md
-          echo "</details>" >> test-report.md
-          echo "" >> test-report.md
-        fi
-        
-        # Detailed extraction results
-        echo "<details>" >> test-report.md
-        echo "<summary>📋 Detailed Extraction Results</summary>" >> test-report.md
-        echo "" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        cat extraction-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "</details>" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 🧪 Run Standard Cargo Tests  
-      continue-on-error: true
-      run: |
-        echo "## 🧪 Standard Cargo Test Suite" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Run cargo tests for comparison
-        if cargo test --tests > cargo-results.txt 2>&1; then
-          echo "✅ **Cargo tests completed successfully**" >> test-report.md
-        else
-          echo "⚠️ **Cargo tests completed with expected failures**" >> test-report.md
-        fi
-        
-        # Extract test summary
-        echo "" >> test-report.md
-        echo "### Cargo Test Summary" >> test-report.md
-        echo "" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        grep -E "test result:|running [0-9]+ tests" cargo-results.txt || echo "No test summary found" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Detailed results in collapsible section
-        echo "<details>" >> test-report.md
-        echo "<summary>📋 Detailed Cargo Test Results</summary>" >> test-report.md
-        echo "" >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        head -100 cargo-results.txt >> test-report.md
-        if [ $(wc -l < cargo-results.txt) -gt 100 ]; then
-          echo "" >> test-report.md
-          echo "... (truncated - see artifacts for full results)" >> test-report.md
-        fi
-        echo "\`\`\`" >> test-report.md
-        echo "</details>" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 🔍 Markdown Linting and Quality Checks
-      continue-on-error: true  
-      run: |
-        echo "## 🔍 Documentation Quality Report" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Run comprehensive quality checks using Deno TypeScript
-        if deno task lint-markdown > quality-results.txt 2>&1; then
-          echo "✅ **All documentation quality checks passed**" >> test-report.md
-        else
-          echo "⚠️ **Documentation quality issues found**" >> test-report.md
-        fi
-        
-        # Extract and format results
-        echo "\`\`\`" >> test-report.md
-        cat quality-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 📝 Update Documentation Status Annotations
-      continue-on-error: true
-      run: |
-        echo "## 📝 Documentation Status Updates" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Update documentation with test results
-        if deno task update-status > status-update-results.txt 2>&1; then
-          echo "✅ **Documentation status annotations updated successfully**" >> test-report.md
-        else
-          echo "⚠️ **Status annotation update completed with warnings**" >> test-report.md
-        fi
-        
-        echo "\`\`\`" >> test-report.md
-        tail -20 status-update-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-        
-    - name: 📊 Generate Status Dashboard
-      continue-on-error: true  
-      run: |
-        echo "## 📊 Status Dashboard Generated" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Generate comprehensive status report
-        if deno task generate-report > dashboard-results.txt 2>&1; then
-          echo "✅ **Status dashboard and reports generated successfully**" >> test-report.md
-          echo "📁 **Generated files**: status-report.md, status-report.json, status-dashboard.html" >> test-report.md
-        else
-          echo "⚠️ **Dashboard generation completed with warnings**" >> test-report.md  
-        fi
-        
-        echo "\`\`\`" >> test-report.md
-        tail -10 dashboard-results.txt >> test-report.md
-        echo "\`\`\`" >> test-report.md
-        echo "" >> test-report.md
-
-    - name: 🔍 Extract Example Statistics
-      continue-on-error: true
-      run: |
-        echo "## 📊 Statistics Summary" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Count examples in chapter files
-        TOTAL_RUCHY_EXAMPLES=$(find src -name "*.md" -exec grep -l "ruchy -e\|```ruchy" {} \; | wc -l)
-        TOTAL_CODE_BLOCKS=$(find src -name "*.md" -exec grep -c "```ruchy" {} \; | awk '{sum+=$1} END {print sum}')
-        ONELINER_EXAMPLES=$(grep -c "ruchy -e" src/ch04-01-one-liners.md || echo "0")
-        
-        echo "| Metric | Count |" >> test-report.md
-        echo "|--------|-------|" >> test-report.md  
-        echo "| 📄 **Chapters with Ruchy Examples** | $TOTAL_RUCHY_EXAMPLES |" >> test-report.md
-        echo "| 💻 **Total Code Blocks** | $TOTAL_CODE_BLOCKS |" >> test-report.md
-        echo "| 🧮 **One-Liner Examples** | $ONELINER_EXAMPLES |" >> test-report.md
-        
-        # Extract pass/fail counts from results
-        if [ -f oneliner-results.txt ]; then
-          ONELINER_PASSED=$(grep "Tests Passed:" oneliner-results.txt | awk '{print $3}' || echo "0")
-          ONELINER_FAILED=$(grep "Tests Failed:" oneliner-results.txt | awk '{print $3}' || echo "0") 
-          ONELINER_PLANNED=$(grep "Tests Planned:" oneliner-results.txt | awk '{print $3}' || echo "0")
           
-          echo "| ✅ **One-Liners Passing** | $ONELINER_PASSED |" >> test-report.md
-          echo "| ❌ **One-Liners Failing** | $ONELINER_FAILED |" >> test-report.md
-          echo "| 📋 **One-Liners Planned** | $ONELINER_PLANNED |" >> test-report.md
-        fi
-        
-        if [ -f general-results.txt ]; then
-          GENERAL_PASSED=$(grep -o "[0-9]* passed" general-results.txt | awk '{sum+=$1} END {print sum}' || echo "0")
-          GENERAL_FAILED=$(grep -o "[0-9]* failed" general-results.txt | awk '{sum+=$1} END {print sum}' || echo "0")
+          echo "✅ No regression detected"
           
-          echo "| ✅ **General Examples Passing** | $GENERAL_PASSED |" >> test-report.md
-          echo "| ❌ **General Examples Failing** | $GENERAL_FAILED |" >> test-report.md
-        fi
-        
-        echo "" >> test-report.md
-        
-    - name: 🎯 Generate Compatibility Matrix
-      continue-on-error: true
-      run: |
-        echo "## 🎯 Compatibility Matrix" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Chapter-by-chapter breakdown
-        echo "| Chapter | Status | Notes |" >> test-report.md
-        echo "|---------|--------|-------|" >> test-report.md
-        
-        # Check each chapter
-        for chapter in src/ch*.md; do
-          if [ -f "$chapter" ]; then
-            chapter_name=$(basename "$chapter" .md)
-            chapter_title=$(head -1 "$chapter" | sed 's/^# //')
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('reports/status-report.json', 'utf8'));
             
-            if grep -q "```ruchy" "$chapter"; then
-              echo "| $chapter_name | 📝 Contains Examples | $chapter_title |" >> test-report.md
-            else
-              echo "| $chapter_name | 📄 Documentation Only | $chapter_title |" >> test-report.md
-            fi
-          fi
-        done
-        
-        echo "" >> test-report.md
-        
-    - name: 🚨 Generate Issue Report
-      if: failure() || success()
-      run: |
-        echo "## 🚨 Issues & Recommendations" >> test-report.md
-        echo "" >> test-report.md
-        
-        # Check for common failure patterns
-        if [ -f general-results.txt ] && grep -q "Unexpected token" general-results.txt; then
-          echo "### 🔧 Syntax Issues Detected" >> test-report.md
-          echo "" >> test-report.md
-          echo "**Common Issues Found:**" >> test-report.md
-          echo "- \`Unexpected token\` errors suggest syntax not yet implemented in current Ruchy version" >> test-report.md
-          echo "- Consider updating book examples to match current Ruchy capabilities" >> test-report.md
-          echo "- Or update Ruchy compiler to support planned syntax" >> test-report.md
-          echo "" >> test-report.md
-        fi
-        
-        # Check for version issues
-        if [ -f oneliner-results.txt ] && grep -q "ERROR" oneliner-results.txt; then
-          echo "### ⚠️ One-Liner Issues Detected" >> test-report.md  
-          echo "" >> test-report.md
-          echo "**Recommendations:**" >> test-report.md
-          echo "- Check if latest ruchy version supports all mathematical functions" >> test-report.md
-          echo "- Verify array operations implementation status" >> test-report.md
-          echo "- Consider implementing missing string methods" >> test-report.md
-          echo "" >> test-report.md
-        fi
-        
-        echo "### 📈 Next Steps" >> test-report.md
-        echo "" >> test-report.md
-        echo "1. **Review failed examples** in the detailed results above" >> test-report.md
-        echo "2. **Update INTEGRATION.md** with current compatibility metrics" >> test-report.md
-        echo "3. **Prioritize implementation** of most commonly used failing features" >> test-report.md
-        echo "4. **Consider book updates** for examples using unimplemented syntax" >> test-report.md
-        echo "" >> test-report.md
-        
-        echo "---" >> test-report.md
-        echo "*Generated by GitHub Actions workflow: [\`test-all-examples.yml\`](.github/workflows/test-all-examples.yml)*" >> test-report.md
-        
-    - name: 📊 Upload Test Report and Artifacts
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: test-report-${{ github.run_number }}
-        path: |
-          test-report.md
-          oneliner-results.txt
-          extraction-results.txt
-          cargo-results.txt
-          quality-results.txt
-          status-update-results.txt
-          dashboard-results.txt
-          test/extracted-examples/
-          reports/
-        retention-days: 30
-        
-    - name: 💬 Comment Test Report on PR
-      if: github.event_name == 'pull_request'
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const fs = require('fs');
-          
-          // Read the test report
-          let report = '';
-          try {
-            report = fs.readFileSync('test-report.md', 'utf8');
-          } catch (error) {
-            report = `## 📊 Test Report\n\n❌ **Error**: Could not generate test report\n\n\`\`\`\n${error.message}\n\`\`\``;
-          }
-          
-          // Truncate if too long for GitHub comment (max ~65k chars)
-          if (report.length > 50000) {
-            report = report.substring(0, 50000) + '\n\n...\n\n*Report truncated. See artifacts for full results.*';
-          }
-          
-          // Post comment
-          await github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: report
-          });
-          
-    - name: 📈 Update README Badge
-      if: github.ref == 'refs/heads/main'
-      run: |
-        # Extract success rate for badge
-        if [ -f oneliner-results.txt ]; then
-          TOTAL_WORKING=$(grep "Tests Passed:" oneliner-results.txt | awk '{print $3}' || echo "0")
-          TOTAL_EXAMPLES=$(grep "Total All Examples:" oneliner-results.txt | awk '{print $4}' || echo "1")
-          
-          if [ "$TOTAL_EXAMPLES" -gt 0 ]; then
-            PERCENTAGE=$((TOTAL_WORKING * 100 / TOTAL_EXAMPLES))
-            echo "COMPATIBILITY_PERCENTAGE=$PERCENTAGE" >> $GITHUB_ENV
+            const comment = `## 📊 Book Compatibility Test Results
             
-            # Update INTEGRATION.md with latest metrics
-            sed -i "s/Last Updated: .*/Last Updated: $(date -u '+%B %d, %Y, %H:%M:%S UTC')/" INTEGRATION.md || true
-            sed -i "s/Current Compatibility: .*/Current Compatibility: 22% (57\/259 examples pass) + ${PERCENTAGE}% (${TOTAL_WORKING}\/${TOTAL_EXAMPLES} one-liners pass) 🎉/" INTEGRATION.md || true
-          fi
-        fi
-        
-    - name: 🎉 Success Summary
-      if: success()
-      run: |
-        echo "✅ **Test All Examples workflow completed successfully!**"
-        echo ""
-        echo "📊 **Results:**"
-        if [ -f oneliner-results.txt ]; then
-          grep -E "Tests Passed:|Tests Failed:|Tests Planned:" oneliner-results.txt || echo "No one-liner summary found"
-        fi
-        if [ -f general-results.txt ]; then
-          grep "test result:" general-results.txt || echo "No general test summary found"
-        fi
-        echo ""
-        echo "📋 **View detailed results in the uploaded artifacts**"
-        echo "🔗 **Artifact name**: test-report-${{ github.run_number }}"
+            **Overall Statistics:**
+            - ✅ Passing: ${report.summary.working_examples}/${report.summary.total_examples} (${report.summary.success_rate}%)
+            - 🎯 One-liners: ${report.oneliners?.passing || 'N/A'}/${report.oneliners?.total || 'N/A'} (${report.oneliners?.success_rate || 'N/A'}%)
+            - 📚 Total Examples: ${report.summary.total_examples}
+            
+            **Chapter Leaders:**
+            ${Object.entries(report.chapters || {})
+              .filter(([_, data]) => data.success_rate >= 80)
+              .map(([chapter, data]) => `- 🟢 ${chapter}: ${data.working_examples}/${data.total_examples} (${data.success_rate}%)`)
+              .join('\n')}
+            
+            📋 [Full Report](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID})
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
