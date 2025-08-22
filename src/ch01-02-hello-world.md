@@ -33,6 +33,9 @@ fun main() {
     println("Hello, World!");
 }
 
+
+
+
 ```
 
 That's it! Save this in a file called `hello.ruchy` and run it with:
@@ -84,6 +87,9 @@ fun main() {
     println("Hello", "World", "from", "Ruchy");
 }
 
+
+
+
 ```
 
 Output:
@@ -103,6 +109,9 @@ fun main() {
     println("Hello, " + name + "!");
 }
 
+
+
+
 ```
 
 Output:
@@ -121,6 +130,9 @@ fun main() {
     println("Is Ruchy awesome?", true);
 }
 
+
+
+
 ```
 
 Output:
@@ -138,13 +150,15 @@ Is Ruchy awesome? true
 // ❌ This won't work - intentional error example
 // println(Hello, World!);
 //
-// Error: Hello and World are treated as variables, not text.
+
 // Always use quotes for literal text.
 
 fun main() {
     // ✅ Correct way:
     println("Hello, World!");
 }
+
+
 
 ```
 
@@ -154,13 +168,15 @@ fun main() {
 // ❌ Quotes don't match - intentional error example
 // println("Hello, World!');
 //
-// Error: String not properly closed - quotes must match.
+
 // Use either "..." or '...' but be consistent.
 
 fun main() {
     // ✅ Correct way:
     println("Hello, World!");
 }
+
+
 
 ```
 
@@ -170,12 +186,14 @@ fun main() {
 // ❌ Wrong capitalization - intentional error example
 // PrintLn("Hello, World!");
 //
-// Error: PrintLn is not defined. Function names are lowercase in Ruchy.
+
 
 fun main() {
     // ✅ Correct way:
     println("Hello, World!");
 }
+
+
 
 ```
 
@@ -192,6 +210,9 @@ Your Ruchy code:
 fun main() {
     println("Hello, World!");
 }
+
+
+
 
 ```
 

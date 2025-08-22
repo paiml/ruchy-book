@@ -36,6 +36,9 @@ fn documented_function() {}
 //! Inner documentation comment for containing item
 
 
+
+
+
 ```
 
 ### Identifiers
@@ -55,6 +58,8 @@ snake_case_123
 let mut fn if else match while for loop break continue
 return true false null struct enum trait impl use mod
 async await type where const static pub super self
+
+
 
 
 ```
@@ -84,6 +89,9 @@ async await type where const static pub super self
 100u8       // Unsigned 8-bit
 
 
+
+
+
 ```
 
 #### String Literals
@@ -109,6 +117,8 @@ line two"
 "Result: " + value.to_s()
 
 
+
+
 ```
 
 #### Character Literals
@@ -119,6 +129,8 @@ line two"
 '\n'        // Escape sequence
 '\x41'      // Hex escape
 '\u{1F600}' // Unicode escape
+
+
 
 
 ```
@@ -156,6 +168,9 @@ let text: str = "hello"        // String slice
 let owned: String = "world"    // Owned string
 
 
+
+
+
 ```
 
 ### Compound Types
@@ -188,6 +203,8 @@ let ok: Result<i32, String> = Ok(42)
 let err: Result<i32, String> = Err("error message")
 
 
+
+
 ```
 
 ## Variable Declaration
@@ -217,6 +234,8 @@ let x = 42
 let x = "now a string"  // Shadows previous x
 
 
+
+
 ```
 
 ### Constants
@@ -230,6 +249,8 @@ const PI: f64 = 3.14159265359
 // Static variables
 static GLOBAL_COUNTER: AtomicUsize = AtomicUsize::new(0)
 static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
+
+
 
 
 ```
@@ -262,6 +283,8 @@ let Some(value) = optional else {
 }
 
 
+
+
 ```
 
 ### Pattern Matching
@@ -291,6 +314,8 @@ match number {
     n if n > 0 => "positive", 
     _ => "zero"
 }
+
+
 
 
 ```
@@ -340,6 +365,8 @@ for (index, item) in collection.enumerate() {
 }
 
 
+
+
 ```
 
 ## Functions
@@ -375,6 +402,8 @@ fn calculate(x: f64, y: f64, operation: char) -> f64 {
 }
 
 
+
+
 ```
 
 ### Function Parameters
@@ -407,6 +436,8 @@ fn sum(numbers: &[i32]) -> i32 {
 }
 
 
+
+
 ```
 
 ### Closures
@@ -432,6 +463,8 @@ let greeter = move |greeting| {
 }
 
 
+
+
 ```
 
 ### Higher-Order Functions
@@ -454,6 +487,8 @@ where F: Fn(T) -> U
 {
     items.into_iter().map(f).collect()
 }
+
+
 
 
 ```
@@ -487,6 +522,8 @@ struct Excerpt<'a> {
 }
 
 
+
+
 ```
 
 ### Struct Usage
@@ -506,6 +543,8 @@ let point2 = Point { x: 1.0, ..origin }
 // Destructuring
 let Point { x, y } = origin
 let Color(r, g, b) = red
+
+
 
 
 ```
@@ -537,6 +576,8 @@ enum Result<T, E> {
 }
 
 
+
+
 ```
 
 ### Implementation Blocks
@@ -565,6 +606,8 @@ impl Point {
         (self.x, self.y)
     }
 }
+
+
 
 
 ```
@@ -602,6 +645,8 @@ trait From<T> {
 }
 
 
+
+
 ```
 
 ### Trait Implementation
@@ -629,6 +674,8 @@ impl<T: Clone> Clone for Box<T> {
 }
 
 
+
+
 ```
 
 ## Generics
@@ -646,6 +693,8 @@ fn largest<T: PartialOrd>(list: &[T]) -> &T {
     }
     largest
 }
+
+
 
 
 ```
@@ -670,6 +719,8 @@ impl Point<f64> {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
 }
+
+
 
 
 ```
@@ -702,6 +753,8 @@ where
 }
 
 
+
+
 ```
 
 ## Modules and Visibility
@@ -732,6 +785,8 @@ mod graphics {
 }
 
 
+
+
 ```
 
 ### Visibility
@@ -749,6 +804,8 @@ pub struct PublicStruct {
 pub(crate) fn crate_visible() {}      // Visible within crate
 pub(super) fn parent_visible() {}     // Visible to parent module
 pub(in crate::utils) fn limited() {} // Visible within specific path
+
+
 
 
 ```
@@ -771,6 +828,8 @@ use unix_specific::module
 
 #[cfg(windows)]  
 use windows_specific::module
+
+
 
 
 ```
@@ -806,6 +865,8 @@ match result {
 }
 
 
+
+
 ```
 
 ### Panic
@@ -821,6 +882,9 @@ assert_eq!(left, right, "Values must be equal")
 
 // Debug assertions (only in debug builds)
 debug_assert!(expensive_check())
+
+
+
 
 
 ```
@@ -848,6 +912,9 @@ mod tests {}
 struct Point { x: i32, y: i32 }
 
 
+
+
+
 ```
 
 ### Macro Definition
@@ -867,6 +934,8 @@ macro_rules! say_hello {
 // Usage
 say_hello!()
 say_hello!("World")
+
+
 
 
 ```
@@ -915,6 +984,8 @@ fn small_function() {}
 fn always_inline() {}
 
 
+
+
 ```
 
 ## Async/Await
@@ -942,6 +1013,8 @@ let async_closure = async |x| {
 }
 
 
+
+
 ```
 
 ### Futures and Streams
@@ -966,6 +1039,8 @@ let stream = async_stream::stream! {
         tokio::time::sleep(Duration::from_millis(100)).await
     }
 }
+
+
 
 
 ```

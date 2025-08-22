@@ -73,6 +73,8 @@ let results = pool.parallel_map(items, |item| {
 })
 
 
+
+
 ```
 
 That's concurrency without fear!
@@ -109,6 +111,9 @@ let handle = Thread::builder()
     .spawn(|| {
         heavy_computation()
     })
+
+
+
 
 
 ```
@@ -156,6 +161,8 @@ loop {
         }
     }
 }
+
+
 
 
 ```
@@ -207,6 +214,8 @@ let counter = Arc::new(AtomicI32::new(0))
 counter.fetch_add(1, Ordering::SeqCst)
 
 
+
+
 ```
 
 ### Async/Await
@@ -247,6 +256,8 @@ async fn process_stream(stream: AsyncStream<Item>) {
         process_item(item).await
     }
 }
+
+
 
 
 ```
@@ -321,6 +332,8 @@ for i in range(100) {
 }
 
 
+
+
 ```
 
 ### Producer-Consumer
@@ -375,6 +388,8 @@ fn bounded_pipeline() {
 }
 
 
+
+
 ```
 
 ### Fork-Join
@@ -417,6 +432,8 @@ fn parallel_sum(numbers: Vec<i32>) -> i32 {
     
     return sums.sum()
 }
+
+
 
 
 ```
@@ -491,6 +508,8 @@ let count = rx.recv()
 println("Count: " + count.to_s())  // 2
 
 
+
+
 ```
 
 ## Real-World Concurrency
@@ -538,6 +557,8 @@ async fn handle_request(req: Request) -> Response {
 }
 
 
+
+
 ```
 
 ### Parallel Data Processing
@@ -578,6 +599,8 @@ fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
         .parallel_flat_map(stage3, workers: 4)
         .collect()
 }
+
+
 
 
 ```
@@ -625,6 +648,8 @@ async fn test_async_operations() {
 }
 
 
+
+
 ```
 
 ## Performance Tips
@@ -659,6 +684,8 @@ instead_of {
 do {
     channel.send(items)  // One batch send
 }
+
+
 
 
 ```

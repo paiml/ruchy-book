@@ -36,6 +36,9 @@ let y = 24;
 // Note: Semicolons needed for statements, not expressions
 
 
+
+
+
 ```
 
 #### Unmatched Braces/Parentheses
@@ -53,6 +56,8 @@ if condition {
 }
 
 
+
+
 ```
 
 #### Invalid Variable Names
@@ -68,6 +73,8 @@ let fn = "keyword"
 let invalid_123 = "ok"
 let my_var = "underscores ok"
 let function_name = "not keyword"
+
+
 
 
 ```
@@ -89,6 +96,9 @@ let x: i32 = 42
 let x = "string"  // Let compiler infer type
 
 
+
+
+
 ```
 
 #### Cannot Move Out of Borrowed Content
@@ -104,6 +114,8 @@ let moved = *r  // Cannot move out of borrowed content
 let s = String::from("hello")
 let r = &s
 let copied = r.clone()  // Clone instead of move
+
+
 
 
 ```
@@ -126,6 +138,9 @@ println(s)  // s still valid
 let s = String::from("hello")
 borrows_value(&s)
 println(s)  // s still valid
+
+
+
 
 
 ```
@@ -154,6 +169,8 @@ fn static_str() -> &'static str {
 }
 
 
+
+
 ```
 
 #### Multiple Mutable References
@@ -174,6 +191,8 @@ let mut s = String::from("hello")
     // r1 scope ends here
 }
 let r2 = &mut s  // Now ok
+
+
 
 
 ```
@@ -203,6 +222,9 @@ if let Some(item) = v.get(5) {
 }
 
 
+
+
+
 ```
 
 #### Unwrap on None/Err
@@ -222,6 +244,8 @@ match maybe_value {
 
 // ✅ Or provide default
 let value = maybe_value.unwrap_or(0)
+
+
 
 
 ```
@@ -252,6 +276,8 @@ fn divide_result(a: i32, b: i32) -> Result<i32, String> {
         Err("Division by zero".to_string())
     }
 }
+
+
 
 
 ```
@@ -286,6 +312,9 @@ fn factorial_iterative(n: i32) -> i32 {
 }
 
 
+
+
+
 ```
 
 #### Large Stack Allocations
@@ -306,6 +335,8 @@ fn large_vector() {
 fn boxed_array() {
     let big_array: Box<[i32; 1_000_000]> = Box::new([0; 1_000_000])
 }
+
+
 
 
 ```
@@ -329,6 +360,8 @@ fn process_strings_efficient(strings: &[String]) -> Vec<String> {
         .map(|s| s.to_uppercase())  // to_uppercase() works on &str
         .collect()
 }
+
+
 
 
 ```
@@ -366,6 +399,8 @@ fn concat_with_capacity(strings: &[&str]) -> String {
 }
 
 
+
+
 ```
 
 ### Inefficient Collections
@@ -387,6 +422,9 @@ let mut deque = VecDeque::new()
 for i in 0..1000 {
     deque.push_front(i)
 }
+
+
+
 
 
 ```
@@ -417,6 +455,8 @@ let data = response.json().await?  // Feature not enabled
 // ✅ Enable required features in Cargo.toml
 // [dependencies]
 // reqwest = { version = "0.11", features = ["json"] }
+
+
 
 
 ```
@@ -541,6 +581,9 @@ println!("This only prints in debug builds")
 debug!("Variable state: x={}, y={}", x, y)
 
 
+
+
+
 ```
 
 ### Using Debugger
@@ -577,6 +620,9 @@ fn main() {
 // RUST_LOG=debug cargo run
 
 
+
+
+
 ```
 
 ### Testing and Debugging
@@ -599,6 +645,8 @@ mod tests {
     
     // Run with: cargo test -- --nocapture
 }
+
+
 
 
 ```

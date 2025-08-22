@@ -80,6 +80,8 @@ for region, amount in region_sales.items() {
 }
 
 
+
+
 ```
 
 Output:
@@ -130,6 +132,9 @@ let transactions = [
 ]
 
 
+
+
+
 ```
 
 ### Data Aggregation
@@ -163,6 +168,9 @@ let customer_ids = transactions.map(|t| t.customer)
 let amounts_only = transactions.map(|t| t.amount)
 
 
+
+
+
 ```
 
 ### File Format Processing
@@ -192,6 +200,8 @@ fn load_csv(filename) {
     
     return data
 }
+
+
 
 
 ```
@@ -243,6 +253,8 @@ println(f"\nTop Spenders:")
 for i, customer in top_spenders.enumerate() {
     println("  " + (i+1).to_s() + ". " + customer.name + ": $" + customer.total_spent.to_s() + " (" + customer.orders.to_s() + " orders)")
 }
+
+
 
 
 ```
@@ -323,6 +335,8 @@ let busiest_hour = hour_counts.max_by_value()
 println("\nBusiest Hour: " + busiest_hour.key + ":xx (" + busiest_hour.value.to_s() + " entries)")
 
 
+
+
 ```
 
 ### Financial Data Processor
@@ -392,6 +406,8 @@ for transaction in transactions.sort_by(|t| t.date) {
 }
 
 
+
+
 ```
 
 ## Data Visualization (Text-based)
@@ -428,6 +444,8 @@ let monthly_sales = {
 draw_bar_chart(monthly_sales, "Monthly Sales Report")
 
 
+
+
 ```
 
 Output:
@@ -456,6 +474,9 @@ let sales_data = load_csv("sales.csv")
 let total = sales_data.map(|row| row.amount.to_f()).sum()
 let average = total / sales_data.len()
 println("Average sale: $" + average.to_s())
+
+
+
 
 
 ```
@@ -650,6 +671,8 @@ fn main_menu() {
 while main_menu() {
     // Continue until user quits
 }
+
+
 
 
 ```

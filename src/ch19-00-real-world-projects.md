@@ -280,6 +280,8 @@ fn main() -> Result<()> {
 }
 
 
+
+
 ```
 
 ## Project 2: Web API Service
@@ -455,6 +457,8 @@ async fn main() -> Result<()> {
     
     Ok(())
 }
+
+
 
 
 ```
@@ -687,6 +691,8 @@ async fn main() -> Result<()> {
 }
 
 
+
+
 ```
 
 ## Project Ideas
@@ -810,6 +816,8 @@ mod tests {
         assert_eq!(result, expected);
     }
 }
+
+
 
 
 ```

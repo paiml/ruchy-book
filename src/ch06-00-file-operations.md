@@ -77,6 +77,8 @@ for file in files {
 println("✅ Desktop organized!")
 
 
+
+
 ```
 
 That's file automation! Hours of manual work done in seconds.
@@ -104,6 +106,9 @@ let project_path = join_path(home_dir(), "projects", "my_app")
 let clean_path = normalize_path(".././data//file.txt")
 
 
+
+
+
 ```
 
 ### File Information
@@ -127,6 +132,9 @@ let is_symlink = is_symbolic_link(path)
 let can_read = is_readable(path)
 let can_write = is_writable(path)
 let can_execute = is_executable(path)
+
+
+
 
 
 ```
@@ -160,6 +168,9 @@ fn walk_directory(dir) {
         }
     }
 }
+
+
+
 
 
 ```
@@ -234,6 +245,8 @@ println("Location: " + backup_dir)
 let summary = "Backup Summary\n==============\nDate: " + timestamp + "\nFiles: " + total_files.to_s() + "\nSize: " + format_size(total_size) + "\nCategories: " + backup_config.keys().join(", ") + "\n"
 
 write_file(join_path(backup_dir, "summary.txt"), summary)
+
+
 
 
 ```
@@ -321,6 +334,9 @@ if duplicates.is_empty() {
 }
 
 
+
+
+
 ```
 
 ### Log Rotation System
@@ -382,6 +398,9 @@ for log_file in log_files {
 }
 
 println("\n✅ Log rotation complete!")
+
+
+
 
 
 ```
@@ -492,6 +511,8 @@ loop {
 }
 
 
+
+
 ```
 
 ## Error Handling
@@ -531,6 +552,9 @@ fn safe_file_operation(path) {
 }
 
 
+
+
+
 ```
 
 ## Generated Code Insight
@@ -551,6 +575,9 @@ for file in files {
         move_file(file, "large_files/" + file)
     }
 }
+
+
+
 
 
 ```

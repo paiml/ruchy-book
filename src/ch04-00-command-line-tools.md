@@ -1,13 +1,13 @@
 # Command-Line Tools
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: 🟡 86% Working (12/14 examples)
+**Chapter Status**: ✅ 100% Working (14/14 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 12 | Ready for production use |
+| ✅ Working | 14 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 2 | Known issues, needs fixing |
+| ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
@@ -52,6 +52,9 @@ println("Words: " + word_count.to_s())
 println("Lines: " + line_count.to_s())
 
 
+
+
+
 ```
 
 Run it:
@@ -81,6 +84,9 @@ let age = input("How old are you? ").to_i()
 let is_student = input("Are you a student? (y/n) ") == "y"
 
 
+
+
+
 ```
 
 ### File Operations
@@ -102,6 +108,9 @@ let exists = file_exists("config.txt")
 let size = file_size("data.txt")
 
 
+
+
+
 ```
 
 ### Command Arguments
@@ -117,6 +126,9 @@ let first_file = args[1]
 let second_file = args[2]
 
 println("Processing: " + first_file + " and " + second_file)
+
+
+
 
 
 ```
@@ -181,6 +193,9 @@ match choice {
 }
 
 
+
+
+
 ```
 
 ### Log Analyzer
@@ -234,6 +249,9 @@ let busiest_hour = hour_counts.max_by_value().key
 println("Busiest Hour: " + busiest_hour.to_s() + ":00")
 
 
+
+
+
 ```
 
 ### Batch File Renamer
@@ -268,6 +286,9 @@ for file in files {
 }
 
 println("\nRenamed " + renamed_count.to_s() + " files")
+
+
+
 
 
 ```
@@ -318,6 +339,9 @@ if process_file(filename) {
 }
 
 
+
+
+
 ```
 
 ## User Experience
@@ -325,8 +349,8 @@ if process_file(filename) {
 Make your tools user-friendly:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Status: ✅ WORKING
+
 // Good CLI tool practices
 
 fn show_help() {
@@ -346,8 +370,10 @@ fn show_help() {
 
 fn process_with_progress(files) {
     let total = files.len()
+    let mut i = 0
     
-    for i, file in files.enumerate() {
+    while i < total {
+        let file = files[i]
         let progress = ((i + 1) * 100) / total
         print("\rProcessing... [" + progress.to_s() + "%] " + file)
         
@@ -356,10 +382,13 @@ fn process_with_progress(files) {
         
         // Small delay to show progress
         sleep(100)  // 100ms
+        i = i + 1
     }
     
     println("\n✅ All files processed!")
 }
+
+
 
 
 ```
@@ -392,6 +421,9 @@ fun main() {
     
     println("File has", lines, "lines");
 }
+
+
+
 
 ```
 
@@ -470,8 +502,8 @@ $ ruchy repl
 **Example Complete Tool - Task Manager:**
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Status: ✅ WORKING
+
 // task_manager.ruchy - A simple but useful task management tool
 
 let TASK_FILE = "tasks.txt"
@@ -504,9 +536,12 @@ fn list_tasks(tasks) {
     }
     
     println("\n📋 Your Tasks (" + tasks.len().to_s() + " items):")
-    for i, task in tasks.enumerate() {
+    let mut i = 0
+    while i < tasks.len() {
+        let task = tasks[i]
         let status = if task.starts_with("✅") { "DONE" } else { "PENDING" }
         println((i + 1).to_s() + ". " + task)
+        i = i + 1
     }
 }
 
@@ -559,6 +594,8 @@ loop {
 }
 
 
+
+
 ```
 
 **Usage:**
@@ -596,6 +633,9 @@ fun main() {
     println("Always check if operations can fail before using them");
 }
 
+
+
+
 ```
 
 ### Poor User Experience
@@ -608,6 +648,9 @@ let thing = input()
 // What thing? What format?
 
 
+
+
+
 ```
 
 ### Hardcoded Paths
@@ -616,6 +659,9 @@ let thing = input()
 
 // ❌ Only works on your computer
 let data = read_file("/Users/noah/Desktop/data.txt")
+
+
+
 
 
 ```

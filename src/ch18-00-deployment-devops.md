@@ -64,6 +64,9 @@ if deployment.is_healthy() {
 }
 
 
+
+
+
 ```
 
 That's deployment without drama!
@@ -313,6 +316,9 @@ fn deploy_blue_green(new_version: String) {
 }
 
 
+
+
+
 ```
 
 ### Canary Deployment
@@ -357,6 +363,9 @@ fn deploy_canary(new_version: String) {
 }
 
 
+
+
+
 ```
 
 ### Feature Flags
@@ -397,6 +406,9 @@ for percentage in [10, 25, 50, 75, 100] {
         break
     }
 }
+
+
+
 
 
 ```
@@ -507,6 +519,8 @@ let dashboard = json!({
 })
 
 
+
+
 ```
 
 ### Logging
@@ -561,6 +575,8 @@ let config = json!({
 })
 
 
+
+
 ```
 
 ### Distributed Tracing
@@ -593,6 +609,8 @@ async fn handle_request(req: Request, db: &Database) -> Result<Response> {
     
     Ok(Response::new(data))
 }
+
+
 
 
 ```
@@ -675,6 +693,8 @@ vault.rotate("secret/database/password").await?
 // Environment injection
 env::set_var("DATABASE_URL", 
     format!("postgres://user:{}@host/db", db_password))
+
+
 
 
 ```

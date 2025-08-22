@@ -90,6 +90,9 @@ fun main() {
     println(result);
 }
 
+
+
+
 ```
 
 ```bash
@@ -165,6 +168,9 @@ fun fibonacci(n: int) -> int {
     }
 }
 
+
+
+
 ```
 
 ### Syntax Checking with `ruchy check`
@@ -213,6 +219,9 @@ fun test_multiply() {
     assert_eq(multiply(-1, 5), -5);
     assert_eq(multiply(0, 100), 0);
 }
+
+
+
 
 ```
 
@@ -273,6 +282,9 @@ fun property_test_reverse_twice_is_identity() {
         assert_eq(reverse_string(reverse_string(s)), s);
     });
 }
+
+
+
 
 ```
 
@@ -368,6 +380,9 @@ fun factorial(n: int) -> int {
     }
 }
 
+
+
+
 ```
 
 ```bash
@@ -416,6 +431,9 @@ fun bench_recursive_fib() {
 fun bench_iterative_fib() {
     bench("fibonacci_iterative_20", || fibonacci_iterative(20));
 }
+
+
+
 
 ```
 

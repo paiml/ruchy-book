@@ -29,6 +29,9 @@ The Ruchy interpreter allows immediate expression evaluation:
 // Status: ✅ WORKING
 ruchy -e "2 + 2"
 
+
+
+
 ```
 
 Output: `4`
@@ -37,6 +40,9 @@ Output: `4`
 // Status: ✅ WORKING
 ruchy -e "let name = \"World\"; \"Hello \" + name + \"!\""
 
+
+
+
 ```
 
 Output: `"Hello World!"`
@@ -44,6 +50,9 @@ Output: `"Hello World!"`
 ```ruchy
 // Status: ✅ WORKING
 ruchy -e "let nums = [1, 2, 3]; nums[1]"
+
+
+
 
 ```
 
@@ -86,6 +95,9 @@ fun main() {
     let data = [1, 2, 3, 4, 5]
     println(data[2])
 }
+
+
+
 
 ```
 
@@ -150,6 +162,9 @@ fun main() {
     println(divide(x, y))
 }
 
+
+
+
 ```
 
 Execute with:
@@ -188,6 +203,9 @@ fun main() {
     println(average)
 }
 
+
+
+
 ```
 
 ### Variable Scoping and Functions
@@ -220,6 +238,9 @@ fun main() {
     demonstrate_scope()
 }
 
+
+
+
 ```
 
 ## Common Pitfalls
@@ -244,6 +265,9 @@ fun main() {
     }
 }
 
+
+
+
 ```
 
 ### 2. Variable Mutability
@@ -260,6 +284,9 @@ fun main() {
     let mut y = 5
     y = 10  // OK
 }
+
+
+
 
 ```
 
@@ -279,6 +306,9 @@ fun process_and_print(x) {
     println(doubled)
     // No explicit return - returns unit type ()
 }
+
+
+
 
 ```
 
@@ -337,6 +367,9 @@ fun calculate_tax(income, rate) {
 
 // Avoid: Complex nested logic (for now)
 
+
+
+
 ```
 
 ### 2. Use Descriptive Names
@@ -350,6 +383,9 @@ let total_price = calculate_price(items)
 let x = 42
 let y = calc(z)
 
+
+
+
 ```
 
 ### 3. Leverage Array Indexing
@@ -362,6 +398,9 @@ fun main() {
     let first_grade = grades[0]
     let last_grade = grades[4]
 }
+
+
+
 
 ```
 
@@ -381,6 +420,9 @@ fun main() {
     let result = double(x)
     println(result)
 }
+
+
+
 
 ```
 
@@ -405,6 +447,9 @@ fun main() {
         println("Some tests failed")
     }
 }
+
+
+
 
 ```
 
