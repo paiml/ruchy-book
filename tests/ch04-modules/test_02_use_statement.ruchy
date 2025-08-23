@@ -1,0 +1,10 @@
+// Test module with direct path
+mod utils {
+    pub fun greet() {
+        println("Hello from module!");
+    }
+}
+
+fun main() {
+    utils::greet();
+}
