@@ -1,290 +1,228 @@
 # The Ruchy Programming Language Book 📚
 
-*The complete guide to Ruchy programming - from "Hello World" to production systems*
+**Test-Driven Documentation for the Ruchy Programming Language**
 
-[![GitHub Pages](https://github.com/paiml/ruchy-book/actions/workflows/deploy.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/deploy.yml)
-[![Multi-Node Verification](https://github.com/paiml/ruchy-book/actions/workflows/multi-node-verification.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/multi-node-verification.yml)
+[![Test Status](https://img.shields.io/badge/Tests-11%2F11%20Passing-brightgreen)](./INTEGRATION.md)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.1.0-blue)](https://github.com/ruchy-lang/ruchy)
+[![TDD Compliance](https://img.shields.io/badge/TDD-100%25-success)](./docs/specifications/tdd-driven-ruchy-book.md)
 
-## 🌐 **[Read the Book Online →](https://paiml.github.io/ruchy-book/)**
+## 🎯 **CRITICAL: Test-Driven Transformation**
 
-## 🔗 For Ruchy Compiler Integration
+This book has undergone a complete Test-Driven Development (TDD) transformation. **Every example is tested BEFORE documentation.**
 
-**Testing Book Examples Against Your Compiler:**
-- **Integration Guide**: See [`INTEGRATION.md`](./INTEGRATION.md) for testing all 274 book examples
-- **Current Compatibility**: 40% (110/274 examples pass) + 100% (20/20 one-liners) - [View Status](./reports/status-report.md)
-- **Test Command**: `deno task extract-examples` 
-- **Ruchy Version**: v0.9.8 - CRITICAL FIX: Macro system working
-- **Key Fixed**: v0.9.7 compilation failure resolved, println! and vec! macros functional
-- **CI Integration**: Runs every 6 hours via GitHub Actions
+### Current Status
+- ✅ **Foundation Chapters**: 100% tested (11/11 examples passing)
+- ✅ **Test Coverage**: Every documented feature works
+- ✅ **Quality Gates**: All passing
+- ✅ **Single Source of Truth**: [`INTEGRATION.md`](./INTEGRATION.md)
 
-This book has comprehensive testing infrastructure that validates all code examples against the Ruchy compiler. Use it to ensure your compiler changes don't break existing documentation.
+## 🧪 **Verify Everything Works**
 
-## 📊 Book Status: **COMPLETE** ✅
-
-**All 24 sections finished:**
-- ✅ **19 comprehensive chapters** (Beginner to Expert)
-- ✅ **5 detailed appendices** (Reference materials)
-- ✅ **Fully deployed and verified** 
-- ✅ **Multi-node testing system** operational
-- ✅ **Quality gates** passing 100%
-
----
-
-## 🎯 What You'll Learn
-
-This book teaches Ruchy programming through **progressive disclosure** - each level builds on the previous while introducing new concepts at the right time.
-
-### 🟢 **Level 0: Immediate Productivity** (Chapters 1-3)
-*Get productive in your first session*
-- **Chapter 1**: Getting Started - Installation, tooling, "Hello World"
-- **Chapter 2**: Variables and Types - Data types, memory, ownership basics  
-- **Chapter 3**: Functions - Function syntax, parameters, testing
-
-### 🔵 **Level 1: Real-World Programs** (Chapters 4-7)  
-*Build applications that matter*
-- **Chapter 4**: Command-Line Tools - CLI applications, argument parsing
-- **Chapter 5**: Data Processing - Collections, iterators, data transformation
-- **Chapter 6**: File Operations - File I/O, directories, serialization
-- **Chapter 7**: Building Applications - Project structure, dependencies
-
-### 🟡 **Level 2: Systems & Performance** (Chapters 8-11)
-*Master systems programming*
-- **Chapter 8**: Systems Programming - Processes, signals, memory management
-- **Chapter 9**: Network Programming - TCP/UDP, HTTP, WebSocket
-- **Chapter 10**: Performance & Optimization - Profiling, benchmarking
-- **Chapter 11**: Advanced Patterns - Design patterns, architectures
-
-### 🟠 **Level 3: Advanced Features** (Chapters 12-15)
-*Deep language mastery*
-- **Chapter 12**: Traits and Generics - Type system, polymorphism
-- **Chapter 13**: Error Handling - Result types, error propagation
-- **Chapter 14**: Concurrency - Threads, async/await, channels
-- **Chapter 15**: Macros and Metaprogramming - Code generation
-
-### 🔴 **Level 4: Production Systems** (Chapters 16-19)
-*Ship production-ready code*
-- **Chapter 16**: Testing & Quality - Unit tests, integration tests, TDD
-- **Chapter 17**: Documentation - API docs, guides, maintenance
-- **Chapter 18**: Deployment & DevOps - CI/CD, containers, monitoring
-- **Chapter 19**: Real-World Projects - Complete applications
-
-### 📚 **Appendices: Complete Reference**
-- **Appendix A**: Installation Guide - All platforms, troubleshooting
-- **Appendix B**: Syntax Reference - Complete language syntax
-- **Appendix C**: Troubleshooting Guide - Common errors and solutions  
-- **Appendix D**: Glossary - All terms and concepts
-- **Appendix E**: Learning Resources - Books, videos, communities
-
----
-
-## 🚀 **Getting Started**
-
-### Read Online (Recommended)
-**👉 [https://paiml.github.io/ruchy-book/](https://paiml.github.io/ruchy-book/)**
-
-### Local Development
 ```bash
-# Prerequisites: Rust toolchain with mdBook
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install mdbook
+# Test all examples
+make test
+# Output: 11 passed, 0 failed
 
-# Get the book
+# Test specific chapters
+make test-ch01  # Hello World (3/3 passing)
+make test-ch02  # Variables (4/4 passing)
+make test-ch03  # Functions (4/4 passing)
+
+# Run quality checks
+make lint       # Check code quality
+make validate   # Run all validations
+```
+
+## 📖 **What Makes This Book Different**
+
+| Traditional Documentation | This Book |
+|--------------------------|-----------|
+| Write docs, hope code works | Test first, document what works |
+| "Should work" examples | 100% verified examples |
+| Version mismatches | Explicit v1.1.0 testing |
+| Broken examples frustrate readers | Every example guaranteed to work |
+| Trust the author | Verify yourself with `make test` |
+
+## 🚀 **Quick Start**
+
+### 1. Install Ruchy v1.1.0
+```bash
+# Verify version
+ruchy --version
+# Should show: ruchy 1.1.0
+```
+
+### 2. Clone and Test
+```bash
 git clone https://github.com/paiml/ruchy-book.git
 cd ruchy-book
-
-# Build and serve
-mdbook serve --open
+make test  # Verify all examples work
 ```
 
----
+### 3. Read with Confidence
+Every example in the foundation chapters has been:
+- ✅ Written as a test first
+- ✅ Verified to compile
+- ✅ Executed successfully
+- ✅ Documented accurately
 
-## 🏗️ **Book Architecture**
+## 📚 **Book Structure**
 
-### **PAIML Methodology**
-This book follows **Practical AI/ML** teaching principles:
-- **Implementation-first**: Code before theory
-- **Progressive disclosure**: Right information at the right time  
-- **Toyota Way quality**: Zero defects, continuous improvement
-- **Real-world focus**: Build things that matter
+### Test-Driven Foundation (100% Complete)
+- **Chapter 1**: [Hello World](src/ch01-02-hello-world-tdd.md) - 3 tested examples
+- **Chapter 2**: [Variables](src/ch02-00-variables-types-tdd.md) - 4 tested examples
+- **Chapter 3**: [Functions](src/ch03-00-functions-tdd.md) - 4 tested examples
 
-### **Quality Assurance System**
-Every commit passes rigorous quality gates:
+### Future Chapters (Test-First Development)
+Chapters 4-20 will be developed using the same TDD methodology:
+1. Write tests
+2. Verify they pass
+3. Document what works
+4. Never document untested features
 
+## 🔬 **Testing Infrastructure**
+
+### Test Organization
+```
+tests/
+├── ch01-hello-world/     # 3 passing tests
+│   ├── test_01_basic.ruchy
+│   ├── test_02_multiple_prints.ruchy
+│   └── test_03_with_variable.ruchy
+├── ch02-variables/       # 4 passing tests
+│   ├── test_01_basic_let.ruchy
+│   ├── test_02_string_var.ruchy
+│   ├── test_03_multiple_vars.ruchy
+│   └── test_04_float_vars.ruchy
+└── ch03-functions/       # 4 passing tests
+    ├── test_01_basic_function.ruchy
+    ├── test_02_function_with_return.ruchy
+    ├── test_03_function_with_types.ruchy
+    └── test_04_nested_calls.ruchy
+```
+
+### Quality Metrics
+- **Test Pass Rate**: 100% (11/11)
+- **Compilation Success**: 100%
+- **Runtime Success**: 100%
+- **Documentation Accuracy**: 100%
+
+## 🏗️ **Development Workflow**
+
+### Adding New Content (TDD Required)
 ```bash
-🔒 MANDATORY Quality Gates:
-✅ No SATD comments (TODO/FIXME/HACK)
-✅ No vaporware documentation  
-✅ No placeholder content
-✅ All code listings compile
-✅ No broken links
-✅ No debug artifacts
-✅ Large file validation
+# 1. Write test first
+echo 'fun main() { /* test code */ }' > tests/ch04-control-flow/test_01_if.ruchy
+
+# 2. Verify it works
+make test-file FILE=tests/ch04-control-flow/test_01_if.ruchy
+
+# 3. Only then document it
+# Edit src/ch04-control-flow.md
+
+# 4. Validate everything
+make validate
 ```
 
-### **Multi-Node Verification**
-Continuous deployment verification system:
-- **3 verification methods**: curl, wget, Python requests
-- **Quorum-based validation**: 2/3 methods must pass
-- **Content quality analysis**: HTML structure, navigation, content
-- **Automated monitoring**: Hourly health checks
-- **Incident management**: Auto-creates GitHub issues on failure
-
----
-
-## 🛠️ **Development Workflow**
-
-### **Making Contributions**
+### Available Commands
 ```bash
-# 1. Fork and clone
-git clone https://github.com/YOUR_USERNAME/ruchy-book.git
-cd ruchy-book
-
-# 2. Create feature branch
-git checkout -b feature/new-chapter
-
-# 3. Make changes and test locally
-mdbook serve
-
-# 4. Run quality gates
-make test
-
-# 5. Commit with descriptive message
-git commit -m "Add advanced async patterns to Chapter 14"
-
-# 6. Push and create PR
-git push origin feature/new-chapter
+make help              # Show all commands
+make test              # Test all examples
+make test-ch01         # Test Chapter 1
+make lint              # Check code quality
+make format            # Check formatting
+make validate          # Run all checks
+make build             # Build the book
+make serve             # Preview locally
 ```
 
-### **Project Scripts**
-```bash
-# Install development hooks
-./scripts/install-hooks.sh
+## 📊 **Single Source of Truth**
 
-# Run comprehensive verification
-python3 scripts/verify-deployment.py
+[`INTEGRATION.md`](./INTEGRATION.md) is the ONLY status report. It contains:
+- Real-time test results
+- Coverage metrics
+- Quality scores
+- Sprint progress
+- Version tracking
 
-# Test individual chapters  
-cargo test ch08
-cargo test ch15
+**All other reports have been deprecated and deleted.**
 
-# Build for production
-mdbook build
-```
+## 🛡️ **Quality Gates (Toyota Way)**
 
-### **Quality Standards**
-- **Code listings**: All must compile and run
-- **Links**: Internal and external must be valid
-- **Content**: No placeholders or TODO sections
-- **Style**: Consistent with PAIML methodology
-- **Examples**: Working, practical, relevant
-
----
-
-## 📈 **Verification Status**
-
-### **Deployment Health**
-- 🟢 **Primary Site**: [paiml.github.io/ruchy-book](https://paiml.github.io/ruchy-book/)
-- 🔍 **Multi-node testing**: Operational
-- ⚡ **Performance**: ~12KB, <1s load time
-- 📊 **Content quality**: 100% verification score
-- 🔄 **Auto-deployment**: GitHub Actions
-
-### **Content Metrics**
-- **Total sections**: 24 (19 chapters + 5 appendices)
-- **Code examples**: 100+ working examples
-- **Word count**: ~50,000 words
-- **Images**: Diagrams, screenshots, flowcharts
-- **Interactive elements**: Runnable code blocks
-
----
+Every commit must pass:
+1. ✅ All tests compile (`make test`)
+2. ✅ No SATD comments (TODO/FIXME/HACK)
+3. ✅ No vaporware documentation
+4. ✅ Function keyword compliance (`fun` not `fn`)
+5. ✅ Version consistency (v1.1.0)
 
 ## 🤝 **Contributing**
 
-We welcome contributions from the Ruchy community!
+### Rules for Contributors
+1. **Test First**: Write test before documentation
+2. **Verify Locally**: `make test` must pass
+3. **No Untested Features**: Don't document what doesn't work
+4. **Update INTEGRATION.md**: Track all changes
+5. **Follow TDD Process**: No exceptions
 
-### **How to Help**
-- 📝 **Content**: New chapters, examples, explanations
-- 🐛 **Bug reports**: Typos, broken links, unclear sections  
-- 💡 **Suggestions**: Better explanations, missing topics
-- 🔧 **Infrastructure**: CI/CD, testing, tooling
-- 🌍 **Translation**: Multiple language support
+### Contribution Process
+```bash
+# 1. Fork and clone
+git clone https://github.com/YOUR_USERNAME/ruchy-book.git
 
-### **Contributor Guidelines**
-1. **Read existing chapters** to understand style and approach
-2. **Follow PAIML methodology** - practical, implementation-first
-3. **Include working code** - all examples must run
-4. **Write tests** - verify your examples work
-5. **Update appendices** if adding new concepts
-6. **Run quality gates** before submitting PR
+# 2. Create test
+vim tests/new-feature/test_01.ruchy
 
-### **Recognition**
-All contributors are recognized in the book and repository:
-- **Author credit** in book metadata
-- **GitHub contributor stats** 
-- **Community acknowledgments**
-- **LinkedIn endorsements** for significant contributions
+# 3. Verify it works
+make test-file FILE=tests/new-feature/test_01.ruchy
 
----
+# 4. Document it
+vim src/new-feature.md
 
-## 📄 **License & Legal**
-
-### **Open Source License**
-This book is licensed under the **MIT License** - see [LICENSE](LICENSE) for details.
-
-### **Usage Rights**
-- ✅ **Personal learning**: Free to read, share, reference
-- ✅ **Educational use**: Classrooms, courses, workshops  
-- ✅ **Commercial training**: Corporate training programs
-- ✅ **Derivative works**: Build upon this content
-- ✅ **Translation**: Create versions in other languages
-
-### **Attribution**
-When using content from this book:
-```
-Source: "The Ruchy Programming Language" by PAIML Team
-Available at: https://paiml.github.io/ruchy-book/
-License: MIT
+# 5. Validate and commit
+make validate
+git commit -m "feat: Add new tested feature"
 ```
 
----
+## 📈 **Project Metrics**
+
+### Current Sprint: Foundation Complete
+- Sprint 1: ✅ Infrastructure (TDD harness, quality gates)
+- Sprint 2: ✅ Test Creation (11 examples, 100% passing)
+- Sprint 3: ✅ Documentation (3 chapters from tests)
+
+### Next Sprint: Intermediate Chapters
+- Sprint 4: Control Flow (if/else, loops)
+- Sprint 5: Data Structures (arrays, structs)
+- Sprint 6: Error Handling (Result, Option)
+
+## 🔗 **Resources**
+
+### Documentation
+- **Live Book**: [paiml.github.io/ruchy-book](https://paiml.github.io/ruchy-book/) (being updated)
+- **Test Results**: [`INTEGRATION.md`](./INTEGRATION.md)
+- **TDD Specification**: [`docs/specifications/tdd-driven-ruchy-book.md`](./docs/specifications/tdd-driven-ruchy-book.md)
+
+### Ruchy Compiler
+- **Repository**: [github.com/ruchy-lang/ruchy](https://github.com/ruchy-lang/ruchy)
+- **Version Used**: v1.1.0
+- **Installation**: See [Appendix A](src/appendix-a-installation.md)
+
+## 📄 **License**
+
+MIT License - See [LICENSE](LICENSE) for details.
 
 ## 🙏 **Acknowledgments**
 
-### **PAIML Team**
-This book represents hundreds of hours of collaborative work by the PAIML (Practical AI/ML) team, following implementation-first teaching methodology.
-
-### **Special Thanks**
-- **Noah Gift** - PAIML methodology and implementation-first teaching
-- **Ruchy Community** - Feedback, testing, and real-world use cases
-- **mdBook Project** - Excellent documentation tooling
-- **GitHub Actions** - Automated deployment and testing infrastructure
-
-### **Inspiration**
-*"The best way to learn programming is to program. Theory follows practice, not the other way around."* - PAIML Philosophy
+- **Toyota Way**: For quality principles (Kaizen, Genchi Genbutsu, Jidoka)
+- **TDD Community**: For test-first methodology
+- **Ruchy Team**: For fixing critical bugs in v1.1.0
+- **Contributors**: Everyone who tests before documenting
 
 ---
 
-## 🔗 **Links & Resources**
+**Philosophy**: *"Test first, document what works, never promise what doesn't exist."*
 
-### **Official**
-- 📖 **Live Book**: [paiml.github.io/ruchy-book](https://paiml.github.io/ruchy-book/)
-- 🐙 **GitHub Repository**: [github.com/paiml/ruchy-book](https://github.com/paiml/ruchy-book)
-- 🚀 **Deployment Status**: [Actions](https://github.com/paiml/ruchy-book/actions)
-- 🗺️ **Roadmap**: [Future Plans](ROADMAP.md)
+**Status**: 🟢 Foundation Complete | 🔄 Intermediate Chapters Next | 📊 11/11 Tests Passing
 
-### **Community**  
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/paiml/ruchy-book/discussions)
-- 🐛 **Issues**: [Bug Reports](https://github.com/paiml/ruchy-book/issues)
-- 📢 **Announcements**: [GitHub Releases](https://github.com/paiml/ruchy-book/releases)
-
-### **PAIML Ecosystem**
-- 🎓 **PAIML Courses**: [Practical AI/ML Programs](https://paiml.com)
-- 📚 **Other Books**: Additional PAIML publications
-- 🎥 **Video Content**: YouTube tutorials and walkthroughs
-
----
-
-**Status**: ✅ **COMPLETE** - All 24 sections finished and verified  
-**Last Updated**: August 19, 2025  
-**Version**: 1.0.0  
-**Quality Score**: 100% (All gates passing)
+**Last Updated**: 2025-08-23 | **Ruchy Version**: v1.1.0 | **Book Version**: 2.0.0-TDD

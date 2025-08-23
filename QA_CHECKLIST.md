@@ -1,203 +1,237 @@
-# Ruchy Book QA/Testing Checklist
+# QA Checklist - Test-Driven Ruchy Book
 
-## 🎯 Purpose
-Ensure every code example in the Ruchy Programming Language book is valid, compiles, and runs correctly.
+## 🧪 TDD Quality Assurance Protocol
 
-## 📋 Pre-Release Checklist
-
-### 1. Code Example Validation ✅
-- [ ] All Ruchy code blocks transpile successfully
-- [ ] Generated Rust code compiles without errors
-- [ ] No use of undefined features or vaporware
-- [ ] Examples follow consistent style
-
-### 2. Build & Deploy ✅
-- [ ] `mdbook build` completes without errors
-- [ ] `mdbook test` passes (when applicable)
-- [ ] GitHub Actions all pass
-- [ ] Book deploys to GitHub Pages successfully
-
-### 3. Content Quality ✅
-- [ ] No SATD comments (TODO/FIXME/HACK)
-- [ ] No placeholder content ("coming soon", "TBD")
-- [ ] No broken internal links
-- [ ] No references to non-existent resources
-
-### 4. Ruchy Compiler Compatibility ✅
-- [ ] Examples work with current Ruchy compiler version
-- [ ] Transpilation produces valid Rust 2021 edition code
-- [ ] No use of unimplemented Ruchy features
-
-## 🧪 Testing Commands
-
-### Run All Tests
-```bash
-# Build Ruchy compiler first
-cd ../ruchy && cargo build --release
-
-# Run comprehensive example tests
-cd ../ruchy-book
-cargo test --test test_all_examples
-
-# Run specific chapter tests
-cargo test test_specific_chapter_examples
-
-# Run book quality gates
-./test/quality-gates.sh
-```
-
-### Test Individual Examples
-```bash
-# Extract and test a specific example
-./test/test-example.sh src/ch01-02-hello-world.md 15
-
-# Test all examples in a chapter
-./test/test-chapter.sh src/ch03-00-functions.md
-```
-
-### Continuous Testing
-```bash
-# Watch for changes and auto-test
-cargo watch -x "test --test test_all_examples"
-```
-
-## 📊 Test Categories
-
-### Category A: Must Pass (Critical)
-These examples must always work:
-- Hello World examples
-- Basic variable declarations
-- Function definitions
-- Core language features
-
-### Category B: Should Pass (Important)
-These should work in normal circumstances:
-- Advanced patterns
-- Error handling
-- Concurrency examples
-- Type system examples
-
-### Category C: May Skip (Intentional)
-These are intentionally incomplete or demonstrative:
-- Error examples (marked with `// Error` or `// ❌`)
-- Partial code with `...`
-- Pseudo-code demonstrations
-
-## 🔍 What We Test
-
-### 1. Syntax Validation
-- [x] Valid Ruchy syntax
-- [x] Proper keyword usage
-- [x] Correct operator precedence
-- [x] Balanced braces/parentheses
-
-### 2. Transpilation Success
-- [x] Ruchy → Rust transpilation works
-- [x] No transpiler panics
-- [x] Generated code is valid Rust
-
-### 3. Compilation Success
-- [x] Generated Rust compiles with rustc
-- [x] No type errors
-- [x] No borrow checker violations
-- [x] No undefined symbols
-
-### 4. Runtime Behavior (Future)
-- [ ] Examples produce expected output
-- [ ] No runtime panics
-- [ ] Performance within bounds
-- [ ] Memory usage acceptable
-
-## 📈 Metrics & Goals
-
-### Current Status
-- Total Examples: ~259
-- Pass Rate Goal: >95%
-- Critical Examples Pass Rate: 100%
-
-### Quality Gates
-1. **Gate 1**: No SATD comments in code
-2. **Gate 2**: No vaporware documentation
-3. **Gate 3**: All critical examples compile
-4. **Gate 4**: >95% of all examples pass
-
-## 🛠️ Tools & Infrastructure
-
-### Required Tools
-- Ruchy compiler (built from source)
-- Rust toolchain (stable)
-- mdBook
-- cargo-watch (optional)
-
-### Test Infrastructure
-```
-tests/
-├── test_all_examples.rs    # Comprehensive example testing
-├── common/
-│   └── mod.rs              # Shared test utilities
-└── snapshots/              # Insta snapshot tests
-```
-
-### CI/CD Integration
-- GitHub Actions run tests on every push
-- PRs blocked if tests fail
-- Nightly full test suite execution
-
-## 🐛 Common Issues & Solutions
-
-### Issue: "Ruchy compiler not found"
-**Solution**: Build the compiler first
-```bash
-cd ../ruchy && cargo build --release
-```
-
-### Issue: "Example contains undefined feature"
-**Solution**: Mark with skip comment
-```ruchy
-// Skip: Uses future feature
-actor System { ... }
-```
-
-### Issue: "Rust compilation fails"
-**Solution**: Check if example needs imports
-```ruchy
-// Ensure complete, compilable example
-fun main() {
-    println("Hello");
-}
-```
-
-## 📝 Maintenance
-
-### Weekly Tasks
-- [ ] Run full test suite
-- [ ] Update examples for compiler changes
-- [ ] Review and fix failing tests
-
-### Per Release
-- [ ] Full QA validation
-- [ ] Update version references
-- [ ] Regenerate snapshots
-- [ ] Performance benchmarking
-
-## 🎯 Success Criteria
-
-A release is ready when:
-1. ✅ All GitHub Actions pass
-2. ✅ >95% of examples pass tests
-3. ✅ 100% of critical examples pass
-4. ✅ No quality gate violations
-5. ✅ Book builds and deploys successfully
-
-## 📞 Support
-
-For test failures or questions:
-1. Check error message for specifics
-2. Verify Ruchy compiler is up-to-date
-3. Ensure Rust toolchain is current
-4. Open issue with test output
+Every change to this book MUST follow Test-Driven Development. No exceptions.
 
 ---
 
-*Last Updated: August 2025*
-*Maintained by: Ruchy Book Team*
+## ✅ Pre-Documentation Checklist (MANDATORY)
+
+Before writing ANY documentation:
+
+### 1. Test Creation
+- [ ] Test file created in `tests/ch*/` directory
+- [ ] Test follows naming convention: `test_XX_description.ruchy`
+- [ ] Test uses `fun main()` structure
+- [ ] Test uses `fun` keyword (not `fn`)
+- [ ] Test is minimal and focused
+
+### 2. Test Verification
+- [ ] `ruchy compile test_file.ruchy` succeeds
+- [ ] `./a.out` produces expected output
+- [ ] `make test-file FILE=test_file.ruchy` passes
+- [ ] No compilation warnings or errors
+- [ ] Output matches documentation claims
+
+### 3. Test Integration
+- [ ] Added to appropriate chapter test directory
+- [ ] Included in `make test-chXX` target
+- [ ] Passes `make test` (all tests)
+- [ ] Passes `make lint` (quality checks)
+- [ ] Listed in INTEGRATION.md
+
+---
+
+## 📝 Documentation Checklist
+
+After tests pass, documentation must:
+
+### 1. Accuracy
+- [ ] Every code example has corresponding test file
+- [ ] Test file path referenced in documentation
+- [ ] Output shown matches actual test output
+- [ ] Version compatibility stated (v1.1.0)
+- [ ] No untested features documented
+
+### 2. Structure
+- [ ] Chapter marked as "Test-Driven"
+- [ ] Test count shown in header
+- [ ] "How to verify" section included
+- [ ] Test files referenced by path
+- [ ] Make commands documented
+
+### 3. Quality
+- [ ] No TODO/FIXME/HACK comments
+- [ ] No "should work" statements
+- [ ] No "coming soon" promises
+- [ ] No placeholder content
+- [ ] No vaporware features
+
+---
+
+## 🔧 Technical Checklist
+
+### Code Standards
+- [ ] `fun` keyword used for Ruchy functions
+- [ ] `fn` only in Rust examples (clearly marked)
+- [ ] Consistent indentation (4 spaces)
+- [ ] No trailing whitespace
+- [ ] UTF-8 encoding
+
+### Testing Standards
+- [ ] Minimum 3 examples per chapter
+- [ ] Each example is self-contained
+- [ ] Examples build on each other logically
+- [ ] Edge cases tested where relevant
+- [ ] Error cases documented (if applicable)
+
+### Build Standards
+- [ ] `make test` passes (100% required)
+- [ ] `make lint` passes (no violations)
+- [ ] `make validate` passes (all checks)
+- [ ] `make build` succeeds (book builds)
+- [ ] No large files (>1MB) committed
+
+---
+
+## 📊 Metrics Requirements
+
+### Per Chapter
+- Test Coverage: 100% (all examples tested)
+- Pass Rate: 100% (no failures allowed)
+- Documentation: Complete (no gaps)
+- Quality: A+ (clean, tested, verified)
+
+### Overall Book
+- Foundation Chapters: ✅ 11/11 tests passing
+- Intermediate Chapters: ⏳ In development
+- Advanced Chapters: ⏳ Planned
+- Total Tests: 11+ (growing with each sprint)
+- Success Rate: 100% (mandatory)
+
+---
+
+## 🚀 Release Checklist
+
+Before any release or major commit:
+
+### 1. Test Suite
+- [ ] `make test` - All tests pass
+- [ ] `make test-ch01` - Chapter 1 passes
+- [ ] `make test-ch02` - Chapter 2 passes
+- [ ] `make test-ch03` - Chapter 3 passes
+- [ ] `make test-foundation` - All foundation passes
+
+### 2. Quality Gates
+- [ ] `make lint` - No issues found
+- [ ] `make format` - Formatting checked
+- [ ] `make validate` - All validations pass
+- [ ] No SATD comments in codebase
+- [ ] No broken examples
+
+### 3. Documentation
+- [ ] INTEGRATION.md updated with status
+- [ ] README.md reflects current state
+- [ ] ROADMAP.md shows completed work
+- [ ] Version numbers consistent (v1.1.0)
+- [ ] Test counts accurate
+
+### 4. Repository
+- [ ] No binary files (a.out, etc.)
+- [ ] No temporary files
+- [ ] No debug artifacts
+- [ ] `.gitignore` updated if needed
+- [ ] Commit message follows format
+
+---
+
+## 🛑 Blocking Issues
+
+These issues MUST be fixed before proceeding:
+
+### Critical Blockers
+- ❌ Any test failure
+- ❌ Documented feature doesn't work
+- ❌ Version mismatch
+- ❌ Missing test files
+- ❌ Untested documentation
+
+### Quality Blockers
+- ❌ SATD comments present
+- ❌ Vaporware documentation
+- ❌ Placeholder content
+- ❌ Function keyword misuse
+- ❌ Large file commits
+
+---
+
+## 📋 Sprint Completion Checklist
+
+At the end of each sprint:
+
+### 1. Tests
+- [ ] All sprint tests written
+- [ ] 100% pass rate achieved
+- [ ] Tests organized by chapter
+- [ ] Test counts documented
+- [ ] Performance acceptable
+
+### 2. Documentation
+- [ ] Chapters written from tests
+- [ ] Examples reference test files
+- [ ] Verification instructions included
+- [ ] No untested features
+- [ ] Version compatibility noted
+
+### 3. Integration
+- [ ] INTEGRATION.md updated
+- [ ] Sprint marked complete
+- [ ] Metrics documented
+- [ ] Next sprint planned
+- [ ] Commit pushed to main
+
+---
+
+## 🔄 Continuous Improvement
+
+### Weekly Review
+- Review test failures (should be zero)
+- Update test coverage metrics
+- Plan next week's tests
+- Review community feedback
+- Update roadmap if needed
+
+### Monthly Review
+- Sprint retrospective
+- Quality metrics analysis
+- Process improvements
+- Tool updates
+- Documentation review
+
+---
+
+## 📞 Escalation Path
+
+If quality gates fail:
+
+1. **Stop all work** - Don't continue with failures
+2. **Fix immediately** - Tests must pass first
+3. **Document issue** - Update INTEGRATION.md
+4. **Review process** - Why did it fail?
+5. **Prevent recurrence** - Update this checklist
+
+---
+
+## ✨ Success Criteria
+
+A successful Ruchy book contribution:
+
+1. ✅ Tests written before documentation
+2. ✅ 100% of tests passing
+3. ✅ Documentation matches tests exactly
+4. ✅ Quality gates all green
+5. ✅ INTEGRATION.md updated
+6. ✅ Version compatibility verified
+7. ✅ No untested features
+8. ✅ Community can verify examples
+9. ✅ Follows Toyota Way principles
+10. ✅ Improves reader confidence
+
+---
+
+**Remember**: Test first, document what works, never promise what doesn't exist.
+
+**Last Updated**: 2025-08-23
+**Book Version**: 2.0.0-TDD
+**Compliance**: 100% TDD
