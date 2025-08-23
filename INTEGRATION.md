@@ -1,8 +1,8 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-23T22:15:00Z  
-**Ruchy Version**: v1.4.0  
-**Book Commit**: sprint-8-complete  
+**Generated**: 2025-08-23T22:45:00Z  
+**Ruchy Version**: v1.5.0  
+**Book Commit**: sprint-9-complete-v1.5.0  
 
 ---
 
@@ -10,16 +10,17 @@
 
 **TRANSFORMATION IN PROGRESS**: Moving from 93% failure to 100% test-driven documentation.
 
-### Sprint 8 Complete with v1.4.0
+### Sprint 9 Complete with v1.5.0
 - **Foundation Chapters**: 11/11 examples passing (100%)
 - **Module System**: 2/2 tests passing (100%)
 - **Control Flow**: 7/7 tests passing (100%)
 - **Data Structures**: 3/3 tests passing (100%)
 - **Error Handling**: 3/3 tests passing (100%)
 - **Advanced Functions**: 3/3 tests passing (100%)
-- **Total TDD Examples**: 29/29 passing (100%)
-- **Documentation**: Chapters 4-8 written from tests
-- **Stable on v1.4.0**: Advanced function patterns including recursion verified
+- **Collections & Iteration**: 3/3 tests passing (100%)
+- **Total TDD Examples**: 32/32 passing (100%)
+- **Documentation**: Chapters 4-9 written from tests
+- **Upgraded to v1.5.0**: 100% backward compatibility maintained
 
 **THIS IS THE SINGLE SOURCE OF TRUTH FOR BOOK STATUS. ALL OTHER REPORTS ARE DEPRECATED.**
 
@@ -80,8 +81,14 @@
   - test_02_multiple_returns.ruchy ✅
   - test_03_recursive_function.ruchy ✅
 
+✅ COLLECTIONS & ITERATION (Sprint 9):
+- Chapter 9 (Collections and Iteration): 3/3 passing
+  - test_01_iteration_for.ruchy ✅
+  - test_02_while_accumulation.ruchy ✅
+  - test_03_nested_loops.ruchy ✅
+
 PENDING CHAPTERS:
-- [Chapters 9-20]: NOT STARTED
+- [Chapters 10-20]: NOT STARTED
 ```
 
 ### Test Command Output
@@ -90,7 +97,7 @@ PENDING CHAPTERS:
 for file in tests/*/*.ruchy; do
     ruchy compile "$file" && ./a.out
 done
-# Result: 29/29 PASS (100%)
+# Result: 32/32 PASS (100%)
 ```
 
 ---
@@ -107,7 +114,7 @@ done
 
 **Current Grade**: A+ (TDD examples)
 **Issues Found**: 0  
-**Clean Files**: 29/29
+**Clean Files**: 32/32
 
 ---
 
@@ -137,8 +144,8 @@ done
 - Produce expected output
 ```
 
-**Formally Verified**: 29/29 TDD examples
-**Provability Score**: 100% (foundation + modules + control flow + data structures + error handling + advanced functions)
+**Formally Verified**: 32/32 TDD examples
+**Provability Score**: 100% (foundation + modules + control flow + data structures + error handling + advanced functions + collections)
 
 ---
 
@@ -190,14 +197,18 @@ done
 - ✅ **NEW: Function composition patterns**
 - ✅ **NEW: Multiple return paths**
 - ✅ **NEW: Recursive function calls**
+- ✅ **NEW: Range iteration with for loops**
+- ✅ **NEW: While loop accumulation**
+- ✅ **NEW: Nested loop patterns**
 
 ### Not Yet Tested (Future Sprints)
+- ⏳ Array creation and indexing
+- ⏳ Collection iteration (for item in collection)
 - ⏳ Higher-order functions (functions as parameters)
 - ⏳ Closures and captured variables
 - ⏳ Try-catch exception handling
 - ⏳ Result/Option types
 - ⏳ String concatenation and interpolation
-- ⏳ Arrays/Lists/Collections
 - ⏳ Hash maps and dictionaries
 - ⏳ File I/O operations
 - ⏳ Advanced pattern matching (complex types)
@@ -211,7 +222,8 @@ done
 - **Data Structures**: 100% (3/3 examples)
 - **Error Handling**: 100% (3/3 examples)
 - **Advanced Functions**: 100% (3/3 examples)
-- **Total Pass Rate**: 100% (29/29 examples)
+- **Collections & Iteration**: 100% (3/3 examples)
+- **Total Pass Rate**: 100% (32/32 examples)
 - **Quality Enforcement**: All examples tested before documentation
 - **Toyota Way Applied**: Test-first, quality built-in
 - **Single Source Truth**: This report only
@@ -286,7 +298,7 @@ done
 
 | Gate | Required | TDD Examples | Status |
 |------|----------|--------------|--------|
-| Test Pass Rate | 100% | 100% (29/29) | ✅ PASS |
+| Test Pass Rate | 100% | 100% (32/32) | ✅ PASS |
 | Lint Grade | A+ | A+ | ✅ PASS |
 | Coverage | 100% | 100% | ✅ PASS |
 | Provability | >50% | 100% | ✅ PASS |
@@ -296,6 +308,13 @@ done
 ---
 
 ## 📅 Report History
+
+### 2025-08-23T22:45:00Z
+- Sprint 9 complete: Collections and iteration
+- Upgraded to Ruchy v1.5.0 (100% backward compatibility)
+- Chapter 9 documented from tests
+- Makefile updated with test-ch09
+- 32/32 tests passing (100%)
 
 ### 2025-08-23T22:15:00Z
 - Sprint 8 complete: Advanced functions
