@@ -22,8 +22,9 @@ help:
 	@echo "  make test-ch03         - Test Chapter 3: Functions"
 	@echo "  make test-ch04         - Test Chapter 4: Modules"
 	@echo "  make test-ch05         - Test Chapter 5: Control Flow"
+	@echo "  make test-ch06         - Test Chapter 6: Data Structures"
 	@echo "  make test-foundation   - Test all foundation chapters (1-3)"
-	@echo "  make test-all-chapters - Test all chapters (1-5)"
+	@echo "  make test-all-chapters - Test all chapters (1-6)"
 	@echo "  make test-file FILE=x  - Test specific file"
 	@echo "  make test-oneliners    - Test ruchy one-liner examples"
 	@echo "  make test-all          - Run ALL tests"
@@ -193,12 +194,31 @@ test-ch05 test-chap5:
 	echo "  Summary: $$PASS passed, $$FAIL failed"; \
 	if [ $$FAIL -gt 0 ]; then exit 1; fi
 
+# Test Chapter 6: Data Structures
+test-ch06 test-chap6:
+	@echo "📖 Testing Chapter 6: Data Structures..."
+	@PASS=0; FAIL=0; \
+	for file in tests/ch06-data-structures/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			printf "  Testing $$(basename $$file)... "; \
+			if ruchy compile "$$file" > /dev/null 2>&1; then \
+				echo "✅ PASS"; \
+				PASS=$$((PASS + 1)); \
+			else \
+				echo "❌ FAIL"; \
+				FAIL=$$((FAIL + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo "  Summary: $$PASS passed, $$FAIL failed"; \
+	if [ $$FAIL -gt 0 ]; then exit 1; fi
+
 # Test all foundation chapters (1-3)
 test-foundation: test-ch01 test-ch02 test-ch03
 	@echo "✅ All foundation chapters tested"
 
-# Test all chapters including modules and control flow
-test-all-chapters: test-foundation test-ch04 test-ch05
+# Test all chapters including modules, control flow, and data structures
+test-all-chapters: test-foundation test-ch04 test-ch05 test-ch06
 	@echo "✅ All chapters tested"
 
 # Test one-liners only (current ruchy version)
