@@ -160,7 +160,7 @@ impl TaskFilter {
     }
 }
 
-fn main() -> Result<()> {
+fun main() -> Result<()> {
     let app = App::new("taskmaster")
         .version("1.0.0")
         .author("Your Name")
@@ -371,13 +371,13 @@ async fn list_users(
     Ok(warp::reply::json(&users))
 }
 
-fn with_state(
+fun with_state(
     state: AppState,
 ) -> impl Filter<Extract = (AppState,), Error = Infallible> + Clone {
     warp::any().map(move || state.clone())
 }
 
-fn routes(state: AppState) -> impl Filter<Extract = impl Reply> + Clone {
+fun routes(state: AppState) -> impl Filter<Extract = impl Reply> + Clone {
     let users_create = warp::path("users")
         .and(warp::post())
         .and(warp::body::json())
@@ -789,7 +789,7 @@ impl Config {
 }
 
 // 4. Logging
-fn init_logging() {
+fun init_logging() {
     tracing_subscriber::fmt()
         .with_env_filter(EnvFilter::from_default_env())
         .with_target(false)

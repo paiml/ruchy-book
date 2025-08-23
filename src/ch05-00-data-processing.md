@@ -150,7 +150,7 @@ let maximum = numbers.max()
 let minimum = numbers.min()
 
 // Grouping and counting
-fn group_by_field(records, field) {
+fun group_by_field(records, field) {
     let groups = {}
     for record in records {
         let key = record[field]
@@ -180,11 +180,11 @@ Handle common data formats:
 // Status: ❌ BROKEN
 // Error: Parse error: Unexpected token: RightBracket
 // CSV-like processing (simplified)
-fn parse_csv_line(line) {
+fun parse_csv_line(line) {
     return line.split(",").map(|field| field.trim())
 }
 
-fn load_csv(filename) {
+fun load_csv(filename) {
     let lines = read_lines(filename)
     let header = parse_csv_line(lines[0])
     let data = []
@@ -280,7 +280,7 @@ let log_entries = [
 ]
 
 // Parse log entries
-fn parse_log_entry(entry) {
+fun parse_log_entry(entry) {
     let parts = entry.split(" ")
     return {
         "date": parts[0],
@@ -418,7 +418,7 @@ Create simple charts for console output:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected In, found Comma
 // Simple bar chart function
-fn draw_bar_chart(data, title) {
+fun draw_bar_chart(data, title) {
     println("\n" + title)
     println("=" * title.len())
     
@@ -568,12 +568,12 @@ $ ruchy repl
 
 let EXPENSES_FILE = "expenses.csv"
 
-fn save_expense(date, category, amount, description) {
+fun save_expense(date, category, amount, description) {
     let entry = date + "," + category + "," + amount.to_s() + "," + description + "\n"
     append_file(EXPENSES_FILE, entry)
 }
 
-fn load_expenses() {
+fun load_expenses() {
     if !file_exists(EXPENSES_FILE) {
         // Create header if file doesn't exist
         write_file(EXPENSES_FILE, "Date,Category,Amount,Description\n")
@@ -596,7 +596,7 @@ fn load_expenses() {
     return expenses
 }
 
-fn analyze_expenses(expenses) {
+fun analyze_expenses(expenses) {
     let total = expenses.map(|e| e.amount).sum()
     let average = total / expenses.len()
     
@@ -624,7 +624,7 @@ fn analyze_expenses(expenses) {
     }
 }
 
-fn main_menu() {
+fun main_menu() {
     println("\n=== Personal Expense Tracker ===")
     println("1. Add expense")
     println("2. View analysis") 

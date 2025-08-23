@@ -301,14 +301,14 @@ Write tests BEFORE you write code:
 
 // Step 1: Write the test first
 #[test]
-fn test_fahrenheit_to_celsius() {
+fun test_fahrenheit_to_celsius() {
     assert_eq!(fahrenheit_to_celsius(32), 0)    // Freezing point
     assert_eq!(fahrenheit_to_celsius(212), 100) // Boiling point
     assert_eq!(fahrenheit_to_celsius(98.6), 37) // Body temperature
 }
 
 // Step 2: Write minimal code to pass
-fn fahrenheit_to_celsius(fahrenheit) {
+fun fahrenheit_to_celsius(fahrenheit) {
     return (fahrenheit - 32) * 5 / 9
 }
 
@@ -329,13 +329,13 @@ fn fahrenheit_to_celsius(fahrenheit) {
 
 // ❌ Only testing happy path
 #[test]
-fn test_divide_bad() {
+fun test_divide_bad() {
     assert_eq!(divide(10, 2), 5)  // What about divide by zero?
 }
 
 // ✅ Testing edge cases
 #[test]
-fn test_divide_good() {
+fun test_divide_good() {
     assert_eq!(divide(10, 2), 5)      // Normal case
     assert_eq!(divide(0, 5), 0)       // Zero dividend
     // Should handle divide by zero gracefully
@@ -353,14 +353,14 @@ fn test_divide_good() {
 
 // ❌ This test will always pass
 #[test]
-fn test_useless() {
+fun test_useless() {
     let result = add(2, 3)
     assert!(result > 0)  // Too vague!
 }
 
 // ✅ This test verifies exact behavior
 #[test]  
-fn test_useful() {
+fun test_useful() {
     assert_eq!(add(2, 3), 5)  // Exact expectation
 }
 
@@ -376,13 +376,13 @@ fn test_useful() {
 
 // ❌ Unclear what this tests
 #[test]
-fn test1() {
+fun test1() {
     assert_eq!(is_valid("abc"), false)
 }
 
 // ✅ Clear, descriptive name
 #[test]
-fn test_password_too_short() {
+fun test_password_too_short() {
     assert_eq!(is_valid_password("abc"), false)
 }
 
@@ -436,7 +436,7 @@ $ ruchy repl
 
 // 1. Write failing tests first
 #[test]
-fn test_is_strong_password() {
+fun test_is_strong_password() {
     assert!(is_strong_password("MyPass123!"))      // Valid
     assert!(!is_strong_password("weak"))           // Too short
     assert!(!is_strong_password("NoNumbers!"))     // No digits
@@ -444,7 +444,7 @@ fn test_is_strong_password() {
 }
 
 // 2. Write minimal code to pass
-fn is_strong_password(password) {
+fun is_strong_password(password) {
     if password.len() < 8 { return false }
     
     let has_digit = password.chars().any(|c| c.is_digit())
@@ -457,7 +457,7 @@ fn is_strong_password(password) {
 
 // 4. Add more edge case tests
 #[test]
-fn test_password_edge_cases() {
+fun test_password_edge_cases() {
     assert!(!is_strong_password(""))              // Empty
     assert!(!is_strong_password("12345678"))      // Only digits
     assert!(!is_strong_password("!!!!!!!!"))      // Only special

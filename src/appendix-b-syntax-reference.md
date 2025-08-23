@@ -31,7 +31,7 @@
 */
 
 /// Documentation comment for the following item
-fn documented_function() {}
+fun documented_function() {}
 
 //! Inner documentation comment for containing item
 
@@ -371,27 +371,29 @@ for (index, item) in collection.enumerate() {
 
 ## Functions
 
+> **Note**: Ruchy uses `fun` as the primary function keyword for visual distinction from Rust. While `fn` is also accepted for Rust developers transitioning to Ruchy, all documentation uses `fun` and the linter will recommend `fun` over `fn` in future versions.
+
 ### Function Definition
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected FatArrow, found Char('+')
 // Basic function
-fn greet(name: String) -> String {
+fun greet(name: String) -> String {
     return "Hello, " + name + "!"
 }
 
 // Implicit return (no semicolon)
-fn add(a: i32, b: i32) -> i32 {
+fun add(a: i32, b: i32) -> i32 {
     a + b  // Last expression is returned
 }
 
 // Unit return type (no return value)
-fn print_message(msg: String) {
+fun print_message(msg: String) {
     println(msg)
 }
 
 // Multiple parameters
-fn calculate(x: f64, y: f64, operation: char) -> f64 {
+fun calculate(x: f64, y: f64, operation: char) -> f64 {
     match operation {
         '+' => x + y,
         '-' => x - y,
@@ -411,27 +413,27 @@ fn calculate(x: f64, y: f64, operation: char) -> f64 {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // By value (move)
-fn take_ownership(s: String) {
+fun take_ownership(s: String) {
     // s is moved here
 }
 
 // By reference (borrow)
-fn borrow_value(s: &String) -> usize {
+fun borrow_value(s: &String) -> usize {
     s.len()  // s is borrowed
 }
 
 // Mutable reference
-fn modify_value(s: &mut String) {
+fun modify_value(s: &mut String) {
     s.push_str(" modified")
 }
 
 // Default parameters
-fn connect(host: String, port: u16 = 8080, timeout: u64 = 5000) {
+fun connect(host: String, port: u16 = 8080, timeout: u64 = 5000) {
     // Implementation
 }
 
 // Variable arguments
-fn sum(numbers: &[i32]) -> i32 {
+fun sum(numbers: &[i32]) -> i32 {
     numbers.iter().sum()
 }
 
@@ -472,17 +474,17 @@ let greeter = move |greeting| {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Function as parameter
-fn apply_operation(x: i32, y: i32, op: fn(i32, i32) -> i32) -> i32 {
+fun apply_operation(x: i32, y: i32, op: fn(i32, i32) -> i32) -> i32 {
     op(x, y)
 }
 
 // Function returning function
-fn make_adder(n: i32) -> impl Fn(i32) -> i32 {
+fun make_adder(n: i32) -> impl Fn(i32) -> i32 {
     move |x| x + n
 }
 
 // Generic function
-fn map_over<T, U, F>(items: Vec<T>, f: F) -> Vec<U>
+fun map_over<T, U, F>(items: Vec<T>, f: F) -> Vec<U>
 where F: Fn(T) -> U
 {
     items.into_iter().map(f).collect()
@@ -684,7 +686,7 @@ impl<T: Clone> Clone for Box<T> {
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
-fn largest<T: PartialOrd>(list: &[T]) -> &T {
+fun largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0]
     for item in list {
         if item > largest {
@@ -730,12 +732,12 @@ impl Point<f64> {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
 // Single bound
-fn print_it<T: Display>(item: T) {
+fun print_it<T: Display>(item: T) {
     println("{}", item)
 }
 
 // Multiple bounds
-fn compare_and_print<T: Display + PartialOrd>(a: T, b: T) {
+fun compare_and_print<T: Display + PartialOrd>(a: T, b: T) {
     if a > b {
         println("a is greater")
     } else {
@@ -744,7 +746,7 @@ fn compare_and_print<T: Display + PartialOrd>(a: T, b: T) {
 }
 
 // Where clause
-fn some_function<T, U>(t: T, u: U) -> i32
+fun some_function<T, U>(t: T, u: U) -> i32
 where
     T: Display + Clone,
     U: Clone + Debug,
@@ -794,7 +796,7 @@ mod graphics {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
 pub fn public_function() {}           // Public
-fn private_function() {}              // Private to module
+fun private_function() {}              // Private to module
 
 pub struct PublicStruct {
     pub public_field: i32,            // Public field
@@ -853,7 +855,7 @@ enum Option<T> {
 }
 
 // Using ? operator
-fn read_file(path: &str) -> Result<String, std::io::Error> {
+fun read_file(path: &str) -> Result<String, std::io::Error> {
     let content = std::fs::read_to_string(path)?
     Ok(content.to_uppercase())
 }
@@ -948,40 +950,40 @@ say_hello!("World")
 // Error: Parse error: Unexpected token: RightParen
 // Conditional compilation
 #[cfg(target_os = "linux")]
-fn linux_only() {}
+fun linux_only() {}
 
 #[cfg(feature = "network")]
 mod networking {}
 
 // Testing
 #[test]
-fn test_function() {}
+fun test_function() {}
 
 #[ignore]
 #[test]
-fn expensive_test() {}
+fun expensive_test() {}
 
 // Documentation
 #[doc = "This is a documented function"]
-fn documented() {}
+fun documented() {}
 
 // Deprecation
 #[deprecated(note = "Use new_function instead")]
-fn old_function() {}
+fun old_function() {}
 
 // Allow/deny lints
 #[allow(dead_code)]
-fn unused_function() {}
+fun unused_function() {}
 
 #[deny(missing_docs)]
 mod well_documented {}
 
 // Inline hints
 #[inline]
-fn small_function() {}
+fun small_function() {}
 
 #[inline(always)]
-fn always_inline() {}
+fun always_inline() {}
 
 
 

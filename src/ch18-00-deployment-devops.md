@@ -279,7 +279,7 @@ Zero-downtime deployment:
 // Status: ✅ WORKING
 
 // blue_green.ruchy
-fn deploy_blue_green(new_version: String) {
+fun deploy_blue_green(new_version: String) {
     // Current production is "blue"
     let blue = Environment::current()
     
@@ -329,7 +329,7 @@ Gradual rollout:
 // Status: ✅ WORKING
 
 // canary.ruchy
-fn deploy_canary(new_version: String) {
+fun deploy_canary(new_version: String) {
     let deployment = CanaryDeployment::new(new_version)
     
     // Start with 5% traffic

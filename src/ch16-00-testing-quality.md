@@ -32,7 +32,7 @@ Here's comprehensive testing in Ruchy:
 // Error: Parse error: Expected method name or 'await' after '.'
 // Unit test with multiple assertions
 #[test]
-fn test_user_validation() {
+fun test_user_validation() {
     // Arrange
     let valid_user = User {
         name: "Alice",
@@ -50,7 +50,7 @@ fn test_user_validation() {
 
 // Property-based testing
 #[proptest]
-fn test_serialization_roundtrip(user: User) {
+fun test_serialization_roundtrip(user: User) {
     let serialized = user.serialize()
     let deserialized = User::deserialize(serialized)
     assert_eq!(user, deserialized)
@@ -81,7 +81,7 @@ async fn test_api_workflow() {
 
 // Benchmark
 #[bench]
-fn bench_data_processing(b: &mut Bencher) {
+fun bench_data_processing(b: &mut Bencher) {
     let data = generate_test_data(10000)
     b.iter(|| {
         process_data(data.clone())
@@ -106,13 +106,13 @@ Test individual components:
 // Error: Parse error: Unexpected token: RightParen
 // Basic test
 #[test]
-fn test_addition() {
+fun test_addition() {
     assert_eq!(2 + 2, 4)
 }
 
 // Test with setup
 #[test]
-fn test_calculator() {
+fun test_calculator() {
     // Arrange
     let calc = Calculator::new()
     
@@ -126,7 +126,7 @@ fn test_calculator() {
 // Test expected failures
 #[test]
 #[should_panic(expected = "Division by zero")]
-fn test_divide_by_zero() {
+fun test_divide_by_zero() {
     divide(10, 0)
 }
 
@@ -142,7 +142,7 @@ async fn test_async_operation() {
 #[test_case(1, 1, 2)]
 #[test_case(-1, 1, 0)]
 #[test_case(100, 200, 300)]
-fn test_add_parameterized(a: i32, b: i32, expected: i32) {
+fun test_add_parameterized(a: i32, b: i32, expected: i32) {
     assert_eq!(add(a, b), expected)
 }
 
@@ -209,7 +209,7 @@ impl TestFixture for DatabaseFixture {
 
 // Use fixture in tests
 #[test]
-fn test_user_query() {
+fun test_user_query() {
     let fixture = DatabaseFixture::setup()
     
     let users = fixture.db.query("SELECT * FROM users")
@@ -220,7 +220,7 @@ fn test_user_query() {
 
 // Fixture macro for automatic cleanup
 #[with_fixture(DatabaseFixture)]
-fn test_with_auto_cleanup(fixture: DatabaseFixture) {
+fun test_with_auto_cleanup(fixture: DatabaseFixture) {
     // Fixture automatically cleaned up after test
     let user = fixture.db.find_user("Alice")
     assert!(user.is_some())
@@ -258,7 +258,7 @@ impl EmailService for MockEmailService {
 
 // Test with mock
 #[test]
-fn test_user_registration() {
+fun test_user_registration() {
     let email_service = MockEmailService::new()
     let user_service = UserService::new(email_service)
     
@@ -271,7 +271,7 @@ fn test_user_registration() {
 
 // Spy to verify behavior
 #[test]
-fn test_with_spy() {
+fun test_with_spy() {
     let spy = Spy::new(RealService::new())
     
     spy.method_call()
@@ -283,7 +283,7 @@ fn test_with_spy() {
 
 // Stub for predetermined responses
 #[test]
-fn test_with_stub() {
+fun test_with_stub() {
     let stub = Stub::new()
         .with_response("get_user", User::test_user())
         .with_error("network_call", NetworkError)
@@ -321,7 +321,7 @@ struct TestUser {
 
 // Property test
 #[proptest]
-fn test_user_serialization(user: TestUser) {
+fun test_user_serialization(user: TestUser) {
     // Property: serialization round-trip preserves data
     let json = to_json(user)
     let restored: TestUser = from_json(json)
@@ -329,21 +329,21 @@ fn test_user_serialization(user: TestUser) {
 }
 
 // Custom strategies
-fn email_strategy() -> impl Strategy<Value = String> {
+fun email_strategy() -> impl Strategy<Value = String> {
     "[a-z]{3,10}@[a-z]{3,10}\\.(com|org|net)"
         .prop_map(|s| s.to_string())
 }
 
 // Shrinking for minimal failing case
 #[proptest]
-fn test_no_panic(input: Vec<u8>) {
+fun test_no_panic(input: Vec<u8>) {
     // Proptest will find minimal input that causes panic
     process_bytes(input)  // Should never panic
 }
 
 // Stateful property testing
 #[proptest]
-fn test_database_consistency(operations: Vec<DbOperation>) {
+fun test_database_consistency(operations: Vec<DbOperation>) {
     let db = Database::new()
     
     for op in operations {
@@ -415,7 +415,7 @@ async fn test_full_api_flow() {
 
 // Database integration test
 #[test]
-fn test_database_transactions() {
+fun test_database_transactions() {
     let db = Database::connect(TEST_DATABASE_URL)
     
     db.transaction(|tx| {
@@ -448,7 +448,7 @@ Measure and optimize:
 // Error: Parse error: Expected type
 // Benchmarks
 #[bench]
-fn bench_sorting_algorithms(b: &mut Bencher) {
+fun bench_sorting_algorithms(b: &mut Bencher) {
     let data = generate_random_vec(10000)
     
     b.iter(|| {
@@ -500,7 +500,7 @@ async fn test_api_under_load() {
 // Profiling in tests
 #[test]
 #[profile]
-fn test_with_profiling() {
+fun test_with_profiling() {
     let profiler = CpuProfiler::start()
     
     expensive_operation()
@@ -538,7 +538,7 @@ Total           1137   1085    95.4%
 
 // Coverage annotations
 #[test]
-fn test_all_branches() {
+fun test_all_branches() {
     // Tool shows which branches are not covered
     if condition {      // ✓ true branch covered
         do_something()
@@ -549,7 +549,7 @@ fn test_all_branches() {
 
 // Exclude from coverage
 #[cfg(not(tarpaulin_include))]
-fn debug_function() {
+fun debug_function() {
     // Not included in coverage metrics
 }
 
@@ -574,7 +574,7 @@ Status: SURVIVED ❌
 
 // Add test to catch mutation
 #[test]
-fn test_addition_not_subtraction() {
+fun test_addition_not_subtraction() {
     assert_ne!(add(5, 3), subtract(5, 3))
 }
 
@@ -590,7 +590,7 @@ fn test_addition_not_subtraction() {
 // Error: Parse error: Expected type
 // Fuzz testing for security
 #[fuzz_test]
-fn fuzz_parser(data: &[u8]) {
+fun fuzz_parser(data: &[u8]) {
     // Fuzzer generates random inputs
     if let Ok(s) = std::str::from_utf8(data) {
         // Should never panic or crash
@@ -608,7 +608,7 @@ Coverage: 95%
 
 // Targeted fuzzing
 #[fuzz_target]
-fn fuzz_api_endpoint(input: FuzzInput) {
+fun fuzz_api_endpoint(input: FuzzInput) {
     let request = Request::from_fuzz(input)
     let response = handle_request(request)
     
@@ -662,7 +662,7 @@ jobs:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected identifier after 'for'
 // quality.ruchy - Quality gate script
-fn main() {
+fun main() {
     let mut passed = true
     
     // Test coverage gate

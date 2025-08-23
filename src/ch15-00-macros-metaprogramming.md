@@ -151,7 +151,7 @@ Function-like macros with full power:
 // Error: Parse error: Expected '(' or '[' after macro name
 // Derive macro for automatic implementation
 #[proc_macro_derive(Builder)]
-fn derive_builder(input: TokenStream) -> TokenStream {
+fun derive_builder(input: TokenStream) -> TokenStream {
     let ast = parse(input)
     let name = ast.name
     let builder_name = f"{name}Builder"
@@ -226,7 +226,7 @@ Modify items with attributes:
 // Error: Parse error: Expected '(' or '[' after macro name
 // Attribute macro for benchmarking
 #[proc_macro_attribute]
-fn bench(args: TokenStream, input: TokenStream) -> TokenStream {
+fun bench(args: TokenStream, input: TokenStream) -> TokenStream {
     let func = parse(input)
     let name = func.name
     
@@ -242,7 +242,7 @@ fn bench(args: TokenStream, input: TokenStream) -> TokenStream {
 }
 
 #[bench]
-fn expensive_operation() {
+fun expensive_operation() {
     // Function body
     heavy_computation()
 }
@@ -259,7 +259,7 @@ async fn get_user(id: i32) -> Response {
 #[test_case(1, 2, 3)]
 #[test_case(10, 20, 30)]
 #[test_case(-1, -2, -3)]
-fn test_addition(a: i32, b: i32, expected: i32) {
+fun test_addition(a: i32, b: i32, expected: i32) {
     assert_eq!(a + b, expected)
 }
 
@@ -598,7 +598,7 @@ mod macros {
 
 // 5. Test macros thoroughly
 #[test]
-fn test_macro() {
+fun test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }

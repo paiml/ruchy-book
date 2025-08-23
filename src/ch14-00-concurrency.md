@@ -34,7 +34,7 @@ use std::sync;
 use std::async;
 
 // Parallel processing with channels
-fn process_files(files: Vec<String>) -> Vec<Result> {
+fun process_files(files: Vec<String>) -> Vec<Result> {
     let (sender, receiver) = channel()
     
     // Spawn worker for each file
@@ -343,7 +343,7 @@ Decouple work production from consumption:
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected identifier after 'let' or 'let mut'
-fn producer_consumer_pipeline<T>() {
+fun producer_consumer_pipeline<T>() {
     let (tx, rx) = channel()
     
     // Multiple producers
@@ -371,7 +371,7 @@ fn producer_consumer_pipeline<T>() {
 }
 
 // With bounded queue for backpressure
-fn bounded_pipeline() {
+fun bounded_pipeline() {
     let (tx, rx) = sync_channel(100)  // Max 100 items
     
     spawn move {
@@ -399,7 +399,7 @@ Split work, process parallel, combine results:
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
-fn parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
+fun parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
     if items.len() <= 1 {
         return items
     }
@@ -418,7 +418,7 @@ fn parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
 }
 
 // Parallel reduce
-fn parallel_sum(numbers: Vec<i32>) -> i32 {
+fun parallel_sum(numbers: Vec<i32>) -> i32 {
     if numbers.len() <= 1000 {
         return numbers.sum()  // Sequential for small inputs
     }
@@ -568,7 +568,7 @@ Process large datasets efficiently:
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
-fn process_dataset(data: Vec<Record>) -> Vec<Result> {
+fun process_dataset(data: Vec<Record>) -> Vec<Result> {
     // Partition data for parallel processing
     let chunk_size = data.len() / num_cpus()
     let chunks = data.chunks(chunk_size)
@@ -592,7 +592,7 @@ fn process_dataset(data: Vec<Record>) -> Vec<Result> {
 }
 
 // Pipeline with stages
-fn parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
+fun parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
     input
         .parallel_map(stage1, workers: 4)
         .parallel_filter(stage2, workers: 2)
@@ -613,7 +613,7 @@ Test with parallelism:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected RightParen, found Identifier("move")
 #[test]
-fn test_concurrent_access() {
+fun test_concurrent_access() {
     let shared = Arc::new(Mutex::new(Vec::new()))
     let handles = Vec::new()
     
@@ -665,7 +665,7 @@ async fn test_async_operations() {
 
 // 2. Avoid contention
 let shards = (0..16).map(|_| Mutex::new(HashMap::new()))
-fn get_shard(key: &str) -> &Mutex<HashMap> {
+fun get_shard(key: &str) -> &Mutex<HashMap> {
     let hash = hash(key)
     return &shards[hash % 16]
 }

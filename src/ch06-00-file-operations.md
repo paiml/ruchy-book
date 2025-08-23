@@ -157,7 +157,7 @@ let files_only = list_files(".")
 let dirs_only = list_directories(".")
 
 // Recursive directory walking
-fn walk_directory(dir) {
+fun walk_directory(dir) {
     let items = list_dir(dir)
     for item in items {
         let path = join_path(dir, item)
@@ -270,12 +270,12 @@ println("\nScanning " + search_dir + "...")
 let file_hashes = {}
 let duplicates = []
 
-fn hash_file(path) {
+fun hash_file(path) {
     let content = read_bytes(path)
     return sha256(content)
 }
 
-fn scan_directory(dir) {
+fun scan_directory(dir) {
     let items = list_dir(dir)
     
     for item in items {
@@ -443,18 +443,18 @@ let config = if file_exists(config_file) {
     }
 }
 
-fn save_config() {
+fun save_config() {
     let json = to_json_pretty(config)
     write_file(config_file, json)
     println("✅ Configuration saved")
 }
 
-fn update_setting(key, value) {
+fun update_setting(key, value) {
     config[key] = value
     save_config()
 }
 
-fn add_recent_file(path) {
+fun add_recent_file(path) {
     if !config.recent_files.contains(path) {
         config.recent_files.insert(0, path)
         // Keep only last 10 files
@@ -522,7 +522,7 @@ Robust file operations need proper error handling:
 ```ruchy
 // Status: ✅ WORKING
 
-fn safe_file_operation(path) {
+fun safe_file_operation(path) {
     // Check permissions first
     if !file_exists(path) {
         println("Error: File not found: " + path)

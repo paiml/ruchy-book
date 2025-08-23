@@ -39,7 +39,7 @@ enum AppError {
 }
 
 // Functions return Result
-fn fetch_user(id: i32) -> Result<User, AppError> {
+fun fetch_user(id: i32) -> Result<User, AppError> {
     // Note: In v0.11.0, the ? operator is removed. Use match for error handling:
     let response = match http::get("/api/users/" + id.to_s()) {
         Ok(r) => r,
@@ -103,7 +103,7 @@ enum Result<T, E> {
 }
 
 // Functions that can fail return Result
-fn divide(a: f64, b: f64) -> Result<f64, String> {
+fun divide(a: f64, b: f64) -> Result<f64, String> {
     if b == 0.0 {
         return Err("Division by zero")
     }
@@ -143,7 +143,7 @@ enum Option<T> {
 }
 
 // Functions that might not return a value
-fn find_user(name: String) -> Option<User> {
+fun find_user(name: String) -> Option<User> {
     let users = load_users()
     for user in users {
         if user.name == name {
@@ -179,7 +179,7 @@ Note: The ? operator was removed in v0.11.0. Use explicit match statements for e
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Without ? operator - verbose
-fn process_file_verbose(path: String) -> Result<String, Error> {
+fun process_file_verbose(path: String) -> Result<String, Error> {
     let file = match open_file(path) {
         Ok(f) => f
         Err(e) => return Err(e)
@@ -199,7 +199,7 @@ fn process_file_verbose(path: String) -> Result<String, Error> {
 }
 
 // In v0.11.0 - use explicit error handling
-fn process_file(path: String) -> Result<String, Error> {
+fun process_file(path: String) -> Result<String, Error> {
     let file = match open_file(path) {
         Ok(f) => f,
         Err(e) => return Err(e)
@@ -216,7 +216,7 @@ fn process_file(path: String) -> Result<String, Error> {
 }
 
 // Chain multiple operations with explicit handling
-fn complex_operation() -> Result<Data, Error> {
+fun complex_operation() -> Result<Data, Error> {
     let data = match fetch_data() {
         Ok(d) => d,
         Err(e) => return Err(e)
@@ -322,7 +322,7 @@ Exit early on errors:
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
-fn validate_user(user: User) -> Result<User, ValidationError> {
+fun validate_user(user: User) -> Result<User, ValidationError> {
     // Early return on validation failures
     if user.name.is_empty() {
         return Err(ValidationError::EmptyName)
@@ -353,7 +353,7 @@ Gracefully recover from errors:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected RightParen, found LeftParen
 // Retry with exponential backoff
-fn fetch_with_retry<T>(
+fun fetch_with_retry<T>(
     operation: Fn() -> Result<T, Error>,
     max_attempts: i32
 ) -> Result<T, Error> {
@@ -377,7 +377,7 @@ fn fetch_with_retry<T>(
 }
 
 // Fallback strategies
-fn get_config() -> Config {
+fun get_config() -> Config {
     load_config_file()
         .or_else(|| load_env_config())
         .or_else(|| fetch_remote_config())
@@ -455,7 +455,7 @@ impl<T, E: Into<Error>> Context<T> for Result<T, E> {
 }
 
 // Use context for better errors
-fn process_order(order_id: i32) -> Result<Order, Error> {
+fun process_order(order_id: i32) -> Result<Order, Error> {
     let order = fetch_order(order_id)
         .context("Failed to fetch order " + order_id)??
     
@@ -543,7 +543,7 @@ impl IntoResponse for ApiError {
 // Composable validators
 type Validator<T> = Fn(T) -> Result<T, ValidationError>
 
-fn validate_pipeline<T>(
+fun validate_pipeline<T>(
     value: T,
     validators: Vec<Validator<T>>
 ) -> Result<T, Vec<ValidationError>> {
@@ -636,7 +636,7 @@ async fn fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
 // Status: ❌ BROKEN
 // Error: Parse error: Unexpected token: Underscore
 #[test]
-fn test_error_handling() {
+fun test_error_handling() {
     // Test expected errors
     let result = divide(10.0, 0.0)
     assert!(result.is_err())
@@ -653,13 +653,13 @@ fn test_error_handling() {
 
 #[test]
 #[should_panic(expected = "assertion failed")]
-fn test_panic_condition() {
+fun test_panic_condition() {
     unsafe_operation()
 }
 
 // Property-based testing for error conditions
 #[property_test]
-fn never_panics(input: RandomInput) {
+fun never_panics(input: RandomInput) {
     let _ = safe_process(input)  // Should never panic
 }
 

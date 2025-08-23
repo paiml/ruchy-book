@@ -37,7 +37,7 @@ use std::perf;
 use std::parallel;
 
 // Naive version - slow
-fn process_data_naive(data) {
+fun process_data_naive(data) {
     let results = []
     for item in data {
         // Expensive computation
@@ -53,7 +53,7 @@ fn process_data_naive(data) {
 }
 
 // Optimized version - fast
-fn process_data_optimized(data) {
+fun process_data_optimized(data) {
     // 1. Parallel processing
     let results = parallel::map(data, |item| {
         expensive_transform(item)
@@ -183,7 +183,7 @@ bench::suite("String Operations", {
 //   join:          0.6ms ± 0.03ms
 
 // Custom benchmarks
-fn benchmark_algorithm(name, func, data) {
+fun benchmark_algorithm(name, func, data) {
     let times = []
     
     // Warmup
@@ -274,7 +274,7 @@ let responses = async::wait_all(futures)
 
 // 1. Cache computed values
 let fibonacci_cache = {}
-fn fibonacci_memo(n) {
+fun fibonacci_memo(n) {
     if fibonacci_cache.has_key(n) {
         return fibonacci_cache[n]
     }
@@ -290,7 +290,7 @@ fn fibonacci_memo(n) {
 }
 
 // 2. Use better data structures
-fn find_duplicates_naive(items) {
+fun find_duplicates_naive(items) {
     let duplicates = []
     for i in range(items.len()) {
         for j in range(i + 1, items.len()) {
@@ -302,7 +302,7 @@ fn find_duplicates_naive(items) {
     return duplicates  // O(n²)
 }
 
-fn find_duplicates_optimized(items) {
+fun find_duplicates_optimized(items) {
     let seen = Set::new()
     let duplicates = Set::new()
     
@@ -316,18 +316,18 @@ fn find_duplicates_optimized(items) {
 }
 
 // 3. Batch operations
-fn save_records_naive(records) {
+fun save_records_naive(records) {
     for record in records {
         database.insert(record)  // N database calls
     }
 }
 
-fn save_records_optimized(records) {
+fun save_records_optimized(records) {
     database.insert_batch(records)  // 1 database call
 }
 
 // 4. Early termination
-fn find_first_match(items, predicate) {
+fun find_first_match(items, predicate) {
     for item in items {
         if predicate(item) {
             return item  // Stop as soon as found
@@ -351,11 +351,11 @@ fn find_first_match(items, predicate) {
 // Reduce memory usage
 
 // 1. Use generators for large datasets
-fn read_large_file_naive(path) {
+fun read_large_file_naive(path) {
     return read_file(path).lines()  // Loads entire file
 }
 
-fn read_large_file_optimized(path) {
+fun read_large_file_optimized(path) {
     // Generator - yields lines one at a time
     return generate {
         let file = open(path)
@@ -372,7 +372,7 @@ let connection_pool = Pool::new(
     reset: |conn| conn.clear()
 )
 
-fn handle_request(request) {
+fun handle_request(request) {
     let conn = connection_pool.acquire()
     let result = conn.query(request.sql)
     connection_pool.release(conn)
@@ -382,7 +382,7 @@ fn handle_request(request) {
 // 3. Weak references for caches
 let cache = WeakMap::new()
 
-fn get_cached_data(key) {
+fun get_cached_data(key) {
     if cache.has(key) {
         return cache.get(key)
     }
@@ -413,7 +413,7 @@ struct CompactUser {
 // Speed up I/O operations
 
 // 1. Buffered I/O
-fn process_file_naive(path) {
+fun process_file_naive(path) {
     let file = open(path)
     while !file.eof() {
         let byte = file.read_byte()  // Syscall for each byte
@@ -421,7 +421,7 @@ fn process_file_naive(path) {
     }
 }
 
-fn process_file_optimized(path) {
+fun process_file_optimized(path) {
     let file = BufferedReader::new(open(path), 8192)
     while !file.eof() {
         let byte = file.read_byte()  // Reads from buffer
@@ -447,7 +447,7 @@ async fn fetch_all_optimized(urls) {
 }
 
 // 3. Memory-mapped files
-fn process_huge_file(path) {
+fun process_huge_file(path) {
     let mmap = MemoryMap::open(path)
     
     // Process in parallel chunks
@@ -480,7 +480,7 @@ let database = db::connect("postgres://localhost/myapp")
 database.log_queries(true)
 
 // Analyze slow queries
-fn analyze_query(sql) {
+fun analyze_query(sql) {
     let plan = database.explain(sql)
     println("Query: " + sql)
     println("Execution plan: " + plan)
@@ -508,7 +508,7 @@ fn analyze_query(sql) {
 }
 
 // Optimize ORM queries
-fn get_users_with_posts_naive() {
+fun get_users_with_posts_naive() {
     let users = database.query("SELECT * FROM users")
     for user in users {
         user.posts = database.query(
@@ -519,7 +519,7 @@ fn get_users_with_posts_naive() {
     return users
 }
 
-fn get_users_with_posts_optimized() {
+fun get_users_with_posts_optimized() {
     // Single query with JOIN
     return database.query("
         SELECT u.*, p.*
@@ -642,7 +642,7 @@ app.listen()
 use std::parallel;
 use std::stream;
 
-fn process_dataset(input_file, output_file) {
+fun process_dataset(input_file, output_file) {
     let start = perf::Timer::start()
     
     // Stream processing to avoid loading all data
