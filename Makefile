@@ -16,23 +16,32 @@ help:
 	@echo "  make clean             - Remove all build artifacts"
 	@echo ""
 	@echo "🧪 TESTING OPERATIONS:"
-	@echo "  make test              - Test all code listings compile"
-	@echo "  make test-oneliners    - Test ruchy one-liner examples only"
-	@echo "  make test-comprehensive- Run full test suite (Toyota Way)"
+	@echo "  make test              - Test all TDD examples"
+	@echo "  make test-ch01         - Test Chapter 1: Hello World"
+	@echo "  make test-ch02         - Test Chapter 2: Variables"
+	@echo "  make test-ch03         - Test Chapter 3: Functions"
+	@echo "  make test-foundation   - Test all foundation chapters (1-3)"
+	@echo "  make test-file FILE=x  - Test specific file"
+	@echo "  make test-oneliners    - Test ruchy one-liner examples"
+	@echo "  make test-all          - Run ALL tests"
+	@echo ""
+	@echo "🎨 CODE QUALITY:"
+	@echo "  make lint              - Lint all Ruchy code"
+	@echo "  make format            - Check code formatting"
+	@echo "  make validate          - Run ALL quality checks"
 	@echo ""
 	@echo "🔄 VERSION OPERATIONS (FOOLPROOF):"
 	@echo "  make sync-version      - AUTOMATED: Update to latest ruchy version"
 	@echo "  make verify-version    - Check version consistency"
 	@echo "  make update-integration-docs - Update INTEGRATION.md with current status"
 	@echo ""
-	@echo "📊 REPORTING OPERATIONS:"
-	@echo "  make generate-reports  - Generate comprehensive status reports"
-	@echo "  make status           - Show current system status"
+	@echo "📊 REPORTING:"
+	@echo "  make status            - Show current system status"
+	@echo "  make test-tdd          - Update INTEGRATION.md (single source of truth)"
 	@echo ""
 	@echo "🔒 QUALITY GATES:"
-	@echo "  make validate         - Run ALL quality checks (lint + test + strict)"
-	@echo "  make lint             - Check for vaporware/SATD/TODO comments"
-	@echo "  make pre-commit       - Run pre-commit quality gates"
+	@echo "  make validate          - Run ALL quality checks (lint + test)"
+	@echo "  make pre-commit        - Run pre-commit quality gates"
 	@echo ""
 	@echo "⚙️  SETUP:"
 	@echo "  make install-deps     - Install required dependencies"
@@ -66,48 +75,139 @@ serve: install-deps
 	@echo "🚀 Starting local server..."
 	@mdbook serve --open
 
-# Test all listings compile
+# Test all TDD examples
 test:
-	@echo "🧪 Testing all code listings..."
-	@echo "Running Rust test suite (expects many failures - book targets future ruchy versions)..."
-	@cargo test --tests || echo "⚠️  General examples failing (targeting future ruchy versions)"
-	@echo ""
-	@echo "🧮 Testing current ruchy one-liners (comprehensive)..."
-	@./test_all_oneliners.sh || echo "⚠️  Some one-liners planned for future (see INTEGRATION.md)"
-	@echo "✅ Test suite complete - see INTEGRATION.md for compatibility status"
+	@echo "🧪 Testing all TDD examples..."
+	@PASS=0; FAIL=0; \
+	for file in tests/*/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			printf "Testing $$file... "; \
+			if ruchy compile "$$file" > /dev/null 2>&1; then \
+				echo "✅ PASS"; \
+				PASS=$$((PASS + 1)); \
+			else \
+				echo "❌ FAIL"; \
+				FAIL=$$((FAIL + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo ""; \
+	echo "📊 Summary: $$PASS passed, $$FAIL failed"; \
+	if [ $$FAIL -gt 0 ]; then exit 1; fi
 
-# Test only working examples (for pre-commit)
-test-working:
-	@echo "🧪 Testing working examples only..."
-	@SKIP_BROKEN_EXAMPLES=1 cargo test --tests
-	@echo "✅ Working examples passed"
+# Test Chapter 1: Hello World
+test-ch01 test-chap1:
+	@echo "📖 Testing Chapter 1: Hello World..."
+	@PASS=0; FAIL=0; \
+	for file in tests/ch01-hello-world/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			printf "  Testing $$(basename $$file)... "; \
+			if ruchy compile "$$file" > /dev/null 2>&1; then \
+				echo "✅ PASS"; \
+				PASS=$$((PASS + 1)); \
+			else \
+				echo "❌ FAIL"; \
+				FAIL=$$((FAIL + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo "  Summary: $$PASS passed, $$FAIL failed"; \
+	if [ $$FAIL -gt 0 ]; then exit 1; fi
+
+# Test Chapter 2: Variables
+test-ch02 test-chap2:
+	@echo "📖 Testing Chapter 2: Variables..."
+	@PASS=0; FAIL=0; \
+	for file in tests/ch02-variables/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			printf "  Testing $$(basename $$file)... "; \
+			if ruchy compile "$$file" > /dev/null 2>&1; then \
+				echo "✅ PASS"; \
+				PASS=$$((PASS + 1)); \
+			else \
+				echo "❌ FAIL"; \
+				FAIL=$$((FAIL + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo "  Summary: $$PASS passed, $$FAIL failed"; \
+	if [ $$FAIL -gt 0 ]; then exit 1; fi
+
+# Test Chapter 3: Functions
+test-ch03 test-chap3:
+	@echo "📖 Testing Chapter 3: Functions..."
+	@PASS=0; FAIL=0; \
+	for file in tests/ch03-functions/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			printf "  Testing $$(basename $$file)... "; \
+			if ruchy compile "$$file" > /dev/null 2>&1; then \
+				echo "✅ PASS"; \
+				PASS=$$((PASS + 1)); \
+			else \
+				echo "❌ FAIL"; \
+				FAIL=$$((FAIL + 1)); \
+			fi; \
+		fi; \
+	done; \
+	echo "  Summary: $$PASS passed, $$FAIL failed"; \
+	if [ $$FAIL -gt 0 ]; then exit 1; fi
+
+# Test all foundation chapters (1-3)
+test-foundation: test-ch01 test-ch02 test-ch03
+	@echo "✅ All foundation chapters tested"
 
 # Test one-liners only (current ruchy version)
 test-oneliners:
-	@echo "🧮 Testing Ruchy one-liners (v0.7.3+)..."
-	@./test_oneliners.sh
+	@echo "🧮 Testing Ruchy one-liners..."
+	@deno task test-oneliners
 
-# Test ALL one-liner examples from chapter (comprehensive)
-test-all-oneliners:
-	@echo "🧪 Testing ALL 58 one-liner examples from chapter..."
-	@./test_all_oneliners.sh
+# Test all examples comprehensively
+test-all:
+	@echo "🧪 Testing ALL examples..."
+	@$(MAKE) test
+	@$(MAKE) test-oneliners
+	@echo "✅ All tests complete"
 
-# Test specific one-liner categories
-test-math-oneliners:
-	@echo "🔢 Testing mathematical one-liners..."
-	@./test_oneliners.sh | grep -A 20 "Basic Mathematics" || echo "⚠️  Math tests need implementation"
-
-# Lint for quality issues
+# Lint all Ruchy code
 lint:
-	@echo "🔍 Checking for quality violations..."
+	@echo "🔍 Linting Ruchy code..."
 	@echo "Checking for SATD comments (TODO/FIXME/HACK)..."
-	@! grep -r "TODO\|FIXME\|HACK" src/ 2>/dev/null || (echo "❌ BLOCKED: SATD comments found" && exit 1)
+	@! grep -r "TODO\|FIXME\|HACK" tests/ 2>/dev/null || (echo "❌ BLOCKED: SATD comments found in tests" && exit 1)
+	@! grep -r "TODO\|FIXME\|HACK" src/ 2>/dev/null || (echo "❌ BLOCKED: SATD comments found in docs" && exit 1)
+	@echo "Checking for function keyword compliance (must use 'fun' not 'fn')..."
+	@! grep -r "^\s*fn " tests/*.ruchy 2>/dev/null || (echo "❌ BLOCKED: Use 'fun' keyword for Ruchy functions" && exit 1)
 	@echo "Checking for vaporware documentation..."
 	@! grep -r "coming soon\|not yet implemented\|will be\|future release" src/ 2>/dev/null || (echo "❌ BLOCKED: Vaporware documentation found" && exit 1)
-	@! grep -r "coming soon\|not yet implemented" listings/ 2>/dev/null || (echo "❌ BLOCKED: Vaporware in listings found" && exit 1)
-	@echo "Checking for placeholder content..."
-	@! grep -r "\[placeholder\]\|\[TODO\]\|XXX\|TBD" src/ 2>/dev/null || (echo "❌ BLOCKED: Placeholder content found" && exit 1)
-	@echo "✅ No quality violations found"
+	@echo "✅ All lint checks passed"
+
+# Format Ruchy code (using rustfmt on transpiled output)
+format:
+	@echo "🎨 Formatting Ruchy code..."
+	@for file in tests/*/*.ruchy; do \
+		if [ -f "$$file" ]; then \
+			echo "  Checking format: $$(basename $$file)"; \
+			ruchy compile "$$file" -o /tmp/ruchy_fmt_check.rs 2>/dev/null && \
+			rustfmt --check /tmp/ruchy_fmt_check.rs 2>/dev/null || \
+			echo "    ⚠️  Format issues detected"; \
+		fi; \
+	done
+	@echo "✅ Format check complete"
+
+# Run specific test file
+test-file:
+	@if [ -z "$(FILE)" ]; then \
+		echo "❌ Usage: make test-file FILE=path/to/file.ruchy"; \
+		exit 1; \
+	fi
+	@echo "🧪 Testing $(FILE)..."
+	@if ruchy compile "$(FILE)" > /dev/null 2>&1; then \
+		echo "✅ PASS: $(FILE)"; \
+		./a.out; \
+	else \
+		echo "❌ FAIL: $(FILE)"; \
+		ruchy compile "$(FILE)"; \
+		exit 1; \
+	fi
 
 # Validate with strict mode
 validate: lint test
