@@ -252,7 +252,7 @@ app.use(|req, res, next| {
 })
 
 // Authentication middleware
-fn require_auth(req, res, next) {
+fun require_auth(req, res, next) {
     let token = req.header("Authorization")
     if !token || !validate_token(token) {
         return res.status(401).json({error: "Unauthorized"})
@@ -361,7 +361,7 @@ let server = ws::Server::new("0.0.0.0:8080")
 let rooms = {}
 let users = {}
 
-fn broadcast_to_room(room_id, message, exclude_user = null) {
+fun broadcast_to_room(room_id, message, exclude_user = null) {
     if rooms.has_key(room_id) {
         for user_id in rooms[room_id] {
             if user_id != exclude_user {
@@ -490,7 +490,7 @@ use std::async;
 
 println("=== Network Scanner ===")
 
-fn scan_port(host, port, timeout = 1000) {
+fun scan_port(host, port, timeout = 1000) {
     try {
         let socket = net::TcpStream::connect_timeout(
             host + ":" + port.to_s(), 
@@ -503,7 +503,7 @@ fn scan_port(host, port, timeout = 1000) {
     }
 }
 
-fn identify_service(port) {
+fun identify_service(port) {
     let services = {
         21: "FTP",
         22: "SSH",
@@ -526,7 +526,7 @@ fn identify_service(port) {
     return services.get(port, "Unknown")
 }
 
-fn scan_host(host, ports) {
+fun scan_host(host, ports) {
     println("\nScanning " + host + "...")
     let open_ports = []
     
@@ -609,7 +609,7 @@ let backends = [
 
 let current_backend = 0
 
-fn select_backend() {
+fun select_backend() {
     // Weighted round-robin selection
     let healthy_backends = backends.filter(|b| b.healthy)
     
@@ -622,7 +622,7 @@ fn select_backend() {
     return healthy_backends[current_backend]
 }
 
-fn health_check() {
+fun health_check() {
     for backend in backends {
         try {
             let response = http::get(backend.url + "/health")
@@ -687,7 +687,7 @@ Build custom network protocols:
 // Status: ❌ BROKEN
 // Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 // Custom protocol over TCP
-fn send_packet(socket, type, data) {
+fun send_packet(socket, type, data) {
     let packet = {
         version: 1,
         type: type,
@@ -703,7 +703,7 @@ fn send_packet(socket, type, data) {
     socket.write(json)
 }
 
-fn receive_packet(socket) {
+fun receive_packet(socket) {
     let length = socket.read_u32()
     let json = socket.read(length)
     return parse_json(json)

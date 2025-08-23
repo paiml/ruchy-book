@@ -241,7 +241,7 @@ let services = [
 
 let running_services = {}
 
-fn start_service(service) {
+fun start_service(service) {
     println("Starting " + service.name + "...")
     
     match service.name {
@@ -278,7 +278,7 @@ fn start_service(service) {
     }
 }
 
-fn stop_service(name) {
+fun stop_service(name) {
     if running_services.has_key(name) {
         println("Stopping " + name + "...")
         let proc = running_services[name]
@@ -300,7 +300,7 @@ fn stop_service(name) {
     }
 }
 
-fn service_status() {
+fun service_status() {
     println("\n=== Service Status ===")
     for service in services {
         let status = if running_services.has_key(service.name) {
@@ -364,7 +364,7 @@ let checks = {
 
 let alerts = []
 
-fn check_cpu() {
+fun check_cpu() {
     let usage = system::cpu_usage() * 100
     if usage > checks.cpu_threshold {
         alerts.push({
@@ -377,7 +377,7 @@ fn check_cpu() {
     return true
 }
 
-fn check_memory() {
+fun check_memory() {
     let mem = system::memory_info()
     let usage = (mem.used / mem.total) * 100
     if usage > checks.memory_threshold {
@@ -391,7 +391,7 @@ fn check_memory() {
     return true
 }
 
-fn check_disk() {
+fun check_disk() {
     let disks = system::disk_usage()
     for disk in disks {
         let usage = (disk.used / disk.total) * 100
@@ -407,7 +407,7 @@ fn check_disk() {
     return true
 }
 
-fn check_load() {
+fun check_load() {
     let load = system::load_average()
     let cpu_count = system::cpu_count()
     let normalized_load = load.one_minute / cpu_count
@@ -423,7 +423,7 @@ fn check_load() {
     return true
 }
 
-fn check_temperature() {
+fun check_temperature() {
     let temps = system::temperatures()
     for sensor in temps {
         if sensor.current > checks.temp_threshold {
@@ -438,7 +438,7 @@ fn check_temperature() {
     return true
 }
 
-fn run_health_checks() {
+fun run_health_checks() {
     let all_healthy = true
     
     all_healthy = check_cpu() && all_healthy
@@ -502,7 +502,7 @@ loop {
 // File: process_tree.ruchy
 // Visualize process hierarchy
 
-fn build_process_tree() {
+fun build_process_tree() {
     let processes = process::list()
     let tree = {}
     
@@ -518,7 +518,7 @@ fn build_process_tree() {
     return tree
 }
 
-fn print_tree(pid, tree, indent = "") {
+fun print_tree(pid, tree, indent = "") {
     if !tree.has_key(pid) {
         return
     }
@@ -598,7 +598,7 @@ watcher.start()
 // Status: ❌ BROKEN
 // Error: Parse error: Expected RightParen, found Colon
 // Automated system maintenance
-fn auto_cleanup() {
+fun auto_cleanup() {
     // Clean temp files older than 7 days
     let temp_dir = "/tmp"
     let cutoff_time = current_time() - days(7)

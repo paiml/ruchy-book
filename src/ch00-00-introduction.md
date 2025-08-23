@@ -10,7 +10,7 @@ Ruchy is a modern programming language that transpiles to Rust, combining ease o
 Write code that reads like Python but runs like Rust:
 
 ```text
-fn greet(name: str) -> str {
+fun greet(name: str) -> str {
     "Hello, " + name + "!"
 }
 ```

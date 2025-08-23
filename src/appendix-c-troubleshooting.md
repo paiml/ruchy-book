@@ -152,19 +152,19 @@ println(s)  // s still valid
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // ❌ Error
-fn dangle() -> &String {
+fun dangle() -> &String {
     let s = String::from("hello")
     &s  // s goes out of scope
 }
 
 // ✅ Fixed - Return owned value
-fn not_dangle() -> String {
+fun not_dangle() -> String {
     let s = String::from("hello")
     s  // Move ownership
 }
 
 // ✅ Fixed - Use static lifetime
-fn static_str() -> &'static str {
+fun static_str() -> &'static str {
     "hello"  // String literals have static lifetime
 }
 
@@ -255,12 +255,12 @@ let value = maybe_value.unwrap_or(0)
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // ❌ Runtime panic
-fn divide(a: i32, b: i32) -> i32 {
+fun divide(a: i32, b: i32) -> i32 {
     a / b  // Panic if b is 0
 }
 
 // ✅ Safe division
-fn safe_divide(a: i32, b: i32) -> Option<i32> {
+fun safe_divide(a: i32, b: i32) -> Option<i32> {
     if b != 0 {
         Some(a / b)
     } else {
@@ -269,7 +269,7 @@ fn safe_divide(a: i32, b: i32) -> Option<i32> {
 }
 
 // ✅ Or return Result
-fn divide_result(a: i32, b: i32) -> Result<i32, String> {
+fun divide_result(a: i32, b: i32) -> Result<i32, String> {
     if b != 0 {
         Ok(a / b)
     } else {
@@ -289,12 +289,12 @@ fn divide_result(a: i32, b: i32) -> Result<i32, String> {
 // Status: ✅ WORKING
 
 // ❌ Infinite recursion causes stack overflow
-fn infinite_recursion(n: i32) -> i32 {
+fun infinite_recursion(n: i32) -> i32 {
     infinite_recursion(n + 1)  // No base case
 }
 
 // ✅ Proper recursion with base case
-fn factorial(n: i32) -> i32 {
+fun factorial(n: i32) -> i32 {
     if n <= 1 {
         1  // Base case
     } else {
@@ -303,7 +303,7 @@ fn factorial(n: i32) -> i32 {
 }
 
 // ✅ Or use iteration
-fn factorial_iterative(n: i32) -> i32 {
+fun factorial_iterative(n: i32) -> i32 {
     let mut result = 1
     for i in 1..=n {
         result *= i
@@ -322,17 +322,17 @@ fn factorial_iterative(n: i32) -> i32 {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected RightBracket, found Semicolon
 // ❌ May cause stack overflow
-fn large_array() {
+fun large_array() {
     let big_array: [i32; 1_000_000] = [0; 1_000_000]  // 4MB on stack
 }
 
 // ✅ Use heap allocation
-fn large_vector() {
+fun large_vector() {
     let big_vector: Vec<i32> = vec![0; 1_000_000]  // Allocated on heap
 }
 
 // ✅ Or use Box for single large items
-fn boxed_array() {
+fun boxed_array() {
     let big_array: Box<[i32; 1_000_000]> = Box::new([0; 1_000_000])
 }
 
@@ -348,14 +348,14 @@ fn boxed_array() {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // ❌ Inefficient - unnecessary clones
-fn process_strings(strings: Vec<String>) -> Vec<String> {
+fun process_strings(strings: Vec<String>) -> Vec<String> {
     strings.iter()
         .map(|s| s.clone().to_uppercase())  // Unnecessary clone
         .collect()
 }
 
 // ✅ More efficient - work with references
-fn process_strings_efficient(strings: &[String]) -> Vec<String> {
+fun process_strings_efficient(strings: &[String]) -> Vec<String> {
     strings.iter()
         .map(|s| s.to_uppercase())  // to_uppercase() works on &str
         .collect()
@@ -371,7 +371,7 @@ fn process_strings_efficient(strings: &[String]) -> Vec<String> {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // ❌ Inefficient - creates many temporary strings
-fn concat_inefficient(strings: &[&str]) -> String {
+fun concat_inefficient(strings: &[&str]) -> String {
     let mut result = String::new()
     for s in strings {
         result = result + s  // Creates new string each time
@@ -380,7 +380,7 @@ fn concat_inefficient(strings: &[&str]) -> String {
 }
 
 // ✅ Efficient - reuses buffer
-fn concat_efficient(strings: &[&str]) -> String {
+fun concat_efficient(strings: &[&str]) -> String {
     let mut result = String::new()
     for s in strings {
         result.push_str(s)  // Appends to existing string
@@ -389,7 +389,7 @@ fn concat_efficient(strings: &[&str]) -> String {
 }
 
 // ✅ Even better - pre-allocate capacity
-fn concat_with_capacity(strings: &[&str]) -> String {
+fun concat_with_capacity(strings: &[&str]) -> String {
     let total_len: usize = strings.iter().map(|s| s.len()).sum()
     let mut result = String::with_capacity(total_len)
     for s in strings {
@@ -607,7 +607,7 @@ rust-gdb target/debug/my_program
 
 use log::{debug, info, warn, error}
 
-fn main() {
+fun main() {
     env_logger::init()
     
     debug!("This is a debug message")

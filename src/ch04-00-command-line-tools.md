@@ -302,7 +302,7 @@ Real tools need proper error handling:
 
 // Robust file processor with error handling
 
-fn process_file(filename) {
+fun process_file(filename) {
     // Check if file exists
     if !file_exists(filename) {
         println("❌ Error: File '" + filename + "' does not exist")
@@ -353,7 +353,7 @@ Make your tools user-friendly:
 
 // Good CLI tool practices
 
-fn show_help() {
+fun show_help() {
     println("File Statistics Tool v1.0")
     println("")
     println("Usage:")
@@ -368,7 +368,7 @@ fn show_help() {
     println("  --verbose  Show detailed output")
 }
 
-fn process_with_progress(files) {
+fun process_with_progress(files) {
     let total = files.len()
     let mut i = 0
     
@@ -508,7 +508,7 @@ $ ruchy repl
 
 let TASK_FILE = "tasks.txt"
 
-fn show_menu() {
+fun show_menu() {
     println("\n=== Task Manager ===")
     println("1. List tasks")
     println("2. Add task")
@@ -517,19 +517,19 @@ fn show_menu() {
     println("5. Quit")
 }
 
-fn load_tasks() {
+fun load_tasks() {
     if file_exists(TASK_FILE) {
         return read_lines(TASK_FILE)
     }
     return []
 }
 
-fn save_tasks(tasks) {
+fun save_tasks(tasks) {
     let content = tasks.join("\n")
     write_file(TASK_FILE, content)
 }
 
-fn list_tasks(tasks) {
+fun list_tasks(tasks) {
     if tasks.is_empty() {
         println("\n📝 No tasks yet!")
         return
@@ -545,14 +545,14 @@ fn list_tasks(tasks) {
     }
 }
 
-fn add_task(tasks) {
+fun add_task(tasks) {
     let new_task = input("\nWhat do you want to add? ")
     tasks.push("📌 " + new_task)
     save_tasks(tasks)
     println("✅ Task added!")
 }
 
-fn complete_task(tasks) {
+fun complete_task(tasks) {
     list_tasks(tasks)
     let index = input("\nWhich task to complete? (number): ").to_i() - 1
     

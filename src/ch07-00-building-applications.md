@@ -39,7 +39,7 @@ let NOTES_DIR = expand_home("~/.notes")
 let NOTES_INDEX = join_path(NOTES_DIR, "index.json")
 
 // Initialize application
-fn init_app() {
+fun init_app() {
     if !dir_exists(NOTES_DIR) {
         create_dir_all(NOTES_DIR)
         println("Created notes directory: " + NOTES_DIR)
@@ -56,18 +56,18 @@ fn init_app() {
     }
 }
 
-fn load_index() {
+fun load_index() {
     let content = read_file(NOTES_INDEX)
     return parse_json(content)
 }
 
-fn save_index(index) {
+fun save_index(index) {
     index.last_modified = current_datetime()
     let json = to_json_pretty(index)
     write_file(NOTES_INDEX, json)
 }
 
-fn create_note() {
+fun create_note() {
     println("\n📝 Create New Note")
     let title = input("Title: ")
     let content = input_multiline("Content (end with empty line):\n")
@@ -99,7 +99,7 @@ fn create_note() {
     println("✅ Note created: " + title)
 }
 
-fn list_notes(filter_tag = null) {
+fun list_notes(filter_tag = null) {
     let index = load_index()
     let notes = index.notes
     
@@ -122,7 +122,7 @@ fn list_notes(filter_tag = null) {
     }
 }
 
-fn search_notes(query) {
+fun search_notes(query) {
     let index = load_index()
     let results = []
     
@@ -157,7 +157,7 @@ fn search_notes(query) {
     }
 }
 
-fn view_note(index_num) {
+fun view_note(index_num) {
     let index = load_index()
     
     if index_num < 1 || index_num > index.notes.len() {
@@ -173,7 +173,7 @@ fn view_note(index_num) {
     println("="*50)
 }
 
-fn export_notes(format) {
+fun export_notes(format) {
     let index = load_index()
     let export_file = "notes_export_" + current_date() + "." + format
     
@@ -222,7 +222,7 @@ Exported: {current_datetime()}
     println("✅ Exported " + index.notes.len().to_s() + " notes to " + export_file)
 }
 
-fn show_menu() {
+fun show_menu() {
     println(f"\n=== {APP_NAME} v{VERSION} ===")
     println("1. Create note")
     println("2. List all notes")
@@ -234,7 +234,7 @@ fn show_menu() {
     println("8. Quit")
 }
 
-fn show_statistics() {
+fun show_statistics() {
     let index = load_index()
     let total_notes = index.notes.len()
     let total_tags = index.tags.len()
@@ -270,7 +270,7 @@ fn show_statistics() {
 }
 
 // Main application loop
-fn main() {
+fun main() {
     init_app()
     
     println(f"Welcome to {APP_NAME}!")
@@ -353,7 +353,7 @@ let User = {
 }
 
 // services.ruchy - Business logic
-fn create_user(name, email) {
+fun create_user(name, email) {
     let user = User.copy()
     user.id = generate_uuid()
     user.name = name
@@ -363,13 +363,13 @@ fn create_user(name, email) {
 }
 
 // ui.ruchy - User interface
-fn display_user(user) {
+fun display_user(user) {
     println(f"User: {user.name} ({user.email})")
     println("Member since: " + user.created)
 }
 
 // main.ruchy - Application entry point
-fn main() {
+fun main() {
     init_app()
     load_config()
     run_event_loop()
@@ -398,13 +398,13 @@ let STATE = {
     "dirty": false
 }
 
-fn update_state(key, value) {
+fun update_state(key, value) {
     STATE[key] = value
     STATE.dirty = true
     trigger_save()
 }
 
-fn save_state() {
+fun save_state() {
     if STATE.dirty {
         let state_file = join_path(APP.data_dir, "state.json")
         write_file(state_file, to_json(STATE))
@@ -412,7 +412,7 @@ fn save_state() {
     }
 }
 
-fn load_state() {
+fun load_state() {
     let state_file = join_path(APP.data_dir, "state.json")
     if file_exists(state_file) {
         STATE = parse_json(read_file(state_file))
@@ -432,7 +432,7 @@ Build resilient applications:
 ```ruchy
 // Status: ✅ WORKING
 
-fn safe_operation(operation_fn, fallback_value) {
+fun safe_operation(operation_fn, fallback_value) {
     try {
         return operation_fn()
     } catch error {
@@ -441,7 +441,7 @@ fn safe_operation(operation_fn, fallback_value) {
     }
 }
 
-fn with_retry(operation_fn, max_attempts = 3) {
+fun with_retry(operation_fn, max_attempts = 3) {
     for attempt in range(max_attempts) {
         try {
             return operation_fn()
@@ -475,7 +475,7 @@ fn with_retry(operation_fn, max_attempts = 3) {
 let MASTER_KEY = null
 let PASSWORDS_FILE = "~/.passwords.enc"
 
-fn encrypt(text, key) {
+fun encrypt(text, key) {
     // Simple XOR encryption (use real encryption in production!)
     let encrypted = []
     for i, char in text.chars().enumerate() {
@@ -485,7 +485,7 @@ fn encrypt(text, key) {
     return base64_encode(encrypted)
 }
 
-fn decrypt(encrypted, key) {
+fun decrypt(encrypted, key) {
     let bytes = base64_decode(encrypted)
     let decrypted = []
     for i, byte in bytes.enumerate() {
@@ -495,7 +495,7 @@ fn decrypt(encrypted, key) {
     return decrypted.join("")
 }
 
-fn add_password(site, username, password) {
+fun add_password(site, username, password) {
     let passwords = load_passwords()
     passwords[site] = {
         "username": username,
@@ -505,7 +505,7 @@ fn add_password(site, username, password) {
     save_passwords(passwords)
 }
 
-fn get_password(site) {
+fun get_password(site) {
     let passwords = load_passwords()
     if passwords.has_key(site) {
         let entry = passwords[site]
@@ -534,7 +534,7 @@ fn get_password(site) {
 let TRANSACTIONS_FILE = "~/.budget/transactions.csv"
 let CATEGORIES = ["Food", "Transport", "Bills", "Entertainment", "Other"]
 
-fn add_transaction(amount, category, description) {
+fun add_transaction(amount, category, description) {
     let transaction = {
         "date": current_date(),
         "amount": amount,
@@ -554,7 +554,7 @@ fn add_transaction(amount, category, description) {
     }
 }
 
-fn generate_report(month) {
+fun generate_report(month) {
     let transactions = load_transactions(month)
     let by_category = group_by(transactions, "category")
     
@@ -605,7 +605,7 @@ let TEMPLATES = {
     }
 }
 
-fn create_project(name, language) {
+fun create_project(name, language) {
     let project_dir = name
     
     if dir_exists(project_dir) {
@@ -661,7 +661,7 @@ Build confidence with testing:
 
 // test_app.ruchy - Application test suite
 
-fn test_user_creation() {
+fun test_user_creation() {
     let user = create_user("Alice", "alice@example.com")
     
     assert(user.name == "Alice", "Name should be set")
@@ -671,7 +671,7 @@ fn test_user_creation() {
     println("✅ test_user_creation passed")
 }
 
-fn test_data_persistence() {
+fun test_data_persistence() {
     let test_data = {"test": "value"}
     let test_file = "test_data.json"
     
@@ -689,7 +689,7 @@ fn test_data_persistence() {
     println("✅ test_data_persistence passed")
 }
 
-fn run_all_tests() {
+fun run_all_tests() {
     println("🧪 Running application tests...")
     
     test_user_creation()
@@ -715,7 +715,7 @@ Package and distribute your application:
 
 // build.ruchy - Build and package script
 
-fn build_release() {
+fun build_release() {
     println("🔨 Building release version...")
     
     // Run tests first

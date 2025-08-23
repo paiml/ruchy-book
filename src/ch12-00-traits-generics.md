@@ -37,12 +37,12 @@ trait Serializable {
 }
 
 // Generic function works with any Serializable type
-fn save_to_file<T: Serializable>(item: T, path: String) {
+fun save_to_file<T: Serializable>(item: T, path: String) {
     let serialized = item.serialize()
     write_file(path, serialized)
 }
 
-fn load_from_file<T: Serializable>(path: String) -> T {
+fun load_from_file<T: Serializable>(path: String) -> T {
     let content = read_file(path)
     return T::deserialize(content)
 }
@@ -191,33 +191,33 @@ Write once, use with any type:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Simple generic function
-fn swap<T>(a: mut T, b: mut T) {
+fun swap<T>(a: mut T, b: mut T) {
     let temp = a
     a = b
     b = temp
 }
 
 // Multiple type parameters
-fn pair<K, V>(key: K, value: V) -> (K, V) {
+fun pair<K, V>(key: K, value: V) -> (K, V) {
     return (key, value)
 }
 
 // Trait bounds
-fn print_all<T: Display>(items: Vec<T>) {
+fun print_all<T: Display>(items: Vec<T>) {
     for item in items {
         println(item)  // Works because T implements Display
     }
 }
 
 // Multiple bounds
-fn process<T: Clone + Debug + Send>(item: T) {
+fun process<T: Clone + Debug + Send>(item: T) {
     let copy = item.clone()
     debug(copy)
     send_to_thread(item)
 }
 
 // Where clauses for complex bounds
-fn complex_function<T, U>(x: T, y: U) -> Vec<T>
+fun complex_function<T, U>(x: T, y: U) -> Vec<T>
 where
     T: Clone + From<U>,
     U: Display + Into<String>
@@ -502,7 +502,7 @@ let post_id: Id<Post> = Id::new("post_456")
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
 // Generics are monomorphized - no runtime cost
-fn generic_add<T: Add>(a: T, b: T) -> T {
+fun generic_add<T: Add>(a: T, b: T) -> T {
     return a + b  // Compiles to specific add instruction
 }
 
@@ -511,7 +511,7 @@ let int_result = generic_add(5, 10)      // Generates add_i32
 let float_result = generic_add(5.0, 10.0) // Generates add_f64
 
 // Trait bounds are checked at compile time
-fn process<T: Send + Sync>(item: T) {
+fun process<T: Send + Sync>(item: T) {
     // Can safely send to another thread
     spawn(|| {
         use_item(item)
@@ -520,7 +520,7 @@ fn process<T: Send + Sync>(item: T) {
 
 // Inline hints for performance
 #[inline]
-fn hot_path<T: Copy>(x: T) -> T {
+fun hot_path<T: Copy>(x: T) -> T {
     return x  // Will be inlined
 }
 
@@ -535,12 +535,12 @@ fn hot_path<T: Copy>(x: T) -> T {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
 // Static dispatch (faster)
-fn static_dispatch<T: Display>(item: T) {
+fun static_dispatch<T: Display>(item: T) {
     println(item)  // Direct call, no indirection
 }
 
 // Dynamic dispatch (flexible)
-fn dynamic_dispatch(item: Box<dyn Display>) {
+fun dynamic_dispatch(item: Box<dyn Display>) {
     println(item)  // Virtual call through vtable
 }
 

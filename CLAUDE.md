@@ -70,6 +70,20 @@ echo "✅ All quality gates passed"
 
 6. **Zero Cruft Tolerance**: No temporary files, no debug artifacts. Clean workspace always.
 
+7. **ALWAYS Use 'fun' for Ruchy Functions**: Use `fun` keyword for all Ruchy function definitions. Only use `fn` in Rust code examples:
+   ```ruchy
+   // ✅ Correct - Ruchy functions use 'fun'
+   fun calculate(x, y) {
+       x + y
+   }
+   ```
+   ```rust  
+   // ✅ Correct - Rust examples use 'fn'
+   fn main() {
+       println!("Hello, World!");
+   }
+   ```
+
 ## Repository Structure
 
 ```

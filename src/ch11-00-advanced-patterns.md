@@ -64,7 +64,7 @@ class EventBus {
 let events = EventBus::singleton()
 
 // Decorator pattern for logging
-fn with_logging(handler) {
+fun with_logging(handler) {
     return |data| {
         println("[" + current_datetime() + "] Event triggered: " + data)
         let result = handler(data)
@@ -243,7 +243,7 @@ class MiddlewareChain {
 }
 
 // Define middleware
-fn auth_middleware(req, res, next) {
+fun auth_middleware(req, res, next) {
     let token = req.header("Authorization")
     if !token {
         return res.status(401).json({error: "Unauthorized"})
@@ -253,7 +253,7 @@ fn auth_middleware(req, res, next) {
     next()
 }
 
-fn rate_limit_middleware(req, res, next) {
+fun rate_limit_middleware(req, res, next) {
     let key = req.ip
     if rate_limiter.exceeded(key) {
         return res.status(429).json({error: "Too many requests"})
@@ -263,7 +263,7 @@ fn rate_limit_middleware(req, res, next) {
     next()
 }
 
-fn cache_middleware(req, res, next) {
+fun cache_middleware(req, res, next) {
     let cache_key = req.url
     if cache.has(cache_key) {
         return res.send(cache.get(cache_key))
@@ -303,7 +303,7 @@ Build complex behavior from simple functions:
 // Status: ❌ BROKEN
 // Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 // Function composition
-fn compose(...functions) {
+fun compose(...functions) {
     return |x| {
         let result = x
         for f in functions.reverse() {
@@ -314,7 +314,7 @@ fn compose(...functions) {
 }
 
 // Pipeline operator
-fn pipeline(value, ...functions) {
+fun pipeline(value, ...functions) {
     let result = value
     for f in functions {
         result = f(result)
@@ -395,7 +395,7 @@ class Result {
 }
 
 // Chain operations safely
-fn process_user(id) {
+fun process_user(id) {
     return fetch_user(id)
         .map(|user| validate_user(user))
         .flat_map(|user| enrich_user_data(user))
@@ -617,7 +617,7 @@ class PaymentReceived {
 }
 
 // Event handlers update projections
-fn handle_order_placed(event) {
+fun handle_order_placed(event) {
     projections.orders[event.order_id] = {
         status: "pending",
         customer: event.customer_id,
@@ -832,7 +832,7 @@ class CircuitBreaker {
 // Use circuit breaker for external service
 let api_breaker = CircuitBreaker::new()
 
-fn call_external_api(data) {
+fun call_external_api(data) {
     return api_breaker.call(|| {
         http::post("https://api.external.com/endpoint")
             .json(data)
