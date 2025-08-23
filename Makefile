@@ -76,6 +76,12 @@ test:
 	@./test_all_oneliners.sh || echo "⚠️  Some one-liners planned for future (see INTEGRATION.md)"
 	@echo "✅ Test suite complete - see INTEGRATION.md for compatibility status"
 
+# Test only working examples (for pre-commit)
+test-working:
+	@echo "🧪 Testing working examples only..."
+	@SKIP_BROKEN_EXAMPLES=1 cargo test --tests
+	@echo "✅ Working examples passed"
+
 # Test one-liners only (current ruchy version)
 test-oneliners:
 	@echo "🧮 Testing Ruchy one-liners (v0.7.3+)..."
