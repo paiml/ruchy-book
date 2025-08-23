@@ -1,7 +1,3 @@
-=== ch10-00-performance-optimization example 2 ===
-Parse error: Unexpected token: ColonColon
-
-
 === ch10-00-performance-optimization example 4 ===
 Parse error: Unexpected token: ColonColon
 
@@ -15,11 +11,11 @@ Parse error: Unexpected token: ColonColon
 
 
 === ch10-00-performance-optimization example 9 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Expected method name or 'await' after '.'
 
 
 === ch10-00-performance-optimization example 10 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Expected RightParen, found Colon
 
 
 === ch10-00-performance-optimization example 11 ===
@@ -31,7 +27,7 @@ Parse error: Expected type
 
 
 === ch19-00-real-world-projects example 2 ===
-Parse error: Expected RightBrace, found ColonColon
+Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
 
 
 === ch19-00-real-world-projects example 3 ===
@@ -323,11 +319,7 @@ Parse error: Expected '(' or '[' after macro name
 
 
 === ch09-00-network-programming example 1 ===
-Parse error: Unexpected token: ColonColon
-
-
-=== ch09-00-network-programming example 2 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Expected method name or 'await' after '.'
 
 
 === ch09-00-network-programming example 3 ===
@@ -335,15 +327,15 @@ Parse error: Expected method name or 'await' after '.'
 
 
 === ch09-00-network-programming example 4 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Unexpected token: Type
 
 
 === ch09-00-network-programming example 5 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Expected method name or 'await' after '.'
 
 
 === ch09-00-network-programming example 6 ===
-Parse error: Unexpected token: ColonColon
+Parse error: Expected method name or 'await' after '.'
 
 
 === ch09-00-network-programming example 7 ===
@@ -356,10 +348,6 @@ Parse error: Expected method name or 'await' after '.'
 
 === ch09-00-network-programming example 9 ===
 Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
-
-
-=== ch09-00-network-programming example 10 ===
-Parse error: Unexpected token: ColonColon
 
 
 === ch08-00-systems-programming example 3 ===

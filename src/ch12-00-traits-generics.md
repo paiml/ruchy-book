@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -32,8 +32,8 @@ Here's the power of traits and generics:
 // Error: Parse error: Expected Greater, found Colon
 // Define behavior with traits
 trait Serializable {
-    fn serialize(self) -> String
-    fn deserialize(String) -> Self
+    fun serialize(self) -> String
+    fun deserialize(String) -> Self
 }
 
 // Generic function works with any Serializable type
@@ -55,11 +55,11 @@ struct User {
 }
 
 impl Serializable for User {
-    fn serialize(self) -> String {
+    fun serialize(self) -> String {
         return to_json(self)
     }
     
-    fn deserialize(data: String) -> User {
+    fun deserialize(data: String) -> User {
         return parse_json(data)
     }
 }
@@ -87,25 +87,25 @@ Traits define shared behavior:
 // Error: Parse error: Expected 'fun' or 'fn' keyword
 // Simple trait
 trait Drawable {
-    fn draw(self)
+    fun draw(self)
 }
 
 // Trait with multiple methods
 trait Container {
-    fn len(self) -> i32
-    fn is_empty(self) -> bool {
+    fun len(self) -> i32
+    fun is_empty(self) -> bool {
         return self.len() == 0  // Default implementation
     }
-    fn clear(mut self)
+    fun clear(mut self)
 }
 
 // Traits with associated types
 trait Iterator {
     type Item
     
-    fn next(mut self) -> Option<Item>
+    fun next(mut self) -> Option<Item>
     
-    fn collect(mut self) -> Vec<Item> {
+    fun collect(mut self) -> Vec<Item> {
         let result = Vec::new()
         while let Some(item) = self.next() {
             result.push(item)
@@ -116,16 +116,16 @@ trait Iterator {
 
 // Traits with constraints
 trait Comparable: Eq {
-    fn compare(self, other: Self) -> Ordering
+    fun compare(self, other: Self) -> Ordering
 }
 
 // Trait inheritance
 trait Animal {
-    fn speak(self)
+    fun speak(self)
 }
 
 trait Dog: Animal {
-    fn wag_tail(self)
+    fun wag_tail(self)
 }
 
 
@@ -146,7 +146,7 @@ struct Point {
 }
 
 impl Drawable for Point {
-    fn draw(self) {
+    fun draw(self) {
         println("Point at (" + self.x.to_s() + ", " + self.y.to_s() + ")")
     }
 }
@@ -157,7 +157,7 @@ struct Circle {
 }
 
 impl Drawable for Circle {
-    fn draw(self) {
+    fun draw(self) {
         println("Circle at (" + self.center.x.to_s() + ", " + self.center.y.to_s() + ") with radius " + self.radius.to_s())
     }
 }
@@ -171,7 +171,7 @@ c.draw()  // Same interface, different implementation
 
 // Implement traits for existing types
 impl Drawable for String {
-    fn draw(self) {
+    fun draw(self) {
         println("Text: " + self)
     }
 }
@@ -245,11 +245,11 @@ struct Pair<T> {
 }
 
 impl<T> Pair<T> {
-    fn new(first: T, second: T) -> Pair<T> {
+    fun new(first: T, second: T) -> Pair<T> {
         return Pair{first, second}
     }
     
-    fn swap(mut self) {
+    fun swap(mut self) {
         let temp = self.first
         self.first = self.second
         self.second = temp
@@ -273,7 +273,7 @@ struct SortedVec<T: Ord> {
 }
 
 impl<T: Ord> SortedVec<T> {
-    fn insert(mut self, item: T) {
+    fun insert(mut self, item: T) {
         let pos = self.items.binary_search(item)
         self.items.insert(pos, item)
     }
@@ -299,7 +299,7 @@ struct Cache<K: Hash + Eq, V> {
 }
 
 impl<K: Hash + Eq + Clone, V: Clone> Cache<K, V> {
-    fn new(max_size: usize) -> Cache<K, V> {
+    fun new(max_size: usize) -> Cache<K, V> {
         return Cache{
             map: HashMap::new(),
             max_size,
@@ -307,7 +307,7 @@ impl<K: Hash + Eq + Clone, V: Clone> Cache<K, V> {
         }
     }
     
-    fn get(mut self, key: K) -> Option<V> {
+    fun get(mut self, key: K) -> Option<V> {
         if let Some(value) = self.map.get(key) {
             // Update access order
             self.access_order.retain(|k| k != key)
@@ -317,7 +317,7 @@ impl<K: Hash + Eq + Clone, V: Clone> Cache<K, V> {
         return None
     }
     
-    fn put(mut self, key: K, value: V) {
+    fun put(mut self, key: K, value: V) {
         if self.map.len() >= self.max_size && !self.map.contains_key(key) {
             // Evict least recently used
             let lru = self.access_order.remove(0)
@@ -350,8 +350,8 @@ Dynamic dispatch when needed:
 // Error: Parse error: Expected type
 // Trait for plugins
 trait Plugin {
-    fn name(self) -> String
-    fn execute(self, context: Context) -> Result<(), Error>
+    fun name(self) -> String
+    fun execute(self, context: Context) -> Result<(), Error>
 }
 
 struct LogPlugin {
@@ -359,11 +359,11 @@ struct LogPlugin {
 }
 
 impl Plugin for LogPlugin {
-    fn name(self) -> String {
+    fun name(self) -> String {
         return "Logger"
     }
     
-    fn execute(self, context: Context) -> Result<(), Error> {
+    fun execute(self, context: Context) -> Result<(), Error> {
         log(self.level, context.message)
         return Ok(())
     }
@@ -397,18 +397,18 @@ struct Builder<T> {
 }
 
 impl<T> Builder<T> {
-    fn new(initial: T) -> Builder<T> {
+    fun new(initial: T) -> Builder<T> {
         return Builder{value: initial}
     }
     
-    fn with<F>(mut self, f: F) -> Builder<T>
+    fun with<F>(mut self, f: F) -> Builder<T>
     where F: FnOnce(mut T) -> T
     {
         self.value = f(self.value)
         return self
     }
     
-    fn build(self) -> T {
+    fun build(self) -> T {
         return self.value
     }
 }
@@ -440,9 +440,9 @@ trait Graph {
     type Node
     type Edge
     
-    fn nodes(self) -> Vec<Node>
-    fn edges(self) -> Vec<Edge>
-    fn neighbors(self, node: Node) -> Vec<Node>
+    fun nodes(self) -> Vec<Node>
+    fun edges(self) -> Vec<Edge>
+    fun neighbors(self, node: Node) -> Vec<Node>
 }
 
 struct SocialNetwork {
@@ -454,15 +454,15 @@ impl Graph for SocialNetwork {
     type Node = User
     type Edge = Friendship
     
-    fn nodes(self) -> Vec<User> {
+    fun nodes(self) -> Vec<User> {
         return self.users
     }
     
-    fn edges(self) -> Vec<Friendship> {
+    fun edges(self) -> Vec<Friendship> {
         return self.connections
     }
     
-    fn neighbors(self, user: User) -> Vec<User> {
+    fun neighbors(self, user: User) -> Vec<User> {
         self.connections
             .filter(|f| f.from == user.id || f.to == user.id)
             .map(|f| self.get_user(f.other_id(user.id)))
@@ -477,7 +477,7 @@ struct Id<T> {
 }
 
 impl<T> Id<T> {
-    fn new(value: String) -> Id<T> {
+    fun new(value: String) -> Id<T> {
         return Id{value, _phantom: PhantomData}
     }
 }
@@ -561,12 +561,12 @@ Time to experiment with traits and generics:
 $ ruchy repl
 >>> # Define a trait
 >>> trait Greetable {
->>>     fn greet(self) -> String
+>>>     fun greet(self) -> String
 >>> }
 >>> 
 >>> # Implement for types
 >>> impl Greetable for String {
->>>     fn greet(self) -> String {
+>>>     fun greet(self) -> String {
 >>>         return "Hello, " + self + "!"
 >>>     }
 >>> }
@@ -575,7 +575,7 @@ $ ruchy repl
 "Hello, World!"
 >>> 
 >>> # Generic function
->>> fn duplicate<T: Clone>(x: T) -> (T, T) {
+>>> fun duplicate<T: Clone>(x: T) -> (T, T) {
 >>>     return (x.clone(), x.clone())
 >>> }
 >>> 

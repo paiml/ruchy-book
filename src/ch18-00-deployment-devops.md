@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -489,7 +489,7 @@ gauge!("active_connections", connections.len() as f64)
 
 // Prometheus endpoint
 #[get("/metrics")]
-async fn metrics_endpoint() -> String {
+async fun metrics_endpoint() -> String {
     prometheus::gather()
 }
 
@@ -533,7 +533,7 @@ use tracing::{info, warn, error, debug, span, Level};
 
 // Structured logging
 #[instrument]
-async fn process_request(req: Request) -> Result<Response, Error> {
+async fun process_request(req: Request) -> Result<Response, Error> {
     let span = span!(Level::INFO, "request", 
         method = %req.method(),
         path = %req.path(),
@@ -592,7 +592,7 @@ let tracer = global::tracer("my-app")
 
 // Trace requests
 #[instrument(skip(db))]
-async fn handle_request(req: Request, db: &Database) -> Result<Response> {
+async fun handle_request(req: Request, db: &Database) -> Result<Response> {
     let span = tracer.start("handle_request")
     
     // Trace database query

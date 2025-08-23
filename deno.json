@@ -20,7 +20,7 @@
   "tasks": {
     "test": "deno run --allow-read --allow-write --allow-run scripts/test-all-examples.ts",
     "test-oneliners": "deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts",
-    "extract-examples": "deno run --allow-read --allow-write scripts/extract-examples.ts",
+    "extract-examples": "deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts",
     "validate-docs": "deno run --allow-read scripts/validate-docs-status.ts",
     "lint-markdown": "deno run --allow-read --allow-write --allow-run scripts/lint-markdown.ts",
     "update-status": "deno run --allow-read --allow-write --allow-run scripts/update-docs-status.ts",

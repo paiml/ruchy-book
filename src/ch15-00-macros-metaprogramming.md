@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -173,7 +173,7 @@ fun derive_builder(input: TokenStream) -> TokenStream {
         }
         
         impl $builder_name {
-            fn new() -> Self {
+            fun new() -> Self {
                 Self {
                     $($fields.name: None),*
                 }
@@ -181,7 +181,7 @@ fun derive_builder(input: TokenStream) -> TokenStream {
             
             $fields
             
-            fn build(self) -> Result<$name, String> {
+            fun build(self) -> Result<$name, String> {
                 Ok($name {
                     $($fields.name: self.$fields.name
                         .ok_or("Missing field: " + stringify!($fields.name))?,)*
@@ -190,7 +190,7 @@ fun derive_builder(input: TokenStream) -> TokenStream {
         }
         
         impl $name {
-            fn builder() -> $builder_name {
+            fun builder() -> $builder_name {
                 $builder_name::new()
             }
         }
@@ -250,7 +250,7 @@ fun expensive_operation() {
 
 // Route attribute for web framework
 #[route(GET, "/users/:id")]
-async fn get_user(id: i32) -> Response {
+async fun get_user(id: i32) -> Response {
     let user = fetch_user(id).await?
     Response::json(user)
 }
@@ -419,14 +419,14 @@ macro! define_opcodes {
         }
         
         impl Opcode {
-            fn from_byte(byte: u8) -> Option<Opcode> {
+            fun from_byte(byte: u8) -> Option<Opcode> {
                 match byte {
                     $($value => Some(Opcode::$name)),*
                     _ => None
                 }
             }
             
-            fn to_string(&self) -> &str {
+            fun to_string(&self) -> &str {
                 match self {
                     $(Opcode::$name => stringify!($name)),*
                 }
@@ -476,11 +476,11 @@ macro! state_machine {
         }
         
         impl StateMachine {
-            fn new() -> Self {
+            fun new() -> Self {
                 Self { state: State::$initial }
             }
             
-            fn transition(&mut self, event: Event) {
+            fun transition(&mut self, event: Event) {
                 self.state = match (&self.state, event) {
                     $(
                         (State::$from, Event::$event) => State::$to,

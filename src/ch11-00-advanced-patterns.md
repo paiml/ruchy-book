@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -39,7 +39,7 @@ use std::patterns;
 class EventBus {
     let subscribers = {}
     
-    fn on(event, handler) {
+    fun on(event, handler) {
         if !subscribers.has_key(event) {
             subscribers[event] = []
         }
@@ -51,7 +51,7 @@ class EventBus {
         }
     }
     
-    fn emit(event, data) {
+    fun emit(event, data) {
         if subscribers.has_key(event) {
             for handler in subscribers[event] {
                 spawn { handler(data) }  // Async pattern
@@ -108,32 +108,32 @@ class ServerBuilder {
         routes: {}
     }
     
-    fn port(p) {
+    fun port(p) {
         config.port = p
         return self  // Enable chaining
     }
     
-    fn host(h) {
+    fun host(h) {
         config.host = h
         return self
     }
     
-    fn threads(t) {
+    fun threads(t) {
         config.threads = t
         return self
     }
     
-    fn use(middleware) {
+    fun use(middleware) {
         config.middleware.push(middleware)
         return self
     }
     
-    fn route(path, handler) {
+    fun route(path, handler) {
         config.routes[path] = handler
         return self
     }
     
-    fn build() {
+    fun build() {
         validate_config()
         return Server::new(config)
     }
@@ -167,29 +167,29 @@ Swap algorithms at runtime:
 class CompressionContext {
     let strategy
     
-    fn set_strategy(s) {
+    fun set_strategy(s) {
         strategy = s
     }
     
-    fn compress(data) {
+    fun compress(data) {
         return strategy.compress(data)
     }
 }
 
 class GzipStrategy {
-    fn compress(data) {
+    fun compress(data) {
         return gzip::compress(data, level: 6)
     }
 }
 
 class BrotliStrategy {
-    fn compress(data) {
+    fun compress(data) {
         return brotli::compress(data, quality: 4)
     }
 }
 
 class NoCompressionStrategy {
-    fn compress(data) {
+    fun compress(data) {
         return data
     }
 }
@@ -223,14 +223,14 @@ Process requests through a chain of handlers:
 class MiddlewareChain {
     let middlewares = []
     
-    fn use(middleware) {
+    fun use(middleware) {
         middlewares.push(middleware)
     }
     
-    fn execute(request, response) {
+    fun execute(request, response) {
         let index = 0
         
-        fn next() {
+        fun next() {
             if index < middlewares.len() {
                 let middleware = middlewares[index]
                 index += 1
@@ -360,33 +360,33 @@ class Result {
     let value
     let error
     
-    static fn ok(val) {
+    static fun ok(val) {
         return Result{value: val, error: null}
     }
     
-    static fn err(e) {
+    static fun err(e) {
         return Result{value: null, error: e}
     }
     
-    fn is_ok() {
+    fun is_ok() {
         return error == null
     }
     
-    fn map(f) {
+    fun map(f) {
         if is_ok() {
             return Result::ok(f(value))
         }
         return self
     }
     
-    fn flat_map(f) {
+    fun flat_map(f) {
         if is_ok() {
             return f(value)
         }
         return self
     }
     
-    fn unwrap_or(default) {
+    fun unwrap_or(default) {
         if is_ok() {
             return value
         }
@@ -421,7 +421,7 @@ class LazySeq {
     let cache = []
     let index = 0
     
-    fn next() {
+    fun next() {
         if index >= cache.len() {
             let value = generator()
             if value != null {
@@ -438,7 +438,7 @@ class LazySeq {
         return null
     }
     
-    fn take(n) {
+    fun take(n) {
         let result = []
         for i in range(n) {
             let value = next()
@@ -450,7 +450,7 @@ class LazySeq {
         return result
     }
     
-    fn map(f) {
+    fun map(f) {
         return LazySeq::new(|| {
             let value = next()
             if value != null {
@@ -460,7 +460,7 @@ class LazySeq {
         })
     }
     
-    fn filter(predicate) {
+    fun filter(predicate) {
         return LazySeq::new(|| {
             loop {
                 let value = next()
@@ -506,23 +506,23 @@ Abstract data access:
 // Error: Parse error: Expected field name
 // Generic repository interface
 class Repository {
-    fn find(id)
-    fn find_all()
-    fn find_where(conditions)
-    fn save(entity)
-    fn delete(id)
+    fun find(id)
+    fun find_all()
+    fun find_where(conditions)
+    fun save(entity)
+    fun delete(id)
 }
 
 // Concrete implementation
 class UserRepository < Repository {
     let db
     
-    fn find(id) {
+    fun find(id) {
         let row = db.query_one("SELECT * FROM users WHERE id = ?", [id])
         return row ? User::from_row(row) : null
     }
     
-    fn find_where(conditions) {
+    fun find_where(conditions) {
         let query = QueryBuilder::new("users")
             .where(conditions)
             .build()
@@ -530,7 +530,7 @@ class UserRepository < Repository {
         return db.query(query).map(|row| User::from_row(row))
     }
     
-    fn save(user) {
+    fun save(user) {
         if user.id {
             db.execute("UPDATE users SET ... WHERE id = ?", user.to_row())
         } else {
@@ -544,11 +544,11 @@ class UserRepository < Repository {
 class UserService {
     let repository
     
-    fn get_active_users() {
+    fun get_active_users() {
         return repository.find_where({active: true})
     }
     
-    fn create_user(data) {
+    fun create_user(data) {
         let user = User::new(data)
         user.validate()
         return repository.save(user)
@@ -573,7 +573,7 @@ class EventStore {
     let snapshots = {}
     let projections = {}
     
-    fn append(event) {
+    fun append(event) {
         event.id = generate_id()
         event.timestamp = current_time()
         event.version = events.len() + 1
@@ -587,7 +587,7 @@ class EventStore {
         }
     }
     
-    fn replay(from_version = 0) {
+    fun replay(from_version = 0) {
         let state = snapshots.get_latest_before(from_version) || {}
         
         for event in events.filter(|e| e.version > from_version) {
@@ -597,7 +597,7 @@ class EventStore {
         return state
     }
     
-    fn get_projection(name) {
+    fun get_projection(name) {
         return projections[name]
     }
 }
@@ -646,11 +646,11 @@ Separate reads from writes:
 class CommandBus {
     let handlers = {}
     
-    fn register(command_type, handler) {
+    fun register(command_type, handler) {
         handlers[command_type] = handler
     }
     
-    fn dispatch(command) {
+    fun dispatch(command) {
         let handler = handlers[command.type]
         if !handler {
             throw "No handler for command: " + command.type
@@ -664,11 +664,11 @@ class CommandBus {
 class QueryBus {
     let handlers = {}
     
-    fn register(query_type, handler) {
+    fun register(query_type, handler) {
         handlers[query_type] = handler
     }
     
-    fn query(query) {
+    fun query(query) {
         let handler = handlers[query.type]
         if !handler {
             throw "No handler for query: " + query.type
@@ -721,11 +721,11 @@ class Actor {
     let mailbox = Queue::new()
     let running = true
     
-    fn receive(message) {
+    fun receive(message) {
         mailbox.push(message)
     }
     
-    fn start() {
+    fun start() {
         spawn {
             while running {
                 let message = mailbox.pop()
@@ -737,7 +737,7 @@ class Actor {
         }
     }
     
-    fn handle_message(message) {
+    fun handle_message(message) {
         // Override in subclass
     }
 }
@@ -746,7 +746,7 @@ class Actor {
 class WorkerActor < Actor {
     let state = {}
     
-    fn handle_message(message) {
+    fun handle_message(message) {
         match message.type {
             "process" => {
                 let result = process_work(message.data)
@@ -797,7 +797,7 @@ class CircuitBreaker {
     let last_failure_time = 0
     let state = "closed"  // closed, open, half_open
     
-    fn call(operation) {
+    fun call(operation) {
         if state == "open" {
             if current_time() - last_failure_time > timeout {
                 state = "half_open"

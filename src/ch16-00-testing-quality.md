@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -58,7 +58,7 @@ fun test_serialization_roundtrip(user: User) {
 
 // Integration test
 #[integration_test]
-async fn test_api_workflow() {
+async fun test_api_workflow() {
     // Start test server
     let server = TestServer::new()
     
@@ -132,7 +132,7 @@ fun test_divide_by_zero() {
 
 // Async tests
 #[async_test]
-async fn test_async_operation() {
+async fun test_async_operation() {
     let result = fetch_data().await
     assert!(result.is_ok())
 }
@@ -151,13 +151,13 @@ mod calculator_tests {
     use super::*
     
     #[test]
-    fn test_add() { /* ... */ }
+    fun test_add() { /* ... */ }
     
     #[test]
-    fn test_subtract() { /* ... */ }
+    fun test_subtract() { /* ... */ }
     
     #[test]
-    fn test_multiply() { /* ... */ }
+    fun test_multiply() { /* ... */ }
 }
 
 
@@ -174,8 +174,8 @@ Reusable test setup:
 // Error: Parse error: Expected RightBrace, found Identifier("test_data")
 // Fixture trait
 trait TestFixture {
-    fn setup() -> Self
-    fn teardown(self)
+    fun setup() -> Self
+    fun teardown(self)
 }
 
 // Database fixture
@@ -185,7 +185,7 @@ struct DatabaseFixture {
 }
 
 impl TestFixture for DatabaseFixture {
-    fn setup() -> Self {
+    fun setup() -> Self {
         let db = Database::connect(":memory:")
         db.migrate()
         
@@ -201,7 +201,7 @@ impl TestFixture for DatabaseFixture {
         DatabaseFixture { db, test_data }
     }
     
-    fn teardown(self) {
+    fun teardown(self) {
         self.db.drop_all_tables()
         self.db.disconnect()
     }
@@ -240,7 +240,7 @@ Test in isolation:
 // Error: Parse error: Expected type
 // Mock trait
 trait EmailService {
-    fn send_email(to: String, subject: String, body: String) -> Result<(), Error>
+    fun send_email(to: String, subject: String, body: String) -> Result<(), Error>
 }
 
 // Mock implementation
@@ -250,7 +250,7 @@ struct MockEmailService {
 }
 
 impl EmailService for MockEmailService {
-    fn send_email(to: String, subject: String, body: String) -> Result<(), Error> {
+    fun send_email(to: String, subject: String, body: String) -> Result<(), Error> {
         self.sent_emails.borrow_mut().push(Email { to, subject, body })
         Ok(())
     }
@@ -369,7 +369,7 @@ Test complete workflows:
 // Error: Parse error: Expected method name or 'await' after '.'
 // Integration test in tests/ directory
 #[integration_test]
-async fn test_full_api_flow() {
+async fun test_full_api_flow() {
     // Start services
     let db = TestDatabase::new()
     let cache = TestCache::new()
@@ -461,19 +461,19 @@ fun bench_sorting_algorithms(b: &mut Bencher) {
 #[bench_group]
 mod sorting_benchmarks {
     #[bench]
-    fn quick_sort(b: &mut Bencher) {
+    fun quick_sort(b: &mut Bencher) {
         let data = generate_data()
         b.iter(|| quick_sort(data.clone()))
     }
     
     #[bench]
-    fn merge_sort(b: &mut Bencher) {
+    fun merge_sort(b: &mut Bencher) {
         let data = generate_data()
         b.iter(|| merge_sort(data.clone()))
     }
     
     #[bench]
-    fn heap_sort(b: &mut Bencher) {
+    fun heap_sort(b: &mut Bencher) {
         let data = generate_data()
         b.iter(|| heap_sort(data.clone()))
     }
@@ -481,7 +481,7 @@ mod sorting_benchmarks {
 
 // Load testing
 #[load_test]
-async fn test_api_under_load() {
+async fun test_api_under_load() {
     let config = LoadTestConfig {
         concurrent_users: 1000,
         requests_per_user: 100,

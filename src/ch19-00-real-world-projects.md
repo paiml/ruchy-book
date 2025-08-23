@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -70,7 +70,7 @@ struct TaskStore {
 }
 
 impl TaskStore {
-    fn load(path: PathBuf) -> Result<Self> {
+    fun load(path: PathBuf) -> Result<Self> {
         let tasks = if path.exists() {
             let content = fs::read_to_string(&path)?;
             serde_json::from_str(&content)?
@@ -81,22 +81,22 @@ impl TaskStore {
         Ok(TaskStore { path, tasks })
     }
     
-    fn save(&self) -> Result<()> {
+    fun save(&self) -> Result<()> {
         let json = serde_json::to_string_pretty(&self.tasks)?;
         fs::write(&self.path, json)?;
         Ok(())
     }
     
-    fn add(&mut self, task: Task) -> Result<()> {
+    fun add(&mut self, task: Task) -> Result<()> {
         self.tasks.push(task);
         self.save()
     }
     
-    fn find(&self, id: &str) -> Option<&Task> {
+    fun find(&self, id: &str) -> Option<&Task> {
         self.tasks.iter().find(|t| t.id == id)
     }
     
-    fn update<F>(&mut self, id: &str, updater: F) -> Result<()>
+    fun update<F>(&mut self, id: &str, updater: F) -> Result<()>
     where F: FnOnce(&mut Task)
     {
         if let Some(task) = self.tasks.iter_mut().find(|t| t.id == id) {
@@ -106,7 +106,7 @@ impl TaskStore {
         Ok(())
     }
     
-    fn list(&self, filter: Option<TaskFilter>) -> Vec<&Task> {
+    fun list(&self, filter: Option<TaskFilter>) -> Vec<&Task> {
         self.tasks.iter()
             .filter(|t| {
                 if let Some(ref f) = filter {
@@ -127,7 +127,7 @@ struct TaskFilter {
 }
 
 impl TaskFilter {
-    fn matches(&self, task: &Task) -> bool {
+    fun matches(&self, task: &Task) -> bool {
         if let Some(ref status) = self.status {
             if task.status != *status {
                 return false;
@@ -317,7 +317,7 @@ struct AppState {
     jwt_secret: String,
 }
 
-async fn create_user(
+async fun create_user(
     user: CreateUser,
     state: AppState,
 ) -> Result<impl Reply, Rejection> {
@@ -341,7 +341,7 @@ async fn create_user(
     Ok(warp::reply::json(&result))
 }
 
-async fn get_user(
+async fun get_user(
     id: i32,
     state: AppState,
 ) -> Result<impl Reply, Rejection> {
@@ -357,7 +357,7 @@ async fn get_user(
     Ok(warp::reply::json(&user))
 }
 
-async fn list_users(
+async fun list_users(
     state: AppState,
 ) -> Result<impl Reply, Rejection> {
     let users = sqlx::query_as!(
@@ -407,7 +407,7 @@ fun routes(state: AppState) -> impl Filter<Extract = impl Reply> + Clone {
         .recover(handle_rejection)
 }
 
-async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
+async fun handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
     let code;
     let message;
     
@@ -430,7 +430,7 @@ async fn handle_rejection(err: Rejection) -> Result<impl Reply, Infallible> {
 }
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fun main() -> Result<()> {
     env_logger::init();
     
     let database_url = env::var("DATABASE_URL")
@@ -493,7 +493,7 @@ struct ProcessInfo {
 }
 
 impl App {
-    fn new() -> Self {
+    fun new() -> Self {
         let mut system = System::new_all();
         system.refresh_all();
         
@@ -506,7 +506,7 @@ impl App {
         }
     }
     
-    fn update(&mut self) {
+    fun update(&mut self) {
         self.system.refresh_all();
         
         // Update CPU history
@@ -543,7 +543,7 @@ impl App {
         );
     }
     
-    fn draw(&self, frame: &mut Frame<impl Backend>) {
+    fun draw(&self, frame: &mut Frame<impl Backend>) {
         let chunks = Layout::default()
             .direction(Direction::Vertical)
             .constraints([
@@ -634,7 +634,7 @@ impl App {
 }
 
 #[tokio::main]
-async fn main() -> Result<()> {
+async fun main() -> Result<()> {
     // Setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
@@ -777,7 +777,7 @@ struct Config {
 }
 
 impl Config {
-    fn load() -> Result<Self> {
+    fun load() -> Result<Self> {
         // Try multiple sources
         let config = config::Config::builder()
             .add_source(config::File::with_name("config"))
@@ -805,7 +805,7 @@ mod tests {
     use super::*;
     
     #[test]
-    fn test_functionality() {
+    fun test_functionality() {
         // Arrange
         let input = prepare_test_data();
         

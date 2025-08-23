@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -613,7 +613,7 @@ Serving documentation at http://localhost:8080
 /// }
 /// </playground>
 #[post("/api/users")]
-pub async fn create_user(user: Json<User>) -> Result<Json<User>, Error> {
+pub async fun create_user(user: Json<User>) -> Result<Json<User>, Error> {
     // Implementation
 }
 
@@ -639,7 +639,7 @@ impl ConfigBuilder {
 
 // Generate diagrams from code
 #[diagram(sequence)]
-async fn request_flow() {
+async fun request_flow() {
     client.send_request()
     server.validate()
     server.process()
@@ -667,7 +667,7 @@ async fn request_flow() {
 $ ruchy doc-lint
 Checking documentation...
 
-⚠️  Missing documentation: src/internal.rs:15 `fn process()`
+⚠️  Missing documentation: src/internal.rs:15 `fun process()`
 ⚠️  Broken link: src/lib.rs:42 `[Config](../config.html)`
 ⚠️  Outdated example: src/api.rs:88 (code changed)
 ❌  Missing examples: src/client.rs `struct Client`

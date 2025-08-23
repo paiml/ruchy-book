@@ -1,7 +1,7 @@
 # Function Keywords Specification - `fun` vs `fn`
 
 **Document Version**: 1.0  
-**Ruchy Version**: v0.11.0  
+**Ruchy Version**: v0.11.3  
 **Date**: August 22, 2025
 
 ## Design Decision
@@ -83,7 +83,7 @@ fn main() {
 
 ## Migration Strategy
 
-### Phase 1 (v0.11.0) - Documentation Update ✅
+### Phase 1 (v0.11.3) - Documentation Update ✅
 - [x] All 348 function examples updated to use `fun`
 - [x] Rust code examples properly use `fn`  
 - [x] CLAUDE.md guidance updated

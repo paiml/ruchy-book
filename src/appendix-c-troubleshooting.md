@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -634,7 +634,7 @@ mod tests {
     use super::*
     
     #[test]
-    fn test_with_debug_output() {
+    fun test_with_debug_output() {
         let result = my_function(42)
         
         // Print for debugging (use -- --nocapture to see output)

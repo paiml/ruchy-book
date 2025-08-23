@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -430,7 +430,7 @@ fun process_file_optimized(path) {
 }
 
 // 2. Async I/O
-async fn fetch_all_naive(urls) {
+async fun fetch_all_naive(urls) {
     let results = []
     for url in urls {
         let data = http::get(url).await()  // Sequential
@@ -439,7 +439,7 @@ async fn fetch_all_naive(urls) {
     return results
 }
 
-async fn fetch_all_optimized(urls) {
+async fun fetch_all_optimized(urls) {
     let futures = urls.map(|url| {
         http::get(url)  // Concurrent
     })

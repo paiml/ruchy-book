@@ -1,23 +1,23 @@
 {
-  "generated_at": "2025-08-22T21:50:00.875Z",
-  "ruchy_version": "ruchy 0.11.0",
+  "generated_at": "2025-08-23T11:02:29.564Z",
+  "ruchy_version": "ruchy 0.11.3",
   "summary": {
     "total_chapters": 24,
     "total_examples": 280,
-    "working_examples": 117,
-    "failing_examples": 163,
-    "success_rate": 42
+    "working_examples": 122,
+    "failing_examples": 158,
+    "success_rate": 44
   },
   "chapters": {
     "ch10-00-performance-optimization": {
       "total_examples": 11,
-      "working_examples": 4,
-      "failing_examples": 7,
-      "success_rate": 36,
+      "working_examples": 5,
+      "failing_examples": 6,
+      "success_rate": 45,
       "status_breakdown": {
-        "working": 4,
+        "working": 5,
         "not_implemented": 0,
-        "broken": 7,
+        "broken": 6,
         "planned": 0
       }
     },
@@ -143,13 +143,13 @@
     },
     "ch09-00-network-programming": {
       "total_examples": 10,
-      "working_examples": 0,
-      "failing_examples": 10,
-      "success_rate": 0,
+      "working_examples": 2,
+      "failing_examples": 8,
+      "success_rate": 20,
       "status_breakdown": {
-        "working": 0,
+        "working": 2,
         "not_implemented": 0,
-        "broken": 10,
+        "broken": 8,
         "planned": 0
       }
     },
@@ -215,13 +215,13 @@
     },
     "ch04-00-command-line-tools": {
       "total_examples": 14,
-      "working_examples": 12,
-      "failing_examples": 2,
-      "success_rate": 86,
+      "working_examples": 14,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 12,
+        "working": 14,
         "not_implemented": 0,
-        "broken": 2,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -308,6 +308,6 @@
   "quality_metrics": {
     "documentation_coverage": 68.57142857142857,
     "example_testing": 100,
-    "implementation_status": 42
+    "implementation_status": 44
   }
 }
