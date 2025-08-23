@@ -1,6 +1,6 @@
 # 🚀 Ruchy Book Development Workflow
 
-**Professional development process using Ruchy v0.10.0 tooling and GitHub automation**
+**Professional development process using Ruchy v1.0.3 tooling and GitHub automation**
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ cargo install --path . --force
 cd ../ruchy-book
 
 # Test installation
-ruchy --version        # Should show v0.10.0
+ruchy --version        # Should show v1.0.3
 deno --version         # Should show v1.x
 ```
 
@@ -83,7 +83,7 @@ git commit -m "improve: ch05 data processing examples - fix 3 broken examples
 
 - Update array syntax in examples 1, 4, 6
 - Add proper error handling patterns  
-- Test all examples with ruchy v0.10.0
+- Test all examples with ruchy v1.0.3
 - Success rate: 30% -> 60% (3/10 -> 6/10)"
 
 # Push and create PR
@@ -190,7 +190,7 @@ All changes must pass:
 
 ### Content Standards
 
-- **Every example MUST compile** on first attempt with Ruchy v0.10.0
+- **Every example MUST compile** on first attempt with Ruchy v1.0.3
 - Include expected output for interactive examples
 - Add tool usage examples where relevant (lint, fmt, test)
 - Reference common error patterns and solutions
@@ -201,7 +201,7 @@ All changes must pass:
 - Use professional, concise language
 - Include practical examples over theory
 - Show real-world development workflows
-- Reference current v0.10.0 features only
+- Reference current v1.0.3 features only
 - No "coming soon" or placeholder content
 
 ## Chapter Review Process
@@ -216,14 +216,14 @@ All changes must pass:
 ### For Medium-Priority Chapters (30-80% compatibility)
 
 1. **Deep Review**: Fix broken examples one-by-one
-2. **Update Syntax**: Ensure v0.10.0 compatibility
+2. **Update Syntax**: Ensure v1.0.3 compatibility
 3. **Tool Integration**: Extensive tooling examples
 4. **Test**: Verify all examples work
 5. **Document**: Add error patterns and solutions
 
 ### For Low-Priority Chapters (0-30% compatibility)
 
-1. **Complete Rewrite**: Start fresh with v0.10.0
+1. **Complete Rewrite**: Start fresh with v1.0.3
 2. **Focus on Core**: Essential features only
 3. **Test Everything**: Every example must work
 4. **Professional**: Use modern development practices
@@ -243,7 +243,7 @@ echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.bashrc
 **Examples failing unexpectedly**
 ```bash
 # Check Ruchy version
-ruchy --version  # Should be v0.10.0
+ruchy --version  # Should be v1.0.3
 
 # Test basic functionality
 echo '2 + 2' | ruchy repl  # Should output 4
@@ -285,7 +285,7 @@ find test/extracted-examples -name "*.ruchy" | xargs -P4 -I{} ruchy lint --forma
 - **Overall Success Rate**: Currently 41% (target: 80%)
 - **One-liner Success**: Currently 100% (maintain 100%)
 - **Chapter Progress**: Track improvements per chapter
-- **Tool Coverage**: Examples using new v0.10.0 tools
+- **Tool Coverage**: Examples using new v1.0.3 tools
 
 ### Success Milestones
 - 🎯 **50% Compatibility**: Good progress, most basics work

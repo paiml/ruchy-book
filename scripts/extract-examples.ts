@@ -15,6 +15,8 @@ interface ExampleResult {
   code: string;
   passed: boolean;
   error?: string;
+  errorCategory?: "PARSER_ERROR" | "METHOD_ERROR" | "IMPORT_ERROR" | "PLANNED" | "UNKNOWN";
+  rootCause?: string;
   status: "working" | "not_implemented" | "broken" | "planned";
 }
 
@@ -111,9 +113,9 @@ class ExampleExtractor {
     try {
       await Deno.writeTextFile(tempFile, example.code);
       
-      // Test syntax checking with ruchy (v0.8.0 uses 'parse' instead of 'check')
+      // Test compilation with ruchy to catch both syntax and method errors
       const cmd = new Deno.Command("ruchy", {
-        args: ["parse", tempFile],
+        args: ["compile", tempFile],
         stdout: "piped",
         stderr: "piped"
       });
@@ -124,9 +126,12 @@ class ExampleExtractor {
         example.passed = true;
         example.status = "working";
       } else {
+        const errorText = new TextDecoder().decode(stderr);
         example.passed = false;
-        example.error = new TextDecoder().decode(stderr);
-        example.status = this.classifyError(example.error);
+        example.error = errorText;
+        example.status = this.classifyError(errorText);
+        example.errorCategory = this.categorizeError(errorText);
+        example.rootCause = this.analyzeRootCause(errorText);
       }
       
     } catch (error) {
@@ -148,22 +153,98 @@ class ExampleExtractor {
   classifyError(errorMessage: string): "not_implemented" | "broken" | "planned" {
     const error = errorMessage.toLowerCase();
     
-    // Not implemented patterns
-    const notImplementedPatterns = [
+    // Enhanced error classification for Toyota Way quality
+    
+    // Method/runtime failures (LIBRARY gaps - not language gaps)
+    const methodPatterns = [
+      "no method named",
       "method not found",
-      "function not implemented",
+      "has no method",
+      ".to_string",
+      ".items",
+      ".len",
+      ".trim"
+    ];
+    
+    // Not yet implemented features (PLANNED gaps)
+    const plannedPatterns = [
+      "not yet implemented",
       "feature not available",
-      "unresolved import",
-      "unknown method",
-      "not yet implemented"
+      "coming soon",
+      "planned for"
+    ];
+    
+    // Parser failures (REAL language gaps)
+    const parserPatterns = [
+      "unexpected token",
+      "expected",
+      "syntax error",
+      "parse error",
+      "invalid syntax"
     ];
 
-    if (notImplementedPatterns.some(pattern => error.includes(pattern))) {
-      return "not_implemented";
+    if (methodPatterns.some(pattern => error.includes(pattern))) {
+      return "not_implemented"; // This is a method gap, not language gap
+    }
+    
+    if (plannedPatterns.some(pattern => error.includes(pattern))) {
+      return "planned";
+    }
+    
+    if (parserPatterns.some(pattern => error.includes(pattern))) {
+      return "broken"; // This is a REAL language gap
     }
 
-    // Everything else is considered broken for now
+    // Default classification
     return "broken";
+  }
+
+  categorizeError(errorMessage: string): "PARSER_ERROR" | "METHOD_ERROR" | "IMPORT_ERROR" | "PLANNED" | "UNKNOWN" {
+    const error = errorMessage.toLowerCase();
+    
+    if (error.includes("no method named") || error.includes("has no method")) {
+      return "METHOD_ERROR";
+    }
+    
+    if (error.includes("unexpected token") || error.includes("syntax error") || error.includes("parse error")) {
+      return "PARSER_ERROR";
+    }
+    
+    if (error.includes("unresolved import") || error.includes("cannot find module")) {
+      return "IMPORT_ERROR";
+    }
+    
+    if (error.includes("not yet implemented") || error.includes("planned for")) {
+      return "PLANNED";
+    }
+    
+    return "UNKNOWN";
+  }
+
+  analyzeRootCause(errorMessage: string): string {
+    const error = errorMessage.toLowerCase();
+    
+    if (error.includes("no method named")) {
+      const methodMatch = error.match(/no method named `([^`]+)`/);
+      if (methodMatch) {
+        return `Missing method implementation: ${methodMatch[1]}()`;
+      }
+      return "Missing method implementation";
+    }
+    
+    if (error.includes("unexpected token")) {
+      return "Syntax not recognized by parser - potential language gap";
+    }
+    
+    if (error.includes("unresolved import")) {
+      return "Missing dependency or import path issue";
+    }
+    
+    if (error.includes("not yet implemented")) {
+      return "Feature planned but not yet available";
+    }
+    
+    return "Unknown error - needs manual investigation";
   }
 
   async processChapter(filepath: string): Promise<ChapterResults | null> {
