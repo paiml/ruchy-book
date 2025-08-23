@@ -623,3 +623,4 @@ make build
 - if it isn't automated. consider it broken.  no manual "hacks".
 - never use any scripting language but ruchy, if you cannot use ruchy, use Deno TypeScript/Node/Javascript.
 - when bugs are found in ruchy, document them thoroughly in `docs/bugs/ruchy-runtime-bugs.md`
+- always push changes frequently, i.e. after a chapter, etc.
