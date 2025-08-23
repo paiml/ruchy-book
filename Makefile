@@ -226,12 +226,26 @@ test-comprehensive:
 	@mdbook build >/dev/null 2>&1 && echo "✅ Book builds successfully" || echo "❌ Book build failed"
 	@echo "✅ Comprehensive testing complete"
 
-# Generate all status reports
+# TDD Quality Gates (MANDATORY - Toyota Way)
+quality-gates:
+	@echo "🔒 Running MANDATORY quality gates..."
+	@./scripts/quality-gates.sh
+
+# Run TDD test harness - updates INTEGRATION.md (SINGLE SOURCE OF TRUTH)
+test-tdd:
+	@echo "🧪 Running TDD test harness..."
+	@deno run --allow-all scripts/tdd-harness.ts
+
+# Single command to validate everything
+validate-all: test-tdd quality-gates
+	@echo "✅ All validation complete - check INTEGRATION.md for results"
+
+# Legacy status reports (DEPRECATED - DO NOT USE)
 generate-reports:
-	@echo "📊 Generating comprehensive status reports..."
-	@command -v deno >/dev/null 2>&1 || (echo "❌ Deno not installed. Install with: curl -fsSL https://deno.land/install.sh | sh" && exit 1)
-	@deno run --allow-read --allow-write scripts/generate-status-report.ts || echo "⚠️  Report generation failed"
-	@echo "✅ Reports generated in reports/ directory"
+	@echo "❌ DEPRECATED: Use 'make test-tdd' instead"
+	@echo "   INTEGRATION.md is the single source of truth"
+	@echo "   All other reports have been deleted"
+	@exit 1
 
 # Update integration documentation with current results  
 update-integration-docs:
