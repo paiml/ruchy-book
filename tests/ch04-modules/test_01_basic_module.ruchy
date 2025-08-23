@@ -1,0 +1,11 @@
+// Test basic module declaration
+mod math {
+    pub fun add(a: i32, b: i32) -> i32 {
+        a + b
+    }
+}
+
+fun main() {
+    let result = math::add(5, 3);
+    println(result);
+}
