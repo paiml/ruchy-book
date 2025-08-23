@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -588,23 +588,23 @@ enum Result<T, E> {
 // Error: Parse error: Expected Colon, found Comma
 impl Point {
     // Associated function (constructor)
-    fn new(x: f64, y: f64) -> Point {
+    fun new(x: f64, y: f64) -> Point {
         Point { x, y }
     }
     
     // Method (takes &self)
-    fn distance_from_origin(&self) -> f64 {
+    fun distance_from_origin(&self) -> f64 {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
     
     // Mutable method (takes &mut self)
-    fn translate(&mut self, dx: f64, dy: f64) {
+    fun translate(&mut self, dx: f64, dy: f64) {
         self.x += dx
         self.y += dy
     }
     
     // Consuming method (takes self)
-    fn into_tuple(self) -> (f64, f64) {
+    fun into_tuple(self) -> (f64, f64) {
         (self.x, self.y)
     }
 }
@@ -622,14 +622,14 @@ impl Point {
 // Error: Parse error: Expected 'fun' or 'fn' keyword
 // Basic trait
 trait Draw {
-    fn draw(&self)
+    fun draw(&self)
 }
 
 // Trait with default implementation
 trait Summary {
-    fn summarize_author(&self) -> String
+    fun summarize_author(&self) -> String
     
-    fn summarize(&self) -> String {
+    fun summarize(&self) -> String {
         "(Read more from " + self.summarize_author() + "...)"
     }
 }
@@ -638,12 +638,12 @@ trait Summary {
 trait Iterator {
     type Item
     
-    fn next(&mut self) -> Option<Self::Item>
+    fun next(&mut self) -> Option<Self::Item>
 }
 
 // Trait with generic parameters
 trait From<T> {
-    fn from(value: T) -> Self
+    fun from(value: T) -> Self
 }
 
 
@@ -656,21 +656,21 @@ trait From<T> {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected Greater, found Colon
 impl Draw for Point {
-    fn draw(&self) {
+    fun draw(&self) {
         println("Drawing point at (" + self.x.to_s() + ", " + self.y.to_s() + ")")
     }
 }
 
 // Conditional implementation
 impl<T: Display> ToString for T {
-    fn to_string(&self) -> String {
+    fun to_string(&self) -> String {
         // Implementation
     }
 }
 
 // Blanket implementation
 impl<T: Clone> Clone for Box<T> {
-    fn clone(&self) -> Box<T> {
+    fun clone(&self) -> Box<T> {
         // Implementation  
     }
 }
@@ -711,13 +711,13 @@ struct Point<T> {
 }
 
 impl<T> Point<T> {
-    fn new(x: T, y: T) -> Point<T> {
+    fun new(x: T, y: T) -> Point<T> {
         Point { x, y }
     }
 }
 
 impl Point<f64> {
-    fn distance_from_origin(&self) -> f64 {
+    fun distance_from_origin(&self) -> f64 {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
 }
@@ -767,11 +767,11 @@ where
 // Error: Parse error: Expected LeftBrace, found Semicolon
 // Inline module
 mod network {
-    fn connect() {
+    fun connect() {
         // Implementation
     }
     
-    pub fn public_function() {
+    pub fun public_function() {
         // Can be called from outside module
     }
 }
@@ -782,7 +782,7 @@ mod utils;  // Looks for utils.rs or utils/mod.rs
 // Nested modules
 mod graphics {
     pub mod shapes {
-        pub fn draw_circle() {}
+        pub fun draw_circle() {}
     }
 }
 
@@ -795,7 +795,7 @@ mod graphics {
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected 'fn', 'struct', 'enum', 'trait', 'impl', or 'mod' after 'pub'
-pub fn public_function() {}           // Public
+pub fun public_function() {}           // Public
 fun private_function() {}              // Private to module
 
 pub struct PublicStruct {
@@ -803,9 +803,9 @@ pub struct PublicStruct {
     private_field: i32,               // Private field
 }
 
-pub(crate) fn crate_visible() {}      // Visible within crate
-pub(super) fn parent_visible() {}     // Visible to parent module
-pub(in crate::utils) fn limited() {} // Visible within specific path
+pub(crate) fun crate_visible() {}      // Visible within crate
+pub(super) fun parent_visible() {}     // Visible to parent module
+pub(in crate::utils) fun limited() {} // Visible within specific path
 
 
 
@@ -997,7 +997,7 @@ fun always_inline() {}
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Async function
-async fn fetch_data(url: &str) -> Result<String, reqwest::Error> {
+async fun fetch_data(url: &str) -> Result<String, reqwest::Error> {
     let response = reqwest::get(url).await?
     let text = response.text().await?
     Ok(text)
@@ -1029,7 +1029,7 @@ use futures::{Future, Stream}
 impl Future for MyFuture {
     type Output = i32
     
-    fn poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
+    fun poll(self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Self::Output> {
         // Implementation
     }
 }

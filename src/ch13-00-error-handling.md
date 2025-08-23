@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -258,7 +258,7 @@ enum DatabaseError {
 }
 
 impl Display for DatabaseError {
-    fn fmt(self, f: Formatter) -> Result {
+    fun fmt(self, f: Formatter) -> Result {
         match self {
             ConnectionFailed{host, port} => 
                 write(f, "Failed to connect to " + host + ":" + port.to_s())
@@ -281,7 +281,7 @@ struct Error {
 }
 
 impl Error {
-    fn new(kind: ErrorKind, message: String) -> Error {
+    fun new(kind: ErrorKind, message: String) -> Error {
         return Error{
             kind,
             message,
@@ -290,12 +290,12 @@ impl Error {
         }
     }
     
-    fn with_source(mut self, source: Error) -> Error {
+    fun with_source(mut self, source: Error) -> Error {
         self.source = Some(Box::new(source))
         return self
     }
     
-    fn chain(self) -> Vec<String> {
+    fun chain(self) -> Vec<String> {
         let mut messages = vec![self.message]
         let mut current = self.source
         
@@ -431,20 +431,20 @@ Add context to errors:
 // Error: Parse error: Expected type
 // Trait for adding context
 trait Context<T> {
-    fn context(self, msg: String) -> Result<T, Error>
-    fn with_context<F>(self, f: F) -> Result<T, Error>
+    fun context(self, msg: String) -> Result<T, Error>
+    fun with_context<F>(self, f: F) -> Result<T, Error>
         where F: FnOnce() -> String
 }
 
 impl<T, E: Into<Error>> Context<T> for Result<T, E> {
-    fn context(self, msg: String) -> Result<T, Error> {
+    fun context(self, msg: String) -> Result<T, Error> {
         self.map_err(|e| {
             Error::new(e.into())
                 .with_message(msg)
         })
     }
     
-    fn with_context<F>(self, f: F) -> Result<T, Error>
+    fun with_context<F>(self, f: F) -> Result<T, Error>
         where F: FnOnce() -> String
     {
         self.map_err(|e| {
@@ -489,7 +489,7 @@ struct ApiError {
 }
 
 impl ApiError {
-    fn bad_request(message: String) -> ApiError {
+    fun bad_request(message: String) -> ApiError {
         ApiError{
             status: 400,
             code: "BAD_REQUEST",
@@ -498,7 +498,7 @@ impl ApiError {
         }
     }
     
-    fn unauthorized() -> ApiError {
+    fun unauthorized() -> ApiError {
         ApiError{
             status: 401,
             code: "UNAUTHORIZED",
@@ -507,7 +507,7 @@ impl ApiError {
         }
     }
     
-    fn internal_error(error: Error) -> ApiError {
+    fun internal_error(error: Error) -> ApiError {
         // Log full error internally
         log::error("Internal error: " + error.chain().join(" -> "))
         
@@ -523,7 +523,7 @@ impl ApiError {
 
 // Convert to HTTP response
 impl IntoResponse for ApiError {
-    fn into_response(self) -> Response {
+    fun into_response(self) -> Response {
         Response::builder()
             .status(self.status)
             .json(self)
@@ -592,14 +592,14 @@ match validate_pipeline(user, user_validators) {
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Async Result type
-async fn fetch_data(url: String) -> Result<Data, Error> {
+async fun fetch_data(url: String) -> Result<Data, Error> {
     let response = http::get(url).await?
     let parsed = parse_response(response).await?
     return Ok(parsed)
 }
 
 // Try multiple sources
-async fn get_data_with_fallback() -> Result<Data, Error> {
+async fun get_data_with_fallback() -> Result<Data, Error> {
     // Try primary source
     if let Ok(data) = fetch_data(PRIMARY_URL).await {
         return Ok(data)
@@ -620,7 +620,7 @@ async fn get_data_with_fallback() -> Result<Data, Error> {
 }
 
 // Parallel error handling
-async fn fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
+async fun fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
     let futures = urls.map(|url| fetch_data(url))
     return join_all(futures).await
 }
@@ -675,7 +675,7 @@ Practice error handling patterns:
 ```bash
 $ ruchy repl
 >>> # Create Result types
->>> fn safe_divide(a, b) {
+>>> fun safe_divide(a, b) {
 >>>     if b == 0 {
 >>>         return Err("Cannot divide by zero")
 >>>     }
@@ -688,7 +688,7 @@ Ok(5)
 Err("Cannot divide by zero")
 >>> 
 >>> # Chain operations with ?
->>> fn calculation() -> Result<i32, String> {
+>>> fun calculation() -> Result<i32, String> {
 >>>     let a = safe_divide(20, 2)?
 >>>     let b = safe_divide(a, 5)?
 >>>     return Ok(b * 10)

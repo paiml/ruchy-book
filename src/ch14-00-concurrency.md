@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-22*  
-*Ruchy version: ruchy 0.11.0*
+*Ruchy version: ruchy 0.11.3*
 <!-- DOC_STATUS_END -->
 
 
@@ -57,7 +57,7 @@ fun process_files(files: Vec<String>) -> Vec<Result> {
 }
 
 // Async/await for I/O
-async fn fetch_all_data(urls: Vec<String>) -> Vec<Data> {
+async fun fetch_all_data(urls: Vec<String>) -> Vec<Data> {
     let futures = urls.map(|url| async {
         let response = http::get(url).await?
         parse_response(response)
@@ -226,14 +226,14 @@ Cooperative concurrency:
 // Status: ❌ BROKEN
 // Error: Parse error: Expected type
 // Async function
-async fn fetch_user(id: i32) -> Result<User, Error> {
+async fun fetch_user(id: i32) -> Result<User, Error> {
     let response = http::get("/api/users/" + id.to_s()).await?
     let user = parse_json(response.body).await?
     return Ok(user)
 }
 
 // Await multiple futures
-async fn fetch_all_users(ids: Vec<i32>) -> Vec<User> {
+async fun fetch_all_users(ids: Vec<i32>) -> Vec<User> {
     let futures = ids.map(|id| fetch_user(id))
     let results = join_all(futures).await
     
@@ -243,7 +243,7 @@ async fn fetch_all_users(ids: Vec<i32>) -> Vec<User> {
 }
 
 // Select first to complete
-async fn fetch_with_timeout(url: String) -> Result<Data, Error> {
+async fun fetch_with_timeout(url: String) -> Result<Data, Error> {
     select! {
         result = fetch_data(url) => result,
         _ = sleep(5000) => Err(Error::Timeout)
@@ -251,7 +251,7 @@ async fn fetch_with_timeout(url: String) -> Result<Data, Error> {
 }
 
 // Async streams
-async fn process_stream(stream: AsyncStream<Item>) {
+async fun process_stream(stream: AsyncStream<Item>) {
     while let Some(item) = stream.next().await {
         process_item(item).await
     }
@@ -277,7 +277,7 @@ struct ThreadPool {
 }
 
 impl ThreadPool {
-    fn new(size: usize) -> ThreadPool {
+    fun new(size: usize) -> ThreadPool {
         let (sender, receiver) = channel()
         let receiver = Arc::new(Mutex::new(receiver))
         
@@ -449,7 +449,7 @@ Isolated units with message passing:
 trait Actor {
     type Message
     
-    fn handle(&mut self, msg: Self::Message)
+    fun handle(&mut self, msg: Self::Message)
 }
 
 // Example actor
@@ -466,7 +466,7 @@ enum CounterMessage {
 impl Actor for CounterActor {
     type Message = CounterMessage
     
-    fn handle(&mut self, msg: CounterMessage) {
+    fun handle(&mut self, msg: CounterMessage) {
         match msg {
             Increment => self.count += 1
             Decrement => self.count -= 1
@@ -521,7 +521,7 @@ Handle thousands of concurrent requests:
 ```ruchy
 // Status: ❌ BROKEN
 // Error: Parse error: Expected identifier after 'let' or 'let mut'
-async fn web_server() {
+async fun web_server() {
     let listener = TcpListener::bind("0.0.0.0:8080").await
     
     loop {
@@ -534,7 +534,7 @@ async fn web_server() {
     }
 }
 
-async fn handle_connection(socket: TcpStream, addr: SocketAddr) {
+async fun handle_connection(socket: TcpStream, addr: SocketAddr) {
     let (reader, writer) = socket.split()
     
     let request = read_http_request(reader).await
@@ -546,7 +546,7 @@ async fn handle_connection(socket: TcpStream, addr: SocketAddr) {
 // Connection pool for database
 let db_pool = ConnectionPool::new(20)
 
-async fn handle_request(req: Request) -> Response {
+async fun handle_request(req: Request) -> Response {
     let conn = db_pool.get().await
     
     let data = conn.query("SELECT * FROM users").await
@@ -637,7 +637,7 @@ fun test_concurrent_access() {
 }
 
 #[test]
-async fn test_async_operations() {
+async fun test_async_operations() {
     let results = join_all(vec![
         async_operation(1),
         async_operation(2),
