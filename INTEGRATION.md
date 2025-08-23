@@ -1,8 +1,8 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-23T20:45:00Z  
+**Generated**: 2025-08-23T21:15:00Z  
 **Ruchy Version**: v1.3.0  
-**Book Commit**: sprint-4-complete  
+**Book Commit**: sprint-5-complete  
 
 ---
 
@@ -10,12 +10,13 @@
 
 **TRANSFORMATION IN PROGRESS**: Moving from 93% failure to 100% test-driven documentation.
 
-### Sprint 4 Complete with v1.3.0
+### Sprint 5 Complete with v1.3.0
 - **Foundation Chapters**: 11/11 examples passing (100%)
 - **Module System**: 2/2 tests passing (100%)
-- **Total TDD Examples**: 13/13 passing (100%)
-- **Documentation**: Chapter 4 written from tests
-- **New in v1.3.0**: Module system with `mod`, `pub`, and `::` path resolution
+- **Control Flow**: 7/7 tests passing (100%)
+- **Total TDD Examples**: 20/20 passing (100%)
+- **Documentation**: Chapters 4-5 written from tests
+- **New in v1.3.0**: Module system + comprehensive control flow
 
 **THIS IS THE SINGLE SOURCE OF TRUTH FOR BOOK STATUS. ALL OTHER REPORTS ARE DEPRECATED.**
 
@@ -43,13 +44,23 @@
   - test_03_function_with_types.ruchy ✅
   - test_04_nested_calls.ruchy ✅
 
-✅ NEW: MODULE SYSTEM (Sprint 4 Preview):
+✅ MODULE SYSTEM (Sprint 4):
 - Chapter 4 (Modules): 2/2 passing
   - test_01_basic_module.ruchy ✅
   - test_02_use_statement.ruchy ✅
 
+✅ CONTROL FLOW (Sprint 5):  
+- Chapter 5 (Control Flow): 7/7 passing
+  - test_01_if_else.ruchy ✅
+  - test_02_if_only.ruchy ✅
+  - test_03_if_else_if.ruchy ✅
+  - test_04_while_loop.ruchy ✅
+  - test_05_for_loop.ruchy ✅
+  - test_06_match.ruchy ✅
+  - test_07_break_continue.ruchy ✅
+
 PENDING CHAPTERS:
-- [Chapters 5-20]: NOT STARTED
+- [Chapters 6-20]: NOT STARTED
 ```
 
 ### Test Command Output
@@ -58,7 +69,7 @@ PENDING CHAPTERS:
 for file in tests/*/*.ruchy; do
     ruchy compile "$file" && ./a.out
 done
-# Result: 11/11 PASS (100%)
+# Result: 20/20 PASS (100%)
 ```
 
 ---
@@ -75,7 +86,7 @@ done
 
 **Current Grade**: A+ (TDD examples)
 **Issues Found**: 0  
-**Clean Files**: 13/13
+**Clean Files**: 20/20
 
 ---
 
@@ -105,8 +116,8 @@ done
 - Produce expected output
 ```
 
-**Formally Verified**: 13/13 TDD examples
-**Provability Score**: 100% (foundation + modules)
+**Formally Verified**: 20/20 TDD examples
+**Provability Score**: 100% (foundation + modules + control flow)
 
 ---
 
@@ -142,22 +153,28 @@ done
 - ✅ **NEW: Module declarations (mod)**
 - ✅ **NEW: Public visibility (pub)**
 - ✅ **NEW: Path resolution (::)**
+- ✅ **NEW: If/else conditionals**
+- ✅ **NEW: If-only statements**  
+- ✅ **NEW: If/else-if chains**
+- ✅ **NEW: While loops**
+- ✅ **NEW: For loops with ranges**
+- ✅ **NEW: Match expressions**
+- ✅ **NEW: Break and continue**
 
 ### Not Yet Tested (Future Sprints)
 - ⏳ Arrays/Lists/Collections
 - ⏳ String methods
 - ⏳ File I/O operations
-- ⏳ Pattern matching
-- ⏳ Advanced control flow
+- ⏳ Advanced pattern matching (complex types)
 - ⏳ Error handling
-- ⏳ Modules/imports
 - ⏳ Async/await
 - ⏳ Standard library features
 
 ### TDD Transformation Success
 - **Foundation Pass Rate**: 100% (11/11 examples)
 - **Module System**: 100% (2/2 examples)
-- **Total Pass Rate**: 100% (13/13 examples)
+- **Control Flow**: 100% (7/7 examples)
+- **Total Pass Rate**: 100% (20/20 examples)
 - **Quality Enforcement**: All examples tested before documentation
 - **Toyota Way Applied**: Test-first, quality built-in
 - **Single Source Truth**: This report only
@@ -194,6 +211,14 @@ done
 - [x] **TDD-019**: Test module features ✅
 - [x] **TDD-020**: Add Makefile support ✅
 
+### Sprint 5: Control Flow (COMPLETE - v1.3.0)
+- [x] **TDD-021**: Test if/else statements ✅
+- [x] **TDD-022**: Test loop constructs (while, for) ✅
+- [x] **TDD-023**: Test match expressions ✅
+- [x] **TDD-024**: Test break/continue ✅
+- [x] **TDD-025**: Document control flow ✅
+- [x] **TDD-026**: Add test-ch05 Makefile target ✅
+
 ---
 
 ## 🟢 Quality Gate Status
@@ -202,7 +227,7 @@ done
 
 | Gate | Required | TDD Examples | Status |
 |------|----------|--------------|--------|
-| Test Pass Rate | 100% | 100% (13/13) | ✅ PASS |
+| Test Pass Rate | 100% | 100% (20/20) | ✅ PASS |
 | Lint Grade | A+ | A+ | ✅ PASS |
 | Coverage | 100% | 100% | ✅ PASS |
 | Provability | >50% | 100% | ✅ PASS |
@@ -212,6 +237,12 @@ done
 ---
 
 ## 📅 Report History
+
+### 2025-08-23T21:15:00Z
+- Sprint 5 complete: Control flow
+- Chapter 5 documented from tests
+- Makefile updated with test-ch05
+- 20/20 tests passing (100%)
 
 ### 2025-08-23T20:45:00Z
 - Sprint 4 complete: Module system
