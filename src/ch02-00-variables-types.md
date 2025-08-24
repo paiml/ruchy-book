@@ -1,17 +1,17 @@
 # Variables and Types
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (9/9 examples)
+**Chapter Status**: 🟠 67% Working (6/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 9 | Ready for production use |
+| ✅ Working | 6 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ❌ Broken | 3 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -37,6 +37,7 @@ fun main() {
     println("Hi", name, ", you're", age, "years old!")
     println("Currently learning Ruchy:", is_learning)
 }
+
 
 
 
@@ -108,6 +109,7 @@ fun main() {
 
 
 
+
 ```
 
 ### Working with Variables
@@ -136,12 +138,13 @@ fun main() {
 
 
 
+
 ```
 
 ### Collections and Lists
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Store multiple values
     let favorite_languages = ["Python", "Rust", "Ruchy"]
@@ -159,13 +162,15 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Common Pitfalls
 
 ### Forgetting let for New Variables
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // ❌ This won't work
 fun main() {
     user_name = "Alice"  
@@ -173,12 +178,14 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
 
 ### Mixing Data Types Incorrectly
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // ❌ This might not work as expected
 fun main() {
     let age = "25"  // String, not number
@@ -188,6 +195,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 Error: Can't add number to string. Use `let age = 25` (without quotes) for numeric operations.
 
@@ -200,6 +209,7 @@ fun main() {
     let username = "Bob"
     println(userName)  // Prints "Alice", not "Bob"
 }
+
 
 
 
@@ -222,6 +232,7 @@ fun main() {
     let age = 25
     println("Hi", name, ", age", age)
 }
+
 
 
 
@@ -315,6 +326,7 @@ fun main() {
     println("Contact:", username, email)
     println("Status:", is_adult, lives_in_tech_city, ready_for_job)
 }
+
 
 
 

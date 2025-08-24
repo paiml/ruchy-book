@@ -1,17 +1,17 @@
 # Testing Functions
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (12/12 examples)
+**Chapter Status**: ❌ 0% Working (0/12 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 12 | Ready for production use |
+| ✅ Working | 0 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,7 +28,7 @@ Manual testing means running your code, checking output, and hoping you didn't m
 Here's how you test functions in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Your function
 fun add(a, b) {
     a + b
@@ -45,6 +45,8 @@ fun test_add() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 Run it:
@@ -63,7 +65,7 @@ That's it! Write tests, run tests, ship with confidence.
 
 Test functions in Ruchy use the `#[test]` attribute:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 #[test]
 fun test_function_name() {
     // Test code here
@@ -73,6 +75,8 @@ fun test_function_name() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 - `#[test]` marks the function as a test
@@ -90,7 +94,7 @@ Ruchy provides several assertion macros:
 ### Test Organization
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // tests/calculator_test.ruchy
 
 use super::*;  // Import functions from main module
@@ -108,6 +112,8 @@ fun test_subtraction() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ## Practical Testing Patterns
@@ -117,7 +123,7 @@ fun test_subtraction() {
 Pure functions are easiest to test - same input, same output:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // calculator.ruchy
 fun multiply(a, b) {
     a * b
@@ -161,6 +167,8 @@ fun test_is_even() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Testing Edge Cases
@@ -168,7 +176,7 @@ fun test_is_even() {
 Good tests cover normal cases AND edge cases:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun find_max(numbers) {
     if numbers.len() == 0 {
         -999999  // Sentinel value for empty
@@ -200,12 +208,14 @@ fun test_find_max() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Testing Text Functions
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun clean_username(raw_username) {
     // Simple cleaning - replace spaces with underscores
     raw_username.replace(" ", "_")
@@ -243,12 +253,14 @@ fun test_count_vowels() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Testing Business Logic
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun calculate_grade(score) {
     if score >= 90 { "A" }
     else if score >= 80 { "B" } 
@@ -286,6 +298,8 @@ fun test_can_vote() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ## Test-Driven Development (TDD)
@@ -297,7 +311,7 @@ Write tests BEFORE you write code:
 3. **Refactor and improve** (Refactor)
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Step 1: Write the test first
 #[test]
@@ -319,13 +333,15 @@ fun fahrenheit_to_celsius(fahrenheit) {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ## Common Testing Mistakes
 
 ### Not Testing Edge Cases
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Only testing happy path
 #[test]
@@ -345,11 +361,13 @@ fun test_divide_good() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Tests That Don't Actually Test
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ This test will always pass
 #[test]
@@ -368,11 +386,13 @@ fun test_useful() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Poor Test Names
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Unclear what this tests
 #[test]
@@ -390,6 +410,8 @@ fun test_password_too_short() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ## Try It Yourself
@@ -432,7 +454,7 @@ $ ruchy repl
 **Example TDD Session:**
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // 1. Write failing tests first
 #[test]
@@ -467,6 +489,8 @@ fun test_password_edge_cases() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 Testing is your superpower - use it to build software with confidence!

@@ -1,17 +1,17 @@
 # Organizing Logic
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (12/12 examples)
+**Chapter Status**: ❌ 17% Working (2/12 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 12 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ✅ Working | 2 | Ready for production use |
+| ⚠️ Not Implemented | 2 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,7 +28,7 @@ Most languages make code organization complicated with complex syntax and boiler
 Here's how you organize and reuse logic in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Organize calculations
     let name = "Alice"  
@@ -49,6 +49,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Output:
@@ -65,7 +67,7 @@ That's organization! Define once, use everywhere.
 
 In Ruchy's current form, organize logic using variables and expressions:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Store inputs
     let input1 = 10
@@ -84,13 +86,15 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Reusable Patterns
 
 Create templates for common operations:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Template: greeting with name
     let user_name = "Alice"
@@ -110,13 +114,15 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Logic Grouping
 
 Group related operations together:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Input section
     let temperature_f = 68
@@ -137,6 +143,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Practical Usage
@@ -144,7 +152,7 @@ fun main() {
 ### Pure Functions (No Side Effects)
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Mathematical operations
 fun square(x) {
     x * x
@@ -178,12 +186,14 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Functions with Logic
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun is_even(number) {
     number % 2 == 0
 }
@@ -218,12 +228,14 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Functions That Process Data
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 fun calculate_total(prices) {
     let mut total = 0.0
     let mut i = 0
@@ -265,6 +277,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Common Pitfalls
@@ -290,11 +304,12 @@ fun main() {
 
 
 
+
 ```
 
 ### Wrong Number of Arguments
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun greet(name, age) {
     "Hi " + name + ", you're " + age + " years old"
 }
@@ -307,12 +322,14 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 Error: Function expects 2 arguments, got 1.
 
 ### Modifying Parameters
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // ❌ Parameters are read-only
 fun bad_function(x) {
     x = x + 1  
@@ -331,6 +348,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Generated Code Insight
@@ -351,6 +370,7 @@ fun main() {
     let result = add(10, 20)
     println(result)
 }
+
 
 
 
@@ -435,7 +455,7 @@ $ ruchy repl
 **Example Solution Set:**
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 // Personal calculator
 fun celsius_to_fahrenheit(celsius) {
     (celsius * 9 / 5) + 32
@@ -490,6 +510,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Build functions that solve YOUR problems - this is where programming becomes personal!

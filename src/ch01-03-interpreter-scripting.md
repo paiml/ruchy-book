@@ -1,17 +1,17 @@
 # Chapter 1.3: The Ruchy Interpreter and Scripting
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (15/15 examples)
+**Chapter Status**: ❌ 20% Working (3/15 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 15 | Ready for production use |
+| ✅ Working | 3 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -26,34 +26,40 @@ You've installed Ruchy and written your first "Hello World" program. Now you wan
 The Ruchy interpreter allows immediate expression evaluation:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 ruchy -e "2 + 2"
 
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Output: `4`
 
 ```ruchy  
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 ruchy -e "let name = \"World\"; \"Hello \" + name + \"!\""
 
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Output: `"Hello World!"`
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 ruchy -e "let nums = [1, 2, 3]; nums[1]"
 
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Output: `2`
@@ -77,7 +83,7 @@ For scripting and interactive work, you'll primarily use Tier 0, which provides:
 Ruchy provides efficient handling of basic data types:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     // Integer values
     let small_int = 42
@@ -99,6 +105,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Practical Usage
@@ -123,7 +131,7 @@ ruchy -e "let x = 10; if x > 5 { \"large\" } else { \"small\" }"
 Create a file `calculator.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // calculator.ruchy - Basic calculator functionality
 
 fun add(a, b) {
@@ -165,6 +173,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Execute with:
@@ -175,7 +185,7 @@ ruchy calculator.ruchy
 ### Working with Arrays and Data
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // data_processing.ruchy - Array manipulation examples
 
 fun main() {
@@ -206,6 +216,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Variable Scoping and Functions
@@ -213,7 +225,7 @@ fun main() {
 Understanding Ruchy's scoping rules is crucial for effective scripting:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // scoping.ruchy - Variable scope examples
 
 let global_var = "I'm global"
@@ -241,6 +253,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Common Pitfalls
@@ -250,7 +264,7 @@ fun main() {
 Always check array bounds to avoid runtime errors:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     let arr = [1, 2, 3]
 
@@ -268,6 +282,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### 2. Variable Mutability
@@ -288,6 +304,7 @@ fun main() {
 
 
 
+
 ```
 
 ### 3. Function Return Values
@@ -295,7 +312,7 @@ fun main() {
 Functions return their last expression:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun get_double(x) {
     x * 2  // This is returned (no semicolon)
 }
@@ -310,6 +327,8 @@ fun process_and_print(x) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Current Limitations (v0.11.0)
@@ -370,11 +389,12 @@ fun calculate_tax(income, rate) {
 
 
 
+
 ```
 
 ### 2. Use Descriptive Names
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Good
 let user_count = 42
 let total_price = calculate_price(items)
@@ -386,13 +406,15 @@ let y = calc(z)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### 3. Leverage Array Indexing
 Since array indexing works well in v0.11.0:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 fun main() {
     let grades = [95, 87, 92, 78, 89]
     let first_grade = grades[0]
@@ -402,13 +424,15 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### 4. Build Incrementally
 Start with simple expressions and build complexity:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Add functions
 fun double(n) { n * 2 }
 
@@ -424,6 +448,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Testing Your Scripts
@@ -447,6 +473,7 @@ fun main() {
         println("Some tests failed")
     }
 }
+
 
 
 

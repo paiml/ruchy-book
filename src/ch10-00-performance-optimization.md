@@ -1,17 +1,17 @@
 # Performance & Optimization
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 36% Working (4/11 examples)
+**Chapter Status**: ❌ 0% Working (0/11 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 4 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 7 | Known issues, needs fixing |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 2 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -86,7 +86,7 @@ The benchmark suite includes advanced analysis tools for systematic optimization
 Here's performance optimization in action:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: optimize_data_processing.ruchy
 // Before and after optimization
@@ -151,6 +151,8 @@ println(f"Speedup: {naive_time / optimized_time:.1}x")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 That's the power of systematic optimization!
@@ -163,7 +165,7 @@ Measure before optimizing:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+
 // CPU profiling
 let profiler = perf::CpuProfiler::new()
 profiler.start()
@@ -201,6 +203,7 @@ println("Flame graph saved to profile.svg")
 
 
 
+
 ```
 
 ### Benchmarking
@@ -208,7 +211,7 @@ println("Flame graph saved to profile.svg")
 Compare performance systematically:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Micro-benchmarks
 use std::bench;
@@ -266,6 +269,7 @@ fun benchmark_algorithm(name, func, data) {
 
 
 
+
 ```
 
 ### Parallel Processing
@@ -274,7 +278,7 @@ Use multiple cores effectively:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Parallel map
 let data = range(1, 1000000)
 let results = parallel::map(data, |n| {
@@ -318,6 +322,7 @@ let responses = async::wait_all(futures)
 
 
 
+
 ```
 
 ## Optimization Techniques
@@ -325,7 +330,7 @@ let responses = async::wait_all(futures)
 ### Algorithm Optimization
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: algorithm_optimization.ruchy
 // Common optimization patterns
@@ -398,13 +403,15 @@ fun find_first_match(items, predicate) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Memory Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightParen, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: memory_optimization.ruchy
 // Reduce memory usage
 
@@ -460,13 +467,14 @@ struct CompactUser {
 
 
 
+
 ```
 
 ### I/O Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: io_optimization.ruchy
 // Speed up I/O operations
 
@@ -517,6 +525,7 @@ fun process_huge_file(path) {
 
 
 
+
 ```
 
 ## Real-World Optimization
@@ -524,7 +533,7 @@ fun process_huge_file(path) {
 ### Database Query Optimizer
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // File: query_optimizer.ruchy
 // Optimize database queries
@@ -602,13 +611,15 @@ println(f"Improvement: {naive_time / optimized_time:.1}x faster")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Web Server Optimization
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: web_server_optimization.ruchy
 // High-performance web server
 
@@ -687,13 +698,14 @@ app.listen()
 
 
 
+
 ```
 
 ### Data Processing Pipeline
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: data_pipeline_optimization.ruchy
 // Optimize large-scale data processing
 
@@ -758,6 +770,7 @@ monitor.report()
 
 
 
+
 ```
 
 ## Performance Tips
@@ -766,7 +779,7 @@ monitor.report()
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Measure first
 perf::profile {
     suspicious_function()
@@ -792,6 +805,7 @@ async::wait_all(io_operations)
 
 // 8. Profile in production
 // Dev performance ≠ Production performance
+
 
 
 

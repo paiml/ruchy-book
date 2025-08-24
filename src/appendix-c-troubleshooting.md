@@ -1,17 +1,17 @@
 # Appendix C: Troubleshooting Guide
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 40% Working (8/20 examples)
+**Chapter Status**: ❌ 5% Working (1/20 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 8 | Ready for production use |
+| ✅ Working | 1 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 12 | Known issues, needs fixing |
+| ❌ Broken | 19 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -23,7 +23,7 @@
 
 #### Missing Semicolons
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Error
 let x = 42
@@ -39,12 +39,14 @@ let y = 24;
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 #### Unmatched Braces/Parentheses
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected end of input
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 if condition {
     do_something()
@@ -58,12 +60,13 @@ if condition {
 
 
 
+
 ```
 
 #### Invalid Variable Names
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'let' or 'let mut'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let 123invalid = "nope"
 let my-var = "no hyphens"
@@ -77,13 +80,14 @@ let function_name = "not keyword"
 
 
 
+
 ```
 
 ### Type Errors
 
 #### Type Mismatch
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Error
 let x: i32 = "string"
@@ -99,12 +103,14 @@ let x = "string"  // Let compiler infer type
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 #### Cannot Move Out of Borrowed Content
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Star
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let s = String::from("hello")
 let r = &s
@@ -118,11 +124,12 @@ let copied = r.clone()  // Clone instead of move
 
 
 
+
 ```
 
 #### Use After Move
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Error
 let s = String::from("hello")
@@ -143,6 +150,8 @@ println(s)  // s still valid
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Lifetime Errors
@@ -150,7 +159,7 @@ println(s)  // s still valid
 #### Borrowed Value Does Not Live Long Enough
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 fun dangle() -> &String {
     let s = String::from("hello")
@@ -171,16 +180,17 @@ fun static_str() -> &'static str {
 
 
 
+
 ```
 
 #### Multiple Mutable References
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Mut
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let mut s = String::from("hello")
 let r1 = &mut s
-let r2 = &mut s  // Error: Parse error: Unexpected token: Mut
+let r2 = &mut s  // Error: ✗ Compilation failed: Failed to parse Ruchy source
 println(r1)
 println(r2)
 
@@ -195,6 +205,7 @@ let r2 = &mut s  // Now ok
 
 
 
+
 ```
 
 ## Runtime Errors
@@ -203,7 +214,7 @@ let r2 = &mut s  // Now ok
 
 #### Index Out of Bounds
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Runtime panic
 let v = vec![1, 2, 3]
@@ -225,12 +236,14 @@ if let Some(item) = v.get(5) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 #### Unwrap on None/Err
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Runtime panic
 let maybe_value: Option<i32> = None
 let value = maybe_value.unwrap()  // Panic: called unwrap on None
@@ -248,12 +261,13 @@ let value = maybe_value.unwrap_or(0)
 
 
 
+
 ```
 
 #### Division by Zero
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Runtime panic
 fun divide(a: i32, b: i32) -> i32 {
     a / b  // Panic if b is 0
@@ -276,6 +290,7 @@ fun divide_result(a: i32, b: i32) -> Result<i32, String> {
         Err("Division by zero".to_string())
     }
 }
+
 
 
 
@@ -315,12 +330,13 @@ fun factorial_iterative(n: i32) -> i32 {
 
 
 
+
 ```
 
 #### Large Stack Allocations
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBracket, found Semicolon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ May cause stack overflow
 fun large_array() {
     let big_array: [i32; 1_000_000] = [0; 1_000_000]  // 4MB on stack
@@ -339,6 +355,7 @@ fun boxed_array() {
 
 
 
+
 ```
 
 ## Performance Issues
@@ -346,7 +363,7 @@ fun boxed_array() {
 ### Unnecessary Cloning
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Inefficient - unnecessary clones
 fun process_strings(strings: Vec<String>) -> Vec<String> {
     strings.iter()
@@ -364,12 +381,13 @@ fun process_strings_efficient(strings: &[String]) -> Vec<String> {
 
 
 
+
 ```
 
 ### Inefficient String Concatenation
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Inefficient - creates many temporary strings
 fun concat_inefficient(strings: &[&str]) -> String {
     let mut result = String::new()
@@ -401,11 +419,12 @@ fun concat_with_capacity(strings: &[&str]) -> String {
 
 
 
+
 ```
 
 ### Inefficient Collections
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Wrong collection for use case
 use std::collections::VecDeque
@@ -427,6 +446,8 @@ for i in 0..1000 {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Dependency Issues
@@ -447,7 +468,7 @@ some_crate = "1.2"  # Updated to use serde 1.0
 ### Missing Features
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Question
+// Error: ✗ Compilation failed: Compilation failed:
 // ❌ Error: no method named `json` found for type `Response`
 let response = reqwest::get(url).await?
 let data = response.json().await?  // Feature not enabled
@@ -455,6 +476,7 @@ let data = response.json().await?  // Feature not enabled
 // ✅ Enable required features in Cargo.toml
 // [dependencies]
 // reqwest = { version = "0.11", features = ["json"] }
+
 
 
 
@@ -566,7 +588,7 @@ sudo chown -R $(whoami) ~/.rustup
 
 ### Print Debugging
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Simple debug prints
 println!("Debug: x = {}", x)
@@ -584,6 +606,8 @@ debug!("Variable state: x={}, y={}", x, y)
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Using Debugger
@@ -603,7 +627,7 @@ rust-gdb target/debug/my_program
 
 ### Logging
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 use log::{debug, info, warn, error}
 
@@ -623,12 +647,14 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Testing and Debugging
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Hash
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[cfg(test)]
 mod tests {
     use super::*
@@ -645,6 +671,7 @@ mod tests {
     
     // Run with: cargo test -- --nocapture
 }
+
 
 
 

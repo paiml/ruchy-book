@@ -1,17 +1,17 @@
 # Building Applications
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: 🟠 56% Working (5/9 examples)
+**Chapter Status**: ❌ 0% Working (0/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 5 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 4 | Known issues, needs fixing |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 3 | Planned for future versions |
+| ❌ Broken | 6 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a complete, useful application in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: note_keeper.ruchy
 // A complete note-taking application
 
@@ -321,6 +321,7 @@ main()
 
 
 
+
 ```
 
 That's a complete application! It has data persistence, search, export, and a user-friendly interface.
@@ -332,7 +333,7 @@ That's a complete application! It has data persistence, search, export, and a us
 Organize larger applications effectively:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Application structure
 let APP = {
@@ -380,6 +381,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### State Management
@@ -387,7 +390,7 @@ fun main() {
 Handle application state properly:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Global application state
 let STATE = {
@@ -423,6 +426,8 @@ fun load_state() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Error Recovery
@@ -430,7 +435,7 @@ fun load_state() {
 Build resilient applications:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 fun safe_operation(operation_fn, fallback_value) {
     try {
@@ -462,6 +467,8 @@ fun with_retry(operation_fn, max_attempts = 3) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Real-World Applications
@@ -469,8 +476,8 @@ fun with_retry(operation_fn, max_attempts = 3) {
 ### Password Manager
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Status: ⚠️ NOT IMPLEMENTED
+// Error: ✗ Compilation failed: Compilation failed:
 // Simple password manager with encryption
 let MASTER_KEY = null
 let PASSWORDS_FILE = "~/.passwords.enc"
@@ -523,13 +530,14 @@ fun get_password(site) {
 
 
 
+
 ```
 
 ### Budget Tracker
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Status: ⚠️ NOT IMPLEMENTED
+// Error: ✗ Compilation failed: Compilation failed:
 // Personal finance tracker
 let TRANSACTIONS_FILE = "~/.budget/transactions.csv"
 let CATEGORIES = ["Food", "Transport", "Bills", "Entertainment", "Other"]
@@ -582,13 +590,14 @@ fun generate_report(month) {
 
 
 
+
 ```
 
 ### Project Generator
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightParen, found Identifier("commit")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Development project scaffolding tool
 let TEMPLATES = {
     "python": {
@@ -650,6 +659,7 @@ fun create_project(name, language) {
 
 
 
+
 ```
 
 ## Testing Your Application
@@ -657,7 +667,7 @@ fun create_project(name, language) {
 Build confidence with testing:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // test_app.ruchy - Application test suite
 
@@ -704,6 +714,8 @@ fun run_all_tests() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Deployment
@@ -711,7 +723,7 @@ fun run_all_tests() {
 Package and distribute your application:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // build.ruchy - Build and package script
 
@@ -752,6 +764,8 @@ echo 'Installation complete! Run {APP_NAME} to start.'
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Try It Yourself

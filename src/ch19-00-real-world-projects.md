@@ -10,8 +10,8 @@
 | ❌ Broken | 4 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ A complete productivity tool:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // taskmaster.ruchy - Complete task management system
 use std::cli::{App, Arg, SubCommand};
 use std::fs;
@@ -282,6 +282,7 @@ fun main() -> Result<()> {
 
 
 
+
 ```
 
 ## Project 2: Web API Service
@@ -290,7 +291,7 @@ A production-ready REST API:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // api_server.ruchy - Complete web service
 use warp::{Filter, Reply, Rejection};
 use sqlx::{PgPool, FromRow};
@@ -461,6 +462,7 @@ async fun main() -> Result<()> {
 
 
 
+
 ```
 
 ## Project 3: System Monitor
@@ -469,7 +471,7 @@ Real-time system monitoring tool:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected ',' or '}' in import list
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // sysmon.ruchy - System monitoring dashboard
 use sysinfo::{System, SystemExt, ProcessExt, CpuExt};
 use tui::{Terminal, Frame, backend::CrosstermBackend};
@@ -693,6 +695,7 @@ async fun main() -> Result<()> {
 
 
 
+
 ```
 
 ## Project Ideas
@@ -735,7 +738,7 @@ When building real projects:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Dot
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Project structure
 my-project/
 ├── src/
@@ -816,6 +819,7 @@ mod tests {
         assert_eq!(result, expected);
     }
 }
+
 
 
 

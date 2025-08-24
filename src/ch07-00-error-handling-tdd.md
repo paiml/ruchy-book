@@ -1,5 +1,20 @@
 # Error Handling
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 33% Working (3/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 3 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 6 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.4.0  
 **Testing**: All examples verified with `make test-ch07`
@@ -15,6 +30,7 @@ Programs need to handle unexpected situations gracefully - invalid input, missin
 This example is tested in `tests/ch07-error-handling/test_01_simple_panic.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("Before operation");
     if true {
@@ -22,6 +38,7 @@ fun main() {
     }
     println("After operation");
 }
+
 ```
 
 **Output:**
@@ -36,6 +53,7 @@ After operation
 This example is tested in `tests/ch07-error-handling/test_02_conditional_error.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let number = 5;
     if number > 0 {
@@ -51,6 +69,7 @@ fun main() {
         println("Non-zero value");
     }
 }
+
 ```
 
 **Output:**
@@ -64,6 +83,7 @@ Warning: Zero value detected
 This example is tested in `tests/ch07-error-handling/test_03_validation_patterns.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let age = 25;
     match age {
@@ -73,6 +93,7 @@ fun main() {
         _ => println("Senior")
     }
 }
+
 ```
 
 **Output:**
@@ -104,31 +125,40 @@ Adult
 
 ### Conditional Validation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 if value > 0 {
     println("Valid");
 } else {
     println("Invalid");
 }
+
 ```
 
 ### Pattern-Based Validation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 match status {
     0 => println("Error"),
     1 => println("Warning"),
     2 => println("Success"),
     _ => println("Unknown")
 }
+
 ```
 
 ### Range Validation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 match age {
     0 => println("Invalid age"),
     1..=17 => println("Minor"),
     18..=65 => println("Adult"),
     _ => println("Senior")
 }
+
 ```
 
 ## Testing Your Code
@@ -147,30 +177,39 @@ make test-file FILE=tests/ch07-error-handling/test_01_simple_panic.ruchy
 
 ### Input Validation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 if input < 0 {
     println("Error: Negative input not allowed");
 } else {
     process_input(input);
 }
+
 ```
 
 ### Range Checking
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 match score {
     0..=59 => println("Fail"),
     60..=79 => println("Pass"),
     80..=100 => println("Excellent"),
     _ => println("Invalid score")
 }
+
 ```
 
 ### State Validation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 if system_ready {
     println("System operational");
 } else {
     println("System not ready");
 }
+
 ```
 
 ## Performance Notes

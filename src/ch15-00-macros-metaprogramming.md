@@ -10,8 +10,8 @@
 | ❌ Broken | 9 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's the magic of macros:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Define a macro for JSON-like syntax
 macro! json {
     // Match JSON-like input
@@ -75,6 +75,7 @@ struct User {
 
 
 
+
 ```
 
 That's code writing code!
@@ -87,7 +88,7 @@ Pattern-based code generation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple macro
 macro! say_hello {
     () => {
@@ -140,6 +141,7 @@ handle_codes! {
 
 
 
+
 ```
 
 ### Procedural Macros
@@ -148,7 +150,7 @@ Function-like macros with full power:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Derive macro for automatic implementation
 #[proc_macro_derive(Builder)]
 fun derive_builder(input: TokenStream) -> TokenStream {
@@ -215,6 +217,7 @@ let config = Config::builder()
 
 
 
+
 ```
 
 ### Attribute Macros
@@ -223,7 +226,7 @@ Modify items with attributes:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Attribute macro for benchmarking
 #[proc_macro_attribute]
 fun bench(args: TokenStream, input: TokenStream) -> TokenStream {
@@ -266,6 +269,7 @@ fun test_addition(a: i32, b: i32, expected: i32) {
 
 
 
+
 ```
 
 ### Syntax Extensions
@@ -274,7 +278,7 @@ Create domain-specific languages:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // SQL-like macro
 macro! sql {
     (SELECT $($field:ident),* FROM $table:ident WHERE $($cond:tt)*) => {
@@ -326,6 +330,7 @@ let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
 
 
+
 ```
 
 ## Practical Macros
@@ -334,7 +339,7 @@ let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Debug print with variable names
 macro! dbg {
     ($($x:expr),*) => {
@@ -378,13 +383,14 @@ macro! assert_eq_msg {
 
 
 
+
 ```
 
 ### Code Generation Macros
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generate getters and setters
 macro! accessors {
     ($struct_name:ident { $($field:ident : $type:ty),* }) => {
@@ -447,13 +453,14 @@ define_opcodes! {
 
 
 
+
 ```
 
 ### DSL Macros
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // State machine DSL
 macro! state_machine {
     (
@@ -540,13 +547,14 @@ let config = config! {
 
 
 
+
 ```
 
 ## Hygiene and Best Practices
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '(' or '[' after macro name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Hygienic macros prevent name collisions
 macro! safe_swap {
     ($a:expr, $b:expr) => {
@@ -602,6 +610,7 @@ fun test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }
+
 
 
 

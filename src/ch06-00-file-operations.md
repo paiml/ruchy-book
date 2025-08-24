@@ -1,17 +1,17 @@
 # File Operations
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: 🟠 70% Working (7/10 examples)
+**Chapter Status**: ❌ 0% Working (0/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 7 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 3 | Known issues, needs fixing |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 2 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a practical file organizer in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Error: ✗ Compilation failed: Compilation failed:
 // File: desktop_organizer.ruchy
 // Organizes files by type into folders
 
@@ -79,6 +79,7 @@ println("✅ Desktop organized!")
 
 
 
+
 ```
 
 That's file automation! Hours of manual work done in seconds.
@@ -89,7 +90,7 @@ That's file automation! Hours of manual work done in seconds.
 
 Navigate and query the file system:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Current directory operations
 let current_dir = get_current_dir()
@@ -109,13 +110,15 @@ let clean_path = normalize_path(".././data//file.txt")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### File Information
 
 Get detailed file metadata:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Check file properties
 let exists = file_exists("config.json")
@@ -137,13 +140,15 @@ let can_execute = is_executable(path)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Directory Operations
 
 Work with directories efficiently:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Create and remove directories
 create_dir("new_folder")
@@ -173,6 +178,8 @@ fun walk_directory(dir) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Practical File Tools
@@ -181,7 +188,7 @@ fun walk_directory(dir) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: smart_backup.ruchy
 // Creates timestamped backups of important files
 
@@ -249,12 +256,13 @@ write_file(join_path(backup_dir, "summary.txt"), summary)
 
 
 
+
 ```
 
 ### Duplicate File Finder
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: find_duplicates.ruchy
 // Finds duplicate files based on content hash
@@ -337,12 +345,14 @@ if duplicates.is_empty() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Log Rotation System
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: log_rotator.ruchy
 // Manages log files with size-based rotation
@@ -403,13 +413,15 @@ println("\n✅ Log rotation complete!")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Configuration File Manager
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: DotDot
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: config_manager.ruchy
 // Manages application configuration files
 
@@ -513,6 +525,7 @@ loop {
 
 
 
+
 ```
 
 ## Error Handling
@@ -520,7 +533,7 @@ loop {
 Robust file operations need proper error handling:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 fun safe_file_operation(path) {
     // Check permissions first
@@ -555,6 +568,8 @@ fun safe_file_operation(path) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Generated Code Insight
@@ -566,7 +581,7 @@ See how Ruchy's file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 let files = list_files("data")
 for file in files {
@@ -580,6 +595,8 @@ for file in files {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Becomes this optimized Rust:

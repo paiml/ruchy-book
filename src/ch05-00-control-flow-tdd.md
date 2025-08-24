@@ -1,5 +1,20 @@
 # Control Flow
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟠 57% Working (8/14 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 8 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 6 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (7/7 examples passing)  
 **Ruchy Version**: v1.3.0  
 **Testing**: All examples verified with `make test-ch05`
@@ -15,6 +30,7 @@ Programs need to make decisions and repeat actions. Control flow structures like
 This example is tested in `tests/ch05-control-flow/test_01_if_else.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let x = 10;
     if x > 5 {
@@ -23,6 +39,7 @@ fun main() {
         println("x is not greater than 5");
     }
 }
+
 ```
 
 **Output:**
@@ -35,6 +52,7 @@ x is greater than 5
 This example is tested in `tests/ch05-control-flow/test_02_if_only.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let score = 85;
     if score >= 80 {
@@ -42,6 +60,7 @@ fun main() {
     }
     println("Score processed");
 }
+
 ```
 
 **Output:**
@@ -55,6 +74,7 @@ Score processed
 This example is tested in `tests/ch05-control-flow/test_03_if_else_if.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let grade = 75;
     if grade >= 90 {
@@ -67,6 +87,7 @@ fun main() {
         println("Below C");
     }
 }
+
 ```
 
 **Output:**
@@ -79,6 +100,7 @@ C grade
 This example is tested in `tests/ch05-control-flow/test_04_while_loop.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let mut i = 0;
     while i < 3 {
@@ -87,6 +109,7 @@ fun main() {
     }
     println("Done");
 }
+
 ```
 
 **Output:**
@@ -102,12 +125,14 @@ Done
 This example is tested in `tests/ch05-control-flow/test_05_for_loop.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     for i in 0..3 {
         println(i);
     }
     println("For loop done");
 }
+
 ```
 
 **Output:**
@@ -123,6 +148,7 @@ For loop done
 This example is tested in `tests/ch05-control-flow/test_06_match.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let number = 2;
     match number {
@@ -132,6 +158,7 @@ fun main() {
         _ => println("Other")
     }
 }
+
 ```
 
 **Output:**
@@ -144,6 +171,7 @@ Two
 This example is tested in `tests/ch05-control-flow/test_07_break_continue.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let mut i = 0;
     while i < 10 {
@@ -158,6 +186,7 @@ fun main() {
     }
     println("Loop ended");
 }
+
 ```
 
 **Output:**
@@ -198,6 +227,8 @@ Loop ended
 
 ### Conditionals
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 if condition {
     // true branch
 } else if other_condition {
@@ -205,10 +236,13 @@ if condition {
 } else {
     // false branch
 }
+
 ```
 
 ### Loops
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 // While loop
 while condition {
     // loop body
@@ -218,15 +252,19 @@ while condition {
 for variable in start..end {
     // loop body
 }
+
 ```
 
 ### Match
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 match value {
     pattern1 => action1,
     pattern2 => action2,
     _ => default_action
 }
+
 ```
 
 ## Testing Your Code
@@ -245,37 +283,48 @@ make test-file FILE=tests/ch05-control-flow/test_01_if_else.ruchy
 
 ### Decision Making
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 if user_input > threshold {
     process_high_value();
 } else {
     process_normal_value();
 }
+
 ```
 
 ### Counting Loop
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let mut count = 0;
 while count < 10 {
     do_something();
     count = count + 1;
 }
+
 ```
 
 ### Range Processing
 ```ruchy
+// Status: ✅ WORKING
 for i in 1..5 {
     println("Processing item " + i);
 }
+
 ```
 
 ### Value Classification
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 match status_code {
     200 => println("Success"),
     404 => println("Not Found"),
     500 => println("Server Error"),
     _ => println("Unknown Status")
 }
+
 ```
 
 ## Performance Notes

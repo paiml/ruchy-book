@@ -10,8 +10,8 @@
 | ❌ Broken | 10 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a complete web server in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: web_server.ruchy
 // HTTP server with routing and middleware
 
@@ -76,6 +76,7 @@ server.listen()
 
 
 
+
 ```
 
 That's a production-ready web server in under 30 lines!
@@ -88,7 +89,7 @@ Build reliable network connections:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+
 // TCP Server
 let server = net::TcpListener::bind("127.0.0.1:9000")
 println("Server listening on port 9000")
@@ -123,6 +124,7 @@ println("Server replied: " + response)
 
 
 
+
 ```
 
 ### HTTP Client
@@ -131,7 +133,7 @@ Make HTTP requests easily:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected method name or 'await' after '.'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple GET request
 let response = http::get("https://api.example.com/data")
 let data = response.json()
@@ -174,6 +176,7 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
 
 
 
+
 ```
 
 ### WebSocket Communication
@@ -182,7 +185,7 @@ Real-time bidirectional communication:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // WebSocket Server
 let ws_server = ws::Server::new("0.0.0.0:8081")
 
@@ -226,6 +229,7 @@ ws.on("error", |err| {
 
 
 
+
 ```
 
 ## Practical Network Applications
@@ -234,7 +238,7 @@ ws.on("error", |err| {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: api_server.ruchy
 // RESTful API with database
 
@@ -345,13 +349,14 @@ app.listen()
 
 
 
+
 ```
 
 ### Real-time Chat Application
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: chat_server.ruchy
 // Multi-room chat server with history
 
@@ -475,13 +480,14 @@ server.listen()
 
 
 
+
 ```
 
 ### Network Scanner
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier, '*', or '{' after '::'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: network_scanner.ruchy
 // Scan network for open ports and services
 
@@ -589,13 +595,14 @@ if results.len() > 0 {
 
 
 
+
 ```
 
 ### Load Balancer
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected method name or 'await' after '.'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: load_balancer.ruchy
 // HTTP load balancer with health checking
 
@@ -675,6 +682,7 @@ balancer.listen()
 
 
 
+
 ```
 
 ## Advanced Networking
@@ -685,7 +693,7 @@ Build custom network protocols:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Custom protocol over TCP
 fun send_packet(socket, type, data) {
     let packet = {
@@ -712,13 +720,14 @@ fun receive_packet(socket) {
 
 
 
+
 ```
 
 ### Network Monitoring
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: ColonColon
+
 // Monitor network traffic
 let monitor = net::PacketCapture::new("eth0")
 
@@ -731,6 +740,7 @@ monitor.on_packet(|packet| {
 })
 
 monitor.start()
+
 
 
 

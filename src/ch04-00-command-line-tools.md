@@ -1,17 +1,17 @@
 # Command-Line Tools
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (14/14 examples)
+**Chapter Status**: ❌ 7% Working (1/14 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 14 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ✅ Working | 1 | Ready for production use |
+| ⚠️ Not Implemented | 4 | Planned for future versions |
+| ❌ Broken | 9 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,7 +28,7 @@ Most people think command-line tools are complex, requiring deep system knowledg
 Here's a simple but useful command-line tool in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // File: word_counter.ruchy
 // Simple word counter tool
@@ -55,6 +55,8 @@ println("Lines: " + line_count.to_s())
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Run it:
@@ -77,7 +79,7 @@ That's a real tool! It solves a common problem with simple code.
 
 Get information from users with `input()`:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 let name = input("What's your name? ")
 let age = input("How old are you? ").to_i()
@@ -87,13 +89,15 @@ let is_student = input("Are you a student? (y/n) ") == "y"
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### File Operations
 
 Work with files using built-in functions:
 ```ruchy  
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Reading files
 let content = read_file("data.txt")
@@ -111,13 +115,15 @@ let size = file_size("data.txt")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Command Arguments
 
 Access command-line arguments:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Usage: ruchy run script.ruchy file1.txt file2.txt
 let args = command_args()
@@ -131,6 +137,8 @@ println("Processing: " + first_file + " and " + second_file)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Practical Tools
@@ -138,7 +146,7 @@ println("Processing: " + first_file + " and " + second_file)
 ### File Processor
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // File: text_processor.ruchy
 // Processes text files with various operations
@@ -196,12 +204,14 @@ match choice {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Log Analyzer
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: log_analyzer.ruchy
 // Analyzes server log files
@@ -252,12 +262,14 @@ println("Busiest Hour: " + busiest_hour.to_s() + ":00")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Batch File Renamer
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: batch_renamer.ruchy  
 // Renames multiple files with patterns
@@ -291,6 +303,8 @@ println("\nRenamed " + renamed_count.to_s() + " files")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Error Handling
@@ -298,7 +312,7 @@ println("\nRenamed " + renamed_count.to_s() + " files")
 Real tools need proper error handling:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Robust file processor with error handling
 
@@ -342,6 +356,8 @@ if process_file(filename) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## User Experience
@@ -349,7 +365,7 @@ if process_file(filename) {
 Make your tools user-friendly:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // Good CLI tool practices
 
@@ -391,6 +407,8 @@ fun process_with_progress(files) {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Generated Code Insight
@@ -402,7 +420,7 @@ See how Ruchy's simple file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Example: Manual line counting implementation
 
 fun main() {
@@ -425,6 +443,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Becomes this optimized Rust:
@@ -502,7 +522,7 @@ $ ruchy repl
 **Example Complete Tool - Task Manager:**
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // task_manager.ruchy - A simple but useful task management tool
 
@@ -596,6 +616,8 @@ loop {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 **Usage:**
@@ -636,11 +658,12 @@ fun main() {
 
 
 
+
 ```
 
 ### Poor User Experience
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Confusing and unhelpful
 println("Enter thing:")
@@ -651,11 +674,13 @@ let thing = input()
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Hardcoded Paths
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // ❌ Only works on your computer
 let data = read_file("/Users/noah/Desktop/data.txt")
@@ -664,6 +689,8 @@ let data = read_file("/Users/noah/Desktop/data.txt")
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Summary

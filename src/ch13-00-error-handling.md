@@ -10,8 +10,8 @@
 | ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's robust error handling in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("ParseError")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Define error types
 enum AppError {
     NetworkError(String)
@@ -83,6 +83,7 @@ match fetch_user(123) {
 
 
 
+
 ```
 
 That's explicit, recoverable error handling!
@@ -95,7 +96,7 @@ The foundation of error handling:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected enum name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Result is an enum with two variants
 enum Result<T, E> {
     Ok(T)    // Success with value
@@ -127,6 +128,7 @@ match divide(10.0, 0.0) {
 
 
 
+
 ```
 
 ### Option Type
@@ -135,7 +137,7 @@ Handle absent values safely:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected enum name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Option represents nullable values
 enum Option<T> {
     Some(T)  // Value present
@@ -169,6 +171,7 @@ let email = find_user("Bob")
 
 
 
+
 ```
 
 ### Error Propagation
@@ -177,7 +180,7 @@ Note: The ? operator was removed in v0.11.0. Use explicit match statements for e
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Without ? operator - verbose
 fun process_file_verbose(path: String) -> Result<String, Error> {
     let file = match open_file(path) {
@@ -240,6 +243,7 @@ fun complex_operation() -> Result<Data, Error> {
 
 
 
+
 ```
 
 ### Custom Error Types
@@ -248,7 +252,7 @@ Build rich error information:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found LeftBrace
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Detailed error enum
 enum DatabaseError {
     ConnectionFailed { host: String, port: i32 }
@@ -311,6 +315,7 @@ impl Error {
 
 
 
+
 ```
 
 ## Error Handling Patterns
@@ -321,7 +326,7 @@ Exit early on errors:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun validate_user(user: User) -> Result<User, ValidationError> {
     // Early return on validation failures
     if user.name.is_empty() {
@@ -343,6 +348,7 @@ fun validate_user(user: User) -> Result<User, ValidationError> {
 
 
 
+
 ```
 
 ### Error Recovery
@@ -351,7 +357,7 @@ Gracefully recover from errors:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightParen, found LeftParen
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Retry with exponential backoff
 fun fetch_with_retry<T>(
     operation: Fn() -> Result<T, Error>,
@@ -420,6 +426,7 @@ impl CircuitBreaker {
 
 
 
+
 ```
 
 ### Error Context
@@ -428,7 +435,7 @@ Add context to errors:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Trait for adding context
 trait Context<T> {
     fun context(self, msg: String) -> Result<T, Error>
@@ -471,6 +478,7 @@ fun process_order(order_id: i32) -> Result<Order, Error> {
 
 
 
+
 ```
 
 ## Real-World Error Handling
@@ -479,7 +487,7 @@ fun process_order(order_id: i32) -> Result<Order, Error> {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("code")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Structured API errors
 struct ApiError {
     status: i32
@@ -533,13 +541,14 @@ impl IntoResponse for ApiError {
 
 
 
+
 ```
 
 ### Validation Pipeline
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Composable validators
 type Validator<T> = Fn(T) -> Result<T, ValidationError>
 
@@ -584,13 +593,14 @@ match validate_pipeline(user, user_validators) {
 
 
 
+
 ```
 
 ### Async Error Handling
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Async Result type
 async fun fetch_data(url: String) -> Result<Data, Error> {
     let response = http::get(url).await?
@@ -628,13 +638,14 @@ async fun fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
 
 
 
+
 ```
 
 ## Testing Error Cases
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Underscore
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[test]
 fun test_error_handling() {
     // Test expected errors
@@ -662,6 +673,7 @@ fun test_panic_condition() {
 fun never_panics(input: RandomInput) {
     let _ = safe_process(input)  // Should never panic
 }
+
 
 
 

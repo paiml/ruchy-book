@@ -1,5 +1,20 @@
 # Collections and Iteration
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 40% Working (4/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 4 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 6 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.4.0  
 **Testing**: All examples verified with `make test-ch09`
@@ -15,6 +30,7 @@ Programs need to process multiple pieces of data efficiently - counting sequence
 This example is tested in `tests/ch09-collections/test_01_iteration_for.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("Counting to 5:");
     for i in 0..5 {
@@ -22,6 +38,7 @@ fun main() {
     }
     println("Done counting");
 }
+
 ```
 
 **Output:**
@@ -40,6 +57,7 @@ Done counting
 This example is tested in `tests/ch09-collections/test_02_while_accumulation.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let mut sum = 0;
     let mut i = 1;
@@ -50,6 +68,7 @@ fun main() {
     println("Sum of 1-5:");
     println(sum);
 }
+
 ```
 
 **Output:**
@@ -63,6 +82,7 @@ Sum of 1-5:
 This example is tested in `tests/ch09-collections/test_03_nested_loops.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("Pattern:");
     for row in 0..3 {
@@ -76,6 +96,7 @@ fun main() {
         println("");
     }
 }
+
 ```
 
 **Output:**
@@ -108,30 +129,39 @@ Pattern:
 
 ### For Loop Range Iteration
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 for variable in start..end {
     // Process each value
     println(variable);
 }
+
 ```
 
 ### While Loop Accumulation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let mut accumulator = initial_value;
 let mut counter = start;
 while counter <= end {
     accumulator = update(accumulator, counter);
     counter = counter + 1;
 }
+
 ```
 
 ### Nested Loop Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 for outer in 0..height {
     for inner in 0..width {
         // Process (outer, inner) coordinate
         process(outer, inner);
     }
 }
+
 ```
 
 ## Testing Your Code
@@ -150,38 +180,49 @@ make test-file FILE=tests/ch09-collections/test_01_iteration_for.ruchy
 
 ### Sequential Processing
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 for i in 1..10 {
     let result = process(i);
     println(result);
 }
+
 ```
 
 ### Sum Calculation
 ```ruchy
+// Status: ✅ WORKING
 let mut total = 0;
 for value in 1..100 {
     total = total + value;
 }
+
 ```
 
 ### Grid Processing
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 for row in 0..height {
     for col in 0..width {
         let value = calculate(row, col);
         display(value);
     }
 }
+
 ```
 
 ### Conditional Accumulation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let mut count = 0;
 for i in 1..100 {
     if condition(i) {
         count = count + 1;
     }
 }
+
 ```
 
 ## Performance Notes

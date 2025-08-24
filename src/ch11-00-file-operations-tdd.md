@@ -1,5 +1,20 @@
 # File Operations
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟠 60% Working (6/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 6 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 4 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.5.0  
 **Testing**: All examples verified with `make test-ch11`
@@ -15,6 +30,7 @@ Programs need to persist data beyond their execution - saving settings, storing 
 This example is tested in `tests/ch11-file-operations/test_01_simulated_file.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun read_config() -> i32 {
     // Simulate reading a config value
     return 42;
@@ -37,6 +53,7 @@ fun main() {
     println("Write success:");
     println(success);
 }
+
 ```
 
 **Output:**
@@ -52,6 +69,7 @@ true
 This example is tested in `tests/ch11-file-operations/test_02_data_persistence.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun save_game_state(level: i32, score: i32) {
     println("Saving game state...");
     println("Level:");
@@ -73,6 +91,7 @@ fun main() {
     println("---");
     load_game_state();
 }
+
 ```
 
 **Output:**
@@ -95,6 +114,7 @@ State loaded successfully
 This example is tested in `tests/ch11-file-operations/test_03_config_management.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun get_default_config() -> i32 {
     return 100;
 }
@@ -121,6 +141,7 @@ fun main() {
     let config = get_default_config();
     apply_config(config);
 }
+
 ```
 
 **Output:**
@@ -155,14 +176,19 @@ Configuration applied successfully
 
 ### Simulated Read Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun read_data() -> DataType {
     // Return simulated data
     return default_value;
 }
+
 ```
 
 ### Simulated Write Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun write_data(value: DataType) -> bool {
     // Validate and "write"
     if valid(value) {
@@ -170,10 +196,13 @@ fun write_data(value: DataType) -> bool {
     }
     return false;
 }
+
 ```
 
 ### Configuration Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun load_config() -> ConfigType {
     return default_config;
 }
@@ -181,6 +210,7 @@ fun load_config() -> ConfigType {
 fun save_config(config: ConfigType) -> bool {
     return validate(config);
 }
+
 ```
 
 ## Testing Your Code
@@ -199,6 +229,7 @@ make test-file FILE=tests/ch11-file-operations/test_01_simulated_file.ruchy
 
 ### Settings Management
 ```ruchy
+// Status: ✅ WORKING
 fun load_settings() -> i32 {
     return 50; // Default volume
 }
@@ -206,19 +237,23 @@ fun load_settings() -> i32 {
 fun save_settings(volume: i32) -> bool {
     return volume >= 0 && volume <= 100;
 }
+
 ```
 
 ### Game Save System
 ```ruchy
+// Status: ✅ WORKING
 fun save_progress(level: i32, score: i32) {
     println("Saving progress...");
     println(level);
     println(score);
 }
+
 ```
 
 ### Cache Simulation
 ```ruchy
+// Status: ✅ WORKING
 fun get_cached_value(key: i32) -> i32 {
     // Simulate cache lookup
     if key == 1 {
@@ -226,16 +261,20 @@ fun get_cached_value(key: i32) -> i32 {
     }
     return 0;
 }
+
 ```
 
 ### Logging Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun log_event(message: &str, severity: i32) {
     println("LOG:");
     println(message);
     println("Severity:");
     println(severity);
 }
+
 ```
 
 ## Performance Notes

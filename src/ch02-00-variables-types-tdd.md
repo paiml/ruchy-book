@@ -1,5 +1,20 @@
 # Variables and Types
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟠 63% Working (5/8 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 5 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 3 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (4/4 examples passing)  
 **Ruchy Version**: v1.1.0  
 **Testing**: All examples verified with `make test-ch02`
@@ -15,10 +30,12 @@ Programs need to store and manipulate data. Variables give us named storage loca
 This example is tested in `tests/ch02-variables/test_01_basic_let.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let x = 42;
     println(x);
 }
+
 ```
 
 **Output:**
@@ -31,10 +48,12 @@ fun main() {
 This example is tested in `tests/ch02-variables/test_02_string_var.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let name = "Ruchy";
     println(name);
 }
+
 ```
 
 **Output:**
@@ -47,12 +66,14 @@ Ruchy
 This example is tested in `tests/ch02-variables/test_03_multiple_vars.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let x = 10;
     let y = 20;
     let sum = x + y;
     println(sum);
 }
+
 ```
 
 **Output:**
@@ -65,12 +86,14 @@ fun main() {
 This example is tested in `tests/ch02-variables/test_04_float_vars.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let pi = 3.14159;
     let radius = 5.0;
     let area = pi * radius * radius;
     println(area);
 }
+
 ```
 
 **Output:**
@@ -107,12 +130,14 @@ All arithmetic follows standard precedence rules.
 Variables exist within their defining block:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let outer = 100;
     // outer is accessible here
     println(outer);
 }
 // outer is NOT accessible here
+
 ```
 
 ## Testing Your Code
@@ -131,20 +156,29 @@ make test-file FILE=tests/ch02-variables/test_01_basic_let.ruchy
 
 ### Pattern 1: Simple Calculation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let result = value1 + value2;
+
 ```
 
 ### Pattern 2: Multi-Step Calculation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let step1 = initial_value * factor;
 let step2 = step1 + adjustment;
 let final_result = step2 / divisor;
+
 ```
 
 ### Pattern 3: Named Constants
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let PI = 3.14159;
 let GRAVITY = 9.81;
+
 ```
 
 ## Type Safety

@@ -1,17 +1,17 @@
 # Deployment & DevOps
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: 🟠 50% Working (4/8 examples)
+**Chapter Status**: ❌ 0% Working (0/8 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 4 | Ready for production use |
+| ✅ Working | 0 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 4 | Known issues, needs fixing |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,7 +28,7 @@ Most deployments are manual, error-prone nightmares. In Ruchy, deployment is aut
 Here's modern deployment in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // deploy.ruchy - One-command deployment
 use std::deploy;
@@ -67,6 +67,8 @@ if deployment.is_healthy() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 That's deployment without drama!
@@ -276,7 +278,7 @@ spec:
 Zero-downtime deployment:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // blue_green.ruchy
 fun deploy_blue_green(new_version: String) {
@@ -319,6 +321,8 @@ fun deploy_blue_green(new_version: String) {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Canary Deployment
@@ -326,7 +330,7 @@ fun deploy_blue_green(new_version: String) {
 Gradual rollout:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // canary.ruchy
 fun deploy_canary(new_version: String) {
@@ -366,6 +370,8 @@ fun deploy_canary(new_version: String) {
 
 
 
+
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 ```
 
 ### Feature Flags
@@ -373,7 +379,7 @@ fun deploy_canary(new_version: String) {
 Deploy code without releasing features:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // feature_flags.ruchy
 use feature_flags::{Client, Flag};
@@ -411,6 +417,8 @@ for percentage in [10, 25, 50, 75, 100] {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Infrastructure as Code
@@ -478,7 +486,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected ',' or closing delimiter in macro arguments
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // metrics.ruchy
 use metrics::{counter, gauge, histogram};
 
@@ -521,13 +529,14 @@ let dashboard = json!({
 
 
 
+
 ```
 
 ### Logging
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // logging.ruchy
 use tracing::{info, warn, error, debug, span, Level};
 
@@ -577,13 +586,14 @@ let config = json!({
 
 
 
+
 ```
 
 ### Distributed Tracing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected ',' or '}' in import list
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // tracing.ruchy
 use opentelemetry::{global, sdk, trace::Tracer};
 
@@ -609,6 +619,7 @@ async fun handle_request(req: Request, db: &Database) -> Result<Response> {
     
     Ok(Response::new(data))
 }
+
 
 
 
@@ -675,7 +686,7 @@ deploy:production:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Question
+// Error: ✗ Compilation failed: Failed to transpile to Rust
 // secrets.ruchy
 use vault::Client;
 
@@ -693,6 +704,7 @@ vault.rotate("secret/database/password").await?
 // Environment injection
 env::set_var("DATABASE_URL", 
     format!("postgres://user:{}@host/db", db_password))
+
 
 
 
