@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -39,6 +39,7 @@ fun main() {
     println(true);
     println("=== End Demo ===");
 }
+
 
 ```
 
@@ -73,6 +74,7 @@ fun main() {
     println("================");
 }
 
+
 ```
 
 **Output:**
@@ -105,6 +107,7 @@ fun main() {
     display_menu();
     println("Menu displayed successfully");
 }
+
 
 ```
 
@@ -149,6 +152,7 @@ println(variable);
 println(42);
 println(true);
 
+
 ```
 
 ### Variable Output Pattern
@@ -158,6 +162,7 @@ println(true);
 let data = value;
 println("Label:");
 println(data);
+
 
 ```
 
@@ -170,6 +175,7 @@ fun display_options() {
     println("2. Option Two");
     println("============");
 }
+
 
 ```
 
@@ -194,6 +200,7 @@ let value = 100;
 println("Result:");
 println(value);
 
+
 ```
 
 ### Report Generation
@@ -207,6 +214,7 @@ fun display_report(title: &str, data: i32) {
     println("==============");
 }
 
+
 ```
 
 ### Status Messages
@@ -215,6 +223,7 @@ fun display_report(title: &str, data: i32) {
 println("Processing...");
 // ... do work ...
 println("Complete!");
+
 
 ```
 
@@ -227,6 +236,7 @@ fun show_options() {
     println("2. Stop");
     println("3. Help");
 }
+
 
 ```
 

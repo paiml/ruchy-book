@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -38,6 +38,7 @@ fun main() {
     }
     println("After operation");
 }
+
 
 ```
 
@@ -70,6 +71,7 @@ fun main() {
     }
 }
 
+
 ```
 
 **Output:**
@@ -93,6 +95,7 @@ fun main() {
         _ => println("Senior")
     }
 }
+
 
 ```
 
@@ -133,6 +136,7 @@ if value > 0 {
     println("Invalid");
 }
 
+
 ```
 
 ### Pattern-Based Validation
@@ -146,6 +150,7 @@ match status {
     _ => println("Unknown")
 }
 
+
 ```
 
 ### Range Validation
@@ -158,6 +163,7 @@ match age {
     18..=65 => println("Adult"),
     _ => println("Senior")
 }
+
 
 ```
 
@@ -185,6 +191,7 @@ if input < 0 {
     process_input(input);
 }
 
+
 ```
 
 ### Range Checking
@@ -198,6 +205,7 @@ match score {
     _ => println("Invalid score")
 }
 
+
 ```
 
 ### State Validation
@@ -209,6 +217,7 @@ if system_ready {
 } else {
     println("System not ready");
 }
+
 
 ```
 

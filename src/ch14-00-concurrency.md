@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -76,6 +76,7 @@ let results = pool.parallel_map(items, |item| {
 
 
 
+
 ```
 
 That's concurrency without fear!
@@ -119,6 +120,7 @@ let handle = Thread::builder()
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Channels
@@ -164,6 +166,7 @@ loop {
         }
     }
 }
+
 
 
 
@@ -221,6 +224,7 @@ counter.fetch_add(1, Ordering::SeqCst)
 
 
 
+
 ```
 
 ### Async/Await
@@ -261,6 +265,7 @@ async fun process_stream(stream: AsyncStream<Item>) {
         process_item(item).await
     }
 }
+
 
 
 
@@ -341,6 +346,7 @@ for i in range(100) {
 
 
 
+
 ```
 
 ### Producer-Consumer
@@ -398,6 +404,7 @@ fun bounded_pipeline() {
 
 
 
+
 ```
 
 ### Fork-Join
@@ -440,6 +447,7 @@ fun parallel_sum(numbers: Vec<i32>) -> i32 {
     
     return sums.sum()
 }
+
 
 
 
@@ -520,6 +528,7 @@ println("Count: " + count.to_s())  // 2
 
 
 
+
 ```
 
 ## Real-World Concurrency
@@ -570,6 +579,7 @@ async fun handle_request(req: Request) -> Response {
 
 
 
+
 ```
 
 ### Parallel Data Processing
@@ -610,6 +620,7 @@ fun parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
         .parallel_flat_map(stage3, workers: 4)
         .collect()
 }
+
 
 
 
@@ -663,6 +674,7 @@ async fun test_async_operations() {
 
 
 
+
 ```
 
 ## Performance Tips
@@ -697,6 +709,7 @@ instead_of {
 do {
     channel.send(items)  // One batch send
 }
+
 
 
 

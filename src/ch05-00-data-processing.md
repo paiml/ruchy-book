@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -83,6 +83,7 @@ for region, amount in region_sales.items() {
 
 
 
+
 ```
 
 Output:
@@ -137,6 +138,7 @@ let transactions = [
 
 
 
+
 ```
 
 ### Data Aggregation
@@ -175,6 +177,7 @@ let amounts_only = transactions.map(|t| t.amount)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### File Format Processing
@@ -204,6 +207,7 @@ fun load_csv(filename) {
     
     return data
 }
+
 
 
 
@@ -258,6 +262,7 @@ println(f"\nTop Spenders:")
 for i, customer in top_spenders.enumerate() {
     println("  " + (i+1).to_s() + ". " + customer.name + ": $" + customer.total_spent.to_s() + " (" + customer.orders.to_s() + " orders)")
 }
+
 
 
 
@@ -344,6 +349,7 @@ println("\nBusiest Hour: " + busiest_hour.key + ":xx (" + busiest_hour.value.to_
 
 
 
+
 ```
 
 ### Financial Data Processor
@@ -416,6 +422,7 @@ for transaction in transactions.sort_by(|t| t.date) {
 
 
 
+
 ```
 
 ## Data Visualization (Text-based)
@@ -450,6 +457,7 @@ let monthly_sales = {
 }
 
 draw_bar_chart(monthly_sales, "Monthly Sales Report")
+
 
 
 
@@ -490,6 +498,7 @@ println("Average sale: $" + average.to_s())
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Becomes this optimized Rust:
@@ -682,6 +691,7 @@ fun main_menu() {
 while main_menu() {
     // Continue until user quits
 }
+
 
 
 

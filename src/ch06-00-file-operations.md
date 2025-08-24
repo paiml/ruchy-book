@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -80,6 +80,7 @@ println("✅ Desktop organized!")
 
 
 
+
 ```
 
 That's file automation! Hours of manual work done in seconds.
@@ -112,6 +113,7 @@ let clean_path = normalize_path(".././data//file.txt")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### File Information
@@ -142,6 +144,7 @@ let can_execute = is_executable(path)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Directory Operations
@@ -180,6 +183,7 @@ fun walk_directory(dir) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Practical File Tools
@@ -252,6 +256,7 @@ println("Location: " + backup_dir)
 let summary = "Backup Summary\n==============\nDate: " + timestamp + "\nFiles: " + total_files.to_s() + "\nSize: " + format_size(total_size) + "\nCategories: " + backup_config.keys().join(", ") + "\n"
 
 write_file(join_path(backup_dir, "summary.txt"), summary)
+
 
 
 
@@ -347,6 +352,7 @@ if duplicates.is_empty() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Log Rotation System
@@ -415,6 +421,7 @@ println("\n✅ Log rotation complete!")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Configuration File Manager
@@ -526,6 +533,7 @@ loop {
 
 
 
+
 ```
 
 ## Error Handling
@@ -570,6 +578,7 @@ fun safe_file_operation(path) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Generated Code Insight
@@ -597,6 +606,7 @@ for file in files {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Becomes this optimized Rust:

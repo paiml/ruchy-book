@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -42,6 +42,7 @@ fun main() {
     println(result);
 }
 
+
 ```
 
 **Output:**
@@ -64,6 +65,7 @@ mod utils {
 fun main() {
     utils::greet();
 }
+
 
 ```
 
@@ -105,6 +107,7 @@ mod module_name {
     }
 }
 
+
 ```
 
 ### Accessing Module Items
@@ -115,6 +118,7 @@ fun main() {
     module_name::public_function();  // Works
     // module_name::private_function();  // Would fail - not public
 }
+
 
 ```
 
@@ -143,6 +147,7 @@ mod math {
     pub fun subtract(a: i32, b: i32) -> i32 { a - b }
 }
 
+
 ```
 
 ### Use Case 2: String Utilities
@@ -154,6 +159,7 @@ mod strings {
     pub fun greet() { println("Hello!"); }
     pub fun farewell() { println("Goodbye!"); }
 }
+
 
 ```
 

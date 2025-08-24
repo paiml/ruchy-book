@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -68,6 +68,7 @@ impl Serializable for User {
 let user = User{name: "Alice", email: "alice@example.com", age: 30}
 save_to_file(user, "user.json")  // Generic function, specific type
 let loaded: User = load_from_file("user.json")  // Type safe!
+
 
 
 
@@ -133,6 +134,7 @@ trait Dog: Animal {
 
 
 
+
 ```
 
 ### Implementing Traits
@@ -179,6 +181,7 @@ impl Drawable for String {
 }
 
 "Hello".draw()  // Extension methods!
+
 
 
 
@@ -233,6 +236,7 @@ where
 
 
 
+
 ```
 
 ### Generic Types
@@ -282,6 +286,7 @@ impl<T: Ord> SortedVec<T> {
         self.items.insert(pos, item)
     }
 }
+
 
 
 
@@ -345,6 +350,7 @@ cache2.put(1, vec!["data"])
 
 
 
+
 ```
 
 ### Trait Objects
@@ -391,6 +397,7 @@ for plugin in plugins {
 
 
 
+
 ```
 
 ### Builder Pattern with Generics
@@ -431,6 +438,7 @@ let user = Builder::new(User::new())
     .with(|u| { u.name = "Alice"; u })
     .with(|u| { u.role = Role::Admin; u })
     .build()
+
 
 
 
@@ -501,6 +509,7 @@ let post_id: Id<Post> = Id::new("post_456")
 
 
 
+
 ```
 
 ## Performance Considerations
@@ -537,6 +546,7 @@ fun hot_path<T: Copy>(x: T) -> T {
 
 
 
+
 ```
 
 ### Static vs Dynamic Dispatch
@@ -557,6 +567,7 @@ fun dynamic_dispatch(item: Box<dyn Display>) {
 // Choose based on needs:
 // - Static: Known types, performance critical
 // - Dynamic: Plugin systems, heterogeneous collections
+
 
 
 

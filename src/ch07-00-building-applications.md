@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -322,6 +322,7 @@ main()
 
 
 
+
 ```
 
 That's a complete application! It has data persistence, search, export, and a user-friendly interface.
@@ -383,6 +384,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### State Management
@@ -428,6 +430,7 @@ fun load_state() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Error Recovery
@@ -469,6 +472,7 @@ fun with_retry(operation_fn, max_attempts = 3) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Real-World Applications
@@ -531,6 +535,7 @@ fun get_password(site) {
 
 
 
+
 ```
 
 ### Budget Tracker
@@ -586,6 +591,7 @@ fun generate_report(month) {
     generate_pdf(report_file, report_data)
     println("\n📄 Report saved to " + report_file)
 }
+
 
 
 
@@ -660,6 +666,7 @@ fun create_project(name, language) {
 
 
 
+
 ```
 
 ## Testing Your Application
@@ -716,6 +723,7 @@ fun run_all_tests() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Deployment
@@ -766,6 +774,7 @@ echo 'Installation complete! Run {APP_NAME} to start.'
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Try It Yourself

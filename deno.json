@@ -18,6 +18,7 @@
     "proseWrap": "preserve"
   },
   "tasks": {
+    "test-tooling": "deno run --allow-read --allow-write --allow-run scripts/test-tooling-integration.ts",
     "test": "deno run --allow-read --allow-write --allow-run scripts/test-all-examples.ts",
     "test-oneliners": "deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts",
     "extract-examples": "deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts",

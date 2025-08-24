@@ -1,10 +1,10 @@
 {
-  "generated_at": "2025-08-24T12:32:54.128Z",
-  "ruchy_version": "ruchy 1.8.0",
+  "generated_at": "2025-08-24T13:04:42.933Z",
+  "ruchy_version": "ruchy 1.8.1",
   "summary": {
-    "total_chapters": 36,
-    "total_examples": 381,
-    "working_examples": 80,
+    "total_chapters": 37,
+    "total_examples": 382,
+    "working_examples": 81,
     "failing_examples": 301,
     "success_rate": 21
   },
@@ -66,6 +66,18 @@
         "working": 0,
         "not_implemented": 0,
         "broken": 4,
+        "planned": 0
+      }
+    },
+    "ch21-00-professional-tooling-tdd": {
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 1,
+        "not_implemented": 0,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -450,7 +462,7 @@
     "success_rate": 95
   },
   "quality_metrics": {
-    "documentation_coverage": 102.85714285714285,
+    "documentation_coverage": 105.71428571428572,
     "example_testing": 100,
     "implementation_status": 21
   }

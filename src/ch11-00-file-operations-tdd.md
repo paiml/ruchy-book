@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -54,6 +54,7 @@ fun main() {
     println(success);
 }
 
+
 ```
 
 **Output:**
@@ -91,6 +92,7 @@ fun main() {
     println("---");
     load_game_state();
 }
+
 
 ```
 
@@ -142,6 +144,7 @@ fun main() {
     apply_config(config);
 }
 
+
 ```
 
 **Output:**
@@ -183,6 +186,7 @@ fun read_data() -> DataType {
     return default_value;
 }
 
+
 ```
 
 ### Simulated Write Pattern
@@ -197,6 +201,7 @@ fun write_data(value: DataType) -> bool {
     return false;
 }
 
+
 ```
 
 ### Configuration Pattern
@@ -210,6 +215,7 @@ fun load_config() -> ConfigType {
 fun save_config(config: ConfigType) -> bool {
     return validate(config);
 }
+
 
 ```
 
@@ -238,6 +244,7 @@ fun save_settings(volume: i32) -> bool {
     return volume >= 0 && volume <= 100;
 }
 
+
 ```
 
 ### Game Save System
@@ -248,6 +255,7 @@ fun save_progress(level: i32, score: i32) {
     println(level);
     println(score);
 }
+
 
 ```
 
@@ -262,6 +270,7 @@ fun get_cached_value(key: i32) -> i32 {
     return 0;
 }
 
+
 ```
 
 ### Logging Pattern
@@ -274,6 +283,7 @@ fun log_event(message: &str, severity: i32) {
     println("Severity:");
     println(severity);
 }
+
 
 ```
 

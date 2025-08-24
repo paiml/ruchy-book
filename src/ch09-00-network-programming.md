@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -77,6 +77,7 @@ server.listen()
 
 
 
+
 ```
 
 That's a production-ready web server in under 30 lines!
@@ -120,6 +121,7 @@ let client = net::TcpStream::connect("127.0.0.1:9000")
 client.write("Hello, server!\n")
 let response = client.read_line()
 println("Server replied: " + response)
+
 
 
 
@@ -177,6 +179,7 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
 
 
 
+
 ```
 
 ### WebSocket Communication
@@ -225,6 +228,7 @@ ws.on("message", |data| {
 ws.on("error", |err| {
     println("WebSocket error: " + err.to_s())
 })
+
 
 
 
@@ -345,6 +349,7 @@ app.use(|err, req, res, next| {
 
 println("🚀 API server running on http://localhost:3000")
 app.listen()
+
 
 
 
@@ -481,6 +486,7 @@ server.listen()
 
 
 
+
 ```
 
 ### Network Scanner
@@ -596,6 +602,7 @@ if results.len() > 0 {
 
 
 
+
 ```
 
 ### Load Balancer
@@ -683,6 +690,7 @@ balancer.listen()
 
 
 
+
 ```
 
 ## Advanced Networking
@@ -721,6 +729,7 @@ fun receive_packet(socket) {
 
 
 
+
 ```
 
 ### Network Monitoring
@@ -740,6 +749,7 @@ monitor.on_packet(|packet| {
 })
 
 monitor.start()
+
 
 
 

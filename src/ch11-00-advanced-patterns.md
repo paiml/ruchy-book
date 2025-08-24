@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -80,6 +80,7 @@ let unsubscribe = events.on("user.login", with_logging(|user| {
 }))
 
 events.emit("user.login", {name: "Alice", id: 123})
+
 
 
 
@@ -156,6 +157,7 @@ let server = ServerBuilder::new()
 
 
 
+
 ```
 
 ### Strategy Pattern
@@ -208,6 +210,7 @@ if file_size > mb(10) {
 }
 
 let compressed = compressor.compress(file_data)
+
 
 
 
@@ -295,6 +298,7 @@ chain.execute(request, response)
 
 
 
+
 ```
 
 ## Functional Patterns
@@ -346,6 +350,7 @@ let result = pipeline(
     transform,
     format
 )
+
 
 
 
@@ -407,6 +412,7 @@ fun process_user(id) {
         .map(|user| format_user(user))
         .unwrap_or({error: "Processing failed"})
 }
+
 
 
 
@@ -500,6 +506,7 @@ let first_10_even = fibonacci
 
 
 
+
 ```
 
 ## Architectural Patterns
@@ -561,6 +568,7 @@ class UserService {
         return repository.save(user)
     }
 }
+
 
 
 
@@ -642,6 +650,7 @@ let current_state = event_store.replay()
 
 
 
+
 ```
 
 ### CQRS (Command Query Responsibility Segregation)
@@ -710,6 +719,7 @@ let orders = query_bus.query({
     type: "GetOrdersByCustomer",
     customer_id: 123
 })
+
 
 
 
@@ -792,6 +802,7 @@ worker.send({
 
 
 
+
 ```
 
 ### Circuit Breaker
@@ -851,6 +862,7 @@ fun call_external_api(data) {
             .send()
     })
 }
+
 
 
 

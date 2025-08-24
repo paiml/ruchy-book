@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -41,6 +41,7 @@ let y = 24;
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 #### Unmatched Braces/Parentheses
@@ -61,6 +62,7 @@ if condition {
 
 
 
+
 ```
 
 #### Invalid Variable Names
@@ -76,6 +78,7 @@ let fn = "keyword"
 let invalid_123 = "ok"
 let my_var = "underscores ok"
 let function_name = "not keyword"
+
 
 
 
@@ -105,6 +108,7 @@ let x = "string"  // Let compiler infer type
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 #### Cannot Move Out of Borrowed Content
@@ -120,6 +124,7 @@ let moved = *r  // Cannot move out of borrowed content
 let s = String::from("hello")
 let r = &s
 let copied = r.clone()  // Clone instead of move
+
 
 
 
@@ -152,6 +157,7 @@ println(s)  // s still valid
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Lifetime Errors
@@ -181,6 +187,7 @@ fun static_str() -> &'static str {
 
 
 
+
 ```
 
 #### Multiple Mutable References
@@ -201,6 +208,7 @@ let mut s = String::from("hello")
     // r1 scope ends here
 }
 let r2 = &mut s  // Now ok
+
 
 
 
@@ -238,6 +246,7 @@ if let Some(item) = v.get(5) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 #### Unwrap on None/Err
@@ -257,6 +266,7 @@ match maybe_value {
 
 // ✅ Or provide default
 let value = maybe_value.unwrap_or(0)
+
 
 
 
@@ -290,6 +300,7 @@ fun divide_result(a: i32, b: i32) -> Result<i32, String> {
         Err("Division by zero".to_string())
     }
 }
+
 
 
 
@@ -331,6 +342,7 @@ fun factorial_iterative(n: i32) -> i32 {
 
 
 
+
 ```
 
 #### Large Stack Allocations
@@ -351,6 +363,7 @@ fun large_vector() {
 fun boxed_array() {
     let big_array: Box<[i32; 1_000_000]> = Box::new([0; 1_000_000])
 }
+
 
 
 
@@ -377,6 +390,7 @@ fun process_strings_efficient(strings: &[String]) -> Vec<String> {
         .map(|s| s.to_uppercase())  // to_uppercase() works on &str
         .collect()
 }
+
 
 
 
@@ -420,6 +434,7 @@ fun concat_with_capacity(strings: &[&str]) -> String {
 
 
 
+
 ```
 
 ### Inefficient Collections
@@ -448,6 +463,7 @@ for i in 0..1000 {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Dependency Issues
@@ -476,6 +492,7 @@ let data = response.json().await?  // Feature not enabled
 // ✅ Enable required features in Cargo.toml
 // [dependencies]
 // reqwest = { version = "0.11", features = ["json"] }
+
 
 
 
@@ -608,6 +625,7 @@ debug!("Variable state: x={}, y={}", x, y)
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Using Debugger
@@ -649,6 +667,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Testing and Debugging
@@ -671,6 +690,7 @@ mod tests {
     
     // Run with: cargo test -- --nocapture
 }
+
 
 
 

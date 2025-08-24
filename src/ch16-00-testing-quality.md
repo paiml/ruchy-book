@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -92,6 +92,7 @@ fun bench_data_processing(b: &mut Bencher) {
 
 
 
+
 ```
 
 That's testing with confidence!
@@ -165,6 +166,7 @@ mod calculator_tests {
 
 
 
+
 ```
 
 ### Test Fixtures
@@ -227,6 +229,7 @@ fun test_with_auto_cleanup(fixture: DatabaseFixture) {
     let user = fixture.db.find_user("Alice")
     assert!(user.is_some())
 }
+
 
 
 
@@ -299,6 +302,7 @@ fun test_with_stub() {
 
 
 
+
 ```
 
 ### Property-Based Testing
@@ -358,6 +362,7 @@ fun test_database_consistency(operations: Vec<DbOperation>) {
     prop_assert!(db.is_consistent())
     prop_assert_eq!(db.total_balance(), INITIAL_BALANCE)
 }
+
 
 
 
@@ -443,6 +448,7 @@ fun test_database_transactions() {
 
 
 
+
 ```
 
 ## Performance Testing
@@ -522,6 +528,7 @@ fun test_with_profiling() {
 
 
 
+
 ```
 
 ## Quality Tools
@@ -564,6 +571,7 @@ fun debug_function() {
 
 
 
+
 ```
 
 ### Mutation Testing
@@ -585,6 +593,7 @@ Status: SURVIVED ❌
 fun test_addition_not_subtraction() {
     assert_ne!(add(5, 3), subtract(5, 3))
 }
+
 
 
 
@@ -625,6 +634,7 @@ fun fuzz_api_endpoint(input: FuzzInput) {
     assert!(response.status() < 600)
     assert!(response.body().len() < 10_000_000)
 }
+
 
 
 
@@ -711,6 +721,7 @@ fun main() {
     
     println("✅ All quality gates passed!")
 }
+
 
 
 

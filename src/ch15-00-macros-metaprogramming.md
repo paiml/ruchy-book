@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -71,6 +71,7 @@ struct User {
 }
 
 // The derive macro generates all the boilerplate!
+
 
 
 
@@ -137,6 +138,7 @@ handle_codes! {
     404 => "Not Found",
     500 => "Internal Error"
 }
+
 
 
 
@@ -218,6 +220,7 @@ let config = Config::builder()
 
 
 
+
 ```
 
 ### Attribute Macros
@@ -265,6 +268,7 @@ async fun get_user(id: i32) -> Response {
 fun test_addition(a: i32, b: i32, expected: i32) {
     assert_eq!(a + b, expected)
 }
+
 
 
 
@@ -331,6 +335,7 @@ let email_regex = regex!(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
 
 
 
+
 ```
 
 ## Practical Macros
@@ -379,6 +384,7 @@ macro! assert_eq_msg {
         }
     }
 }
+
 
 
 
@@ -449,6 +455,7 @@ define_opcodes! {
     JMP = 0x10,
     JEQ = 0x11
 }
+
 
 
 
@@ -548,6 +555,7 @@ let config = config! {
 
 
 
+
 ```
 
 ## Hygiene and Best Practices
@@ -610,6 +618,7 @@ fun test_macro() {
     let result = my_macro!(input)
     assert_eq!(result, expected)
 }
+
 
 
 

@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -166,6 +166,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ```bash
@@ -246,6 +247,7 @@ fun fibonacci(n: int) -> int {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Syntax Checking with `ruchy check`
@@ -300,6 +302,7 @@ fun test_multiply() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ```bash
@@ -365,6 +368,7 @@ fun property_test_reverse_twice_is_identity() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Interactive Development
@@ -464,6 +468,7 @@ fun factorial(n: int) -> int {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ```bash
@@ -518,6 +523,7 @@ fun bench_iterative_fib() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ```bash

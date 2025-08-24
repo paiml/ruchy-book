@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -47,6 +47,7 @@ fun test_add() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 Run it:
@@ -77,6 +78,7 @@ fun test_function_name() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 - `#[test]` marks the function as a test
@@ -114,6 +116,7 @@ fun test_subtraction() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ## Practical Testing Patterns
@@ -169,6 +172,7 @@ fun test_is_even() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Testing Edge Cases
@@ -210,6 +214,7 @@ fun test_find_max() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Testing Text Functions
@@ -255,6 +260,7 @@ fun test_count_vowels() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Testing Business Logic
@@ -300,6 +306,7 @@ fun test_can_vote() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ## Test-Driven Development (TDD)
@@ -335,6 +342,7 @@ fun fahrenheit_to_celsius(fahrenheit) {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ## Common Testing Mistakes
@@ -363,6 +371,7 @@ fun test_divide_good() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Tests That Don't Actually Test
@@ -388,6 +397,7 @@ fun test_useful() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Poor Test Names
@@ -412,6 +422,7 @@ fun test_password_too_short() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ## Try It Yourself
@@ -491,6 +502,7 @@ fun test_password_edge_cases() {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 Testing is your superpower - use it to build software with confidence!

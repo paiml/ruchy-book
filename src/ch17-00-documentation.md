@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -109,6 +109,7 @@ impl<K, V> Cache<K, V> {
 
 
 
+
 ```
 
 That's documentation that actually helps!
@@ -192,6 +193,7 @@ impl Struct {
 
 
 
+
 ```
 
 ### Documentation Tests
@@ -239,6 +241,7 @@ test src/lib.rs - factorial (line 13) ... ok
 test src/lib.rs - factorial (line 17) ... ignored
 
 test result: ok. 3 passed; 0 failed; 1 ignored
+
 
 
 
@@ -303,6 +306,7 @@ $ ruchy doc --open
 Documenting mylib v0.1.0
     Finished documentation
     Opening docs/mylib/index.html
+
 
 
 
@@ -391,6 +395,7 @@ pub mod services {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Documentation Patterns
@@ -578,6 +583,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 
 
+
 ```
 
 ## Interactive Documentation
@@ -596,6 +602,7 @@ $ ruchy doc --features search,playground,examples
 // Serve documentation locally
 $ ruchy doc --serve --port 8080
 Serving documentation at http://localhost:8080
+
 
 
 
@@ -626,6 +633,7 @@ pub async fun create_user(user: Json<User>) -> Result<Json<User>, Error> {
 }
 
 // Generates interactive API tester in docs
+
 
 
 
@@ -667,6 +675,7 @@ async fun request_flow() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Documentation Linting
@@ -687,6 +696,7 @@ Documentation score: 87/100
 
 // Enforce in CI
 $ ruchy doc-lint --min-score 90
+
 
 
 

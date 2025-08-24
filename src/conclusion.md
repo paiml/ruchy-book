@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -213,6 +213,7 @@ fun main() {
     println(result);  // Output: 30
 }
 
+
 ```
 
 ### Can't Do Yet ⏳
@@ -230,6 +231,7 @@ let contents = fs::read_to_string("file.txt");
 
 // Closures - NOT YET
 let add_one = |x| x + 1;
+
 
 ```
 
