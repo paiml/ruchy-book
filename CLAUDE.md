@@ -422,6 +422,68 @@ deno task generate-report
 deno task lint-markdown
 ```
 
+## POST-QUALIFICATION PROTOCOL (MANDATORY)
+
+**CRITICAL**: After every Ruchy version qualification, ALWAYS execute this protocol:
+
+### Step 1: Run Complete Test Suite
+```bash
+# Run all tests and generate reports
+make sync-version
+deno task extract-examples
+deno task test-oneliners
+deno task generate-report
+```
+
+### Step 2: Update Single Source of Truth
+```bash
+# Update INTEGRATION.md with qualification results
+# This is the ONLY status report that matters
+```
+
+### Step 3: Commit and Push Results (MANDATORY)
+```bash
+# Stage qualification results
+git add INTEGRATION.md test/extracted-examples/ reports/
+
+# Commit with descriptive message including:
+# - Ruchy version tested
+# - Pass/fail rates
+# - Key findings
+# - Test counts
+git commit -m "feat: Complete vX.Y.Z qualification with comprehensive testing
+
+- Tested N examples across M chapters against Ruchy vX.Y.Z
+- Results: X working (Y%), Z failing (W%)
+- Key findings: [brief summary]
+- Updated INTEGRATION.md as single source of truth
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# ALWAYS push to GitHub after qualification
+git push origin main
+```
+
+### Step 4: Verification
+```bash
+# Verify commit was successful
+git log --oneline -1
+
+# Verify GitHub sync
+git status
+```
+
+**WHY THIS IS MANDATORY:**
+- **Traceability**: Every version qualification must be recorded
+- **Collaboration**: Team needs to see qualification results
+- **History**: Track progress/regression across versions
+- **Automation**: Enables automated tracking and reporting
+- **Accountability**: Clear audit trail of what was tested when
+
+**NO EXCEPTIONS**: This protocol runs after EVERY version qualification, whether pass rates improve or decline. The goal is complete transparency and historical tracking.
+
 ## TDD-DRIVEN BOOK TRANSFORMATION (MANDATORY - TOP PRIORITY)
 
 ### 🚨 CRITICAL PIVOT: Test-Driven Documentation ONLY
@@ -624,3 +686,4 @@ make build
 - never use any scripting language but ruchy, if you cannot use ruchy, use Deno TypeScript/Node/Javascript.
 - when bugs are found in ruchy, document them thoroughly in `docs/bugs/ruchy-runtime-bugs.md`
 - always push changes frequently, i.e. after a chapter, etc.
+- if it isn't automated it is broken.  never do tasks manually. fix root cause.
