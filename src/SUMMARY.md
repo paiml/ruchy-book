@@ -18,6 +18,10 @@
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
 - [Chapter 11: File Operations](ch11-00-file-operations-tdd.md)
 
+## Development and Integration
+
+- [Chapter 22: Working with Ruchy Compiler Development](ch22-00-ruchy-compiler-development-tdd.md)
+
 ## Part II: Future Chapters (Awaiting Features)
 
 ### Level 0: Immediate Productivity
