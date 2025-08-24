@@ -1,13 +1,13 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T15:31:46.196Z
+**Generated**: 2025-08-24T17:07:16.196Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
 **Failed**: 1
 **Success Rate**: 88%
-**Total Duration**: 21ms
+**Total Duration**: 18ms
 
 ## Test Results Summary
 
@@ -43,7 +43,7 @@
   Optimization Score: ✅ Well Optimized (100.0/100)
 ```
 
-### provability - ✅ PASS (3ms)
+### provability - ✅ PASS (2ms)
 
 ```
 🔬 Basic Provability Analysis for test/tooling/simple_test.ruchy
