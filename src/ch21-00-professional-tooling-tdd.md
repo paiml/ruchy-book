@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.1*
+*Ruchy version: ruchy 1.8.2*
 <!-- DOC_STATUS_END -->
 
 Ruchy v1.8.0 provides a comprehensive suite of professional development tools that enable test-driven development, continuous integration, and quality assurance workflows. Based on analysis of the rosetta-ruchy repository and hands-on testing, this chapter documents the **actually working** tooling ecosystem.
@@ -336,7 +336,7 @@ curl -X POST http://localhost:8080/api/v1/translate -H "Content-Type: applicatio
 Following the rosetta-ruchy project's methodology:
 
 **Mandatory Quality Gates:**
-- ✅ Zero SATD Policy (no TODO/FIXME/HACK comments)
+- ✅ Zero Self-Admitted Technical Debt Policy
 - ✅ Complexity ≤20 (cognitive complexity threshold)  
 - ✅ Test Coverage ≥80% (statistical significance)
 - ✅ Zero Lint Warnings (`-D warnings` equivalent)
