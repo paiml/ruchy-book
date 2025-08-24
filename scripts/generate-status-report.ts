@@ -71,8 +71,10 @@ class StatusReportGenerator {
   }
 
   generateProgressBar(percentage: number, width: number = 20): string {
-    const filled = Math.round((percentage / 100) * width);
-    const empty = width - filled;
+    // Ensure percentage is valid and within bounds
+    const safePercentage = Math.max(0, Math.min(100, percentage || 0));
+    const filled = Math.round((safePercentage / 100) * width);
+    const empty = Math.max(0, width - filled);
     return "█".repeat(filled) + "░".repeat(empty);
   }
 
@@ -132,7 +134,7 @@ class StatusReportGenerator {
     for (const [chapterName, chapter] of sortedChapters) {
       if (chapter.total_examples === 0) continue;
 
-      const chapterRate = Math.round((chapter.working_examples / chapter.total_examples) * 100);
+      const chapterRate = chapter.total_examples > 0 ? Math.round((chapter.working_examples / chapter.total_examples) * 100) : 0;
       const chapterBar = this.generateProgressBar(chapterRate, 15);
       const chapterColor = this.getStatusColor(chapterRate);
       
