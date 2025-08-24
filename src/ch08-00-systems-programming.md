@@ -1,17 +1,17 @@
 # Systems Programming
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 44% Working (4/9 examples)
+**Chapter Status**: ❌ 0% Working (0/9 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 4 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 5 | Known issues, needs fixing |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 1 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -28,7 +28,7 @@ Most high-level languages abstract away the system, but real power comes from un
 Here's a system resource monitor in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // File: system_monitor.ruchy
 // Real-time system resource monitoring
@@ -95,6 +95,8 @@ loop {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 That's systems programming - direct access to OS resources with safety!
@@ -106,7 +108,7 @@ That's systems programming - direct access to OS resources with safety!
 Work with processes at the system level:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Current process information
 let pid = process::current_pid()
@@ -142,6 +144,8 @@ println(output.stdout)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Signal Handling
@@ -150,7 +154,7 @@ Respond to system signals properly:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after '::'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Register signal handlers
 signal::on(SIGINT, || {
     println("\nGracefully shutting down...")
@@ -179,6 +183,7 @@ signal::unblock([SIGPIPE])
 
 
 
+
 ```
 
 ### Memory Management
@@ -186,7 +191,7 @@ signal::unblock([SIGPIPE])
 Monitor and control memory usage:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Get memory information
 let mem_info = system::memory_info()
@@ -219,6 +224,8 @@ let data = shared.read(0, 1024)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Practical System Tools
@@ -227,7 +234,7 @@ let data = shared.read(0, 1024)
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier or string key in object literal
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: service_manager.ruchy
 // Manage system services
 
@@ -342,13 +349,14 @@ loop {
 
 
 
+
 ```
 
 ### System Health Checker
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Question
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: health_check.ruchy
 // Monitor system health and alert on issues
 
@@ -492,13 +500,14 @@ loop {
 
 
 
+
 ```
 
 ### Process Tree Visualizer
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: process_tree.ruchy
 // Visualize process hierarchy
 
@@ -557,6 +566,7 @@ println("Total CPU: " + total_cpu.to_s() + "%")
 
 
 
+
 ```
 
 ## Advanced System Features
@@ -566,7 +576,7 @@ println("Total CPU: " + total_cpu.to_s() + "%")
 Monitor file system changes in real-time:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Watch for file system events
 let watcher = fs::watch("/path/to/watch", RECURSIVE)
@@ -590,13 +600,15 @@ watcher.start()
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### System Automation
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightParen, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Automated system maintenance
 fun auto_cleanup() {
     // Clean temp files older than 7 days
@@ -622,6 +634,7 @@ fun auto_cleanup() {
         }
     }
 }
+
 
 
 

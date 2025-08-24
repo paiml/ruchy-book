@@ -10,8 +10,8 @@
 | ❌ Broken | 11 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's comprehensive testing in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected method name or 'await' after '.'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Unit test with multiple assertions
 #[test]
 fun test_user_validation() {
@@ -91,6 +91,7 @@ fun bench_data_processing(b: &mut Bencher) {
 
 
 
+
 ```
 
 That's testing with confidence!
@@ -103,7 +104,7 @@ Test individual components:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: RightParen
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic test
 #[test]
 fun test_addition() {
@@ -163,6 +164,7 @@ mod calculator_tests {
 
 
 
+
 ```
 
 ### Test Fixtures
@@ -171,7 +173,7 @@ Reusable test setup:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("test_data")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fixture trait
 trait TestFixture {
     fun setup() -> Self
@@ -229,6 +231,7 @@ fun test_with_auto_cleanup(fixture: DatabaseFixture) {
 
 
 
+
 ```
 
 ### Mocking
@@ -237,7 +240,7 @@ Test in isolation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mock trait
 trait EmailService {
     fun send_email(to: String, subject: String, body: String) -> Result<(), Error>
@@ -295,6 +298,7 @@ fun test_with_stub() {
 
 
 
+
 ```
 
 ### Property-Based Testing
@@ -303,7 +307,7 @@ Test with generated inputs:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 use proptest::prelude::*
 
 // Generate arbitrary test data
@@ -358,6 +362,7 @@ fun test_database_consistency(operations: Vec<DbOperation>) {
 
 
 
+
 ```
 
 ## Integration Testing
@@ -366,7 +371,7 @@ Test complete workflows:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected method name or 'await' after '.'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Integration test in tests/ directory
 #[integration_test]
 async fun test_full_api_flow() {
@@ -437,6 +442,7 @@ fun test_database_transactions() {
 
 
 
+
 ```
 
 ## Performance Testing
@@ -445,7 +451,7 @@ Measure and optimize:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Benchmarks
 #[bench]
 fun bench_sorting_algorithms(b: &mut Bencher) {
@@ -515,6 +521,7 @@ fun test_with_profiling() {
 
 
 
+
 ```
 
 ## Quality Tools
@@ -523,7 +530,7 @@ fun test_with_profiling() {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: EqualEqual
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Run tests with coverage
 $ ruchy test --coverage
 
@@ -556,13 +563,14 @@ fun debug_function() {
 
 
 
+
 ```
 
 ### Mutation Testing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mutation testing finds gaps in tests
 $ ruchy mutate
 
@@ -581,13 +589,14 @@ fun test_addition_not_subtraction() {
 
 
 
+
 ```
 
 ### Fuzzing
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fuzz testing for security
 #[fuzz_test]
 fun fuzz_parser(data: &[u8]) {
@@ -616,6 +625,7 @@ fun fuzz_api_endpoint(input: FuzzInput) {
     assert!(response.status() < 600)
     assert!(response.body().len() < 10_000_000)
 }
+
 
 
 
@@ -660,7 +670,7 @@ jobs:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'for'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // quality.ruchy - Quality gate script
 fun main() {
     let mut passed = true
@@ -701,6 +711,7 @@ fun main() {
     
     println("✅ All quality gates passed!")
 }
+
 
 
 

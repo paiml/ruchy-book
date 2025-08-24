@@ -1,5 +1,20 @@
 # Data Structures
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 38% Working (3/8 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 3 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 5 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.4.0  
 **Testing**: All examples verified with `make test-ch06`
@@ -15,12 +30,14 @@ Programs need to work with collections of data - text strings, lists of numbers,
 This example is tested in `tests/ch06-data-structures/test_01_string_basics.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let greeting = "Hello";
     let name = "World";
     println(greeting);
     println(name);
 }
+
 ```
 
 **Output:**
@@ -34,6 +51,7 @@ World
 This example is tested in `tests/ch06-data-structures/test_02_multiple_strings.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let first = "Hello";
     let second = "Beautiful";
@@ -42,6 +60,7 @@ fun main() {
     println(second);
     println(third);
 }
+
 ```
 
 **Output:**
@@ -56,12 +75,14 @@ World
 This example is tested in `tests/ch06-data-structures/test_03_numbers_and_strings.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let number = 42;
     let text = "Answer";
     println(text);
     println(number);
 }
+
 ```
 
 **Output:**
@@ -93,16 +114,22 @@ Answer
 
 ### String Variables
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let message = "Hello World";
 let name = "Alice";
 let greeting = "Welcome";
+
 ```
 
 ### Mixed Types
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let text = "Count";
 let number = 100;
 let flag = true;
+
 ```
 
 ## Testing Your Code
@@ -121,23 +148,32 @@ make test-file FILE=tests/ch06-data-structures/test_01_string_basics.ruchy
 
 ### Multiple String Storage
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let first_name = "John";
 let last_name = "Doe";
 let title = "Mr.";
+
 ```
 
 ### Data with Labels
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let label = "Temperature";
 let value = 72;
 let unit = "Fahrenheit";
+
 ```
 
 ### Configuration Values
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let app_name = "MyApp";
 let version = "1.0";
 let debug = true;
+
 ```
 
 ## Performance Notes

@@ -1,5 +1,20 @@
 # Hello, World!
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ✅ 100% Working (6/6 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 6 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 0 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.1.0  
 **Testing**: All examples verified with `make test-ch01`
@@ -15,9 +30,11 @@ Every programming journey begins with "Hello, World!" - your first proof that yo
 This example is tested in `tests/ch01-hello-world/test_01_basic.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("Hello, World!");
 }
+
 ```
 
 **Output:**
@@ -35,10 +52,12 @@ ruchy compile hello.ruchy && ./a.out
 This example is tested in `tests/ch01-hello-world/test_02_multiple_prints.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("Hello,");
     println("World!");
 }
+
 ```
 
 **Output:**
@@ -52,10 +71,12 @@ World!
 This example is tested in `tests/ch01-hello-world/test_03_with_variable.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let greeting = "Hello, World!";
     println(greeting);
 }
+
 ```
 
 **Output:**
@@ -98,19 +119,25 @@ make test-file FILE=tests/ch01-hello-world/test_01_basic.ruchy
 
 ### Pattern 1: Direct Output
 ```ruchy
+// Status: ✅ WORKING
 println("Your message here");
+
 ```
 
 ### Pattern 2: Variable Storage
 ```ruchy
+// Status: ✅ WORKING
 let message = "Your message";
 println(message);
+
 ```
 
 ### Pattern 3: Sequential Output
 ```ruchy
+// Status: ✅ WORKING
 println("First line");
 println("Second line");
+
 ```
 
 ## Summary

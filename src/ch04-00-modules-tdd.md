@@ -1,5 +1,20 @@
 # Modules
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ❌ 33% Working (2/6 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 2 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 4 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ Test-Driven (2/2 examples passing)  
 **Ruchy Version**: v1.3.0  
 **Testing**: All examples verified with `make test`
@@ -15,6 +30,7 @@ As programs grow, organizing code becomes essential. Modules provide a way to gr
 This example is tested in `tests/ch04-modules/test_01_basic_module.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 mod math {
     pub fun add(a: i32, b: i32) -> i32 {
         a + b
@@ -25,6 +41,7 @@ fun main() {
     let result = math::add(5, 3);
     println(result);
 }
+
 ```
 
 **Output:**
@@ -37,6 +54,7 @@ fun main() {
 This example is tested in `tests/ch04-modules/test_02_use_statement.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 mod utils {
     pub fun greet() {
         println("Hello from module!");
@@ -46,6 +64,7 @@ mod utils {
 fun main() {
     utils::greet();
 }
+
 ```
 
 **Output:**
@@ -74,6 +93,8 @@ Hello from module!
 
 ### Basic Module Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 mod module_name {
     pub fun public_function() {
         // Accessible from outside
@@ -83,14 +104,18 @@ mod module_name {
         // Only accessible within module
     }
 }
+
 ```
 
 ### Accessing Module Items
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun main() {
     module_name::public_function();  // Works
     // module_name::private_function();  // Would fail - not public
 }
+
 ```
 
 ## Testing Your Code
@@ -111,19 +136,25 @@ make test
 ### Use Case 1: Math Utilities
 Group mathematical functions together:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 mod math {
     pub fun add(a: i32, b: i32) -> i32 { a + b }
     pub fun subtract(a: i32, b: i32) -> i32 { a - b }
 }
+
 ```
 
 ### Use Case 2: String Utilities
 Organize string operations:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 mod strings {
     pub fun greet() { println("Hello!"); }
     pub fun farewell() { println("Goodbye!"); }
 }
+
 ```
 
 ## Current Limitations

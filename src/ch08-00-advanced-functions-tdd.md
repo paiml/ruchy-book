@@ -1,5 +1,20 @@
 # Advanced Functions
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟠 56% Working (5/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 5 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 4 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.4.0  
 **Testing**: All examples verified with `make test-ch08`
@@ -15,6 +30,7 @@ Programs often need sophisticated function patterns - composing operations, hand
 This example is tested in `tests/ch08-advanced-functions/test_01_function_composition.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun double(x: i32) -> i32 {
     return x * 2;
 }
@@ -29,6 +45,7 @@ fun main() {
     let result = add_ten(doubled);
     println(result);
 }
+
 ```
 
 **Output:**
@@ -41,6 +58,7 @@ fun main() {
 This example is tested in `tests/ch08-advanced-functions/test_02_multiple_returns.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun classify_number(x: i32) -> i32 {
     if x < 0 {
         return -1;
@@ -56,6 +74,7 @@ fun main() {
     println(classify_number(0));
     println(classify_number(10));
 }
+
 ```
 
 **Output:**
@@ -70,6 +89,7 @@ fun main() {
 This example is tested in `tests/ch08-advanced-functions/test_03_recursive_function.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun factorial(n: i32) -> i32 {
     if n <= 1 {
         return 1;
@@ -82,6 +102,7 @@ fun main() {
     println(factorial(3));
     println(factorial(5));
 }
+
 ```
 
 **Output:**
@@ -115,16 +136,21 @@ fun main() {
 
 ### Function Composition Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun step_one(x: Type) -> Type { ... }
 fun step_two(x: Type) -> Type { ... }
 
 // Usage
 let intermediate = step_one(input);
 let result = step_two(intermediate);
+
 ```
 
 ### Multiple Return Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun categorize(input: Type) -> ResultType {
     if condition1 {
         return result1;
@@ -134,16 +160,20 @@ fun categorize(input: Type) -> ResultType {
     }
     return default_result;
 }
+
 ```
 
 ### Recursive Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun recursive_func(n: Type) -> Type {
     if base_condition {
         return base_value;
     }
     return combine(n, recursive_func(reduce(n)));
 }
+
 ```
 
 ## Testing Your Code
@@ -162,6 +192,8 @@ make test-file FILE=tests/ch08-advanced-functions/test_01_function_composition.r
 
 ### Pipeline Processing
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun validate(input: i32) -> i32 { ... }
 fun normalize(input: i32) -> i32 { ... }
 fun process(input: i32) -> i32 { ... }
@@ -170,10 +202,12 @@ fun process(input: i32) -> i32 { ... }
 let clean_input = validate(raw_input);
 let normal_input = normalize(clean_input);
 let result = process(normal_input);
+
 ```
 
 ### Classification Function
 ```ruchy
+// Status: ✅ WORKING
 fun get_grade(score: i32) -> i32 {
     if score >= 90 {
         return 4; // A
@@ -186,10 +220,12 @@ fun get_grade(score: i32) -> i32 {
     }
     return 1; // D/F
 }
+
 ```
 
 ### Simple Recursion
 ```ruchy
+// Status: ✅ WORKING
 fun countdown(n: i32) -> i32 {
     if n <= 0 {
         return 0;
@@ -197,6 +233,7 @@ fun countdown(n: i32) -> i32 {
     println(n);
     return countdown(n - 1);
 }
+
 ```
 
 ## Performance Notes

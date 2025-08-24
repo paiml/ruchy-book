@@ -1,17 +1,17 @@
 # Data Processing  
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 30% Working (3/10 examples)
+**Chapter Status**: ❌ 0% Working (0/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 3 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 7 | Known issues, needs fixing |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 2 | Planned for future versions |
+| ❌ Broken | 8 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's a simple but powerful data processor in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: RightBracket
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: sales_analyzer.ruchy
 // Analyzes sales data from CSV file
 
@@ -82,6 +82,7 @@ for region, amount in region_sales.items() {
 
 
 
+
 ```
 
 Output:
@@ -111,7 +112,7 @@ That's real data analysis! Scales to thousands of rows easily.
 
 Use appropriate structures for different data types:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 // Arrays for sequences
 let sales_amounts = [1299, 25, 79, 1299, 399]
@@ -135,13 +136,14 @@ let transactions = [
 
 
 
+
 ```
 
 ### Data Aggregation
 
 Common patterns for summarizing data:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // Sum and averages
 let total = numbers.sum()
@@ -171,6 +173,8 @@ let amounts_only = transactions.map(|t| t.amount)
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### File Format Processing
@@ -178,7 +182,7 @@ let amounts_only = transactions.map(|t| t.amount)
 Handle common data formats:
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: RightBracket
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // CSV-like processing (simplified)
 fun parse_csv_line(line) {
     return line.split(",").map(|field| field.trim())
@@ -204,6 +208,7 @@ fun load_csv(filename) {
 
 
 
+
 ```
 
 ## Practical Data Tools
@@ -212,7 +217,7 @@ fun load_csv(filename) {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: DotDot
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: customer_analytics.ruchy
 // Analyzes customer purchase patterns
 
@@ -257,13 +262,14 @@ for i, customer in top_spenders.enumerate() {
 
 
 
+
 ```
 
 ### Log File Analyzer
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: RightBracket
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: advanced_log_analyzer.ruchy
 // Comprehensive log file analysis
 
@@ -337,13 +343,14 @@ println("\nBusiest Hour: " + busiest_hour.key + ":xx (" + busiest_hour.value.to_
 
 
 
+
 ```
 
 ### Financial Data Processor
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected method name or 'await' after '.'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: finance_processor.ruchy
 // Processes financial transactions and generates reports
 
@@ -408,6 +415,7 @@ for transaction in transactions.sort_by(|t| t.date) {
 
 
 
+
 ```
 
 ## Data Visualization (Text-based)
@@ -415,8 +423,8 @@ for transaction in transactions.sort_by(|t| t.date) {
 Create simple charts for console output:
 
 ```ruchy
-// Status: ❌ BROKEN
-// Error: Parse error: Expected In, found Comma
+// Status: ⚠️ NOT IMPLEMENTED
+// Error: ✗ Compilation failed: Compilation failed:
 // Simple bar chart function
 fun draw_bar_chart(data, title) {
     println("\n" + title)
@@ -446,6 +454,7 @@ draw_bar_chart(monthly_sales, "Monthly Sales Report")
 
 
 
+
 ```
 
 Output:
@@ -468,7 +477,7 @@ See how Ruchy's data processing becomes efficient compiled operations:
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 
 let sales_data = load_csv("sales.csv")
 let total = sales_data.map(|row| row.amount.to_f()).sum()
@@ -479,6 +488,8 @@ println("Average sale: $" + average.to_s())
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 Becomes this optimized Rust:
@@ -563,7 +574,7 @@ $ ruchy repl
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Unexpected token: RightBracket
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // expense_tracker.ruchy - Track and analyze personal expenses
 
 let EXPENSES_FILE = "expenses.csv"
@@ -671,6 +682,7 @@ fun main_menu() {
 while main_menu() {
     // Continue until user quits
 }
+
 
 
 

@@ -10,8 +10,8 @@
 | ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's elegant pattern usage in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: event_system.ruchy
 // Event-driven architecture with multiple patterns
 
@@ -84,6 +84,7 @@ events.emit("user.login", {name: "Alice", id: 123})
 
 
 
+
 ```
 
 That's patterns working together harmoniously!
@@ -96,7 +97,7 @@ Construct complex objects step by step:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fluent interface for configuration
 class ServerBuilder {
     let config = {
@@ -154,6 +155,7 @@ let server = ServerBuilder::new()
 
 
 
+
 ```
 
 ### Strategy Pattern
@@ -162,7 +164,7 @@ Swap algorithms at runtime:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Different compression strategies
 class CompressionContext {
     let strategy
@@ -210,6 +212,7 @@ let compressed = compressor.compress(file_data)
 
 
 
+
 ```
 
 ### Chain of Responsibility
@@ -218,7 +221,7 @@ Process requests through a chain of handlers:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Middleware chain for request processing
 class MiddlewareChain {
     let middlewares = []
@@ -291,6 +294,7 @@ chain.execute(request, response)
 
 
 
+
 ```
 
 ## Functional Patterns
@@ -301,7 +305,7 @@ Build complex behavior from simple functions:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Function parameters must be simple identifiers (destructuring patterns not supported)
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Function composition
 fun compose(...functions) {
     return |x| {
@@ -346,6 +350,7 @@ let result = pipeline(
 
 
 
+
 ```
 
 ### Monadic Patterns
@@ -354,7 +359,7 @@ Handle errors and async elegantly:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Result monad for error handling
 class Result {
     let value
@@ -406,6 +411,7 @@ fun process_user(id) {
 
 
 
+
 ```
 
 ### Lazy Evaluation
@@ -414,7 +420,7 @@ Defer computation until needed:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Lazy sequences
 class LazySeq {
     let generator
@@ -493,6 +499,7 @@ let first_10_even = fibonacci
 
 
 
+
 ```
 
 ## Architectural Patterns
@@ -503,7 +510,7 @@ Abstract data access:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic repository interface
 class Repository {
     fun find(id)
@@ -558,6 +565,7 @@ class UserService {
 
 
 
+
 ```
 
 ### Event Sourcing
@@ -566,7 +574,7 @@ Store events, not state:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Event sourcing system
 class EventStore {
     let events = []
@@ -633,6 +641,7 @@ let current_state = event_store.replay()
 
 
 
+
 ```
 
 ### CQRS (Command Query Responsibility Segregation)
@@ -641,7 +650,7 @@ Separate reads from writes:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Command side - writes
 class CommandBus {
     let handlers = {}
@@ -705,6 +714,7 @@ let orders = query_bus.query({
 
 
 
+
 ```
 
 ## Concurrent Patterns
@@ -715,7 +725,7 @@ Isolated units of computation:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Actor system
 class Actor {
     let mailbox = Queue::new()
@@ -781,6 +791,7 @@ worker.send({
 
 
 
+
 ```
 
 ### Circuit Breaker
@@ -789,7 +800,7 @@ Prevent cascading failures:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected field name
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 class CircuitBreaker {
     let failure_threshold = 5
     let timeout = 30000
@@ -840,6 +851,7 @@ fun call_external_api(data) {
             .send()
     })
 }
+
 
 
 

@@ -1,17 +1,17 @@
 # Concurrency
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 8% Working (1/13 examples)
+**Chapter Status**: ❌ 0% Working (0/13 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 1 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ✅ Working | 0 | Ready for production use |
+| ⚠️ Not Implemented | 1 | Planned for future versions |
 | ❌ Broken | 12 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's safe, elegant concurrency in Ruchy:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier, '*', or '{' after '::'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 use std::sync;
 use std::async;
 
@@ -75,6 +75,7 @@ let results = pool.parallel_map(items, |item| {
 
 
 
+
 ```
 
 That's concurrency without fear!
@@ -86,7 +87,7 @@ That's concurrency without fear!
 OS-level parallelism:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ⚠️ NOT IMPLEMENTED
 
 // Spawn a thread
 let handle = spawn {
@@ -116,6 +117,8 @@ let handle = Thread::builder()
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Channels
@@ -124,7 +127,7 @@ Message passing between threads:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'let' or 'let mut'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Create a channel
 let (sender, receiver) = channel()
 
@@ -165,6 +168,7 @@ loop {
 
 
 
+
 ```
 
 ### Shared State
@@ -173,7 +177,7 @@ Safe sharing with synchronization:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'for'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mutex for mutual exclusion
 let counter = Arc::new(Mutex::new(0))
 
@@ -216,6 +220,7 @@ counter.fetch_add(1, Ordering::SeqCst)
 
 
 
+
 ```
 
 ### Async/Await
@@ -224,7 +229,7 @@ Cooperative concurrency:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Async function
 async fun fetch_user(id: i32) -> Result<User, Error> {
     let response = http::get("/api/users/" + id.to_s()).await?
@@ -260,6 +265,7 @@ async fun process_stream(stream: AsyncStream<Item>) {
 
 
 
+
 ```
 
 ## Concurrency Patterns
@@ -270,7 +276,7 @@ Reuse threads efficiently:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("sender")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 struct ThreadPool {
     workers: Vec<Worker>
     sender: Sender<Job>
@@ -334,6 +340,7 @@ for i in range(100) {
 
 
 
+
 ```
 
 ### Producer-Consumer
@@ -342,7 +349,7 @@ Decouple work production from consumption:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'let' or 'let mut'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun producer_consumer_pipeline<T>() {
     let (tx, rx) = channel()
     
@@ -390,6 +397,7 @@ fun bounded_pipeline() {
 
 
 
+
 ```
 
 ### Fork-Join
@@ -398,7 +406,7 @@ Split work, process parallel, combine results:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected Greater, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
     if items.len() <= 1 {
         return items
@@ -436,6 +444,7 @@ fun parallel_sum(numbers: Vec<i32>) -> i32 {
 
 
 
+
 ```
 
 ### Actor Model
@@ -444,7 +453,7 @@ Isolated units with message passing:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected 'fun' or 'fn' keyword
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Actor trait
 trait Actor {
     type Message
@@ -510,6 +519,7 @@ println("Count: " + count.to_s())  // 2
 
 
 
+
 ```
 
 ## Real-World Concurrency
@@ -520,7 +530,7 @@ Handle thousands of concurrent requests:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected identifier after 'let' or 'let mut'
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 async fun web_server() {
     let listener = TcpListener::bind("0.0.0.0:8080").await
     
@@ -559,6 +569,7 @@ async fun handle_request(req: Request) -> Response {
 
 
 
+
 ```
 
 ### Parallel Data Processing
@@ -567,7 +578,7 @@ Process large datasets efficiently:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun process_dataset(data: Vec<Record>) -> Vec<Result> {
     // Partition data for parallel processing
     let chunk_size = data.len() / num_cpus()
@@ -603,6 +614,7 @@ fun parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
 
 
 
+
 ```
 
 ### Concurrent Testing
@@ -611,7 +623,7 @@ Test with parallelism:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightParen, found Identifier("move")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[test]
 fun test_concurrent_access() {
     let shared = Arc::new(Mutex::new(Vec::new()))
@@ -650,13 +662,14 @@ async fun test_async_operations() {
 
 
 
+
 ```
 
 ## Performance Tips
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected '|' after lambda parameters
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Choose the right abstraction
 // Threads: OS parallelism, CPU-bound work
 // Async: I/O-bound work, many concurrent tasks
@@ -684,6 +697,7 @@ instead_of {
 do {
     channel.send(items)  // One batch send
 }
+
 
 
 

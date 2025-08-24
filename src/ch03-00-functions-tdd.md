@@ -1,5 +1,20 @@
 # Functions
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟡 89% Working (8/9 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 8 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 1 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (4/4 examples passing)  
 **Ruchy Version**: v1.1.0  
 **Testing**: All examples verified with `make test-ch03`
@@ -15,6 +30,7 @@ Code often needs to be reused. Functions let us package code into reusable units
 This example is tested in `tests/ch03-functions/test_01_basic_function.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun greet() {
     println("Hello from function!");
 }
@@ -22,6 +38,7 @@ fun greet() {
 fun main() {
     greet();
 }
+
 ```
 
 **Output:**
@@ -34,6 +51,7 @@ Hello from function!
 This example is tested in `tests/ch03-functions/test_02_function_with_return.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun add(a, b) {
     a + b
 }
@@ -42,6 +60,7 @@ fun main() {
     let result = add(5, 3);
     println(result);
 }
+
 ```
 
 **Output:**
@@ -54,6 +73,7 @@ fun main() {
 This example is tested in `tests/ch03-functions/test_03_function_with_types.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun multiply(x: i32, y: i32) -> i32 {
     x * y
 }
@@ -62,6 +82,7 @@ fun main() {
     let product = multiply(6, 7);
     println(product);
 }
+
 ```
 
 **Output:**
@@ -74,6 +95,7 @@ fun main() {
 This example is tested in `tests/ch03-functions/test_04_nested_calls.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun square(n: i32) -> i32 {
     n * n
 }
@@ -86,6 +108,7 @@ fun main() {
     let result = sum_of_squares(3, 4);
     println(result);
 }
+
 ```
 
 **Output:**
@@ -98,10 +121,13 @@ fun main() {
 ### Function Definition
 Basic syntax:
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 fun function_name(parameters) -> return_type {
     // function body
     return_expression
 }
+
 ```
 
 Key points:
@@ -133,9 +159,11 @@ Key points:
 While Ruchy has type inference, explicit types improve clarity:
 
 ```ruchy
+// Status: ✅ WORKING
 fun calculate(x: i32, y: i32) -> i32 {
     x * 2 + y * 3
 }
+
 ```
 
 Benefits:
@@ -159,20 +187,25 @@ make test-file FILE=tests/ch03-functions/test_01_basic_function.ruchy
 
 ### Pattern 1: Simple Calculation Function
 ```ruchy
+// Status: ✅ WORKING
 fun calculate(input: i32) -> i32 {
     input * 2
 }
+
 ```
 
 ### Pattern 2: Multiple Parameters
 ```ruchy
+// Status: ✅ WORKING
 fun combine(a: i32, b: i32, c: i32) -> i32 {
     a + b + c
 }
+
 ```
 
 ### Pattern 3: Helper Functions
 ```ruchy
+// Status: ✅ WORKING
 fun helper(x: i32) -> i32 {
     x * x
 }
@@ -180,6 +213,7 @@ fun helper(x: i32) -> i32 {
 fun main_calculation(n: i32) -> i32 {
     helper(n) + helper(n + 1)
 }
+
 ```
 
 ## Function Scope

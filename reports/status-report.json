@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-24T08:27:16.818Z",
-  "ruchy_version": "ruchy 1.7.0",
+  "generated_at": "2025-08-24T12:32:54.128Z",
+  "ruchy_version": "ruchy 1.8.0",
   "summary": {
     "total_chapters": 36,
     "total_examples": 381,
-    "working_examples": 76,
-    "failing_examples": 305,
-    "success_rate": 20
+    "working_examples": 80,
+    "failing_examples": 301,
+    "success_rate": 21
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
@@ -292,8 +292,8 @@
       "success_rate": 0,
       "status_breakdown": {
         "working": 0,
-        "not_implemented": 0,
-        "broken": 13,
+        "not_implemented": 1,
+        "broken": 12,
         "planned": 0
       }
     },
@@ -347,13 +347,13 @@
     },
     "ch05-00-control-flow-tdd": {
       "total_examples": 14,
-      "working_examples": 7,
-      "failing_examples": 7,
-      "success_rate": 50,
+      "working_examples": 8,
+      "failing_examples": 6,
+      "success_rate": 57,
       "status_breakdown": {
-        "working": 7,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 7,
+        "broken": 6,
         "planned": 0
       }
     },
@@ -383,25 +383,25 @@
     },
     "ch01-02-hello-world": {
       "total_examples": 8,
-      "working_examples": 7,
-      "failing_examples": 1,
-      "success_rate": 88,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 7,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 1,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch02-00-variables-types": {
       "total_examples": 9,
-      "working_examples": 4,
-      "failing_examples": 5,
-      "success_rate": 44,
+      "working_examples": 6,
+      "failing_examples": 3,
+      "success_rate": 67,
       "status_breakdown": {
-        "working": 4,
+        "working": 6,
         "not_implemented": 0,
-        "broken": 5,
+        "broken": 3,
         "planned": 0
       }
     },
@@ -452,6 +452,6 @@
   "quality_metrics": {
     "documentation_coverage": 102.85714285714285,
     "example_testing": 100,
-    "implementation_status": 20
+    "implementation_status": 21
   }
 }

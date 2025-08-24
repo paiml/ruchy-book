@@ -1,17 +1,17 @@
 # Developer Tooling & Professional Workflow
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Working (6/6 examples)
+**Chapter Status**: ❌ 0% Working (0/6 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 6 | Ready for production use |
+| ✅ Working | 0 | Ready for production use |
 | ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 0 | Known issues, needs fixing |
+| ❌ Broken | 6 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -148,7 +148,7 @@ ruchy lint --rules unused,style,complexity src/
 Let's create a file with various issues and see the linter in action:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // bad_code.ruchy - Multiple issues for demonstration
 fun calculate_something(x: int) {
     let unused_var = 42;
@@ -164,6 +164,8 @@ fun main() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ```bash
@@ -226,7 +228,7 @@ ruchy fmt --diff src/main.ruchy
 #### Example: Before and After Formatting
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // Before formatting (messy)
 fun fibonacci(n:int)->int{if n<=1{n}else{fibonacci(n-1)+fibonacci(n-2)}}
 
@@ -242,6 +244,8 @@ fun fibonacci(n: int) -> int {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ### Syntax Checking with `ruchy check`
@@ -268,7 +272,7 @@ Ruchy's testing framework provides everything needed for professional testing:
 #### Basic Testing
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // math_utils.ruchy
 fun add(a: int, b: int) -> int {
     a + b
@@ -294,6 +298,8 @@ fun test_multiply() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ```bash
@@ -340,7 +346,7 @@ ruchy test --watch --coverage src/
 #### Property-Based Testing
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // property_test.ruchy
 fun reverse_string(s: string) -> string {
     // Implementation details...
@@ -357,6 +363,8 @@ fun property_test_reverse_twice_is_identity() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ## Interactive Development
@@ -426,7 +434,7 @@ ruchy run --watch src/main.ruchy
 Generate beautiful documentation from your code:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // documented_code.ruchy
 
 /// Calculates the factorial of a positive integer
@@ -454,6 +462,8 @@ fun factorial(n: int) -> int {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ```bash
@@ -477,7 +487,7 @@ ruchy doc --format json src/ > api-docs.json
 Professional benchmarking for performance optimization:
 
 ```ruchy
-// Status: ✅ WORKING
+// Status: ❌ BROKEN
 // bench_test.ruchy
 fun fibonacci_recursive(n: int) -> int {
     if n <= 1 { n } else { fibonacci_recursive(n-1) + fibonacci_recursive(n-2) }
@@ -506,6 +516,8 @@ fun bench_iterative_fib() {
 
 
 
+
+// Error: ✗ Compilation failed: Compilation failed:
 ```
 
 ```bash

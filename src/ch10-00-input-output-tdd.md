@@ -1,5 +1,20 @@
 # Input and Output
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟠 70% Working (7/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 7 | Ready for production use |
+| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ❌ Broken | 3 | Known issues, needs fixing |
+| 📋 Planned | 0 | Future roadmap features |
+
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
+<!-- DOC_STATUS_END -->
+
+
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
 **Ruchy Version**: v1.5.0  
 **Testing**: All examples verified with `make test-ch10`
@@ -15,6 +30,7 @@ Programs need to communicate with users and external systems - displaying inform
 This example is tested in `tests/ch10-input-output/test_01_simple_output.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     println("=== Output Demo ===");
     println("Number: ");
@@ -23,6 +39,7 @@ fun main() {
     println(true);
     println("=== End Demo ===");
 }
+
 ```
 
 **Output:**
@@ -40,6 +57,7 @@ true
 This example is tested in `tests/ch10-input-output/test_02_formatted_output.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun main() {
     let name = "Alice";
     let age = 30;
@@ -54,6 +72,7 @@ fun main() {
     println(height);
     println("================");
 }
+
 ```
 
 **Output:**
@@ -73,6 +92,7 @@ Height:
 This example is tested in `tests/ch10-input-output/test_03_interactive_menu.ruchy`:
 
 ```ruchy
+// Status: ✅ WORKING
 fun display_menu() {
     println("=== Main Menu ===");
     println("1. View Profile");
@@ -85,6 +105,7 @@ fun main() {
     display_menu();
     println("Menu displayed successfully");
 }
+
 ```
 
 **Output:**
@@ -121,27 +142,35 @@ Menu displayed successfully
 
 ### Basic Output
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 println("text message");
 println(variable);
 println(42);
 println(true);
+
 ```
 
 ### Variable Output Pattern
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Compilation failed:
 let data = value;
 println("Label:");
 println(data);
+
 ```
 
 ### Menu Display Function
 ```ruchy
+// Status: ✅ WORKING
 fun display_options() {
     println("=== Menu ===");
     println("1. Option One");
     println("2. Option Two");
     println("============");
 }
+
 ```
 
 ## Testing Your Code
@@ -160,36 +189,45 @@ make test-file FILE=tests/ch10-input-output/test_01_simple_output.ruchy
 
 ### Data Display
 ```ruchy
+// Status: ✅ WORKING
 let value = 100;
 println("Result:");
 println(value);
+
 ```
 
 ### Report Generation
 ```ruchy
+// Status: ❌ BROKEN
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun display_report(title: &str, data: i32) {
     println("=== Report ===");
     println(title);
     println(data);
     println("==============");
 }
+
 ```
 
 ### Status Messages
 ```ruchy
+// Status: ✅ WORKING
 println("Processing...");
 // ... do work ...
 println("Complete!");
+
 ```
 
 ### Menu Construction
 ```ruchy
+// Status: ✅ WORKING
 fun show_options() {
     println("Choose an option:");
     println("1. Start");
     println("2. Stop");
     println("3. Help");
 }
+
 ```
 
 ## Performance Notes

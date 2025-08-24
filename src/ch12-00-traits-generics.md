@@ -10,8 +10,8 @@
 | ❌ Broken | 11 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-22*  
-*Ruchy version: ruchy 1.1.0*
+*Last updated: 2025-08-24*  
+*Ruchy version: ruchy 1.8.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -29,7 +29,7 @@ Here's the power of traits and generics:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected Greater, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Define behavior with traits
 trait Serializable {
     fun serialize(self) -> String
@@ -72,6 +72,7 @@ let loaded: User = load_from_file("user.json")  // Type safe!
 
 
 
+
 ```
 
 That's abstraction without compromise!
@@ -84,7 +85,7 @@ Traits define shared behavior:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected 'fun' or 'fn' keyword
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple trait
 trait Drawable {
     fun draw(self)
@@ -131,6 +132,7 @@ trait Dog: Animal {
 
 
 
+
 ```
 
 ### Implementing Traits
@@ -139,7 +141,7 @@ Give types new capabilities:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("y")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 struct Point {
     x: f64
     y: f64
@@ -181,6 +183,7 @@ impl Drawable for String {
 
 
 
+
 ```
 
 ### Generic Functions
@@ -189,7 +192,7 @@ Write once, use with any type:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple generic function
 fun swap<T>(a: mut T, b: mut T) {
     let temp = a
@@ -229,6 +232,7 @@ where
 
 
 
+
 ```
 
 ### Generic Types
@@ -237,7 +241,7 @@ Build flexible data structures:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected RightBrace, found Identifier("second")
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic struct
 struct Pair<T> {
     first: T
@@ -282,6 +286,7 @@ impl<T: Ord> SortedVec<T> {
 
 
 
+
 ```
 
 ## Practical Applications
@@ -290,7 +295,7 @@ impl<T: Ord> SortedVec<T> {
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected Greater, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Custom collection with traits
 struct Cache<K: Hash + Eq, V> {
     map: HashMap<K, V>
@@ -339,6 +344,7 @@ cache2.put(1, vec!["data"])
 
 
 
+
 ```
 
 ### Trait Objects
@@ -347,7 +353,7 @@ Dynamic dispatch when needed:
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected type
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Trait for plugins
 trait Plugin {
     fun name(self) -> String
@@ -384,13 +390,14 @@ for plugin in plugins {
 
 
 
+
 ```
 
 ### Builder Pattern with Generics
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected LeftBrace, found Less
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic builder
 struct Builder<T> {
     value: T
@@ -428,13 +435,14 @@ let user = Builder::new(User::new())
 
 
 
+
 ```
 
 ### Advanced Trait Patterns
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected 'fun' or 'fn' keyword
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Associated types pattern
 trait Graph {
     type Node
@@ -492,6 +500,7 @@ let post_id: Id<Post> = Id::new("post_456")
 
 
 
+
 ```
 
 ## Performance Considerations
@@ -500,7 +509,7 @@ let post_id: Id<Post> = Id::new("post_456")
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected Greater, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generics are monomorphized - no runtime cost
 fun generic_add<T: Add>(a: T, b: T) -> T {
     return a + b  // Compiles to specific add instruction
@@ -527,13 +536,14 @@ fun hot_path<T: Copy>(x: T) -> T {
 
 
 
+
 ```
 
 ### Static vs Dynamic Dispatch
 
 ```ruchy
 // Status: ❌ BROKEN
-// Error: Parse error: Expected Greater, found Colon
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Static dispatch (faster)
 fun static_dispatch<T: Display>(item: T) {
     println(item)  // Direct call, no indirection
@@ -547,6 +557,7 @@ fun dynamic_dispatch(item: Box<dyn Display>) {
 // Choose based on needs:
 // - Static: Known types, performance critical
 // - Dynamic: Plugin systems, heterogeneous collections
+
 
 
 
