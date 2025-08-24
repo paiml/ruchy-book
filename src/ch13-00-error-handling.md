@@ -11,7 +11,7 @@
 | 📋 Planned | All | Target: v2.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.6*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 ## ⚠️ IMPORTANT: Feature Not Yet Implemented
@@ -58,7 +58,7 @@ enum AppError {
 
 // Functions return Result
 fun fetch_user(id: i32) -> Result<User, AppError> {
-    // Note: In v0.11.0, the ? operator is removed. Use match for error handling:
+    // Note: In v1.10.0, the ? operator is removed. Use match for error handling:
     let response = match http::get("/api/users/" + id.to_s()) {
         Ok(r) => r,
         Err(e) => return Err(AppError::NetworkError(e))
@@ -197,7 +197,7 @@ let email = find_user("Bob")
 
 ### Error Propagation
 
-Note: The ? operator was removed in v0.11.0. Use explicit match statements for error handling:
+Note: The ? operator was removed in v1.10.0. Use explicit match statements for error handling:
 
 ```ruchy
 // Status: ❌ BROKEN
@@ -222,7 +222,7 @@ fun process_file_verbose(path: String) -> Result<String, Error> {
     return Ok(processed)
 }
 
-// In v0.11.0 - use explicit error handling
+// In v1.10.0 - use explicit error handling
 fun process_file(path: String) -> Result<String, Error> {
     let file = match open_file(path) {
         Ok(f) => f,

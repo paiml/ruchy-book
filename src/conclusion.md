@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -30,7 +30,7 @@ When we began this project, the Ruchy Book was aspirational - 93% of its example
 **After TDD Transformation:**
 - **38/38 examples passing** (100% success rate)
 - **11 complete chapters** with verified functionality
-- **Zero vaporware** - every example works today with Ruchy v1.5.0
+- **Zero vaporware** - every example works today with Ruchy v1.10.0
 - **Comprehensive test suite** with chapter-specific validation
 
 ## What We Built: A Foundation of Trust
@@ -124,7 +124,7 @@ Our quality gates caught potential issues before they reached users:
 ## Using This Book Effectively
 
 ### For Learners
-Start with Chapters 1-3 to build a foundation. Every example is guaranteed to work with Ruchy v1.5.0. You can trust that typing these examples will produce the shown output.
+Start with Chapters 1-3 to build a foundation. Every example is guaranteed to work with Ruchy v1.10.0. You can trust that typing these examples will produce the shown output.
 
 ### For Teachers
 Use our tested examples as classroom exercises. Students can modify and extend them knowing the base code is solid. The test suite provides immediate feedback.
@@ -141,7 +141,7 @@ Follow our TDD methodology:
 
 ### Immediate Next Steps
 As Ruchy evolves, this book provides:
-- **A baseline** of verified v1.5.0 functionality
+- **A baseline** of verified v1.10.0 functionality
 - **A testing framework** for validating new features
 - **A methodology** for maintaining documentation quality
 
@@ -189,7 +189,7 @@ This transformation was made possible by:
 
 **In this book, every example compiles. Every example runs. Every example works.**
 
-This isn't just documentation - it's a contract with our readers. When you see code in this book, you can trust it will work exactly as shown with Ruchy v1.5.0.
+This isn't just documentation - it's a contract with our readers. When you see code in this book, you can trust it will work exactly as shown with Ruchy v1.10.0.
 
 ---
 

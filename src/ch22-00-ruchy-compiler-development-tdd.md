@@ -11,11 +11,11 @@
 | 📋 Planned | 0 | Complete as-is |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.6*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)  
-**Ruchy Version**: v1.9.6  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `ruchy compile`
 
 ## The Problem
@@ -33,7 +33,7 @@ ruchy --version
 
 **Expected Output:**
 ```
-ruchy 1.9.6
+ruchy 1.10.0
 ```
 
 **What this tells us:**
@@ -72,8 +72,8 @@ fi
 
 **Expected Output:**
 ```
-System: ruchy 1.9.6
-Local: ruchy 1.9.6
+System: ruchy 1.10.0
+Local: ruchy 1.10.0
 ```
 
 ### Example 4: Test Basic Compilation with System Ruchy
@@ -123,9 +123,9 @@ cd ../ruchy 2>/dev/null && git log --oneline -3 && cd - >/dev/null || echo "No c
 
 **Expected Output:**
 ```
-64cdcaf v1.9.3: Core math functions added
-6db75eb v1.9.2: Format strings fixed!
-8dee837 Update Cargo.lock for v1.9.1
+64cdcaf v1.10.0: Core math functions added
+6db75eb v1.10.0: Format strings fixed!
+8dee837 Update Cargo.lock for v1.10.0
 ```
 
 ### Example 7: Test New Features from Development
@@ -181,8 +181,8 @@ fi
 **Expected Output:**
 ```
 === Ruchy Compiler Status ===
-System ruchy: ruchy 1.9.6
-Local build: ruchy 1.9.6
+System ruchy: ruchy 1.10.0
+Local build: ruchy 1.10.0
 Local build size: 5.2M
 
 === Basic Functionality Test ===
@@ -305,4 +305,4 @@ All examples in this chapter use only working features and can be tested:
 
 ---
 
-*This chapter demonstrates real compiler integration patterns that actually work with Ruchy v1.9.3*
+*This chapter demonstrates real compiler integration patterns that actually work with Ruchy v1.10.0*

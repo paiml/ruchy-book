@@ -11,7 +11,7 @@
 | 📋 Planned | All | Target: v2.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.6*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 ## ⚠️ IMPORTANT: Feature Not Yet Implemented
@@ -33,7 +33,7 @@ Instead of waiting for this feature, you can:
 
 
 
-Ruchy v0.11.0 provides a comprehensive suite of professional development tools that rival those of established languages like Rust, Go, and Python. This chapter covers the complete developer experience from linting and testing to CI/CD integration.
+Ruchy v1.10.0 provides a comprehensive suite of professional development tools that rival those of established languages like Rust, Go, and Python. This chapter covers the complete developer experience from linting and testing to CI/CD integration.
 
 ## The Modern Development Experience
 
@@ -409,7 +409,7 @@ ruchy repl --prelude "let x = 42; let y = 'hello';"
 #### REPL Commands
 
 ```
-Welcome to Ruchy REPL v0.11.0
+Welcome to Ruchy REPL v1.10.0
 Type :help for commands
 
 > let x = 42
@@ -894,7 +894,7 @@ Track these metrics over time:
 
 ## Summary
 
-Ruchy v0.11.0's tooling provides a complete professional development experience:
+Ruchy v1.10.0's tooling provides a complete professional development experience:
 
 - **Code Quality**: Advanced linting with auto-fix
 - **Testing**: Comprehensive framework with coverage

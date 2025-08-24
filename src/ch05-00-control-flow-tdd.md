@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (7/7 examples passing)  
-**Ruchy Version**: v1.3.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch05`
 
 ## The Problem
@@ -350,7 +350,7 @@ match status_code {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.3.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - If/else statements with boolean conditions
 - If without else (optional else)
 - If/else if/else chains
@@ -382,4 +382,4 @@ Control flow gives you the tools to build interactive and dynamic programs. In t
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.3.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

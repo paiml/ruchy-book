@@ -6,7 +6,7 @@ When we began this project, the Ruchy Book had a **93% failure rate** - 241 out 
 
 - **38/38 examples passing** (100% success rate)
 - **11 complete chapters** with verified functionality
-- **Zero vaporware** - every example works today with Ruchy v1.5.0
+- **Zero vaporware** - every example works today with Ruchy v1.10.0
 
 ## What We Built
 
@@ -29,7 +29,7 @@ Through 11 chapters, we've explored:
 
 ## Key Discoveries
 
-### What Works Well in Ruchy v1.5.0
+### What Works Well in Ruchy v1.10.0
 
 ✅ **Core Language Features**
 - Variable declarations with type inference
@@ -99,7 +99,7 @@ INTEGRATION.md became our compass:
 ## Using This Book
 
 ### For Learners
-Start with Part I (Foundations) and work through sequentially. Every example is guaranteed to work with Ruchy v1.5.0.
+Start with Part I (Foundations) and work through sequentially. Every example is guaranteed to work with Ruchy v1.10.0.
 
 ### For Teachers
 Use the tested examples as exercises. Students can modify and extend them knowing the base code is solid.

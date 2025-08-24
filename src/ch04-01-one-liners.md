@@ -20,7 +20,7 @@ Based on analysis of the top 20 programming languages from StackOverflow 2025, R
 
 ## Quick Start
 
-Every example in this chapter is tested against Ruchy v0.7.3+. You can try them all:
+Every example in this chapter is tested against Ruchy v1.10.0+. You can try them all:
 
 ```bash
 # Install latest Ruchy

@@ -46,7 +46,7 @@ These already work and should be the foundation:
 
 ⚠️ **Implementation Status**: [Working|Partial|Future]
 ✅ **Test Coverage**: X/Y examples passing
-📦 **Required Version**: Ruchy v1.9.1+
+📦 **Required Version**: Ruchy v1.10.0+
 
 ## What Actually Works
 
