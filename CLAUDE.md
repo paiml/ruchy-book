@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## MANDATORY Quality Gates (BLOCKING - Not Advisory)
 
-### Pre-Commit Hooks (MANDATORY)
+### Pre-Commit Hooks (MANDATORY) - Enhanced with Dogfooding
 ```bash
 #!/bin/bash
 # .git/hooks/pre-commit - BLOCKS commits that violate quality
@@ -28,25 +28,42 @@ cargo test --manifest-path book/Cargo.toml || {
     exit 1
 }
 
-# GATE 2: Strict mode validation
+# GATE 2: MANDATORY Dogfooding Quality Gates
+echo "🐕 Running MANDATORY dogfooding quality gates..."
+make dogfood-check >/dev/null || {
+    echo "❌ BLOCKED: Syntax validation failed"
+    exit 1
+}
+
+make dogfood-lint >/dev/null || {
+    echo "❌ BLOCKED: Style analysis failed" 
+    exit 1
+}
+
+make dogfood-score | grep -q "A+" || {
+    echo "❌ BLOCKED: Quality score below A+ grade"
+    exit 1
+}
+
+# GATE 3: Strict mode validation
 MDBOOK_PREPROCESSOR__RUCHY__STRICT=true mdbook build || {
     echo "❌ BLOCKED: Examples fail strict validation"
     exit 1
 }
 
-# GATE 3: Zero broken links
+# GATE 4: Zero broken links
 mdbook-linkcheck || {
     echo "❌ BLOCKED: Broken links found"
     exit 1
 }
 
-# GATE 4: No vaporware documentation
+# GATE 5: No vaporware documentation
 ! grep -r "coming soon\|not yet implemented\|TODO" src/ || {
     echo "❌ BLOCKED: Vaporware documentation found"
     exit 1
 }
 
-echo "✅ All quality gates passed"
+echo "✅ All quality gates passed (including dogfooding)"
 ```
 
 ## Absolute Rules
@@ -57,6 +74,18 @@ echo "✅ All quality gates passed"
    ```bash
    echo 'your_code_here' | ruchy repl
    # MUST see expected output before documenting
+   ```
+
+2b. **MANDATORY Dogfooding**: Every mini-sprint MUST include comprehensive dogfooding:
+   ```bash
+   # MANDATORY before any commit
+   make dogfood-quick
+   
+   # MANDATORY at sprint completion  
+   make dogfood-full
+   
+   # MANDATORY: All quality gates must pass
+   make dogfood-check && make dogfood-lint && make dogfood-score | grep -q "A+"
    ```
 
 2a. **ALWAYS Check Ruchy Compiler Status**: Before working on book content, verify the compiler state:
@@ -333,16 +362,63 @@ cargo clean
 git status --ignored
 ```
 
-### Post-Sprint Checklist
+### **MANDATORY Mini-Sprint Dogfooding** (Toyota Way)
+**EVERY sprint must include comprehensive dogfooding - no exceptions.**
+
+```bash
+# 1. MANDATORY: Run complete dogfooding suite
+make dogfood-full
+
+# 2. MANDATORY: Analyze and document any regressions
+# If any tool shows degraded performance, file issues immediately
+
+# 3. MANDATORY: Update INTEGRATION.md with dogfooding results
+echo "## Dogfooding Results ($(date))" >> INTEGRATION.md
+echo "- ruchy check: $(make dogfood-check 2>&1 | grep Summary)" >> INTEGRATION.md  
+echo "- ruchy lint: $(make dogfood-lint 2>&1 | grep Summary)" >> INTEGRATION.md
+echo "- ruchy fmt: $(make dogfood-fmt 2>&1 | grep Summary)" >> INTEGRATION.md
+
+# 4. MANDATORY: Quick dogfood before any major changes
+make dogfood-quick
+```
+
+### Post-Sprint Checklist (Enhanced with Dogfooding)
 ```bash
 # Update tracking
 git add docs/
 
+# MANDATORY: Final dogfooding verification
+make dogfood-quality
+
 # Verify no cruft
 find . -type f -size +100M
 
-# Push with clean history
+# MANDATORY: Commit dogfooding results if changed
+git add INTEGRATION.md
+git commit -m "chore: Update dogfooding results for sprint"
+
+# Push with clean history  
 git push origin main
+```
+
+### **Dogfooding Quality Gates** (BLOCKING)
+These gates must pass before any sprint completion:
+
+```bash
+# GATE 1: Syntax validation must be 100%
+make dogfood-check || exit 1
+
+# GATE 2: Style analysis must be 100% 
+make dogfood-lint || exit 1
+
+# GATE 3: Quality scores must maintain A+ grade
+make dogfood-score | grep -q "A+" || exit 1
+
+# GATE 4: Performance analysis must show O(1) or better
+make dogfood-runtime | grep -q "O(1)" || exit 1
+
+# GATE 5: Provability must be >90%
+make dogfood-provability | grep -q "100.0" || exit 1
 ```
 
 ## The Make Commands Contract
@@ -520,9 +596,9 @@ git status
 
 ## TDD-DRIVEN BOOK TRANSFORMATION (MANDATORY - TOP PRIORITY)
 
-### 🚨 CRITICAL PIVOT: Test-Driven Documentation ONLY
+### 🚨 CRITICAL PIVOT: Test-Driven Documentation + Heavy Dogfooding
 
-**The current book has 93% broken examples. This is unacceptable. We are implementing a COMPLETE TRANSFORMATION to Test-Driven Documentation (TDD).**
+**Every change must be validated with comprehensive dogfooding of ALL ruchy tools. We are implementing Test-Driven Documentation (TDD) + Heavy Dogfooding as mandatory practices.**
 
 ### SINGLE SOURCE OF TRUTH: INTEGRATION.md
 
