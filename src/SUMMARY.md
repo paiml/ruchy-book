@@ -14,7 +14,7 @@
 - [Chapter 6: Data Structures](ch06-00-data-structures-tdd.md)
 - [Chapter 7: Error Handling](ch07-00-error-handling-tdd.md)
 - [Chapter 8: Advanced Functions](ch08-00-advanced-functions-tdd.md)
-- [Chapter 9: Collections and Iteration](ch09-00-collections-iteration-tdd.md)
+- [Chapter 9: Collections and Iteration](ch09-00-collections-tdd.md)
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
 - [Chapter 11: File Operations](ch11-00-file-operations-tdd.md)
 
