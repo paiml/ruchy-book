@@ -59,6 +59,24 @@ echo "✅ All quality gates passed"
    # MUST see expected output before documenting
    ```
 
+2a. **ALWAYS Check Ruchy Compiler Status**: Before working on book content, verify the compiler state:
+   ```bash
+   # Check if ruchy compiler is available in parent directory
+   ls -la ../ruchy/target/release/ruchy 2>/dev/null || echo "No local ruchy build"
+   
+   # Check current ruchy version being used
+   ruchy --version
+   
+   # If local build exists, compare versions
+   if [ -f ../ruchy/target/release/ruchy ]; then
+       echo "Local build: $(../ruchy/target/release/ruchy --version)"
+       echo "System ruchy: $(ruchy --version)"
+   fi
+   
+   # Check compiler development status
+   cd ../ruchy 2>/dev/null && git log --oneline -5 && cd - || echo "No ../ruchy directory"
+   ```
+
 3. **NEVER Leave SATD Comments**: No TODO, FIXME, HACK comments. File GitHub issues instead.
 
 4. **ALWAYS Use Exact Version Pinning**: 
