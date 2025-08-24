@@ -690,3 +690,4 @@ make build
 - when bugs are found in ruchy, document them thoroughly in `docs/bugs/ruchy-runtime-bugs.md`
 - always push changes frequently, i.e. after a chapter, etc.
 - if it isn't automated it is broken.  never do tasks manually. fix root cause.
+- always rebuild book automatically on each push, i.e. each validation of the language

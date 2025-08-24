@@ -1,13 +1,13 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T14:45:53.299Z
+**Generated**: 2025-08-24T14:58:14.817Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
 **Failed**: 1
 **Success Rate**: 88%
-**Total Duration**: 19ms
+**Total Duration**: 23ms
 
 ## Test Results Summary
 
@@ -26,13 +26,13 @@
   info: Function 'main' is missing documentation [missing_docs]
 ```
 
-### fmt - ❌ FAIL (2ms)
+### fmt - ❌ FAIL (3ms)
 
 ```
 ✗ test/tooling/simple_test.ruchy needs formatting
 ```
 
-### runtime - ✅ PASS (2ms)
+### runtime - ✅ PASS (3ms)
 
 ```
 ⚡ Basic Performance Metrics for test/tooling/simple_test.ruchy
@@ -43,7 +43,7 @@
   Optimization Score: ✅ Well Optimized (100.0/100)
 ```
 
-### provability - ✅ PASS (2ms)
+### provability - ✅ PASS (3ms)
 
 ```
 🔬 Basic Provability Analysis for test/tooling/simple_test.ruchy
@@ -55,7 +55,7 @@
   Provability Score: ✅ High Provability (100.0/100)
 ```
 
-### score - ✅ PASS (2ms)
+### score - ✅ PASS (3ms)
 
 ```
 Quality Score Report
@@ -72,7 +72,7 @@ Component Breakdown:
   Idiomaticity: 1.000 (5%)
 ```
 
-### quality-gate - ✅ PASS (2ms)
+### quality-gate - ✅ PASS (3ms)
 
 ```
 📋 Quality Gate #1: ✅ PASSED
@@ -85,7 +85,7 @@ Component Breakdown:
 ✅ All quality gates passed!
 ```
 
-### test - ✅ PASS (2ms)
+### test - ✅ PASS (3ms)
 
 ```
 🧪 Running Ruchy tests with enhanced features...
