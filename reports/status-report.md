@@ -1,19 +1,19 @@
 # 📊 Ruchy Documentation Status Report
-*Generated: 8/24/2025, 3:42:50 PM*
-*Ruchy Version: ruchy 1.8.3*
+*Generated: 8/24/2025, 3:57:47 PM*
+*Ruchy Version: ruchy 1.8.4*
 
 ## 🎯 Executive Summary
 
-**Overall Status**: 🔴 21% Implementation Complete
-`██████░░░░░░░░░░░░░░░░░░░░░░░░` 21%
+**Overall Status**: 🔴 12% Implementation Complete
+`████░░░░░░░░░░░░░░░░░░░░░░░░░░` 12%
 
 | Metric | Value |
 |--------|-------|
 | 📚 Chapters Processed | 37 |
 | 💻 Total Examples | 382 |
-| ✅ Working Examples | 81 |
-| ❌ Failing Examples | 301 |
-| 📈 Success Rate | 21% |
+| ✅ Working Examples | 44 |
+| ❌ Failing Examples | 338 |
+| 📈 Success Rate | 12% |
 | 🧮 One-Liner Tests | 19/20 passing |
 
 ## 📖 Chapter Status Breakdown
@@ -22,23 +22,10 @@
 `███████████████` 100% (1/1)
 - ✅ 1 working
 
-### 🟢 Ch01 02 Hello World
-`███████████████` 100% (8/8)
-- ✅ 8 working
-
-### 🟢 Ch01 02 Hello World Tdd
-`███████████████` 100% (6/6)
-- ✅ 6 working
-
 ### 🟡 Ch03 00 Functions Tdd
-`█████████████░░` 89% (8/9)
-- ✅ 8 working
-- ❌ 1 broken
-
-### 🟠 Ch10 00 Input Output Tdd
-`███████████░░░░` 70% (7/10)
+`████████████░░░` 78% (7/9)
 - ✅ 7 working
-- ❌ 3 broken
+- ❌ 2 broken
 
 ### 🟠 Ch02 00 Variables Types
 `██████████░░░░░` 67% (6/9)
@@ -50,16 +37,6 @@
 - ✅ 5 working
 - ❌ 3 broken
 
-### 🟠 Ch11 00 File Operations Tdd
-`█████████░░░░░░` 60% (6/10)
-- ✅ 6 working
-- ❌ 4 broken
-
-### 🟠 Ch05 00 Control Flow Tdd
-`█████████░░░░░░` 57% (8/14)
-- ✅ 8 working
-- ❌ 6 broken
-
 ### 🟠 Ch08 00 Advanced Functions Tdd
 `████████░░░░░░░` 56% (5/9)
 - ✅ 5 working
@@ -70,30 +47,31 @@
 - ✅ 1 working
 - ❌ 1 broken
 
-### 🔴 Ch09 00 Collections Tdd
-`██████░░░░░░░░░` 40% (4/10)
-- ✅ 4 working
-- ❌ 6 broken
+### 🔴 Ch01 02 Hello World
+`██████░░░░░░░░░` 38% (3/8)
+- ✅ 3 working
+- ❌ 5 broken
 
 ### 🔴 Ch06 00 Data Structures Tdd
 `██████░░░░░░░░░` 38% (3/8)
 - ✅ 3 working
 - ❌ 5 broken
 
-### 🔴 Ch04 00 Modules Tdd
+### 🔴 Ch01 02 Hello World Tdd
 `█████░░░░░░░░░░` 33% (2/6)
 - ✅ 2 working
 - ❌ 4 broken
 
-### 🔴 Ch07 00 Error Handling Tdd
-`█████░░░░░░░░░░` 33% (3/9)
-- ✅ 3 working
-- ❌ 6 broken
+### 🔴 Ch11 00 File Operations Tdd
+`███░░░░░░░░░░░░` 20% (2/10)
+- ✅ 2 working
+- ⚠️ 1 not implemented
+- ❌ 7 broken
 
-### 🔴 Ch01 03 Interpreter Scripting
-`███░░░░░░░░░░░░` 20% (3/15)
-- ✅ 3 working
-- ❌ 12 broken
+### 🔴 Ch04 00 Modules Tdd
+`███░░░░░░░░░░░░` 17% (1/6)
+- ✅ 1 working
+- ❌ 5 broken
 
 ### 🔴 Ch03 00 Functions
 `███░░░░░░░░░░░░` 17% (2/12)
@@ -101,11 +79,21 @@
 - ⚠️ 2 not implemented
 - ❌ 8 broken
 
-### 🔴 Ch04 00 Command Line Tools
+### 🔴 Ch01 03 Interpreter Scripting
+`██░░░░░░░░░░░░░` 13% (2/15)
+- ✅ 2 working
+- ❌ 13 broken
+
+### 🔴 Ch09 00 Collections Tdd
+`██░░░░░░░░░░░░░` 10% (1/10)
+- ✅ 1 working
+- ❌ 9 broken
+
+### 🔴 Ch05 00 Control Flow Tdd
 `█░░░░░░░░░░░░░░` 7% (1/14)
 - ✅ 1 working
-- ⚠️ 4 not implemented
-- ❌ 9 broken
+- ⚠️ 1 not implemented
+- ❌ 12 broken
 
 ### 🔴 Appendix C Troubleshooting
 `█░░░░░░░░░░░░░░` 5% (1/20)
@@ -130,6 +118,11 @@
 `░░░░░░░░░░░░░░░` 0% (0/12)
 - ❌ 12 broken
 
+### 🔴 Ch10 00 Input Output Tdd
+`░░░░░░░░░░░░░░░` 0% (0/10)
+- ⚠️ 1 not implemented
+- ❌ 9 broken
+
 ### 🔴 Ch18 00 Deployment Devops
 `░░░░░░░░░░░░░░░` 0% (0/8)
 - ❌ 8 broken
@@ -149,8 +142,8 @@
 
 ### 🔴 Ch07 00 Building Applications
 `░░░░░░░░░░░░░░░` 0% (0/9)
-- ⚠️ 3 not implemented
-- ❌ 6 broken
+- ⚠️ 4 not implemented
+- ❌ 5 broken
 
 ### 🔴 Ch15 00 Macros Metaprogramming
 `░░░░░░░░░░░░░░░` 0% (0/9)
@@ -159,6 +152,11 @@
 ### 🔴 Ch09 00 Network Programming
 `░░░░░░░░░░░░░░░` 0% (0/10)
 - ❌ 10 broken
+
+### 🔴 Ch07 00 Error Handling Tdd
+`░░░░░░░░░░░░░░░` 0% (0/9)
+- ⚠️ 4 not implemented
+- ❌ 5 broken
 
 ### 🔴 Ch08 00 Systems Programming
 `░░░░░░░░░░░░░░░` 0% (0/9)
@@ -182,6 +180,11 @@
 - ⚠️ 1 not implemented
 - ❌ 12 broken
 
+### 🔴 Ch04 00 Command Line Tools
+`░░░░░░░░░░░░░░░` 0% (0/14)
+- ⚠️ 6 not implemented
+- ❌ 8 broken
+
 ### 🔴 Ch12 00 Traits Generics
 `░░░░░░░░░░░░░░░` 0% (0/11)
 - ❌ 11 broken
@@ -196,9 +199,9 @@
 ```ascii
 Status Distribution (382 total examples):
 
-✅ Working        █████░░░░░░░░░░░░░░░░░░░░ 81
-❌ Broken         ███████████████████░░░░░░ 284
-⚠️  Not Impl      █░░░░░░░░░░░░░░░░░░░░░░░░ 17
+✅ Working        ███░░░░░░░░░░░░░░░░░░░░░░ 44
+❌ Broken         ████████████████████░░░░░ 311
+⚠️  Not Impl      ██░░░░░░░░░░░░░░░░░░░░░░░ 27
 📋 Planned       ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
 ```
 
@@ -222,14 +225,14 @@ Status Distribution (382 total examples):
 **Example Testing**: 🟢 382 examples tested
 `████████████████████` 100%
 
-**Implementation Status**: 🔴 21% working
-`████░░░░░░░░░░░░░░░░` 21%
+**Implementation Status**: 🔴 12% working
+`██░░░░░░░░░░░░░░░░░░` 12%
 
 ## 🔧 Recommendations
 
 - 🚨 **Critical**: Success rate below 50% - major implementation work needed
-- 🔨 Focus on fixing 284 broken examples before implementing new features
+- 🔨 Focus on fixing 311 broken examples before implementing new features
 
 ---
 *Report generated by Documentation Status Testing system*
-*Last test run: 2025-08-24T13:40:08.980Z*
+*Last test run: 2025-08-24T13:55:46.596Z*

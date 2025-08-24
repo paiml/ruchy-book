@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-24T13:42:50.338Z",
-  "ruchy_version": "ruchy 1.8.3",
+  "generated_at": "2025-08-24T13:57:47.184Z",
+  "ruchy_version": "ruchy 1.8.4",
   "summary": {
     "total_chapters": 37,
     "total_examples": 382,
-    "working_examples": 81,
-    "failing_examples": 301,
-    "success_rate": 21
+    "working_examples": 44,
+    "failing_examples": 338,
+    "success_rate": 12
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
@@ -35,25 +35,25 @@
     },
     "ch04-00-modules-tdd": {
       "total_examples": 6,
-      "working_examples": 2,
-      "failing_examples": 4,
-      "success_rate": 33,
+      "working_examples": 1,
+      "failing_examples": 5,
+      "success_rate": 17,
       "status_breakdown": {
-        "working": 2,
+        "working": 1,
         "not_implemented": 0,
-        "broken": 4,
+        "broken": 5,
         "planned": 0
       }
     },
     "ch09-00-collections-tdd": {
       "total_examples": 10,
-      "working_examples": 4,
-      "failing_examples": 6,
-      "success_rate": 40,
+      "working_examples": 1,
+      "failing_examples": 9,
+      "success_rate": 10,
       "status_breakdown": {
-        "working": 4,
+        "working": 1,
         "not_implemented": 0,
-        "broken": 6,
+        "broken": 9,
         "planned": 0
       }
     },
@@ -119,13 +119,13 @@
     },
     "ch10-00-input-output-tdd": {
       "total_examples": 10,
-      "working_examples": 7,
-      "failing_examples": 3,
-      "success_rate": 70,
+      "working_examples": 0,
+      "failing_examples": 10,
+      "success_rate": 0,
       "status_breakdown": {
-        "working": 7,
-        "not_implemented": 0,
-        "broken": 3,
+        "working": 0,
+        "not_implemented": 1,
+        "broken": 9,
         "planned": 0
       }
     },
@@ -143,13 +143,13 @@
     },
     "ch01-03-interpreter-scripting": {
       "total_examples": 15,
-      "working_examples": 3,
-      "failing_examples": 12,
-      "success_rate": 20,
+      "working_examples": 2,
+      "failing_examples": 13,
+      "success_rate": 13,
       "status_breakdown": {
-        "working": 3,
+        "working": 2,
         "not_implemented": 0,
-        "broken": 12,
+        "broken": 13,
         "planned": 0
       }
     },
@@ -196,8 +196,8 @@
       "success_rate": 0,
       "status_breakdown": {
         "working": 0,
-        "not_implemented": 3,
-        "broken": 6,
+        "not_implemented": 4,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -227,13 +227,13 @@
     },
     "ch07-00-error-handling-tdd": {
       "total_examples": 9,
-      "working_examples": 3,
-      "failing_examples": 6,
-      "success_rate": 33,
+      "working_examples": 0,
+      "failing_examples": 9,
+      "success_rate": 0,
       "status_breakdown": {
-        "working": 3,
-        "not_implemented": 0,
-        "broken": 6,
+        "working": 0,
+        "not_implemented": 4,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -311,13 +311,13 @@
     },
     "ch04-00-command-line-tools": {
       "total_examples": 14,
-      "working_examples": 1,
-      "failing_examples": 13,
-      "success_rate": 7,
+      "working_examples": 0,
+      "failing_examples": 14,
+      "success_rate": 0,
       "status_breakdown": {
-        "working": 1,
-        "not_implemented": 4,
-        "broken": 9,
+        "working": 0,
+        "not_implemented": 6,
+        "broken": 8,
         "planned": 0
       }
     },
@@ -335,37 +335,37 @@
     },
     "ch03-00-functions-tdd": {
       "total_examples": 9,
-      "working_examples": 8,
-      "failing_examples": 1,
-      "success_rate": 89,
+      "working_examples": 7,
+      "failing_examples": 2,
+      "success_rate": 78,
       "status_breakdown": {
-        "working": 8,
+        "working": 7,
         "not_implemented": 0,
-        "broken": 1,
+        "broken": 2,
         "planned": 0
       }
     },
     "ch11-00-file-operations-tdd": {
       "total_examples": 10,
-      "working_examples": 6,
-      "failing_examples": 4,
-      "success_rate": 60,
+      "working_examples": 2,
+      "failing_examples": 8,
+      "success_rate": 20,
       "status_breakdown": {
-        "working": 6,
-        "not_implemented": 0,
-        "broken": 4,
+        "working": 2,
+        "not_implemented": 1,
+        "broken": 7,
         "planned": 0
       }
     },
     "ch05-00-control-flow-tdd": {
       "total_examples": 14,
-      "working_examples": 8,
-      "failing_examples": 6,
-      "success_rate": 57,
+      "working_examples": 1,
+      "failing_examples": 13,
+      "success_rate": 7,
       "status_breakdown": {
-        "working": 8,
-        "not_implemented": 0,
-        "broken": 6,
+        "working": 1,
+        "not_implemented": 1,
+        "broken": 12,
         "planned": 0
       }
     },
@@ -395,13 +395,13 @@
     },
     "ch01-02-hello-world": {
       "total_examples": 8,
-      "working_examples": 8,
-      "failing_examples": 0,
-      "success_rate": 100,
+      "working_examples": 3,
+      "failing_examples": 5,
+      "success_rate": 38,
       "status_breakdown": {
-        "working": 8,
+        "working": 3,
         "not_implemented": 0,
-        "broken": 0,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -443,13 +443,13 @@
     },
     "ch01-02-hello-world-tdd": {
       "total_examples": 6,
-      "working_examples": 6,
-      "failing_examples": 0,
-      "success_rate": 100,
+      "working_examples": 2,
+      "failing_examples": 4,
+      "success_rate": 33,
       "status_breakdown": {
-        "working": 6,
+        "working": 2,
         "not_implemented": 0,
-        "broken": 0,
+        "broken": 4,
         "planned": 0
       }
     }
@@ -464,6 +464,6 @@
   "quality_metrics": {
     "documentation_coverage": 105.71428571428572,
     "example_testing": 100,
-    "implementation_status": 21
+    "implementation_status": 12
   }
 }
