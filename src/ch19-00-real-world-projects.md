@@ -1,18 +1,36 @@
 # Real-World Projects
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/4 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 4 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No support yet |
+| ⚠️ Not Implemented | All | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | All | Target: v2.5+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
+
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
+
+**Complete real-world applications is a planned feature for Ruchy v2.5+**. This chapter describes the intended design but **none of these examples currently work**.
+
+## What You Can Do Today
+
+Instead of waiting for this feature, you can:
+- Use the working features documented in TDD chapters
+- Contribute to the implementation at [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- See the [roadmap](../appendix-roadmap.md) for timeline
+
+## Original Content (For Reference Only)
+
+⚠️ The content below is aspirational and does not work in current Ruchy:
+
+---
+
 
 
 *"After 20 years of building software, I've learned that the best way to master a language isn't through tutorials - it's by building something real that solves actual problems. Every project teaches you something new. Build things people need, ship them, learn from feedback, iterate. That's how you become a real developer."* - Noah Gift

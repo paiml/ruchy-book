@@ -1,21 +1,22 @@
 # Concurrency
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/13 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 1 | Planned for future versions |
-| ❌ Broken | 12 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No concurrency support yet |
+| ⚠️ Not Implemented | 13 | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | 13 | Target: v2.5+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
 
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
 
-*"Concurrency clicked for me when I stopped thinking about threads and started thinking about tasks. It's not about doing everything at once; it's about never waiting when you don't have to. Master concurrency, and your programs will feel like they have superpowers - responsive, scalable, and efficient."* - Noah Gift
+**Concurrency is a planned feature for Ruchy v2.5+**. This chapter describes the intended design but **none of these examples currently work**.
 
 ## The Problem
 

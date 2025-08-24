@@ -1,18 +1,36 @@
 # File Operations
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/10 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 2 | Planned for future versions |
-| ❌ Broken | 8 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No support yet |
+| ⚠️ Not Implemented | All | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | All | Target: v2.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
+
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
+
+**Advanced file operations is a planned feature for Ruchy v2.0+**. This chapter describes the intended design but **none of these examples currently work**.
+
+## What You Can Do Today
+
+Instead of waiting for this feature, you can:
+- Use the working features documented in TDD chapters
+- Contribute to the implementation at [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- See the [roadmap](../appendix-roadmap.md) for timeline
+
+## Original Content (For Reference Only)
+
+⚠️ The content below is aspirational and does not work in current Ruchy:
+
+---
+
 
 
 *"The first time I automated file organization on my cluttered desktop, I felt like a digital janitor who just got superpowers. What took me hours of manual sorting now happens in seconds. Files are the lifeblood of computing - master them, and you master your digital world."* - Noah Gift
