@@ -406,11 +406,14 @@ When encountering issues with the Ruchy compiler/runtime:
 When testing examples, always run comprehensive test suites:
 
 ```bash
-# Test all 259 book examples
+# Test all 381 book examples
 deno task extract-examples
 
 # Test 20 one-liner examples  
 deno task test-oneliners
+
+# Test Ruchy binary tooling integration (NEW)
+deno task test-tooling
 
 # Update documentation status
 deno task update-status
