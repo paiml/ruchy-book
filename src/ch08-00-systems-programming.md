@@ -1,18 +1,36 @@
 # Systems Programming
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/9 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 1 | Planned for future versions |
-| ❌ Broken | 8 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No support yet |
+| ⚠️ Not Implemented | All | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | All | Target: v3.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
+
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
+
+**Systems programming and OS integration is a planned feature for Ruchy v3.0+**. This chapter describes the intended design but **none of these examples currently work**.
+
+## What You Can Do Today
+
+Instead of waiting for this feature, you can:
+- Use the working features documented in TDD chapters
+- Contribute to the implementation at [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- See the [roadmap](../appendix-roadmap.md) for timeline
+
+## Original Content (For Reference Only)
+
+⚠️ The content below is aspirational and does not work in current Ruchy:
+
+---
+
 
 
 *"The first time I wrote a system monitor that could track CPU usage, memory consumption, and disk I/O in real-time, I finally understood what my computer was actually doing. Systems programming isn't about fighting the OS - it's about dancing with it. Learn the steps, and your programs can do things you never imagined."* - Noah Gift

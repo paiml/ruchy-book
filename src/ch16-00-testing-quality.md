@@ -1,18 +1,36 @@
 # Testing & Quality
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/11 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 11 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No support yet |
+| ⚠️ Not Implemented | All | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | All | Target: v2.5+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
+
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
+
+**Advanced testing and quality tools is a planned feature for Ruchy v2.5+**. This chapter describes the intended design but **none of these examples currently work**.
+
+## What You Can Do Today
+
+Instead of waiting for this feature, you can:
+- Use the working features documented in TDD chapters
+- Contribute to the implementation at [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- See the [roadmap](../appendix-roadmap.md) for timeline
+
+## Original Content (For Reference Only)
+
+⚠️ The content below is aspirational and does not work in current Ruchy:
+
+---
+
 
 
 *"I learned to love testing the day it saved me from shipping a bug that would have cost millions. Tests aren't about proving your code works - they're about proving it still works after you change it. Write tests like your future self will thank you, because they will."* - Noah Gift

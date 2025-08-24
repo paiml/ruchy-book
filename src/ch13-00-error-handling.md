@@ -1,18 +1,36 @@
 # Error Handling
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ❌ 0% Working (0/12 examples)
+**Chapter Status**: 🚧 NOT IMPLEMENTED - Future Feature
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 0 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
-| ❌ Broken | 12 | Known issues, needs fixing |
-| 📋 Planned | 0 | Future roadmap features |
+| ✅ Working | 0 | No support yet |
+| ⚠️ Not Implemented | All | Entire feature planned |
+| ❌ Broken | 0 | N/A |
+| 📋 Planned | All | Target: v2.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.9.1*
 <!-- DOC_STATUS_END -->
+
+## ⚠️ IMPORTANT: Feature Not Yet Implemented
+
+**Advanced error handling with Result/Option types is a planned feature for Ruchy v2.0+**. This chapter describes the intended design but **none of these examples currently work**.
+
+## What You Can Do Today
+
+Instead of waiting for this feature, you can:
+- Use the working features documented in TDD chapters
+- Contribute to the implementation at [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- See the [roadmap](../appendix-roadmap.md) for timeline
+
+## Original Content (For Reference Only)
+
+⚠️ The content below is aspirational and does not work in current Ruchy:
+
+---
+
 
 
 *"Errors aren't failures - they're information. The best code doesn't avoid errors; it embraces them, learns from them, and handles them gracefully. I've seen more systems fail from ignored errors than from actual bugs. Handle your errors like a professional, and your software will run like a dream."* - Noah Gift
