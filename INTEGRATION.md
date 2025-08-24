@@ -1,28 +1,23 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-23T23:15:00Z  
-**Ruchy Version**: v1.5.0  
-**Book Commit**: sprint-11-complete  
+**Generated**: 2025-08-24T07:34:37.914Z  
+**Ruchy Version**: 1.6.0  
+**Book Commit**: 2b37fa5  
 
 ---
 
 ## 🎯 Executive Summary
 
-**TRANSFORMATION IN PROGRESS**: Moving from 93% failure to 100% test-driven documentation.
+**QUALIFICATION COMPLETE**: Ruchy Book tested against version 1.6.0
 
-### Sprint 11 Complete with v1.5.0
-- **Foundation Chapters**: 11/11 examples passing (100%)
-- **Module System**: 2/2 tests passing (100%)
-- **Control Flow**: 7/7 tests passing (100%)
-- **Data Structures**: 3/3 tests passing (100%)
-- **Error Handling**: 3/3 tests passing (100%)
-- **Advanced Functions**: 3/3 tests passing (100%)
-- **Collections & Iteration**: 3/3 tests passing (100%)
-- **Input/Output**: 3/3 tests passing (100%)
-- **File Operations**: 3/3 tests passing (100%)
-- **Total TDD Examples**: 38/38 passing (100%)
-- **Documentation**: Chapters 1-11 written from tests
-- **Stable on v1.5.0**: Simulated file operation patterns verified
+### v1.6.0 Qualification Results
+- **Total Examples**: 381 across 36 chapters
+- **Working Examples**: 76 (20% pass rate)
+- **Failing Examples**: 305 (80% failure rate)
+- **One-liner Tests**: 19/20 passing (95%)
+- **Critical Issues**: Advanced features (chapters 11+) completely broken
+- **Foundation Status**: Mixed results, some chapters excellent
+- **Lint Issues**: 10 missing status annotations
 
 **THIS IS THE SINGLE SOURCE OF TRUTH FOR BOOK STATUS. ALL OTHER REPORTS ARE DEPRECATED.**
 

@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-08-23T21:29:27.327Z",
-  "ruchy_version": "ruchy 1.5.0",
+  "timestamp": "2025-08-24T07:41:54.507Z",
+  "ruchy_version": "ruchy 1.6.0",
   "total_tests": 20,
-  "passed_tests": 20,
-  "failed_tests": 0,
+  "passed_tests": 19,
+  "failed_tests": 1,
   "planned_tests": 12,
-  "success_rate": 100,
+  "success_rate": 95,
   "results": [
     {
       "test": {
@@ -164,8 +164,9 @@
         "expected": "Processing text data...\n()",
         "category": "Output Functions"
       },
-      "passed": true,
-      "actual": "Processing text data...\n()"
+      "passed": false,
+      "actual": "Processing text data...",
+      "error": "Expected: Processing text data...\n(), Got: Processing text data..."
     },
     {
       "test": {
