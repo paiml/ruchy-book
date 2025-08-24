@@ -1,7 +1,7 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T14:04:42.923Z
+**Generated**: 2025-08-24T14:45:53.299Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
@@ -11,13 +11,13 @@
 
 ## Test Results Summary
 
-### check - ✅ PASS (2ms)
+### check - ✅ PASS (3ms)
 
 ```
 ✓ Syntax is valid
 ```
 
-### lint - ✅ PASS (2ms)
+### lint - ✅ PASS (3ms)
 
 ```
 ⚠ Issues found in test/tooling/simple_test.ruchy:
@@ -55,7 +55,7 @@
   Provability Score: ✅ High Provability (100.0/100)
 ```
 
-### score - ✅ PASS (3ms)
+### score - ✅ PASS (2ms)
 
 ```
 Quality Score Report
