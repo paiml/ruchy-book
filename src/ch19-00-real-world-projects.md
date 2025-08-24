@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -283,6 +283,7 @@ fun main() -> Result<()> {
 
 
 
+
 ```
 
 ## Project 2: Web API Service
@@ -458,6 +459,7 @@ async fun main() -> Result<()> {
     
     Ok(())
 }
+
 
 
 
@@ -696,6 +698,7 @@ async fun main() -> Result<()> {
 
 
 
+
 ```
 
 ## Project Ideas
@@ -819,6 +822,7 @@ mod tests {
         assert_eq!(result, expected);
     }
 }
+
 
 
 

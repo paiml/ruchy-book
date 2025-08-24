@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -57,6 +57,7 @@ println("Lines: " + line_count.to_s())
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Run it:
@@ -91,6 +92,7 @@ let is_student = input("Are you a student? (y/n) ") == "y"
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### File Operations
@@ -117,6 +119,7 @@ let size = file_size("data.txt")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Command Arguments
@@ -139,6 +142,7 @@ println("Processing: " + first_file + " and " + second_file)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Practical Tools
@@ -206,6 +210,7 @@ match choice {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Log Analyzer
@@ -264,6 +269,7 @@ println("Busiest Hour: " + busiest_hour.to_s() + ":00")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Batch File Renamer
@@ -305,6 +311,7 @@ println("\nRenamed " + renamed_count.to_s() + " files")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Error Handling
@@ -358,6 +365,7 @@ if process_file(filename) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## User Experience
@@ -409,6 +417,7 @@ fun process_with_progress(files) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Generated Code Insight
@@ -445,6 +454,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Becomes this optimized Rust:
@@ -618,6 +628,7 @@ loop {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 **Usage:**
@@ -659,6 +670,7 @@ fun main() {
 
 
 
+
 ```
 
 ### Poor User Experience
@@ -676,6 +688,7 @@ let thing = input()
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Hardcoded Paths
@@ -691,6 +704,7 @@ let data = read_file("/Users/noah/Desktop/data.txt")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Summary

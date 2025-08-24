@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -37,6 +37,7 @@ fun main() {
     println("Hi", name, ", you're", age, "years old!")
     println("Currently learning Ruchy:", is_learning)
 }
+
 
 
 
@@ -110,6 +111,7 @@ fun main() {
 
 
 
+
 ```
 
 ### Working with Variables
@@ -134,6 +136,7 @@ fun main() {
     println("Logins:", login_count, ", Points:", total_points)
     println("Premium status:", is_premium)
 }
+
 
 
 
@@ -164,6 +167,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Common Pitfalls
@@ -180,6 +184,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
 
@@ -197,6 +202,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 Error: Can't add number to string. Use `let age = 25` (without quotes) for numeric operations.
 
@@ -209,6 +215,7 @@ fun main() {
     let username = "Bob"
     println(userName)  // Prints "Alice", not "Bob"
 }
+
 
 
 
@@ -232,6 +239,7 @@ fun main() {
     let age = 25
     println("Hi", name, ", age", age)
 }
+
 
 
 
@@ -326,6 +334,7 @@ fun main() {
     println("Contact:", username, email)
     println("Status:", is_adult, lives_in_tech_city, ready_for_job)
 }
+
 
 
 

@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -69,6 +69,7 @@ if deployment.is_healthy() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 That's deployment without drama!
@@ -323,6 +324,7 @@ fun deploy_blue_green(new_version: String) {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Canary Deployment
@@ -372,6 +374,7 @@ fun deploy_canary(new_version: String) {
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Feature Flags
@@ -419,6 +422,7 @@ for percentage in [10, 25, 50, 75, 100] {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Infrastructure as Code
@@ -530,6 +534,7 @@ let dashboard = json!({
 
 
 
+
 ```
 
 ### Logging
@@ -587,6 +592,7 @@ let config = json!({
 
 
 
+
 ```
 
 ### Distributed Tracing
@@ -619,6 +625,7 @@ async fun handle_request(req: Request, db: &Database) -> Result<Response> {
     
     Ok(Response::new(data))
 }
+
 
 
 
@@ -704,6 +711,7 @@ vault.rotate("secret/database/password").await?
 // Environment injection
 env::set_var("DATABASE_URL", 
     format!("postgres://user:{}@host/db", db_password))
+
 
 
 

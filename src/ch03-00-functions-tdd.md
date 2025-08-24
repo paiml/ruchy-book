@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -39,6 +39,7 @@ fun main() {
     greet();
 }
 
+
 ```
 
 **Output:**
@@ -61,6 +62,7 @@ fun main() {
     println(result);
 }
 
+
 ```
 
 **Output:**
@@ -82,6 +84,7 @@ fun main() {
     let product = multiply(6, 7);
     println(product);
 }
+
 
 ```
 
@@ -109,6 +112,7 @@ fun main() {
     println(result);
 }
 
+
 ```
 
 **Output:**
@@ -127,6 +131,7 @@ fun function_name(parameters) -> return_type {
     // function body
     return_expression
 }
+
 
 ```
 
@@ -164,6 +169,7 @@ fun calculate(x: i32, y: i32) -> i32 {
     x * 2 + y * 3
 }
 
+
 ```
 
 Benefits:
@@ -192,6 +198,7 @@ fun calculate(input: i32) -> i32 {
     input * 2
 }
 
+
 ```
 
 ### Pattern 2: Multiple Parameters
@@ -200,6 +207,7 @@ fun calculate(input: i32) -> i32 {
 fun combine(a: i32, b: i32, c: i32) -> i32 {
     a + b + c
 }
+
 
 ```
 
@@ -213,6 +221,7 @@ fun helper(x: i32) -> i32 {
 fun main_calculation(n: i32) -> i32 {
     helper(n) + helper(n + 1)
 }
+
 
 ```
 

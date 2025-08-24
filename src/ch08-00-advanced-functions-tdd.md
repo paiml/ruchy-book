@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -46,6 +46,7 @@ fun main() {
     println(result);
 }
 
+
 ```
 
 **Output:**
@@ -75,6 +76,7 @@ fun main() {
     println(classify_number(10));
 }
 
+
 ```
 
 **Output:**
@@ -102,6 +104,7 @@ fun main() {
     println(factorial(3));
     println(factorial(5));
 }
+
 
 ```
 
@@ -145,6 +148,7 @@ fun step_two(x: Type) -> Type { ... }
 let intermediate = step_one(input);
 let result = step_two(intermediate);
 
+
 ```
 
 ### Multiple Return Pattern
@@ -161,6 +165,7 @@ fun categorize(input: Type) -> ResultType {
     return default_result;
 }
 
+
 ```
 
 ### Recursive Pattern
@@ -173,6 +178,7 @@ fun recursive_func(n: Type) -> Type {
     }
     return combine(n, recursive_func(reduce(n)));
 }
+
 
 ```
 
@@ -203,6 +209,7 @@ let clean_input = validate(raw_input);
 let normal_input = normalize(clean_input);
 let result = process(normal_input);
 
+
 ```
 
 ### Classification Function
@@ -221,6 +228,7 @@ fun get_grade(score: i32) -> i32 {
     return 1; // D/F
 }
 
+
 ```
 
 ### Simple Recursion
@@ -233,6 +241,7 @@ fun countdown(n: i32) -> i32 {
     println(n);
     return countdown(n - 1);
 }
+
 
 ```
 

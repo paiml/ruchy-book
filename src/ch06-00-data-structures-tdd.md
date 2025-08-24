@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -38,6 +38,7 @@ fun main() {
     println(name);
 }
 
+
 ```
 
 **Output:**
@@ -61,6 +62,7 @@ fun main() {
     println(third);
 }
 
+
 ```
 
 **Output:**
@@ -82,6 +84,7 @@ fun main() {
     println(text);
     println(number);
 }
+
 
 ```
 
@@ -120,6 +123,7 @@ let message = "Hello World";
 let name = "Alice";
 let greeting = "Welcome";
 
+
 ```
 
 ### Mixed Types
@@ -129,6 +133,7 @@ let greeting = "Welcome";
 let text = "Count";
 let number = 100;
 let flag = true;
+
 
 ```
 
@@ -154,6 +159,7 @@ let first_name = "John";
 let last_name = "Doe";
 let title = "Mr.";
 
+
 ```
 
 ### Data with Labels
@@ -164,6 +170,7 @@ let label = "Temperature";
 let value = 72;
 let unit = "Fahrenheit";
 
+
 ```
 
 ### Configuration Values
@@ -173,6 +180,7 @@ let unit = "Fahrenheit";
 let app_name = "MyApp";
 let version = "1.0";
 let debug = true;
+
 
 ```
 

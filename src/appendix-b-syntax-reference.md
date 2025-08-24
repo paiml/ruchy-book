@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -40,6 +40,7 @@ fun documented_function() {}
 
 
 
+
 ```
 
 ### Identifiers
@@ -59,6 +60,7 @@ snake_case_123
 let mut fn if else match while for loop break continue
 return true false null struct enum trait impl use mod
 async await type where const static pub super self
+
 
 
 
@@ -96,6 +98,7 @@ async await type where const static pub super self
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 #### String Literals
@@ -124,6 +127,7 @@ line two"
 
 
 
+
 ```
 
 #### Character Literals
@@ -134,6 +138,7 @@ line two"
 '\n'        // Escape sequence
 '\x41'      // Hex escape
 '\u{1F600}' // Unicode escape
+
 
 
 
@@ -179,6 +184,7 @@ let owned: String = "world"    // Owned string
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Compound Types
@@ -209,6 +215,7 @@ let nothing: Option<i32> = None
 // Results  
 let ok: Result<i32, String> = Ok(42)
 let err: Result<i32, String> = Err("error message")
+
 
 
 
@@ -246,6 +253,7 @@ let x = "now a string"  // Shadows previous x
 
 
 
+
 ```
 
 ### Constants
@@ -259,6 +267,7 @@ const PI: f64 = 3.14159265359
 // Static variables
 static GLOBAL_COUNTER: AtomicUsize = AtomicUsize::new(0)
 static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
+
 
 
 
@@ -297,6 +306,7 @@ let Some(value) = optional else {
 
 
 
+
 ```
 
 ### Pattern Matching
@@ -326,6 +336,7 @@ match number {
     n if n > 0 => "positive", 
     _ => "zero"
 }
+
 
 
 
@@ -381,6 +392,7 @@ for (index, item) in collection.enumerate() {
 
 
 
+
 ```
 
 ## Functions
@@ -421,6 +433,7 @@ fun calculate(x: f64, y: f64, operation: char) -> f64 {
 
 
 
+
 ```
 
 ### Function Parameters
@@ -456,6 +469,7 @@ fun sum(numbers: &[i32]) -> i32 {
 
 
 
+
 ```
 
 ### Closures
@@ -484,6 +498,7 @@ let greeter = move |greeting| {
 
 
 
+
 ```
 
 ### Higher-Order Functions
@@ -506,6 +521,7 @@ where F: Fn(T) -> U
 {
     items.into_iter().map(f).collect()
 }
+
 
 
 
@@ -545,6 +561,7 @@ struct Excerpt<'a> {
 
 
 
+
 ```
 
 ### Struct Usage
@@ -564,6 +581,7 @@ let point2 = Point { x: 1.0, ..origin }
 // Destructuring
 let Point { x, y } = origin
 let Color(r, g, b) = red
+
 
 
 
@@ -601,6 +619,7 @@ enum Result<T, E> {
 
 
 
+
 ```
 
 ### Implementation Blocks
@@ -629,6 +648,7 @@ impl Point {
         (self.x, self.y)
     }
 }
+
 
 
 
@@ -672,6 +692,7 @@ trait From<T> {
 
 
 
+
 ```
 
 ### Trait Implementation
@@ -702,6 +723,7 @@ impl<T: Clone> Clone for Box<T> {
 
 
 
+
 ```
 
 ## Generics
@@ -719,6 +741,7 @@ fun largest<T: PartialOrd>(list: &[T]) -> &T {
     }
     largest
 }
+
 
 
 
@@ -746,6 +769,7 @@ impl Point<f64> {
         (self.x.powi(2) + self.y.powi(2)).sqrt()
     }
 }
+
 
 
 
@@ -784,6 +808,7 @@ where
 
 
 
+
 ```
 
 ## Modules and Visibility
@@ -817,6 +842,7 @@ mod graphics {
 
 
 
+
 ```
 
 ### Visibility
@@ -834,6 +860,7 @@ pub struct PublicStruct {
 pub(crate) fun crate_visible() {}      // Visible within crate
 pub(super) fun parent_visible() {}     // Visible to parent module
 pub(in crate::utils) fun limited() {} // Visible within specific path
+
 
 
 
@@ -859,6 +886,7 @@ use unix_specific::module
 
 #[cfg(windows)]  
 use windows_specific::module
+
 
 
 
@@ -900,6 +928,7 @@ match result {
 
 
 
+
 ```
 
 ### Panic
@@ -922,6 +951,7 @@ debug_assert!(expensive_check())
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ## Macros
@@ -952,6 +982,7 @@ struct Point { x: i32, y: i32 }
 
 
 // Error: ✗ Compilation failed: Failed to transpile to Rust
+
 ```
 
 ### Macro Definition
@@ -971,6 +1002,7 @@ macro_rules! say_hello {
 // Usage
 say_hello!()
 say_hello!("World")
+
 
 
 
@@ -1025,6 +1057,7 @@ fun always_inline() {}
 
 
 
+
 ```
 
 ## Async/Await
@@ -1055,6 +1088,7 @@ let async_closure = async |x| {
 
 
 
+
 ```
 
 ### Futures and Streams
@@ -1079,6 +1113,7 @@ let stream = async_stream::stream! {
         tokio::time::sleep(Duration::from_millis(100)).await
     }
 }
+
 
 
 

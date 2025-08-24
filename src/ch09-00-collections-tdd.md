@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -38,6 +38,7 @@ fun main() {
     }
     println("Done counting");
 }
+
 
 ```
 
@@ -69,6 +70,7 @@ fun main() {
     println(sum);
 }
 
+
 ```
 
 **Output:**
@@ -96,6 +98,7 @@ fun main() {
         println("");
     }
 }
+
 
 ```
 
@@ -136,6 +139,7 @@ for variable in start..end {
     println(variable);
 }
 
+
 ```
 
 ### While Loop Accumulation
@@ -149,6 +153,7 @@ while counter <= end {
     counter = counter + 1;
 }
 
+
 ```
 
 ### Nested Loop Pattern
@@ -161,6 +166,7 @@ for outer in 0..height {
         process(outer, inner);
     }
 }
+
 
 ```
 
@@ -187,6 +193,7 @@ for i in 1..10 {
     println(result);
 }
 
+
 ```
 
 ### Sum Calculation
@@ -196,6 +203,7 @@ let mut total = 0;
 for value in 1..100 {
     total = total + value;
 }
+
 
 ```
 
@@ -210,6 +218,7 @@ for row in 0..height {
     }
 }
 
+
 ```
 
 ### Conditional Accumulation
@@ -222,6 +231,7 @@ for i in 1..100 {
         count = count + 1;
     }
 }
+
 
 ```
 

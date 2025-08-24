@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -34,6 +34,7 @@ ruchy -e "2 + 2"
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Output: `4`
@@ -47,6 +48,7 @@ ruchy -e "let name = \"World\"; \"Hello \" + name + \"!\""
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Output: `"Hello World!"`
@@ -60,6 +62,7 @@ ruchy -e "let nums = [1, 2, 3]; nums[1]"
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Output: `2`
@@ -107,6 +110,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Practical Usage
@@ -175,6 +179,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Execute with:
@@ -218,6 +223,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Variable Scoping and Functions
@@ -255,6 +261,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Common Pitfalls
@@ -284,6 +291,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### 2. Variable Mutability
@@ -300,6 +308,7 @@ fun main() {
     let mut y = 5
     y = 10  // OK
 }
+
 
 
 
@@ -329,6 +338,7 @@ fun process_and_print(x) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Current Limitations (v0.11.0)
@@ -390,6 +400,7 @@ fun calculate_tax(income, rate) {
 
 
 
+
 ```
 
 ### 2. Use Descriptive Names
@@ -408,6 +419,7 @@ let y = calc(z)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### 3. Leverage Array Indexing
@@ -426,6 +438,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### 4. Build Incrementally
@@ -450,6 +463,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Testing Your Scripts
@@ -473,6 +487,7 @@ fun main() {
         println("Some tests failed")
     }
 }
+
 
 
 

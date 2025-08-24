@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -153,6 +153,7 @@ println(f"Speedup: {naive_time / optimized_time:.1}x")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 That's the power of systematic optimization!
@@ -199,6 +200,7 @@ println("Largest allocation: " + format_size(mem_report.largest_allocation))
 // Flame graph generation
 profiler.generate_flamegraph("profile.svg")
 println("Flame graph saved to profile.svg")
+
 
 
 
@@ -270,6 +272,7 @@ fun benchmark_algorithm(name, func, data) {
 
 
 
+
 ```
 
 ### Parallel Processing
@@ -318,6 +321,7 @@ for url in urls {
 }
 
 let responses = async::wait_all(futures)
+
 
 
 
@@ -405,6 +409,7 @@ fun find_first_match(items, predicate) {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Memory Optimization
@@ -468,6 +473,7 @@ struct CompactUser {
 
 
 
+
 ```
 
 ### I/O Optimization
@@ -521,6 +527,7 @@ fun process_huge_file(path) {
         process_chunk(chunk)
     })
 }
+
 
 
 
@@ -613,6 +620,7 @@ println(f"Improvement: {naive_time / optimized_time:.1}x faster")
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Web Server Optimization
@@ -699,6 +707,7 @@ app.listen()
 
 
 
+
 ```
 
 ### Data Processing Pipeline
@@ -771,6 +780,7 @@ monitor.report()
 
 
 
+
 ```
 
 ## Performance Tips
@@ -805,6 +815,7 @@ async::wait_all(io_operations)
 
 // 8. Profile in production
 // Dev performance ≠ Production performance
+
 
 
 

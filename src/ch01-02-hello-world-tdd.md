@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -34,6 +34,7 @@ This example is tested in `tests/ch01-hello-world/test_01_basic.ruchy`:
 fun main() {
     println("Hello, World!");
 }
+
 
 ```
 
@@ -58,6 +59,7 @@ fun main() {
     println("World!");
 }
 
+
 ```
 
 **Output:**
@@ -76,6 +78,7 @@ fun main() {
     let greeting = "Hello, World!";
     println(greeting);
 }
+
 
 ```
 
@@ -122,6 +125,7 @@ make test-file FILE=tests/ch01-hello-world/test_01_basic.ruchy
 // Status: ✅ WORKING
 println("Your message here");
 
+
 ```
 
 ### Pattern 2: Variable Storage
@@ -130,6 +134,7 @@ println("Your message here");
 let message = "Your message";
 println(message);
 
+
 ```
 
 ### Pattern 3: Sequential Output
@@ -137,6 +142,7 @@ println(message);
 // Status: ✅ WORKING
 println("First line");
 println("Second line");
+
 
 ```
 

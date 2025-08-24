@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -40,6 +40,7 @@ fun main() {
     }
 }
 
+
 ```
 
 **Output:**
@@ -60,6 +61,7 @@ fun main() {
     }
     println("Score processed");
 }
+
 
 ```
 
@@ -88,6 +90,7 @@ fun main() {
     }
 }
 
+
 ```
 
 **Output:**
@@ -109,6 +112,7 @@ fun main() {
     }
     println("Done");
 }
+
 
 ```
 
@@ -132,6 +136,7 @@ fun main() {
     }
     println("For loop done");
 }
+
 
 ```
 
@@ -158,6 +163,7 @@ fun main() {
         _ => println("Other")
     }
 }
+
 
 ```
 
@@ -186,6 +192,7 @@ fun main() {
     }
     println("Loop ended");
 }
+
 
 ```
 
@@ -237,6 +244,7 @@ if condition {
     // false branch
 }
 
+
 ```
 
 ### Loops
@@ -253,6 +261,7 @@ for variable in start..end {
     // loop body
 }
 
+
 ```
 
 ### Match
@@ -264,6 +273,7 @@ match value {
     pattern2 => action2,
     _ => default_action
 }
+
 
 ```
 
@@ -291,6 +301,7 @@ if user_input > threshold {
     process_normal_value();
 }
 
+
 ```
 
 ### Counting Loop
@@ -303,6 +314,7 @@ while count < 10 {
     count = count + 1;
 }
 
+
 ```
 
 ### Range Processing
@@ -311,6 +323,7 @@ while count < 10 {
 for i in 1..5 {
     println("Processing item " + i);
 }
+
 
 ```
 
@@ -324,6 +337,7 @@ match status_code {
     500 => println("Server Error"),
     _ => println("Unknown Status")
 }
+
 
 ```
 

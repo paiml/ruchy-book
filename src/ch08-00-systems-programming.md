@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -97,6 +97,7 @@ loop {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 That's systems programming - direct access to OS resources with safety!
@@ -146,6 +147,7 @@ println(output.stdout)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Signal Handling
@@ -179,6 +181,7 @@ signal::send(target_pid, SIGUSR1)
 signal::block([SIGPIPE])
 critical_operation()
 signal::unblock([SIGPIPE])
+
 
 
 
@@ -226,6 +229,7 @@ let data = shared.read(0, 1024)
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Practical System Tools
@@ -345,6 +349,7 @@ loop {
         _ => println("Unknown command")
     }
 }
+
 
 
 
@@ -501,6 +506,7 @@ loop {
 
 
 
+
 ```
 
 ### Process Tree Visualizer
@@ -567,6 +573,7 @@ println("Total CPU: " + total_cpu.to_s() + "%")
 
 
 
+
 ```
 
 ## Advanced System Features
@@ -602,6 +609,7 @@ watcher.start()
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### System Automation
@@ -634,6 +642,7 @@ fun auto_cleanup() {
         }
     }
 }
+
 
 
 

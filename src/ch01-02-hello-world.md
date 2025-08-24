@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -32,6 +32,7 @@ Here's your first Ruchy program:
 fun main() {
     println("Hello, World!");
 }
+
 
 
 
@@ -92,6 +93,7 @@ fun main() {
 
 
 
+
 ```
 
 Output:
@@ -115,6 +117,7 @@ fun main() {
 
 
 
+
 ```
 
 Output:
@@ -132,6 +135,7 @@ fun main() {
     println("Pi is approximately", 3.14159);
     println("Is Ruchy awesome?", true);
 }
+
 
 
 
@@ -165,6 +169,7 @@ fun main() {
 
 
 
+
 ```
 
 ### Mixing Quote Types
@@ -180,6 +185,7 @@ fun main() {
     // ✅ Correct way:
     println("Hello, World!");
 }
+
 
 
 
@@ -202,6 +208,7 @@ fun main() {
 
 
 
+
 ```
 
 ## Generated Code Insight
@@ -217,6 +224,7 @@ Your Ruchy code:
 fun main() {
     println("Hello, World!");
 }
+
 
 
 

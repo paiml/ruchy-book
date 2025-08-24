@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -84,6 +84,7 @@ match fetch_user(123) {
 
 
 
+
 ```
 
 That's explicit, recoverable error handling!
@@ -129,6 +130,7 @@ match divide(10.0, 0.0) {
 
 
 
+
 ```
 
 ### Option Type
@@ -167,6 +169,7 @@ if let Some(u) = user {
 let email = find_user("Bob")
     .map(|u| u.email)
     .unwrap_or("no-email@example.com")
+
 
 
 
@@ -244,6 +247,7 @@ fun complex_operation() -> Result<Data, Error> {
 
 
 
+
 ```
 
 ### Custom Error Types
@@ -316,6 +320,7 @@ impl Error {
 
 
 
+
 ```
 
 ## Error Handling Patterns
@@ -344,6 +349,7 @@ fun validate_user(user: User) -> Result<User, ValidationError> {
     // All validations passed
     return Ok(user)
 }
+
 
 
 
@@ -427,6 +433,7 @@ impl CircuitBreaker {
 
 
 
+
 ```
 
 ### Error Context
@@ -474,6 +481,7 @@ fun process_order(order_id: i32) -> Result<Order, Error> {
     
     return Ok(processed)
 }
+
 
 
 
@@ -542,6 +550,7 @@ impl IntoResponse for ApiError {
 
 
 
+
 ```
 
 ### Validation Pipeline
@@ -594,6 +603,7 @@ match validate_pipeline(user, user_validators) {
 
 
 
+
 ```
 
 ### Async Error Handling
@@ -639,6 +649,7 @@ async fun fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
 
 
 
+
 ```
 
 ## Testing Error Cases
@@ -673,6 +684,7 @@ fun test_panic_condition() {
 fun never_panics(input: RandomInput) {
     let _ = safe_process(input)  // Should never panic
 }
+
 
 
 

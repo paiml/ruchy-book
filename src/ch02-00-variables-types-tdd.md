@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -36,6 +36,7 @@ fun main() {
     println(x);
 }
 
+
 ```
 
 **Output:**
@@ -53,6 +54,7 @@ fun main() {
     let name = "Ruchy";
     println(name);
 }
+
 
 ```
 
@@ -74,6 +76,7 @@ fun main() {
     println(sum);
 }
 
+
 ```
 
 **Output:**
@@ -93,6 +96,7 @@ fun main() {
     let area = pi * radius * radius;
     println(area);
 }
+
 
 ```
 
@@ -138,6 +142,7 @@ fun main() {
 }
 // outer is NOT accessible here
 
+
 ```
 
 ## Testing Your Code
@@ -160,6 +165,7 @@ make test-file FILE=tests/ch02-variables/test_01_basic_let.ruchy
 // Error: ✗ Compilation failed: Compilation failed:
 let result = value1 + value2;
 
+
 ```
 
 ### Pattern 2: Multi-Step Calculation
@@ -170,6 +176,7 @@ let step1 = initial_value * factor;
 let step2 = step1 + adjustment;
 let final_result = step2 / divisor;
 
+
 ```
 
 ### Pattern 3: Named Constants
@@ -178,6 +185,7 @@ let final_result = step2 / divisor;
 // Error: ✗ Compilation failed: Compilation failed:
 let PI = 3.14159;
 let GRAVITY = 9.81;
+
 
 ```
 

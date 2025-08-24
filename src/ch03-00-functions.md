@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.8.0*
+*Ruchy version: ruchy 1.8.1*
 <!-- DOC_STATUS_END -->
 
 
@@ -51,6 +51,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Output:
@@ -88,6 +89,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Reusable Patterns
@@ -116,6 +118,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Logic Grouping
@@ -145,6 +148,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Practical Usage
@@ -188,6 +192,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Functions with Logic
@@ -230,6 +235,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ### Functions That Process Data
@@ -279,6 +285,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Common Pitfalls
@@ -305,6 +312,7 @@ fun main() {
 
 
 
+
 ```
 
 ### Wrong Number of Arguments
@@ -324,6 +332,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 Error: Function expects 2 arguments, got 1.
 
@@ -350,6 +359,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 ## Generated Code Insight
@@ -370,6 +380,7 @@ fun main() {
     let result = add(10, 20)
     println(result)
 }
+
 
 
 
@@ -512,6 +523,7 @@ fun main() {
 
 
 // Error: ✗ Compilation failed: Compilation failed:
+
 ```
 
 Build functions that solve YOUR problems - this is where programming becomes personal!
