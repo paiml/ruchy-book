@@ -11,17 +11,17 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ Test-Driven (2/2 examples passing)  
-**Ruchy Version**: v1.3.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test`
 
 ## The Problem
 
-As programs grow, organizing code becomes essential. Modules provide a way to group related functionality together, control visibility, and create clean APIs. In Ruchy v1.3.0, the module system allows you to structure your code effectively.
+As programs grow, organizing code becomes essential. Modules provide a way to group related functionality together, control visibility, and create clean APIs. In Ruchy v1.10.0, the module system allows you to structure your code effectively.
 
 ## Test-Driven Examples
 
@@ -165,7 +165,7 @@ mod strings {
 
 ## Current Limitations
 
-Based on our testing with v1.3.0:
+Based on our testing with v1.10.0:
 - Module declarations work at the file level
 - Nested modules have transpilation issues (being investigated)
 - `use` statements not fully implemented yet
@@ -180,7 +180,7 @@ Based on our testing with v1.3.0:
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.3.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - Basic module declarations with `mod`
 - Public visibility with `pub`
 - Path resolution with `::`
@@ -208,4 +208,4 @@ With modules providing code organization, the next chapter will explore control 
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.3.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

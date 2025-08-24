@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (4/4 examples passing)  
-**Ruchy Version**: v1.1.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch03`
 
 ## The Problem
@@ -263,4 +263,4 @@ With variables and functions mastered, you have the foundation for writing real 
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.1.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

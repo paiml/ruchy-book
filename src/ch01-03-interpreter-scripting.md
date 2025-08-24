@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -341,7 +341,7 @@ fun process_and_print(x) {
 
 ```
 
-## Current Limitations (v0.11.0)
+## Current Limitations (v1.10.0)
 
 Be aware of current interpreter limitations:
 
@@ -423,7 +423,7 @@ let y = calc(z)
 ```
 
 ### 3. Leverage Array Indexing
-Since array indexing works well in v0.11.0:
+Since array indexing works well in v1.10.0:
 
 ```ruchy
 // Status: ❌ BROKEN

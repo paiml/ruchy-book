@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.4.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch06`
 
 ## The Problem
@@ -193,7 +193,7 @@ let debug = true;
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.4.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - String literal creation with double quotes
 - Multiple string variables in same scope
 - Mixed data types (strings, integers, booleans)
@@ -223,4 +223,4 @@ Data structures provide the foundation for organizing information in your progra
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.4.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

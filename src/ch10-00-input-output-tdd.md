@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.5.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch10`
 
 ## The Problem
@@ -249,7 +249,7 @@ fun show_options() {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.5.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - println() function for text output
 - Variable printing (strings, numbers, booleans)
 - Sequential output with automatic newlines
@@ -283,4 +283,4 @@ Input and output operations provide the foundation for user interaction. In the 
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.5.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

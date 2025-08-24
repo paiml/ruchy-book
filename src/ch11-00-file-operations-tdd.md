@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.5.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch11`
 
 ## The Problem
@@ -296,7 +296,7 @@ fun log_event(message: &str, severity: i32) {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.5.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - Simulated file operation patterns
 - Configuration management functions
 - Data persistence patterns
@@ -330,4 +330,4 @@ File operation patterns provide the foundation for data persistence. In the next
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.5.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

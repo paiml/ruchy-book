@@ -14,14 +14,14 @@ cargo install --path . --force
 
 # Verify installation
 ruchy --version
-# Should show: ruchy 1.9.0
+# Should show: ruchy 1.10.0
 ```
 
 ## Installation Methods
 
 ### Method 1: Install from Source (Recommended)
 
-This is the current recommended approach for Ruchy v0.11.3:
+This is the current recommended approach for Ruchy v1.10.0:
 
 ```bash
 # Prerequisites: Rust toolchain
@@ -85,7 +85,7 @@ After installation, verify your complete Ruchy development environment:
 ```bash
 # Check compiler is accessible
 ruchy --version
-# Output: ruchy 1.9.0
+# Output: ruchy 1.10.0
 
 # View available commands
 ruchy --help
@@ -134,7 +134,7 @@ ruchy run hello.ruchy
 
 ## Development Tools Setup
 
-Ruchy v0.11.3 includes professional development tools. Set them up:
+Ruchy v1.10.0 includes professional development tools. Set them up:
 
 ### Code Quality Tools
 
@@ -320,7 +320,7 @@ With Ruchy properly installed, you're ready to:
 
 Ensure you have a complete setup:
 
-- [ ] ✅ `ruchy --version` shows v0.11.3
+- [ ] ✅ `ruchy --version` shows v1.10.0
 - [ ] ✅ `ruchy repl` starts interactive mode
 - [ ] ✅ `ruchy lint --help` shows linting options
 - [ ] ✅ `ruchy fmt --help` shows formatting options  

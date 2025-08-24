@@ -11,10 +11,10 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
-Ruchy v1.8.0 provides a comprehensive suite of professional development tools that enable test-driven development, continuous integration, and quality assurance workflows. Based on analysis of the rosetta-ruchy repository and hands-on testing, this chapter documents the **actually working** tooling ecosystem.
+Ruchy v1.10.0 provides a comprehensive suite of professional development tools that enable test-driven development, continuous integration, and quality assurance workflows. Based on analysis of the rosetta-ruchy repository and hands-on testing, this chapter documents the **actually working** tooling ecosystem.
 
 ## Core Quality Tools
 
@@ -209,7 +209,7 @@ Total Lines: 10
 **Available capabilities:**
 ```bash
 ruchy ast --help
-# Show AST for a file (Enhanced for v0.9.12)
+# Show AST for a file (Enhanced for v1.10.0)
 ```
 
 ### 📋 ruchy mcp - Real-time Quality Analysis
@@ -372,7 +372,7 @@ jobs:
 
 ## Summary
 
-Ruchy v1.8.0 provides a **production-ready professional tooling ecosystem** with:
+Ruchy v1.10.0 provides a **production-ready professional tooling ecosystem** with:
 
 **✅ Core Tools Working (7/8):**
 - Syntax validation, linting, formatting

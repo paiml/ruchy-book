@@ -11,7 +11,7 @@
 | 📋 Planned | All | Target: v2.0+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.6*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 ## ⚠️ IMPORTANT: Feature Not Yet Implemented
@@ -321,7 +321,7 @@ pub struct ServerConfig {
 
 // Generate HTML documentation
 $ ruchy doc --open
-Documenting mylib v0.1.0
+Documenting mylib v1.10.0
     Finished documentation
     Opening docs/mylib/index.html
 
@@ -728,7 +728,7 @@ Document your code properly:
 
 ```bash
 $ ruchy doc
-Documenting my_project v0.1.0
+Documenting my_project v1.10.0
     Finished documentation
 
 $ ruchy test --doc

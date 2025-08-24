@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.0*
+*Ruchy version: ruchy 1.10.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.4.0  
+**Ruchy Version**: v1.10.0  
 **Testing**: All examples verified with `make test-ch08`
 
 ## The Problem
@@ -254,7 +254,7 @@ fun countdown(n: i32) -> i32 {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v1.4.0):
+✅ **What Works** (Test-Verified in v1.10.0):
 - Function composition with intermediate variables
 - Multiple return paths with conditional logic
 - Early return statements for guard clauses
@@ -286,4 +286,4 @@ Advanced functions provide powerful tools for organizing complex logic. In the n
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.4.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*

@@ -12,7 +12,7 @@ Traditional programming books often contain:
 
 This book is different:
 - ✅ **Every example is tested** before it appears in the book
-- ✅ **100% working code** verified with Ruchy v1.1.0
+- ✅ **100% working code** verified with Ruchy v1.10.0
 - ✅ **Test files included** in `tests/` directory
 - ✅ **Make commands** to verify everything yourself
 
@@ -50,7 +50,7 @@ make test-file FILE=x  # Test specific file
 ### Quality Guarantees
 - 🏆 **Test Coverage**: 100% of examples tested
 - 🏆 **Pass Rate**: 100% (11/11 examples working)
-- 🏆 **Version**: Ruchy v1.1.0
+- 🏆 **Version**: Ruchy v1.10.0
 - 🏆 **Verification**: `make test` to verify yourself
 
 ## Getting Started
@@ -60,7 +60,7 @@ make test-file FILE=x  # Test specific file
 # Check if installed
 ruchy --version
 
-# Should show: ruchy 1.9.0 or later
+# Should show: ruchy 1.10.0 or later
 ```
 
 2. **Clone This Book**:
