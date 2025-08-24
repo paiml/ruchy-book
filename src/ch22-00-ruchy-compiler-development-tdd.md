@@ -11,11 +11,11 @@
 | 📋 Planned | 0 | Complete as-is |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.3*
+*Ruchy version: ruchy 1.9.6*
 <!-- DOC_STATUS_END -->
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)  
-**Ruchy Version**: v1.9.3  
+**Ruchy Version**: v1.9.6  
 **Testing**: All examples verified with `ruchy compile`
 
 ## The Problem
@@ -33,12 +33,12 @@ ruchy --version
 
 **Expected Output:**
 ```
-ruchy 1.9.3
+ruchy 1.9.6
 ```
 
 **What this tells us:**
 - Ruchy compiler is installed and accessible
-- Current version is 1.9.3
+- Current version is 1.9.6
 - System PATH includes ruchy binary
 
 ### Example 2: Check for Local Development Build
@@ -72,8 +72,8 @@ fi
 
 **Expected Output:**
 ```
-System: ruchy 1.9.3
-Local: ruchy 1.9.2
+System: ruchy 1.9.6
+Local: ruchy 1.9.6
 ```
 
 ### Example 4: Test Basic Compilation with System Ruchy
@@ -181,8 +181,8 @@ fi
 **Expected Output:**
 ```
 === Ruchy Compiler Status ===
-System ruchy: ruchy 1.9.3
-Local build: ruchy 1.9.2
+System ruchy: ruchy 1.9.6
+Local build: ruchy 1.9.6
 Local build size: 5.2M
 
 === Basic Functionality Test ===
