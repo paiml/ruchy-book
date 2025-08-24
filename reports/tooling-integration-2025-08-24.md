@@ -1,13 +1,13 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T13:41:05.608Z
+**Generated**: 2025-08-24T13:56:51.378Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
 **Failed**: 1
 **Success Rate**: 88%
-**Total Duration**: 20ms
+**Total Duration**: 19ms
 
 ## Test Results Summary
 
@@ -17,7 +17,7 @@
 ✓ Syntax is valid
 ```
 
-### lint - ✅ PASS (3ms)
+### lint - ✅ PASS (2ms)
 
 ```
 ⚠ Issues found in test/tooling/simple_test.ruchy:

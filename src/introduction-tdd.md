@@ -60,7 +60,7 @@ make test-file FILE=x  # Test specific file
 # Check if installed
 ruchy --version
 
-# Should show: ruchy 1.8.3 or later
+# Should show: ruchy 1.8.4 or later
 ```
 
 2. **Clone This Book**:
