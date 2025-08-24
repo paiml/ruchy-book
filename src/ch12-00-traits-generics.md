@@ -11,7 +11,7 @@
 | 📋 Planned | All | Target: v2.5+ |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.9.1*
+*Ruchy version: ruchy 1.9.2*
 <!-- DOC_STATUS_END -->
 
 ## ⚠️ IMPORTANT: Feature Not Yet Implemented

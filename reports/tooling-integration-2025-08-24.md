@@ -1,17 +1,17 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T17:07:16.196Z
+**Generated**: 2025-08-24T18:00:46.172Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
 **Failed**: 1
 **Success Rate**: 88%
-**Total Duration**: 18ms
+**Total Duration**: 23ms
 
 ## Test Results Summary
 
-### check - ✅ PASS (3ms)
+### check - ✅ PASS (4ms)
 
 ```
 ✓ Syntax is valid
@@ -32,7 +32,7 @@
 ✗ test/tooling/simple_test.ruchy needs formatting
 ```
 
-### runtime - ✅ PASS (2ms)
+### runtime - ✅ PASS (4ms)
 
 ```
 ⚡ Basic Performance Metrics for test/tooling/simple_test.ruchy
@@ -85,7 +85,7 @@ Component Breakdown:
 ✅ All quality gates passed!
 ```
 
-### test - ✅ PASS (2ms)
+### test - ✅ PASS (3ms)
 
 ```
 🧪 Running Ruchy tests with enhanced features...
