@@ -1,7 +1,7 @@
 
 # Ruchy Tooling Integration Test Report
 
-**Generated**: 2025-08-24T13:56:51.378Z
+**Generated**: 2025-08-24T14:04:42.923Z
 **Test File**: test/tooling/simple_test.ruchy
 **Total Tests**: 8
 **Passed**: 7
@@ -11,7 +11,7 @@
 
 ## Test Results Summary
 
-### check - ✅ PASS (3ms)
+### check - ✅ PASS (2ms)
 
 ```
 ✓ Syntax is valid
@@ -26,7 +26,7 @@
   info: Function 'main' is missing documentation [missing_docs]
 ```
 
-### fmt - ❌ FAIL (3ms)
+### fmt - ❌ FAIL (2ms)
 
 ```
 ✗ test/tooling/simple_test.ruchy needs formatting
@@ -55,7 +55,7 @@
   Provability Score: ✅ High Provability (100.0/100)
 ```
 
-### score - ✅ PASS (2ms)
+### score - ✅ PASS (3ms)
 
 ```
 Quality Score Report
