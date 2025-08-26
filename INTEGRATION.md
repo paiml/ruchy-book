@@ -1,41 +1,41 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-26T13:30:00Z  
-**Ruchy Version**: ruchy 1.18.0  
-**Book Commit**: d88eb88  
+**Generated**: 2025-08-26T20:00:00-07:00  
+**Ruchy Version**: ruchy 1.18.1  
+**Book Commit**: 0cd1a31  
 **Test Environment**: Linux 6.8.0-78-lowlatency  
 
 ---
 
 ## 🎯 Executive Summary
 
-**v1.18.0 CRITICAL REGRESSION**: Compiler generates incorrect main() function
+**v1.18.1 CRITICAL REGRESSION FIXED**: Main function issue resolved
 
-### v1.18.0 Qualification Results - 🔴 **COMPILER BROKEN** - Do Not Use
+### v1.18.1 Qualification Results - 🟡 **PARTIAL RECOVERY**
 
-**CRITICAL BUG #002**: All programs fail due to incorrect `main() -> i32` generation
+**UPDATE**: v1.18.1 fixes critical Bug #002 from v1.18.0
 
-- **Total Book Examples**: Unable to test - compiler broken
-- **Working Examples**: **0** (0% pass rate) - Total failure  
-- **Failing Examples**: ALL - Due to main() -> i32 transpilation bug
-- **Root Cause**: Commit 901910b broke main function generation
-- **Test Infrastructure**: Confirmed working (correctly extracts ```ruchy blocks)
-- **Impact**: 100% failure rate on all basic programs
-- **Severity**: CRITICAL - Compiler unusable
-- **Action Required**: **REVERT TO v1.17.0 IMMEDIATELY**
+- **Total Book Examples**: 375 tested across 37 chapters
+- **Working Examples**: **77** (21% pass rate) - Slight improvement
+- **Failing Examples**: 298 - Many advanced features still broken
+- **Test Infrastructure**: Fully operational, correctly extracts ```ruchy blocks
+- **One-Liners**: 19/20 passing (95% - stable as always)
+- **Severity**: USABLE - Basic functionality restored
+- **Action**: Safe to use v1.18.1 for basic features
 
-### 🚨 Critical Bug Details
-- **Bug #002**: Main function incorrectly returns `i32` instead of `()`
-- **Introduced**: v1.18.0 (commit 901910b - higher-order function "fix")
-- **Symptoms**: `error[E0277]: main has invalid return type i32`
-- **Workaround**: None - must use v1.17.0 or earlier
+### ✅ v1.18.1 Fixes
+- **Bug #002 FIXED**: Main function correctly returns `()` again
+- **Basic programs**: Compile and run successfully
+- **Hello World**: Working again (6/6 in TDD chapter)
+- **Functions**: Mostly working (8/9 in TDD chapter)
+- **Control Flow**: Partially working (8/14 in TDD chapter)
 
-### 🧪 v1.18.0 Changes (BROKEN)
-1. **Higher-order functions**: Attempted fix broke everything ❌
-2. **Main function**: Now incorrectly typed as `-> i32` ❌  
-3. **Basic examples**: All fail compilation ❌
-4. **Test results**: Cannot run any tests ❌
-5. **Regression scope**: Total compiler failure ❌
+### 🧪 v1.18.1 Status
+1. **Main function**: Fixed - returns `()` correctly ✅
+2. **Basic examples**: 21% working (up from 0%) ✅
+3. **Core features**: Variables, functions, control flow working ✅
+4. **Advanced features**: Still mostly broken (collections, async, etc.) ❌
+5. **Overall status**: Usable for basic scripting ✅
 
 **THIS IS THE SINGLE SOURCE OF TRUTH FOR BOOK STATUS. ALL OTHER REPORTS ARE DEPRECATED.**
 
@@ -47,9 +47,9 @@
 ```
 📄 Chapters processed: 37
 💻 Code examples found: 375
-✅ Examples working: 76
-❌ Examples failing: 299
-📈 Success rate: 20%
+✅ Examples working: 77
+❌ Examples failing: 298
+📈 Success rate: 21%
 ```
 
 ### Test-Driven Development (TDD) Chapters
@@ -97,7 +97,7 @@ Stability: 13 consecutive versions
 **Single Consistent Failure:**
 - ❌ Output Functions (0/1) - Text operations need attention (consistent across versions)
 
-### Dogfooding Quality Tools (v1.17.0)
+### Dogfooding Quality Tools (v1.18.1)
 ```
 ✅ Passed: 5/6 quality tools working
 ❌ Failed: 1/6 (fmt tool)
@@ -272,6 +272,14 @@ Regression in book examples from stricter validation
 ---
 
 ## 📅 Report History
+
+### 2025-08-26T20:00:00-07:00 - v1.18.1 CRITICAL BUG FIXED
+- **COMPILER FIXED**: Main function now correctly returns `()` not `i32`
+- **BUG #002 RESOLVED**: Basic programs compile and run successfully
+- **PARTIAL RECOVERY**: 21% success rate (77/375 examples working)
+- **ROOT CAUSE FIXED**: v1.18.1 reverts problematic commit 901910b
+- **TEST INFRASTRUCTURE**: Fully operational, comprehensive testing completed
+- **SAFE TO USE**: v1.18.1 restored basic functionality
 
 ### 2025-08-26T13:30:00Z - v1.18.0 CRITICAL COMPILER REGRESSION
 - **COMPILER BROKEN**: Main function transpilation generates incorrect `-> i32`
