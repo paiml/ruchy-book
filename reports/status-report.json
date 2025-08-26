@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-24T15:32:42.423Z",
-  "ruchy_version": "ruchy 1.9.0",
+  "generated_at": "2025-08-26T07:04:10.086Z",
+  "ruchy_version": "ruchy 1.17.0",
   "summary": {
     "total_chapters": 37,
-    "total_examples": 382,
-    "working_examples": 73,
-    "failing_examples": 309,
-    "success_rate": 19
+    "total_examples": 375,
+    "working_examples": 76,
+    "failing_examples": 299,
+    "success_rate": 20
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
@@ -107,13 +107,13 @@
     },
     "appendix-b-syntax-reference": {
       "total_examples": 35,
-      "working_examples": 1,
-      "failing_examples": 34,
-      "success_rate": 3,
+      "working_examples": 2,
+      "failing_examples": 33,
+      "success_rate": 6,
       "status_breakdown": {
-        "working": 1,
+        "working": 2,
         "not_implemented": 0,
-        "broken": 34,
+        "broken": 33,
         "planned": 0
       }
     },
@@ -143,13 +143,13 @@
     },
     "ch01-03-interpreter-scripting": {
       "total_examples": 15,
-      "working_examples": 3,
-      "failing_examples": 12,
-      "success_rate": 20,
+      "working_examples": 5,
+      "failing_examples": 10,
+      "success_rate": 33,
       "status_breakdown": {
-        "working": 3,
-        "not_implemented": 0,
-        "broken": 12,
+        "working": 5,
+        "not_implemented": 1,
+        "broken": 9,
         "planned": 0
       }
     },
@@ -202,14 +202,14 @@
       }
     },
     "ch15-00-macros-metaprogramming": {
-      "total_examples": 9,
+      "total_examples": 2,
       "working_examples": 0,
-      "failing_examples": 9,
+      "failing_examples": 2,
       "success_rate": 0,
       "status_breakdown": {
         "working": 0,
         "not_implemented": 0,
-        "broken": 9,
+        "broken": 2,
         "planned": 0
       }
     },
@@ -275,13 +275,13 @@
     },
     "ch03-01-testing-functions": {
       "total_examples": 12,
-      "working_examples": 0,
-      "failing_examples": 12,
-      "success_rate": 0,
+      "working_examples": 1,
+      "failing_examples": 11,
+      "success_rate": 8,
       "status_breakdown": {
-        "working": 0,
-        "not_implemented": 1,
-        "broken": 11,
+        "working": 1,
+        "not_implemented": 4,
+        "broken": 7,
         "planned": 0
       }
     },
@@ -316,8 +316,8 @@
       "success_rate": 7,
       "status_breakdown": {
         "working": 1,
-        "not_implemented": 5,
-        "broken": 8,
+        "not_implemented": 7,
+        "broken": 6,
         "planned": 0
       }
     },
@@ -431,13 +431,13 @@
     },
     "ch03-00-functions": {
       "total_examples": 12,
-      "working_examples": 2,
-      "failing_examples": 10,
-      "success_rate": 17,
+      "working_examples": 1,
+      "failing_examples": 11,
+      "success_rate": 8,
       "status_breakdown": {
-        "working": 2,
-        "not_implemented": 2,
-        "broken": 8,
+        "working": 1,
+        "not_implemented": 6,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -464,6 +464,6 @@
   "quality_metrics": {
     "documentation_coverage": 105.71428571428572,
     "example_testing": 100,
-    "implementation_status": 19
+    "implementation_status": 20
   }
 }
