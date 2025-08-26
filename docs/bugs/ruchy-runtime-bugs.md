@@ -4,6 +4,59 @@ This document tracks bugs discovered in the Ruchy compiler/runtime while testing
 
 ---
 
+## Bug #002: Main Function Incorrect Return Type in v1.18.0
+
+**Filed**: August 26, 2025  
+**Ruchy Version**: v1.18.0  
+**Platform**: Linux 6.8.0-78-lowlatency x86_64  
+**Severity**: Critical - Breaks all basic examples  
+**Status**: Open
+
+### Description
+The Ruchy compiler v1.18.0 incorrectly generates `fn main() -> i32` instead of `fn main()` in the transpiled Rust code, causing all basic programs to fail compilation with type mismatch errors.
+
+### Reproduction Steps
+
+```bash
+# Environment
+$ ruchy --version
+ruchy 1.18.0
+
+# Step 1: Create simple test
+$ echo 'fun main() {
+    println("Hello, World!");
+}' > test.ruchy
+
+# Step 2: Attempt to compile (FAILS)
+$ ruchy compile test.ruchy
+→ Compiling test.ruchy...
+✗ Compilation failed: Compilation failed:
+error[E0277]: `main` has invalid return type `i32`
+error[E0308]: mismatched types - expected `i32`, found `()`
+
+# Step 3: Check generated Rust (incorrect)
+# Generated: fn main() -> i32 { { println!("Hello, World!") } }
+# Expected:  fn main() { println!("Hello, World!"); }
+```
+
+### Expected vs Actual
+- **Expected**: `fn main() { ... }` with no return type
+- **Actual**: `fn main() -> i32 { ... }` with incorrect i32 return type
+
+### Impact
+- Breaks ALL basic examples in the book
+- 100% failure rate for simple programs
+- Regression from v1.17.0 which worked correctly
+
+### Workaround
+None available. Must revert to v1.17.0 or wait for fix.
+
+### Related Commit
+- 901910b [BUG-002] v1.18.0 - Fix higher-order function transpilation
+- This "fix" appears to have broken basic main function transpilation
+
+---
+
 ## Bug #001: File Operations Hang Indefinitely
 
 **Filed**: December 20, 2024  

@@ -1,19 +1,19 @@
 # 📊 Ruchy Documentation Status Report
-*Generated: 8/24/2025, 5:32:42 PM*
-*Ruchy Version: ruchy 1.9.0*
+*Generated: 8/26/2025, 9:04:10 AM*
+*Ruchy Version: ruchy 1.17.0*
 
 ## 🎯 Executive Summary
 
-**Overall Status**: 🔴 19% Implementation Complete
-`██████░░░░░░░░░░░░░░░░░░░░░░░░` 19%
+**Overall Status**: 🔴 20% Implementation Complete
+`██████░░░░░░░░░░░░░░░░░░░░░░░░` 20%
 
 | Metric | Value |
 |--------|-------|
 | 📚 Chapters Processed | 37 |
-| 💻 Total Examples | 382 |
-| ✅ Working Examples | 73 |
-| ❌ Failing Examples | 309 |
-| 📈 Success Rate | 19% |
+| 💻 Total Examples | 375 |
+| ✅ Working Examples | 76 |
+| ❌ Failing Examples | 299 |
+| 📈 Success Rate | 20% |
 | 🧮 One-Liner Tests | 19/20 passing |
 
 ## 📖 Chapter Status Breakdown
@@ -81,42 +81,49 @@
 - ✅ 2 working
 - ❌ 4 broken
 
+### 🔴 Ch01 03 Interpreter Scripting
+`█████░░░░░░░░░░` 33% (5/15)
+- ✅ 5 working
+- ⚠️ 1 not implemented
+- ❌ 9 broken
+
 ### 🔴 Ch07 00 Error Handling Tdd
 `█████░░░░░░░░░░` 33% (3/9)
 - ✅ 3 working
 - ❌ 6 broken
-
-### 🔴 Ch01 03 Interpreter Scripting
-`███░░░░░░░░░░░░` 20% (3/15)
-- ✅ 3 working
-- ❌ 12 broken
-
-### 🔴 Ch03 00 Functions
-`███░░░░░░░░░░░░` 17% (2/12)
-- ✅ 2 working
-- ⚠️ 2 not implemented
-- ❌ 8 broken
 
 ### 🔴 Ch02 00 Variables Types
 `██░░░░░░░░░░░░░` 11% (1/9)
 - ✅ 1 working
 - ❌ 8 broken
 
+### 🔴 Ch03 01 Testing Functions
+`█░░░░░░░░░░░░░░` 8% (1/12)
+- ✅ 1 working
+- ⚠️ 4 not implemented
+- ❌ 7 broken
+
+### 🔴 Ch03 00 Functions
+`█░░░░░░░░░░░░░░` 8% (1/12)
+- ✅ 1 working
+- ⚠️ 6 not implemented
+- ❌ 5 broken
+
 ### 🔴 Ch04 00 Command Line Tools
 `█░░░░░░░░░░░░░░` 7% (1/14)
 - ✅ 1 working
-- ⚠️ 5 not implemented
-- ❌ 8 broken
+- ⚠️ 7 not implemented
+- ❌ 6 broken
+
+### 🔴 Appendix B Syntax Reference
+`█░░░░░░░░░░░░░░` 6% (2/35)
+- ✅ 2 working
+- ❌ 33 broken
 
 ### 🔴 Appendix C Troubleshooting
 `█░░░░░░░░░░░░░░` 5% (1/20)
 - ✅ 1 working
 - ❌ 19 broken
-
-### 🔴 Appendix B Syntax Reference
-`░░░░░░░░░░░░░░░` 3% (1/35)
-- ✅ 1 working
-- ❌ 34 broken
 
 ### 🔴 Ch10 00 Performance Optimization
 `░░░░░░░░░░░░░░░` 0% (0/11)
@@ -154,8 +161,8 @@
 - ❌ 5 broken
 
 ### 🔴 Ch15 00 Macros Metaprogramming
-`░░░░░░░░░░░░░░░` 0% (0/9)
-- ❌ 9 broken
+`░░░░░░░░░░░░░░░` 0% (0/2)
+- ❌ 2 broken
 
 ### 🔴 Ch09 00 Network Programming
 `░░░░░░░░░░░░░░░` 0% (0/10)
@@ -169,11 +176,6 @@
 ### 🔴 Ch13 00 Error Handling
 `░░░░░░░░░░░░░░░` 0% (0/12)
 - ❌ 12 broken
-
-### 🔴 Ch03 01 Testing Functions
-`░░░░░░░░░░░░░░░` 0% (0/12)
-- ⚠️ 1 not implemented
-- ❌ 11 broken
 
 ### 🔴 Ch16 00 Testing Quality
 `░░░░░░░░░░░░░░░` 0% (0/11)
@@ -196,11 +198,11 @@
 ## 📊 Status Distribution
 
 ```ascii
-Status Distribution (382 total examples):
+Status Distribution (375 total examples):
 
-✅ Working        █████░░░░░░░░░░░░░░░░░░░░ 73
-❌ Broken         ███████████████████░░░░░░ 289
-⚠️  Not Impl      █░░░░░░░░░░░░░░░░░░░░░░░░ 20
+✅ Working        █████░░░░░░░░░░░░░░░░░░░░ 76
+❌ Broken         ██████████████████░░░░░░░ 269
+⚠️  Not Impl      ██░░░░░░░░░░░░░░░░░░░░░░░ 30
 📋 Planned       ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
 ```
 
@@ -221,17 +223,17 @@ Status Distribution (382 total examples):
 **Documentation Coverage**: 🟢 37/35 chapters
 `████████████████████` 106%
 
-**Example Testing**: 🟢 382 examples tested
+**Example Testing**: 🟢 375 examples tested
 `████████████████████` 100%
 
-**Implementation Status**: 🔴 19% working
-`████░░░░░░░░░░░░░░░░` 19%
+**Implementation Status**: 🔴 20% working
+`████░░░░░░░░░░░░░░░░` 20%
 
 ## 🔧 Recommendations
 
 - 🚨 **Critical**: Success rate below 50% - major implementation work needed
-- 🔨 Focus on fixing 289 broken examples before implementing new features
+- 🔨 Focus on fixing 269 broken examples before implementing new features
 
 ---
 *Report generated by Documentation Status Testing system*
-*Last test run: 2025-08-24T15:31:00.635Z*
+*Last test run: 2025-08-26T07:01:59.581Z*
