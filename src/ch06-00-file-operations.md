@@ -46,7 +46,6 @@ Most people manually manage files through graphical interfaces, but that doesn't
 Here's a practical file organizer in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 // File: desktop_organizer.ruchy
 // Organizes files by type into folders
@@ -109,7 +108,6 @@ That's file automation! Hours of manual work done in seconds.
 
 Navigate and query the file system:
 ```ruchy
-// Status: ❌ BROKEN
 
 // Current directory operations
 let current_dir = get_current_dir()
@@ -138,7 +136,6 @@ let clean_path = normalize_path(".././data//file.txt")
 
 Get detailed file metadata:
 ```ruchy
-// Status: ❌ BROKEN
 
 // Check file properties
 let exists = file_exists("config.json")
@@ -169,7 +166,6 @@ let can_execute = is_executable(path)
 
 Work with directories efficiently:
 ```ruchy
-// Status: ❌ BROKEN
 
 // Create and remove directories
 create_dir("new_folder")
@@ -209,7 +205,6 @@ fun walk_directory(dir) {
 ### Backup System
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: smart_backup.ruchy
 // Creates timestamped backups of important files
@@ -285,7 +280,6 @@ write_file(join_path(backup_dir, "summary.txt"), summary)
 ### Duplicate File Finder
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: find_duplicates.ruchy
 // Finds duplicate files based on content hash
@@ -376,7 +370,6 @@ if duplicates.is_empty() {
 ### Log Rotation System
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: log_rotator.ruchy
 // Manages log files with size-based rotation
@@ -445,7 +438,6 @@ println("\n✅ Log rotation complete!")
 ### Configuration File Manager
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: config_manager.ruchy
 // Manages application configuration files
@@ -559,7 +551,6 @@ loop {
 Robust file operations need proper error handling:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 fun safe_file_operation(path) {
     // Check permissions first
@@ -608,7 +599,6 @@ See how Ruchy's file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
 
 let files = list_files("data")
 for file in files {

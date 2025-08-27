@@ -21,7 +21,7 @@
 
 ### Comments
 ```ruchy
-// Status: ✅ WORKING
+
 
 // Single line comment
 
@@ -45,7 +45,6 @@ fun documented_function() {}
 
 ### Identifiers
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Valid identifiers
 variable_name
@@ -72,7 +71,6 @@ async await type where const static pub super self
 
 #### Numeric Literals
 ```ruchy
-// Status: ❌ BROKEN
 
 // Integers
 42          // Decimal
@@ -103,7 +101,6 @@ async await type where const static pub super self
 
 #### String Literals
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // String literals
 "hello world"
@@ -132,7 +129,6 @@ line two"
 
 #### Character Literals
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 'a'         // ASCII character
 '\n'        // Escape sequence
@@ -150,7 +146,6 @@ line two"
 
 ### Primitive Types
 ```ruchy
-// Status: ❌ BROKEN
 
 // Boolean
 let flag: bool = true
@@ -189,7 +184,6 @@ let owned: String = "world"    // Owned string
 
 ### Compound Types
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Arrays (fixed size)
 let arr: [i32; 5] = [1, 2, 3, 4, 5]
@@ -227,7 +221,6 @@ let err: Result<i32, String> = Err("error message")
 
 ### Let Bindings
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Immutable by default
 let x = 42
@@ -258,7 +251,6 @@ let x = "now a string"  // Shadows previous x
 
 ### Constants
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Compile-time constants
 const MAX_SIZE: usize = 1024
@@ -279,7 +271,6 @@ static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate
 
 ### Conditional Expressions
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // If expressions
 let result = if condition {
@@ -311,7 +302,6 @@ let Some(value) = optional else {
 
 ### Pattern Matching
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 // Match expressions
 match value {
@@ -346,7 +336,6 @@ match number {
 
 ### Loops
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Infinite loop
 loop {
@@ -401,7 +390,6 @@ for (index, item) in collection.enumerate() {
 
 ### Function Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic function
 fun greet(name: String) -> String {
@@ -438,7 +426,6 @@ fun calculate(x: f64, y: f64, operation: char) -> f64 {
 
 ### Function Parameters
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // By value (move)
 fun take_ownership(s: String) {
@@ -474,7 +461,6 @@ fun sum(numbers: &[i32]) -> i32 {
 
 ### Closures
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Closure syntax
 let add = |a, b| a + b
@@ -503,7 +489,6 @@ let greeter = move |greeting| {
 
 ### Higher-Order Functions
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Function as parameter
 fun apply_operation(x: i32, y: i32, op: fn(i32, i32) -> i32) -> i32 {
@@ -533,7 +518,6 @@ where F: Fn(T) -> U
 
 ### Struct Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic struct
 struct Point {
@@ -566,7 +550,6 @@ struct Excerpt<'a> {
 
 ### Struct Usage
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Creating instances
 let origin = Point { x: 0.0, y: 0.0 }
@@ -591,7 +574,6 @@ let Color(r, g, b) = red
 
 ### Enum Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic enum
 enum Direction {
@@ -624,7 +606,6 @@ enum Result<T, E> {
 
 ### Implementation Blocks
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 impl Point {
     // Associated function (constructor)
@@ -660,7 +641,6 @@ impl Point {
 
 ### Trait Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic trait
 trait Draw {
@@ -697,7 +677,6 @@ trait From<T> {
 
 ### Trait Implementation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 impl Draw for Point {
     fun draw(&self) {
@@ -730,7 +709,6 @@ impl<T: Clone> Clone for Box<T> {
 
 ### Generic Functions
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun largest<T: PartialOrd>(list: &[T]) -> &T {
     let mut largest = &list[0]
@@ -751,7 +729,6 @@ fun largest<T: PartialOrd>(list: &[T]) -> &T {
 
 ### Generic Structs
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 struct Point<T> {
     x: T,
@@ -779,7 +756,6 @@ impl Point<f64> {
 
 ### Trait Bounds
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Single bound
 fun print_it<T: Display>(item: T) {
@@ -815,7 +791,6 @@ where
 
 ### Module Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Inline module
 mod network {
@@ -847,7 +822,6 @@ mod graphics {
 
 ### Visibility
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 pub fun public_function() {}           // Public
 fun private_function() {}              // Private to module
@@ -870,7 +844,6 @@ pub(in crate::utils) fun limited() {} // Visible within specific path
 
 ### Use Declarations
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 use std::collections::HashMap         // Single import
 use std::fs::{File, OpenOptions}      // Multiple imports
@@ -898,7 +871,6 @@ use windows_specific::module
 
 ### Result and Option
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Result type
 enum Result<T, E> {
@@ -933,7 +905,6 @@ match result {
 
 ### Panic
 ```ruchy
-// Status: ❌ BROKEN
 
 // Unconditional panic
 panic!("Something went wrong!")
@@ -958,7 +929,6 @@ debug_assert!(expensive_check())
 
 ### Macro Invocation
 ```ruchy
-// Status: ❌ BROKEN
 
 // Function-like macros
 println!("Hello, {}!", name)
@@ -987,7 +957,6 @@ struct Point { x: i32, y: i32 }
 
 ### Macro Definition
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Declarative macro
 macro_rules! say_hello {
@@ -1014,7 +983,6 @@ say_hello!("World")
 
 ### Common Attributes
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Conditional compilation
 #[cfg(target_os = "linux")]
@@ -1064,7 +1032,6 @@ fun always_inline() {}
 
 ### Async Functions
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Async function
 async fun fetch_data(url: &str) -> Result<String, reqwest::Error> {
@@ -1093,7 +1060,6 @@ let async_closure = async |x| {
 
 ### Futures and Streams
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 use futures::{Future, Stream}
 

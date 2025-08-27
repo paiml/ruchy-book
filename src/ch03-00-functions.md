@@ -28,7 +28,6 @@ Most languages make code organization complicated with complex syntax and boiler
 Here's how you organize and reuse logic in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Organize calculations
     let name = "Alice"  
@@ -68,7 +67,6 @@ That's organization! Define once, use everywhere.
 
 In Ruchy's current form, organize logic using variables and expressions:
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Store inputs
     let input1 = 10
@@ -96,7 +94,6 @@ fun main() {
 
 Create templates for common operations:
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Template: greeting with name
     let user_name = "Alice"
@@ -125,7 +122,6 @@ fun main() {
 
 Group related operations together:
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Input section
     let temperature_f = 68
@@ -156,7 +152,6 @@ fun main() {
 ### Pure Functions (No Side Effects)
 
 ```ruchy
-// Status: ❌ BROKEN
 // Mathematical operations
 fun square(x) {
     x * x
@@ -198,7 +193,6 @@ fun main() {
 ### Functions with Logic
 
 ```ruchy
-// Status: ❌ BROKEN
 fun is_even(number) {
     number % 2 == 0
 }
@@ -241,7 +235,6 @@ fun main() {
 ### Functions That Process Data
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 fun calculate_total(prices) {
     let mut total = 0.0
     let mut i = 0
@@ -292,7 +285,7 @@ fun main() {
 
 ### Forgetting Return Statement
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ This returns nothing (unit type)
 fun bad_add(a, b) {
     a + b;
@@ -317,7 +310,6 @@ fun main() {
 
 ### Wrong Number of Arguments
 ```ruchy
-// Status: ❌ BROKEN
 fun greet(name, age) {
     "Hi " + name + ", you're " + age + " years old"
 }
@@ -338,7 +330,6 @@ Error: Function expects 2 arguments, got 1.
 
 ### Modifying Parameters
 ```ruchy
-// Status: ❌ BROKEN
 // ❌ Parameters are read-only
 fun bad_function(x) {
     x = x + 1  
@@ -371,7 +362,7 @@ Want to see how Ruchy functions become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+
 fun add(a, b) {
     a + b
 }
@@ -466,7 +457,6 @@ $ ruchy repl
 **Example Solution Set:**
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 // Personal calculator
 fun celsius_to_fahrenheit(celsius) {
     (celsius * 9 / 5) + 32

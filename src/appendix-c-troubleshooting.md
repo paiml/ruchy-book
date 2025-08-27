@@ -23,7 +23,6 @@
 
 #### Missing Semicolons
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Error
 let x = 42
@@ -46,7 +45,6 @@ let y = 24;
 
 #### Unmatched Braces/Parentheses
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 if condition {
@@ -67,7 +65,6 @@ if condition {
 
 #### Invalid Variable Names
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let 123invalid = "nope"
@@ -90,7 +87,6 @@ let function_name = "not keyword"
 
 #### Type Mismatch
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Error
 let x: i32 = "string"
@@ -113,7 +109,6 @@ let x = "string"  // Let compiler infer type
 
 #### Cannot Move Out of Borrowed Content
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let s = String::from("hello")
@@ -134,7 +129,6 @@ let copied = r.clone()  // Clone instead of move
 
 #### Use After Move
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Error
 let s = String::from("hello")
@@ -164,7 +158,6 @@ println(s)  // s still valid
 
 #### Borrowed Value Does Not Live Long Enough
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 fun dangle() -> &String {
@@ -192,7 +185,6 @@ fun static_str() -> &'static str {
 
 #### Multiple Mutable References
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Error
 let mut s = String::from("hello")
@@ -222,7 +214,6 @@ let r2 = &mut s  // Now ok
 
 #### Index Out of Bounds
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Runtime panic
 let v = vec![1, 2, 3]
@@ -251,7 +242,6 @@ if let Some(item) = v.get(5) {
 
 #### Unwrap on None/Err
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Runtime panic
 let maybe_value: Option<i32> = None
@@ -276,7 +266,6 @@ let value = maybe_value.unwrap_or(0)
 
 #### Division by Zero
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Runtime panic
 fun divide(a: i32, b: i32) -> i32 {
@@ -312,7 +301,7 @@ fun divide_result(a: i32, b: i32) -> Result<i32, String> {
 
 #### Stack Overflow
 ```ruchy
-// Status: ✅ WORKING
+
 
 // ❌ Infinite recursion causes stack overflow
 fun infinite_recursion(n: i32) -> i32 {
@@ -347,7 +336,6 @@ fun factorial_iterative(n: i32) -> i32 {
 
 #### Large Stack Allocations
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ May cause stack overflow
 fun large_array() {
@@ -375,7 +363,6 @@ fun boxed_array() {
 
 ### Unnecessary Cloning
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Inefficient - unnecessary clones
 fun process_strings(strings: Vec<String>) -> Vec<String> {
@@ -400,7 +387,6 @@ fun process_strings_efficient(strings: &[String]) -> Vec<String> {
 
 ### Inefficient String Concatenation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // ❌ Inefficient - creates many temporary strings
 fun concat_inefficient(strings: &[&str]) -> String {
@@ -439,7 +425,6 @@ fun concat_with_capacity(strings: &[&str]) -> String {
 
 ### Inefficient Collections
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Wrong collection for use case
 use std::collections::VecDeque
@@ -483,7 +468,6 @@ some_crate = "1.2"  # Updated to use serde 1.0
 
 ### Missing Features
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 // ❌ Error: no method named `json` found for type `Response`
 let response = reqwest::get(url).await?
@@ -605,7 +589,6 @@ sudo chown -R $(whoami) ~/.rustup
 
 ### Print Debugging
 ```ruchy
-// Status: ❌ BROKEN
 
 // Simple debug prints
 println!("Debug: x = {}", x)
@@ -645,7 +628,6 @@ rust-gdb target/debug/my_program
 
 ### Logging
 ```ruchy
-// Status: ❌ BROKEN
 
 use log::{debug, info, warn, error}
 
@@ -672,7 +654,6 @@ fun main() {
 
 ### Testing and Debugging
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[cfg(test)]
 mod tests {

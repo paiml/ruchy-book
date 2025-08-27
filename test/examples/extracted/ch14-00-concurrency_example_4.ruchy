@@ -1,2 +1,0 @@
-fn process_files(files: Vec<String>) -> Vec<Result> {
-fn process_files(files: Vec<String>) -> Vec<Result> {

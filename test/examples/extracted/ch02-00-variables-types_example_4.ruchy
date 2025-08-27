@@ -1,2 +1,0 @@
-println(f"Hi {name}, you're {age} years old!")
-println(f"Hi {name}, you're {age} years old!")

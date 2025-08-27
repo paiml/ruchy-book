@@ -30,7 +30,7 @@ Programs often need sophisticated function patterns - composing operations, hand
 This example is tested in `tests/ch08-advanced-functions/test_01_function_composition.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun double(x: i32) -> i32 {
     return x * 2;
 }
@@ -59,7 +59,7 @@ fun main() {
 This example is tested in `tests/ch08-advanced-functions/test_02_multiple_returns.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun classify_number(x: i32) -> i32 {
     if x < 0 {
         return -1;
@@ -91,7 +91,7 @@ fun main() {
 This example is tested in `tests/ch08-advanced-functions/test_03_recursive_function.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun factorial(n: i32) -> i32 {
     if n <= 1 {
         return 1;
@@ -139,7 +139,6 @@ fun main() {
 
 ### Function Composition Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun step_one(x: Type) -> Type { ... }
 fun step_two(x: Type) -> Type { ... }
@@ -153,7 +152,6 @@ let result = step_two(intermediate);
 
 ### Multiple Return Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun categorize(input: Type) -> ResultType {
     if condition1 {
@@ -170,7 +168,6 @@ fun categorize(input: Type) -> ResultType {
 
 ### Recursive Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun recursive_func(n: Type) -> Type {
     if base_condition {
@@ -198,7 +195,6 @@ make test-file FILE=tests/ch08-advanced-functions/test_01_function_composition.r
 
 ### Pipeline Processing
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun validate(input: i32) -> i32 { ... }
 fun normalize(input: i32) -> i32 { ... }
@@ -214,7 +210,7 @@ let result = process(normal_input);
 
 ### Classification Function
 ```ruchy
-// Status: ✅ WORKING
+
 fun get_grade(score: i32) -> i32 {
     if score >= 90 {
         return 4; // A
@@ -233,7 +229,7 @@ fun get_grade(score: i32) -> i32 {
 
 ### Simple Recursion
 ```ruchy
-// Status: ✅ WORKING
+
 fun countdown(n: i32) -> i32 {
     if n <= 0 {
         return 0;

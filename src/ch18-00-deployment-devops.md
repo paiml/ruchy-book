@@ -46,7 +46,6 @@ Most deployments are manual, error-prone nightmares. In Ruchy, deployment is aut
 Here's modern deployment in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // deploy.ruchy - One-command deployment
 use std::deploy;
@@ -297,7 +296,6 @@ spec:
 Zero-downtime deployment:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // blue_green.ruchy
 fun deploy_blue_green(new_version: String) {
@@ -350,7 +348,6 @@ fun deploy_blue_green(new_version: String) {
 Gradual rollout:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // canary.ruchy
 fun deploy_canary(new_version: String) {
@@ -400,7 +397,6 @@ fun deploy_canary(new_version: String) {
 Deploy code without releasing features:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // feature_flags.ruchy
 use feature_flags::{Client, Flag};
@@ -507,7 +503,6 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
 ### Metrics
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // metrics.ruchy
 use metrics::{counter, gauge, histogram};
@@ -558,7 +553,6 @@ let dashboard = json!({
 ### Logging
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // logging.ruchy
 use tracing::{info, warn, error, debug, span, Level};
@@ -616,7 +610,6 @@ let config = json!({
 ### Distributed Tracing
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // tracing.ruchy
 use opentelemetry::{global, sdk, trace::Tracer};
@@ -710,7 +703,6 @@ deploy:production:
 ## Secret Management
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to transpile to Rust
 // secrets.ruchy
 use vault::Client;

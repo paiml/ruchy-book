@@ -30,7 +30,7 @@ As programs grow, organizing code becomes essential. Modules provide a way to gr
 This example is tested in `tests/ch04-modules/test_01_basic_module.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 mod math {
     pub fun add(a: i32, b: i32) -> i32 {
         a + b
@@ -55,7 +55,7 @@ fun main() {
 This example is tested in `tests/ch04-modules/test_02_use_statement.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 mod utils {
     pub fun greet() {
         println("Hello from module!");
@@ -95,7 +95,6 @@ Hello from module!
 
 ### Basic Module Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 mod module_name {
     pub fun public_function() {
@@ -112,7 +111,6 @@ mod module_name {
 
 ### Accessing Module Items
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun main() {
     module_name::public_function();  // Works
@@ -140,7 +138,6 @@ make test
 ### Use Case 1: Math Utilities
 Group mathematical functions together:
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 mod math {
     pub fun add(a: i32, b: i32) -> i32 { a + b }
@@ -153,7 +150,6 @@ mod math {
 ### Use Case 2: String Utilities
 Organize string operations:
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 mod strings {
     pub fun greet() { println("Hello!"); }

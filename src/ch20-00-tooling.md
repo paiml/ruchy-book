@@ -166,7 +166,6 @@ ruchy lint --rules unused,style,complexity src/
 Let's create a file with various issues and see the linter in action:
 
 ```ruchy
-// Status: ❌ BROKEN
 // bad_code.ruchy - Multiple issues for demonstration
 fun calculate_something(x: int) {
     let unused_var = 42;
@@ -247,7 +246,6 @@ ruchy fmt --diff src/main.ruchy
 #### Example: Before and After Formatting
 
 ```ruchy
-// Status: ❌ BROKEN
 // Before formatting (messy)
 fun fibonacci(n:int)->int{if n<=1{n}else{fibonacci(n-1)+fibonacci(n-2)}}
 
@@ -292,7 +290,6 @@ Ruchy's testing framework provides everything needed for professional testing:
 #### Basic Testing
 
 ```ruchy
-// Status: ❌ BROKEN
 // math_utils.ruchy
 fun add(a: int, b: int) -> int {
     a + b
@@ -367,7 +364,6 @@ ruchy test --watch --coverage src/
 #### Property-Based Testing
 
 ```ruchy
-// Status: ❌ BROKEN
 // property_test.ruchy
 fun reverse_string(s: string) -> string {
     // Implementation details...
@@ -456,7 +452,6 @@ ruchy run --watch src/main.ruchy
 Generate beautiful documentation from your code:
 
 ```ruchy
-// Status: ❌ BROKEN
 // documented_code.ruchy
 
 /// Calculates the factorial of a positive integer
@@ -510,7 +505,6 @@ ruchy doc --format json src/ > api-docs.json
 Professional benchmarking for performance optimization:
 
 ```ruchy
-// Status: ❌ BROKEN
 // bench_test.ruchy
 fun fibonacci_recursive(n: int) -> int {
     if n <= 1 { n } else { fibonacci_recursive(n-1) + fibonacci_recursive(n-2) }

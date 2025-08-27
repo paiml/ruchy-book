@@ -30,7 +30,7 @@ Programs need to make decisions and repeat actions. Control flow structures like
 This example is tested in `tests/ch05-control-flow/test_01_if_else.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let x = 10;
     if x > 5 {
@@ -53,7 +53,7 @@ x is greater than 5
 This example is tested in `tests/ch05-control-flow/test_02_if_only.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let score = 85;
     if score >= 80 {
@@ -76,7 +76,7 @@ Score processed
 This example is tested in `tests/ch05-control-flow/test_03_if_else_if.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let grade = 75;
     if grade >= 90 {
@@ -103,7 +103,7 @@ C grade
 This example is tested in `tests/ch05-control-flow/test_04_while_loop.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let mut i = 0;
     while i < 3 {
@@ -129,7 +129,7 @@ Done
 This example is tested in `tests/ch05-control-flow/test_05_for_loop.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     for i in 0..3 {
         println(i);
@@ -153,7 +153,7 @@ For loop done
 This example is tested in `tests/ch05-control-flow/test_06_match.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let number = 2;
     match number {
@@ -177,7 +177,7 @@ Two
 This example is tested in `tests/ch05-control-flow/test_07_break_continue.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let mut i = 0;
     while i < 10 {
@@ -234,7 +234,6 @@ Loop ended
 
 ### Conditionals
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 if condition {
     // true branch
@@ -249,7 +248,6 @@ if condition {
 
 ### Loops
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 // While loop
 while condition {
@@ -266,7 +264,6 @@ for variable in start..end {
 
 ### Match
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 match value {
     pattern1 => action1,
@@ -293,7 +290,6 @@ make test-file FILE=tests/ch05-control-flow/test_01_if_else.ruchy
 
 ### Decision Making
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 if user_input > threshold {
     process_high_value();
@@ -306,7 +302,6 @@ if user_input > threshold {
 
 ### Counting Loop
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let mut count = 0;
 while count < 10 {
@@ -319,7 +314,7 @@ while count < 10 {
 
 ### Range Processing
 ```ruchy
-// Status: ✅ WORKING
+
 for i in 1..5 {
     println("Processing item " + i);
 }
@@ -329,7 +324,6 @@ for i in 1..5 {
 
 ### Value Classification
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 match status_code {
     200 => println("Success"),

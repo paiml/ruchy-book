@@ -30,7 +30,7 @@ Programs need to communicate with users and external systems - displaying inform
 This example is tested in `tests/ch10-input-output/test_01_simple_output.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("=== Output Demo ===");
     println("Number: ");
@@ -58,7 +58,7 @@ true
 This example is tested in `tests/ch10-input-output/test_02_formatted_output.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let name = "Alice";
     let age = 30;
@@ -94,7 +94,7 @@ Height:
 This example is tested in `tests/ch10-input-output/test_03_interactive_menu.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun display_menu() {
     println("=== Main Menu ===");
     println("1. View Profile");
@@ -145,7 +145,6 @@ Menu displayed successfully
 
 ### Basic Output
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 println("text message");
 println(variable);
@@ -157,7 +156,6 @@ println(true);
 
 ### Variable Output Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let data = value;
 println("Label:");
@@ -168,7 +166,7 @@ println(data);
 
 ### Menu Display Function
 ```ruchy
-// Status: ✅ WORKING
+
 fun display_options() {
     println("=== Menu ===");
     println("1. Option One");
@@ -195,7 +193,7 @@ make test-file FILE=tests/ch10-input-output/test_01_simple_output.ruchy
 
 ### Data Display
 ```ruchy
-// Status: ✅ WORKING
+
 let value = 100;
 println("Result:");
 println(value);
@@ -205,7 +203,6 @@ println(value);
 
 ### Report Generation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun display_report(title: &str, data: i32) {
     println("=== Report ===");
@@ -219,7 +216,7 @@ fun display_report(title: &str, data: i32) {
 
 ### Status Messages
 ```ruchy
-// Status: ✅ WORKING
+
 println("Processing...");
 // ... do work ...
 println("Complete!");
@@ -229,7 +226,7 @@ println("Complete!");
 
 ### Menu Construction
 ```ruchy
-// Status: ✅ WORKING
+
 fun show_options() {
     println("Choose an option:");
     println("1. Start");

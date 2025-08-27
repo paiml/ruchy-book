@@ -28,7 +28,7 @@ In most languages, this involves type declarations, memory management, and compl
 Here's how you store and use data in Ruchy:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let name = "Alice"
     let age = 25
@@ -84,7 +84,7 @@ Variables in Ruchy follow simple rules:
 ### Different Data Types
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     // Text data
     let first_name = "John"
@@ -117,7 +117,7 @@ fun main() {
 ### Working with Variables
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     // Store user information
     let username = "programmer2024"
@@ -147,7 +147,6 @@ fun main() {
 ### Collections and Lists
 
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Store multiple values
     let favorite_languages = ["Python", "Rust", "Ruchy"]
@@ -174,7 +173,6 @@ fun main() {
 
 ### Forgetting let for New Variables
 ```ruchy
-// Status: ❌ BROKEN
 // ❌ This won't work
 fun main() {
     user_name = "Alice"  
@@ -190,7 +188,6 @@ Error: `user_name` is not declared. Use `let user_name = "Alice"` first.
 
 ### Mixing Data Types Incorrectly
 ```ruchy
-// Status: ❌ BROKEN
 // ❌ This might not work as expected
 fun main() {
     let age = "25"  // String, not number
@@ -208,7 +205,7 @@ Error: Can't add number to string. Use `let age = 25` (without quotes) for numer
 
 ### Case Sensitivity Confusion
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ These are different variables
 fun main() {
     let userName = "Alice"
@@ -233,7 +230,7 @@ Ever wonder how Ruchy's simple variables become efficient compiled code?
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let name = "Alice"
     let age = 25
@@ -302,7 +299,7 @@ $ ruchy repl
 
 **Example Solution:**
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     // Personal profile
     let name = "Alex"

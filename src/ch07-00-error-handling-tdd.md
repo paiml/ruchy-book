@@ -30,7 +30,7 @@ Programs need to handle unexpected situations gracefully - invalid input, missin
 This example is tested in `tests/ch07-error-handling/test_01_simple_panic.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Before operation");
     if true {
@@ -54,7 +54,7 @@ After operation
 This example is tested in `tests/ch07-error-handling/test_02_conditional_error.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let number = 5;
     if number > 0 {
@@ -85,7 +85,7 @@ Warning: Zero value detected
 This example is tested in `tests/ch07-error-handling/test_03_validation_patterns.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let age = 25;
     match age {
@@ -128,7 +128,6 @@ Adult
 
 ### Conditional Validation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 if value > 0 {
     println("Valid");
@@ -141,7 +140,6 @@ if value > 0 {
 
 ### Pattern-Based Validation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 match status {
     0 => println("Error"),
@@ -155,7 +153,6 @@ match status {
 
 ### Range Validation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 match age {
     0 => println("Invalid age"),
@@ -183,7 +180,6 @@ make test-file FILE=tests/ch07-error-handling/test_01_simple_panic.ruchy
 
 ### Input Validation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 if input < 0 {
     println("Error: Negative input not allowed");
@@ -196,7 +192,6 @@ if input < 0 {
 
 ### Range Checking
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 match score {
     0..=59 => println("Fail"),
@@ -210,7 +205,6 @@ match score {
 
 ### State Validation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 if system_ready {
     println("System operational");

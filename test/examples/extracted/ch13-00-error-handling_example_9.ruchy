@@ -1,2 +1,0 @@
-fn fetch_user(id: i32) -> Result<User, AppError> {
-fn fetch_user(id: i32) -> Result<User, AppError> {

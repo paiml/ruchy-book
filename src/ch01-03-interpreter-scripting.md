@@ -26,7 +26,6 @@ You've installed Ruchy and written your first "Hello World" program. Now you wan
 The Ruchy interpreter allows immediate expression evaluation:
 
 ```ruchy
-// Status: ❌ BROKEN
 ruchy -e "2 + 2"
 
 
@@ -40,7 +39,6 @@ ruchy -e "2 + 2"
 Output: `4`
 
 ```ruchy  
-// Status: ❌ BROKEN
 ruchy -e "let name = \"World\"; \"Hello \" + name + \"!\""
 
 
@@ -54,7 +52,6 @@ ruchy -e "let name = \"World\"; \"Hello \" + name + \"!\""
 Output: `"Hello World!"`
 
 ```ruchy
-// Status: ❌ BROKEN
 ruchy -e "let nums = [1, 2, 3]; nums[1]"
 
 
@@ -86,7 +83,6 @@ For scripting and interactive work, you'll primarily use Tier 0, which provides:
 Ruchy provides efficient handling of basic data types:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     // Integer values
     let small_int = 42
@@ -135,7 +131,6 @@ ruchy -e "let x = 10; if x > 5 { \"large\" } else { \"small\" }"
 Create a file `calculator.ruchy`:
 
 ```ruchy
-// Status: ❌ BROKEN
 // calculator.ruchy - Basic calculator functionality
 
 fun add(a, b) {
@@ -190,7 +185,6 @@ ruchy calculator.ruchy
 ### Working with Arrays and Data
 
 ```ruchy
-// Status: ❌ BROKEN
 // data_processing.ruchy - Array manipulation examples
 
 fun main() {
@@ -231,7 +225,6 @@ fun main() {
 Understanding Ruchy's scoping rules is crucial for effective scripting:
 
 ```ruchy
-// Status: ❌ BROKEN
 // scoping.ruchy - Variable scope examples
 
 let global_var = "I'm global"
@@ -271,7 +264,6 @@ fun main() {
 Always check array bounds to avoid runtime errors:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     let arr = [1, 2, 3]
 
@@ -299,7 +291,7 @@ fun main() {
 Remember that variables are immutable by default:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let x = 5
     // x = 10  // Error! x is immutable
@@ -321,7 +313,6 @@ fun main() {
 Functions return their last expression:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun get_double(x) {
     x * 2  // This is returned (no semicolon)
 }
@@ -388,7 +379,7 @@ ruchy -e "expression_here"
 Focus on straightforward logic that leverages Ruchy's strengths:
 
 ```ruchy
-// Status: ✅ WORKING
+
 // Good: Clear, functional style
 fun calculate_tax(income, rate) {
     income * rate
@@ -405,7 +396,6 @@ fun calculate_tax(income, rate) {
 
 ### 2. Use Descriptive Names
 ```ruchy
-// Status: ❌ BROKEN
 // Good
 let user_count = 42
 let total_price = calculate_price(items)
@@ -426,7 +416,6 @@ let y = calc(z)
 Since array indexing works well in v1.10.0:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun main() {
     let grades = [95, 87, 92, 78, 89]
     let first_grade = grades[0]
@@ -445,7 +434,6 @@ fun main() {
 Start with simple expressions and build complexity:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Add functions
 fun double(n) { n * 2 }
 
@@ -471,7 +459,7 @@ fun main() {
 Always test your scripts with known inputs:
 
 ```ruchy
-// Status: ✅ WORKING
+
 // test_calculator.ruchy
 fun add(a, b) { a + b }
 

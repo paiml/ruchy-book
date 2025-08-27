@@ -30,7 +30,7 @@ Every programming journey begins with "Hello, World!" - your first proof that yo
 This example is tested in `tests/ch01-hello-world/test_01_basic.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Hello, World!");
 }
@@ -53,7 +53,7 @@ ruchy compile hello.ruchy && ./a.out
 This example is tested in `tests/ch01-hello-world/test_02_multiple_prints.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Hello,");
     println("World!");
@@ -73,7 +73,7 @@ World!
 This example is tested in `tests/ch01-hello-world/test_03_with_variable.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let greeting = "Hello, World!";
     println(greeting);
@@ -122,7 +122,7 @@ make test-file FILE=tests/ch01-hello-world/test_01_basic.ruchy
 
 ### Pattern 1: Direct Output
 ```ruchy
-// Status: ✅ WORKING
+
 println("Your message here");
 
 
@@ -130,7 +130,7 @@ println("Your message here");
 
 ### Pattern 2: Variable Storage
 ```ruchy
-// Status: ✅ WORKING
+
 let message = "Your message";
 println(message);
 
@@ -139,7 +139,7 @@ println(message);
 
 ### Pattern 3: Sequential Output
 ```ruchy
-// Status: ✅ WORKING
+
 println("First line");
 println("Second line");
 

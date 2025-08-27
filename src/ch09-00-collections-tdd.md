@@ -30,7 +30,7 @@ Programs need to process multiple pieces of data efficiently - counting sequence
 This example is tested in `tests/ch09-collections/test_01_iteration_for.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Counting to 5:");
     for i in 0..5 {
@@ -58,7 +58,7 @@ Done counting
 This example is tested in `tests/ch09-collections/test_02_while_accumulation.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let mut sum = 0;
     let mut i = 1;
@@ -84,7 +84,7 @@ Sum of 1-5:
 This example is tested in `tests/ch09-collections/test_03_nested_loops.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Pattern:");
     for row in 0..3 {
@@ -132,7 +132,6 @@ Pattern:
 
 ### For Loop Range Iteration
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 for variable in start..end {
     // Process each value
@@ -144,7 +143,6 @@ for variable in start..end {
 
 ### While Loop Accumulation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let mut accumulator = initial_value;
 let mut counter = start;
@@ -158,7 +156,6 @@ while counter <= end {
 
 ### Nested Loop Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 for outer in 0..height {
     for inner in 0..width {
@@ -186,7 +183,6 @@ make test-file FILE=tests/ch09-collections/test_01_iteration_for.ruchy
 
 ### Sequential Processing
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 for i in 1..10 {
     let result = process(i);
@@ -198,7 +194,7 @@ for i in 1..10 {
 
 ### Sum Calculation
 ```ruchy
-// Status: ✅ WORKING
+
 let mut total = 0;
 for value in 1..100 {
     total = total + value;
@@ -209,7 +205,6 @@ for value in 1..100 {
 
 ### Grid Processing
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 for row in 0..height {
     for col in 0..width {
@@ -223,7 +218,6 @@ for row in 0..height {
 
 ### Conditional Accumulation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let mut count = 0;
 for i in 1..100 {

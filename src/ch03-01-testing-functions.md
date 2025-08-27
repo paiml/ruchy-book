@@ -28,7 +28,6 @@ Manual testing means running your code, checking output, and hoping you didn't m
 Here's how you test functions in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Your function
 fun add(a, b) {
     a + b
@@ -66,7 +65,6 @@ That's it! Write tests, run tests, ship with confidence.
 
 Test functions in Ruchy use the `#[test]` attribute:
 ```ruchy
-// Status: ❌ BROKEN
 #[test]
 fun test_function_name() {
     // Test code here
@@ -96,7 +94,6 @@ Ruchy provides several assertion macros:
 ### Test Organization
 
 ```ruchy
-// Status: ❌ BROKEN
 // tests/calculator_test.ruchy
 
 use super::*;  // Import functions from main module
@@ -126,7 +123,6 @@ fun test_subtraction() {
 Pure functions are easiest to test - same input, same output:
 
 ```ruchy
-// Status: ❌ BROKEN
 // calculator.ruchy
 fun multiply(a, b) {
     a * b
@@ -180,7 +176,6 @@ fun test_is_even() {
 Good tests cover normal cases AND edge cases:
 
 ```ruchy
-// Status: ❌ BROKEN
 fun find_max(numbers) {
     if numbers.len() == 0 {
         -999999  // Sentinel value for empty
@@ -220,7 +215,6 @@ fun test_find_max() {
 ### Testing Text Functions
 
 ```ruchy
-// Status: ❌ BROKEN
 fun clean_username(raw_username) {
     // Simple cleaning - replace spaces with underscores
     raw_username.replace(" ", "_")
@@ -266,7 +260,6 @@ fun test_count_vowels() {
 ### Testing Business Logic
 
 ```ruchy
-// Status: ❌ BROKEN
 fun calculate_grade(score) {
     if score >= 90 { "A" }
     else if score >= 80 { "B" } 
@@ -318,7 +311,6 @@ Write tests BEFORE you write code:
 3. **Refactor and improve** (Refactor)
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Step 1: Write the test first
 #[test]
@@ -349,7 +341,6 @@ fun fahrenheit_to_celsius(fahrenheit) {
 
 ### Not Testing Edge Cases
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Only testing happy path
 #[test]
@@ -376,7 +367,6 @@ fun test_divide_good() {
 
 ### Tests That Don't Actually Test
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ This test will always pass
 #[test]
@@ -402,7 +392,6 @@ fun test_useful() {
 
 ### Poor Test Names
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Unclear what this tests
 #[test]
@@ -465,7 +454,6 @@ $ ruchy repl
 **Example TDD Session:**
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // 1. Write failing tests first
 #[test]

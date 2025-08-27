@@ -104,7 +104,6 @@ The benchmark suite includes advanced analysis tools for systematic optimization
 Here's performance optimization in action:
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: optimize_data_processing.ruchy
 // Before and after optimization
@@ -183,7 +182,6 @@ That's the power of systematic optimization!
 Measure before optimizing:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // CPU profiling
 let profiler = perf::CpuProfiler::new()
@@ -231,7 +229,6 @@ println("Flame graph saved to profile.svg")
 Compare performance systematically:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Micro-benchmarks
 use std::bench;
@@ -298,7 +295,6 @@ fun benchmark_algorithm(name, func, data) {
 Use multiple cores effectively:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Parallel map
 let data = range(1, 1000000)
@@ -352,7 +348,6 @@ let responses = async::wait_all(futures)
 ### Algorithm Optimization
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: algorithm_optimization.ruchy
 // Common optimization patterns
@@ -433,7 +428,6 @@ fun find_first_match(items, predicate) {
 ### Memory Optimization
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: memory_optimization.ruchy
 // Reduce memory usage
@@ -497,7 +491,6 @@ struct CompactUser {
 ### I/O Optimization
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: io_optimization.ruchy
 // Speed up I/O operations
@@ -558,7 +551,6 @@ fun process_huge_file(path) {
 ### Database Query Optimizer
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // File: query_optimizer.ruchy
 // Optimize database queries
@@ -644,7 +636,6 @@ println(f"Improvement: {naive_time / optimized_time:.1}x faster")
 ### Web Server Optimization
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: web_server_optimization.ruchy
 // High-performance web server
@@ -731,7 +722,6 @@ app.listen()
 ### Data Processing Pipeline
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: data_pipeline_optimization.ruchy
 // Optimize large-scale data processing
@@ -806,7 +796,6 @@ monitor.report()
 ### Golden Rules
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Measure first
 perf::profile {

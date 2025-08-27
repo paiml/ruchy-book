@@ -46,7 +46,6 @@ This chapter presents complete, real-world projects you can build, deploy, and u
 A complete productivity tool:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // taskmaster.ruchy - Complete task management system
 use std::cli::{App, Arg, SubCommand};
@@ -309,7 +308,6 @@ fun main() -> Result<()> {
 A production-ready REST API:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // api_server.ruchy - Complete web service
 use warp::{Filter, Reply, Rejection};
@@ -490,7 +488,6 @@ async fun main() -> Result<()> {
 Real-time system monitoring tool:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // sysmon.ruchy - System monitoring dashboard
 use sysinfo::{System, SystemExt, ProcessExt, CpuExt};
@@ -758,7 +755,6 @@ Build these to master Ruchy:
 When building real projects:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Project structure
 my-project/

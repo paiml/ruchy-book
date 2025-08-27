@@ -203,7 +203,7 @@ This isn't just documentation - it's a contract with our readers. When you see c
 
 ### Can Do Now ✅
 ```ruchy
-// Status: ✅ WORKING
+
 fun calculate(x: i32, y: i32) -> i32 {
     return x + y;
 }
@@ -218,7 +218,6 @@ fun main() {
 
 ### Can't Do Yet ⏳
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 // Arrays - NOT YET
 let arr = [1, 2, 3];

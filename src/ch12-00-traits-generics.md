@@ -46,7 +46,6 @@ Most languages force you to choose between type safety and flexibility. In Ruchy
 Here's the power of traits and generics:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Define behavior with traits
 trait Serializable {
@@ -103,7 +102,6 @@ That's abstraction without compromise!
 Traits define shared behavior:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple trait
 trait Drawable {
@@ -160,7 +158,6 @@ trait Dog: Animal {
 Give types new capabilities:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 struct Point {
     x: f64
@@ -212,7 +209,6 @@ impl Drawable for String {
 Write once, use with any type:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple generic function
 fun swap<T>(a: mut T, b: mut T) {
@@ -262,7 +258,6 @@ where
 Build flexible data structures:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic struct
 struct Pair<T> {
@@ -317,7 +312,6 @@ impl<T: Ord> SortedVec<T> {
 ### Generic Collections
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Custom collection with traits
 struct Cache<K: Hash + Eq, V> {
@@ -376,7 +370,6 @@ cache2.put(1, vec!["data"])
 Dynamic dispatch when needed:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Trait for plugins
 trait Plugin {
@@ -421,7 +414,6 @@ for plugin in plugins {
 ### Builder Pattern with Generics
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic builder
 struct Builder<T> {
@@ -467,7 +459,6 @@ let user = Builder::new(User::new())
 ### Advanced Trait Patterns
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Associated types pattern
 trait Graph {
@@ -535,7 +526,6 @@ let post_id: Id<Post> = Id::new("post_456")
 ### Zero-Cost Abstractions
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generics are monomorphized - no runtime cost
 fun generic_add<T: Add>(a: T, b: T) -> T {
@@ -570,7 +560,6 @@ fun hot_path<T: Copy>(x: T) -> T {
 ### Static vs Dynamic Dispatch
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Static dispatch (faster)
 fun static_dispatch<T: Display>(item: T) {

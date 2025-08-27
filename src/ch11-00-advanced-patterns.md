@@ -46,7 +46,6 @@ Most developers either ignore patterns (creating chaos) or over-engineer (creati
 Here's elegant pattern usage in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: event_system.ruchy
 // Event-driven architecture with multiple patterns
@@ -115,7 +114,6 @@ That's patterns working together harmoniously!
 Construct complex objects step by step:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fluent interface for configuration
 class ServerBuilder {
@@ -183,7 +181,6 @@ let server = ServerBuilder::new()
 Swap algorithms at runtime:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Different compression strategies
 class CompressionContext {
@@ -241,7 +238,6 @@ let compressed = compressor.compress(file_data)
 Process requests through a chain of handlers:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Middleware chain for request processing
 class MiddlewareChain {
@@ -326,7 +322,6 @@ chain.execute(request, response)
 Build complex behavior from simple functions:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Function composition
 fun compose(...functions) {
@@ -381,7 +376,6 @@ let result = pipeline(
 Handle errors and async elegantly:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Result monad for error handling
 class Result {
@@ -443,7 +437,6 @@ fun process_user(id) {
 Defer computation until needed:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Lazy sequences
 class LazySeq {
@@ -534,7 +527,6 @@ let first_10_even = fibonacci
 Abstract data access:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generic repository interface
 class Repository {
@@ -599,7 +591,6 @@ class UserService {
 Store events, not state:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Event sourcing system
 class EventStore {
@@ -676,7 +667,6 @@ let current_state = event_store.replay()
 Separate reads from writes:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Command side - writes
 class CommandBus {
@@ -752,7 +742,6 @@ let orders = query_bus.query({
 Isolated units of computation:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Actor system
 class Actor {
@@ -828,7 +817,6 @@ worker.send({
 Prevent cascading failures:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 class CircuitBreaker {
     let failure_threshold = 5
