@@ -1,2 +1,0 @@
-    let response = http::get(f"/api/users/{id}")?  // ? propagates errors
-    let response = http::get(f"/api/users/{id}")?  // ? propagates errors

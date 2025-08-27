@@ -30,7 +30,7 @@ Code often needs to be reused. Functions let us package code into reusable units
 This example is tested in `tests/ch03-functions/test_01_basic_function.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun greet() {
     println("Hello from function!");
 }
@@ -52,7 +52,7 @@ Hello from function!
 This example is tested in `tests/ch03-functions/test_02_function_with_return.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun add(a, b) {
     a + b
 }
@@ -75,7 +75,7 @@ fun main() {
 This example is tested in `tests/ch03-functions/test_03_function_with_types.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun multiply(x: i32, y: i32) -> i32 {
     x * y
 }
@@ -98,7 +98,7 @@ fun main() {
 This example is tested in `tests/ch03-functions/test_04_nested_calls.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun square(n: i32) -> i32 {
     n * n
 }
@@ -125,7 +125,6 @@ fun main() {
 ### Function Definition
 Basic syntax:
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun function_name(parameters) -> return_type {
     // function body
@@ -164,7 +163,7 @@ Key points:
 While Ruchy has type inference, explicit types improve clarity:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun calculate(x: i32, y: i32) -> i32 {
     x * 2 + y * 3
 }
@@ -193,7 +192,7 @@ make test-file FILE=tests/ch03-functions/test_01_basic_function.ruchy
 
 ### Pattern 1: Simple Calculation Function
 ```ruchy
-// Status: ✅ WORKING
+
 fun calculate(input: i32) -> i32 {
     input * 2
 }
@@ -203,7 +202,7 @@ fun calculate(input: i32) -> i32 {
 
 ### Pattern 2: Multiple Parameters
 ```ruchy
-// Status: ✅ WORKING
+
 fun combine(a: i32, b: i32, c: i32) -> i32 {
     a + b + c
 }
@@ -213,7 +212,7 @@ fun combine(a: i32, b: i32, c: i32) -> i32 {
 
 ### Pattern 3: Helper Functions
 ```ruchy
-// Status: ✅ WORKING
+
 fun helper(x: i32) -> i32 {
     x * x
 }

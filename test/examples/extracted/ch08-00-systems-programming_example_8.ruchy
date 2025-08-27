@@ -1,2 +1,0 @@
-let total_memory = system::total_memory()
-let total_memory = system::total_memory()

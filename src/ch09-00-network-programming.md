@@ -46,7 +46,6 @@ Most developers fear network programming because of its complexity - protocols, 
 Here's a complete web server in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: web_server.ruchy
 // HTTP server with routing and middleware
@@ -107,7 +106,6 @@ That's a production-ready web server in under 30 lines!
 Build reliable network connections:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // TCP Server
 let server = net::TcpListener::bind("127.0.0.1:9000")
@@ -152,7 +150,6 @@ println("Server replied: " + response)
 Make HTTP requests easily:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Simple GET request
 let response = http::get("https://api.example.com/data")
@@ -205,7 +202,6 @@ http::download("https://example.com/big-file.zip", "downloads/file.zip")
 Real-time bidirectional communication:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // WebSocket Server
 let ws_server = ws::Server::new("0.0.0.0:8081")
@@ -259,7 +255,6 @@ ws.on("error", |err| {
 ### REST API Server
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: api_server.ruchy
 // RESTful API with database
@@ -378,7 +373,6 @@ app.listen()
 ### Real-time Chat Application
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: chat_server.ruchy
 // Multi-room chat server with history
@@ -510,7 +504,6 @@ server.listen()
 ### Network Scanner
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: network_scanner.ruchy
 // Scan network for open ports and services
@@ -626,7 +619,6 @@ if results.len() > 0 {
 ### Load Balancer
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: load_balancer.ruchy
 // HTTP load balancer with health checking
@@ -718,7 +710,6 @@ balancer.listen()
 Build custom network protocols:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Custom protocol over TCP
 fun send_packet(socket, type, data) {
@@ -753,7 +744,6 @@ fun receive_packet(socket) {
 ### Network Monitoring
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Monitor network traffic
 let monitor = net::PacketCapture::new("eth0")

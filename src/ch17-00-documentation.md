@@ -46,7 +46,6 @@ Most documentation is either missing, wrong, or incomprehensible. In Ruchy, docu
 Here's documentation done right:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// A high-performance cache with automatic eviction.
 /// 
@@ -139,7 +138,6 @@ That's documentation that actually helps!
 Write documentation in the code:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// Single line summary of what this does.
 /// 
@@ -219,7 +217,6 @@ impl Struct {
 Ensure examples work:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// Calculates the factorial of a number.
 /// 
@@ -272,7 +269,6 @@ test result: ok. 3 passed; 0 failed; 1 ignored
 Generate beautiful API docs:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// Configuration for the application.
 /// 
@@ -337,7 +333,6 @@ Documenting mylib v1.10.0
 Document the big picture:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 //! # System Architecture
 //! 
@@ -537,7 +532,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Code Examples
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// # Examples Section
 /// 
@@ -609,7 +603,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ### Documentation Site
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Generate interactive documentation site
 $ ruchy doc --format html --output docs/
@@ -631,7 +624,6 @@ Serving documentation at http://localhost:8080
 ### API Playground
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 /// Interactive API endpoint documentation
 /// 
@@ -664,7 +656,6 @@ pub async fun create_user(user: Json<User>) -> Result<Json<User>, Error> {
 ### Auto-generation
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Generate documentation from code
 #[doc_gen]
@@ -699,7 +690,6 @@ async fun request_flow() {
 ### Documentation Linting
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Check documentation quality
 $ ruchy doc-lint

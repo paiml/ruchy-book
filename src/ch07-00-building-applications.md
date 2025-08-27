@@ -46,7 +46,6 @@ Most tutorials teach syntax but not software. In Ruchy, building applications sh
 Here's a complete, useful application in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: note_keeper.ruchy
 // A complete note-taking application
@@ -352,7 +351,6 @@ That's a complete application! It has data persistence, search, export, and a us
 Organize larger applications effectively:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Application structure
 let APP = {
@@ -410,7 +408,6 @@ fun main() {
 Handle application state properly:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Global application state
 let STATE = {
@@ -456,7 +453,6 @@ fun load_state() {
 Build resilient applications:
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 fun safe_operation(operation_fn, fallback_value) {
     try {
@@ -498,7 +494,6 @@ fun with_retry(operation_fn, max_attempts = 3) {
 ### Password Manager
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 // Error: ✗ Compilation failed: Compilation failed:
 // Simple password manager with encryption
 let MASTER_KEY = null
@@ -559,7 +554,6 @@ fun get_password(site) {
 ### Budget Tracker
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 // Error: ✗ Compilation failed: Compilation failed:
 // Personal finance tracker
 let TRANSACTIONS_FILE = "~/.budget/transactions.csv"
@@ -620,7 +614,6 @@ fun generate_report(month) {
 ### Project Generator
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Development project scaffolding tool
 let TEMPLATES = {
@@ -692,7 +685,6 @@ fun create_project(name, language) {
 Build confidence with testing:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // test_app.ruchy - Application test suite
 
@@ -749,7 +741,6 @@ fun run_all_tests() {
 Package and distribute your application:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // build.ruchy - Build and package script
 

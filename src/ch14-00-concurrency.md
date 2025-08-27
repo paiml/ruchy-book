@@ -29,7 +29,6 @@ Most languages make concurrency dangerous - data races, deadlocks, mysterious cr
 Here's safe, elegant concurrency in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 use std::sync;
 use std::async;
@@ -89,7 +88,6 @@ That's concurrency without fear!
 OS-level parallelism:
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // Spawn a thread
 let handle = spawn {
@@ -129,7 +127,6 @@ let handle = Thread::builder()
 Message passing between threads:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Create a channel
 let (sender, receiver) = channel()
@@ -180,7 +177,6 @@ loop {
 Safe sharing with synchronization:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mutex for mutual exclusion
 let counter = Arc::new(Mutex::new(0))
@@ -233,7 +229,6 @@ counter.fetch_add(1, Ordering::SeqCst)
 Cooperative concurrency:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Async function
 async fun fetch_user(id: i32) -> Result<User, Error> {
@@ -281,7 +276,6 @@ async fun process_stream(stream: AsyncStream<Item>) {
 Reuse threads efficiently:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 struct ThreadPool {
     workers: Vec<Worker>
@@ -355,7 +349,6 @@ for i in range(100) {
 Decouple work production from consumption:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun producer_consumer_pipeline<T>() {
     let (tx, rx) = channel()
@@ -413,7 +406,6 @@ fun bounded_pipeline() {
 Split work, process parallel, combine results:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun parallel_merge_sort<T: Ord + Send>(mut items: Vec<T>) -> Vec<T> {
     if items.len() <= 1 {
@@ -461,7 +453,6 @@ fun parallel_sum(numbers: Vec<i32>) -> i32 {
 Isolated units with message passing:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Actor trait
 trait Actor {
@@ -539,7 +530,6 @@ println("Count: " + count.to_s())  // 2
 Handle thousands of concurrent requests:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 async fun web_server() {
     let listener = TcpListener::bind("0.0.0.0:8080").await
@@ -588,7 +578,6 @@ async fun handle_request(req: Request) -> Response {
 Process large datasets efficiently:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun process_dataset(data: Vec<Record>) -> Vec<Result> {
     // Partition data for parallel processing
@@ -634,7 +623,6 @@ fun parallel_pipeline(input: Stream<Data>) -> Stream<Output> {
 Test with parallelism:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[test]
 fun test_concurrent_access() {
@@ -681,7 +669,6 @@ async fun test_async_operations() {
 ## Performance Tips
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // 1. Choose the right abstraction
 // Threads: OS parallelism, CPU-bound work

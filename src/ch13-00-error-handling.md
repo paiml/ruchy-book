@@ -46,7 +46,6 @@ Most languages treat errors as afterthoughts - exceptions thrown into the void. 
 Here's robust error handling in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Define error types
 enum AppError {
@@ -114,7 +113,6 @@ That's explicit, recoverable error handling!
 The foundation of error handling:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Result is an enum with two variants
 enum Result<T, E> {
@@ -156,7 +154,6 @@ match divide(10.0, 0.0) {
 Handle absent values safely:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Option represents nullable values
 enum Option<T> {
@@ -200,7 +197,6 @@ let email = find_user("Bob")
 Note: The ? operator was removed in v1.10.0. Use explicit match statements for error handling:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Without ? operator - verbose
 fun process_file_verbose(path: String) -> Result<String, Error> {
@@ -273,7 +269,6 @@ fun complex_operation() -> Result<Data, Error> {
 Build rich error information:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Detailed error enum
 enum DatabaseError {
@@ -348,7 +343,6 @@ impl Error {
 Exit early on errors:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun validate_user(user: User) -> Result<User, ValidationError> {
     // Early return on validation failures
@@ -380,7 +374,6 @@ fun validate_user(user: User) -> Result<User, ValidationError> {
 Gracefully recover from errors:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Retry with exponential backoff
 fun fetch_with_retry<T>(
@@ -459,7 +452,6 @@ impl CircuitBreaker {
 Add context to errors:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Trait for adding context
 trait Context<T> {
@@ -512,7 +504,6 @@ fun process_order(order_id: i32) -> Result<Order, Error> {
 ### API Error Responses
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Structured API errors
 struct ApiError {
@@ -574,7 +565,6 @@ impl IntoResponse for ApiError {
 ### Validation Pipeline
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Composable validators
 type Validator<T> = Fn(T) -> Result<T, ValidationError>
@@ -627,7 +617,6 @@ match validate_pipeline(user, user_validators) {
 ### Async Error Handling
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Async Result type
 async fun fetch_data(url: String) -> Result<Data, Error> {
@@ -673,7 +662,6 @@ async fun fetch_all(urls: Vec<String>) -> Vec<Result<Data, Error>> {
 ## Testing Error Cases
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 #[test]
 fun test_error_handling() {

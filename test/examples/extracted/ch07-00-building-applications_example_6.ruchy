@@ -1,2 +1,0 @@
-let NOTES_INDEX = join_path(NOTES_DIR, "index.json")
-let NOTES_INDEX = join_path(NOTES_DIR, "index.json")

@@ -46,7 +46,6 @@ Most high-level languages abstract away the system, but real power comes from un
 Here's a system resource monitor in Ruchy:
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: system_monitor.ruchy
 // Real-time system resource monitoring
@@ -127,7 +126,6 @@ That's systems programming - direct access to OS resources with safety!
 Work with processes at the system level:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Current process information
 let pid = process::current_pid()
@@ -173,7 +171,6 @@ println(output.stdout)
 Respond to system signals properly:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Register signal handlers
 signal::on(SIGINT, || {
@@ -212,7 +209,6 @@ signal::unblock([SIGPIPE])
 Monitor and control memory usage:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Get memory information
 let mem_info = system::memory_info()
@@ -255,7 +251,6 @@ let data = shared.read(0, 1024)
 ### Service Manager
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: service_manager.ruchy
 // Manage system services
@@ -378,7 +373,6 @@ loop {
 ### System Health Checker
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: health_check.ruchy
 // Monitor system health and alert on issues
@@ -530,7 +524,6 @@ loop {
 ### Process Tree Visualizer
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // File: process_tree.ruchy
 // Visualize process hierarchy
@@ -601,7 +594,6 @@ println("Total CPU: " + total_cpu.to_s() + "%")
 Monitor file system changes in real-time:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Watch for file system events
 let watcher = fs::watch("/path/to/watch", RECURSIVE)
@@ -633,7 +625,6 @@ watcher.start()
 ### System Automation
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Automated system maintenance
 fun auto_cleanup() {

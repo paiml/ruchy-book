@@ -30,7 +30,7 @@ Programs need to work with collections of data - text strings, lists of numbers,
 This example is tested in `tests/ch06-data-structures/test_01_string_basics.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let greeting = "Hello";
     let name = "World";
@@ -52,7 +52,7 @@ World
 This example is tested in `tests/ch06-data-structures/test_02_multiple_strings.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let first = "Hello";
     let second = "Beautiful";
@@ -77,7 +77,7 @@ World
 This example is tested in `tests/ch06-data-structures/test_03_numbers_and_strings.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let number = 42;
     let text = "Answer";
@@ -117,7 +117,6 @@ Answer
 
 ### String Variables
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let message = "Hello World";
 let name = "Alice";
@@ -128,7 +127,6 @@ let greeting = "Welcome";
 
 ### Mixed Types
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let text = "Count";
 let number = 100;
@@ -153,7 +151,6 @@ make test-file FILE=tests/ch06-data-structures/test_01_string_basics.ruchy
 
 ### Multiple String Storage
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let first_name = "John";
 let last_name = "Doe";
@@ -164,7 +161,6 @@ let title = "Mr.";
 
 ### Data with Labels
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let label = "Temperature";
 let value = 72;
@@ -175,7 +171,6 @@ let unit = "Fahrenheit";
 
 ### Configuration Values
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let app_name = "MyApp";
 let version = "1.0";

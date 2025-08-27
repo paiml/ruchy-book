@@ -28,7 +28,7 @@ In Ruchy, we believe this first step should be immediate and rewarding, not buri
 Here's your first Ruchy program:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Hello, World!");
 }
@@ -84,7 +84,7 @@ The syntax `println(...)` is a function call:
 ### Multiple Arguments
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Hello", "World", "from", "Ruchy");
 }
@@ -104,7 +104,7 @@ Hello World from Ruchy
 ### Variables and Interpolation
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let name = "Alice";
     println("Hello,", name);
@@ -129,7 +129,7 @@ Hello, Alice!
 ### Numbers and Other Types
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("The answer is", 42);
     println("Pi is approximately", 3.14159);
@@ -154,7 +154,7 @@ Is Ruchy awesome? true
 
 ### Forgetting Quotes
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ This won't work - intentional error example
 // println(Hello, World!);
 //
@@ -174,7 +174,7 @@ fun main() {
 
 ### Mixing Quote Types
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ Quotes don't match - intentional error example
 // println("Hello, World!');
 //
@@ -194,7 +194,7 @@ fun main() {
 
 ### Case Sensitivity
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ Wrong capitalization - intentional error example
 // PrintLn("Hello, World!");
 //
@@ -220,7 +220,7 @@ Ever wonder what happens "under the hood" when you write Ruchy code? Let's peek 
 
 Your Ruchy code:
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     println("Hello, World!");
 }

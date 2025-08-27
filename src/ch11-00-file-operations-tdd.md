@@ -30,7 +30,7 @@ Programs need to persist data beyond their execution - saving settings, storing 
 This example is tested in `tests/ch11-file-operations/test_01_simulated_file.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun read_config() -> i32 {
     // Simulate reading a config value
     return 42;
@@ -70,7 +70,7 @@ true
 This example is tested in `tests/ch11-file-operations/test_02_data_persistence.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun save_game_state(level: i32, score: i32) {
     println("Saving game state...");
     println("Level:");
@@ -116,7 +116,7 @@ State loaded successfully
 This example is tested in `tests/ch11-file-operations/test_03_config_management.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun get_default_config() -> i32 {
     return 100;
 }
@@ -179,7 +179,6 @@ Configuration applied successfully
 
 ### Simulated Read Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun read_data() -> DataType {
     // Return simulated data
@@ -191,7 +190,6 @@ fun read_data() -> DataType {
 
 ### Simulated Write Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun write_data(value: DataType) -> bool {
     // Validate and "write"
@@ -206,7 +204,6 @@ fun write_data(value: DataType) -> bool {
 
 ### Configuration Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 fun load_config() -> ConfigType {
     return default_config;
@@ -235,7 +232,7 @@ make test-file FILE=tests/ch11-file-operations/test_01_simulated_file.ruchy
 
 ### Settings Management
 ```ruchy
-// Status: ✅ WORKING
+
 fun load_settings() -> i32 {
     return 50; // Default volume
 }
@@ -249,7 +246,7 @@ fun save_settings(volume: i32) -> bool {
 
 ### Game Save System
 ```ruchy
-// Status: ✅ WORKING
+
 fun save_progress(level: i32, score: i32) {
     println("Saving progress...");
     println(level);
@@ -261,7 +258,7 @@ fun save_progress(level: i32, score: i32) {
 
 ### Cache Simulation
 ```ruchy
-// Status: ✅ WORKING
+
 fun get_cached_value(key: i32) -> i32 {
     // Simulate cache lookup
     if key == 1 {
@@ -275,7 +272,6 @@ fun get_cached_value(key: i32) -> i32 {
 
 ### Logging Pattern
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 fun log_event(message: &str, severity: i32) {
     println("LOG:");

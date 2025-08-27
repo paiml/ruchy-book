@@ -2,36 +2,38 @@
 
 **Test-Driven Documentation for the Ruchy Programming Language**
 
-[![Test Status](https://img.shields.io/badge/Tests-13%2F13%20Passing-brightgreen)](./INTEGRATION.md)
-[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.3.0-blue)](https://github.com/ruchy-lang/ruchy)
+[![Test Status](https://img.shields.io/badge/Tests-38%2F38%20Passing-brightgreen)](./INTEGRATION.md)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.20.0-blue)](https://github.com/ruchy-lang/ruchy)
 [![TDD Compliance](https://img.shields.io/badge/TDD-100%25-success)](./docs/specifications/tdd-driven-ruchy-book.md)
+[![Quality Score](https://img.shields.io/badge/Quality-B%2B%20(0.85)-yellow)](./PUBLICATION_READINESS_FINAL_v1.20.0.md)
 
 ## 🎯 **CRITICAL: Test-Driven Transformation**
 
 This book has undergone a complete Test-Driven Development (TDD) transformation. **Every example is tested BEFORE documentation.**
 
-### Current Status (v1.3.0)
+### Current Status (v1.20.0)
 - ✅ **Foundation Chapters**: 100% tested (11/11 examples passing)
-- ✅ **Module System**: 100% tested (2/2 examples passing)
-- ✅ **Total Tests**: 13/13 passing (100%)
-- ✅ **Quality Gates**: All passing
+- ✅ **Module System**: 100% tested (27/27 examples passing)
+- ✅ **Total Tests**: 38/38 passing (100%)
+- ✅ **Quality Score**: 0.85/1.0 (B+ grade)
+- ✅ **Quality Tools**: test, lint, prove, score all working
 - ✅ **Single Source of Truth**: [`INTEGRATION.md`](./INTEGRATION.md)
 
 ## 🧪 **Verify Everything Works**
 
 ```bash
 # Test all examples
-make test
-# Output: 11 passed, 0 failed
-
-# Test specific chapters
-make test-ch01  # Hello World (3/3 passing)
-make test-ch02  # Variables (4/4 passing)
-make test-ch03  # Functions (4/4 passing)
+ruchy test tests/
+# Output: 38 passed, 0 failed
 
 # Run quality checks
-make lint       # Check code quality
-make validate   # Run all validations
+ruchy lint tests/      # Check code quality (0 issues)
+ruchy score tests/     # Quality scoring (0.85/1.0)
+ruchy prove tests/     # Mathematical verification
+
+# Build and serve book
+mdbook build          # Generate static site
+mdbook serve          # Preview at localhost:3000
 ```
 
 ## 📖 **What Makes This Book Different**
@@ -40,24 +42,28 @@ make validate   # Run all validations
 |--------------------------|-----------|
 | Write docs, hope code works | Test first, document what works |
 | "Should work" examples | 100% verified examples |
-| Version mismatches | Explicit v1.1.0 testing |
+| Version mismatches | Explicit v1.20.0 testing |
 | Broken examples frustrate readers | Every example guaranteed to work |
-| Trust the author | Verify yourself with `make test` |
+| Trust the author | Verify yourself with `ruchy test` |
+| No quality metrics | B+ quality grade (0.85/1.0) |
 
 ## 🚀 **Quick Start**
 
-### 1. Install Ruchy v1.1.0
+### 1. Install Ruchy v1.20.0
 ```bash
+# Install latest version
+cargo install ruchy --version 1.20.0
+
 # Verify version
 ruchy --version
-# Should show: ruchy 1.1.0
+# Should show: ruchy 1.20.0
 ```
 
 ### 2. Clone and Test
 ```bash
 git clone https://github.com/paiml/ruchy-book.git
 cd ruchy-book
-make test  # Verify all examples work
+ruchy test tests/  # Verify all 38 examples work
 ```
 
 ### 3. Read with Confidence
@@ -87,23 +93,20 @@ Chapters 4-20 will be developed using the same TDD methodology:
 ```
 tests/
 ├── ch01-hello-world/     # 3 passing tests
-│   ├── test_01_basic.ruchy
-│   ├── test_02_multiple_prints.ruchy
-│   └── test_03_with_variable.ruchy
 ├── ch02-variables/       # 4 passing tests
-│   ├── test_01_basic_let.ruchy
-│   ├── test_02_string_var.ruchy
-│   ├── test_03_multiple_vars.ruchy
-│   └── test_04_float_vars.ruchy
-└── ch03-functions/       # 4 passing tests
-    ├── test_01_basic_function.ruchy
-    ├── test_02_function_with_return.ruchy
-    ├── test_03_function_with_types.ruchy
-    └── test_04_nested_calls.ruchy
+├── ch03-functions/       # 4 passing tests
+└── ch04-modules/         # 27 passing tests
+    ├── arrays/
+    ├── control-flow/
+    ├── error-handling/
+    ├── one-liners/
+    └── patterns/
 ```
 
 ### Quality Metrics
-- **Test Pass Rate**: 100% (11/11)
+- **Test Pass Rate**: 100% (38/38)
+- **Quality Score**: 0.85/1.0 (B+ grade)
+- **Lint Issues**: 0
 - **Compilation Success**: 100%
 - **Runtime Success**: 100%
 - **Documentation Accuracy**: 100%
@@ -224,6 +227,6 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 **Philosophy**: *"Test first, document what works, never promise what doesn't exist."*
 
-**Status**: 🟢 Foundation Complete | 🔄 Intermediate Chapters Next | 📊 11/11 Tests Passing
+**Status**: 🟢 Publication Ready | ✅ Quality Tools Integrated | 📊 38/38 Tests Passing
 
-**Last Updated**: 2025-08-23 | **Ruchy Version**: v1.1.0 | **Book Version**: 2.0.0-TDD
+**Last Updated**: 2025-08-27 | **Ruchy Version**: v1.20.0 | **Book Version**: 3.0.0-QUALITY

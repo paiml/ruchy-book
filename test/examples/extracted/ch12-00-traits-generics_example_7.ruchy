@@ -1,2 +1,0 @@
-fn save_to_file<T: Serializable>(item: T, path: String) {
-fn save_to_file<T: Serializable>(item: T, path: String) {

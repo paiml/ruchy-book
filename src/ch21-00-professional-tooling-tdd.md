@@ -21,7 +21,7 @@ Ruchy v1.10.0 provides a comprehensive suite of professional development tools t
 ### ✅ ruchy check - Syntax Validation
 
 ```ruchy
-// Status: ✅ WORKING
+
 // test/tooling/simple_test.ruchy - ✓ VERIFIED WORKING
 fun add(a: i32, b: i32) -> i32 {
     a + b

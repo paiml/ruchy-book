@@ -46,7 +46,6 @@ Most developers test manually and hope for the best. In Ruchy, testing is built 
 Here's comprehensive testing in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Unit test with multiple assertions
 #[test]
@@ -122,7 +121,6 @@ That's testing with confidence!
 Test individual components:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Basic test
 #[test]
@@ -192,7 +190,6 @@ mod calculator_tests {
 Reusable test setup:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fixture trait
 trait TestFixture {
@@ -260,7 +257,6 @@ fun test_with_auto_cleanup(fixture: DatabaseFixture) {
 Test in isolation:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mock trait
 trait EmailService {
@@ -328,7 +324,6 @@ fun test_with_stub() {
 Test with generated inputs:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 use proptest::prelude::*
 
@@ -393,7 +388,6 @@ fun test_database_consistency(operations: Vec<DbOperation>) {
 Test complete workflows:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Integration test in tests/ directory
 #[integration_test]
@@ -474,7 +468,6 @@ fun test_database_transactions() {
 Measure and optimize:
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Benchmarks
 #[bench]
@@ -554,7 +547,6 @@ fun test_with_profiling() {
 ### Code Coverage
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Run tests with coverage
 $ ruchy test --coverage
@@ -595,7 +587,6 @@ fun debug_function() {
 ### Mutation Testing
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Mutation testing finds gaps in tests
 $ ruchy mutate
@@ -622,7 +613,6 @@ fun test_addition_not_subtraction() {
 ### Fuzzing
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // Fuzz testing for security
 #[fuzz_test]
@@ -697,7 +687,6 @@ jobs:
 ### Quality Gates
 
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Failed to parse Ruchy source
 // quality.ruchy - Quality gate script
 fun main() {

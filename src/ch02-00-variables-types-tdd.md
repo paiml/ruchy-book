@@ -30,7 +30,7 @@ Programs need to store and manipulate data. Variables give us named storage loca
 This example is tested in `tests/ch02-variables/test_01_basic_let.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let x = 42;
     println(x);
@@ -49,7 +49,7 @@ fun main() {
 This example is tested in `tests/ch02-variables/test_02_string_var.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let name = "Ruchy";
     println(name);
@@ -68,7 +68,7 @@ Ruchy
 This example is tested in `tests/ch02-variables/test_03_multiple_vars.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let x = 10;
     let y = 20;
@@ -89,7 +89,7 @@ fun main() {
 This example is tested in `tests/ch02-variables/test_04_float_vars.ruchy`:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let pi = 3.14159;
     let radius = 5.0;
@@ -134,7 +134,7 @@ All arithmetic follows standard precedence rules.
 Variables exist within their defining block:
 
 ```ruchy
-// Status: ✅ WORKING
+
 fun main() {
     let outer = 100;
     // outer is accessible here
@@ -161,7 +161,6 @@ make test-file FILE=tests/ch02-variables/test_01_basic_let.ruchy
 
 ### Pattern 1: Simple Calculation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let result = value1 + value2;
 
@@ -170,7 +169,6 @@ let result = value1 + value2;
 
 ### Pattern 2: Multi-Step Calculation
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let step1 = initial_value * factor;
 let step2 = step1 + adjustment;
@@ -181,7 +179,6 @@ let final_result = step2 / divisor;
 
 ### Pattern 3: Named Constants
 ```ruchy
-// Status: ❌ BROKEN
 // Error: ✗ Compilation failed: Compilation failed:
 let PI = 3.14159;
 let GRAVITY = 9.81;

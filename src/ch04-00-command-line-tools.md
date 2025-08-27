@@ -28,7 +28,6 @@ Most people think command-line tools are complex, requiring deep system knowledg
 Here's a simple but useful command-line tool in Ruchy:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // File: word_counter.ruchy
 // Simple word counter tool
@@ -80,7 +79,6 @@ That's a real tool! It solves a common problem with simple code.
 
 Get information from users with `input()`:
 ```ruchy
-// Status: ❌ BROKEN
 
 let name = input("What's your name? ")
 let age = input("How old are you? ").to_i()
@@ -99,7 +97,6 @@ let is_student = input("Are you a student? (y/n) ") == "y"
 
 Work with files using built-in functions:
 ```ruchy  
-// Status: ❌ BROKEN
 
 // Reading files
 let content = read_file("data.txt")
@@ -126,7 +123,6 @@ let size = file_size("data.txt")
 
 Access command-line arguments:
 ```ruchy
-// Status: ❌ BROKEN
 
 // Usage: ruchy run script.ruchy file1.txt file2.txt
 let args = command_args()
@@ -150,7 +146,6 @@ println("Processing: " + first_file + " and " + second_file)
 ### File Processor
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // File: text_processor.ruchy
 // Processes text files with various operations
@@ -216,7 +211,6 @@ match choice {
 ### Log Analyzer
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: log_analyzer.ruchy
 // Analyzes server log files
@@ -275,7 +269,6 @@ println("Busiest Hour: " + busiest_hour.to_s() + ":00")
 ### Batch File Renamer
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // File: batch_renamer.ruchy  
 // Renames multiple files with patterns
@@ -319,7 +312,6 @@ println("\nRenamed " + renamed_count.to_s() + " files")
 Real tools need proper error handling:
 
 ```ruchy
-// Status: ❌ BROKEN
 
 // Robust file processor with error handling
 
@@ -373,7 +365,6 @@ if process_file(filename) {
 Make your tools user-friendly:
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // Good CLI tool practices
 
@@ -429,7 +420,6 @@ See how Ruchy's simple file operations become efficient system calls:
 
 Your Ruchy code:
 ```ruchy
-// Status: ❌ BROKEN
 // Example: Manual line counting implementation
 
 fun main() {
@@ -532,7 +522,6 @@ $ ruchy repl
 **Example Complete Tool - Task Manager:**
 
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED
 
 // task_manager.ruchy - A simple but useful task management tool
 
@@ -653,7 +642,7 @@ Build tools that solve YOUR daily problems - that's where programming becomes po
 
 ### No Error Handling
 ```ruchy
-// Status: ✅ WORKING
+
 // ❌ This demonstrates what NOT to do - no error handling
 
 fun main() {
@@ -675,7 +664,6 @@ fun main() {
 
 ### Poor User Experience
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Confusing and unhelpful
 println("Enter thing:")
@@ -693,7 +681,6 @@ let thing = input()
 
 ### Hardcoded Paths
 ```ruchy
-// Status: ❌ BROKEN
 
 // ❌ Only works on your computer
 let data = read_file("/Users/noah/Desktop/data.txt")
