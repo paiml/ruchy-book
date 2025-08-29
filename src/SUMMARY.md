@@ -32,37 +32,19 @@
     - [Interpreter and Scripting](ch01-03-interpreter-scripting.md)
 - [Variables and Types](ch02-00-variables-types.md)
 - [Functions](ch03-00-functions.md)
-- [Testing Functions](ch03-01-testing-functions.md)
 
 ### Level 1: Real-World Programs
 
 - [Command-Line Tools](ch04-00-command-line-tools.md)
     - [One-Liners: Data Science Powerhouse](ch04-01-one-liners.md)
 - [Data Processing](ch05-00-data-processing.md)
-- [File Operations](ch06-00-file-operations.md)
 - [Building Applications](ch07-00-building-applications.md)
 
-### Level 2: Systems & Performance
-
-- [Systems Programming](./ch08-00-systems-programming.md)
-- [Network Programming](./ch09-00-network-programming.md)
-- [Performance & Optimization](./ch10-00-performance-optimization.md)
-- [Advanced Patterns](./ch11-00-advanced-patterns.md)
 
 ### Level 3: Advanced Features
 
-- [Traits and Generics](./ch12-00-traits-generics.md)
-- [Error Handling](./ch13-00-error-handling.md)
-- [Concurrency](./ch14-00-concurrency.md)
 - [Macros and Metaprogramming](./ch15-00-macros-metaprogramming.md)
 
-### Level 4: Production Systems
-
-- [Testing & Quality](./ch16-00-testing-quality.md)
-- [Documentation](./ch17-00-documentation.md)
-- [Deployment & DevOps](./ch18-00-deployment-devops.md)
-- [Real-World Projects](./ch19-00-real-world-projects.md)
-- [Developer Tooling & Workflow](./ch20-00-tooling.md)
 
 ## Conclusion
 
@@ -71,7 +53,6 @@
 ## Appendices
 
 - [Appendix A: Installation Guide](./appendix-a-installation.md)
-- [Appendix B: Syntax Reference](./appendix-b-syntax-reference.md)
 - [Appendix C: Troubleshooting Guide](./appendix-c-troubleshooting.md)
 - [Appendix D: Glossary](./appendix-d-glossary.md)
 - [Appendix E: Learning Resources](./appendix-e-resources.md)
