@@ -1,75 +1,75 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-26T17:51:18.774Z  
-**Ruchy Version**: ruchy 1.18.2  
-**Book Commit**: 0c3460b  
+**Generated**: 2025-08-29T18:00:00.000Z  
+**Ruchy Version**: ruchy 1.26.0  
+**Book Commit**: 99b09f9  
 
 ---
 
 ## 🎯 Executive Summary
 
-- **Total Examples**: 411
-- **Passing**: 411/411 (100.0%)
-- **Test Coverage**: 0.0%
-- **Lint Grade**: F
-- **Provability**: 100.0% formally verified
+- **Total Examples**: 375 (book) + 20 (one-liners) = 395
+- **Passing**: 105 (book) + 17 (one-liners) = 122
+- **Pass Rate**: 30.9%
+- **Test Coverage**: Not measured (ruchy coverage not available)
+- **Lint Grade**: Not measured in this test run
+- **Provability**: Not measured in this test run
 
 ---
 
 ## 📊 Test Results
 
-### Summary by Quality Gate
-| Quality Gate | Pass | Fail | Rate |
-|-------------|------|------|------|
-| ruchy test | 411 | 0 | 100.0% |
-| ruchy lint | 199 | 212 | 48.4% |
-| coverage >80% | 0 | 411 | 0.0% |
-| ruchy prove | 411 | 0 | 100.0% |
+### Summary by Chapter
+| Chapter | Examples | Pass | Fail | Rate |
+|---------|----------|------|------|------|
+| ch01-02-hello-world | 8 | 8 | 0 | 100% |
+| ch01-02-hello-world-tdd | 6 | 6 | 0 | 100% |
+| ch01-03-interpreter-scripting | 15 | 9 | 6 | 60% |
+| ch02-00-variables-types | 9 | 7 | 2 | 78% |
+| ch02-00-variables-types-tdd | 8 | 6 | 2 | 75% |
+| ch03-00-functions | 12 | 6 | 6 | 50% |
+| ch03-00-functions-tdd | 9 | 8 | 1 | 89% |
+| ch03-01-testing-functions | 12 | 0 | 12 | 0% |
+| ch04-00-command-line-tools | 14 | 2 | 12 | 14% |
+| ch04-00-modules-tdd | 6 | 2 | 4 | 33% |
+| ch04-01-one-liners | 20 | 17 | 3 | 85% |
+| ch05-00-control-flow-tdd | 14 | 8 | 6 | 57% |
+| ch05-00-data-processing | 10 | 1 | 9 | 10% |
+| ch06-00-data-structures-tdd | 8 | 8 | 0 | 100% |
+| ch06-00-file-operations | 10 | 0 | 10 | 0% |
+| ch07-00-building-applications | 9 | 0 | 9 | 0% |
+| ch07-00-error-handling-tdd | 9 | 3 | 6 | 33% |
+| ch08-00-advanced-functions-tdd | 9 | 5 | 4 | 56% |
+| ch08-00-systems-programming | 9 | 0 | 9 | 0% |
+| ch09-00-collections-tdd | 10 | 4 | 6 | 40% |
+| ch09-00-network-programming | 10 | 0 | 10 | 0% |
+| ch10-00-input-output-tdd | 10 | 7 | 3 | 70% |
+| ch10-00-performance-optimization | 11 | 0 | 11 | 0% |
+| ch11-00-advanced-patterns | 12 | 0 | 12 | 0% |
+| ch11-00-file-operations-tdd | 10 | 6 | 4 | 60% |
+| **TOTAL** | **375** | **105** | **270** | **28%** |
 
-### Failed Examples
+### One-Liner Tests
+| Category | Pass | Fail | Total |
+|----------|------|------|-------|
+| Basic Mathematics | 4 | 0 | 4 |
+| Boolean Logic | 4 | 0 | 4 |
+| String Operations | 2 | 0 | 2 |
+| Mathematical Functions | 2 | 0 | 2 |
+| Real-World Calculations | 3 | 0 | 3 |
+| Output Functions | 0 | 1 | 1 |
+| JSON Output | 0 | 2 | 2 |
+| Shell Integration | 1 | 0 | 1 |
+| Performance Comparisons | 1 | 0 | 1 |
+| **TOTAL** | **17** | **3** | **20** |
 
-
-
----
-
-## 🔧 Lint Analysis
-
-**Overall Grade**: F
-
-### Lint Issues by Category
-- Lint issues: 
-- Lint issues: 
-- Lint issues: 
-- Lint issues: 
-- Lint issues: 
-... and 207 more issues
-
----
-
-## 📈 Coverage Report
-
-**Average Coverage**: 0.0%
-
-### Coverage Distribution
-| Range | Count | Examples |
-|-------|-------|----------|
-| 100% | 0 | Perfect coverage |
-| 80-99% | 0 | Good coverage |
-| 50-79% | 0 | Needs improvement |
-| <50% | 411 | Poor coverage |
-
----
-
-## ✅ Formal Verification
-
-**Provability Score**: 100.0%
-
-### Verified Examples
-- ✅ tests/ch09-collections/test_01_iteration_for.ruchy
-- ✅ tests/ch09-collections/test_02_while_accumulation.ruchy
-- ✅ tests/ch09-collections/test_03_nested_loops.ruchy
-- ✅ tests/ch08-advanced-functions/test_02_multiple_returns.ruchy
-- ✅ tests/ch08-advanced-functions/test_03_recursive_function.ruchy
+### Key Failures
+Common failure patterns observed:
+- **Testing features**: All testing-related examples fail (ch03-01-testing-functions: 0%)
+- **Advanced features**: System programming, network programming, performance optimization all at 0%
+- **File operations**: Basic file I/O completely broken (ch06-file-operations: 0%)
+- **Command-line tools**: Argument parsing mostly broken (ch04-command-line-tools: 14%)
+- **JSON output**: JSON serialization not working in one-liners
 
 ---
 
@@ -79,10 +79,22 @@
 
 | Gate | Required | Current | Status |
 |------|----------|---------|--------|
-| Test Pass Rate | 100% | 100.0% | ✅ |
-| Lint Grade | A+ | F | ❌ |
-| Coverage | 100% | 0.0% | ❌ |
-| Provability | >50% | 100.0% | ✅ |
+| Test Pass Rate | 100% | 30.9% | ❌ |
+| Lint Grade | A+ | Not measured | ❓ |
+| Coverage | 100% | Not available | ❓ |
+| Provability | >50% | Not measured | ❓ |
+
+---
+
+## 📝 Version-Specific Notes
+
+### v1.26.0 Status
+- Object Inspection Protocol & Test Coverage Enhancement release
+- Basic features (hello world, variables, simple functions) working well
+- Data structures (arrays, strings) fully functional
+- Control flow (if/else, loops) mostly working
+- Advanced features (testing, file I/O, networking) not yet implemented
+- One-liners performing well for basic operations
 
 ---
 
