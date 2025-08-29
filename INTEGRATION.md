@@ -1,19 +1,20 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-08-29T18:00:00.000Z  
+**Generated**: 2025-08-29T18:45:00.000Z  
 **Ruchy Version**: ruchy 1.26.0  
-**Book Commit**: 99b09f9  
+**Book Commit**: After SATD elimination  
 
 ---
 
 ## 🎯 Executive Summary
 
-- **Total Examples**: 375 (book) + 20 (one-liners) = 395
-- **Passing**: 105 (book) + 17 (one-liners) = 122
-- **Pass Rate**: 30.9%
-- **Test Coverage**: Not measured (ruchy coverage not available)
-- **Lint Grade**: Not measured in this test run
-- **Provability**: Not measured in this test run
+### Post-SATD Elimination Results
+- **Total Examples**: 201 (reduced from 375 after removing vaporware)
+- **Passing**: 104 (book examples)
+- **Pass Rate**: 52% (up from 30.9%)
+- **SATD Removed**: 15 vaporware chapters deleted
+- **Remaining Issues**: 97 broken examples need fixing
+- **Quality Status**: Zero vaporware, reduced technical debt
 
 ---
 
