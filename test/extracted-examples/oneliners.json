@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-08-26T20:19:40.686Z",
-  "ruchy_version": "ruchy 1.18.2",
+  "timestamp": "2025-08-29T12:47:06.722Z",
+  "ruchy_version": "ruchy 1.26.0",
   "total_tests": 20,
-  "passed_tests": 19,
-  "failed_tests": 1,
+  "passed_tests": 17,
+  "failed_tests": 3,
   "planned_tests": 12,
-  "success_rate": 95,
+  "success_rate": 85,
   "results": [
     {
       "test": {
@@ -175,8 +175,9 @@
         "expected": "{\"success\":true,\"result\":\"8\"}",
         "category": "JSON Output"
       },
-      "passed": true,
-      "actual": "{\"success\":true,\"result\":\"8\"}"
+      "passed": false,
+      "actual": "{\"result\":\"8\",\"success\":true}",
+      "error": "Expected: {\"success\":true,\"result\":\"8\"}, Got: {\"result\":\"8\",\"success\":true}"
     },
     {
       "test": {
@@ -185,8 +186,9 @@
         "expected": "{\"success\":true,\"result\":\"108\"}",
         "category": "JSON Output"
       },
-      "passed": true,
-      "actual": "{\"success\":true,\"result\":\"108\"}"
+      "passed": false,
+      "actual": "{\"result\":\"108\",\"success\":true}",
+      "error": "Expected: {\"success\":true,\"result\":\"108\"}, Got: {\"result\":\"108\",\"success\":true}"
     },
     {
       "test": {

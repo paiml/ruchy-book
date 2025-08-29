@@ -234,44 +234,42 @@ Loop ended
 
 ### Conditionals
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-if condition {
-    // true branch
-} else if other_condition {
-    // else if branch
+let x = 10;
+let y = 5;
+
+if x > y {
+    println("x is greater");
+} else if x < y {
+    println("y is greater");
 } else {
-    // false branch
+    println("they are equal");
 }
-
-
 ```
 
 ### Loops
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
 // While loop
-while condition {
-    // loop body
+let mut count = 0;
+while count < 3 {
+    println("Count: " + count);
+    count = count + 1;
 }
 
 // For loop with range
-for variable in start..end {
-    // loop body
+for i in 1..4 {
+    println("Iteration: " + i);
 }
-
-
 ```
 
 ### Match
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-match value {
-    pattern1 => action1,
-    pattern2 => action2,
-    _ => default_action
+let number = 2;
+match number {
+    1 => println("One"),
+    2 => println("Two"),
+    3 => println("Three"),
+    _ => println("Other")
 }
-
-
 ```
 
 ## Testing Your Code
@@ -290,26 +288,23 @@ make test-file FILE=tests/ch05-control-flow/test_01_if_else.ruchy
 
 ### Decision Making
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
+let user_input = 75;
+let threshold = 50;
+
 if user_input > threshold {
-    process_high_value();
+    println("High value: " + user_input);
 } else {
-    process_normal_value();
+    println("Normal value: " + user_input);
 }
-
-
 ```
 
 ### Counting Loop
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
 let mut count = 0;
 while count < 10 {
-    do_something();
+    println("Count is: " + count);
     count = count + 1;
 }
-
-
 ```
 
 ### Range Processing
@@ -324,14 +319,13 @@ for i in 1..5 {
 
 ### Value Classification
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
+let status_code = 200;
 match status_code {
     200 => println("Success"),
     404 => println("Not Found"),
     500 => println("Server Error"),
     _ => println("Unknown Status")
 }
-
 
 ```
 
