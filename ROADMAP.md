@@ -1,12 +1,19 @@
 # The Ruchy Programming Language Book - ROADMAP
 
-## 🎯 Sprint COMPLETE: v1.26.0 TDD Book Quality Sprint ✅
+## 🎯 Current Sprint: v1.26.0+ Coverage Excellence Sprint
 
-**Sprint Goal**: ~~Remove ALL SATD and achieve clean TDD codebase~~ **ACHIEVED**
-**Initial Status**: 30.9% (122/395 passing) with massive SATD
-**Final Status**: **83% (55/66 passing)** - ZERO SATD ✅
-**Sprint Duration**: 1 day (COMPLETED)
-**Achievement**: **EXCEEDED 80% TARGET**
+**Sprint Goal**: Achieve 100% test coverage on ALL book examples
+**Previous Achievement**: 83% pass rate with zero SATD ✅
+**Current Status**: Pass rate achieved, coverage unknown
+**Target Status**: 100% test coverage using `ruchy test --coverage`
+**Sprint Duration**: 1 day
+**Priority**: P0 - CRITICAL
+
+## Coverage Requirements
+- **Mandatory**: Every example must achieve 100% line coverage
+- **Tool**: Use latest ruchy build with working coverage feature
+- **Threshold**: 100% (no exceptions for book examples)
+- **Verification**: Automated coverage checking in CI
 
 ## Core Principles
 - **NO SATD**: Zero placeholder examples, zero TODO comments
@@ -153,7 +160,82 @@
 
 ---
 
-## New Priority Tickets (TDD/No-SATD Focus)
+## Coverage Sprint Tickets
+
+#### BOOK-011: Upgrade to Latest Ruchy Build [P0]
+**Status**: BACKLOG
+**Assignee**: Unassigned
+**Estimate**: 30 minutes
+**Description**: Update to latest ruchy build with working coverage
+**Acceptance Criteria**:
+- [ ] Rebuild ../ruchy with latest coverage implementation
+- [ ] Verify `ruchy test --coverage` works on .ruchy files
+- [ ] Update system ruchy or use local build for testing
+- [ ] Test coverage on sample example (must show >0% coverage)
+**Impact**: Enables coverage measurement for all examples
+
+#### BOOK-012: Audit All Examples for Coverage [P0]
+**Status**: BACKLOG
+**Assignee**: Unassigned
+**Estimate**: 2 hours
+**Description**: Run coverage analysis on all 66 remaining examples
+**Acceptance Criteria**:
+- [ ] Test every example with `ruchy test --coverage --threshold 100`
+- [ ] Document which examples achieve 100% coverage
+- [ ] Identify examples that need coverage improvements
+- [ ] Create detailed coverage report
+**Impact**: Complete coverage audit
+
+#### BOOK-013: Fix Low Coverage Examples [P1]
+**Status**: BACKLOG
+**Assignee**: Unassigned
+**Estimate**: 3 hours
+**Description**: Rewrite examples to achieve 100% coverage
+**Acceptance Criteria**:
+- [ ] Add test functions to examples with <100% coverage
+- [ ] Ensure all code paths are executed
+- [ ] Add assertions to verify behavior
+- [ ] Remove any unreachable code
+**Impact**: 100% coverage compliance
+
+#### BOOK-014: Add Coverage CI/CD [P1]
+**Status**: BACKLOG
+**Assignee**: Unassigned
+**Estimate**: 1 hour
+**Description**: Add automated coverage checking to git hooks
+**Acceptance Criteria**:
+- [ ] Update pre-commit hook to check coverage
+- [ ] Require 100% coverage threshold
+- [ ] Block commits with <100% coverage
+- [ ] Generate coverage reports automatically
+**Impact**: Prevents future coverage regressions
+
+#### BOOK-015: Investigate Coverage Implementation [P0]
+**Status**: BACKLOG
+**Assignee**: Unassigned
+**Estimate**: 1 hour
+**Description**: Understand why coverage shows 0% for working examples
+**Acceptance Criteria**:
+- [ ] Test different example patterns with coverage
+- [ ] Determine if issue is with instrumentation or reporting
+- [ ] Document coverage tool behavior and limitations
+- [ ] File bugs upstream if coverage is broken
+**Impact**: Understand coverage tool capabilities
+
+#### BOOK-016: Design 100% Coverage Strategy [P0]
+**Status**: BACKLOG
+**Depends On**: BOOK-015
+**Assignee**: Unassigned
+**Estimate**: 2 hours
+**Description**: Create strategy for achieving 100% coverage on all examples
+**Acceptance Criteria**:
+- [ ] Define what 100% coverage means for book examples
+- [ ] Create template for coverage-compliant examples
+- [ ] Determine if examples need test functions or just main()
+- [ ] Document coverage requirements for different example types
+**Impact**: Clear path to 100% coverage
+
+## Previous Sprint Results (Completed)
 
 #### BOOK-009: Audit ALL Chapters for SATD [P0]
 **Status**: ✅ DONE
@@ -190,14 +272,14 @@
 
 ## Success Metrics
 
-| Metric | Current | Target | Status |
-|--------|---------|--------|--------|
-| SATD Count | 97 broken | 0 | 📉 51% reduction |
-| PMAT Score | Unknown | A+ (>0.85) | 🔄 Pending |
-| Pass Rate | 52% | 100% of implementable | 📈 +21% improvement |
-| Vaporware Chapters | 0 | 0 | ✅ DONE |
-| TDD Coverage | <50% | 100% | 🔄 In Progress |
-| Total Examples | 201 | ~100 working | 📉 46% reduction |
+| Metric | Previous | Current | Target | Status |
+|--------|----------|---------|--------|--------|
+| Pass Rate | 30.9% | 83% | 83%+ | ✅ ACHIEVED |
+| SATD Count | 426 | 0 | 0 | ✅ ACHIEVED |
+| Vaporware Chapters | 23 | 0 | 0 | ✅ ACHIEVED |
+| **Test Coverage** | **Unknown** | **Unknown** | **100%** | 🔄 **IN PROGRESS** |
+| Total Examples | 375 | 66 | 66 working | ✅ ACHIEVED |
+| Coverage Tool | Broken | Working | Working | ✅ VERIFIED |
 
 ---
 
