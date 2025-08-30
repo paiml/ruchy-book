@@ -17,11 +17,11 @@ The Ruchy Programming Language Book has achieved **100% line coverage** on all w
 
 ### ⚠️ Lint Compliance (BLOCKED)
 - **Tool**: `ruchy lint --strict`
-- **Clean Examples**: 7/19 (36.8%)
-- **False Positives**: 12/19 (63.2%) - Variables in f-strings incorrectly marked as unused
-- **True Errors**: 0
-- **Blocker**: GitHub Issue #8 - Lint tool bug with f-string variable tracking
-- **Status**: ⚠️ BLOCKED by upstream bug
+- **Clean Examples**: 7/19 (36.8%) - only examples without variables
+- **False Positives**: 12/19 (63.2%) - ALL variable usage marked as unused
+- **True Errors**: 0 - No actual issues found
+- **Blocker**: GitHub Issue #8 - Critical lint bug: variable usage tracking completely broken
+- **Status**: ⚠️ BLOCKED by upstream bug (severity: HIGH)
 
 ## Detailed Results
 
@@ -53,7 +53,11 @@ True errors: 0
 
 ## Known Issues
 
-1. **Lint Tool Bug** (GitHub #8): Variables used in f-strings are incorrectly marked as unused
+1. **CRITICAL Lint Tool Bug** (GitHub #8): Variable usage tracking completely broken
+   - Variables used in println() marked as unused
+   - Variables used in f-strings marked as unused  
+   - Variables used in expressions marked as unused
+   - Affects 100% of examples with variables (12/19)
 2. **Branch Coverage**: 2 examples have complex branching that achieves only 90% overall coverage despite 100% line coverage
 
 ## Recommendations
