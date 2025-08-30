@@ -1,7 +1,7 @@
 === ch02-00-variables-types-tdd example 6 ===
 ✗ Compilation failed: Compilation failed:
 error: expected expression, found `let` statement
- --> /tmp/.tmpgNzMp8/main.rs:1:63
+ --> /tmp/.tmpv5SVEo/main.rs:1:63
   |
 1 | use std :: collections :: HashMap ; fn main () { let result = let result = value1 + value2 ; ; if let Some (s) = (& result as & dyn std :...
   |                                                               ^^^
@@ -9,19 +9,19 @@ error: expected expression, found `let` statement
   = note: only supported directly in conditions of `if` and `while` expressions
 
 error[E0425]: cannot find value `value1` in this scope
- --> /tmp/.tmpgNzMp8/main.rs:1:76
+ --> /tmp/.tmpv5SVEo/main.rs:1:76
   |
 1 | use std :: collections :: HashMap ; fn main () { let result = let result = value1 + value2 ; ; if let Some (s) = (& result as & dyn std :...
   |                                                                            ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `value2` in this scope
- --> /tmp/.tmpgNzMp8/main.rs:1:85
+ --> /tmp/.tmpv5SVEo/main.rs:1:85
   |
 1 | use std :: collections :: HashMap ; fn main () { let result = let result = value1 + value2 ; ; if let Some (s) = (& result as & dyn std :...
   |                                                                                     ^^^^^^ not found in this scope
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpgNzMp8/main.rs:1:5
+ --> /tmp/.tmpv5SVEo/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let result = let result = value1 + value2 ; ; if let Some (s) = (& result as & dyn std :...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -29,7 +29,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpgNzMp8/main.rs:1:94
+ --> /tmp/.tmpv5SVEo/main.rs:1:94
   |
 1 | use std :: collections :: HashMap ; fn main () { let result = let result = value1 + value2 ; ; if let Some (s) = (& result as & dyn std :...
   |                                                                                              ^ help: remove this semicolon
@@ -45,31 +45,31 @@ For more information about this error, try `rustc --explain E0425`.
 === ch02-00-variables-types-tdd example 7 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `initial_value` in this scope
- --> /tmp/.tmp1lXsG6/main.rs:1:62
+ --> /tmp/.tmpEkdJp1/main.rs:1:62
   |
 1 | use std :: collections :: HashMap ; fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_resu...
   |                                                              ^^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `factor` in this scope
- --> /tmp/.tmp1lXsG6/main.rs:1:78
+ --> /tmp/.tmpEkdJp1/main.rs:1:78
   |
 1 | use std :: collections :: HashMap ; fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_resu...
   |                                                                              ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `adjustment` in this scope
- --> /tmp/.tmp1lXsG6/main.rs:1:109
+ --> /tmp/.tmpEkdJp1/main.rs:1:109
   |
 1 | ... = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                      ^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `divisor` in this scope
- --> /tmp/.tmp1lXsG6/main.rs:1:151
+ --> /tmp/.tmpEkdJp1/main.rs:1:151
   |
 1 | ... step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                       ^^^^^^^ not found in this scope
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmp1lXsG6/main.rs:1:5
+ --> /tmp/.tmpEkdJp1/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_resu...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp1lXsG6/main.rs:1:87
+ --> /tmp/.tmpEkdJp1/main.rs:1:87
   |
 1 | use std :: collections :: HashMap ; fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_resu...
   |                                                                                       ^ help: remove this semicolon
@@ -85,13 +85,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp1lXsG6/main.rs:1:122
+ --> /tmp/.tmpEkdJp1/main.rs:1:122
   |
 1 | ...value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp1lXsG6/main.rs:1:161
+ --> /tmp/.tmpEkdJp1/main.rs:1:161
   |
 1 | ...adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                        ^ help: remove this semicolon
@@ -102,10 +102,58 @@ For more information about this error, try `rustc --explain E0425`.
 
 
 
+=== ch23-00-repl-object-inspection example 1 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 2 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 3 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 4 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 5 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 6 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 7 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 8 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 9 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 10 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 11 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch23-00-repl-object-inspection example 12 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
 === conclusion example 2 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `fs`
- --> /tmp/.tmpAVX1Xr/main.rs:1:455
+ --> /tmp/.tmpeWYJUo/main.rs:1:455
   |
 1 | .... pop () ; } } input } ; ; let contents = fs :: read_to_string ("file.txt" . to_string ()) ; ; let add_one = | x | x + 1i32 ; ; }
   |                                              ^^ use of unresolved module or unlinked crate `fs`
@@ -117,7 +165,7 @@ help: consider importing this module
   |
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpAVX1Xr/main.rs:1:5
+ --> /tmp/.tmpeWYJUo/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let arr = vec ! [1i32 , 2i32 , 3i32] ; ; let name = { print ! ("{}" , "Enter name: ") ; ...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,7 +173,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpAVX1Xr/main.rs:1:89
+ --> /tmp/.tmpeWYJUo/main.rs:1:89
   |
 1 | use std :: collections :: HashMap ; fn main () { let arr = vec ! [1i32 , 2i32 , 3i32] ; ; let name = { print ! ("{}" , "Enter name: ") ; ...
   |                                                                                         ^ help: remove this semicolon
@@ -133,19 +181,19 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpAVX1Xr/main.rs:1:438
+ --> /tmp/.tmpeWYJUo/main.rs:1:438
   |
 1 | .... ends_with ('\r') { input . pop () ; } } input } ; ; let contents = fs :: read_to_string ("file.txt" . to_string ()) ; ; let add_one ...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpAVX1Xr/main.rs:1:506
+ --> /tmp/.tmpeWYJUo/main.rs:1:506
   |
 1 | ... fs :: read_to_string ("file.txt" . to_string ()) ; ; let add_one = | x | x + 1i32 ; ; }
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpAVX1Xr/main.rs:1:539
+ --> /tmp/.tmpeWYJUo/main.rs:1:539
   |
 1 | ... . to_string ()) ; ; let add_one = | x | x + 1i32 ; ; }
   |                                                        ^ help: remove this semicolon
@@ -159,13 +207,13 @@ For more information about this error, try `rustc --explain E0433`.
 === ch10-00-input-output-tdd example 4 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `variable` in this scope
- --> /tmp/.tmp7PdpGp/main.rs:1:99
+ --> /tmp/.tmp6w6G45/main.rs:1:99
   |
 1 | use std :: collections :: HashMap ; fn main () { println ! ("text message") ; println ! ("{:?}" , variable) ; println ! ("{:?}" , 42i32) ...
   |                                                                                                   ^^^^^^^^ not found in this scope
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmp7PdpGp/main.rs:1:5
+ --> /tmp/.tmp6w6G45/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { println ! ("text message") ; println ! ("{:?}" , variable) ; println ! ("{:?}" , 42i32) ...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -181,13 +229,13 @@ For more information about this error, try `rustc --explain E0425`.
 === ch10-00-input-output-tdd example 5 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `value` in this scope
- --> /tmp/.tmpqYtUK9/main.rs:1:61
+ --> /tmp/.tmp5y8LbG/main.rs:1:61
   |
 1 | use std :: collections :: HashMap ; fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
   |                                                             ^^^^^ not found in this scope
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpqYtUK9/main.rs:1:5
+ --> /tmp/.tmp5y8LbG/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -195,7 +243,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpqYtUK9/main.rs:1:69
+ --> /tmp/.tmp5y8LbG/main.rs:1:69
   |
 1 | use std :: collections :: HashMap ; fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
   |                                                                     ^ help: remove this semicolon
@@ -215,19 +263,19 @@ For more information about this error, try `rustc --explain E0425`.
 === ch03-00-functions-tdd example 5 ===
 ✗ Compilation failed: Compilation failed:
 error[E0412]: cannot find type `return_type` in this scope
- --> /tmp/.tmpJ4RCSD/main.rs:1:79
+ --> /tmp/.tmpY2DFnk/main.rs:1:79
   |
 1 | use std :: collections :: HashMap ; fn function_name (parameters : String) -> return_type { { return_expression } } fn main () { }
   |                                                                               ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `return_expression` in this scope
- --> /tmp/.tmpJ4RCSD/main.rs:1:95
+ --> /tmp/.tmpY2DFnk/main.rs:1:95
   |
 1 | use std :: collections :: HashMap ; fn function_name (parameters : String) -> return_type { { return_expression } } fn main () { }
   |                                                                                               ^^^^^^^^^^^^^^^^^ not found in this scope
 
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpJ4RCSD/main.rs:1:5
+ --> /tmp/.tmpY2DFnk/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn function_name (parameters : String) -> return_type { { return_expression } } fn main () { }
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -235,7 +283,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpJ4RCSD/main.rs:1:93
+ --> /tmp/.tmpY2DFnk/main.rs:1:93
   |
 1 | use std :: collections :: HashMap ; fn function_name (parameters : String) -> return_type { { return_expression } } fn main () { }
   |                                                                                             ^^                 ^^
@@ -257,7 +305,7 @@ For more information about an error, try `rustc --explain E0412`.
 === ch05-00-control-flow-tdd example 8 ===
 ✗ Compilation failed: Compilation failed:
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpSzWbkY/main.rs:1:5
+ --> /tmp/.tmpqmpW1R/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") ...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -265,7 +313,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpSzWbkY/main.rs:1:66
+ --> /tmp/.tmpqmpW1R/main.rs:1:66
   |
 1 | use std :: collections :: HashMap ; fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") ...
   |                                                                  ^ help: remove this semicolon
@@ -273,13 +321,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpSzWbkY/main.rs:1:83
+ --> /tmp/.tmpqmpW1R/main.rs:1:83
   |
 1 | use std :: collections :: HashMap ; fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") ...
   |                                                                                   ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpSzWbkY/main.rs:1:109
+ --> /tmp/.tmpqmpW1R/main.rs:1:109
   |
 1 | ... 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } ...
   |                                                        ^^                          ^^
@@ -292,7 +340,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpSzWbkY/main.rs:1:160
+ --> /tmp/.tmpqmpW1R/main.rs:1:160
   |
 1 | ... { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; mat...
   |                                                        ^^                          ^^
@@ -304,7 +352,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpSzWbkY/main.rs:1:200
+ --> /tmp/.tmpqmpW1R/main.rs:1:200
   |
 1 | ...if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& resu...
   |                                                       ^^                            ^^
@@ -316,7 +364,7 @@ help: remove these braces
   |
 
 error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpSzWbkY/main.rs:1:373
+ --> /tmp/.tmpqmpW1R/main.rs:1:373
   |
 1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
   |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
@@ -336,7 +384,7 @@ For more information about this error, try `rustc --explain E0277`.
 === ch05-00-control-flow-tdd example 10 ===
 ✗ Compilation failed: Compilation failed:
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpHxPBSP/main.rs:1:5
+ --> /tmp/.tmpZob6Ue/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let number = 2i32 ; ; let result = match number { 1i32 => println ! ("One") , 2i32 => pr...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -344,7 +392,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpHxPBSP/main.rs:1:70
+ --> /tmp/.tmpZob6Ue/main.rs:1:70
   |
 1 | use std :: collections :: HashMap ; fn main () { let number = 2i32 ; ; let result = match number { 1i32 => println ! ("One") , 2i32 => pr...
   |                                                                      ^ help: remove this semicolon
@@ -352,7 +400,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpHxPBSP/main.rs:1:351
+ --> /tmp/.tmpZob6Ue/main.rs:1:351
   |
 1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
   |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
@@ -372,7 +420,7 @@ For more information about this error, try `rustc --explain E0277`.
 === ch05-00-control-flow-tdd example 11 ===
 ✗ Compilation failed: Compilation failed:
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpPQoe5P/main.rs:1:5
+ --> /tmp/.tmpxlKnz3/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > thresh...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -380,7 +428,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpPQoe5P/main.rs:1:75
+ --> /tmp/.tmpxlKnz3/main.rs:1:75
   |
 1 | use std :: collections :: HashMap ; fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > thresh...
   |                                                                           ^ help: remove this semicolon
@@ -388,13 +436,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpPQoe5P/main.rs:1:101
+ --> /tmp/.tmpxlKnz3/main.rs:1:101
   |
 1 | use std :: collections :: HashMap ; fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > thresh...
   |                                                                                                     ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpPQoe5P/main.rs:1:144
+ --> /tmp/.tmpxlKnz3/main.rs:1:144
   |
 1 | ... = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" ,...
   |                                   ^^                                                                    ^^
@@ -407,7 +455,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpPQoe5P/main.rs:1:226
+ --> /tmp/.tmpxlKnz3/main.rs:1:226
   |
 1 | ...: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_...
   |                                  ^^                                                                      ^^
@@ -419,7 +467,7 @@ help: remove these braces
   |
 
 error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpPQoe5P/main.rs:1:439
+ --> /tmp/.tmpxlKnz3/main.rs:1:439
   |
 1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
   |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
@@ -439,7 +487,7 @@ For more information about this error, try `rustc --explain E0277`.
 === ch05-00-control-flow-tdd example 14 ===
 ✗ Compilation failed: Compilation failed:
 warning: unused import: `std :: collections :: HashMap`
- --> /tmp/.tmpDsBuGy/main.rs:1:5
+ --> /tmp/.tmpBIpM0B/main.rs:1:5
   |
 1 | use std :: collections :: HashMap ; fn main () { let status_code = 200i32 ; ; let result = match status_code { 200i32 => println ! ("Succ...
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -447,7 +495,7 @@ warning: unused import: `std :: collections :: HashMap`
   = note: `#[warn(unused_imports)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpDsBuGy/main.rs:1:77
+ --> /tmp/.tmpBIpM0B/main.rs:1:77
   |
 1 | use std :: collections :: HashMap ; fn main () { let status_code = 200i32 ; ; let result = match status_code { 200i32 => println ! ("Succ...
   |                                                                             ^ help: remove this semicolon
@@ -455,7 +503,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpDsBuGy/main.rs:1:395
+ --> /tmp/.tmpBIpM0B/main.rs:1:395
   |
 1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
   |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
