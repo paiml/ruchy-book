@@ -806,3 +806,4 @@ make build
 - if it isn't automated it is broken.  never do tasks manually. fix root cause.
 - always rebuild book automatically on each push, i.e. each validation of the language
 - all code must be TDD, and cannot contain SATD.  Can use PMAT for verification.
+- all examples require 100% coverage since this is a book. must use ruchy coverage tool.
