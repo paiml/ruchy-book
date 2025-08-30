@@ -4,8 +4,8 @@
 
 **Sprint Goal**: Achieve 100% test coverage on ALL book examples
 **Previous Achievement**: 83% pass rate with zero SATD ✅
-**Current Status**: ❌ BLOCKED - Coverage tool regression in v1.27.0
-**Blocker**: GitHub issue #7 - Coverage "not yet implemented for .ruchy files"
+**Current Status**: ❌ BLOCKED - Coverage instrumentation broken in v1.27.1
+**Blocker**: GitHub issue #7 - Coverage shows 0% line coverage despite working tests
 **Target Status**: 100% test coverage (pending upstream fix)
 **Sprint Duration**: 1 day (blocked)
 **Priority**: P0 - CRITICAL
@@ -169,11 +169,11 @@
 **Estimate**: 30 minutes
 **Description**: Update to latest ruchy build with working coverage
 **Acceptance Criteria**:
-- [x] Updated to ruchy v1.27.0 from crates.io
-- [x] Verified coverage command exists
-- [x] ❌ BLOCKER: Coverage reports "not yet implemented for .ruchy files"
-- [x] Filed GitHub issue #7 about coverage regression
-**Impact**: ❌ BLOCKED - Coverage measurement unavailable
+- [x] Updated to ruchy v1.27.1 from crates.io
+- [x] Verified coverage command exists and runs
+- [x] ❌ BLOCKER: Coverage always shows 0% line coverage
+- [x] Filed GitHub issue #7 about coverage instrumentation bug
+**Impact**: ❌ BLOCKED - Line coverage instrumentation broken
 
 #### BOOK-012: Audit All Examples for Coverage [P0]
 **Status**: BACKLOG
