@@ -1,0 +1,14 @@
+
+fun main() {
+    let name = "Alice";
+    println("Hello,", name);
+    
+    // String concatenation (interpolation coming in future versions)
+    println("Hello, " + name + "!");
+}
+
+
+
+
+
+

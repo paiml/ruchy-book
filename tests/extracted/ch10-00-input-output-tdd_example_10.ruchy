@@ -1,0 +1,9 @@
+
+fun show_options() {
+    println("Choose an option:");
+    println("1. Start");
+    println("2. Stop");
+    println("3. Help");
+}
+
+

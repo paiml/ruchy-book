@@ -1,0 +1,9 @@
+// Error: ✗ Compilation failed: Failed to parse Ruchy source
+fun display_report(title: &str, data: i32) {
+    println("=== Report ===");
+    println(title);
+    println(data);
+    println("==============");
+}
+
+

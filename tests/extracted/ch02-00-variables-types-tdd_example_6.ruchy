@@ -1,0 +1,4 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let result = value1 + value2;
+
+

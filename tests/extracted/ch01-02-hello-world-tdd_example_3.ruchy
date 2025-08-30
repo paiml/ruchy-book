@@ -1,0 +1,7 @@
+
+fun main() {
+    let greeting = "Hello, World!";
+    println(greeting);
+}
+
+

@@ -1,0 +1,15 @@
+
+// ❌ Wrong capitalization - intentional error example
+// PrintLn("Hello, World!");
+//
+
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
+
+
+
+
+

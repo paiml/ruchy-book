@@ -1,0 +1,10 @@
+
+fun greet() {
+    println("Hello from function!");
+}
+
+fun main() {
+    greet();
+}
+
+

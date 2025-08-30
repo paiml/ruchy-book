@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let text = "Count";
+let number = 100;
+let flag = true;
+
+

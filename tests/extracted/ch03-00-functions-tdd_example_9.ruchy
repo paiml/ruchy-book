@@ -1,0 +1,10 @@
+
+fun helper(x: i32) -> i32 {
+    x * x
+}
+
+fun main_calculation(n: i32) -> i32 {
+    helper(n) + helper(n + 1)
+}
+
+

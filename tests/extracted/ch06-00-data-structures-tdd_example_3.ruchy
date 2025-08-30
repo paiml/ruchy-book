@@ -1,0 +1,9 @@
+
+fun main() {
+    let number = 42;
+    let text = "Answer";
+    println(text);
+    println(number);
+}
+
+

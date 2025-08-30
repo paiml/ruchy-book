@@ -1,0 +1,10 @@
+
+fun main() {
+    let score = 85;
+    if score >= 80 {
+        println("Great job!");
+    }
+    println("Score processed");
+}
+
+

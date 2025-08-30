@@ -1,0 +1,11 @@
+
+fun main() {
+    let first = "Hello";
+    let second = "Beautiful";
+    let third = "World";
+    println(first);
+    println(second);
+    println(third);
+}
+
+

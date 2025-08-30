@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let data = value;
+println("Label:");
+println(data);
+
+

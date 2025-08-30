@@ -1,0 +1,7 @@
+// Error: ✗ Compilation failed: Compilation failed:
+fun function_name(parameters) -> return_type {
+    // function body
+    return_expression
+}
+
+

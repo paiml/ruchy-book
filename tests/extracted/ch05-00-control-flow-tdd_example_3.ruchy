@@ -1,0 +1,15 @@
+
+fun main() {
+    let grade = 75;
+    if grade >= 90 {
+        println("A grade");
+    } else if grade >= 80 {
+        println("B grade");
+    } else if grade >= 70 {
+        println("C grade");
+    } else {
+        println("Below C");
+    }
+}
+
+

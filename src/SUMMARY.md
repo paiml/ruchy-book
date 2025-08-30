@@ -16,6 +16,7 @@
 ## Development and Integration
 
 - [Chapter 22: Working with Ruchy Compiler Development](ch22-00-ruchy-compiler-development-tdd.md)
+- [Chapter 23: REPL & Object Inspection](ch23-00-repl-object-inspection.md)
 
 ## Part II: Future Chapters (Awaiting Features)
 

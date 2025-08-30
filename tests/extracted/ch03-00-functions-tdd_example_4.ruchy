@@ -1,0 +1,15 @@
+
+fun square(n: i32) -> i32 {
+    n * n
+}
+
+fun sum_of_squares(a: i32, b: i32) -> i32 {
+    square(a) + square(b)
+}
+
+fun main() {
+    let result = sum_of_squares(3, 4);
+    println(result);
+}
+
+

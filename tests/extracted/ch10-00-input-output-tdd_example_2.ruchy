@@ -1,0 +1,17 @@
+
+fun main() {
+    let name = "Alice";
+    let age = 30;
+    let height = 5.6;
+    
+    println("=== User Profile ===");
+    println("Name:");
+    println(name);
+    println("Age:");
+    println(age);
+    println("Height:");
+    println(height);
+    println("================");
+}
+
+

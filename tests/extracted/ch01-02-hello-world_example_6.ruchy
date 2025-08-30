@@ -1,0 +1,16 @@
+
+// ❌ Quotes don't match - intentional error example
+// println("Hello, World!');
+//
+
+// Use either "..." or '...' but be consistent.
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
+
+
+
+
+
