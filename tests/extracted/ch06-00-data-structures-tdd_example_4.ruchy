@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let message = "Hello World";
+let name = "Alice";
+let greeting = "Welcome";
+
+

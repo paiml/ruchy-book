@@ -1,0 +1,5 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let PI = 3.14159;
+let GRAVITY = 9.81;
+
+

@@ -1,0 +1,8 @@
+let user_input = 75;
+let threshold = 50;
+
+if user_input > threshold {
+    println("High value: " + user_input);
+} else {
+    println("Normal value: " + user_input);
+}

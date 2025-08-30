@@ -1,0 +1,9 @@
+
+fun main() {
+    let outer = 100;
+    // outer is accessible here
+    println(outer);
+}
+// outer is NOT accessible here
+
+

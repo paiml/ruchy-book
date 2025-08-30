@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let first_name = "John";
+let last_name = "Doe";
+let title = "Mr.";
+
+

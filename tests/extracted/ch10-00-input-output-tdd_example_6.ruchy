@@ -1,0 +1,9 @@
+
+fun display_options() {
+    println("=== Menu ===");
+    println("1. Option One");
+    println("2. Option Two");
+    println("============");
+}
+
+

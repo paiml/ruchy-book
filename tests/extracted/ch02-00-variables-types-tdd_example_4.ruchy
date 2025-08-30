@@ -1,0 +1,9 @@
+
+fun main() {
+    let pi = 3.14159;
+    let radius = 5.0;
+    let area = pi * radius * radius;
+    println(area);
+}
+
+

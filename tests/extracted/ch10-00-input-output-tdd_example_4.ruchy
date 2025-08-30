@@ -1,0 +1,7 @@
+// Error: ✗ Compilation failed: Compilation failed:
+println("text message");
+println(variable);
+println(42);
+println(true);
+
+

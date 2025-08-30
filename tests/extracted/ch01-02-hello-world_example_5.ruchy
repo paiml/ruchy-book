@@ -1,0 +1,16 @@
+
+// ❌ This won't work - intentional error example
+// println(Hello, World!);
+//
+
+// Always use quotes for literal text.
+
+fun main() {
+    // ✅ Correct way:
+    println("Hello, World!");
+}
+
+
+
+
+

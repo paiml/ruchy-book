@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let app_name = "MyApp";
+let version = "1.0";
+let debug = true;
+
+

@@ -1,0 +1,11 @@
+
+fun multiply(x: i32, y: i32) -> i32 {
+    x * y
+}
+
+fun main() {
+    let product = multiply(6, 7);
+    println(product);
+}
+
+

@@ -1,0 +1,6 @@
+// Error: ✗ Compilation failed: Compilation failed:
+let label = "Temperature";
+let value = 72;
+let unit = "Fahrenheit";
+
+

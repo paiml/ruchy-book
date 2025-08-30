@@ -1,0 +1,8 @@
+let status_code = 200;
+match status_code {
+    200 => println("Success"),
+    404 => println("Not Found"),
+    500 => println("Server Error"),
+    _ => println("Unknown Status")
+}
+

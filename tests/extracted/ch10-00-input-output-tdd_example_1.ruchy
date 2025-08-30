@@ -1,0 +1,11 @@
+
+fun main() {
+    println("=== Output Demo ===");
+    println("Number: ");
+    println(42);
+    println("Boolean: ");
+    println(true);
+    println("=== End Demo ===");
+}
+
+

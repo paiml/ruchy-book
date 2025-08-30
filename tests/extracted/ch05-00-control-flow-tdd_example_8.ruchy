@@ -1,0 +1,10 @@
+let x = 10;
+let y = 5;
+
+if x > y {
+    println("x is greater");
+} else if x < y {
+    println("y is greater");
+} else {
+    println("they are equal");
+}
