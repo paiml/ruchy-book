@@ -11,11 +11,15 @@ Comprehensive verification of all 5 quality tools (test, coverage, lint, score, 
 
 ### 1. ✅ Test Tool - FULLY WORKING
 ```bash
-ruchy test [file]
+ruchy test [file|directory]
 ```
 - **Status**: Production ready
-- **Results**: 19/19 examples pass tests (100%)
-- **Features**: Reliable test execution with clear pass/fail reporting
+- **Results**: 19/19 TDD examples pass tests (100%)
+- **Features**: 
+  - Single file testing ✅
+  - Directory/project-wide testing ✅
+  - Parallel execution support ✅
+  - Coverage integration ✅
 - **Issues**: None
 
 ### 2. ✅ Coverage Tool - FULLY WORKING
@@ -31,39 +35,55 @@ ruchy test --coverage [file] --threshold [0-100]
 
 ### 3. ⚠️ Lint Tool - BROKEN VARIABLE TRACKING
 ```bash
-ruchy lint --strict [file]
+ruchy lint [--strict] [file] [--all]
 ```
 - **Status**: Critical bug - variable usage tracking broken
 - **Results**:
   - 7/19 pass (36.8%) - only examples without variables
   - 12/19 false positives (63.2%) - all variable usage marked as unused
+- **Features**:
+  - Single file linting ✅
+  - Project-wide linting ✅ (`--all` flag)
+  - Strict mode ✅
 - **Bug**: GitHub Issue #8 - Variables in println, f-strings, and expressions marked unused
 - **Workaround**: Ignore "unused variable" warnings
 
-### 4. ✅ Score Tool - FULLY WORKING
+### 4. ⚠️ Score Tool - LIMITED ACTIONABILITY & NO PROJECT SUPPORT
 ```bash
-ruchy score [file]
+ruchy score [file]  # FILE ONLY
 ```
-- **Status**: Production ready
+- **Status**: Works but has significant limitations
 - **Results**:
   - Average score: 0.85/1.0 (85%)
   - 12/19 excellent (≥0.85)
   - 7/19 good (0.70-0.84)
   - 0/19 poor (<0.70)
-- **Features**: Meaningful quality scores with depth options (fast/standard/deep)
-- **Issues**: None
+- **Features**:
+  - Single file scoring ✅
+  - Project-wide scoring ❌ ("Is a directory" error)
+  - Depth options (fast/standard/deep) ✅
+- **Issues**: 
+  - Terrible code (26 params, 8-level nesting) scores 0.84/1.0
+  - Good code scores 0.95/1.0 (only 0.11 difference)
+  - No directory/project support
+  - Missing complexity/maintainability analysis
+- **Bugs**: GitHub Issue #9 - Score tool too lenient + no project support
 
-### 5. ⚠️ Provability Tool - LIMITED FUNCTIONALITY
+### 5. ⚠️ Provability Tool - LIMITED FUNCTIONALITY & NO PROJECT SUPPORT
 ```bash
-ruchy provability [file]
+ruchy provability [file]  # FILE ONLY
 ```
 - **Status**: Basic implementation only
 - **Results**: All examples show 0/100 score
 - **Features**:
-  - Detects unsafe operations
-  - Verifies function purity
-  - Checks termination
-- **Issues**: Score always 0 - unclear what would increase it
+  - Single file analysis ✅
+  - Project-wide analysis ❌ (no directory support)
+  - Detects unsafe operations ✅
+  - Verifies function purity ✅
+  - Checks termination ✅
+- **Issues**: 
+  - Score always 0/100 - unclear what would increase it
+  - No project-wide analysis capability
 
 ## Detailed Test Results
 
@@ -96,41 +116,46 @@ ch03-00-functions_example_6.ruchy:
 
 ## Tool Maturity Assessment
 
-| Tool | Maturity | Reliability | Usefulness | Recommendation |
-|------|----------|-------------|------------|----------------|
-| Test | ⭐⭐⭐⭐⭐ | 100% | Critical | **Use always** |
-| Coverage | ⭐⭐⭐⭐⭐ | 100% | Critical | **Use always** |
-| Lint | ⭐⭐ | 0% | Low* | **Wait for fix** |
-| Score | ⭐⭐⭐⭐ | 100% | High | **Use for CI** |
-| Provability | ⭐⭐ | 100% | Low** | **Experimental** |
+| Tool | Single File | Project-Wide | Actionable | Reliability | Recommendation |
+|------|-------------|--------------|------------|-------------|----------------|
+| Test | ✅ | ✅ | ✅ | 100% | **Use always** |
+| Coverage | ✅ | ✅ | ✅ | 100% | **Use always** |
+| Lint | ✅ | ✅ (`--all`) | ❌* | 0% | **Wait for fix** |
+| Score | ✅ | ❌ | ❌** | 100% | **File-only use** |
+| Provability | ✅ | ❌ | ❌*** | 100% | **Experimental** |
 
-*Currently broken for variable tracking
-**Limited to basic checks, no meaningful scoring
+*Currently broken for variable tracking  
+**Too lenient - terrible code gets high scores (GitHub #9)
+***Limited to basic checks, always returns 0
 
 ## Recommendations
 
 ### Immediate (For Book Publication)
-1. **MANDATE**: `ruchy test` - All examples must pass
-2. **MANDATE**: `ruchy test --coverage` - 100% line coverage required
-3. **USE**: `ruchy score` - Maintain ≥0.85 average score
-4. **SKIP**: `ruchy lint` - Wait for Issue #8 fix
-5. **OPTIONAL**: `ruchy provability` - For educational purposes only
+1. **MANDATE**: `ruchy test` - All examples must pass ✅
+2. **MANDATE**: `ruchy test --coverage` - 100% line coverage required ✅
+3. **CAUTION**: `ruchy score` - Shows variation but too lenient on bad code
+4. **SKIP**: `ruchy lint` - Wait for Issue #8 fix (broken variable tracking)
+5. **SKIP**: `ruchy provability` - Always returns 0, not meaningful yet
 
 ### Future Improvements
 1. Fix lint variable tracking (GitHub #8) - Critical
-2. Enhance provability scoring to be meaningful
-3. Add branch coverage requirements once simplified
-4. Integrate all tools into CI/CD pipeline
+2. Fix score tool complexity analysis (GitHub #9) - Medium
+3. Enhance provability scoring to be meaningful
+4. Add branch coverage requirements once simplified
+5. Integrate working tools (test, coverage) into CI/CD pipeline
 
 ## Conclusion
 
 The Ruchy book can confidently use:
-- ✅ **Test tool** for correctness
-- ✅ **Coverage tool** for completeness  
-- ✅ **Score tool** for quality metrics
+- ✅ **Test tool** for correctness (100% reliable)
+- ✅ **Coverage tool** for completeness (100% reliable)
+
+The book should use with caution:
+- ⚠️ **Score tool** for quality trends (shows variation but too lenient)
 
 The book should wait for fixes before using:
-- ⚠️ **Lint tool** (broken variable tracking)
-- ⚠️ **Provability tool** (incomplete implementation)
+- ❌ **Lint tool** (completely broken variable tracking - GitHub #8)
+- ❌ **Provability tool** (always returns 0, not meaningful)
 
-Current tool suite is sufficient for publication with 3/5 tools fully operational.
+**Quality Status**: 2/5 tools fully operational, 1/5 partially useful, 2/5 broken/incomplete.
+**Recommendation**: Use test + coverage for mandatory quality gates. Score tool for trends only.
