@@ -1,0 +1,16 @@
+// Ch05: Collections - String Operations  
+let name = "Alice"
+let message = "Hello, World!"
+
+// String methods
+println(f"Name length: {name.len()}")
+println(f"Name uppercase: {name.upper()}")
+println(f"Name lowercase: {name.lower()}")
+
+// String contains and manipulation
+println(f"Message contains Hello: {message.contains('Hello')}")
+println(f"Message contains Goodbye: {message.contains('Goodbye')}")
+
+// String concatenation
+let greeting = name + " says " + message
+println(greeting)
