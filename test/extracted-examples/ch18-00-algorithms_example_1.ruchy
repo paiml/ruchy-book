@@ -1,0 +1,24 @@
+// Ch18: Algorithms - Search Strategies  
+let numbers = [1, 3, 5, 7, 9, 11, 13, 15]
+let target = 7
+
+// Direct index check
+println(f"Checking index 3: {numbers[3]}")
+println(f"Found target {target}: {numbers[3] == target}")
+
+// Binary search concept
+let array_size = 8
+let mid_point = array_size / 2
+println(f"Array size: {array_size}")
+println(f"Binary search starts at middle: index {mid_point}")
+
+// Algorithm comparison
+println("Linear search complexity: O(n)")
+println("Binary search complexity: O(log n)")
+println(f"For {array_size} elements:")
+println("  Linear: up to 8 checks")
+println("  Binary: up to 3 checks")
+
+// Demonstrate with specific example
+let found_at_index_3 = numbers[3] == 7
+println(f"Target 7 found at index 3: {found_at_index_3}")

@@ -1,0 +1,34 @@
+// Ch16: Pattern Matching - Basic Patterns
+let value = 42
+let category = if value > 100 {
+    "large"
+} else if value > 50 {
+    "medium"
+} else if value > 0 {
+    "small"
+} else {
+    "zero or negative"
+}
+
+println(f"Value {value} is {category}")
+
+// Pattern matching with strings
+let day = "Monday"
+let day_type = if day == "Saturday" || day == "Sunday" {
+    "weekend"
+} else {
+    "weekday"
+}
+
+println(f"{day} is a {day_type}")
+
+// Multiple conditions
+let temperature = 22
+let humidity = 65
+let comfort = if temperature >= 20 && temperature <= 25 && humidity < 70 {
+    "comfortable"
+} else {
+    "uncomfortable"
+}
+
+println(f"Temperature {temperature}°C, Humidity {humidity}% is {comfort}")

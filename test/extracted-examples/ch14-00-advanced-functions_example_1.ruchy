@@ -1,0 +1,27 @@
+// Ch14: Advanced Functions - Higher-Order Functions
+fun apply_twice(f, x) {
+    return f(f(x))
+}
+
+fun add_one(n) {
+    return n + 1
+}
+
+fun double(n) {
+    return n * 2
+}
+
+// Test higher-order function
+let result1 = apply_twice(add_one, 5)
+println(f"apply_twice(add_one, 5) = {result1}")  // 7
+
+let result2 = apply_twice(double, 3)
+println(f"apply_twice(double, 3) = {result2}")  // 12
+
+// Test with inline function
+fun square(n) {
+    return n * n
+}
+
+let result3 = apply_twice(square, 2)
+println(f"apply_twice(square, 2) = {result3}")  // 16
