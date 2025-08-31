@@ -1,0 +1,15 @@
+> let data = [10, 20, 30, 40, 50]
+[10, 20, 30, 40, 50]
+
+> :inspect data
+┌─ Inspector ────────────────┐
+│ Variable: data              │
+│ Type: List                  │
+│ Length: 5                   │
+│ Memory: ~40 bytes          │
+│                            │
+│ Options:                   │
+│ [Enter] Browse entries     │
+│ [S] Statistics             │
+│ [M] Memory layout          │
+└────────────────────────────┘

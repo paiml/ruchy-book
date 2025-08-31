@@ -22,3 +22,9 @@ let email = f"{username}@example.com"
 let is_adult = age >= 18
 let lives_in_tech_city = city == "San Francisco"
 let ready_for_job = is_adult && lives_in_tech_city
+// Output computed values
+println(f"Profile: {name}, {age} years old, from {city}")
+println(f"Hobby: {hobby}, Goal: {goal}")
+println(f"Sum: {sum}, Average: {average}, Difference: {difference}")
+println(f"Email: {email}")
+println(f"Ready for job: {ready_for_job}")

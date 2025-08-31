@@ -8,4 +8,4 @@ println(f"First language: {favorite_languages[0]}")
 println(f"Today's temp: {daily_temperatures[0]}°C")
 
 // Get list length
-println(f"I know {favorite_languages.len()} languages")
+println(f"I know {favorite_languages.len()} languages")println(f"Task status: {task_completed}")

@@ -8,3 +8,6 @@ let num2 = 27
 let operation = "addition"
 let calc_result = num1 + num2
 let calc_display = f"{operation}: {num1} + {num2} = {calc_result}"
+// Output computed values
+println(calc_display)
+println(greeting_template)

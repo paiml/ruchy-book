@@ -1,0 +1,8 @@
+> :debug
+Debug mode enabled
+
+> let x = 5
+[DEBUG] Binding 'x' to value 5
+[DEBUG] Type: Integer
+[DEBUG] Memory: 8 bytes
+5

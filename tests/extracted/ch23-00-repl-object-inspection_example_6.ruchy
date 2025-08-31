@@ -1,0 +1,17 @@
+> let nested = {"user": {"name": "Bob", "prefs": {"theme": "dark"}}}
+{"user": {"name": "Bob", "prefs": {"theme": "dark"}}}
+
+> :inspect nested
+┌─ Inspector ────────────────┐
+│ Variable: nested            │
+│ Type: Object               │
+│ Fields: 1                  │
+│ Depth: 3                   │
+│ Memory: ~160 bytes         │
+│                            │
+│ Structure:                 │
+│ └─ user: Object            │
+│    └─ name: String         │
+│    └─ prefs: Object        │
+│       └─ theme: String     │
+└────────────────────────────┘

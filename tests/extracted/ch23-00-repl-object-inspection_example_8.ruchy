@@ -1,0 +1,10 @@
+> :ast 2 + 3 * 4
+BinaryOp {
+  left: Literal(2),
+  op: Add,
+  right: BinaryOp {
+    left: Literal(3),
+    op: Multiply,
+    right: Literal(4)
+  }
+}
