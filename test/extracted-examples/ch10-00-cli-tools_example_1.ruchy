@@ -1,0 +1,24 @@
+// Ch10: CLI Tools - Basic Command Line Processing
+let program_name = "my_app"
+let version = "1.0.0"
+let author = "Alice"
+
+// Simulate command line help
+println(f"{program_name} v{version}")
+println(f"Author: {author}")
+println("Usage: my_app [OPTIONS]")
+println("Options:")
+println("  --help    Show this help message")
+println("  --version Show version information")
+
+// Simulate processing
+let help_requested = true
+let version_requested = false
+
+if help_requested {
+    println("Help: This program demonstrates CLI concepts")
+}
+
+if version_requested {
+    println(f"Version: {version}")
+}

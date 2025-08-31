@@ -1,0 +1,24 @@
+// Ch10: CLI Tools - Argument Parsing
+let args = ["--name", "Alice", "--age", "30", "--verbose"]
+
+// Parse arguments
+let has_name = true  // Simulating args.contains("--name")
+let has_age = true   // Simulating args.contains("--age")
+let has_verbose = true  // Simulating args.contains("--verbose")
+
+println(f"Has name flag: {has_name}")
+println(f"Has age flag: {has_age}")
+println(f"Verbose mode: {has_verbose}")
+
+// Extract values (simplified)
+if has_name {
+    println("Name provided: Alice")
+}
+
+if has_age {
+    println("Age provided: 30")
+}
+
+if has_verbose {
+    println("Running in verbose mode...")
+}

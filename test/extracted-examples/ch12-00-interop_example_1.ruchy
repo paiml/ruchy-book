@@ -1,0 +1,28 @@
+// Ch12: Interop - Rust Integration Concepts
+// Simulating interaction with Rust-like types
+
+// Option type simulation
+let some_value = 42
+let has_value = true
+
+// Check if value exists
+if has_value {
+    println(f"Value is Some({some_value})")
+} else {
+    println("Value is None")
+}
+
+// Test None case
+let none_case = false
+if !none_case {
+    println("None value handled")
+}
+
+// Result type simulation
+let success = true
+
+if success {
+    println("Operation succeeded: Ok(data)")
+} else {
+    println("Operation failed: Err(error)")
+}
