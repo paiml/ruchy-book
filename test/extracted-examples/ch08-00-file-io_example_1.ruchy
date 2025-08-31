@@ -1,0 +1,14 @@
+// Ch08: File I/O - Basic Path Operations
+let filename = "data.txt"
+let directory = "/tmp"
+let full_path = f"{directory}/{filename}"
+
+println(f"Filename: {filename}")
+println(f"Directory: {directory}")
+println(f"Full path: {full_path}")
+
+// Path validation
+let is_absolute = full_path.starts_with("/")
+let has_extension = filename.contains(".")
+println(f"Is absolute: {is_absolute}")
+println(f"Has extension: {has_extension}")

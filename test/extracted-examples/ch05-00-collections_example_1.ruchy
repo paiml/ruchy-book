@@ -1,0 +1,14 @@
+// Ch05: Collections - Basic Arrays
+let numbers = [10, 20, 30]
+let fruits = ["apple", "banana", "orange"]
+
+// Array access and length
+println(f"First number: {numbers[0]}")
+println(f"Last fruit: {fruits[2]}")
+println(f"Numbers count: {numbers.len()}")
+println(f"Fruits count: {fruits.len()}")
+
+// Array iteration
+for num in numbers {
+    println(f"Number: {num}")
+}

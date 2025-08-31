@@ -1,0 +1,16 @@
+// Ch06: Error Handling - Basic Error Types
+let valid_number = 42
+let zero_number = 0
+
+// Division with error checking
+if zero_number == 0 {
+    println("Cannot divide by zero")
+} else {
+    let result = valid_number / zero_number
+    println(f"Result: {result}")
+}
+
+// Valid division
+let safe_divisor = 2
+let safe_result = valid_number / safe_divisor
+println(f"Safe division: {valid_number} / {safe_divisor} = {safe_result}")
