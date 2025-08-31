@@ -8,4 +8,4 @@ let product = input1 * input2
 let average = sum / 2
 
 // Organize output
-let result = f"Sum: {sum}, Product: {product}, Average: {average}"
+let result = f"Sum: {sum}, Product: {product}, Average: {average}"println(f"Result: {result}")

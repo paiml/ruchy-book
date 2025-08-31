@@ -18,4 +18,4 @@ let cold_temp_f = 32
 let cold_temp_c = (cold_temp_f - 32) * 5 / 9
 let is_cold_comfortable = cold_temp_c > 18 && cold_temp_c < 25
 let cold_message = if is_cold_comfortable { "Perfect weather!" } else { "Dress accordingly" }
-// Silent test - no output needed
+println(cold_message)  // Ensure coverage

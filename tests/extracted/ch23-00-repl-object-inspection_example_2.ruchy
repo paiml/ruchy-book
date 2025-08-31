@@ -1,0 +1,8 @@
+> let name = "Alice"
+"Alice"
+
+> let numbers = [1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5]
+
+> let person = {"name": "Bob", "age": 25}
+{"name": "Bob", "age": 25}
