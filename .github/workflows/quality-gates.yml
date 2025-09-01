@@ -1,0 +1,97 @@
+name: Quality Gates
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Ruchy
+      run: |
+        curl -L https://github.com/paiml/ruchy/releases/download/v1.29.1/ruchy-linux-x64.tar.gz | tar xz
+        sudo mv ruchy /usr/local/bin/
+        ruchy --version
+    
+    - name: Test All TDD Examples
+      run: |
+        echo "🧪 Testing 39 TDD examples..."
+        failed=0
+        for file in test/extracted-examples/ch*.ruchy; do
+          if [ -f "$file" ]; then
+            echo "Testing: $(basename $file)"
+            if ! ruchy test "$file"; then
+              echo "❌ Failed: $file"
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        if [ $failed -gt 0 ]; then
+          echo "❌ $failed examples failed"
+          exit 1
+        fi
+        echo "✅ All examples pass!"
+    
+    - name: Check Coverage
+      run: |
+        echo "📊 Checking line coverage..."
+        low_coverage=0
+        for file in test/extracted-examples/ch*.ruchy; do
+          if [ -f "$file" ]; then
+            coverage=$(ruchy test --coverage "$file" 2>&1 | grep "Lines:" | sed 's/.*(\([0-9.]*\)%).*/\1/')
+            if [ -n "$coverage" ]; then
+              if (( $(echo "$coverage < 100" | bc -l) )); then
+                echo "⚠️ Low coverage: $(basename $file) - $coverage%"
+                low_coverage=$((low_coverage + 1))
+              fi
+            fi
+          fi
+        done
+        echo "📈 Examples with <100% line coverage: $low_coverage"
+    
+    - name: Check Quality Scores
+      run: |
+        echo "🏆 Checking quality scores..."
+        low_quality=0
+        for file in test/extracted-examples/ch*.ruchy; do
+          if [ -f "$file" ]; then
+            score=$(ruchy score "$file" 2>/dev/null | grep "Score:" | sed 's/.*Score: \([0-9.]*\).*/\1/')
+            if [ -n "$score" ]; then
+              if (( $(echo "$score < 0.85" | bc -l) )); then
+                echo "⚠️ Low quality: $(basename $file) - $score"
+                low_quality=$((low_quality + 1))
+              fi
+            fi
+          fi
+        done
+        if [ $low_quality -gt 0 ]; then
+          echo "❌ $low_quality examples below quality threshold"
+          exit 1
+        fi
+        echo "✅ All examples meet quality standards!"
+    
+    - name: Generate Report
+      if: always()
+      run: |
+        echo "# Quality Gate Report" > quality-report.md
+        echo "Date: $(date)" >> quality-report.md
+        echo "Ruchy Version: $(ruchy --version)" >> quality-report.md
+        echo "" >> quality-report.md
+        echo "## Summary" >> quality-report.md
+        echo "- Total Examples: 39" >> quality-report.md
+        echo "- Test Status: See above" >> quality-report.md
+        echo "- Coverage Status: See above" >> quality-report.md
+        echo "- Quality Status: See above" >> quality-report.md
+    
+    - name: Upload Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: quality-report
+        path: quality-report.md
