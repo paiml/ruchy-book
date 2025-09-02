@@ -16,8 +16,8 @@ Type :help for commands, :quit to exit
 
 ### Evaluating Expressions
 
-```ruchy
-// Simple expressions
+```bash
+# Simple expressions (REPL session)
 > 2 + 2
 4
 
@@ -30,7 +30,8 @@ Type :help for commands, :quit to exit
 
 ### Defining Variables
 
-```ruchy
+```bash
+# Defining Variables (REPL session)
 > let name = "Alice"
 "Alice"
 
@@ -66,7 +67,8 @@ The REPL provides special commands prefixed with `:`:
 
 Use `:type` to check the type of any expression:
 
-```ruchy
+```bash
+# Type Inspection (REPL session)
 > let arr = [1, 2, 3]
 [1, 2, 3]
 
@@ -92,7 +94,8 @@ The `:inspect` command provides detailed information about objects:
 
 ### Inspecting Arrays
 
-```ruchy
+```bash
+# Inspecting Arrays (REPL session)
 > let data = [10, 20, 30, 40, 50]
 [10, 20, 30, 40, 50]
 
@@ -112,7 +115,8 @@ The `:inspect` command provides detailed information about objects:
 
 ### Inspecting Objects
 
-```ruchy
+```bash
+# Inspecting Objects (REPL session)
 > let user = {"name": "Alice", "age": 30, "email": "alice@example.com"}
 {"name": "Alice", "age": 30, "email": "alice@example.com"}
 
@@ -136,7 +140,8 @@ The `:inspect` command provides detailed information about objects:
 
 The inspector handles nested structures with depth limiting:
 
-```ruchy
+```bash
+# Nested Structure Inspection (REPL session)
 > let nested = {"user": {"name": "Bob", "prefs": {"theme": "dark"}}}
 {"user": {"name": "Bob", "prefs": {"theme": "dark"}}}
 
@@ -160,7 +165,8 @@ The inspector handles nested structures with depth limiting:
 
 The inspector detects and handles circular references:
 
-```ruchy
+```bash
+# Cycle Detection (REPL session)
 > let a = {"name": "A"}
 {"name": "A"}
 
@@ -175,7 +181,8 @@ The inspector detects and handles circular references:
 
 View the Abstract Syntax Tree of expressions:
 
-```ruchy
+```bash
+# AST Visualization (REPL session)
 > :ast 2 + 3 * 4
 BinaryOp {
   left: Literal(2),
@@ -198,7 +205,8 @@ Standard evaluation mode (default)
 ### Debug Mode
 Shows detailed execution information:
 
-```ruchy
+```bash
+# Debug Mode (REPL session)
 > :debug
 Debug mode enabled
 
@@ -213,7 +221,8 @@ Debug mode enabled
 
 ### Data Exploration
 
-```ruchy
+```bash
+# Data Exploration (REPL session)
 > let data = [1, 2, 3, 4, 5]
 [1, 2, 3, 4, 5]
 
@@ -226,7 +235,8 @@ Type: List
 
 ### Quick Calculations
 
-```ruchy
+```bash
+# Quick Calculations (REPL session)
 > let prices = [10.50, 25.00, 15.75]
 [10.50, 25.00, 15.75]
 
@@ -239,7 +249,8 @@ Type: List
 
 ### Object Manipulation
 
-```ruchy
+```bash
+# Object Manipulation (REPL session)
 > let config = {"debug": false, "port": 8080}
 {"debug": false, "port": 8080}
 

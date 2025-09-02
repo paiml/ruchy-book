@@ -125,13 +125,15 @@ fun main() {
 ### Function Definition
 Basic syntax:
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-fun function_name(parameters) -> return_type {
-    // function body
-    return_expression
+// Example function definition
+fun calculate_area(length: i32, width: i32) -> i32 {
+    length * width
 }
 
-
+fun main() {
+    let area = calculate_area(5, 3);
+    println(area);  // Output: 15
+}
 ```
 
 Key points:

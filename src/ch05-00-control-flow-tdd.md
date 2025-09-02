@@ -234,41 +234,47 @@ Loop ended
 
 ### Conditionals
 ```ruchy
-let x = 10;
-let y = 5;
+fun main() {
+    let x = 10;
+    let y = 5;
 
-if x > y {
-    println("x is greater");
-} else if x < y {
-    println("y is greater");
-} else {
-    println("they are equal");
+    if x > y {
+        println("x is greater");
+    } else if x < y {
+        println("y is greater");
+    } else {
+        println("they are equal");
+    }
 }
 ```
 
 ### Loops
 ```ruchy
-// While loop
-let mut count = 0;
-while count < 3 {
-    println("Count: " + count);
-    count = count + 1;
-}
+fun main() {
+    // While loop
+    let mut count = 0;
+    while count < 3 {
+        println("Count: " + count);
+        count = count + 1;
+    }
 
-// For loop with range
-for i in 1..4 {
-    println("Iteration: " + i);
+    // For loop with range
+    for i in 1..4 {
+        println("Iteration: " + i);
+    }
 }
 ```
 
 ### Match
 ```ruchy
-let number = 2;
-match number {
-    1 => println("One"),
-    2 => println("Two"),
-    3 => println("Three"),
-    _ => println("Other")
+fun main() {
+    let number = 2;
+    match number {
+        1 => println("One"),
+        2 => println("Two"),
+        3 => println("Three"),
+        _ => println("Other")
+    }
 }
 ```
 
@@ -288,45 +294,49 @@ make test-file FILE=tests/ch05-control-flow/test_01_if_else.ruchy
 
 ### Decision Making
 ```ruchy
-let user_input = 75;
-let threshold = 50;
+fun main() {
+    let user_input = 75;
+    let threshold = 50;
 
-if user_input > threshold {
-    println("High value: " + user_input);
-} else {
-    println("Normal value: " + user_input);
+    if user_input > threshold {
+        println("High value: " + user_input);
+    } else {
+        println("Normal value: " + user_input);
+    }
 }
 ```
 
 ### Counting Loop
 ```ruchy
-let mut count = 0;
-while count < 10 {
-    println("Count is: " + count);
-    count = count + 1;
+fun main() {
+    let mut count = 0;
+    while count < 10 {
+        println("Count is: " + count);
+        count = count + 1;
+    }
 }
 ```
 
 ### Range Processing
 ```ruchy
-
-for i in 1..5 {
-    println("Processing item " + i);
+fun main() {
+    for i in 1..5 {
+        println("Processing item " + i);
+    }
 }
-
-
 ```
 
 ### Value Classification
 ```ruchy
-let status_code = 200;
-match status_code {
-    200 => println("Success"),
-    404 => println("Not Found"),
-    500 => println("Server Error"),
-    _ => println("Unknown Status")
+fun main() {
+    let status_code = 200;
+    match status_code {
+        200 => println("Success"),
+        404 => println("Not Found"),
+        500 => println("Server Error"),
+        _ => println("Unknown Status")
+    }
 }
-
 ```
 
 ## Performance Notes

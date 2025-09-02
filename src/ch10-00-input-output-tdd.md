@@ -145,23 +145,23 @@ Menu displayed successfully
 
 ### Basic Output
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-println("text message");
-println(variable);
-println(42);
-println(true);
-
-
+fun main() {
+    let variable = "Hello World";
+    println("text message");
+    println(variable);
+    println(42);
+    println(true);
+}
 ```
 
 ### Variable Output Pattern
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-let data = value;
-println("Label:");
-println(data);
-
-
+fun main() {
+    let value = "Important Data";
+    let data = value;
+    println("Label:");
+    println(data);
+}
 ```
 
 ### Menu Display Function

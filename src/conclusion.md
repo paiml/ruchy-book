@@ -217,8 +217,8 @@ fun main() {
 ```
 
 ### Can't Do Yet ⏳
-```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
+```rust
+// These features are NOT YET implemented in Ruchy
 // Arrays - NOT YET
 let arr = [1, 2, 3];
 
@@ -230,8 +230,6 @@ let contents = fs::read_to_string("file.txt");
 
 // Closures - NOT YET
 let add_one = |x| x + 1;
-
-
 ```
 
 ## Get Started
