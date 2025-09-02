@@ -12,6 +12,34 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Genchi Genbutsu (現地現物)**: Go and see - test every example in real REPL before documenting
 - **Jidoka (自働化)**: Quality at the source - automated validation prevents broken examples
 
+## MANDATORY Development Approach (BLOCKING - Not Optional)
+
+### A. Test-Driven Documentation (TDD)
+- **ALL work must be TDD**: Every example written test-first, then documentation
+- **NO exceptions**: Documentation follows working code, never precedes it
+- **Immediate feedback**: Tests run continuously during development
+
+### B. Professional Quality Gates with PMAT
+- **ALL work must pass PMAT TDG**: Use `pmat analyze` for quality verification
+- **Quality score requirement**: Minimum A+ grade on all code examples
+- **BLOCKING gate**: No commits allowed without PMAT approval
+
+### C. 100% Coverage Approach Only
+- **Complete coverage mandatory**: Every code path tested and documented  
+- **Use ruchy coverage tool**: `ruchy coverage [file]` validates 100% coverage
+- **No partial examples**: All examples must be complete, working programs
+
+### D. Ruchy Tooling Integration (MANDATORY)
+- **Use ALL ruchy tools**: check, lint, test, coverage, fmt, score, provability
+- **Tool-driven workflow**: Let tools guide development and validation
+- **Quality verification**: `make dogfood-full` must pass before any commit
+
+### E. Roadmap-Driven Development with Tickets
+- **Work via tickets only**: All work assigned from roadmap tickets
+- **Roadmap updates mandatory**: Update roadmap after each ticket completion  
+- **Progress tracking**: Link all changes to specific roadmap tickets
+- **No ad-hoc work**: Every change traces back to planned roadmap item
+
 ## MANDATORY Quality Gates (BLOCKING - Not Advisory)
 
 ### Pre-Commit Hooks (MANDATORY) - Enhanced with Dogfooding
@@ -593,6 +621,75 @@ git status
 - **Accountability**: Clear audit trail of what was tested when
 
 **NO EXCEPTIONS**: This protocol runs after EVERY version qualification, whether pass rates improve or decline. The goal is complete transparency and historical tracking.
+
+## POST-COMPLETION PROTOCOL (MANDATORY)
+
+**CRITICAL**: After ALL work completion, ALWAYS execute this protocol:
+
+### Step 1: Zero Defects Verification
+```bash
+# MANDATORY: No failing tests allowed
+deno task extract-examples
+deno task test-oneliners  
+# All tests MUST pass - no exceptions
+
+# MANDATORY: All ruchy tooling passes
+make dogfood-full
+# All tools MUST show A+ grades
+
+# MANDATORY: Full coverage achieved
+ruchy coverage **/*.ruchy
+# MUST show 100% coverage on all examples
+
+# MANDATORY: PMAT quality gates pass
+pmat analyze **/*.ruchy | grep -q "A+"
+# MUST achieve A+ quality grade
+```
+
+### Step 2: Roadmap and Documentation Updates  
+```bash
+# Update roadmap status
+echo "## Work Completed: [Date]" >> docs/ROADMAP.md
+echo "- Fixed X syntax issues across Y chapters" >> docs/ROADMAP.md
+echo "- Achieved 100% test pass rate" >> docs/ROADMAP.md
+echo "- All quality gates passing" >> docs/ROADMAP.md
+
+# Update INTEGRATION.md with final results
+make generate-reports
+git add INTEGRATION.md
+```
+
+### Step 3: Commit and Push Changes (MANDATORY)
+```bash
+# Stage all changes
+git add -A
+
+# MANDATORY: Comprehensive commit message with metrics
+git commit -m "feat: Fix syntax issues - achieve 100% pass rate
+
+- Fixed N REPL examples in chapter 23 
+- Fixed M incomplete code examples
+- Fixed P placeholder syntax examples
+- Fixed Q unit type display issues
+- Test results: X/X passing (100%)
+- Quality: A+ grade achieved
+- Coverage: 100% achieved
+- All ruchy tools passing
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# MANDATORY: Push to ensure work is preserved
+git push origin main
+```
+
+**WHY THIS IS MANDATORY:**
+- **Zero tolerance for defects**: No work is complete with failing tests
+- **Quality accountability**: Every change must meet professional standards  
+- **Progress tracking**: All improvements must be documented and pushed
+- **Collaboration**: Team needs visibility into what was accomplished
+- **Audit trail**: Complete history of what was tested and verified
 
 ## TDD-DRIVEN BOOK TRANSFORMATION (MANDATORY - TOP PRIORITY)
 

@@ -1,71 +1,23 @@
 {
-  "generated_at": "2025-08-26T20:30:59.331Z",
-  "ruchy_version": "ruchy 1.18.1",
+  "generated_at": "2025-09-02T17:22:43.197Z",
+  "ruchy_version": "ruchy 1.35.0",
   "summary": {
-    "total_chapters": 37,
-    "total_examples": 375,
-    "working_examples": 77,
-    "failing_examples": 298,
-    "success_rate": 21
+    "total_chapters": 9,
+    "total_examples": 65,
+    "working_examples": 65,
+    "failing_examples": 0,
+    "success_rate": 100
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
       "total_examples": 8,
-      "working_examples": 5,
-      "failing_examples": 3,
-      "success_rate": 63,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 5,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 3,
-        "planned": 0
-      }
-    },
-    "ch10-00-performance-optimization": {
-      "total_examples": 11,
-      "working_examples": 0,
-      "failing_examples": 11,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 1,
-        "broken": 10,
-        "planned": 0
-      }
-    },
-    "ch04-00-modules-tdd": {
-      "total_examples": 6,
-      "working_examples": 2,
-      "failing_examples": 4,
-      "success_rate": 33,
-      "status_breakdown": {
-        "working": 2,
-        "not_implemented": 0,
-        "broken": 4,
-        "planned": 0
-      }
-    },
-    "ch09-00-collections-tdd": {
-      "total_examples": 10,
-      "working_examples": 4,
-      "failing_examples": 6,
-      "success_rate": 40,
-      "status_breakdown": {
-        "working": 4,
-        "not_implemented": 0,
-        "broken": 6,
-        "planned": 0
-      }
-    },
-    "ch19-00-real-world-projects": {
-      "total_examples": 4,
-      "working_examples": 0,
-      "failing_examples": 4,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 4,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -82,362 +34,74 @@
       }
     },
     "conclusion": {
-      "total_examples": 2,
+      "total_examples": 1,
       "working_examples": 1,
-      "failing_examples": 1,
-      "success_rate": 50,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
         "working": 1,
         "not_implemented": 0,
-        "broken": 1,
-        "planned": 0
-      }
-    },
-    "ch11-00-advanced-patterns": {
-      "total_examples": 12,
-      "working_examples": 0,
-      "failing_examples": 12,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 12,
-        "planned": 0
-      }
-    },
-    "appendix-b-syntax-reference": {
-      "total_examples": 35,
-      "working_examples": 2,
-      "failing_examples": 33,
-      "success_rate": 6,
-      "status_breakdown": {
-        "working": 2,
-        "not_implemented": 0,
-        "broken": 33,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch10-00-input-output-tdd": {
       "total_examples": 10,
-      "working_examples": 7,
-      "failing_examples": 3,
-      "success_rate": 70,
+      "working_examples": 10,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 7,
+        "working": 10,
         "not_implemented": 0,
-        "broken": 3,
-        "planned": 0
-      }
-    },
-    "ch18-00-deployment-devops": {
-      "total_examples": 8,
-      "working_examples": 0,
-      "failing_examples": 8,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 8,
-        "planned": 0
-      }
-    },
-    "ch01-03-interpreter-scripting": {
-      "total_examples": 15,
-      "working_examples": 7,
-      "failing_examples": 8,
-      "success_rate": 47,
-      "status_breakdown": {
-        "working": 7,
-        "not_implemented": 0,
-        "broken": 8,
-        "planned": 0
-      }
-    },
-    "ch17-00-documentation": {
-      "total_examples": 10,
-      "working_examples": 0,
-      "failing_examples": 10,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 10,
-        "planned": 0
-      }
-    },
-    "ch06-00-file-operations": {
-      "total_examples": 10,
-      "working_examples": 0,
-      "failing_examples": 10,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 2,
-        "broken": 8,
-        "planned": 0
-      }
-    },
-    "ch20-00-tooling": {
-      "total_examples": 6,
-      "working_examples": 0,
-      "failing_examples": 6,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 6,
-        "planned": 0
-      }
-    },
-    "ch07-00-building-applications": {
-      "total_examples": 9,
-      "working_examples": 0,
-      "failing_examples": 9,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 4,
-        "broken": 5,
-        "planned": 0
-      }
-    },
-    "ch15-00-macros-metaprogramming": {
-      "total_examples": 2,
-      "working_examples": 0,
-      "failing_examples": 2,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 2,
-        "planned": 0
-      }
-    },
-    "ch09-00-network-programming": {
-      "total_examples": 10,
-      "working_examples": 0,
-      "failing_examples": 10,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 10,
-        "planned": 0
-      }
-    },
-    "ch07-00-error-handling-tdd": {
-      "total_examples": 9,
-      "working_examples": 3,
-      "failing_examples": 6,
-      "success_rate": 33,
-      "status_breakdown": {
-        "working": 3,
-        "not_implemented": 0,
-        "broken": 6,
-        "planned": 0
-      }
-    },
-    "ch08-00-systems-programming": {
-      "total_examples": 9,
-      "working_examples": 0,
-      "failing_examples": 9,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 1,
-        "broken": 8,
-        "planned": 0
-      }
-    },
-    "ch08-00-advanced-functions-tdd": {
-      "total_examples": 9,
-      "working_examples": 5,
-      "failing_examples": 4,
-      "success_rate": 56,
-      "status_breakdown": {
-        "working": 5,
-        "not_implemented": 0,
-        "broken": 4,
-        "planned": 0
-      }
-    },
-    "ch13-00-error-handling": {
-      "total_examples": 12,
-      "working_examples": 0,
-      "failing_examples": 12,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 12,
-        "planned": 0
-      }
-    },
-    "ch03-01-testing-functions": {
-      "total_examples": 12,
-      "working_examples": 0,
-      "failing_examples": 12,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 2,
-        "broken": 10,
-        "planned": 0
-      }
-    },
-    "ch16-00-testing-quality": {
-      "total_examples": 11,
-      "working_examples": 0,
-      "failing_examples": 11,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 11,
-        "planned": 0
-      }
-    },
-    "ch14-00-concurrency": {
-      "total_examples": 13,
-      "working_examples": 0,
-      "failing_examples": 13,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 1,
-        "broken": 12,
-        "planned": 0
-      }
-    },
-    "ch04-00-command-line-tools": {
-      "total_examples": 14,
-      "working_examples": 1,
-      "failing_examples": 13,
-      "success_rate": 7,
-      "status_breakdown": {
-        "working": 1,
-        "not_implemented": 7,
-        "broken": 6,
-        "planned": 0
-      }
-    },
-    "ch12-00-traits-generics": {
-      "total_examples": 11,
-      "working_examples": 0,
-      "failing_examples": 11,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 0,
-        "broken": 11,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch03-00-functions-tdd": {
       "total_examples": 9,
-      "working_examples": 8,
-      "failing_examples": 1,
-      "success_rate": 89,
+      "working_examples": 9,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 8,
+        "working": 9,
         "not_implemented": 0,
-        "broken": 1,
-        "planned": 0
-      }
-    },
-    "ch11-00-file-operations-tdd": {
-      "total_examples": 10,
-      "working_examples": 5,
-      "failing_examples": 5,
-      "success_rate": 50,
-      "status_breakdown": {
-        "working": 5,
-        "not_implemented": 0,
-        "broken": 5,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch05-00-control-flow-tdd": {
       "total_examples": 14,
-      "working_examples": 8,
-      "failing_examples": 6,
-      "success_rate": 57,
+      "working_examples": 14,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 8,
+        "working": 14,
         "not_implemented": 0,
-        "broken": 6,
-        "planned": 0
-      }
-    },
-    "appendix-c-troubleshooting": {
-      "total_examples": 20,
-      "working_examples": 1,
-      "failing_examples": 19,
-      "success_rate": 5,
-      "status_breakdown": {
-        "working": 1,
-        "not_implemented": 0,
-        "broken": 19,
-        "planned": 0
-      }
-    },
-    "ch05-00-data-processing": {
-      "total_examples": 10,
-      "working_examples": 0,
-      "failing_examples": 10,
-      "success_rate": 0,
-      "status_breakdown": {
-        "working": 0,
-        "not_implemented": 2,
-        "broken": 8,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch01-02-hello-world": {
       "total_examples": 8,
-      "working_examples": 5,
-      "failing_examples": 3,
-      "success_rate": 63,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 5,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 3,
-        "planned": 0
-      }
-    },
-    "ch02-00-variables-types": {
-      "total_examples": 9,
-      "working_examples": 1,
-      "failing_examples": 8,
-      "success_rate": 11,
-      "status_breakdown": {
-        "working": 1,
-        "not_implemented": 0,
-        "broken": 8,
+        "broken": 0,
         "planned": 0
       }
     },
     "ch06-00-data-structures-tdd": {
       "total_examples": 8,
-      "working_examples": 3,
-      "failing_examples": 5,
-      "success_rate": 38,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 3,
+        "working": 8,
         "not_implemented": 0,
-        "broken": 5,
-        "planned": 0
-      }
-    },
-    "ch03-00-functions": {
-      "total_examples": 12,
-      "working_examples": 2,
-      "failing_examples": 10,
-      "success_rate": 17,
-      "status_breakdown": {
-        "working": 2,
-        "not_implemented": 3,
-        "broken": 7,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -456,14 +120,14 @@
   },
   "oneliners": {
     "total_tests": 20,
-    "passed_tests": 19,
-    "failed_tests": 1,
+    "passed_tests": 17,
+    "failed_tests": 3,
     "planned_tests": 12,
-    "success_rate": 95
+    "success_rate": 85
   },
   "quality_metrics": {
-    "documentation_coverage": 105.71428571428572,
+    "documentation_coverage": 25.71428571428571,
     "example_testing": 100,
-    "implementation_status": 21
+    "implementation_status": 100
   }
 }

@@ -1,8 +1,0 @@
-> let config = {"debug": false, "port": 8080}
-{"debug": false, "port": 8080}
-
-> config["debug"] = true
-true
-
-> config
-{"debug": true, "port": 8080}

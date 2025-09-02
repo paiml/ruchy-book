@@ -1,12 +1,84 @@
 {
-  "timestamp": "2025-09-02T15:27:58.113Z",
-  "ruchy_version": "ruchy 1.32.0",
-  "chapters_processed": 10,
-  "examples_found": 78,
-  "examples_working": 45,
-  "examples_failing": 33,
-  "success_rate": 58,
+  "timestamp": "2025-09-02T17:22:02.023Z",
+  "ruchy_version": "ruchy 1.35.0",
+  "chapters_processed": 9,
+  "examples_found": 65,
+  "examples_working": 65,
+  "examples_failing": 0,
+  "success_rate": 100,
   "chapters": {
+    "ch02-00-variables-types-tdd": {
+      "chapter": "ch02-00-variables-types-tdd",
+      "total_examples": 8,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 1,
+          "line_number": 32,
+          "code": "fun main() {\n    let x = 42;\n    println(x);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 2,
+          "line_number": 51,
+          "code": "fun main() {\n    let name = \"Ruchy\";\n    println(name);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 3,
+          "line_number": 70,
+          "code": "fun main() {\n    let x = 10;\n    let y = 20;\n    let sum = x + y;\n    println(sum);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 4,
+          "line_number": 91,
+          "code": "fun main() {\n    let pi = 3.14159;\n    let radius = 5.0;\n    let area = pi * radius * radius;\n    println(area);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 5,
+          "line_number": 136,
+          "code": "fun main() {\n    let outer = 100;\n    // outer is accessible here\n    println(outer);\n}\n// outer is NOT accessible here",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 6,
+          "line_number": 163,
+          "code": "fun main() {\n    let value1 = 10;\n    let value2 = 20;\n    let result = value1 + value2;\n    println(result);  // Output: 30\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 7,
+          "line_number": 173,
+          "code": "fun main() {\n    let initial_value = 100;\n    let factor = 2;\n    let adjustment = 50;\n    let divisor = 3;\n    \n    let step1 = initial_value * factor;\n    let step2 = step1 + adjustment;\n    let final_result = step2 / divisor;\n    \n    println(final_result);  // Output: 83\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch02-00-variables-types-tdd.md",
+          "example_number": 8,
+          "line_number": 189,
+          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet PI = 3.14159;\nlet GRAVITY = 9.81;",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
     "ch21-00-professional-tooling-tdd": {
       "chapter": "ch21-00-professional-tooling-tdd",
       "total_examples": 1,
@@ -23,71 +95,160 @@
         }
       ]
     },
+    "conclusion": {
+      "chapter": "conclusion",
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/conclusion.md",
+          "example_number": 1,
+          "line_number": 205,
+          "code": "fun calculate(x: i32, y: i32) -> i32 {\n    return x + y;\n}\n\nfun main() {\n    let result = calculate(10, 20);\n    println(result);  // Output: 30\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch10-00-input-output-tdd": {
+      "chapter": "ch10-00-input-output-tdd",
+      "total_examples": 10,
+      "working_examples": 10,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 1,
+          "line_number": 32,
+          "code": "fun main() {\n    println(\"=== Output Demo ===\");\n    println(\"Number: \");\n    println(42);\n    println(\"Boolean: \");\n    println(true);\n    println(\"=== End Demo ===\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 2,
+          "line_number": 60,
+          "code": "fun main() {\n    let name = \"Alice\";\n    let age = 30;\n    let height = 5.6;\n    \n    println(\"=== User Profile ===\");\n    println(\"Name:\");\n    println(name);\n    println(\"Age:\");\n    println(age);\n    println(\"Height:\");\n    println(height);\n    println(\"================\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 3,
+          "line_number": 96,
+          "code": "fun display_menu() {\n    println(\"=== Main Menu ===\");\n    println(\"1. View Profile\");\n    println(\"2. Settings\");\n    println(\"3. Exit\");\n    println(\"=================\");\n}\n\nfun main() {\n    display_menu();\n    println(\"Menu displayed successfully\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 4,
+          "line_number": 147,
+          "code": "fun main() {\n    let variable = \"Hello World\";\n    println(\"text message\");\n    println(variable);\n    println(42);\n    println(true);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 5,
+          "line_number": 158,
+          "code": "fun main() {\n    let value = \"Important Data\";\n    let data = value;\n    println(\"Label:\");\n    println(data);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 6,
+          "line_number": 168,
+          "code": "fun display_options() {\n    println(\"=== Menu ===\");\n    println(\"1. Option One\");\n    println(\"2. Option Two\");\n    println(\"============\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 7,
+          "line_number": 195,
+          "code": "let value = 100;\nprintln(\"Result:\");\nprintln(value);",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 8,
+          "line_number": 205,
+          "code": "// Error: ✗ Compilation failed: Failed to parse Ruchy source\nfun display_report(title: &str, data: i32) {\n    println(\"=== Report ===\");\n    println(title);\n    println(data);\n    println(\"==============\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 9,
+          "line_number": 218,
+          "code": "println(\"Processing...\");\n// ... do work ...\nprintln(\"Complete!\");",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 10,
+          "line_number": 228,
+          "code": "fun show_options() {\n    println(\"Choose an option:\");\n    println(\"1. Start\");\n    println(\"2. Stop\");\n    println(\"3. Help\");\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
     "ch03-00-functions-tdd": {
       "chapter": "ch03-00-functions-tdd",
       "total_examples": 9,
-      "working_examples": 4,
-      "failing_examples": 5,
+      "working_examples": 9,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 1,
           "line_number": 32,
           "code": "fun greet() {\n    println(\"Hello from function!\");\n}\n\nfun main() {\n    greet();\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\n✗ Compilation failed: Failed to transpile to Rust\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 2,
           "line_number": 54,
           "code": "fun add(a, b) {\n    a + b\n}\n\nfun main() {\n    let result = add(5, 3);\n    println(result);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\n✗ Compilation failed: Failed to transpile to Rust\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 3,
           "line_number": 77,
           "code": "fun multiply(x: i32, y: i32) -> i32 {\n    x * y\n}\n\nfun main() {\n    let product = multiply(6, 7);\n    println(product);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\n✗ Compilation failed: Failed to transpile to Rust\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 4,
           "line_number": 100,
           "code": "fun square(n: i32) -> i32 {\n    n * n\n}\n\nfun sum_of_squares(a: i32, b: i32) -> i32 {\n    square(a) + square(b)\n}\n\nfun main() {\n    let result = sum_of_squares(3, 4);\n    println(result);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\n✗ Compilation failed: Failed to transpile to Rust\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 5,
           "line_number": 127,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nfun function_name(parameters) -> return_type {\n    // function body\n    return_expression\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nerror[E0412]: cannot find type `return_type` in this scope\n --> /tmp/.tmpahyQuA/main.rs:1:43\n  |\n1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }\n  |                                           ^^^^^^^^^^^ not found in this scope\n\nerror[E0425]: cannot find value `return_expression` in this scope\n --> /tmp/.tmpahyQuA/main.rs:1:57\n  |\n1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }\n  |                                                         ^^^^^^^^^^^^^^^^^ not found in this scope\n\nerror: aborting due to 2 previous errors\n\nSome errors have detailed explanations: E0412, E0425.\nFor more information about an error, try `rustc --explain E0412`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "// Example function definition\nfun calculate_area(length: i32, width: i32) -> i32 {\n    length * width\n}\n\nfun main() {\n    let area = calculate_area(5, 3);\n    println(area);  // Output: 15\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 6,
-          "line_number": 165,
+          "line_number": 167,
           "code": "fun calculate(x: i32, y: i32) -> i32 {\n    x * 2 + y * 3\n}",
           "passed": true,
           "status": "working"
@@ -95,7 +256,7 @@
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 7,
-          "line_number": 194,
+          "line_number": 196,
           "code": "fun calculate(input: i32) -> i32 {\n    input * 2\n}",
           "passed": true,
           "status": "working"
@@ -103,7 +264,7 @@
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 8,
-          "line_number": 204,
+          "line_number": 206,
           "code": "fun combine(a: i32, b: i32, c: i32) -> i32 {\n    a + b + c\n}",
           "passed": true,
           "status": "working"
@@ -111,8 +272,200 @@
         {
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 9,
-          "line_number": 214,
+          "line_number": 216,
           "code": "fun helper(x: i32) -> i32 {\n    x * x\n}\n\nfun main_calculation(n: i32) -> i32 {\n    helper(n) + helper(n + 1)\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch05-00-control-flow-tdd": {
+      "chapter": "ch05-00-control-flow-tdd",
+      "total_examples": 14,
+      "working_examples": 14,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 1,
+          "line_number": 32,
+          "code": "fun main() {\n    let x = 10;\n    if x > 5 {\n        println(\"x is greater than 5\");\n    } else {\n        println(\"x is not greater than 5\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 2,
+          "line_number": 55,
+          "code": "fun main() {\n    let score = 85;\n    if score >= 80 {\n        println(\"Great job!\");\n    }\n    println(\"Score processed\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 3,
+          "line_number": 78,
+          "code": "fun main() {\n    let grade = 75;\n    if grade >= 90 {\n        println(\"A grade\");\n    } else if grade >= 80 {\n        println(\"B grade\");\n    } else if grade >= 70 {\n        println(\"C grade\");\n    } else {\n        println(\"Below C\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 4,
+          "line_number": 105,
+          "code": "fun main() {\n    let mut i = 0;\n    while i < 3 {\n        println(i);\n        i = i + 1;\n    }\n    println(\"Done\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 5,
+          "line_number": 131,
+          "code": "fun main() {\n    for i in 0..3 {\n        println(i);\n    }\n    println(\"For loop done\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 6,
+          "line_number": 155,
+          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 7,
+          "line_number": 179,
+          "code": "fun main() {\n    let mut i = 0;\n    while i < 10 {\n        i = i + 1;\n        if i == 3 {\n            continue;\n        }\n        if i == 6 {\n            break;\n        }\n        println(i);\n    }\n    println(\"Loop ended\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 8,
+          "line_number": 236,
+          "code": "fun main() {\n    let x = 10;\n    let y = 5;\n\n    if x > y {\n        println(\"x is greater\");\n    } else if x < y {\n        println(\"y is greater\");\n    } else {\n        println(\"they are equal\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 9,
+          "line_number": 252,
+          "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count: \" + count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration: \" + i);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 10,
+          "line_number": 269,
+          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 11,
+          "line_number": 296,
+          "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value: \" + user_input);\n    } else {\n        println(\"Normal value: \" + user_input);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 12,
+          "line_number": 310,
+          "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is: \" + count);\n        count = count + 1;\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 13,
+          "line_number": 321,
+          "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item \" + i);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 14,
+          "line_number": 330,
+          "code": "fun main() {\n    let status_code = 200;\n    match status_code {\n        200 => println(\"Success\"),\n        404 => println(\"Not Found\"),\n        500 => println(\"Server Error\"),\n        _ => println(\"Unknown Status\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch01-02-hello-world": {
+      "chapter": "ch01-02-hello-world",
+      "total_examples": 8,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 1,
+          "line_number": 30,
+          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 2,
+          "line_number": 86,
+          "code": "fun main() {\n    println(\"Hello\", \"World\", \"from\", \"Ruchy\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 3,
+          "line_number": 106,
+          "code": "fun main() {\n    let name = \"Alice\";\n    println(\"Hello,\", name);\n    \n    // String concatenation (interpolation coming in future versions)\n    println(\"Hello, \" + name + \"!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 4,
+          "line_number": 131,
+          "code": "fun main() {\n    println(\"The answer is\", 42);\n    println(\"Pi is approximately\", 3.14159);\n    println(\"Is Ruchy awesome?\", true);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 5,
+          "line_number": 156,
+          "code": "// ❌ This won't work - intentional error example\n// println(Hello, World!);\n//\n\n// Always use quotes for literal text.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 6,
+          "line_number": 176,
+          "code": "// ❌ Quotes don't match - intentional error example\n// println(\"Hello, World!');\n//\n\n// Use either \"...\" or '...' but be consistent.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 7,
+          "line_number": 196,
+          "code": "// ❌ Wrong capitalization - intentional error example\n// PrintLn(\"Hello, World!\");\n//\n\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch01-02-hello-world.md",
+          "example_number": 8,
+          "line_number": 222,
+          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         }
@@ -190,258 +543,6 @@
         }
       ]
     },
-    "ch05-00-control-flow-tdd": {
-      "chapter": "ch05-00-control-flow-tdd",
-      "total_examples": 14,
-      "working_examples": 6,
-      "failing_examples": 8,
-      "examples": [
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 1,
-          "line_number": 32,
-          "code": "fun main() {\n    let x = 10;\n    if x > 5 {\n        println(\"x is greater than 5\");\n    } else {\n        println(\"x is not greater than 5\");\n    }\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 2,
-          "line_number": 55,
-          "code": "fun main() {\n    let score = 85;\n    if score >= 80 {\n        println(\"Great job!\");\n    }\n    println(\"Score processed\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 3,
-          "line_number": 78,
-          "code": "fun main() {\n    let grade = 75;\n    if grade >= 90 {\n        println(\"A grade\");\n    } else if grade >= 80 {\n        println(\"B grade\");\n    } else if grade >= 70 {\n        println(\"C grade\");\n    } else {\n        println(\"Below C\");\n    }\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 4,
-          "line_number": 105,
-          "code": "fun main() {\n    let mut i = 0;\n    while i < 3 {\n        println(i);\n        i = i + 1;\n    }\n    println(\"Done\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 5,
-          "line_number": 131,
-          "code": "fun main() {\n    for i in 0..3 {\n        println(i);\n    }\n    println(\"For loop done\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 6,
-          "line_number": 155,
-          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 7,
-          "line_number": 179,
-          "code": "fun main() {\n    let mut i = 0;\n    while i < 10 {\n        i = i + 1;\n        if i == 3 {\n            continue;\n        }\n        if i == 6 {\n            break;\n        }\n        println(i);\n    }\n    println(\"Loop ended\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 8,
-          "line_number": 236,
-          "code": "let x = 10;\nlet y = 5;\n\nif x > y {\n    println(\"x is greater\");\n} else if x < y {\n    println(\"y is greater\");\n} else {\n    println(\"they are equal\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpSXGGPi/main.rs:1:30\n  |\n1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"...\n  |                              ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpSXGGPi/main.rs:1:47\n  |\n1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"...\n  |                                               ^ help: remove this semicolon\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpSXGGPi/main.rs:1:73\n  |\n1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"...\n  |                                                                         ^^                          ^^\n  |\n  = note: `#[warn(unused_braces)]` on by default\nhelp: remove these braces\n  |\n1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { println ! (\"x is greater\") } else { if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpSXGGPi/main.rs:1:124\n  |\n1 | ... { println ! (\"x is greater\") } } else { if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; mat...\n  |                                                        ^^                          ^^\n  |\nhelp: remove these braces\n  |\n1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { println ! (\"y is greater\") } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpSXGGPi/main.rs:1:164\n  |\n1 | ...if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& resu...\n  |                                                       ^^                            ^^\n  |\nhelp: remove these braces\n  |\n1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"y is greater\") } } else { { println ! (\"they are equal\") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! (\"x is greater\") } } else { if x < y { { println ! (\"y is greater\") } } else { println ! (\"they are equal\") } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |\n\nerror[E0277]: `()` doesn't implement `std::fmt::Display`\n --> /tmp/.tmpSXGGPi/main.rs:1:337\n  |\n1 | .... contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter\n  |                                       |\n  |                                       required by this formatting parameter\n  |\n  = help: the trait `std::fmt::Display` is not implemented for `()`\n  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead\n  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error; 5 warnings emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 9,
-          "line_number": 250,
-          "code": "// While loop\nlet mut count = 0;\nwhile count < 3 {\n    println(\"Count: \" + count);\n    count = count + 1;\n}\n\n// For loop with range\nfor i in 1..4 {\n    println(\"Iteration: \" + i);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 10,
-          "line_number": 265,
-          "code": "let number = 2;\nmatch number {\n    1 => println(\"One\"),\n    2 => println(\"Two\"),\n    3 => println(\"Three\"),\n    _ => println(\"Other\")\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpznyDIZ/main.rs:1:34\n  |\n1 | fn main () { let number = 2i32 ; ; let result = match number { 1i32 => println ! (\"One\") , 2i32 => println ! (\"Two\") , 3i32 => println ! ...\n  |                                  ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nerror[E0277]: `()` doesn't implement `std::fmt::Display`\n --> /tmp/.tmpznyDIZ/main.rs:1:315\n  |\n1 | .... contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter\n  |                                       |\n  |                                       required by this formatting parameter\n  |\n  = help: the trait `std::fmt::Display` is not implemented for `()`\n  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead\n  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 11,
-          "line_number": 290,
-          "code": "let user_input = 75;\nlet threshold = 50;\n\nif user_input > threshold {\n    println(\"High value: \" + user_input);\n} else {\n    println(\"Normal value: \" + user_input);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpcCeZ1v/main.rs:1:39\n  |\n1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! (\"{:?}\" , format !...\n  |                                       ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpcCeZ1v/main.rs:1:65\n  |\n1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! (\"{:?}\" , format !...\n  |                                                                 ^ help: remove this semicolon\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpcCeZ1v/main.rs:1:108\n  |\n1 | ... = if user_input > threshold { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"High value: \" , user_input)) } } else { { println ! (\"{:?}\" ,...\n  |                                   ^^                                                                    ^^\n  |\n  = note: `#[warn(unused_braces)]` on by default\nhelp: remove these braces\n  |\n1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"High value: \" , user_input)) } } else { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"Normal value: \" , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { println ! (\"{:?}\" , format ! (\"{}{}\" , \"High value: \" , user_input)) } else { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"Normal value: \" , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpcCeZ1v/main.rs:1:190\n  |\n1 | ...: \" , user_input)) } } else { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"Normal value: \" , user_input)) } } ; match std :: any :: type_...\n  |                                  ^^                                                                      ^^\n  |\nhelp: remove these braces\n  |\n1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"High value: \" , user_input)) } } else { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"Normal value: \" , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! (\"{:?}\" , format ! (\"{}{}\" , \"High value: \" , user_input)) } } else { println ! (\"{:?}\" , format ! (\"{}{}\" , \"Normal value: \" , user_input)) } ; match std :: any :: type_name_of_val (& result) { name if name . contains (\"String\") || name . contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |\n\nerror[E0277]: `()` doesn't implement `std::fmt::Display`\n --> /tmp/.tmpcCeZ1v/main.rs:1:403\n  |\n1 | .... contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter\n  |                                       |\n  |                                       required by this formatting parameter\n  |\n  = help: the trait `std::fmt::Display` is not implemented for `()`\n  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead\n  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error; 4 warnings emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 12,
-          "line_number": 302,
-          "code": "let mut count = 0;\nwhile count < 10 {\n    println(\"Count is: \" + count);\n    count = count + 1;\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 13,
-          "line_number": 311,
-          "code": "for i in 1..5 {\n    println(\"Processing item \" + i);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 14,
-          "line_number": 321,
-          "code": "let status_code = 200;\nmatch status_code {\n    200 => println(\"Success\"),\n    404 => println(\"Not Found\"),\n    500 => println(\"Server Error\"),\n    _ => println(\"Unknown Status\")\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpj00DyC/main.rs:1:41\n  |\n1 | fn main () { let status_code = 200i32 ; ; let result = match status_code { 200i32 => println ! (\"Success\") , 404i32 => println ! (\"Not Fo...\n  |                                         ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nerror[E0277]: `()` doesn't implement `std::fmt::Display`\n --> /tmp/.tmpj00DyC/main.rs:1:359\n  |\n1 | .... contains (\"&str\") => println ! (\"{}\" , result) , _ => println ! (\"{:?}\" , result) } }\n  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter\n  |                                       |\n  |                                       required by this formatting parameter\n  |\n  = help: the trait `std::fmt::Display` is not implemented for `()`\n  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead\n  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0277`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        }
-      ]
-    },
-    "ch02-00-variables-types-tdd": {
-      "chapter": "ch02-00-variables-types-tdd",
-      "total_examples": 8,
-      "working_examples": 6,
-      "failing_examples": 2,
-      "examples": [
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 1,
-          "line_number": 32,
-          "code": "fun main() {\n    let x = 42;\n    println(x);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 2,
-          "line_number": 51,
-          "code": "fun main() {\n    let name = \"Ruchy\";\n    println(name);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 3,
-          "line_number": 70,
-          "code": "fun main() {\n    let x = 10;\n    let y = 20;\n    let sum = x + y;\n    println(sum);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 4,
-          "line_number": 91,
-          "code": "fun main() {\n    let pi = 3.14159;\n    let radius = 5.0;\n    let area = pi * radius * radius;\n    println(area);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 5,
-          "line_number": 136,
-          "code": "fun main() {\n    let outer = 100;\n    // outer is accessible here\n    println(outer);\n}\n// outer is NOT accessible here",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 6,
-          "line_number": 163,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet result = value1 + value2;",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nerror[E0425]: cannot find value `value1` in this scope\n --> /tmp/.tmp0RZSyO/main.rs:1:27\n  |\n1 | fn main () { let result = value1 + value2 ; ; }\n  |                           ^^^^^^ not found in this scope\n\nerror[E0425]: cannot find value `value2` in this scope\n --> /tmp/.tmp0RZSyO/main.rs:1:36\n  |\n1 | fn main () { let result = value1 + value2 ; ; }\n  |                                    ^^^^^^ not found in this scope\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmp0RZSyO/main.rs:1:45\n  |\n1 | fn main () { let result = value1 + value2 ; ; }\n  |                                             ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nerror: aborting due to 2 previous errors; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0425`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 7,
-          "line_number": 171,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet step1 = initial_value * factor;\nlet step2 = step1 + adjustment;\nlet final_result = step2 / divisor;",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nerror[E0425]: cannot find value `initial_value` in this scope\n --> /tmp/.tmpD0wvsn/main.rs:1:26\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                          ^^^^^^^^^^^^^ not found in this scope\n\nerror[E0425]: cannot find value `factor` in this scope\n --> /tmp/.tmpD0wvsn/main.rs:1:42\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                          ^^^^^^ not found in this scope\n\nerror[E0425]: cannot find value `adjustment` in this scope\n --> /tmp/.tmpD0wvsn/main.rs:1:73\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                                                         ^^^^^^^^^^ not found in this scope\n\nerror[E0425]: cannot find value `divisor` in this scope\n --> /tmp/.tmpD0wvsn/main.rs:1:115\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                                                                                                   ^^^^^^^ not found in this scope\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpD0wvsn/main.rs:1:51\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                                   ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpD0wvsn/main.rs:1:86\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                                                                      ^ help: remove this semicolon\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpD0wvsn/main.rs:1:125\n  |\n1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }\n  |                                                                                                                             ^ help: remove this semicolon\n\nerror: aborting due to 4 previous errors; 3 warnings emitted\n\nFor more information about this error, try `rustc --explain E0425`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 8,
-          "line_number": 181,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet PI = 3.14159;\nlet GRAVITY = 9.81;",
-          "passed": true,
-          "status": "working"
-        }
-      ]
-    },
-    "conclusion": {
-      "chapter": "conclusion",
-      "total_examples": 2,
-      "working_examples": 0,
-      "failing_examples": 2,
-      "examples": [
-        {
-          "file": "src/conclusion.md",
-          "example_number": 1,
-          "line_number": 205,
-          "code": "fun calculate(x: i32, y: i32) -> i32 {\n    return x + y;\n}\n\nfun main() {\n    let result = calculate(10, 20);\n    println(result);  // Output: 30\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/conclusion.md",
-          "example_number": 2,
-          "line_number": 220,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\n// Arrays - NOT YET\nlet arr = [1, 2, 3];\n\n// User Input - NOT YET  \nlet name = input(\"Enter name: \");\n\n// File I/O - NOT YET\nlet contents = fs::read_to_string(\"file.txt\");\n\n// Closures - NOT YET\nlet add_one = |x| x + 1;",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        }
-      ]
-    },
     "ch01-02-hello-world-tdd": {
       "chapter": "ch01-02-hello-world-tdd",
       "total_examples": 6,
@@ -493,318 +594,6 @@
           "example_number": 6,
           "line_number": 141,
           "code": "println(\"First line\");\nprintln(\"Second line\");",
-          "passed": true,
-          "status": "working"
-        }
-      ]
-    },
-    "ch10-00-input-output-tdd": {
-      "chapter": "ch10-00-input-output-tdd",
-      "total_examples": 10,
-      "working_examples": 6,
-      "failing_examples": 4,
-      "examples": [
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 1,
-          "line_number": 32,
-          "code": "fun main() {\n    println(\"=== Output Demo ===\");\n    println(\"Number: \");\n    println(42);\n    println(\"Boolean: \");\n    println(true);\n    println(\"=== End Demo ===\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 2,
-          "line_number": 60,
-          "code": "fun main() {\n    let name = \"Alice\";\n    let age = 30;\n    let height = 5.6;\n    \n    println(\"=== User Profile ===\");\n    println(\"Name:\");\n    println(name);\n    println(\"Age:\");\n    println(age);\n    println(\"Height:\");\n    println(height);\n    println(\"================\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 3,
-          "line_number": 96,
-          "code": "fun display_menu() {\n    println(\"=== Main Menu ===\");\n    println(\"1. View Profile\");\n    println(\"2. Settings\");\n    println(\"3. Exit\");\n    println(\"=================\");\n}\n\nfun main() {\n    display_menu();\n    println(\"Menu displayed successfully\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\n✗ Compilation failed: Failed to transpile to Rust\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 4,
-          "line_number": 147,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nprintln(\"text message\");\nprintln(variable);\nprintln(42);\nprintln(true);",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nerror[E0425]: cannot find value `variable` in this scope\n --> /tmp/.tmpjOBzJU/main.rs:1:63\n  |\n1 | fn main () { println ! (\"text message\") ; println ! (\"{:?}\" , variable) ; println ! (\"{:?}\" , 42i32) ; println ! (\"{:?}\" , true) ; }\n  |                                                               ^^^^^^^^ not found in this scope\n\nerror: aborting due to 1 previous error\n\nFor more information about this error, try `rustc --explain E0425`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 5,
-          "line_number": 158,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet data = value;\nprintln(\"Label:\");\nprintln(data);",
-          "passed": false,
-          "status": "broken",
-          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nerror[E0425]: cannot find value `value` in this scope\n --> /tmp/.tmp5QFIDb/main.rs:1:25\n  |\n1 | fn main () { let data = value ; ; println ! (\"Label:\") ; println ! (\"{:?}\" , data) ; }\n  |                         ^^^^^ not found in this scope\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmp5QFIDb/main.rs:1:33\n  |\n1 | fn main () { let data = value ; ; println ! (\"Label:\") ; println ! (\"{:?}\" , data) ; }\n  |                                 ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nerror: aborting due to 1 previous error; 1 warning emitted\n\nFor more information about this error, try `rustc --explain E0425`.\n\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 6,
-          "line_number": 168,
-          "code": "fun display_options() {\n    println(\"=== Menu ===\");\n    println(\"1. Option One\");\n    println(\"2. Option Two\");\n    println(\"============\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 7,
-          "line_number": 195,
-          "code": "let value = 100;\nprintln(\"Result:\");\nprintln(value);",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 8,
-          "line_number": 205,
-          "code": "// Error: ✗ Compilation failed: Failed to parse Ruchy source\nfun display_report(title: &str, data: i32) {\n    println(\"=== Report ===\");\n    println(title);\n    println(data);\n    println(\"==============\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 9,
-          "line_number": 218,
-          "code": "println(\"Processing...\");\n// ... do work ...\nprintln(\"Complete!\");",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch10-00-input-output-tdd.md",
-          "example_number": 10,
-          "line_number": 228,
-          "code": "fun show_options() {\n    println(\"Choose an option:\");\n    println(\"1. Start\");\n    println(\"2. Stop\");\n    println(\"3. Help\");\n}",
-          "passed": true,
-          "status": "working"
-        }
-      ]
-    },
-    "ch23-00-repl-object-inspection": {
-      "chapter": "ch23-00-repl-object-inspection",
-      "total_examples": 12,
-      "working_examples": 0,
-      "failing_examples": 12,
-      "examples": [
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 1,
-          "line_number": 19,
-          "code": "// Simple expressions\n> 2 + 2\n4\n\n> \"Hello, \" + \"World!\"\n\"Hello, World!\"\n\n> [1, 2, 3]\n[1, 2, 3]",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 2,
-          "line_number": 33,
-          "code": "> let name = \"Alice\"\n\"Alice\"\n\n> let numbers = [1, 2, 3, 4, 5]\n[1, 2, 3, 4, 5]\n\n> let person = {\"name\": \"Bob\", \"age\": 25}\n{\"name\": \"Bob\", \"age\": 25}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 3,
-          "line_number": 69,
-          "code": "> let arr = [1, 2, 3]\n[1, 2, 3]\n\n> :type arr\nType: List\n\n> let num = 42\n42\n\n> :type num\nType: Integer\n\n> let text = \"Hello\"\n\"Hello\"\n\n> :type text\nType: String",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 4,
-          "line_number": 95,
-          "code": "> let data = [10, 20, 30, 40, 50]\n[10, 20, 30, 40, 50]\n\n> :inspect data\n┌─ Inspector ────────────────┐\n│ Variable: data              │\n│ Type: List                  │\n│ Length: 5                   │\n│ Memory: ~40 bytes          │\n│                            │\n│ Options:                   │\n│ [Enter] Browse entries     │\n│ [S] Statistics             │\n│ [M] Memory layout          │\n└────────────────────────────┘",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 5,
-          "line_number": 115,
-          "code": "> let user = {\"name\": \"Alice\", \"age\": 30, \"email\": \"alice@example.com\"}\n{\"name\": \"Alice\", \"age\": 30, \"email\": \"alice@example.com\"}\n\n> :inspect user\n┌─ Inspector ────────────────┐\n│ Variable: user              │\n│ Type: Object               │\n│ Fields: 3                  │\n│ Memory: ~120 bytes         │\n│                            │\n│ Options:                   │\n│ [Enter] Browse entries     │\n│ [S] Statistics             │\n│ [M] Memory layout          │\n└────────────────────────────┘",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 6,
-          "line_number": 139,
-          "code": "> let nested = {\"user\": {\"name\": \"Bob\", \"prefs\": {\"theme\": \"dark\"}}}\n{\"user\": {\"name\": \"Bob\", \"prefs\": {\"theme\": \"dark\"}}}\n\n> :inspect nested\n┌─ Inspector ────────────────┐\n│ Variable: nested            │\n│ Type: Object               │\n│ Fields: 1                  │\n│ Depth: 3                   │\n│ Memory: ~160 bytes         │\n│                            │\n│ Structure:                 │\n│ └─ user: Object            │\n│    └─ name: String         │\n│    └─ prefs: Object        │\n│       └─ theme: String     │\n└────────────────────────────┘",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 7,
-          "line_number": 163,
-          "code": "> let a = {\"name\": \"A\"}\n{\"name\": \"A\"}\n\n> let b = {\"name\": \"B\", \"ref\": a}\n{\"name\": \"B\", \"ref\": {\"name\": \"A\"}}\n\n> a[\"ref\"] = b  // Creates a cycle\n<circular reference detected>",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 8,
-          "line_number": 178,
-          "code": "> :ast 2 + 3 * 4\nBinaryOp {\n  left: Literal(2),\n  op: Add,\n  right: BinaryOp {\n    left: Literal(3),\n    op: Multiply,\n    right: Literal(4)\n  }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 9,
-          "line_number": 201,
-          "code": "> :debug\nDebug mode enabled\n\n> let x = 5\n[DEBUG] Binding 'x' to value 5\n[DEBUG] Type: Integer\n[DEBUG] Memory: 8 bytes\n5",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 10,
-          "line_number": 216,
-          "code": "> let data = [1, 2, 3, 4, 5]\n[1, 2, 3, 4, 5]\n\n> data.map(|x| x * 2)\n[2, 4, 6, 8, 10]\n\n> :type data.map(|x| x * 2)\nType: List",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 11,
-          "line_number": 229,
-          "code": "> let prices = [10.50, 25.00, 15.75]\n[10.50, 25.00, 15.75]\n\n> prices.sum()\n51.25\n\n> prices.sum() * 1.08  // With 8% tax\n55.35",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch23-00-repl-object-inspection.md",
-          "example_number": 12,
-          "line_number": 242,
-          "code": "> let config = {\"debug\": false, \"port\": 8080}\n{\"debug\": false, \"port\": 8080}\n\n> config[\"debug\"] = true\ntrue\n\n> config\n{\"debug\": true, \"port\": 8080}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Compilation failed: Failed to parse Ruchy source\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        }
-      ]
-    },
-    "ch01-02-hello-world": {
-      "chapter": "ch01-02-hello-world",
-      "total_examples": 8,
-      "working_examples": 8,
-      "failing_examples": 0,
-      "examples": [
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 1,
-          "line_number": 30,
-          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 2,
-          "line_number": 86,
-          "code": "fun main() {\n    println(\"Hello\", \"World\", \"from\", \"Ruchy\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 3,
-          "line_number": 106,
-          "code": "fun main() {\n    let name = \"Alice\";\n    println(\"Hello,\", name);\n    \n    // String concatenation (interpolation coming in future versions)\n    println(\"Hello, \" + name + \"!\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 4,
-          "line_number": 131,
-          "code": "fun main() {\n    println(\"The answer is\", 42);\n    println(\"Pi is approximately\", 3.14159);\n    println(\"Is Ruchy awesome?\", true);\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 5,
-          "line_number": 156,
-          "code": "// ❌ This won't work - intentional error example\n// println(Hello, World!);\n//\n\n// Always use quotes for literal text.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 6,
-          "line_number": 176,
-          "code": "// ❌ Quotes don't match - intentional error example\n// println(\"Hello, World!');\n//\n\n// Use either \"...\" or '...' but be consistent.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 7,
-          "line_number": 196,
-          "code": "// ❌ Wrong capitalization - intentional error example\n// PrintLn(\"Hello, World!\");\n//\n\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch01-02-hello-world.md",
-          "example_number": 8,
-          "line_number": 222,
-          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         }

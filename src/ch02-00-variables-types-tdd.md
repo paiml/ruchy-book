@@ -161,20 +161,28 @@ make test-file FILE=tests/ch02-variables/test_01_basic_let.ruchy
 
 ### Pattern 1: Simple Calculation
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-let result = value1 + value2;
-
-
+fun main() {
+    let value1 = 10;
+    let value2 = 20;
+    let result = value1 + value2;
+    println(result);  // Output: 30
+}
 ```
 
 ### Pattern 2: Multi-Step Calculation
 ```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-let step1 = initial_value * factor;
-let step2 = step1 + adjustment;
-let final_result = step2 / divisor;
-
-
+fun main() {
+    let initial_value = 100;
+    let factor = 2;
+    let adjustment = 50;
+    let divisor = 3;
+    
+    let step1 = initial_value * factor;
+    let step2 = step1 + adjustment;
+    let final_result = step2 / divisor;
+    
+    println(final_result);  // Output: 83
+}
 ```
 
 ### Pattern 3: Named Constants

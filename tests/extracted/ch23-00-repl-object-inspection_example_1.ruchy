@@ -1,9 +1,0 @@
-// Simple expressions
-> 2 + 2
-4
-
-> "Hello, " + "World!"
-"Hello, World!"
-
-> [1, 2, 3]
-[1, 2, 3]

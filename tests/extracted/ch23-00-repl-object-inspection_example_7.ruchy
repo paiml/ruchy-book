@@ -1,8 +1,0 @@
-> let a = {"name": "A"}
-{"name": "A"}
-
-> let b = {"name": "B", "ref": a}
-{"name": "B", "ref": {"name": "A"}}
-
-> a["ref"] = b  // Creates a cycle
-<circular reference detected>
