@@ -3,7 +3,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpKo7MhZ/main.rs:1:58
+ --> /tmp/.tmpq0Sy1e/main.rs:1:58
   |
 1 | fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32)...
   |                                                          ^^ ^^
@@ -16,7 +16,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpKo7MhZ/main.rs:1:73
+ --> /tmp/.tmpq0Sy1e/main.rs:1:73
   |
 1 | ... { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i...
   |                                     ^^                                                               ^^
@@ -28,7 +28,7 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpKo7MhZ/main.rs:1:206
+ --> /tmp/.tmpq0Sy1e/main.rs:1:206
   |
 1 | ...cci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; {...
   |                                                        ^ help: remove this semicolon
@@ -36,19 +36,19 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpKo7MhZ/main.rs:1:227
+ --> /tmp/.tmpq0Sy1e/main.rs:1:227
   |
 1 | ...2) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpKo7MhZ/main.rs:1:248
+ --> /tmp/.tmpq0Sy1e/main.rs:1:248
   |
 1 | ... = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ;...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpKo7MhZ/main.rs:1:264
+ --> /tmp/.tmpq0Sy1e/main.rs:1:264
   |
 1 | ... let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result...
   |                                        ^^                                                          ^^
@@ -60,13 +60,13 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpKo7MhZ/main.rs:1:442
+ --> /tmp/.tmpq0Sy1e/main.rs:1:442
   |
 1 | ...32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! ("{:?}" , result1) ; println ! ("{:?}" , result2) } } }
   |                                                        ^ help: remove this semicolon
 
 error[E0308]: mismatched types
- --> /tmp/.tmpKo7MhZ/main.rs:1:181
+ --> /tmp/.tmpq0Sy1e/main.rs:1:181
   |
 1 | ...fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } ...
   |       -------------------              ^^^ expected `i32`, found `()`                                                                                                                          - help: remove this semicolon to return this value
@@ -77,4 +77,16 @@ error: aborting due to 1 previous error; 7 warnings emitted
 
 For more information about this error, try `rustc --explain E0308`.
 
+
+
+=== ch15-00-binary-compilation-deployment example 2 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch15-00-binary-compilation-deployment example 3 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch15-00-binary-compilation-deployment example 4 ===
+✗ Compilation failed: Failed to parse Ruchy source
 
