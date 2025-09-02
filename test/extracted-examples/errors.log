@@ -1,21 +1,274 @@
+=== ch03-00-functions-tdd example 1 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to transpile to Rust
+
+
+=== ch03-00-functions-tdd example 2 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to transpile to Rust
+
+
+=== ch03-00-functions-tdd example 3 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to transpile to Rust
+
+
+=== ch03-00-functions-tdd example 4 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to transpile to Rust
+
+
+=== ch03-00-functions-tdd example 5 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0412]: cannot find type `return_type` in this scope
+ --> /tmp/.tmpahyQuA/main.rs:1:43
+  |
+1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }
+  |                                           ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `return_expression` in this scope
+ --> /tmp/.tmpahyQuA/main.rs:1:57
+  |
+1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }
+  |                                                         ^^^^^^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0412, E0425.
+For more information about an error, try `rustc --explain E0412`.
+
+
+
+=== ch05-00-control-flow-tdd example 4 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch05-00-control-flow-tdd example 7 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch05-00-control-flow-tdd example 8 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpSXGGPi/main.rs:1:30
+  |
+1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
+  |                              ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpSXGGPi/main.rs:1:47
+  |
+1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
+  |                                               ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpSXGGPi/main.rs:1:73
+  |
+1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
+  |                                                                         ^^                          ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { println ! ("x is greater") } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpSXGGPi/main.rs:1:124
+  |
+1 | ... { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; mat...
+  |                                                        ^^                          ^^
+  |
+help: remove these braces
+  |
+1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { println ! ("y is greater") } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpSXGGPi/main.rs:1:164
+  |
+1 | ...if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& resu...
+  |                                                       ^^                            ^^
+  |
+help: remove these braces
+  |
+1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { println ! ("they are equal") } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpSXGGPi/main.rs:1:337
+  |
+1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error; 5 warnings emitted
+
+For more information about this error, try `rustc --explain E0277`.
+
+
+
+=== ch05-00-control-flow-tdd example 9 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch05-00-control-flow-tdd example 10 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpznyDIZ/main.rs:1:34
+  |
+1 | fn main () { let number = 2i32 ; ; let result = match number { 1i32 => println ! ("One") , 2i32 => println ! ("Two") , 3i32 => println ! ...
+  |                                  ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpznyDIZ/main.rs:1:315
+  |
+1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0277`.
+
+
+
+=== ch05-00-control-flow-tdd example 11 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpcCeZ1v/main.rs:1:39
+  |
+1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format !...
+  |                                       ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpcCeZ1v/main.rs:1:65
+  |
+1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format !...
+  |                                                                 ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpcCeZ1v/main.rs:1:108
+  |
+1 | ... = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" ,...
+  |                                   ^^                                                                    ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpcCeZ1v/main.rs:1:190
+  |
+1 | ...: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_...
+  |                                  ^^                                                                      ^^
+  |
+help: remove these braces
+  |
+1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpcCeZ1v/main.rs:1:403
+  |
+1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error; 4 warnings emitted
+
+For more information about this error, try `rustc --explain E0277`.
+
+
+
+=== ch05-00-control-flow-tdd example 12 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch05-00-control-flow-tdd example 14 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpj00DyC/main.rs:1:41
+  |
+1 | fn main () { let status_code = 200i32 ; ; let result = match status_code { 200i32 => println ! ("Success") , 404i32 => println ! ("Not Fo...
+  |                                         ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpj00DyC/main.rs:1:359
+  |
+1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0277`.
+
+
+
 === ch02-00-variables-types-tdd example 6 ===
 DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `value1` in this scope
- --> /tmp/.tmpJ9swHV/main.rs:1:27
+ --> /tmp/.tmp0RZSyO/main.rs:1:27
   |
 1 | fn main () { let result = value1 + value2 ; ; }
   |                           ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `value2` in this scope
- --> /tmp/.tmpJ9swHV/main.rs:1:36
+ --> /tmp/.tmp0RZSyO/main.rs:1:36
   |
 1 | fn main () { let result = value1 + value2 ; ; }
   |                                    ^^^^^^ not found in this scope
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpJ9swHV/main.rs:1:45
+ --> /tmp/.tmp0RZSyO/main.rs:1:45
   |
 1 | fn main () { let result = value1 + value2 ; ; }
   |                                             ^ help: remove this semicolon
@@ -33,31 +286,31 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `initial_value` in this scope
- --> /tmp/.tmphARIur/main.rs:1:26
+ --> /tmp/.tmpD0wvsn/main.rs:1:26
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                          ^^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `factor` in this scope
- --> /tmp/.tmphARIur/main.rs:1:42
+ --> /tmp/.tmpD0wvsn/main.rs:1:42
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                          ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `adjustment` in this scope
- --> /tmp/.tmphARIur/main.rs:1:73
+ --> /tmp/.tmpD0wvsn/main.rs:1:73
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                                         ^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `divisor` in this scope
- --> /tmp/.tmphARIur/main.rs:1:115
+ --> /tmp/.tmpD0wvsn/main.rs:1:115
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                                                                                   ^^^^^^^ not found in this scope
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmphARIur/main.rs:1:51
+ --> /tmp/.tmpD0wvsn/main.rs:1:51
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                   ^ help: remove this semicolon
@@ -65,13 +318,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmphARIur/main.rs:1:86
+ --> /tmp/.tmpD0wvsn/main.rs:1:86
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                                                      ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmphARIur/main.rs:1:125
+ --> /tmp/.tmpD0wvsn/main.rs:1:125
   |
 1 | fn main () { let step1 = initial_value * factor ; ; let step2 = step1 + adjustment ; ; let final_result = step2 / divisor ; ; }
   |                                                                                                                             ^ help: remove this semicolon
@@ -80,6 +333,63 @@ error: aborting due to 4 previous errors; 3 warnings emitted
 
 For more information about this error, try `rustc --explain E0425`.
 
+
+
+=== conclusion example 1 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== conclusion example 2 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch10-00-input-output-tdd example 3 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to transpile to Rust
+
+
+=== ch10-00-input-output-tdd example 4 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find value `variable` in this scope
+ --> /tmp/.tmpjOBzJU/main.rs:1:63
+  |
+1 | fn main () { println ! ("text message") ; println ! ("{:?}" , variable) ; println ! ("{:?}" , 42i32) ; println ! ("{:?}" , true) ; }
+  |                                                               ^^^^^^^^ not found in this scope
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch10-00-input-output-tdd example 5 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find value `value` in this scope
+ --> /tmp/.tmp5QFIDb/main.rs:1:25
+  |
+1 | fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
+  |                         ^^^^^ not found in this scope
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmp5QFIDb/main.rs:1:33
+  |
+1 | fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
+  |                                 ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch10-00-input-output-tdd example 8 ===
+✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch23-00-repl-object-inspection example 1 ===
@@ -128,314 +438,4 @@ For more information about this error, try `rustc --explain E0425`.
 
 === ch23-00-repl-object-inspection example 12 ===
 ✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== conclusion example 1 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== conclusion example 2 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch10-00-input-output-tdd example 3 ===
-DEBUG: About to call transpile_to_program
-✗ Compilation failed: Failed to transpile to Rust
-
-
-=== ch10-00-input-output-tdd example 4 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error[E0425]: cannot find value `variable` in this scope
- --> /tmp/.tmp7Hb05q/main.rs:1:63
-  |
-1 | fn main () { println ! ("text message") ; println ! ("{:?}" , variable) ; println ! ("{:?}" , 42i32) ; println ! ("{:?}" , true) ; }
-  |                                                               ^^^^^^^^ not found in this scope
-
-error: aborting due to 1 previous error
-
-For more information about this error, try `rustc --explain E0425`.
-
-
-
-=== ch10-00-input-output-tdd example 5 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error[E0425]: cannot find value `value` in this scope
- --> /tmp/.tmp15tVOy/main.rs:1:25
-  |
-1 | fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
-  |                         ^^^^^ not found in this scope
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp15tVOy/main.rs:1:33
-  |
-1 | fn main () { let data = value ; ; println ! ("Label:") ; println ! ("{:?}" , data) ; }
-  |                                 ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 1 previous error; 1 warning emitted
-
-For more information about this error, try `rustc --explain E0425`.
-
-
-
-=== ch10-00-input-output-tdd example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch03-00-functions-tdd example 1 ===
-DEBUG: About to call transpile_to_program
-✗ Compilation failed: Failed to transpile to Rust
-
-
-=== ch03-00-functions-tdd example 2 ===
-DEBUG: About to call transpile_to_program
-✗ Compilation failed: Failed to transpile to Rust
-
-
-=== ch03-00-functions-tdd example 3 ===
-DEBUG: About to call transpile_to_program
-✗ Compilation failed: Failed to transpile to Rust
-
-
-=== ch03-00-functions-tdd example 4 ===
-DEBUG: About to call transpile_to_program
-✗ Compilation failed: Failed to transpile to Rust
-
-
-=== ch03-00-functions-tdd example 5 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error[E0412]: cannot find type `return_type` in this scope
- --> /tmp/.tmpLmpQ3T/main.rs:1:43
-  |
-1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }
-  |                                           ^^^^^^^^^^^ not found in this scope
-
-error[E0425]: cannot find value `return_expression` in this scope
- --> /tmp/.tmpLmpQ3T/main.rs:1:57
-  |
-1 | fn function_name (parameters : String) -> return_type { return_expression } fn main () { }
-  |                                                         ^^^^^^^^^^^^^^^^^ not found in this scope
-
-error: aborting due to 2 previous errors
-
-Some errors have detailed explanations: E0412, E0425.
-For more information about an error, try `rustc --explain E0412`.
-
-
-
-=== ch05-00-control-flow-tdd example 4 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch05-00-control-flow-tdd example 7 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch05-00-control-flow-tdd example 8 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmphnFfUx/main.rs:1:30
-  |
-1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
-  |                              ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmphnFfUx/main.rs:1:47
-  |
-1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
-  |                                               ^ help: remove this semicolon
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmphnFfUx/main.rs:1:73
-  |
-1 | fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("...
-  |                                                                         ^^                          ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { println ! ("x is greater") } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmphnFfUx/main.rs:1:124
-  |
-1 | ... { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; mat...
-  |                                                        ^^                          ^^
-  |
-help: remove these braces
-  |
-1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { println ! ("y is greater") } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmphnFfUx/main.rs:1:164
-  |
-1 | ...if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& resu...
-  |                                                       ^^                            ^^
-  |
-help: remove these braces
-  |
-1 - fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { { println ! ("they are equal") } } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-1 + fn main () { let x = 10i32 ; ; let y = 5i32 ; ; let result = if x > y { { println ! ("x is greater") } } else { if x < y { { println ! ("y is greater") } } else { println ! ("they are equal") } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |
-
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmphnFfUx/main.rs:1:337
-  |
-1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-
-error: aborting due to 1 previous error; 5 warnings emitted
-
-For more information about this error, try `rustc --explain E0277`.
-
-
-
-=== ch05-00-control-flow-tdd example 9 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch05-00-control-flow-tdd example 10 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpEVcwv8/main.rs:1:34
-  |
-1 | fn main () { let number = 2i32 ; ; let result = match number { 1i32 => println ! ("One") , 2i32 => println ! ("Two") , 3i32 => println ! ...
-  |                                  ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpEVcwv8/main.rs:1:315
-  |
-1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-
-error: aborting due to 1 previous error; 1 warning emitted
-
-For more information about this error, try `rustc --explain E0277`.
-
-
-
-=== ch05-00-control-flow-tdd example 11 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpzrmrvk/main.rs:1:39
-  |
-1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format !...
-  |                                       ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpzrmrvk/main.rs:1:65
-  |
-1 | fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format !...
-  |                                                                 ^ help: remove this semicolon
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpzrmrvk/main.rs:1:108
-  |
-1 | ... = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" ,...
-  |                                   ^^                                                                    ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpzrmrvk/main.rs:1:190
-  |
-1 | ...: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_...
-  |                                  ^^                                                                      ^^
-  |
-help: remove these braces
-  |
-1 - fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-1 + fn main () { let user_input = 75i32 ; ; let threshold = 50i32 ; ; let result = if user_input > threshold { { println ! ("{:?}" , format ! ("{}{}" , "High value: " , user_input)) } } else { println ! ("{:?}" , format ! ("{}{}" , "Normal value: " , user_input)) } ; match std :: any :: type_name_of_val (& result) { name if name . contains ("String") || name . contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |
-
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpzrmrvk/main.rs:1:403
-  |
-1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-
-error: aborting due to 1 previous error; 4 warnings emitted
-
-For more information about this error, try `rustc --explain E0277`.
-
-
-
-=== ch05-00-control-flow-tdd example 12 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch05-00-control-flow-tdd example 14 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpWneT9k/main.rs:1:41
-  |
-1 | fn main () { let status_code = 200i32 ; ; let result = match status_code { 200i32 => println ! ("Success") , 404i32 => println ! ("Not Fo...
-  |                                         ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpWneT9k/main.rs:1:359
-  |
-1 | .... contains ("&str") => println ! ("{}" , result) , _ => println ! ("{:?}" , result) } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
-
-error: aborting due to 1 previous error; 1 warning emitted
-
-For more information about this error, try `rustc --explain E0277`.
-
 

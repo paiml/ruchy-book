@@ -1,15 +1,16 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-09-02T12:02:37.381Z  
+**Generated**: 2025-09-02T16:45:00.000Z  
 **Ruchy Version**: ruchy 1.32.0  
-**Book Commit**: 6d0b58b  
+**Book Commit**: f0473a3  
+**Test Runner**: deno task test-tdd
 
 ---
 
 ## 🎯 Executive Summary
 
-- **Total Examples**: 194
-- **Passing**: 133/194 (68.6%)
+- **Total Examples**: 158
+- **Passing**: 106/158 (67.1%)
 - **Test Coverage**: 100.0%
 - **Lint Grade**: F
 - **Provability**: 74.7% formally verified
@@ -21,24 +22,24 @@
 ### Summary by Quality Gate
 | Quality Gate | Pass | Fail | Rate |
 |-------------|------|------|------|
-| ruchy test | 133 | 61 | 68.6% |
-| ruchy lint | 18 | 176 | 9.3% |
-| coverage >80% | 194 | 0 | 100.0% |
-| ruchy prove | 145 | 49 | 74.7% |
+| ruchy test | 106 | 52 | 67.1% |
+| ruchy lint | 18 | 140 | 11.4% |
+| coverage >80% | 158 | 0 | 100.0% |
+| ruchy prove | 118 | 40 | 74.7% |
 
 ### Failed Examples
-- ❌ tests/ch09-collections/test_02_while_accumulation.ruchy: Test failed: 
-- ❌ tests/ch08-advanced-functions/test_02_multiple_returns.ruchy: Test failed: 
-- ❌ tests/ch08-advanced-functions/test_03_recursive_function.ruchy: Test failed: 
-- ❌ tests/ch08-advanced-functions/test_01_function_composition.ruchy: Test failed: 
-- ❌ tests/ch11-file-operations/test_01_simulated_file.ruchy: Test failed: 
-- ❌ tests/ch11-file-operations/test_03_config_management.ruchy: Test failed: 
 - ❌ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy: Test failed: 
-- ❌ tests/extracted/ch23-00-repl-object-inspection_example_5.ruchy: Test failed: 
-- ❌ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy: Test failed: 
-- ❌ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy: Test failed: 
+- ❌ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_2.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_12.ruchy: Test failed: 
+- ❌ tests/extracted/conclusion_example_2.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_9.ruchy: Test failed: 
+- ❌ tests/extracted/conclusion_example_1.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_4.ruchy: Test failed: 
+- ❌ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_7.ruchy: Test failed: 
 
-... and 51 more failures
+... and 42 more failures
 
 ---
 
@@ -48,14 +49,12 @@
 
 ### Lint Issues by Category
 - Lint issues: 
+- Lint issues: 
+- Lint issues: 
 - Lint issues: Error: Expected identifier after 'let'
 
 - Lint issues: 
-- Lint issues: Error: Expected body after if condition, typically { ... }: Unexpected token: Return
-
-- Lint issues: Error: Expected body after if condition, typically { ... }: Unexpected token: Return
-
-... and 171 more issues
+... and 135 more issues
 
 ---
 
@@ -66,7 +65,7 @@
 ### Coverage Distribution
 | Range | Count | Examples |
 |-------|-------|----------|
-| 100% | 194 | Perfect coverage |
+| 100% | 158 | Perfect coverage |
 | 80-99% | 0 | Good coverage |
 | 50-79% | 0 | Needs improvement |
 | <50% | 0 | Poor coverage |
@@ -78,11 +77,11 @@
 **Provability Score**: 74.7%
 
 ### Verified Examples
-- ✅ tests/ch09-collections/test_01_iteration_for.ruchy
-- ✅ tests/ch09-collections/test_03_nested_loops.ruchy
-- ✅ tests/ch11-file-operations/test_02_data_persistence.ruchy
-- ✅ tests/ch06-data-structures/test_03_numbers_and_strings.ruchy
-- ✅ tests/ch06-data-structures/test_02_multiple_strings.ruchy
+- ✅ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy
+- ✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy
+- ✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy
+- ✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy
+- ✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy
 
 ---
 
@@ -92,10 +91,27 @@
 
 | Gate | Required | Current | Status |
 |------|----------|---------|--------|
-| Test Pass Rate | 100% | 68.6% | ❌ |
+| Test Pass Rate | 100% | 67.1% | ❌ |
 | Lint Grade | A+ | F | ❌ |
 | Coverage | 100% | 100.0% | ✅ |
 | Provability | >50% | 74.7% | ✅ |
+
+---
+
+## 📝 Verification Notes
+
+### Dogfooding Results (v1.32.0)
+- **ruchy check**: 59/80 files pass syntax validation (73.8%)
+- **ruchy lint**: 59/80 files pass style analysis (73.8%)
+- **ruchy fmt**: 0/80 files pass formatting (consistent with expectations)
+- **ruchy score**: A+ quality score achieved (1.000/1.000)
+- **ruchy provability**: Limited analysis capability on test files
+
+### Key Findings
+1. **Core functionality working**: Basic examples in Ch01-06 largely passing
+2. **Advanced features failing**: Ch23 (REPL inspection) entirely non-functional
+3. **Formatting tool issues**: ruchy fmt consistently fails on all files
+4. **Strong quality metrics**: Despite failures, quality scoring remains high
 
 ---
 
