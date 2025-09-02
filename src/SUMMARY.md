@@ -15,6 +15,7 @@
 - [Chapter 14: The Ruchy Toolchain](ch14-00-toolchain-mastery-tdd.md)
 - [Chapter 15: Binary Compilation & Deployment](ch15-00-binary-compilation-deployment.md)
 - [Chapter 16: Testing & Quality Assurance](ch16-00-testing-quality-assurance.md)
+- [Chapter 17: Error Handling & Robustness](ch17-00-error-handling-robustness.md)
 
 ## Development and Integration
 
