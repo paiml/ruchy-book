@@ -1,19 +1,18 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-09-02T16:45:00.000Z  
-**Ruchy Version**: ruchy 1.32.0  
-**Book Commit**: f0473a3  
-**Test Runner**: deno task test-tdd
+**Generated**: 2025-09-02T16:18:39.821Z  
+**Ruchy Version**: ruchy 1.32.1  
+**Book Commit**: 229071e  
 
 ---
 
 ## 🎯 Executive Summary
 
 - **Total Examples**: 158
-- **Passing**: 106/158 (67.1%)
+- **Passing**: 114/158 (72.2%)
 - **Test Coverage**: 100.0%
 - **Lint Grade**: F
-- **Provability**: 74.7% formally verified
+- **Provability**: 82.3% formally verified
 
 ---
 
@@ -22,10 +21,10 @@
 ### Summary by Quality Gate
 | Quality Gate | Pass | Fail | Rate |
 |-------------|------|------|------|
-| ruchy test | 106 | 52 | 67.1% |
-| ruchy lint | 18 | 140 | 11.4% |
+| ruchy test | 114 | 44 | 72.2% |
+| ruchy lint | 20 | 138 | 12.7% |
 | coverage >80% | 158 | 0 | 100.0% |
-| ruchy prove | 118 | 40 | 74.7% |
+| ruchy prove | 130 | 28 | 82.3% |
 
 ### Failed Examples
 - ❌ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy: Test failed: 
@@ -34,12 +33,12 @@
 - ❌ tests/extracted/ch23-00-repl-object-inspection_example_12.ruchy: Test failed: 
 - ❌ tests/extracted/conclusion_example_2.ruchy: Test failed: 
 - ❌ tests/extracted/ch23-00-repl-object-inspection_example_9.ruchy: Test failed: 
-- ❌ tests/extracted/conclusion_example_1.ruchy: Test failed: 
 - ❌ tests/extracted/ch23-00-repl-object-inspection_example_4.ruchy: Test failed: 
 - ❌ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy: Test failed: 
 - ❌ tests/extracted/ch23-00-repl-object-inspection_example_7.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_10.ruchy: Test failed: 
 
-... and 42 more failures
+... and 34 more failures
 
 ---
 
@@ -51,10 +50,9 @@
 - Lint issues: 
 - Lint issues: 
 - Lint issues: 
-- Lint issues: Error: Expected identifier after 'let'
-
 - Lint issues: 
-... and 135 more issues
+- Lint issues: 
+... and 133 more issues
 
 ---
 
@@ -74,14 +72,14 @@
 
 ## ✅ Formal Verification
 
-**Provability Score**: 74.7%
+**Provability Score**: 82.3%
 
 ### Verified Examples
 - ✅ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy
 - ✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy
 - ✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy
+- ✅ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy
 - ✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy
-- ✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy
 
 ---
 
@@ -91,27 +89,32 @@
 
 | Gate | Required | Current | Status |
 |------|----------|---------|--------|
-| Test Pass Rate | 100% | 67.1% | ❌ |
+| Test Pass Rate | 100% | 72.2% | ❌ |
 | Lint Grade | A+ | F | ❌ |
 | Coverage | 100% | 100.0% | ✅ |
-| Provability | >50% | 74.7% | ✅ |
+| Provability | >50% | 82.3% | ✅ |
 
 ---
 
-## 📝 Verification Notes
+## 📝 Verification Notes (v1.32.1)
 
-### Dogfooding Results (v1.32.0)
-- **ruchy check**: 59/80 files pass syntax validation (73.8%)
-- **ruchy lint**: 59/80 files pass style analysis (73.8%)
-- **ruchy fmt**: 0/80 files pass formatting (consistent with expectations)
-- **ruchy score**: A+ quality score achieved (1.000/1.000)
-- **ruchy provability**: Limited analysis capability on test files
+### Improvements from v1.32.0 → v1.32.1
+- **Test pass rate improved**: 67.1% → 72.2% (+5.1%)
+- **8 more examples now passing** (114 vs 106)
+- **Provability improved**: 74.7% → 82.3% (+7.6%)
+
+### Dogfooding Results (v1.32.1)
+- **ruchy check**: 65/80 files pass (81.3% - improved from 73.8%)
+- **ruchy lint**: 65/80 files pass (81.3% - improved from 73.8%)
+- **ruchy fmt**: Still 0/80 (consistent behavior)
+- **ruchy score**: A+ quality maintained
+- **ruchy provability**: Limited on test files
 
 ### Key Findings
-1. **Core functionality working**: Basic examples in Ch01-06 largely passing
-2. **Advanced features failing**: Ch23 (REPL inspection) entirely non-functional
-3. **Formatting tool issues**: ruchy fmt consistently fails on all files
-4. **Strong quality metrics**: Despite failures, quality scoring remains high
+1. **Notable improvements**: Parser restoration work in v1.32.1 fixed several examples
+2. **Core functionality stable**: Ch01-06 examples mostly working
+3. **Ch23 REPL inspection**: Still completely non-functional (12/12 failing)
+4. **Conclusion examples**: 1 of 2 now passing (improvement)
 
 ---
 
