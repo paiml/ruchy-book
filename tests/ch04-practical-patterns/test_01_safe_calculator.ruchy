@@ -1,0 +1,43 @@
+fun safe_calculate(operation: &str, a: i32, b: i32) -> i32 {
+    if operation == "add" {
+        a + b
+    } else if operation == "subtract" {
+        a - b
+    } else if operation == "multiply" {
+        a * b
+    } else if operation == "divide" {
+        if b == 0 {
+            println("Error: Division by zero");
+            0  // Safe default
+        } else {
+            a / b
+        }
+    } else {
+        println("Error: Unknown operation '{}'", operation);
+        0  // Safe default
+    }
+}
+
+fun main() {
+    println("Testing safe calculator...");
+    
+    // Test normal operations
+    let add_result = safe_calculate("add", 10, 5);
+    let sub_result = safe_calculate("subtract", 10, 3);
+    let mul_result = safe_calculate("multiply", 6, 7);
+    let div_result = safe_calculate("divide", 15, 3);
+    
+    println("10 + 5 = {}", add_result);
+    println("10 - 3 = {}", sub_result); 
+    println("6 * 7 = {}", mul_result);
+    println("15 / 3 = {}", div_result);
+    
+    // Test error cases
+    let div_zero = safe_calculate("divide", 10, 0);
+    let unknown_op = safe_calculate("modulo", 10, 3);
+    
+    println("10 / 0 = {}", div_zero);
+    println("10 modulo 3 = {}", unknown_op);
+    
+    println("✅ Safe calculator tests complete");
+}

@@ -1,0 +1,57 @@
+fun validate_user_input(name: &str, age: i32, email: &str) -> bool {
+    // Guard clause: check for empty name
+    if name.len() == 0 {
+        println("Error: Name cannot be empty");
+        return false;
+    }
+    
+    // Guard clause: check age range
+    if age < 0 || age > 150 {
+        println("Error: Age must be between 0 and 150");
+        return false;
+    }
+    
+    // Guard clause: basic email validation
+    if !email.contains('@') {
+        println("Error: Invalid email format");
+        return false;
+    }
+    
+    // All validations passed
+    println("User input is valid");
+    return true;
+}
+
+fun create_user_profile(name: &str, age: i32, email: &str) -> &str {
+    if validate_user_input(name, age, email) {
+        println("Creating profile for: {}", name);
+        return "Profile created successfully";
+    } else {
+        return "Profile creation failed";
+    }
+}
+
+fun main() {
+    println("Testing input validation patterns...");
+    
+    // Test valid input
+    let result1 = create_user_profile("Alice", 25, "alice@example.com");
+    println("Result 1: {}", result1);
+    println("");
+    
+    // Test empty name
+    let result2 = create_user_profile("", 30, "bob@example.com");
+    println("Result 2: {}", result2);
+    println("");
+    
+    // Test invalid age
+    let result3 = create_user_profile("Charlie", -5, "charlie@example.com");
+    println("Result 3: {}", result3);
+    println("");
+    
+    // Test invalid email
+    let result4 = create_user_profile("Diana", 28, "diana.example.com");
+    println("Result 4: {}", result4);
+    
+    println("✅ Input validation tests complete");
+}
