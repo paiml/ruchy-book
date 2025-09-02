@@ -1,0 +1,88 @@
+fun test_dataframe_filtering() {
+    // Test filtering operations
+    let df = DataFrame::new()
+        .column("product", ["Laptop", "Mouse", "Keyboard", "Monitor"])
+        .column("price", [999.99, 25.99, 79.99, 299.99])
+        .column("quantity", [5, 20, 15, 8])
+        .build();
+    
+    // Filter products over $50
+    let expensive = df.filter(|row| row["price"] > 50.0);
+    assert_eq!(expensive.rows(), 3);
+    
+    // Filter by multiple conditions
+    let target = df.filter(|row| {
+        row["price"] < 100.0 && row["quantity"] > 10
+    });
+    assert_eq!(target.rows(), 2);
+    
+    println("Filtered to {} expensive items", expensive.rows());
+}
+
+fun test_dataframe_sorting() {
+    // Test sorting operations
+    let df = DataFrame::new()
+        .column("name", ["Charlie", "Alice", "Bob"])
+        .column("score", [85, 92, 78])
+        .build();
+    
+    // Sort by name ascending
+    let sorted_name = df.sort_by("name");
+    assert_eq!(sorted_name.get("name", 0), "Alice");
+    
+    // Sort by score descending
+    let sorted_score = df.sort_by("score", descending: true);
+    assert_eq!(sorted_score.get("score", 0), 92);
+    
+    println("Sorted {} rows by score", df.rows());
+}
+
+fun test_dataframe_aggregation() {
+    // Test aggregation functions
+    let df = DataFrame::new()
+        .column("department", ["Sales", "Sales", "IT", "IT", "HR"])
+        .column("salary", [50000, 55000, 70000, 75000, 45000])
+        .column("years", [2, 3, 5, 7, 1])
+        .build();
+    
+    // Group by department and aggregate
+    let grouped = df.group_by("department")
+        .agg("salary", "mean")
+        .agg("years", "sum");
+    
+    assert_eq!(grouped.rows(), 3);
+    assert_eq!(grouped.get("salary_mean", "Sales"), 52500.0);
+    assert_eq!(grouped.get("years_sum", "IT"), 12);
+    
+    println("Aggregated to {} departments", grouped.rows());
+}
+
+fun test_dataframe_transformation() {
+    // Test data transformation
+    let df = DataFrame::new()
+        .column("celsius", [0, 25, 100])
+        .build();
+    
+    // Add calculated column
+    let with_fahrenheit = df.with_column("fahrenheit", |row| {
+        row["celsius"] * 9.0 / 5.0 + 32.0
+    });
+    
+    assert_eq!(with_fahrenheit.get("fahrenheit", 0), 32.0);
+    assert_eq!(with_fahrenheit.get("fahrenheit", 2), 212.0);
+    
+    // Apply transformation to existing column
+    let doubled = df.transform("celsius", |val| val * 2);
+    assert_eq!(doubled.get("celsius", 1), 50);
+    
+    println("Transformed {} temperature values", df.rows());
+}
+
+fun main() {
+    println("Testing DataFrame Operations...");
+    test_dataframe_filtering();
+    test_dataframe_sorting();
+    test_dataframe_aggregation();
+    test_dataframe_transformation();
+    println("All DataFrame operation tests passed!");
+}

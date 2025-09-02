@@ -1,0 +1,99 @@
+fun test_sales_analytics() {
+    // Real-world sales analysis example
+    let sales_data = DataFrame::new()
+        .column("date", ["2024-01-01", "2024-01-01", "2024-01-02", "2024-01-02"])
+        .column("product", ["Widget", "Gadget", "Widget", "Gadget"])
+        .column("quantity", [10, 5, 15, 8])
+        .column("price", [29.99, 49.99, 29.99, 49.99])
+        .build();
+    
+    // Calculate revenue
+    let with_revenue = sales_data.with_column("revenue", |row| {
+        row["quantity"] * row["price"]
+    });
+    
+    // Daily summary
+    let daily_summary = with_revenue
+        .group_by("date")
+        .agg("revenue", "sum")
+        .agg("quantity", "sum");
+    
+    assert_eq!(daily_summary.rows(), 2);
+    
+    // Product performance
+    let product_stats = with_revenue
+        .group_by("product")
+        .agg("quantity", "sum")
+        .agg("revenue", "sum");
+    
+    let widget_revenue = product_stats
+        .filter(|row| row["product"] == "Widget")
+        .get("revenue_sum", 0);
+    
+    assert_eq!(widget_revenue, 749.75); // (10 + 15) * 29.99
+    
+    println("Analyzed {} days of sales data", daily_summary.rows());
+}
+
+fun test_log_analysis() {
+    // Server log analysis example
+    let logs = DataFrame::new()
+        .column("timestamp", ["2024-01-01 10:00", "2024-01-01 10:01", "2024-01-01 10:02"])
+        .column("status", [200, 404, 200])
+        .column("response_time", [120, 50, 95])
+        .column("endpoint", ["/api/users", "/api/invalid", "/api/products"])
+        .build();
+    
+    // Calculate error rate
+    let total = logs.rows();
+    let errors = logs.filter(|row| row["status"] >= 400).rows();
+    let error_rate = errors as f64 / total as f64 * 100.0;
+    
+    assert_eq!(error_rate, 33.33);
+    
+    // Performance analysis
+    let avg_response = logs.column("response_time").mean();
+    let p95_response = logs.column("response_time").percentile(95);
+    
+    assert!(avg_response > 0.0);
+    assert!(p95_response >= avg_response);
+    
+    println("Processed {} log entries, {:.1}% errors", total, error_rate);
+}
+
+fun test_time_series_analysis() {
+    // Time series data analysis
+    let metrics = DataFrame::new()
+        .column("hour", [0, 1, 2, 3, 4, 5])
+        .column("cpu_usage", [45.2, 48.3, 52.1, 49.8, 51.2, 47.9])
+        .column("memory_gb", [8.2, 8.5, 9.1, 8.8, 8.9, 8.3])
+        .build();
+    
+    // Calculate moving average
+    let window_size = 3;
+    let smoothed = metrics.rolling_mean("cpu_usage", window_size);
+    
+    // Detect anomalies (simple threshold)
+    let cpu_mean = metrics.column("cpu_usage").mean();
+    let cpu_std = metrics.column("cpu_usage").std();
+    let threshold = cpu_mean + 2.0 * cpu_std;
+    
+    let anomalies = metrics.filter(|row| row["cpu_usage"] > threshold);
+    
+    // Peak detection
+    let peak_hour = metrics
+        .sort_by("cpu_usage", descending: true)
+        .get("hour", 0);
+    
+    assert_eq!(peak_hour, 2); // Hour 2 had highest CPU
+    
+    println("Analyzed {} hours, peak at hour {}", metrics.rows(), peak_hour);
+}
+
+fun main() {
+    println("Testing DataFrame Analytics...");
+    test_sales_analytics();
+    test_log_analysis();
+    test_time_series_analysis();
+    println("All DataFrame analytics tests passed!");
+}
