@@ -12,6 +12,7 @@
 - [Chapter 5: Control Flow](ch05-00-control-flow-tdd.md)
 - [Chapter 6: Data Structures](ch06-00-data-structures-tdd.md)
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
+- [Chapter 14: The Ruchy Toolchain](ch14-00-toolchain-mastery-tdd.md)
 
 ## Development and Integration
 

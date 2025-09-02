@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-09-02T17:22:43.197Z",
+  "generated_at": "2025-09-02T17:38:44.128Z",
   "ruchy_version": "ruchy 1.35.0",
   "summary": {
-    "total_chapters": 9,
-    "total_examples": 65,
-    "working_examples": 65,
-    "failing_examples": 0,
-    "success_rate": 100
+    "total_chapters": 10,
+    "total_examples": 69,
+    "working_examples": 68,
+    "failing_examples": 1,
+    "success_rate": 99
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
@@ -42,6 +42,18 @@
         "working": 1,
         "not_implemented": 0,
         "broken": 0,
+        "planned": 0
+      }
+    },
+    "ch14-00-toolchain-mastery-tdd": {
+      "total_examples": 4,
+      "working_examples": 3,
+      "failing_examples": 1,
+      "success_rate": 75,
+      "status_breakdown": {
+        "working": 3,
+        "not_implemented": 0,
+        "broken": 1,
         "planned": 0
       }
     },
@@ -126,8 +138,8 @@
     "success_rate": 85
   },
   "quality_metrics": {
-    "documentation_coverage": 25.71428571428571,
+    "documentation_coverage": 28.57142857142857,
     "example_testing": 100,
-    "implementation_status": 100
+    "implementation_status": 99
   }
 }
