@@ -1,137 +1,102 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-09-01  
-**Ruchy Version**: v1.29.1  
-**Book Commit**: 99b09f9  
-**Status**: PRODUCTION READY  
+**Generated**: 2025-09-02T12:02:37.381Z  
+**Ruchy Version**: ruchy 1.32.0  
+**Book Commit**: 6d0b58b  
 
 ---
 
 ## 🎯 Executive Summary
 
-- **Total TDD Examples**: 39 (validated for book publication)
-- **Test Pass Rate**: 39/39 (100%)
-- **Line Coverage**: 39/39 (100%)
-- **Quality Score**: All ≥0.85
-- **Lint Compliance**: ~85% (false positives documented)
-- **CI/CD**: ✅ Fully automated with GitHub Actions
+- **Total Examples**: 194
+- **Passing**: 133/194 (68.6%)
+- **Test Coverage**: 100.0%
+- **Lint Grade**: F
+- **Provability**: 74.7% formally verified
 
 ---
 
-## 📊 Quality Tools Status (v1.29.1)
+## 📊 Test Results
 
-| Tool | Status | Coverage | Notes |
-|------|--------|----------|-------|
-| `ruchy test` | ✅ PRODUCTION | 39/39 (100%) | All TDD examples pass |
-| `ruchy test --coverage` | ✅ PRODUCTION | 39/39 (100% line) | Threshold detection fixed |
-| `ruchy score` | ✅ PRODUCTION | 39/39 (≥0.85) | Actionable quality metrics |
-| `ruchy lint --strict` | ✅ PRODUCTION | ~85% | Function bug tracked (#11) |
-| `ruchy provability` | ⚠️ LIMITED | File-only | Educational use |
+### Summary by Quality Gate
+| Quality Gate | Pass | Fail | Rate |
+|-------------|------|------|------|
+| ruchy test | 133 | 61 | 68.6% |
+| ruchy lint | 18 | 176 | 9.3% |
+| coverage >80% | 194 | 0 | 100.0% |
+| ruchy prove | 145 | 49 | 74.7% |
 
----
+### Failed Examples
+- ❌ tests/ch09-collections/test_02_while_accumulation.ruchy: Test failed: 
+- ❌ tests/ch08-advanced-functions/test_02_multiple_returns.ruchy: Test failed: 
+- ❌ tests/ch08-advanced-functions/test_03_recursive_function.ruchy: Test failed: 
+- ❌ tests/ch08-advanced-functions/test_01_function_composition.ruchy: Test failed: 
+- ❌ tests/ch11-file-operations/test_01_simulated_file.ruchy: Test failed: 
+- ❌ tests/ch11-file-operations/test_03_config_management.ruchy: Test failed: 
+- ❌ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy: Test failed: 
+- ❌ tests/extracted/ch23-00-repl-object-inspection_example_5.ruchy: Test failed: 
+- ❌ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy: Test failed: 
+- ❌ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy: Test failed: 
 
-## 🚀 CI/CD Automation
-
-### GitHub Actions Workflow
-- **Location**: `.github/workflows/quality-gates.yml`
-- **Trigger**: On push to main, on PR
-- **Tests**: All 39 TDD examples
-- **Coverage**: Verifies 100% line coverage
-- **Quality**: Enforces ≥0.85 score threshold
-- **Reports**: Auto-generated quality artifacts
-
-### Pre-commit Hook
-- **Location**: `.git/hooks/pre-commit`
-- **Gates**: 8 quality checks
-- **TDD Tests**: 39 validated examples
-- **Quality Score**: ≥0.85 required
-- **SATD Check**: Zero tolerance
-- **Vaporware Check**: No future promises
+... and 51 more failures
 
 ---
 
-## ✅ Validated TDD Examples (39)
+## 🔧 Lint Analysis
 
-### Chapter Distribution
-- **Ch01 - Hello World**: 5 examples
-- **Ch02 - Variables & Types**: 6 examples  
-- **Ch03 - Functions**: 20 examples (excluding 1 failing)
-- **Ch04 - Control Flow**: 2 examples
-- **Ch05 - Collections**: 2 examples (string operations only)
-- **Ch09 - Testing**: 1 example
-- **Ch17 - Recursion**: 2 examples (excluding doc examples)
-- **Ch20 - Best Practices**: 1 example
+**Overall Grade**: F
 
-### Quality Metrics
-- **All examples**: 100% test pass rate
-- **All examples**: 100% line coverage
-- **All examples**: ≥0.85 quality score
-- **Most examples**: Pass lint (except false positives)
+### Lint Issues by Category
+- Lint issues: 
+- Lint issues: Error: Expected identifier after 'let'
+
+- Lint issues: 
+- Lint issues: Error: Expected body after if condition, typically { ... }: Unexpected token: Return
+
+- Lint issues: Error: Expected body after if condition, typically { ... }: Unexpected token: Return
+
+... and 171 more issues
 
 ---
 
-## 🏆 Major Achievements
+## 📈 Coverage Report
 
-1. **Zero Technical Debt**: Eliminated all 426 SATD instances
-2. **100% Coverage**: All examples have full line coverage
-3. **Quality Validation**: 4 production-ready quality tools
-4. **TDD Success**: 39 examples across 20 chapters
-5. **Version Stability**: v1.29.1 with all tools working
-6. **CI/CD Automation**: GitHub Actions + pre-commit hooks
+**Average Coverage**: 100.0%
 
----
-
-## 📝 Version History
-
-### v1.29.1 (Current - PRODUCTION)
-- ✅ Coverage threshold detection fixed
-- ✅ All 39 TDD examples passing
-- ✅ Quality tools production ready
-- ✅ CI/CD fully automated
-
-### v1.29.0 
-- ❌ Coverage threshold bug (reported 70% instead of 100%)
-- GitHub Issue #12 filed and fixed
-
-### v1.27.6
-- ✅ Lint false positives on f-strings fixed
-- GitHub Issue #8 resolved
-
-### v1.27.3
-- ✅ Coverage tool implemented
-- ✅ Score tool calibrated
+### Coverage Distribution
+| Range | Count | Examples |
+|-------|-------|----------|
+| 100% | 194 | Perfect coverage |
+| 80-99% | 0 | Good coverage |
+| 50-79% | 0 | Needs improvement |
+| <50% | 0 | Poor coverage |
 
 ---
 
-## 🔍 Known Issues
+## ✅ Formal Verification
 
-### GitHub Issue #11: Function-as-variable false positive
-- **Status**: Open
-- **Impact**: Minor - affects lint compliance
-- **Workaround**: Documented in test results
+**Provability Score**: 74.7%
 
-### GitHub Issue #12: Coverage threshold detection  
-- **Status**: Fixed in v1.29.1
-- **Resolution**: Now correctly detects 100% threshold
+### Verified Examples
+- ✅ tests/ch09-collections/test_01_iteration_for.ruchy
+- ✅ tests/ch09-collections/test_03_nested_loops.ruchy
+- ✅ tests/ch11-file-operations/test_02_data_persistence.ruchy
+- ✅ tests/ch06-data-structures/test_03_numbers_and_strings.ruchy
+- ✅ tests/ch06-data-structures/test_02_multiple_strings.ruchy
 
 ---
 
-## 📈 Quality Gate Status
+## 🔴 Quality Gate Status
 
-**BOOK RELEASE**: ✅ READY
+**BOOK RELEASE**: ❌ BLOCKED
 
 | Gate | Required | Current | Status |
 |------|----------|---------|--------|
-| Test Pass Rate | 100% | 100% | ✅ |
-| Line Coverage | 100% | 100% | ✅ |
-| Quality Score | ≥0.85 | ≥0.85 | ✅ |
-| Lint Compliance | >80% | ~85% | ✅ |
-| SATD Count | 0 | 0 | ✅ |
-| CI/CD | Automated | Yes | ✅ |
+| Test Pass Rate | 100% | 68.6% | ❌ |
+| Lint Grade | A+ | F | ❌ |
+| Coverage | 100% | 100.0% | ✅ |
+| Provability | >50% | 74.7% | ✅ |
 
 ---
 
-**Last Updated**: 2025-09-01  
-**Status**: BOOK PUBLICATION READY
-
-*This report was automatically generated and validated by CI/CD pipeline.*
+*This report was automatically generated by the TDD test harness.*
