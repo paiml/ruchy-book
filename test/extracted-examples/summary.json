@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-09-02T17:22:02.023Z",
+  "timestamp": "2025-09-02T17:37:18.139Z",
   "ruchy_version": "ruchy 1.35.0",
-  "chapters_processed": 9,
-  "examples_found": 65,
-  "examples_working": 65,
-  "examples_failing": 0,
-  "success_rate": 100,
+  "chapters_processed": 10,
+  "examples_found": 69,
+  "examples_working": 68,
+  "examples_failing": 1,
+  "success_rate": 99,
   "chapters": {
     "ch02-00-variables-types-tdd": {
       "chapter": "ch02-00-variables-types-tdd",
@@ -108,6 +108,49 @@
           "code": "fun calculate(x: i32, y: i32) -> i32 {\n    return x + y;\n}\n\nfun main() {\n    let result = calculate(10, 20);\n    println(result);  // Output: 30\n}",
           "passed": true,
           "status": "working"
+        }
+      ]
+    },
+    "ch14-00-toolchain-mastery-tdd": {
+      "chapter": "ch14-00-toolchain-mastery-tdd",
+      "total_examples": 4,
+      "working_examples": 3,
+      "failing_examples": 1,
+      "examples": [
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 1,
+          "line_number": 20,
+          "code": "fun greet(name: String) -> String {\n    \"Hello, \" + name + \"!\"\n}\n\nfun main() {\n    let message = greet(\"Ruchy Developer\");\n    println(message);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 2,
+          "line_number": 56,
+          "code": "// calculator_test.ruchy\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun test_addition() {\n    let result = add(2, 3);\n    assert_eq(result, 5);\n    println(\"Addition test passed\");\n}\n\nfun main() {\n    test_addition();\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 3,
+          "line_number": 121,
+          "code": "fun calculate_factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * calculate_factorial(n - 1)\n    }\n}\n\nfun main() {\n    let result = calculate_factorial(10);\n    println(result);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 4,
+          "line_number": 258,
+          "code": "fun fibonacci_recursive(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)\n    }\n}\n\nfun fibonacci_iterative(n: i32) -> i32 {\n    let mut a = 0;\n    let mut b = 1;\n    let mut i = 0;\n    \n    while i < n {\n        let temp = a + b;\n        a = b;\n        b = temp;\n        i = i + 1;\n    }\n    \n    a\n}\n\nfun main() {\n    let result1 = fibonacci_recursive(10);\n    let result2 = fibonacci_iterative(10);\n    println(result1);\n    println(result2);\n}",
+          "passed": false,
+          "status": "broken",
+          "error": "DEBUG: About to call transpile_to_program\nDEBUG: transpile_to_program completed\n✗ Compilation failed: Compilation failed:\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpKo7MhZ/main.rs:1:58\n  |\n1 | fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32)...\n  |                                                          ^^ ^^\n  |\n  = note: `#[warn(unused_braces)]` on by default\nhelp: remove these braces\n  |\n1 - fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n1 + fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { n } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n  |\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpKo7MhZ/main.rs:1:73\n  |\n1 | ... { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i...\n  |                                     ^^                                                               ^^\n  |\nhelp: remove these braces\n  |\n1 - fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n1 + fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n  |\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpKo7MhZ/main.rs:1:206\n  |\n1 | ...cci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; {...\n  |                                                        ^ help: remove this semicolon\n  |\n  = note: `#[warn(redundant_semicolons)]` on by default\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpKo7MhZ/main.rs:1:227\n  |\n1 | ...2) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i...\n  |                                                        ^ help: remove this semicolon\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpKo7MhZ/main.rs:1:248\n  |\n1 | ... = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ;...\n  |                                                        ^ help: remove this semicolon\n\nwarning: unnecessary braces around block return value\n --> /tmp/.tmpKo7MhZ/main.rs:1:264\n  |\n1 | ... let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result...\n  |                                        ^^                                                          ^^\n  |\nhelp: remove these braces\n  |\n1 - fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n1 + fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } ; a ; } fn main () { { let result1 = fibonacci_recursive (10i32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n  |\n\nwarning: unnecessary trailing semicolon\n --> /tmp/.tmpKo7MhZ/main.rs:1:442\n  |\n1 | ...32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! (\"{:?}\" , result1) ; println ! (\"{:?}\" , result2) } } }\n  |                                                        ^ help: remove this semicolon\n\nerror[E0308]: mismatched types\n --> /tmp/.tmpKo7MhZ/main.rs:1:181\n  |\n1 | ...fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } ...\n  |       -------------------              ^^^ expected `i32`, found `()`                                                                                                                          - help: remove this semicolon to return this value\n  |       |\n  |       implicitly returns `()` as its body has no tail or `return` expression\n\nerror: aborting due to 1 previous error; 7 warnings emitted\n\nFor more information about this error, try `rustc --explain E0308`.\n\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
