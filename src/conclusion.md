@@ -234,4 +234,4 @@ let add_one = |x| x + 1;
 
 ## Get Started
 
-Ready to begin? Turn to [Chapter 1: Hello World](ch01-00-hello-world-tdd.md) and start writing Ruchy code that actually works!
+Ready to begin? Turn to [Chapter 1: Hello World](ch01-02-hello-world-tdd.md) and start writing Ruchy code that actually works!
