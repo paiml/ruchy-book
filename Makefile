@@ -36,6 +36,7 @@ help:
 	@echo ""
 	@echo "🎨 CODE QUALITY:"
 	@echo "  make lint              - Lint all Ruchy code"
+	@echo "  make lint-markdown     - Validate markdown links (broken/non-clickable)"
 	@echo "  make format            - Check code formatting"
 	@echo "  make validate          - Run ALL quality checks"
 	@echo ""
@@ -363,6 +364,76 @@ lint:
 	@! grep -r "coming soon\|not yet implemented\|will be\|future release" src/ 2>/dev/null || (echo "❌ BLOCKED: Vaporware documentation found" && exit 1)
 	@echo "✅ All lint checks passed"
 
+# Validate markdown links - check for broken links and non-clickable URLs
+lint-markdown:
+	@echo "🔗 Validating markdown links..."
+	@echo "===================================="
+	@echo ""
+	@echo "1️⃣ Checking for non-clickable URLs (plain text that should be links)..."
+	@found_plain_urls=0; \
+	for file in src/*.md docs/*.md *.md; do \
+		if [ -f "$$file" ]; then \
+			plain_urls=$$(grep -n -E '(^|[^(\[])(https?://[^\s\)>\]]+)([^)\]>]|$$)' "$$file" 2>/dev/null | \
+				grep -v '```' | \
+				grep -v '^\s*#' | \
+				grep -v '\[.*\](.*http' || true); \
+			if [ -n "$$plain_urls" ]; then \
+				echo "❌ Plain URLs found in $$file:"; \
+				echo "$$plain_urls" | head -5; \
+				found_plain_urls=1; \
+			fi; \
+		fi; \
+	done; \
+	if [ $$found_plain_urls -eq 0 ]; then \
+		echo "✅ No plain URLs found"; \
+	fi; \
+	echo ""
+	@echo "2️⃣ Checking for broken markdown link syntax..."
+	@found_broken_syntax=0; \
+	for file in src/*.md docs/*.md *.md; do \
+		if [ -f "$$file" ]; then \
+			broken=$$(grep -n -E '\[[^\]]+\]\s+\([^\)]+\)' "$$file" 2>/dev/null | \
+				grep -v '```' || true); \
+			if [ -n "$$broken" ]; then \
+				echo "⚠️ Broken link syntax in $$file (space between ] and ():"; \
+				echo "$$broken" | head -3; \
+				found_broken_syntax=1; \
+			fi; \
+		fi; \
+	done; \
+	if [ $$found_broken_syntax -eq 0 ]; then \
+		echo "✅ No broken markdown syntax found"; \
+	fi; \
+	echo ""
+	@echo "3️⃣ Checking for broken internal links..."
+	@found_broken_internal=0; \
+	for file in src/*.md; do \
+		if [ -f "$$file" ]; then \
+			grep -oE '\[([^]]+)\]\(([^)]+\.md[^)]*)\)' "$$file" 2>/dev/null | while IFS= read -r link; do \
+				target=$$(echo "$$link" | sed 's/.*(\([^)]*\)).*/\1/' | sed 's/#.*//'); \
+				if [ -n "$$target" ] && [ "$$target" != "*.md" ] && [ ! -f "src/$$target" ]; then \
+					if ! echo "$$target" | grep -q '^http' && ! echo "$$target" | grep -q '^\./' && [ "$$target" != "./README.md" ]; then \
+						echo "❌ Broken internal link in $$file: $$target"; \
+						found_broken_internal=1; \
+					fi; \
+				fi; \
+			done; \
+		fi; \
+	done; \
+	if [ $$found_broken_internal -eq 0 ]; then \
+		echo "✅ No broken internal links found"; \
+	fi; \
+	echo ""
+	@echo "4️⃣ Running mdbook-linkcheck (if available)..."
+	@if command -v mdbook-linkcheck >/dev/null 2>&1; then \
+		mdbook-linkcheck --standalone src 2>&1 | grep -E "(ERROR|WARNING)" || echo "✅ mdbook-linkcheck passed"; \
+	else \
+		echo "⚠️ mdbook-linkcheck not installed (run: cargo install mdbook-linkcheck)"; \
+	fi
+	@echo ""
+	@echo "===================================="
+	@echo "🔗 Link validation complete"
+
 # Format Ruchy code (using rustfmt on transpiled output)
 format:
 	@echo "🎨 Formatting Ruchy code..."
@@ -393,7 +464,7 @@ test-file:
 	fi
 
 # Validate with strict mode
-validate: lint test
+validate: lint lint-markdown test
 	@echo "🔒 Running strict validation..."
 	@if [ -d src ]; then \
 		MDBOOK_PREPROCESSOR__RUCHY__STRICT=true mdbook build 2>/dev/null || echo "⚠️  Strict mode validation skipped (preprocessor not configured)"; \

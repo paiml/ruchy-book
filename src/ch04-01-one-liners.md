@@ -421,6 +421,6 @@ As we continue to expand Ruchy's one-liner capabilities, we're building towards 
 
 ---
 
-**Next**: [File Operations](ch06-00-file-operations.md) - Building on one-liner skills to create full applications
+**Next**: [Data Structures](ch06-00-data-structures-tdd.md) - Building on one-liner skills to work with complex data
 
-**Related**: [Command-Line Tools](ch04-00-command-line-tools.md) - Using one-liners in larger programs
+**Related**: [Practical Programming Patterns](ch04-00-practical-patterns-tdd.md) - Using patterns in larger programs

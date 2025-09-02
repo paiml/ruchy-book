@@ -74,7 +74,7 @@ npm install ruchy-syntax-tools
 code --install-extension ruchy-syntax-tools
 ```
 
-This provides syntax highlighting, IntelliSense, and code snippets across 9+ editors including VS Code, Monaco, highlight.js, and more. See [Chapter 20: Developer Tooling](ch20-00-tooling.md) for complete editor setup.
+This provides syntax highlighting, IntelliSense, and code snippets across 9+ editors including VS Code, Monaco, highlight.js, and more. See [Chapter 21: Professional Tooling](ch21-00-professional-tooling-tdd.md) for complete editor setup.
 
 ## Verification & Setup
 
@@ -312,9 +312,9 @@ export RUCHY_BACKTRACE=1       # Show backtraces on errors
 With Ruchy properly installed, you're ready to:
 
 1. **Write your first program** → [Hello World](ch01-02-hello-world.md)
-2. **Explore the REPL** → [Interactive Scripting](ch01-03-interpreter-scripting.md)
-3. **Set up development workflow** → [Developer Tooling](ch20-00-tooling.md)
-4. **Learn the language basics** → [Variables and Types](ch02-00-variables-types.md)
+2. **Explore the REPL** → [Chapter 23: REPL & Object Inspection](ch23-00-repl-object-inspection.md)
+3. **Set up development workflow** → [Chapter 21: Professional Tooling](ch21-00-professional-tooling-tdd.md)
+4. **Learn the language basics** → [Variables and Types](ch02-00-variables-types-tdd.md)
 
 ## Professional Development Checklist
 
