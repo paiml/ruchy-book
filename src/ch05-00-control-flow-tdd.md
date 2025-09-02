@@ -339,6 +339,69 @@ fun main() {
 }
 ```
 
+### DataFrame Filtering with Control Flow
+```ruchy
+fun main() {
+    let df = DataFrame::from_csv("sales.csv");
+    
+    // Filter based on conditions
+    if df.rows() > 0 {
+        let high_value = df.filter(|row| {
+            if row["amount"] > 1000 {
+                row["status"] == "active"
+            } else {
+                false
+            }
+        });
+        
+        println("Found {} high-value active sales", high_value.rows());
+    } else {
+        println("No data to process");
+    }
+}
+```
+
+### DataFrame Iteration with Loops
+```ruchy
+fun main() {
+    let df = DataFrame::from_csv("inventory.csv");
+    
+    // Process each row with for loop
+    for row in df.iter_rows() {
+        if row["quantity"] < 10 {
+            println("Low stock alert: {} ({})", row["product"], row["quantity"]);
+        }
+    }
+    
+    // Conditional aggregation
+    let mut total = 0.0;
+    for value in df["price"].iter() {
+        if value > 0.0 {
+            total = total + value;
+        }
+    }
+    println("Total positive prices: {}", total);
+}
+```
+
+### DataFrame Processing with Match
+```ruchy
+fun main() {
+    let df = DataFrame::from_csv("customers.csv");
+    
+    for row in df.iter_rows() {
+        let category = match row["total_purchases"] {
+            v if v > 10000 => "Platinum",
+            v if v > 5000 => "Gold",
+            v if v > 1000 => "Silver",
+            _ => "Bronze"
+        };
+        
+        println("Customer {} is {} tier", row["name"], category);
+    }
+}
+```
+
 ## Performance Notes
 
 - **If statements**: Very fast, compile to conditional jumps

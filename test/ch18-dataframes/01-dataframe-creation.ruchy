@@ -1,0 +1,53 @@
+fun test_dataframe_creation() {
+    // Test creating a DataFrame from scratch
+    let df = DataFrame::new()
+        .column("name", ["Alice", "Bob", "Charlie"])
+        .column("age", [25, 30, 35])
+        .column("salary", [50000.0, 60000.0, 75000.0])
+        .build();
+    
+    assert_eq!(df.rows(), 3);
+    assert_eq!(df.columns(), 3);
+    assert_eq!(df.column_names(), ["name", "age", "salary"]);
+    
+    println("DataFrame created with {} rows and {} columns", df.rows(), df.columns());
+}
+
+fun test_dataframe_from_csv() {
+    // Test loading DataFrame from CSV
+    let csv_data = "name,age,city
+Alice,25,New York
+Bob,30,San Francisco
+Charlie,35,Seattle";
+    
+    let df = DataFrame::from_csv_string(csv_data);
+    assert_eq!(df.rows(), 3);
+    assert_eq!(df.get("name", 0), "Alice");
+    assert_eq!(df.get("city", 2), "Seattle");
+    
+    println("Loaded {} rows from CSV", df.rows());
+}
+
+fun test_dataframe_from_json() {
+    // Test loading DataFrame from JSON
+    let json_data = r#"[
+        {"name": "Alice", "age": 25, "active": true},
+        {"name": "Bob", "age": 30, "active": false},
+        {"name": "Charlie", "age": 35, "active": true}
+    ]"#;
+    
+    let df = DataFrame::from_json(json_data);
+    assert_eq!(df.rows(), 3);
+    assert_eq!(df.get("name", 1), "Bob");
+    assert_eq!(df.get("active", 0), true);
+    
+    println("Loaded {} rows from JSON", df.rows());
+}
+
+fun main() {
+    println("Testing DataFrame Creation...");
+    test_dataframe_creation();
+    test_dataframe_from_csv();
+    test_dataframe_from_json();
+    println("All DataFrame creation tests passed!");
+}

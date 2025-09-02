@@ -237,12 +237,77 @@ fun show_options() {
 
 ```
 
+## DataFrame I/O Examples
+
+### Reading DataFrames from Files
+```ruchy
+fun main() {
+    // Read from CSV file
+    let sales_df = DataFrame::from_csv("sales_data.csv");
+    println("Loaded {} sales records", sales_df.rows());
+    
+    // Read from JSON file
+    let products_df = DataFrame::from_json("products.json");
+    println("Loaded {} products", products_df.rows());
+    
+    // Display DataFrame summary
+    sales_df.show(10); // Show first 10 rows
+    println(sales_df.describe()); // Summary statistics
+}
+```
+
+### Writing DataFrames to Files
+```ruchy
+fun main() {
+    let df = DataFrame::new()
+        .column("date", ["2024-01-01", "2024-01-02"])
+        .column("sales", [1500, 2300])
+        .build();
+    
+    // Write to CSV
+    df.to_csv("output.csv");
+    println("Saved to CSV");
+    
+    // Write to JSON  
+    df.to_json("output.json");
+    println("Saved to JSON");
+    
+    // Write formatted report
+    let report = df.to_string();
+    println("Report:\n{}", report);
+}
+```
+
+### Interactive DataFrame Display
+```ruchy
+fun display_dataframe_menu(df: DataFrame) {
+    println("=== DataFrame Options ===");
+    println("1. Show first 10 rows");
+    println("2. Show summary statistics");
+    println("3. Show column names");
+    println("4. Export to CSV");
+    println("========================");
+}
+
+fun main() {
+    let df = DataFrame::from_csv("data.csv");
+    display_dataframe_menu(df);
+    
+    // Show DataFrame info
+    println("Shape: {} rows x {} columns", df.rows(), df.columns());
+    println("Columns: {:?}", df.column_names());
+    println("Memory usage: {} KB", df.memory_usage() / 1024);
+}
+```
+
 ## Performance Notes
 
 - **println() calls**: Efficient system calls for output
 - **String literals**: No runtime allocation, stored in binary
 - **Variable printing**: Direct value formatting
 - **Function calls**: Minimal overhead for display functions
+- **DataFrame I/O**: Optimized for large datasets with lazy loading
+- **CSV/JSON parsing**: Streaming parsers for memory efficiency
 
 ## Summary
 
