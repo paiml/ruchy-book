@@ -9,6 +9,7 @@
 - [Chapter 1: Hello World](ch01-02-hello-world-tdd.md)
 - [Chapter 2: Variables and Types](ch02-00-variables-types-tdd.md)
 - [Chapter 3: Functions](ch03-00-functions-tdd.md)
+- [Chapter 4: Practical Programming Patterns](ch04-00-practical-patterns-tdd.md)
 - [Chapter 5: Control Flow](ch05-00-control-flow-tdd.md)
 - [Chapter 6: Data Structures](ch06-00-data-structures-tdd.md)
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
