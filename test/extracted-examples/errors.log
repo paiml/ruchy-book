@@ -3,7 +3,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpq0Sy1e/main.rs:1:58
+ --> /tmp/.tmpOYWstQ/main.rs:1:58
   |
 1 | fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32)...
   |                                                          ^^ ^^
@@ -16,7 +16,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpq0Sy1e/main.rs:1:73
+ --> /tmp/.tmpOYWstQ/main.rs:1:73
   |
 1 | ... { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i...
   |                                     ^^                                                               ^^
@@ -28,7 +28,7 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpq0Sy1e/main.rs:1:206
+ --> /tmp/.tmpOYWstQ/main.rs:1:206
   |
 1 | ...cci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; {...
   |                                                        ^ help: remove this semicolon
@@ -36,19 +36,19 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpq0Sy1e/main.rs:1:227
+ --> /tmp/.tmpOYWstQ/main.rs:1:227
   |
 1 | ...2) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpq0Sy1e/main.rs:1:248
+ --> /tmp/.tmpOYWstQ/main.rs:1:248
   |
 1 | ... = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ;...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpq0Sy1e/main.rs:1:264
+ --> /tmp/.tmpOYWstQ/main.rs:1:264
   |
 1 | ... let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result...
   |                                        ^^                                                          ^^
@@ -60,13 +60,13 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpq0Sy1e/main.rs:1:442
+ --> /tmp/.tmpOYWstQ/main.rs:1:442
   |
 1 | ...32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! ("{:?}" , result1) ; println ! ("{:?}" , result2) } } }
   |                                                        ^ help: remove this semicolon
 
 error[E0308]: mismatched types
- --> /tmp/.tmpq0Sy1e/main.rs:1:181
+ --> /tmp/.tmpOYWstQ/main.rs:1:181
   |
 1 | ...fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } ...
   |       -------------------              ^^^ expected `i32`, found `()`                                                                                                                          - help: remove this semicolon to return this value
@@ -76,6 +76,195 @@ error[E0308]: mismatched types
 error: aborting due to 1 previous error; 7 warnings emitted
 
 For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch16-00-testing-quality-assurance example 3 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0308]: mismatched types
+ --> /tmp/.tmp5Awrhp/main.rs:1:39
+  |
+1 | fn safe_divide (a : i32 , b : i32) -> i32 { if b == 0i32 { { println ! ("Error: Division by zero") ; return 0i32 } } ; a / b ; } fn test_...
+  |    -----------                        ^^^ expected `i32`, found `()`                                                         - help: remove this semicolon to return this value
+  |    |
+  |    implicitly returns `()` as its body has no tail or `return` expression
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch16-00-testing-quality-assurance example 5 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:36
+  |
+1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
+  |                                    ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `i32`
+  |
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (2i32.add(3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:103
+  |
+1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
+  |                                                                                                       ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `i32`
+  |
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! ((- 1i32).add(1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:181
+  |
+1 | ...2 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests p...
+  |                                                         ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `i32`
+  |
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (0i32.add(0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:314
+  |
+1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (mult...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:393
+  |
+1 | ...32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq !...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmp3f9Nbb/main.rs:1:478
+  |
+1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multipl...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch16-00-testing-quality-assurance example 6 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpytBwLd/main.rs:1:48
+  |
+1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
+  |                                                ^^ ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { n } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpytBwLd/main.rs:1:63
+  |
+1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
+  |                                                               ^^                                           ^^
+  |
+help: remove these braces
+  |
+1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+  |
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpytBwLd/main.rs:1:221
+  |
+1 | ...get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibona...
+  |                                                        ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpytBwLd/main.rs:1:255
+  |
+1 | ...bonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let ...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpytBwLd/main.rs:1:372
+  |
+1 | ...ual 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 se...
+  |                                                        ^ help: remove this semicolon
+
+error[E0425]: cannot find function `get_time_ms` in this scope
+ --> /tmp/.tmpytBwLd/main.rs:1:169
+  |
+1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ;...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `get_time_ms` in this scope
+ --> /tmp/.tmpytBwLd/main.rs:1:238
+  |
+1 | ...et result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 2 previous errors; 5 warnings emitted
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch16-00-testing-quality-assurance example 7 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find value `actual` in this scope
+ --> /tmp/.tmpeQtUrp/main.rs:1:346
+  |
+1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
+  |                                                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `expected` in this scope
+ --> /tmp/.tmpeQtUrp/main.rs:1:355
+  |
+1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `condition` in this scope
+ --> /tmp/.tmpeQtUrp/main.rs:1:416
+  |
+1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
+  |                                                      ^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `create_range` in this scope
+ --> /tmp/.tmpeQtUrp/main.rs:1:44
+  |
+1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
+  |                                            ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `len` in this scope
+ --> /tmp/.tmpeQtUrp/main.rs:1:88
+  |
+1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
+  |                                                                                        ^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
 
 
 

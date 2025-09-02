@@ -14,6 +14,7 @@
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
 - [Chapter 14: The Ruchy Toolchain](ch14-00-toolchain-mastery-tdd.md)
 - [Chapter 15: Binary Compilation & Deployment](ch15-00-binary-compilation-deployment.md)
+- [Chapter 16: Testing & Quality Assurance](ch16-00-testing-quality-assurance.md)
 
 ## Development and Integration
 
