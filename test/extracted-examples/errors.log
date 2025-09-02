@@ -3,7 +3,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpOYWstQ/main.rs:1:58
+ --> /tmp/.tmpSBakVz/main.rs:1:58
   |
 1 | fn fibonacci_recursive (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32)...
   |                                                          ^^ ^^
@@ -16,7 +16,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpOYWstQ/main.rs:1:73
+ --> /tmp/.tmpSBakVz/main.rs:1:73
   |
 1 | ... { if n <= 1i32 { { n } } else { { fibonacci_recursive (n - 1i32) + fibonacci_recursive (n - 2i32) } } } fn fibonacci_iterative (n : i...
   |                                     ^^                                                               ^^
@@ -28,7 +28,7 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpOYWstQ/main.rs:1:206
+ --> /tmp/.tmpSBakVz/main.rs:1:206
   |
 1 | ...cci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; {...
   |                                                        ^ help: remove this semicolon
@@ -36,19 +36,19 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpOYWstQ/main.rs:1:227
+ --> /tmp/.tmpSBakVz/main.rs:1:227
   |
 1 | ...2) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpOYWstQ/main.rs:1:248
+ --> /tmp/.tmpSBakVz/main.rs:1:248
   |
 1 | ... = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ;...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpOYWstQ/main.rs:1:264
+ --> /tmp/.tmpSBakVz/main.rs:1:264
   |
 1 | ... let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } fn main () { { let result...
   |                                        ^^                                                          ^^
@@ -60,13 +60,13 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpOYWstQ/main.rs:1:442
+ --> /tmp/.tmpSBakVz/main.rs:1:442
   |
 1 | ...32) ; { let result2 = fibonacci_iterative (10i32) ; ; println ! ("{:?}" , result1) ; println ! ("{:?}" , result2) } } }
   |                                                        ^ help: remove this semicolon
 
 error[E0308]: mismatched types
- --> /tmp/.tmpOYWstQ/main.rs:1:181
+ --> /tmp/.tmpSBakVz/main.rs:1:181
   |
 1 | ...fn fibonacci_iterative (n : i32) -> i32 { let mut a = 0i32 ; ; let mut b = 1i32 ; ; let mut i = 0i32 ; ; while i < n { { { let temp = a + b ; { a = b ; b = temp ; i = i + 1i32 } } } } ; a ; } ...
   |       -------------------              ^^^ expected `i32`, found `()`                                                                                                                          - help: remove this semicolon to return this value
@@ -79,12 +79,396 @@ For more information about this error, try `rustc --explain E0308`.
 
 
 
+=== ch17-00-error-handling-robustness example 1 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmp2OoYvq/main.rs:1:243
+  |
+1 | ...i32) ; { let result2 = safe_divide (10i32 , 0i32) ; ; println ! ("{} {:?}" , "10 / 2 = {}" , result1) ; println ! ("{} {:?}" , "10 / 0...
+  |                                                        ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+error[E0308]: mismatched types
+ --> /tmp/.tmp2OoYvq/main.rs:1:39
+  |
+1 | fn safe_divide (a : i32 , b : i32) -> i32 { if b == 0i32 { { println ! ("Error: Division by zero attempted") ; return 0i32 } } ; a / b ; } ...
+  |    -----------                        ^^^ expected `i32`, found `()`                                                                   - help: remove this semicolon to return this value
+  |    |
+  |    implicitly returns `()` as its body has no tail or `return` expression
+
+error: aborting due to 1 previous error; 1 warning emitted
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch17-00-error-handling-robustness example 2 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpIkhTmz/main.rs:1:370
+  |
+1 | ..._age (current_age) ; { let current_year = 2024i32 ; ; let retirement_age = 65i32 ; ; if safe_age >= retirement_age { { println ! ("Alr...
+  |                                                        ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpIkhTmz/main.rs:1:401
+  |
+1 | ...ent_year = 2024i32 ; ; let retirement_age = 65i32 ; ; if safe_age >= retirement_age { { println ! ("Already at retirement age") ; retu...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpIkhTmz/main.rs:1:666
+  |
+1 | ... { let year2 = calculate_retirement_year (- 5i32) ; ; let year3 = calculate_retirement_year (200i32) ; ; println ! ("{} {:?} {:?} {:?}...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpIkhTmz/main.rs:1:717
+  |
+1 | ... ; let year3 = calculate_retirement_year (200i32) ; ; println ! ("{} {:?} {:?} {:?}" , "Retirement years: {}, {}, {}" , year1 , year2 ...
+  |                                                        ^ help: remove this semicolon
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpIkhTmz/main.rs:1:32
+  |
+1 | fn validate_age (age : i32) -> i32 { if age < 0i32 { { println ! ("Error: Age cannot be negative. Using 0.") ; return 0i32 } } ; if age > 150i32 { { println ! ("Error: Age seems unrealistic. Using 150.") ; return 150i32 } } ; age ; } ...
+  |    ------------                ^^^ expected `i32`, found `()`                                                                                                                                                                         - help: remove this semicolon to return this value
+  |    |
+  |    implicitly returns `()` as its body has no tail or `return` expression
+
+error: aborting due to 1 previous error; 4 warnings emitted
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch17-00-error-handling-robustness example 3 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 4 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 7 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 8 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 9 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpUSmRVq/main.rs:1:309
+  |
+1 | ...") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else ...
+  |                                                        ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpUSmRVq/main.rs:1:496
+  |
+1 | ... } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:157
+  |
+1 | ...de (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test...
+  |                                               ^^                                            ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { println ! ("✅ Normal division test passed") } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:214
+  |
+1 | ...✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ...
+  |                                                ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { println ! ("❌ Normal division test failed") } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:332
+  |
+1 | ... (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero ...
+  |                                             ^^                                                 ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { println ! ("✅ Division by zero handling passed") } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:394
+  |
+1 | ...ion by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , ...
+  |                                             ^^                                                 ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { println ! ("❌ Division by zero handling failed") } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:521
+  |
+1 | ...10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number ha...
+  |                                             ^^                                                ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { println ! ("✅ Negative number handling passed") } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:582
+  |
+1 | ...tive number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { pr...
+  |                                             ^^                                                ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { println ! ("❌ Negative number handling failed") } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpUSmRVq/main.rs:1:907
+  |
+1 | ...t failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { pri...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpUSmRVq/main.rs:1:1073
+  |
+1 | ...g failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { pr...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:775
+  |
+1 | ...= validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed")...
+  |                                                  ^^                                      ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { println ! ("✅ Valid age test passed") } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:826
+  |
+1 | ...ntln ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2...
+  |                                                   ^^                                      ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { println ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:927
+  |
+1 | ...alidate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handli...
+  |                                               ^^                                             ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { println ! ("✅ Negative age handling passed") } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:985
+  |
+1 | ... Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if ...
+  |                                                ^^                                             ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { println ! ("❌ Negative age handling failed") } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:1095
+  |
+1 | ...idate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling...
+  |                                               ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { println ! ("✅ Extreme age handling passed") } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpUSmRVq/main.rs:1:1152
+  |
+1 | ...✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_ha...
+  |                                                ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } } } ; } fn test_input_validation () { println ! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { println ! ("❌ Extreme age handling failed") } } } ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:105
+  |
+1 | ...g division error handling...") ; { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal division te...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:280
+  |
+1 | ...ormal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; ; if result2 == 0i32 { { println ! ("✅ Division by zero ha...
+  |                                                      ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:465
+  |
+1 | ...on by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; ; if result3 == - 5i32 { { println ! ("✅ Negative numbe...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:731
+  |
+1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed") } ...
+  |                                                     ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:883
+  |
+1 | ...n ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; ; if age2 == 0i32 { { println ! ("✅ Negative age handling passe...
+  |                                                      ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpUSmRVq/main.rs:1:1049
+  |
+1 | ... Negative age handling failed") } } ; let age3 = validate_age (200i32) ; ; if age3 == 150i32 { { println ! ("✅ Extreme age handling pass...
+  |                                                      ^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors; 16 warnings emitted
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch17-00-error-handling-robustness example 10 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpnr1KpA/main.rs:1:726
+  |
+1 | ... if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" ...
+  |                                  ^^                                                                     ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+  |
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpnr1KpA/main.rs:1:1291
+  |
+1 | ...i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful =...
+  |                                                        ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpnr1KpA/main.rs:1:1312
+  |
+1 | ... { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } ...
+  |                                                        ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpnr1KpA/main.rs:1:1359
+  |
+1 | ... ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println !...
+  |                                                      ^^                              ^^
+  |
+help: remove these braces
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { successful = successful + 1i32 } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpnr1KpA/main.rs:1:615
+  |
+1 | ...er ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false ...
+  |                                             -------------    ^^^^ expected `usize`, found `i32`
+  |                                             |
+  |                                             expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0usize { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpnr1KpA/main.rs:1:716
+  |
+1 | ...data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limi...
+  |                                            -------------   ^^^^^^^ expected `usize`, found `i32`
+  |                                            |
+  |                                            expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000usize { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true ; } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
+  |
+
+error: aborting due to 2 previous errors; 4 warnings emitted
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch17-00-error-handling-robustness example 11 ===
+✗ Compilation failed: Failed to parse Ruchy source
+
+
 === ch16-00-testing-quality-assurance example 3 ===
 DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmp5Awrhp/main.rs:1:39
+ --> /tmp/.tmpGzW6Vo/main.rs:1:39
   |
 1 | fn safe_divide (a : i32 , b : i32) -> i32 { if b == 0i32 { { println ! ("Error: Division by zero") ; return 0i32 } } ; a / b ; } fn test_...
   |    -----------                        ^^^ expected `i32`, found `()`                                                         - help: remove this semicolon to return this value
@@ -102,7 +486,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:36
+ --> /tmp/.tmpH5XR13/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
   |                                    ^^^ not found in this scope
@@ -114,7 +498,7 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:103
+ --> /tmp/.tmpH5XR13/main.rs:1:103
   |
 1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
   |                                                                                                       ^^^ not found in this scope
@@ -126,7 +510,7 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:181
+ --> /tmp/.tmpH5XR13/main.rs:1:181
   |
 1 | ...2 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests p...
   |                                                         ^^^ not found in this scope
@@ -138,19 +522,19 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:314
+ --> /tmp/.tmpH5XR13/main.rs:1:314
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (mult...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:393
+ --> /tmp/.tmpH5XR13/main.rs:1:393
   |
 1 | ...32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq !...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp3f9Nbb/main.rs:1:478
+ --> /tmp/.tmpH5XR13/main.rs:1:478
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multipl...
   |                                                       ^^^^^^^^ not found in this scope
@@ -166,7 +550,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpytBwLd/main.rs:1:48
+ --> /tmp/.tmpC7Ig6L/main.rs:1:48
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                ^^ ^^
@@ -179,7 +563,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpytBwLd/main.rs:1:63
+ --> /tmp/.tmpC7Ig6L/main.rs:1:63
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                               ^^                                           ^^
@@ -191,7 +575,7 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpytBwLd/main.rs:1:221
+ --> /tmp/.tmpC7Ig6L/main.rs:1:221
   |
 1 | ...get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibona...
   |                                                        ^ help: remove this semicolon
@@ -199,25 +583,25 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpytBwLd/main.rs:1:255
+ --> /tmp/.tmpC7Ig6L/main.rs:1:255
   |
 1 | ...bonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let ...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpytBwLd/main.rs:1:372
+ --> /tmp/.tmpC7Ig6L/main.rs:1:372
   |
 1 | ...ual 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 se...
   |                                                        ^ help: remove this semicolon
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpytBwLd/main.rs:1:169
+ --> /tmp/.tmpC7Ig6L/main.rs:1:169
   |
 1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ;...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpytBwLd/main.rs:1:238
+ --> /tmp/.tmpC7Ig6L/main.rs:1:238
   |
 1 | ...et result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal...
   |                                                     ^^^^^^^^^^^ not found in this scope
@@ -233,31 +617,31 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmpeQtUrp/main.rs:1:346
+ --> /tmp/.tmpcswjs4/main.rs:1:346
   |
 1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
   |                                                        ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmpeQtUrp/main.rs:1:355
+ --> /tmp/.tmpcswjs4/main.rs:1:355
   |
 1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmpeQtUrp/main.rs:1:416
+ --> /tmp/.tmpcswjs4/main.rs:1:416
   |
 1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmpeQtUrp/main.rs:1:44
+ --> /tmp/.tmpcswjs4/main.rs:1:44
   |
 1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
   |                                            ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmpeQtUrp/main.rs:1:88
+ --> /tmp/.tmpcswjs4/main.rs:1:88
   |
 1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
   |                                                                                        ^^^ not found in this scope
