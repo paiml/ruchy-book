@@ -103,8 +103,11 @@ serve: install-deps
 	@echo "🚀 Starting local server..."
 	@mdbook serve --open
 
-# Test all TDD examples
-test:
+# Test EVERYTHING - all examples, one-liners, and tooling
+test: test-comprehensive
+
+# Test all basic TDD examples only
+test-basic:
 	@echo "🧪 Testing all TDD examples..."
 	@PASS=0; FAIL=0; \
 	for file in tests/*/*.ruchy; do \
@@ -571,14 +574,21 @@ release: clean validate build verify-version
 
 # Comprehensive testing (Toyota Way - all quality gates)
 test-comprehensive:
-	@echo "🧪 Running comprehensive test suite..."
-	@echo "1. Testing one-liners..."
-	@deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts || echo "⚠️  One-liner test failed"
-	@echo "2. Testing all examples..."
-	@deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts || echo "⚠️  Example extraction failed"
-	@echo "3. Validating book build..."
+	@echo "🧪 Running COMPREHENSIVE test suite (all examples, one-liners, tooling)..."
+	@echo ""
+	@echo "1️⃣  Testing all book examples..."
+	@deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+	@echo ""
+	@echo "2️⃣  Testing one-liners..."
+	@deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts
+	@echo ""
+	@echo "3️⃣  Testing ruchy tooling integration..."
+	@deno run --allow-read --allow-write --allow-run scripts/test-tooling.ts || echo "⚠️  Tooling test not yet implemented"
+	@echo ""
+	@echo "4️⃣  Validating book build..."
 	@mdbook build >/dev/null 2>&1 && echo "✅ Book builds successfully" || echo "❌ Book build failed"
-	@echo "✅ Comprehensive testing complete"
+	@echo ""
+	@echo "✅ COMPREHENSIVE testing complete - check test/extracted-examples/ for detailed results"
 
 # TDD Quality Gates (MANDATORY - Toyota Way)
 quality-gates:
