@@ -127,10 +127,72 @@ jobs:
           echo "check_pass=$CHECK_PASS" >> $GITHUB_OUTPUT
           echo "lint_pass=$LINT_PASS" >> $GITHUB_OUTPUT
       
-      - name: Generate test badge
+      - name: Generate test badges
+        id: badges
         run: |
-          mkdir -p .github/badges
-          echo "{\"schemaVersion\": 1, \"label\": \"tests\", \"message\": \"${{ steps.test.outputs.success_rate }}%\", \"color\": \"${{ steps.test.outputs.status_color }}\"}" > .github/badges/tests.json
+          # Create badge data directory
+          mkdir -p badges
+          
+          # Overall test status badge
+          echo "{\"schemaVersion\": 1, \"label\": \"tests\", \"message\": \"${{ steps.test.outputs.success_rate }}%\", \"color\": \"${{ steps.test.outputs.status_color }}\"}" > badges/tests.json
+          
+          # Book examples badge
+          BOOK_PERCENT="${{ steps.test.outputs.success_rate }}"
+          BOOK_COLOR="red"
+          [ "$BOOK_PERCENT" -ge 40 ] && BOOK_COLOR="yellow"
+          [ "$BOOK_PERCENT" -ge 60 ] && BOOK_COLOR="green"
+          echo "{\"schemaVersion\": 1, \"label\": \"book examples\", \"message\": \"${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} (${BOOK_PERCENT}%)\", \"color\": \"$BOOK_COLOR\"}" > badges/book-examples.json
+          
+          # One-liners badge
+          ONELINER_PERCENT=0
+          if [ "${{ steps.oneliners.outputs.oneliners_total }}" -gt 0 ]; then
+            ONELINER_PERCENT=$((100 * ${{ steps.oneliners.outputs.oneliners_pass }} / ${{ steps.oneliners.outputs.oneliners_total }}))
+          fi
+          ONELINER_COLOR="red"
+          [ "$ONELINER_PERCENT" -ge 50 ] && ONELINER_COLOR="yellow"
+          [ "$ONELINER_PERCENT" -ge 80 ] && ONELINER_COLOR="green"
+          echo "{\"schemaVersion\": 1, \"label\": \"one-liners\", \"message\": \"${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }} (${ONELINER_PERCENT}%)\", \"color\": \"$ONELINER_COLOR\"}" > badges/oneliners.json
+          
+          # Quality gates badge
+          echo "{\"schemaVersion\": 1, \"label\": \"quality\", \"message\": \"check: ${{ steps.dogfood.outputs.check_pass }} | lint: ${{ steps.dogfood.outputs.lint_pass }}\", \"color\": \"blue\"}" > badges/quality.json
+          
+          # Create README badge snippet
+          cat > badges/README_SNIPPET.md <<'EOF'
+          ![Tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/tests.json)
+          ![Book Examples](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/book-examples.json)
+          ![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
+          ![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
+          EOF
+          
+          echo "Generated badge files in badges/"
+          ls -la badges/
+      
+      - name: Deploy badges to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Configure git
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          
+          # Clone the repository to a temporary directory
+          git clone --single-branch --branch main https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git temp-badges
+          cd temp-badges
+          
+          # Create or switch to badges branch
+          git checkout badges 2>/dev/null || git checkout -b badges
+          
+          # Copy badge files
+          cp -r ../badges/* .
+          
+          # Add and commit if there are changes
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Update test badges - run #${{ github.run_number }}"
+            git push origin badges --force
+            echo "✅ Badges deployed to badges branch"
+          else
+            echo "No changes to badges"
+          fi
       
       - name: Upload test results
         if: always()
@@ -143,6 +205,7 @@ jobs:
             dogfood.log
             test/extracted-examples/
             reports/
+            badges/
           retention-days: 30
       
       - name: Create job summary

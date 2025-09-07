@@ -1,5 +1,21 @@
 # Introduction
 
+## Test Coverage Status
+
+<!-- Live test status badges -->
+<div align="center">
+
+![Tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/tests.json)
+![Book Examples](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/book-examples.json)
+![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
+![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
+
+**[View Latest Test Results →](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)**
+
+</div>
+
+> **Note**: All code examples in this book are automatically tested against Ruchy v1.69.0. The badges above show real-time test results from our continuous integration system.
+
 ## What is Ruchy?
 
 Ruchy is a modern programming language that transpiles to Rust, combining ease of use with systems-level performance. It's designed for developers who want to write fast, safe code without wrestling with complex syntax or lifetime annotations.

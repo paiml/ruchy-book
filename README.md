@@ -2,10 +2,13 @@
 
 **Test-Driven Documentation for the Ruchy Programming Language**
 
-[![Test Status](https://img.shields.io/badge/Tests-38%2F38%20Passing-brightgreen)](./INTEGRATION.md)
-[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.20.0-blue)](https://github.com/ruchy-lang/ruchy)
-[![TDD Compliance](https://img.shields.io/badge/TDD-100%25-success)](./docs/specifications/tdd-driven-ruchy-book.md)
-[![Quality Score](https://img.shields.io/badge/Quality-B%2B%20(0.85)-yellow)](./PUBLICATION_READINESS_FINAL_v1.20.0.md)
+<!-- Live test status from CI -->
+![Tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/tests.json)
+![Book Examples](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/book-examples.json)
+![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
+![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
+[![CI Status](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.69.0-blue)](https://crates.io/crates/ruchy)
 
 ## 🎯 **CRITICAL: Test-Driven Transformation**
 

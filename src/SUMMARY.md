@@ -3,6 +3,7 @@
 [The Ruchy Programming Language](title-page.md)
 [Foreword](foreword.md)
 [Introduction](ch00-00-introduction.md)
+[📊 Test Status Dashboard](test-status.md)
 
 ## Part I: Test-Driven Chapters (100% Working)
 
