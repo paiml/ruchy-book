@@ -1,525 +1,64 @@
-=== ch02-00-variables-types-tdd example 9 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch02-00-variables-types-tdd example 10 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 1 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 2 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 3 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 4 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 5 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 6 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 7 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 9 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 10 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 11 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 12 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 13 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 14 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 15 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 16 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 17 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 18 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 19 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 20 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 21 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 22 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 23 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch18-00-dataframes-data-processing example 24 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch10-00-input-output-tdd example 1 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmp23kvCn/main.rs:1:48
-  |
-1 | fn main () { println ! ("=== Output Demo ===") println ! ("Number: ") println ! ("{:?}" , 42i32) println ! ("Boolean: ") println ! ("{:?}...
-  |                                                ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 1 previous error
-
-
-
-
-=== ch10-00-input-output-tdd example 3 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpIiwbRm/main.rs:1:54
-  |
-1 | fn display_menu () { println ! ("=== Main Menu ===") println ! ("1. View Profile") println ! ("2. Settings") println ! ("3. Exit") printl...
-  |                                                      ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpIiwbRm/main.rs:1:195
-  |
-1 | ...====") } fn main () { display_menu () println ! ("Menu displayed successfully") }
-  |                                          ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 2 previous errors
-
-
-
-
-=== ch10-00-input-output-tdd example 6 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmp9L7rMJ/main.rs:1:52
-  |
-1 | fn display_options () { println ! ("=== Menu ===") println ! ("1. Option One") println ! ("2. Option Two") println ! ("============") } f...
-  |                                                    ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 1 previous error
-
-
-
-
-=== ch10-00-input-output-tdd example 8 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpA1eevi/main.rs:1:79
-  |
-1 | ...: i32) { println ! ("=== Report ===") println ! ("{:?}" , title) println ! ("{:?}" , data) println ! ("==============") } fn main () { }
-  |                                          ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 1 previous error
-
-
-
-
-=== ch10-00-input-output-tdd example 10 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmp4dN3fD/main.rs:1:54
-  |
-1 | fn show_options () { println ! ("Choose an option:") println ! ("1. Start") println ! ("2. Stop") println ! ("3. Help") } fn main () { }
-  |                                                      ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 1 previous error
-
-
-
-
-=== ch10-00-input-output-tdd example 11 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch10-00-input-output-tdd example 12 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch10-00-input-output-tdd example 13 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch17-00-error-handling-robustness example 3 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch17-00-error-handling-robustness example 4 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch17-00-error-handling-robustness example 5 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found keyword `return`
- --> /tmp/.tmpix8exj/main.rs:1:229
-  |
-1 | ...n succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while ...
-  |                                          ^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found keyword `return`
- --> /tmp/.tmpix8exj/main.rs:1:589
-  |
-1 | ...ed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("...
-  |                                          ^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpix8exj/main.rs:1:457
-  |
-1 | ...(try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Er...
-  |                                                               ^^           ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { { println ! ("❌ Operation failed after all retries") } } } }
-1 + fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { return true } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { { println ! ("❌ Operation failed after all retries") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpix8exj/main.rs:1:672
-  |
-1 | ...= retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { { println ! ("❌ Operation failed ...
-  |                                             ^^                                                 ^^
-  |
-help: remove these braces
-  |
-1 - fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { { println ! ("❌ Operation failed after all retries") } } } }
-1 + fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { println ! ("✅ Operation completed successfully") } else { { println ! ("❌ Operation failed after all retries") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpix8exj/main.rs:1:734
-  |
-1 | ...ion completed successfully") } } else { { println ! ("❌ Operation failed after all retries") } } } }
-  |                                            ^^                                                   ^^
-  |
-help: remove these braces
-  |
-1 - fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { { println ! ("❌ Operation failed after all retries") } } } }
-1 + fn unreliable_operation (attempt : i32) -> bool { if attempt < 3i32 { { println ! ("{} {:?}" , "Operation failed on attempt {}" , attempt) ; return false } } println ! ("{} {:?}" , "Operation succeeded on attempt {}" , attempt) return true } fn retry_with_limit (max_attempts : i32) -> bool { let mut attempt = 1i32 ; while attempt <= max_attempts { { println ! ("{} {:?}" , "Attempting operation (try {})" , attempt) ; if unreliable_operation (attempt) { { return true } } ; attempt = attempt + 1i32 } } println ! ("{} {:?}" , "Error: Operation failed after {} attempts" , max_attempts) return false } fn main () { { let success = retry_with_limit (5i32) ; if success { { println ! ("✅ Operation completed successfully") } } else { println ! ("❌ Operation failed after all retries") } } }
-  |
-
-error: aborting due to 2 previous errors; 3 warnings emitted
-
-
-
-
-=== ch17-00-error-handling-robustness example 7 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch17-00-error-handling-robustness example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch17-00-error-handling-robustness example 9 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `{`
- --> /tmp/.tmpiuZQfu/main.rs:1:87
-  |
-1 | ...! ("Testing division error handling...") { let result1 = safe_divide (10i32 , 2i32) ; { if result1 == 5i32 { { println ! ("✅ Normal div...
-  |                                             ^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `{`
- --> /tmp/.tmpiuZQfu/main.rs:1:712
-  |
-1 | ...rintln ! ("Testing input validation...") { let age1 = validate_age (25i32) ; { if age1 == 25i32 { { println ! ("✅ Valid age test passed...
-  |                                             ^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpiuZQfu/main.rs:1:1247
-  |
-1 | ... () { test_division_error_handling () println ! ("") test_input_validation () println ! ("") println ! ("🎉 Error handling tests complet...
-  |                                          ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 3 previous errors
-
-
-
-
-=== ch17-00-error-handling-robustness example 10 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found keyword `if`
- --> /tmp/.tmphmV0KT/main.rs:1:492
-  |
-1 | ...sor" , "Starting user data processing") if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false...
-  |                                            ^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmphmV0KT/main.rs:1:1275
-  |
-1 | ...i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful =...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmphmV0KT/main.rs:1:1296
-  |
-1 | ... { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmphmV0KT/main.rs:1:1343
-  |
-1 | ... ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println !...
-  |                                                      ^^                              ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } log_info ("DataProcessor" , "Processing data for user") if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } log_info ("DataProcessor" , "Data processing completed successfully") return true } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
-1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } log_info ("DataProcessor" , "Processing data for user") if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } log_info ("DataProcessor" , "Data processing completed successfully") return true } fn main () { { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; { let mut successful = 0i32 ; ; let mut i = 0i32 ; ; while i < 4i32 { { if results [i as usize] { successful = successful + 1i32 } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) } } }
-  |
-
-error: aborting due to 1 previous error; 3 warnings emitted
-
-
-
-
-=== ch17-00-error-handling-robustness example 11 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch16-00-testing-quality-assurance example 2 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_eq`
- --> /tmp/.tmpXnyfoS/main.rs:1:200
-  |
-1 | ..., 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass")...
-  |                                         ^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_eq`
- --> /tmp/.tmpXnyfoS/main.rs:1:407
-  |
-1 | ..., 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32...
-  |                                         ^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `test_factorial_recursive_cases`
- --> /tmp/.tmpXnyfoS/main.rs:1:628
-  |
-1 | ...t_factorial_base_cases () test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-  |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-  |
-help: you might have meant to write a method call
-  |
-1 | fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { assert_eq ! (factorial (0i32) , 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass") } fn test_factorial_recursive_cases () { assert_eq ! (factorial (3i32) , 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32) , 120i32 , "{}" , "5! should equal 120") println ! ("✅ Recursive cases pass") } fn main () { test_factorial_base_cases ().test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     +
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpXnyfoS/main.rs:1:48
-  |
-1 | fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { asser...
-  |                                                ^^    ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { assert_eq ! (factorial (0i32) , 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass") } fn test_factorial_recursive_cases () { assert_eq ! (factorial (3i32) , 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32) , 120i32 , "{}" , "5! should equal 120") println ! ("✅ Recursive cases pass") } fn main () { test_factorial_base_cases () test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-1 + fn factorial (n : i32) -> i32 { if n <= 1i32 { 1i32 } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { assert_eq ! (factorial (0i32) , 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass") } fn test_factorial_recursive_cases () { assert_eq ! (factorial (3i32) , 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32) , 120i32 , "{}" , "5! should equal 120") println ! ("✅ Recursive cases pass") } fn main () { test_factorial_base_cases () test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpXnyfoS/main.rs:1:66
-  |
-1 | fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { asser...
-  |                                                                  ^^                        ^^
-  |
-help: remove these braces
-  |
-1 - fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { { n * factorial (n - 1i32) } } } fn test_factorial_base_cases () { assert_eq ! (factorial (0i32) , 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass") } fn test_factorial_recursive_cases () { assert_eq ! (factorial (3i32) , 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32) , 120i32 , "{}" , "5! should equal 120") println ! ("✅ Recursive cases pass") } fn main () { test_factorial_base_cases () test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-1 + fn factorial (n : i32) -> i32 { if n <= 1i32 { { 1i32 } } else { n * factorial (n - 1i32) } } fn test_factorial_base_cases () { assert_eq ! (factorial (0i32) , 1i32 , "{}" , "0! should equal 1") assert_eq ! (factorial (1i32) , 1i32 , "{}" , "1! should equal 1") println ! ("✅ Base cases pass") } fn test_factorial_recursive_cases () { assert_eq ! (factorial (3i32) , 6i32 , "{}" , "3! should equal 6") assert_eq ! (factorial (4i32) , 24i32 , "{}" , "4! should equal 24") assert_eq ! (factorial (5i32) , 120i32 , "{}" , "5! should equal 120") println ! ("✅ Recursive cases pass") } fn main () { test_factorial_base_cases () test_factorial_recursive_cases () println ! ("🎉 All factorial tests passed!") }
-  |
-
-error: aborting due to 3 previous errors; 2 warnings emitted
-
-
-
-
-=== ch16-00-testing-quality-assurance example 3 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_eq`
- --> /tmp/.tmpxlwa3p/main.rs:1:248
-  |
-1 | ...{}" , "Normal division should work") assert_eq ! (safe_divide (15i32 , 3i32) , 5i32 , "{}" , "Another normal case") println ! ("✅ Norma...
-  |                                         ^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `test_division_error_cases`
- --> /tmp/.tmpxlwa3p/main.rs:1:617
-  |
-1 | ...est_division_normal_cases () test_division_error_cases () println ! ("🎉 All division tests passed!") }
-  |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-  |
-help: you might have meant to write a method call
-  |
-1 | fn safe_divide (a : i32 , b : i32) -> i32 { if b == 0i32 { { println ! ("Error: Division by zero") ; return 0i32 } } a / b } fn test_division_normal_cases () { assert_eq ! (safe_divide (10i32 , 2i32) , 5i32 , "{}" , "Normal division should work") assert_eq ! (safe_divide (15i32 , 3i32) , 5i32 , "{}" , "Another normal case") println ! ("✅ Normal division tests pass") } fn test_division_error_cases () { { let result = safe_divide (10i32 , 0i32) ; { assert_eq ! (result , 0i32 , "{}" , "Division by zero should return 0") ; println ! ("✅ Error handling tests pass") } } } fn main () { test_division_normal_cases ().test_division_error_cases () println ! ("🎉 All division tests passed!") }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          +
-
-error: aborting due to 2 previous errors
-
-
-
-
-=== ch16-00-testing-quality-assurance example 4 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpIAiACh/main.rs:1:584
-  |
-1 | ...) { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-  |                                          ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpIAiACh/main.rs:1:52
-  |
-1 | fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = ...
-  |                                                    ^^   ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-1 + fn absolute_value (x : i32) -> i32 { if x < 0i32 { - x } else { { x } } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpIAiACh/main.rs:1:69
-  |
-1 | fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = ...
-  |                                                                     ^^ ^^
-  |
-help: remove these braces
-  |
-1 - fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-1 + fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { x } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-  |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpIAiACh/main.rs:1:209
-  |
-1 | ...2 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_v...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpIAiACh/main.rs:1:228
-  |
-1 | ... { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ...
-  |       ^^                                                                                                                                                                                                                                                                  ^^
-  |
-help: remove these braces
-  |
-1 - fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-1 + fn absolute_value (x : i32) -> i32 { if x < 0i32 { { - x } } else { { x } } } fn test_absolute_value_properties () { { let test_values = vec ! [5i32 , - 3i32 , 0i32 , 100i32 , - 50i32] ; { let mut i = 0i32 ; ; while i < 5i32 { { let x = test_values [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert_eq ! (absolute_value (abs_x) , abs_x , "{}" , "Absolute value should be idempotent") ; i = i + 1i32 } } } ; println ! ("✅ Property tests pass") } } } fn main () { test_absolute_value_properties () println ! ("🎉 All property tests passed!") }
-  |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpIAiACh/main.rs:1:302
-  |
-1 | ...s [i as usize] ; { let abs_x = absolute_value (x) ; ; assert ! (abs_x >= 0i32 , "{}" , "Absolute value must be non-negative") ; assert...
-  |                                                        ^ help: remove this semicolon
-
-error: aborting due to 1 previous error; 5 warnings emitted
-
-
-
-
 === ch16-00-testing-quality-assurance example 5 ===
 DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_eq`
- --> /tmp/.tmpGxXL2L/main.rs:1:88
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:36
   |
-1 | ...2) , 5i32 , "{}" , "Basic addition") assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") assert_eq ! (add (0i3...
-  |                                         ^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
+1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
+  |                                    ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `i32`
+  |
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (2i32.add(3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_eq`
- --> /tmp/.tmpGxXL2L/main.rs:1:370
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:103
   |
-1 | ...i32 , "{}" , "Basic multiplication") assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") assert_eq ! (m...
-  |                                         ^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
+1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
+  |                                                                                                       ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `i32`
+  |
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! ((- 1i32).add(1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `test_multiplication`
- --> /tmp/.tmpGxXL2L/main.rs:1:610
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:181
   |
-1 | ...all_tests () { test_addition () test_multiplication () println ! ("🎉 Calculator test suite complete!") } fn main () { run_all_tests () }
-  |                                    ^^^^^^^^^^^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
+1 | ...2 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests p...
+  |                                                         ^^^ not found in this scope
   |
-help: you might have meant to write a method call
+help: use the `.` operator to call the method `Add::add` on `i32`
   |
-1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") println ! ("✅ Addition tests pass") } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") println ! ("✅ Multiplication tests pass") } fn run_all_tests () { test_addition ().test_multiplication () println ! ("🎉 Calculator test suite complete!") } fn main () { run_all_tests () }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   +
+1 - fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" , "Adding negative numbers") ; assert_eq ! (0i32.add(0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error: aborting due to 3 previous errors
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:314
+  |
+1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (mult...
+  |                                                       ^^^^^^^^ not found in this scope
 
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:393
+  |
+1 | ...32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq !...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpdPf4xe/main.rs:1:478
+  |
+1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multipl...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
 
 
 
@@ -528,7 +67,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpPeZXoa/main.rs:1:48
+ --> /tmp/.tmpKWenfe/main.rs:1:48
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                ^^ ^^
@@ -536,55 +75,35 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
-1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { n } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") ; } fn main () { test_fibonacci_performance () }
+1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { n } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") ; } fn main () { test_fibonacci_performance () }
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpPeZXoa/main.rs:1:63
+ --> /tmp/.tmpKWenfe/main.rs:1:63
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                               ^^                                           ^^
   |
 help: remove these braces
   |
-1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
-1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } fn test_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") } } } fn main () { test_fibonacci_performance () }
+1 - fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") ; } fn main () { test_fibonacci_performance () }
+1 + fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } fn test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let duration = end_time - start_time ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 second") ; println ! ("✅ Performance test passes") ; } fn main () { test_fibonacci_performance () }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpPeZXoa/main.rs:1:221
-  |
-1 | ...get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibona...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpPeZXoa/main.rs:1:255
-  |
-1 | ...bonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6765") ; let ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpPeZXoa/main.rs:1:372
-  |
-1 | ...ual 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000i32 , "{}" , "Fibonacci(20) should complete within 1 se...
-  |                                                        ^ help: remove this semicolon
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpPeZXoa/main.rs:1:169
+ --> /tmp/.tmpKWenfe/main.rs:1:167
   |
-1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20i32) ; ; let end_time = get_time_ms () ;...
+1 | ...test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; ass...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpPeZXoa/main.rs:1:238
+ --> /tmp/.tmpKWenfe/main.rs:1:232
   |
-1 | ...et result = fibonacci (20i32) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal...
+1 | ... let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
-error: aborting due to 2 previous errors; 5 warnings emitted
+error: aborting due to 2 previous errors; 2 warnings emitted
 
 For more information about this error, try `rustc --explain E0425`.
 
@@ -595,22 +114,22 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert`
- --> /tmp/.tmp1doXJ6/main.rs:1:404
+ --> /tmp/.tmp5kMJq0/main.rs:1:398
   |
 1 | ..."{}" , "Descriptive failure message") assert ! (condition , "{}" , "Explain why this should be true") }
   |                                          ^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmp1doXJ6/main.rs:1:44
+ --> /tmp/.tmp5kMJq0/main.rs:1:42
   |
-1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
-  |                                            ^^^^^^^^^^^^ not found in this scope
+1 | fn test_range_function () { let result = create_range (1i32 , 5i32) ; assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 elem...
+  |                                          ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmp1doXJ6/main.rs:1:88
+ --> /tmp/.tmp5kMJq0/main.rs:1:84
   |
-1 | fn test_range_function () { { let result = create_range (1i32 , 5i32) ; { assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 ...
-  |                                                                                        ^^^ not found in this scope
+1 | fn test_range_function () { let result = create_range (1i32 , 5i32) ; assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 elem...
+  |                                                                                    ^^^ not found in this scope
 
 error: aborting due to 3 previous errors
 
@@ -618,23 +137,442 @@ For more information about this error, try `rustc --explain E0425`.
 
 
 
+=== ch15-00-binary-compilation-deployment example 2 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch15-00-binary-compilation-deployment example 3 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch15-00-binary-compilation-deployment example 4 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
 === ch03-00-functions-tdd example 10 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch03-00-functions-tdd example 11 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 3 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 4 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 7 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:77
+  |
+1 | fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; retu...
+  |                                                        -----------------    ^^^^ expected `usize`, found `i32`
+  |                                                        |
+  |                                                        expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+1 + fn sanitize_username (username : & str) -> String { if username . len () == 0usize { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:199
+  |
+1 | ...n String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; r...
+  |                                            -----------------   ^^^^ expected `usize`, found `i32`
+  |                                            |
+  |                                            expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+1 + fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3usize { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:335
+  |
+1 | ...rn String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; retu...
+  |                                           -----------------   ^^^^^ expected `usize`, found `i32`
+  |                                           |
+  |                                           expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+1 + fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20usize { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:441
+  |
+1 | ... characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if...
+  |                                                 ----  ^^^^^ expected `usize`, found `i32`
+  |                                                 |
+  |                                                 arguments to this method are incorrect
+  |
+note: method defined here
+ --> /rustc/29483883eed69d5fb4db01964cdf2af4d86e9cb2/library/core/src/iter/traits/iterator.rs:1387:8
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+1 + fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20usize) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:467
+  |
+1 | ...-> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } ...
+  |       ------                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^^^^^^^- help: try using a conversion method: `.to_string()`
+  |       |                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+  |       expected `String` because of return type                                                                                                                                                                                                                                                                                                                                                                                               expected `String`, found `&str`
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpOO9YJV/main.rs:1:543
+  |
+1 | ...idate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if...
+  |                                             --------------    ^^^^ expected `usize`, found `i32`
+  |                                             |
+  |                                             expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+1 + fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if email . len () == 0usize { { println ! ("Error: Email cannot be empty") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format - missing @") ; return false } } ; if ! email . contains ('.') { { println ! ("Error: Invalid email format - missing domain") ; return false } } ; return true } fn create_user_account (username : & str , email : & str) -> bool { println ! ("Creating user account...") ; let safe_username = sanitize_username (username) ; let valid_email = validate_email (email) ; if ! valid_email { { println ! ("❌ Account creation failed: Invalid email") ; return false } } ; println ! ("{} {:?}" , "✅ Account created for user: {}" , safe_username) ; return true } fn main () { let success1 = create_user_account ("john_doe" , "john@example.com") ; let success2 = create_user_account ("" , "invalid-email") ; let success3 = create_user_account ("ab" , "test@domain.co.uk") ; println ! ("{} {:?} {:?} {:?}" , "Account creation results: {}, {}, {}" , success1 , success2 , success3) ; }
+  |
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch17-00-error-handling-robustness example 8 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch17-00-error-handling-robustness example 9 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpfViihY/main.rs:1:630
+  |
+1 | ...intln ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let a...
+  |                                                         ^ help: remove this semicolon
+  |
+  = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:153
+  |
+1 | ...vide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test...
+  |                                               ^^                                            ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { println ! ("✅ Normal division test passed") } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:210
+  |
+1 | ...✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ...
+  |                                                ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { println ! ("❌ Normal division test failed") } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:326
+  |
+1 | ...de (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero ...
+  |                                             ^^                                                 ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { println ! ("✅ Division by zero handling passed") } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:388
+  |
+1 | ...ion by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , ...
+  |                                             ^^                                                 ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { println ! ("❌ Division by zero handling failed") } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:513
+  |
+1 | ...- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number ha...
+  |                                             ^^                                                ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { println ! ("✅ Negative number handling passed") } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:574
+  |
+1 | ...tive number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { prin...
+  |                                             ^^                                                ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { println ! ("❌ Negative number handling failed") } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary trailing semicolon
+ --> /tmp/.tmpfViihY/main.rs:1:1186
+  |
+1 | ...{ println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_vali...
+  |                                                         ^ help: remove this semicolon
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:761
+  |
+1 | ...1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed")...
+  |                                                  ^^                                      ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { println ! ("✅ Valid age test passed") } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:812
+  |
+1 | ...ntln ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 =...
+  |                                                   ^^                                      ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { println ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:911
+  |
+1 | ... validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handli...
+  |                                               ^^                                             ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { println ! ("✅ Negative age handling passed") } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:969
+  |
+1 | ... Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if ag...
+  |                                                ^^                                             ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { println ! ("❌ Negative age handling failed") } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:1077
+  |
+1 | ...alidate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling...
+  |                                               ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { println ! ("✅ Extreme age handling passed") } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpfViihY/main.rs:1:1134
+  |
+1 | ...✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_hand...
+  |                                                ^^                                            ^^
+  |
+help: remove these braces
+  |
+1 - fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+1 + fn test_division_error_handling () { println ! ("Testing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { println ! ("❌ Extreme age handling failed") } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_validation () ; println ! ("") ; println ! ("🎉 Error handling tests complete!") ; }
+  |
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:103
+  |
+1 | ...ing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:276
+  |
+1 | ...ormal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero hand...
+  |                                                      ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `safe_divide` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:459
+  |
+1 | ...on by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number ...
+  |                                                     ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:719
+  |
+1 | ...n ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } ...
+  |                                                     ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:869
+  |
+1 | ...n ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed"...
+  |                                                      ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `validate_age` in this scope
+ --> /tmp/.tmpfViihY/main.rs:1:1033
+  |
+1 | ... Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed...
+  |                                                      ^^^^^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors; 14 warnings emitted
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch17-00-error-handling-robustness example 10 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpew1ACc/main.rs:1:726
+  |
+1 | ... if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" ...
+  |                                  ^^                                                                     ^^
+  |
+  = note: `#[warn(unused_braces)]` on by default
+help: remove these braces
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+  |
+
+warning: unnecessary braces around block return value
+ --> /tmp/.tmpew1ACc/main.rs:1:1349
+  |
+1 | ...32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println !...
+  |                                                      ^^                              ^^
+  |
+help: remove these braces
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { successful = successful + 1i32 } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpew1ACc/main.rs:1:615
+  |
+1 | ...er ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false ...
+  |                                             -------------    ^^^^ expected `usize`, found `i32`
+  |                                             |
+  |                                             expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0usize { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+  |
+
+error[E0308]: mismatched types
+ --> /tmp/.tmpew1ACc/main.rs:1:716
+  |
+1 | ...data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limi...
+  |                                            -------------   ^^^^^^^ expected `usize`, found `i32`
+  |                                            |
+  |                                            expected because this is `usize`
+  |
+help: change the type of the numeric literal from `i32` to `usize`
+  |
+1 - fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+1 + fn log_error (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[ERROR] {}: {}" , component , message) } fn log_warning (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[WARN] {}: {}" , component , message) } fn log_info (component : & str , message : & str) { println ! ("{} {:?} {:?}" , "[INFO] {}: {}" , component , message) } fn process_user_data (user_id : i32 , data : & str) -> bool { log_info ("DataProcessor" , "Starting user data processing") ; if user_id <= 0i32 { { log_error ("DataProcessor" , "Invalid user ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false } } ; if data . len () > 1000usize { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" , "Processing data for user") ; if user_id == 999i32 { { log_error ("DataProcessor" , "Processing failed for user 999") ; return false } } ; log_info ("DataProcessor" , "Data processing completed successfully") ; return true } fn main () { let results = vec ! [process_user_data (123i32 , "valid_data") , process_user_data (0i32 , "invalid_user") , process_user_data (456i32 , "") , process_user_data (999i32 , "test_data")] ; let mut successful = 0i32 ; let mut i = 0i32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println ! ("{} {:?}" , "Summary: {}/4 operations successful" , successful) ; }
+  |
+
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+For more information about this error, try `rustc --explain E0308`.
+
+
+
+=== ch17-00-error-handling-robustness example 11 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch05-00-control-flow-tdd example 15 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch05-00-control-flow-tdd example 16 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch05-00-control-flow-tdd example 17 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch02-00-variables-types-tdd example 9 ===
+DEBUG: About to call transpile_to_program
+DEBUG: transpile_to_program completed
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of undeclared type `DataFrame`
+ --> /tmp/.tmpDBQuDh/main.rs:1:31
+  |
+1 | fn main () { let sales_data = DataFrame :: new () . column ("product" , vec ! ["Widget" , "Gadget"]) . column ("quantity" , vec ! [100i32...
+  |                               ^^^^^^^^^ use of undeclared type `DataFrame`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0433`.
+
+
+
+=== ch02-00-variables-types-tdd example 10 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
@@ -642,14 +580,8 @@ For more information about this error, try `rustc --explain E0425`.
 DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found keyword `return`
- --> /tmp/.tmp8KCb6W/main.rs:1:398
-  |
-1 | ...} } println ! ("User input is valid") return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if va...
-  |                                          ^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
 error[E0106]: missing lifetime specifier
- --> /tmp/.tmp8KCb6W/main.rs:1:481
+ --> /tmp/.tmpbGopc7/main.rs:1:489
   |
 1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ...
   |                                  -----                       -----     ^ expected named lifetime parameter
@@ -657,38 +589,24 @@ error[E0106]: missing lifetime specifier
   = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `name` or `email`
 help: consider introducing a named lifetime parameter
   |
-1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } println ! ("User input is valid") return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) } } }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                  ++++          ++                             ++           ++
+1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } ; if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) ; }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                          ++++          ++                             ++           ++
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp8KCb6W/main.rs:1:646
+ --> /tmp/.tmpbGopc7/main.rs:1:654
   |
-1 | ...return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { { let result1 = create_user_pro...
+1 | ...return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profi...
   |                                                     ^^                                ^^
   |
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } println ! ("User input is valid") return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) } } }
-1 + fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } println ! ("User input is valid") return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) } } }
+1 - fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } ; if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } ; println ! ("User input is valid") ; return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) ; }
+1 + fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } ; if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } ; println ! ("User input is valid") ; return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { return "Profile creation failed" } } fn main () { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) ; }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp8KCb6W/main.rs:1:849
-  |
-1 | ...ate_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ;...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp8KCb6W/main.rs:1:932
-  |
-1 | ...file ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Resul...
-  |                                                        ^ help: remove this semicolon
 
 error[E0308]: mismatched types
- --> /tmp/.tmp8KCb6W/main.rs:1:97
+ --> /tmp/.tmpbGopc7/main.rs:1:97
   |
 1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot b...
   |                                                                                -------------    ^^^^ expected `usize`, found `i32`
@@ -697,11 +615,11 @@ error[E0308]: mismatched types
   |
 help: change the type of the numeric literal from `i32` to `usize`
   |
-1 - fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } println ! ("User input is valid") return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) } } }
-1 + fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0usize { { println ! ("Error: Name cannot be empty") ; return false } } if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } println ! ("User input is valid") return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) } } }
+1 - fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot be empty") ; return false } } ; if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } ; println ! ("User input is valid") ; return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) ; }
+1 + fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0usize { { println ! ("Error: Name cannot be empty") ; return false } } ; if age < 0i32 || age > 150i32 { { println ! ("Error: Age must be between 0 and 150") ; return false } } ; if ! email . contains ('@') { { println ! ("Error: Invalid email format") ; return false } } ; println ! ("User input is valid") ; return true } fn create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ("{} {:?}" , "Creating profile for: {}" , name) ; return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profile ("Alice" , 25i32 , "alice@example.com") ; let result2 = create_user_profile ("" , 30i32 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5i32 , "charlie@example.com") ; println ! ("{} {:?}" , "Result 1: {}" , result1) ; println ! ("{} {:?}" , "Result 2: {}" , result2) ; println ! ("{} {:?}" , "Result 3: {}" , result3) ; }
   |
 
-error: aborting due to 3 previous errors; 3 warnings emitted
+error: aborting due to 2 previous errors; 1 warning emitted
 
 Some errors have detailed explanations: E0106, E0308.
 For more information about an error, try `rustc --explain E0106`.
@@ -709,230 +627,178 @@ For more information about an error, try `rustc --explain E0106`.
 
 
 === ch04-00-practical-patterns-tdd example 3 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
-=== ch04-00-practical-patterns-tdd example 4 ===
-DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `{`
- --> /tmp/.tmp85EO8V/main.rs:1:466
-  |
-1 | ...l { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" ...
-  |                                             ^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmp85EO8V/main.rs:1:101
-  |
-1 | fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_...
-  |                                                                                                     ^^            ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-1 + fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { return 30i32 } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmp85EO8V/main.rs:1:162
-  |
-1 | ...return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i3...
-  |                                                               ^^           ^^
-  |
-help: remove these braces
-  |
-1 - fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-1 + fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { return 3i32 } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmp85EO8V/main.rs:1:222
-  |
-1 | ...return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown ...
-  |                                                              ^^              ^^
-  |
-help: remove these braces
-  |
-1 - fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-1 + fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { return 1024i32 } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmp85EO8V/main.rs:1:1259
-  |
-1 | ...cess = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initializatio...
-  |                                               ^^                                           ^^
-  |
-help: remove these braces
-  |
-1 - fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-1 + fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { println ! ("System is ready for operation") } else { { println ! ("System initialization failed") } } } }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmp85EO8V/main.rs:1:1316
-  |
-1 | ..."System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-  |                                                ^^                                          ^^
-  |
-help: remove these braces
-  |
-1 - fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { { println ! ("System initialization failed") } } } }
-1 + fn get_setting (setting_name : & str , default_value : i32) -> i32 { if setting_name == "timeout" { { return 30i32 } } else { if setting_name == "max_retries" { { return 3i32 } } else { if setting_name == "buffer_size" { { return 1024i32 } } else { { println ! ("{} {:?} {:?}" , "Warning: Unknown setting '{}', using default {}" , setting_name , default_value) ; return default_value } } } } } fn initialize_system () -> bool { println ! ("Initializing system...") { let timeout = get_setting ("timeout" , 15i32) ; { let retries = get_setting ("max_retries" , 1i32) ; ; let buffer = get_setting ("buffer_size" , 512i32) ; ; let unknown = get_setting ("cache_size" , 256i32) ; ; println ! ("Configuration:") ; println ! ("{} {:?}" , "  Timeout: {} seconds" , timeout) ; println ! ("{} {:?}" , "  Max retries: {}" , retries) ; println ! ("{} {:?}" , "  Buffer size: {} bytes" , buffer) ; println ! ("{} {:?}" , "  Cache size: {} MB" , unknown) ; if timeout <= 0i32 { { println ! ("Error: Timeout must be positive") ; return false } } ; if retries < 0i32 { { println ! ("Error: Retries cannot be negative") ; return false } } ; println ! ("✅ System initialized successfully") ; return true } } } fn main () { { let success = initialize_system () ; if success { { println ! ("System is ready for operation") } } else { println ! ("System initialization failed") } } }
-  |
-
-error: aborting due to 1 previous error; 5 warnings emitted
-
-
-
-
 === ch04-00-practical-patterns-tdd example 5 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch04-00-practical-patterns-tdd example 6 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch04-00-practical-patterns-tdd example 7 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch04-00-practical-patterns-tdd example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch04-00-practical-patterns-tdd example 9 ===
 DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert_equal`
- --> /tmp/.tmpD5hKCp/main.rs:1:890
-  |
-1 | ..."Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (c...
-  |                                       ^^^^^^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-  |
-help: you might have meant to write a method call
-  |
-1 | fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...").assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             +
-
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpD5hKCp/main.rs:1:1471
-  |
-1 | ...ain () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculat...
-  |                                          ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpD5hKCp/main.rs:1:95
-  |
-1 | ...if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{...
-  |                            ^^                                                                                   ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-1 + fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpD5hKCp/main.rs:1:191
-  |
-1 | ...ected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_strin...
-  |                      ^^                                                                                              ^^
-  |
-help: remove these braces
-  |
-1 - fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-1 + fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpD5hKCp/main.rs:1:398
-  |
-1 | ... : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {...
-  |                                        ^^                                                          ^^
-  |
-help: remove these braces
-  |
-1 - fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-1 + fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpD5hKCp/main.rs:1:469
-  |
-1 | ...ame) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_...
-  |                    ^^                                                                                                  ^^
-  |
-help: remove these braces
-  |
-1 - fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-1 + fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpD5hKCp/main.rs:1:703
-  |
-1 | ... if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i3...
-  |                                                               ^^            ^^
-  |
-help: remove these braces
-  |
-1 - fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { { return price } } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-1 + fn assert_equal (actual : i32 , expected : i32 , test_name : & str) { if actual == expected { { println ! ("{} {:?} {:?} {:?}" , "✅ {}: {} == {}" , test_name , actual , expected) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: {} != {} (expected)" , test_name , actual , expected) } } } fn assert_string_equal (actual : & str , expected : & str , test_name : & str) { if actual == expected { { println ! ("{} {:?}" , "✅ {}: strings match" , test_name) } } else { { println ! ("{} {:?} {:?} {:?}" , "❌ {}: '{}' != '{}' (expected)" , test_name , actual , expected) } } } fn calculate_discount (price : i32 , discount_percent : i32) -> i32 { if discount_percent < 0i32 || discount_percent > 100i32 { return price } { let discount_amount = price * discount_percent / 100i32 ; price - discount_amount } } fn test_discount_calculation () { println ! ("Testing discount calculation...") assert_equal (calculate_discount (100i32 , 10i32) , 90i32 , "10% discount on $100") assert_equal (calculate_discount (50i32 , 20i32) , 40i32 , "20% discount on $50") assert_equal (calculate_discount (200i32 , 0i32) , 200i32 , "0% discount on $200") assert_equal (calculate_discount (100i32 , - 5i32) , 100i32 , "Negative discount") assert_equal (calculate_discount (100i32 , 150i32) , 100i32 , "Over 100% discount") assert_equal (calculate_discount (0i32 , 50i32) , 0i32 , "50% discount on $0") println ! ("Discount tests completed.\n") } fn main () { test_discount_calculation () println ! ("Discount examples:") println ! ("{} {:?}" , "$100 with 15% discount: ${}" , calculate_discount (100i32 , 15i32)) println ! ("{} {:?}" , "$250 with 25% discount: ${}" , calculate_discount (250i32 , 25i32)) }
-  |
-
-error: aborting due to 2 previous errors; 5 warnings emitted
-
-
+✗ Compilation failed: Failed to parse Ruchy source
 
 
 === ch04-00-practical-patterns-tdd example 10 ===
+DEBUG: About to call transpile_to_program
 ✗ Compilation failed: Failed to parse Ruchy source
 
 
-=== ch01-02-hello-world example 4 ===
+=== ch18-00-dataframes-data-processing example 1 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 2 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 3 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 4 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 5 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 6 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 7 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 8 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 9 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 10 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 11 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 12 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 13 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 14 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 15 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 16 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 17 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 18 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 19 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 20 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 21 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 22 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 23 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch18-00-dataframes-data-processing example 24 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
+
+
+=== ch10-00-input-output-tdd example 11 ===
 DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpJbEGYu/main.rs:1:62
+error[E0433]: failed to resolve: use of undeclared type `DataFrame`
+ --> /tmp/.tmpkmzTjC/main.rs:1:29
   |
-1 | fn main () { println ! ("{} {:?}" , "The answer is" , 42i32) println ! ("{} {:?}" , "Pi is approximately" , 3.14159f64) println ! ("{} {:...
-  |                                                              ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
+1 | fn main () { let sales_df = DataFrame :: from_csv ("sales_data.csv") ; println ! ("{} {:?}" , "Loaded {} sales records" , sales_df . rows...
+  |                             ^^^^^^^^^ use of undeclared type `DataFrame`
 
-error: aborting due to 1 previous error
+error[E0433]: failed to resolve: use of undeclared type `DataFrame`
+ --> /tmp/.tmpkmzTjC/main.rs:1:163
+  |
+1 | ...s" , sales_df . rows ()) ; let products_df = DataFrame :: from_json ("products.json") ; println ! ("{} {:?}" , "Loaded {} products" , ...
+  |                                                 ^^^^^^^^^ use of undeclared type `DataFrame`
 
+error: aborting due to 2 previous errors
 
-
-
-=== ch15-00-binary-compilation-deployment example 2 ===
-✗ Compilation failed: Failed to parse Ruchy source
-
-
-=== ch15-00-binary-compilation-deployment example 3 ===
-✗ Compilation failed: Failed to parse Ruchy source
+For more information about this error, try `rustc --explain E0433`.
 
 
-=== ch15-00-binary-compilation-deployment example 4 ===
-✗ Compilation failed: Failed to parse Ruchy source
 
-
-=== ch01-02-hello-world-tdd example 2 ===
+=== ch10-00-input-output-tdd example 12 ===
 DEBUG: About to call transpile_to_program
-DEBUG: transpile_to_program completed
-✗ Compilation failed: Compilation failed:
-error: expected one of `.`, `;`, `?`, `}`, or an operator, found `println`
- --> /tmp/.tmpAwpZ7l/main.rs:1:35
-  |
-1 | fn main () { println ! ("Hello,") println ! ("World!") }
-  |                                   ^^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
-
-error: aborting due to 1 previous error
+✗ Compilation failed: Failed to parse Ruchy source
 
 
+=== ch10-00-input-output-tdd example 13 ===
+DEBUG: About to call transpile_to_program
+✗ Compilation failed: Failed to parse Ruchy source
 
