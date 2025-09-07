@@ -622,6 +622,38 @@ git status
 
 **NO EXCEPTIONS**: This protocol runs after EVERY version qualification, whether pass rates improve or decline. The goal is complete transparency and historical tracking.
 
+## POST-TESTING PROTOCOL (MANDATORY)
+
+**CRITICAL**: After EVERY version test/qualification, ALWAYS push changes to GitHub:
+
+### Step 1: Commit Test Results (MANDATORY)
+```bash
+# ALWAYS commit test results after version qualification
+git add -A
+git commit -m "feat: Complete vX.Y.Z qualification with W% pass rate
+
+- Detailed results and findings
+- Pass/fail counts and improvements  
+- Key issues discovered
+- Updated INTEGRATION.md
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+
+Co-Authored-By: Claude <noreply@anthropic.com>"
+
+# ALWAYS push immediately - no exceptions
+git push origin main
+```
+
+**WHY THIS IS MANDATORY:**
+- **Preserve results**: All test data must be saved to GitHub
+- **Team visibility**: Qualification results must be shared immediately
+- **Historical tracking**: Track progress/regression across all versions
+- **Audit trail**: Complete record of what was tested when
+- **Collaboration**: Enable team to see latest status
+
+**NO EXCEPTIONS**: Push after EVERY version test, whether results improve or not.
+
 ## POST-COMPLETION PROTOCOL (MANDATORY)
 
 **CRITICAL**: After ALL work completion, ALWAYS execute this protocol:
