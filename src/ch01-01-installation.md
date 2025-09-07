@@ -14,7 +14,7 @@ cargo install --path . --force
 
 # Verify installation
 ruchy --version
-# Should show: ruchy 1.29.1
+# Should show: ruchy 1.78.0
 ```
 
 ## Installation Methods
@@ -85,7 +85,7 @@ After installation, verify your complete Ruchy development environment:
 ```bash
 # Check compiler is accessible
 ruchy --version
-# Output: ruchy 1.29.1
+# Output: ruchy 1.78.0
 
 # View available commands
 ruchy --help
