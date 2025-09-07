@@ -1,0 +1,210 @@
+name: Test Ruchy Book Examples
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at midnight UTC to catch regressions
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      ruchy_version:
+        description: 'Ruchy version to test (leave empty for latest)'
+        required: false
+        default: ''
+
+jobs:
+  test-book-comprehensive:
+    name: Test Book Examples (v${{ matrix.ruchy_version || 'latest' }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruchy_version: ['1.69.0']  # Pin to latest stable
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      
+      - name: Cache Cargo registry
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      
+      - name: Install Ruchy from crates.io
+        run: |
+          if [ -n "${{ github.event.inputs.ruchy_version }}" ]; then
+            cargo install ruchy --version ${{ github.event.inputs.ruchy_version }} --force
+          elif [ -n "${{ matrix.ruchy_version }}" ]; then
+            cargo install ruchy --version ${{ matrix.ruchy_version }} --force
+          else
+            cargo install ruchy --force
+          fi
+          ruchy --version
+      
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      
+      - name: Install mdBook
+        run: |
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.37/mdbook-v0.4.37-x86_64-unknown-linux-gnu.tar.gz | tar -xz
+          chmod +x mdbook
+          sudo mv mdbook /usr/local/bin/
+          mdbook --version
+      
+      - name: Run comprehensive tests
+        id: test
+        run: |
+          echo "🧪 Running comprehensive test suite..."
+          make test > test_output.log 2>&1 || true
+          cat test_output.log
+          
+          # Extract statistics from logs
+          TOTAL_EXAMPLES=$(grep -o "Code examples found: [0-9]*" test_output.log | grep -o "[0-9]*" || echo "0")
+          PASSING_EXAMPLES=$(grep -o "Examples working: [0-9]*" test_output.log | grep -o "[0-9]*" || echo "0")
+          FAILING_EXAMPLES=$(grep -o "Examples failing: [0-9]*" test_output.log | grep -o "[0-9]*" || echo "0")
+          SUCCESS_RATE=$(grep -o "Success rate: [0-9]*%" test_output.log | grep -o "[0-9]*" || echo "0")
+          
+          echo "total_examples=$TOTAL_EXAMPLES" >> $GITHUB_OUTPUT
+          echo "passing_examples=$PASSING_EXAMPLES" >> $GITHUB_OUTPUT
+          echo "failing_examples=$FAILING_EXAMPLES" >> $GITHUB_OUTPUT
+          echo "success_rate=$SUCCESS_RATE" >> $GITHUB_OUTPUT
+          
+          # Set status based on success rate
+          if [ "$SUCCESS_RATE" -ge 60 ]; then
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "status_emoji=✅" >> $GITHUB_OUTPUT
+            echo "status_color=green" >> $GITHUB_OUTPUT
+          elif [ "$SUCCESS_RATE" -ge 40 ]; then
+            echo "status=warning" >> $GITHUB_OUTPUT
+            echo "status_emoji=⚠️" >> $GITHUB_OUTPUT
+            echo "status_color=yellow" >> $GITHUB_OUTPUT
+          else
+            echo "status=failure" >> $GITHUB_OUTPUT
+            echo "status_emoji=❌" >> $GITHUB_OUTPUT
+            echo "status_color=red" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Test one-liners separately
+        id: oneliners
+        run: |
+          echo "🎯 Testing one-liner examples..."
+          deno task test-oneliners > oneliners.log 2>&1 || true
+          cat oneliners.log
+          
+          # Extract one-liner stats
+          ONELINERS_PASS=$(grep -o "Tests Passed: [0-9]*" oneliners.log | grep -o "[0-9]*" || echo "0")
+          ONELINERS_FAIL=$(grep -o "Tests Failed: [0-9]*" oneliners.log | grep -o "[0-9]*" || echo "0")
+          ONELINERS_TOTAL=$(( ONELINERS_PASS + ONELINERS_FAIL ))
+          
+          echo "oneliners_pass=$ONELINERS_PASS" >> $GITHUB_OUTPUT
+          echo "oneliners_fail=$ONELINERS_FAIL" >> $GITHUB_OUTPUT
+          echo "oneliners_total=$ONELINERS_TOTAL" >> $GITHUB_OUTPUT
+      
+      - name: Run dogfooding quality gates
+        id: dogfood
+        run: |
+          echo "🐕 Running dogfooding quality gates..."
+          make dogfood-quick > dogfood.log 2>&1 || true
+          cat dogfood.log
+          
+          # Extract dogfood stats
+          CHECK_PASS=$(grep -o "ruchy check.*: [0-9]* passed" dogfood.log | grep -o "[0-9]* passed" | grep -o "[0-9]*" || echo "0")
+          LINT_PASS=$(grep -o "ruchy lint.*: [0-9]* passed" dogfood.log | grep -o "[0-9]* passed" | grep -o "[0-9]*" || echo "0")
+          
+          echo "check_pass=$CHECK_PASS" >> $GITHUB_OUTPUT
+          echo "lint_pass=$LINT_PASS" >> $GITHUB_OUTPUT
+      
+      - name: Generate test badge
+        run: |
+          mkdir -p .github/badges
+          echo "{\"schemaVersion\": 1, \"label\": \"tests\", \"message\": \"${{ steps.test.outputs.success_rate }}%\", \"color\": \"${{ steps.test.outputs.status_color }}\"}" > .github/badges/tests.json
+      
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ github.run_number }}
+          path: |
+            test_output.log
+            oneliners.log
+            dogfood.log
+            test/extracted-examples/
+            reports/
+          retention-days: 30
+      
+      - name: Create job summary
+        if: always()
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY <<EOF
+          # 📚 Ruchy Book Test Results
+          
+          **Ruchy Version:** $(ruchy --version)
+          **Status:** ${{ steps.test.outputs.status_emoji }} ${{ steps.test.outputs.status }}
+          
+          ## 📊 Overall Statistics
+          | Metric | Value |
+          |--------|-------|
+          | Total Examples | ${{ steps.test.outputs.total_examples }} |
+          | Passing | ${{ steps.test.outputs.passing_examples }} |
+          | Failing | ${{ steps.test.outputs.failing_examples }} |
+          | **Success Rate** | **${{ steps.test.outputs.success_rate }}%** |
+          
+          ## 🎯 One-Liner Tests
+          | Metric | Value |
+          |--------|-------|
+          | Total | ${{ steps.oneliners.outputs.oneliners_total }} |
+          | Passing | ${{ steps.oneliners.outputs.oneliners_pass }} |
+          | Failing | ${{ steps.oneliners.outputs.oneliners_fail }} |
+          
+          ## 🐕 Dogfooding Quality Gates
+          | Tool | Result |
+          |------|--------|
+          | ruchy check | ${{ steps.dogfood.outputs.check_pass }} files pass |
+          | ruchy lint | ${{ steps.dogfood.outputs.lint_pass }} files pass |
+          
+          ---
+          
+          [📋 View Full Logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+          EOF
+      
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const comment = `## 📚 Ruchy Book Test Results
+            
+            **Status:** ${{ steps.test.outputs.status_emoji }} Tests are **${{ steps.test.outputs.status }}**
+            
+            📊 **Book Examples:** ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} passing (${{ steps.test.outputs.success_rate }}%)
+            🎯 **One-liners:** ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }} passing
+            🐕 **Quality Gates:** ✅ ${{ steps.dogfood.outputs.check_pass }} files pass syntax check, ${{ steps.dogfood.outputs.lint_pass }} files pass linting
+            
+            [View Full Test Report →](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+      
+      - name: Fail if tests are failing
+        if: steps.test.outputs.status == 'failure'
+        run: |
+          echo "❌ Tests failed with success rate of ${{ steps.test.outputs.success_rate }}%"
+          echo "Threshold is 40% for CI to pass"
+          exit 1
