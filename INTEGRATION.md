@@ -1,9 +1,9 @@
-# Ruchy Book Integration Report - v1.78.0 QUALIFICATION
+# Ruchy Book Integration Report - v1.80.0 QUALIFICATION
 
-**Generated**: 2025-09-07T12:00:00.000Z  
-**Ruchy Version**: ruchy 1.78.0 (crates.io)  
-**Book Commit**: 5aa614a  
-**QA Status**: ✅ STABLE - 61% PASS RATE (no change from v1.69.0)
+**Generated**: 2025-09-07T15:09:00.000Z  
+**Ruchy Version**: ruchy 1.80.0 (crates.io)  
+**Book Commit**: ce61254  
+**QA Status**: ✅ STABLE - 61% PASS RATE (no change from v1.78.0)
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## 📊 Test Results
 
-### Summary by Quality Gate (v1.69.0)
+### Summary by Quality Gate (v1.80.0)
 | Quality Gate | Pass | Fail | Rate | Status |
 |-------------|------|------|------|---------|
 | ruchy test | 83 | 53 | 61% | ✅ Improved |
@@ -31,7 +31,7 @@
 | ruchy score | A+ | - | 100.0% | 🏆 A+ Grade |
 | ruchy fmt | 0 | 70 | 0.0% | ⚠️ Expected |
 
-### Chapter Performance Analysis (ruchy 1.78.0)
+### Chapter Performance Analysis (ruchy 1.80.0)
 
 | Chapter | Total | Pass | Fail | Rate | Status |
 |---------|--------|------|------|------|---------|
