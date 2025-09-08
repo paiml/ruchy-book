@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-09-02T17:38:44.128Z",
-  "ruchy_version": "ruchy 1.35.0",
+  "generated_at": "2025-09-08T10:00:19.608Z",
+  "ruchy_version": "ruchy 1.85.0",
   "summary": {
-    "total_chapters": 10,
-    "total_examples": 69,
-    "working_examples": 68,
-    "failing_examples": 1,
-    "success_rate": 99
+    "total_chapters": 15,
+    "total_examples": 111,
+    "working_examples": 85,
+    "failing_examples": 26,
+    "success_rate": 77
   },
   "chapters": {
     "ch02-00-variables-types-tdd": {
@@ -18,6 +18,18 @@
         "working": 8,
         "not_implemented": 0,
         "broken": 0,
+        "planned": 0
+      }
+    },
+    "ch18-00-dataframes-data-processing": {
+      "total_examples": 4,
+      "working_examples": 0,
+      "failing_examples": 4,
+      "success_rate": 0,
+      "status_breakdown": {
+        "working": 0,
+        "not_implemented": 0,
+        "broken": 4,
         "planned": 0
       }
     },
@@ -47,13 +59,13 @@
     },
     "ch14-00-toolchain-mastery-tdd": {
       "total_examples": 4,
-      "working_examples": 3,
-      "failing_examples": 1,
-      "success_rate": 75,
+      "working_examples": 4,
+      "failing_examples": 0,
+      "success_rate": 100,
       "status_breakdown": {
-        "working": 3,
+        "working": 4,
         "not_implemented": 0,
-        "broken": 1,
+        "broken": 0,
         "planned": 0
       }
     },
@@ -69,27 +81,63 @@
         "planned": 0
       }
     },
+    "ch17-00-error-handling-robustness": {
+      "total_examples": 11,
+      "working_examples": 5,
+      "failing_examples": 6,
+      "success_rate": 45,
+      "status_breakdown": {
+        "working": 5,
+        "not_implemented": 1,
+        "broken": 5,
+        "planned": 0
+      }
+    },
+    "ch16-00-testing-quality-assurance": {
+      "total_examples": 8,
+      "working_examples": 5,
+      "failing_examples": 3,
+      "success_rate": 63,
+      "status_breakdown": {
+        "working": 5,
+        "not_implemented": 0,
+        "broken": 3,
+        "planned": 0
+      }
+    },
     "ch03-00-functions-tdd": {
-      "total_examples": 9,
+      "total_examples": 11,
       "working_examples": 9,
-      "failing_examples": 0,
-      "success_rate": 100,
+      "failing_examples": 2,
+      "success_rate": 82,
       "status_breakdown": {
         "working": 9,
         "not_implemented": 0,
-        "broken": 0,
+        "broken": 2,
         "planned": 0
       }
     },
     "ch05-00-control-flow-tdd": {
-      "total_examples": 14,
+      "total_examples": 17,
       "working_examples": 14,
-      "failing_examples": 0,
-      "success_rate": 100,
+      "failing_examples": 3,
+      "success_rate": 82,
       "status_breakdown": {
         "working": 14,
         "not_implemented": 0,
-        "broken": 0,
+        "broken": 3,
+        "planned": 0
+      }
+    },
+    "ch04-00-practical-patterns-tdd": {
+      "total_examples": 10,
+      "working_examples": 5,
+      "failing_examples": 5,
+      "success_rate": 50,
+      "status_breakdown": {
+        "working": 5,
+        "not_implemented": 0,
+        "broken": 5,
         "planned": 0
       }
     },
@@ -117,6 +165,18 @@
         "planned": 0
       }
     },
+    "ch15-00-binary-compilation-deployment": {
+      "total_examples": 4,
+      "working_examples": 1,
+      "failing_examples": 3,
+      "success_rate": 25,
+      "status_breakdown": {
+        "working": 1,
+        "not_implemented": 0,
+        "broken": 3,
+        "planned": 0
+      }
+    },
     "ch01-02-hello-world-tdd": {
       "total_examples": 6,
       "working_examples": 6,
@@ -132,14 +192,14 @@
   },
   "oneliners": {
     "total_tests": 20,
-    "passed_tests": 17,
-    "failed_tests": 3,
+    "passed_tests": 19,
+    "failed_tests": 1,
     "planned_tests": 12,
-    "success_rate": 85
+    "success_rate": 95
   },
   "quality_metrics": {
-    "documentation_coverage": 28.57142857142857,
+    "documentation_coverage": 42.857142857142854,
     "example_testing": 100,
-    "implementation_status": 99
+    "implementation_status": 77
   }
 }

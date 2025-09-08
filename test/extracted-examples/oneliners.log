@@ -1,12 +1,12 @@
 🧪 Ruchy One-Liner Test Results
-Generated: 2025-09-08T06:40:13.427Z
-Ruchy Version: ruchy 1.84.0
+Generated: 2025-09-08T10:00:06.676Z
+Ruchy Version: ruchy 1.85.0
 
 📊 Summary:
-Tests Passed: 17
-Tests Failed: 3
+Tests Passed: 19
+Tests Failed: 1
 Tests Planned: 12
-Success Rate: 85%
+Success Rate: 95%
 
 📝 Detailed Results:
 ✅ Simple addition - Basic Mathematics
@@ -25,7 +25,7 @@ Success Rate: 85%
 ✅ Electrical power P=VI - Real-World Calculations
 ✅ Investment return % - Real-World Calculations
 ❌ Basic text operations - Output Functions
-❌ Basic JSON output - JSON Output
-❌ Float JSON output - JSON Output
+✅ Basic JSON output - JSON Output
+✅ Float JSON output - JSON Output
 ✅ Shell script integration - Shell Integration
 ✅ Manual exponentiation (2^32) - Performance Comparisons
