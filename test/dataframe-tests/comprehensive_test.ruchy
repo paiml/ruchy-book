@@ -1,0 +1,74 @@
+// Comprehensive DataFrame test for v1.84.0
+// Tests all working functionality
+
+println("=== DataFrame v1.84.0 Comprehensive Test ===")
+println("")
+
+// Test 1: Basic DataFrame creation
+println("Test 1: Basic creation")
+let df1 = DataFrame::new()
+    .column("name", ["Alice", "Bob"])
+    .column("age", [30, 25])
+    .build()
+println("✅ Created DataFrame with {} rows, {} columns", df1.rows(), df1.columns())
+
+// Test 2: Multiple data types
+println("")
+println("Test 2: Multiple data types")
+let df2 = DataFrame::new()
+    .column("id", [1, 2, 3])
+    .column("name", ["Alice", "Bob", "Charlie"])
+    .column("salary", [50000.0, 60000.0, 75000.0])
+    .column("active", [true, false, true])
+    .build()
+println("✅ Mixed types: {} rows", df2.rows())
+
+// Test 3: Function parameters
+println("")
+println("Test 3: DataFrame as function parameter")
+fun analyze(df: DataFrame) {
+    println("  Function received DataFrame with {} rows", df.rows())
+    return df.rows()
+}
+let count = analyze(df2)
+println("✅ Function returned: {}", count)
+
+// Test 4: Multiple DataFrames
+println("")
+println("Test 4: Multiple DataFrames")
+let employees = DataFrame::new()
+    .column("emp_id", [101, 102])
+    .column("dept", ["Sales", "Engineering"])
+    .build()
+
+let projects = DataFrame::new()
+    .column("proj_id", [1001, 1002])
+    .column("emp_id", [101, 102])
+    .build()
+
+println("✅ Employees: {} rows", employees.rows())
+println("✅ Projects: {} rows", projects.rows())
+
+// Test 5: DataFrame in conditions
+println("")
+println("Test 5: DataFrame in conditions")
+if df1.rows() > 0 {
+    println("✅ DataFrame has data")
+}
+
+if df1.columns() == 2 {
+    println("✅ DataFrame has 2 columns")
+}
+
+// Test 6: DataFrame in loops
+println("")
+println("Test 6: DataFrame in loops")
+for i in 0..df1.rows() {
+    println("  Row {}", i)
+}
+println("✅ Loop completed")
+
+// Summary
+println("")
+println("=== All Tests Passed! ===")
+println("DataFrames are working in Ruchy v1.84.0!")

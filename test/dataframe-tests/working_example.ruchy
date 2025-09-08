@@ -1,0 +1,30 @@
+// Working DataFrame example in v1.84.0
+fun analyze_data() {
+    // Create a DataFrame using the builder pattern
+    let df = DataFrame::new()
+        .column("product", ["Widget", "Gadget", "Gizmo"])
+        .column("sales", [100, 150, 200])
+        .column("price", [9.99, 14.99, 19.99])
+        .build()
+    
+    // Basic operations that work
+    println("DataFrame created successfully!")
+    println("Number of rows: {}", df.rows())
+    println("Number of columns: {}", df.columns())
+    println(df)
+}
+
+fun process_dataframe(data: DataFrame) {
+    println("Processing DataFrame with {} rows", data.rows())
+}
+
+// Main execution
+analyze_data()
+
+// Test passing DataFrame to functions
+let sales_data = DataFrame::new()
+    .column("month", ["Jan", "Feb", "Mar"])
+    .column("revenue", [1000, 1500, 2000])
+    .build()
+
+process_dataframe(sales_data)
