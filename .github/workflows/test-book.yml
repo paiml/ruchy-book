@@ -228,11 +228,10 @@ jobs:
           # Check if README was modified
           if ! git diff --quiet README.md; then
             git add README.md
-            git commit -m "docs: Auto-update README status from CI run #${{ github.run_number }}
-            
-Book Examples: ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} (${{ steps.test.outputs.success_rate }}%)
-One-liners: ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }}
-Quality: ${{ steps.dogfood.outputs.check_pass }} syntax, ${{ steps.dogfood.outputs.lint_pass }} lint"
+            COMMIT_MSG="docs: Auto-update README status from CI run #${{ github.run_number }}"
+            COMMIT_MSG="$COMMIT_MSG - Book: ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} (${{ steps.test.outputs.success_rate }}%)"
+            COMMIT_MSG="$COMMIT_MSG, One-liners: ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }}"
+            git commit -m "$COMMIT_MSG"
             
             git push origin main
             echo "✅ README.md updated and pushed"
