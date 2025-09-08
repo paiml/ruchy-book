@@ -167,6 +167,30 @@ jobs:
           echo "Generated badge files in badges/"
           ls -la badges/
       
+      - name: Update README with current status
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Update README.md with current test results
+          README_FILE="README.md"
+          
+          # Calculate percentages for display
+          BOOK_PERCENT="${{ steps.test.outputs.success_rate }}"
+          ONELINER_PERCENT=0
+          if [ "${{ steps.oneliners.outputs.oneliners_total }}" -gt 0 ]; then
+            ONELINER_PERCENT=$((100 * ${{ steps.oneliners.outputs.oneliners_pass }} / ${{ steps.oneliners.outputs.oneliners_total }}))
+          fi
+          
+          # Update the Current Status section in README
+          sed -i '/### Current Status (Auto-Updated)/,/^###\|^##/c\### Current Status (Auto-Updated)\n\n<!-- STATUS_START -->\n**Last Updated**: '"$(date -u '+%Y-%m-%d %H:%M UTC')"'\n**Ruchy Version**: v1.84.0\n\n- 📊 **Book Examples**: ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} passing ('"${BOOK_PERCENT}"'%)\n- 🎯 **One-liners**: ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }} passing ('"${ONELINER_PERCENT}"'%)\n- ✅ **Quality Gates**: ${{ steps.dogfood.outputs.check_pass }} files pass syntax check, ${{ steps.dogfood.outputs.lint_pass }} files pass lint\n- 🚀 **CI Status**: ${{ steps.test.outputs.status_emoji }} ${{ steps.test.outputs.status }}\n<!-- STATUS_END -->\n\n###' README.md || true
+          
+          # If the sed didn't find the section, append it after the badges
+          if ! grep -q "STATUS_START" README.md; then
+            # Find line after badges and insert status
+            sed -i '/^## 🎯 \*\*CRITICAL: Test-Driven Transformation\*\*/a\\n### Current Status (Auto-Updated)\n\n<!-- STATUS_START -->\n**Last Updated**: '"$(date -u '+%Y-%m-%d %H:%M UTC')"'\n**Ruchy Version**: v1.84.0\n\n- 📊 **Book Examples**: ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} passing ('"${BOOK_PERCENT}"'%)\n- 🎯 **One-liners**: ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }} passing ('"${ONELINER_PERCENT}"'%)\n- ✅ **Quality Gates**: ${{ steps.dogfood.outputs.check_pass }} files pass syntax check, ${{ steps.dogfood.outputs.lint_pass }} files pass lint\n- 🚀 **CI Status**: ${{ steps.test.outputs.status_emoji }} ${{ steps.test.outputs.status }}\n<!-- STATUS_END -->' README.md
+          fi
+          
+          echo "README.md updated with current status"
+      
       - name: Deploy badges to GitHub Pages
         if: github.ref == 'refs/heads/main'
         run: |
@@ -192,6 +216,28 @@ jobs:
             echo "✅ Badges deployed to badges branch"
           else
             echo "No changes to badges"
+          fi
+      
+      - name: Commit README updates
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Configure git
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          
+          # Check if README was modified
+          if ! git diff --quiet README.md; then
+            git add README.md
+            git commit -m "docs: Auto-update README status from CI run #${{ github.run_number }}
+            
+Book Examples: ${{ steps.test.outputs.passing_examples }}/${{ steps.test.outputs.total_examples }} (${{ steps.test.outputs.success_rate }}%)
+One-liners: ${{ steps.oneliners.outputs.oneliners_pass }}/${{ steps.oneliners.outputs.oneliners_total }}
+Quality: ${{ steps.dogfood.outputs.check_pass }} syntax, ${{ steps.dogfood.outputs.lint_pass }} lint"
+            
+            git push origin main
+            echo "✅ README.md updated and pushed"
+          else
+            echo "No changes to README.md"
           fi
       
       - name: Upload test results
