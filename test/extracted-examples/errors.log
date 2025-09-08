@@ -3,7 +3,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpy7phl2/main.rs:1:35
+ --> /tmp/.tmp3wu97Y/main.rs:1:35
   |
 1 | fn create_dataframe () { let df = polars :: prelude :: DataFrame :: new (vec ! []) . column ("employee_id" , vec ! [101i32 , 102i32 , 103...
   |                                   ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -11,7 +11,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpy7phl2/main.rs:1:386
+ --> /tmp/.tmp3wu97Y/main.rs:1:386
   |
 1 | ...32 , 75000i32 , 105000i32 , 65000i32]) . build () ; ; println ! ("{} {:?}" , "Created DataFrame with {} employees" , df . rows ()) ; p...
   |                                                        ^ help: remove this semicolon
@@ -29,7 +29,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp1gG4mu/main.rs:1:202
+ --> /tmp/.tmpWUqCQ1/main.rs:1:202
   |
 1 | ...ns ()) ; } fn main () { { let sales = polars :: prelude :: DataFrame :: new (vec ! []) . column ("product" , vec ! ["Widget" , "Gadget...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -37,7 +37,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmp1gG4mu/main.rs:1:24
+ --> /tmp/.tmpWUqCQ1/main.rs:1:24
   |
 1 | fn analyze_sales (df : DataFrame) { println ! ("{} {:?}" , "Analyzing {} sales records" , df . rows ()) ; println ! ("{} {:?}" , "Data ha...
   |                        ^^^^^^^^^ not found in this scope
@@ -54,7 +54,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmppamJsL/main.rs:1:55
+ --> /tmp/.tmpoSLwhP/main.rs:1:55
   |
 1 | fn work_with_multiple_dataframes () { let customers = polars :: prelude :: DataFrame :: new (vec ! []) . column ("customer_id" , vec ! [1...
   |                                                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -62,7 +62,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmppamJsL/main.rs:1:307
+ --> /tmp/.tmpoSLwhP/main.rs:1:307
   |
 1 | ..."Chicago"]) . build () ; let orders = polars :: prelude :: DataFrame :: new (vec ! []) . column ("order_id" , vec ! [101i32 , 102i32 ,...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -80,7 +80,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp4Sb6HW/main.rs:1:41
+ --> /tmp/.tmp3FmX5r/main.rs:1:41
   |
 1 | fn conditional_processing () { let df = polars :: prelude :: DataFrame :: new (vec ! []) . column ("status" , vec ! ["active" , "pending"...
   |                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -88,7 +88,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp4Sb6HW/main.rs:1:221
+ --> /tmp/.tmp3FmX5r/main.rs:1:221
   |
 1 | ... , vec ! [1000i32 , 500i32 , 1500i32]) . build () ; ; if df . rows () > 0i32 { { println ! ("DataFrame contains data") } } ; if df . c...
   |                                                        ^ help: remove this semicolon
@@ -96,7 +96,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp4Sb6HW/main.rs:1:248
+ --> /tmp/.tmp3FmX5r/main.rs:1:248
   |
 1 | ...i32]) . build () ; ; if df . rows () > 0i32 { { println ! ("DataFrame contains data") } } ; if df . columns () == 2i32 { { println ! (...
   |                                                  ^^                                     ^^
@@ -109,7 +109,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp4Sb6HW/main.rs:1:323
+ --> /tmp/.tmp3FmX5r/main.rs:1:323
   |
 1 | ...data") } } ; if df . columns () == 2i32 { { println ! ("DataFrame has exactly 2 columns") } } ; for i in 0i32 .. df . rows () { { prin...
   |                                              ^^                                             ^^
@@ -121,7 +121,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp4Sb6HW/main.rs:1:409
+ --> /tmp/.tmp3FmX5r/main.rs:1:409
   |
 1 | ...") } } ; for i in 0i32 .. df . rows () { { println ! ("{} {:?}" , "Processing row {}" , i) } } ; } fn main () { }
   |                                             ^^                                               ^^
@@ -143,7 +143,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpXiYj3X/main.rs:1:163
+ --> /tmp/.tmpUq0vrw/main.rs:1:163
   |
 1 | ...er") ; return 0f64 } } ; let mut guess = x / 2f64 ; ; let mut i = 0i32 ; ; while i < 10i32 { { if guess * guess > x - 0.01f64 && guess...
   |                                                        ^ help: remove this semicolon
@@ -151,13 +151,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpXiYj3X/main.rs:1:184
+ --> /tmp/.tmpUq0vrw/main.rs:1:184
   |
 1 | ...} ; let mut guess = x / 2f64 ; ; let mut i = 0i32 ; ; while i < 10i32 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f6...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpXiYj3X/main.rs:1:270
+ --> /tmp/.tmpUq0vrw/main.rs:1:270
   |
 1 | ...ess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { { return guess } } ; guess = (guess + x / guess) / 2f64 ; i = i + 1i32 } } ...
   |                                                               ^^            ^^
@@ -170,7 +170,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpXiYj3X/main.rs:1:626
+ --> /tmp/.tmpUq0vrw/main.rs:1:626
   |
 1 | ...20)") ; return safe_factorial (20i32) } } ; if n <= 1i32 { { return 1i32 } ((n as i64)) * safe_factorial (n - 1i32) } } fn main () { l...
   |                                                               ^^           ^^
@@ -182,7 +182,7 @@ help: remove these braces
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpXiYj3X/main.rs:1:479
+ --> /tmp/.tmpUq0vrw/main.rs:1:479
   |
 1 | ... -> i64 { if n < 0i32 { { println ! ("Error: Factorial undefined for negative numbers") ; return 0i32 } } ; if n > 20i32 { { println !...
   |        --- expected `i64` because of return type                                                    ^^^^ expected `i64`, found `i32`
@@ -194,7 +194,7 @@ help: change the type of the numeric literal from `i32` to `i64`
   |
 
 warning: unreachable expression
- --> /tmp/.tmpXiYj3X/main.rs:1:642
+ --> /tmp/.tmpUq0vrw/main.rs:1:642
   |
 1 | ...i32) } } ; if n <= 1i32 { { return 1i32 } ((n as i64)) * safe_factorial (n - 1i32) } } fn main () { let sqrt1 = safe_sqrt (16f64) ; le...
   |                                -----------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
@@ -204,7 +204,7 @@ warning: unreachable expression
   = note: `#[warn(unreachable_code)]` on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmpXiYj3X/main.rs:1:611
+ --> /tmp/.tmpUq0vrw/main.rs:1:611
   |
 1 | ...-> i64 { if n < 0i32 { { println ! ("Error: Factorial undefined for negative numbers") ; return 0i32 } } ; if n > 20i32 { { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20i32) } } ; if n <= 1i32 { { return 1i32 } ((n as i64)) * safe_factorial (n - 1i32) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -229,7 +229,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmpFGf68m/main.rs:1:77
+ --> /tmp/.tmpmFak9K/main.rs:1:77
   |
 1 | fn sanitize_username (username : & str) -> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; retu...
   |                                                        -----------------    ^^^^ expected `usize`, found `i32`
@@ -243,7 +243,7 @@ help: change the type of the numeric literal from `i32` to `usize`
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpFGf68m/main.rs:1:199
+ --> /tmp/.tmpmFak9K/main.rs:1:199
   |
 1 | ...n String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; r...
   |                                            -----------------   ^^^^ expected `usize`, found `i32`
@@ -257,7 +257,7 @@ help: change the type of the numeric literal from `i32` to `usize`
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpFGf68m/main.rs:1:335
+ --> /tmp/.tmpmFak9K/main.rs:1:335
   |
 1 | ...rn String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; retu...
   |                                           -----------------   ^^^^^ expected `usize`, found `i32`
@@ -271,7 +271,7 @@ help: change the type of the numeric literal from `i32` to `usize`
   |
 
 error[E0308]: mismatched types
-    --> /tmp/.tmpFGf68m/main.rs:1:441
+    --> /tmp/.tmpmFak9K/main.rs:1:441
      |
 1    | ... characters") ; return username . chars () . take (20i32) . collect () } } ; username } fn validate_email (email : & str) -> bool { if...
      |                                                 ----  ^^^^^ expected `usize`, found `i32`
@@ -290,7 +290,7 @@ help: change the type of the numeric literal from `i32` to `usize`
      |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpFGf68m/main.rs:1:467
+ --> /tmp/.tmpmFak9K/main.rs:1:467
   |
 1 | ...-> String { if username . len () == 0i32 { { println ! ("Error: Username cannot be empty") ; return String :: from ("anonymous") } } ; if username . len () < 3i32 { { println ! ("Error: Username too short, minimum 3 characters") ; return String :: from ("user123") } } ; if username . len () > 20i32 { { println ! ("Warning: Username truncated to 20 characters") ; return username . chars () . take (20i32) . collect () } } ; username } ...
   |       ------                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^^^^^^^- help: try using a conversion method: `.to_string()`
@@ -298,7 +298,7 @@ error[E0308]: mismatched types
   |       expected `String` because of return type                                                                                                                                                                                                                                                                                                                                                                                               expected `String`, found `&str`
 
 error[E0308]: mismatched types
- --> /tmp/.tmpFGf68m/main.rs:1:543
+ --> /tmp/.tmpmFak9K/main.rs:1:543
   |
 1 | ...idate_email (email : & str) -> bool { if email . len () == 0i32 { { println ! ("Error: Email cannot be empty") ; return false } } ; if...
   |                                             --------------    ^^^^ expected `usize`, found `i32`
@@ -327,7 +327,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp0ebHHD/main.rs:1:630
+ --> /tmp/.tmpIDbPxn/main.rs:1:630
   |
 1 | ...intln ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { println ! ("Testing input validation...") ; let a...
   |                                                         ^ help: remove this semicolon
@@ -335,7 +335,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:153
+ --> /tmp/.tmpIDbPxn/main.rs:1:153
   |
 1 | ...vide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test passed") } } else { { println ! ("❌ Normal division test...
   |                                               ^^                                            ^^
@@ -348,7 +348,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:210
+ --> /tmp/.tmpIDbPxn/main.rs:1:210
   |
 1 | ...✅ Normal division test passed") } } else { { println ! ("❌ Normal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ...
   |                                                ^^                                            ^^
@@ -360,7 +360,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:326
+ --> /tmp/.tmpIDbPxn/main.rs:1:326
   |
 1 | ...de (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero handling passed") } } else { { println ! ("❌ Division by zero ...
   |                                             ^^                                                 ^^
@@ -372,7 +372,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:388
+ --> /tmp/.tmpIDbPxn/main.rs:1:388
   |
 1 | ...ion by zero handling passed") } } else { { println ! ("❌ Division by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , ...
   |                                             ^^                                                 ^^
@@ -384,7 +384,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:513
+ --> /tmp/.tmpIDbPxn/main.rs:1:513
   |
 1 | ...- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number handling passed") } } else { { println ! ("❌ Negative number ha...
   |                                             ^^                                                ^^
@@ -396,7 +396,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:574
+ --> /tmp/.tmpIDbPxn/main.rs:1:574
   |
 1 | ...tive number handling passed") } } else { { println ! ("❌ Negative number handling failed") } } ; ; } fn test_input_validation () { prin...
   |                                             ^^                                                ^^
@@ -408,13 +408,13 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmp0ebHHD/main.rs:1:1186
+ --> /tmp/.tmpIDbPxn/main.rs:1:1186
   |
 1 | ...{ println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_handling () ; println ! ("") ; test_input_vali...
   |                                                         ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:761
+ --> /tmp/.tmpIDbPxn/main.rs:1:761
   |
 1 | ...1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed")...
   |                                                  ^^                                      ^^
@@ -426,7 +426,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:812
+ --> /tmp/.tmpIDbPxn/main.rs:1:812
   |
 1 | ...ntln ! ("✅ Valid age test passed") } } else { { println ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 =...
   |                                                   ^^                                      ^^
@@ -438,7 +438,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:911
+ --> /tmp/.tmpIDbPxn/main.rs:1:911
   |
 1 | ... validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed") } } else { { println ! ("❌ Negative age handli...
   |                                               ^^                                             ^^
@@ -450,7 +450,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:969
+ --> /tmp/.tmpIDbPxn/main.rs:1:969
   |
 1 | ... Negative age handling passed") } } else { { println ! ("❌ Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if ag...
   |                                                ^^                                             ^^
@@ -462,7 +462,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:1077
+ --> /tmp/.tmpIDbPxn/main.rs:1:1077
   |
 1 | ...alidate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling...
   |                                               ^^                                            ^^
@@ -474,7 +474,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp0ebHHD/main.rs:1:1134
+ --> /tmp/.tmpIDbPxn/main.rs:1:1134
   |
 1 | ...✅ Extreme age handling passed") } } else { { println ! ("❌ Extreme age handling failed") } } ; ; } fn main () { test_division_error_hand...
   |                                                ^^                                            ^^
@@ -486,37 +486,37 @@ help: remove these braces
   |
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:103
+ --> /tmp/.tmpIDbPxn/main.rs:1:103
   |
 1 | ...ing division error handling...") ; let result1 = safe_divide (10i32 , 2i32) ; if result1 == 5i32 { { println ! ("✅ Normal division test...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:276
+ --> /tmp/.tmpIDbPxn/main.rs:1:276
   |
 1 | ...ormal division test failed") } } ; let result2 = safe_divide (10i32 , 0i32) ; if result2 == 0i32 { { println ! ("✅ Division by zero hand...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:459
+ --> /tmp/.tmpIDbPxn/main.rs:1:459
   |
 1 | ...on by zero handling failed") } } ; let result3 = safe_divide (- 10i32 , 2i32) ; if result3 == - 5i32 { { println ! ("✅ Negative number ...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:719
+ --> /tmp/.tmpIDbPxn/main.rs:1:719
   |
 1 | ...n ! ("Testing input validation...") ; let age1 = validate_age (25i32) ; if age1 == 25i32 { { println ! ("✅ Valid age test passed") } } ...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:869
+ --> /tmp/.tmpIDbPxn/main.rs:1:869
   |
 1 | ...n ! ("❌ Valid age test failed") } } ; let age2 = validate_age (- 5i32) ; if age2 == 0i32 { { println ! ("✅ Negative age handling passed"...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmp0ebHHD/main.rs:1:1033
+ --> /tmp/.tmpIDbPxn/main.rs:1:1033
   |
 1 | ... Negative age handling failed") } } ; let age3 = validate_age (200i32) ; if age3 == 150i32 { { println ! ("✅ Extreme age handling passed...
   |                                                      ^^^^^^^^^^^^ not found in this scope
@@ -532,7 +532,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUSudTa/main.rs:1:726
+ --> /tmp/.tmpKBetK0/main.rs:1:726
   |
 1 | ... if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limit") } } ; log_info ("DataProcessor" ...
   |                                  ^^                                                                     ^^
@@ -545,7 +545,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUSudTa/main.rs:1:1349
+ --> /tmp/.tmpKBetK0/main.rs:1:1349
   |
 1 | ...32 ; while i < 4i32 { { if results [i as usize] { { successful = successful + 1i32 } } ; i = i + 1i32 } } ; println ! ("") ; println !...
   |                                                      ^^                              ^^
@@ -557,7 +557,7 @@ help: remove these braces
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpUSudTa/main.rs:1:615
+ --> /tmp/.tmpKBetK0/main.rs:1:615
   |
 1 | ...er ID provided") ; return false } } ; if data . len () == 0i32 { { log_error ("DataProcessor" , "Empty data received") ; return false ...
   |                                             -------------    ^^^^ expected `usize`, found `i32`
@@ -571,7 +571,7 @@ help: change the type of the numeric literal from `i32` to `usize`
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpUSudTa/main.rs:1:716
+ --> /tmp/.tmpKBetK0/main.rs:1:716
   |
 1 | ...data received") ; return false } } ; if data . len () > 1000i32 { { log_warning ("DataProcessor" , "Data size exceeds recommended limi...
   |                                            -------------   ^^^^^^^ expected `usize`, found `i32`
@@ -595,7 +595,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:36
+ --> /tmp/.tmpM2Kuhz/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
   |                                    ^^^ not found in this scope
@@ -607,7 +607,7 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:103
+ --> /tmp/.tmpM2Kuhz/main.rs:1:103
   |
 1 | fn test_addition () { assert_eq ! (add (2i32 , 3i32) , 5i32 , "{}" , "Basic addition") ; assert_eq ! (add (- 1i32 , 1i32) , 0i32 , "{}" ,...
   |                                                                                                       ^^^ not found in this scope
@@ -619,7 +619,7 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:181
+ --> /tmp/.tmpM2Kuhz/main.rs:1:181
   |
 1 | ...2 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0i32 , 0i32) , 0i32 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests p...
   |                                                         ^^^ not found in this scope
@@ -631,19 +631,19 @@ help: use the `.` operator to call the method `Add::add` on `i32`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:314
+ --> /tmp/.tmpM2Kuhz/main.rs:1:314
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3i32 , 4i32) , 12i32 , "{}" , "Basic multiplication") ; assert_eq ! (mult...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:393
+ --> /tmp/.tmpM2Kuhz/main.rs:1:393
   |
 1 | ...32 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2i32 , 3i32) , - 6i32 , "{}" , "Negative multiplication") ; assert_eq !...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpezqzxF/main.rs:1:478
+ --> /tmp/.tmpM2Kuhz/main.rs:1:478
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0i32 , 100i32) , 0i32 , "{}" , "Multiply by zero") ; println ! ("✅ Multipl...
   |                                                       ^^^^^^^^ not found in this scope
@@ -659,7 +659,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmp7XVYnN/main.rs:1:48
+ --> /tmp/.tmpRm9MBZ/main.rs:1:48
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                ^^ ^^
@@ -672,7 +672,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp7XVYnN/main.rs:1:63
+ --> /tmp/.tmpRm9MBZ/main.rs:1:63
   |
 1 | fn fibonacci (n : i32) -> i32 { if n <= 1i32 { { n } } else { { fibonacci (n - 1i32) + fibonacci (n - 2i32) } } } fn test_fibonacci_perfo...
   |                                                               ^^                                           ^^
@@ -684,13 +684,13 @@ help: remove these braces
   |
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmp7XVYnN/main.rs:1:167
+ --> /tmp/.tmpRm9MBZ/main.rs:1:167
   |
 1 | ...test_fibonacci_performance () { let start_time = get_time_ms () ; let result = fibonacci (20i32) ; let end_time = get_time_ms () ; ass...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmp7XVYnN/main.rs:1:232
+ --> /tmp/.tmpRm9MBZ/main.rs:1:232
   |
 1 | ... let result = fibonacci (20i32) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765i32 , "{}" , "Fibonacci(20) should equal 6...
   |                                                     ^^^^^^^^^^^ not found in this scope
@@ -706,19 +706,19 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error: expected one of `.`, `;`, `?`, `}`, or an operator, found `assert`
- --> /tmp/.tmp8YIcDn/main.rs:1:398
+ --> /tmp/.tmp3Uhkcm/main.rs:1:398
   |
 1 | ..."{}" , "Descriptive failure message") assert ! (condition , "{}" , "Explain why this should be true") }
   |                                          ^^^^^^ expected one of `.`, `;`, `?`, `}`, or an operator
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmp8YIcDn/main.rs:1:42
+ --> /tmp/.tmp3Uhkcm/main.rs:1:42
   |
 1 | fn test_range_function () { let result = create_range (1i32 , 5i32) ; assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 elem...
   |                                          ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmp8YIcDn/main.rs:1:84
+ --> /tmp/.tmp3Uhkcm/main.rs:1:84
   |
 1 | fn test_range_function () { let result = create_range (1i32 , 5i32) ; assert_eq ! (len (result) , 4i32 , "{}" , "Range should have 4 elem...
   |                                                                                    ^^^ not found in this scope
@@ -739,25 +739,25 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpEur6uh/main.rs:1:28
+ --> /tmp/.tmprOpIlE/main.rs:1:28
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                            ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpEur6uh/main.rs:1:42
+ --> /tmp/.tmprOpIlE/main.rs:1:42
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                                          ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpEur6uh/main.rs:1:387
+ --> /tmp/.tmprOpIlE/main.rs:1:387
   |
 1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . unwrap () . agg ("quantity" , "sum")...
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpEur6uh/main.rs:1:401
+ --> /tmp/.tmprOpIlE/main.rs:1:401
   |
 1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . unwrap () . agg ("quantity" , "sum") . agg ("reven...
   |                                                      ^^^^^^^^^ not found in this scope
@@ -773,7 +773,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpG2g7Tg/main.rs:1:23
+ --> /tmp/.tmp7xtPw7/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . unwrap () . finish () . unwrap () ; ; if df . rows () >...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -781,7 +781,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2g7Tg/main.rs:1:119
+ --> /tmp/.tmp7xtPw7/main.rs:1:119
   |
 1 | ...("sales.csv") . unwrap () . finish () . unwrap () ; ; if df . rows () > 0i32 { { { let high_value = df . into_iter () . filter (| row ...
   |                                                        ^ help: remove this semicolon
@@ -789,7 +789,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2g7Tg/main.rs:1:146
+ --> /tmp/.tmp7xtPw7/main.rs:1:146
   |
 1 | ... { { { let high_value = df . into_iter () . filter (| row | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > 1000i32 { { row . get ("status") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) == "active" } } else { { false } } }) . collect :: < Vec < _ >> () ; println ! ("{} {:?}" , "Found {} high-value active sales" , high_value . rows ()) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                                                                                                                    ^^
@@ -802,7 +802,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2g7Tg/main.rs:1:301
+ --> /tmp/.tmp7xtPw7/main.rs:1:301
   |
 1 | ...und")) > 1000i32 { { row . get ("status") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) == "active" } } else { { false }...
   |                       ^^                                                                                            ^^
@@ -814,7 +814,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2g7Tg/main.rs:1:407
+ --> /tmp/.tmp7xtPw7/main.rs:1:407
   |
 1 | ...or_else (|| panic ! ("Key not found")) == "active" } } else { { false } } }) . collect :: < Vec < _ >> () ; println ! ("{} {:?}" , "Fo...
   |                                                                  ^^     ^^
@@ -826,7 +826,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2g7Tg/main.rs:1:548
+ --> /tmp/.tmp7xtPw7/main.rs:1:548
   |
 1 | ...tive sales" , high_value . rows ()) } } } else { { println ! ("No data to process") } } ; }
   |                                                     ^^                                ^^
@@ -848,7 +848,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpUyoblq/main.rs:1:23
+ --> /tmp/.tmpuA4A3C/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . unwrap () . finish () . unwrap () ; ; for row in df...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -856,7 +856,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpUyoblq/main.rs:1:123
+ --> /tmp/.tmpuA4A3C/main.rs:1:123
   |
 1 | ...ventory.csv") . unwrap () . finish () . unwrap () ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_...
   |                                                        ^ help: remove this semicolon
@@ -864,13 +864,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpUyoblq/main.rs:1:514
+ --> /tmp/.tmpuA4A3C/main.rs:1:514
   |
 1 | ..."Key not found"))) } } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key n...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUyoblq/main.rs:1:156
+ --> /tmp/.tmpuA4A3C/main.rs:1:156
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10i32 { { println ! ("{} {:?} {:?}" , "Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                                                      ^^
@@ -883,7 +883,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUyoblq/main.rs:1:254
+ --> /tmp/.tmpuA4A3C/main.rs:1:254
   |
 1 | ... { { println ! ("{} {:?} {:?}" , "Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ...
   |       ^^                                                                                                                                                                                                                                ^^
@@ -895,7 +895,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUyoblq/main.rs:1:620
+ --> /tmp/.tmpuA4A3C/main.rs:1:620
   |
 1 | ...|| panic ! ("Key not found")) . iter () { { if value > 0f64 { { total = total + value } } } } ; println ! ("{} {:?}" , "Total positive...
   |                                              ^^                                             ^^
@@ -907,7 +907,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpUyoblq/main.rs:1:640
+ --> /tmp/.tmpuA4A3C/main.rs:1:640
   |
 1 | ... ! ("Key not found")) . iter () { { if value > 0f64 { { total = total + value } } } } ; println ! ("{} {:?}" , "Total positive prices:...
   |                                                          ^^                     ^^
@@ -929,7 +929,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpa6OWLJ/main.rs:1:23
+ --> /tmp/.tmpmBtFAh/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . unwrap () . finish () . unwrap () ; ; for row in df...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -937,7 +937,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpa6OWLJ/main.rs:1:123
+ --> /tmp/.tmpmBtFAh/main.rs:1:123
   |
 1 | ...stomers.csv") . unwrap () . finish () . unwrap () ; ; for row in df . iter_rows () { { { let category = match row . get ("total_purcha...
   |                                                        ^ help: remove this semicolon
@@ -945,7 +945,7 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpa6OWLJ/main.rs:1:156
+ --> /tmp/.tmpmBtFAh/main.rs:1:156
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000i32 => "Platinum" , v if v > 5000i32 => "Gold" , v if v > 1000i32 => "Silver" , _ => "Bronze" , } ; println ! ("{} {:?} {:?}" , "Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                                                        ^^
@@ -968,7 +968,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 error[E0106]: missing lifetime specifier
- --> /tmp/.tmpDpho4h/main.rs:1:489
+ --> /tmp/.tmp7pjs9j/main.rs:1:489
   |
 1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { { println ! ...
   |                                  -----                       -----     ^ expected named lifetime parameter
@@ -980,7 +980,7 @@ help: consider introducing a named lifetime parameter
   |                                                                                                                                                                                                                                                                                                                                                                                                                                                          ++++          ++                             ++           ++
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpDpho4h/main.rs:1:654
+ --> /tmp/.tmp7pjs9j/main.rs:1:654
   |
 1 | ...return "Profile created successfully" } } else { { return "Profile creation failed" } } } fn main () { let result1 = create_user_profi...
   |                                                     ^^                                ^^
@@ -993,7 +993,7 @@ help: remove these braces
   |
 
 error[E0308]: mismatched types
- --> /tmp/.tmpDpho4h/main.rs:1:97
+ --> /tmp/.tmp7pjs9j/main.rs:1:97
   |
 1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0i32 { { println ! ("Error: Name cannot b...
   |                                                                                -------------    ^^^^ expected `usize`, found `i32`
@@ -1048,7 +1048,7 @@ DEBUG: About to call transpile_to_program
 DEBUG: transpile_to_program completed
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpEHQj7Z/main.rs:1:48
+ --> /tmp/.tmp9FrsJU/main.rs:1:48
   |
 1 | fn factorial (n : i32) -> i64 { if n <= 1i32 { { 1i32 } } else { { (n as i64) * factorial (n - 1i32) } } } fn integer_sqrt (n : i32) -> i...
   |                                                ^^    ^^
@@ -1061,7 +1061,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpEHQj7Z/main.rs:1:66
+ --> /tmp/.tmp9FrsJU/main.rs:1:66
   |
 1 | fn factorial (n : i32) -> i64 { if n <= 1i32 { { 1i32 } } else { { (n as i64) * factorial (n - 1i32) } } } fn integer_sqrt (n : i32) -> i...
   |                                                                  ^^                                 ^^
@@ -1073,7 +1073,7 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpEHQj7Z/main.rs:1:197
+ --> /tmp/.tmp9FrsJU/main.rs:1:197
   |
 1 | ... n < 2i32 { { return n } } ; let mut x = n / 2i32 ; ; let mut prev = 0i32 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2i32 } ...
   |                                                        ^ help: remove this semicolon
@@ -1081,13 +1081,13 @@ warning: unnecessary trailing semicolon
   = note: `#[warn(redundant_semicolons)]` on by default
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpEHQj7Z/main.rs:1:221
+ --> /tmp/.tmp9FrsJU/main.rs:1:221
   |
 1 | ... } ; let mut x = n / 2i32 ; ; let mut prev = 0i32 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2i32 } } ; x } fn gcd (a : i32 ...
   |                                                        ^ help: remove this semicolon
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpEHQj7Z/main.rs:1:157
+ --> /tmp/.tmp9FrsJU/main.rs:1:157
   |
 1 | ...1i32) } } } fn integer_sqrt (n : i32) -> i32 { if n < 2i32 { { return n } } ; let mut x = n / 2i32 ; ; let mut prev = 0i32 ; ; while x...
   |                                                                 ^^        ^^
@@ -1099,13 +1099,13 @@ help: remove these braces
   |
 
 warning: unnecessary trailing semicolon
- --> /tmp/.tmpEHQj7Z/main.rs:1:756
+ --> /tmp/.tmp9FrsJU/main.rs:1:756
   |
 1 | ..." , "GCD of {} and {}: {}" , a , b , gcd (a , b)) ; ; }
   |                                                        ^ help: remove this semicolon
 
 error[E0308]: mismatched types
- --> /tmp/.tmpEHQj7Z/main.rs:1:50
+ --> /tmp/.tmp9FrsJU/main.rs:1:50
   |
 1 | fn factorial (n : i32) -> i64 { if n <= 1i32 { { 1i32 } } else { { (n as i64) * factorial (n - 1i32) } } } fn integer_sqrt (n : i32) -> i...
   |                           ---                    ^^^^ expected `i64`, found `i32`
@@ -1119,7 +1119,7 @@ help: change the type of the numeric literal from `i32` to `i64`
   |
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmpEHQj7Z/main.rs:1:358
+ --> /tmp/.tmp9FrsJU/main.rs:1:358
   |
 1 | ...-> i32 { while b != 0i32 { { let temp = b ; b = a % b ; a = temp ; } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
@@ -1130,7 +1130,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                                                                 +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmpEHQj7Z/main.rs:1:370
+ --> /tmp/.tmp9FrsJU/main.rs:1:370
   |
 1 | ...ile b != 0i32 { { let temp = b ; b = a % b ; a = temp ; } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; let n = 10i...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
@@ -1141,7 +1141,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                                                       +++
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpEHQj7Z/main.rs:1:541
+ --> /tmp/.tmp9FrsJU/main.rs:1:541
   |
 1 | ..." , "Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25i32 ; println ! ("{} {:?} {:?}" , "Square root of {}: {}" , x , integer...
   |                                                         ----^
@@ -1151,7 +1151,7 @@ warning: variable does not need to be mutable
   = note: `#[warn(unused_mut)]` on by default
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpEHQj7Z/main.rs:1:639
+ --> /tmp/.tmp9FrsJU/main.rs:1:639
   |
 1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48i32 ; let mut b = 18i32 ; println ! ("{} {:?} {:?} {:?}" , "GCD of {} a...
   |                                                         ----^
@@ -1159,7 +1159,7 @@ warning: variable does not need to be mutable
   |                                                         help: remove this `mut`
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpEHQj7Z/main.rs:1:659
+ --> /tmp/.tmp9FrsJU/main.rs:1:659
   |
 1 | ...}" , x , integer_sqrt (x)) ; let mut a = 48i32 ; let mut b = 18i32 ; println ! ("{} {:?} {:?} {:?}" , "GCD of {} and {}: {}" , a , b ,...
   |                                                         ----^
