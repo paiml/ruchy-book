@@ -194,38 +194,6 @@ let GRAVITY = 9.81;
 
 ```
 
-### Pattern 4: DataFrame Variables
-```ruchy
-fun main() {
-    // DataFrames are first-class values in Ruchy
-    let sales_data = DataFrame::new()
-        .column("product", ["Widget", "Gadget"])
-        .column("quantity", [100, 50])
-        .build();
-    
-    // Store DataFrame dimensions in variables
-    let rows = sales_data.rows();
-    let cols = sales_data.columns();
-    
-    println("DataFrame has {} rows and {} columns", rows, cols);
-}
-```
-
-### Pattern 5: DataFrame Column Variables
-```ruchy
-fun main() {
-    let df = DataFrame::from_csv("data.csv");
-    
-    // Extract columns as variables
-    let prices = df["price"];
-    let quantities = df["quantity"];
-    
-    // Calculate using column variables
-    let total_revenue = prices * quantities;
-    
-    println("Total revenue: {}", total_revenue.sum());
-}
-```
 
 ## Type Safety
 
