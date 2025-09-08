@@ -8,35 +8,38 @@
 ![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
 ![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
 [![CI Status](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)
-[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.69.0-blue)](https://crates.io/crates/ruchy)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v1.84.0-blue)](https://crates.io/crates/ruchy)
 
 ## 🎯 **CRITICAL: Test-Driven Transformation**
 
 This book has undergone a complete Test-Driven Development (TDD) transformation. **Every example is tested BEFORE documentation.**
 
-### Current Status (v1.20.0)
-- ✅ **Foundation Chapters**: 100% tested (11/11 examples passing)
-- ✅ **Module System**: 100% tested (27/27 examples passing)
-- ✅ **Total Tests**: 38/38 passing (100%)
-- ✅ **Quality Score**: 0.85/1.0 (B+ grade)
-- ✅ **Quality Tools**: test, lint, prove, score all working
-- ✅ **Single Source of Truth**: [`INTEGRATION.md`](./INTEGRATION.md)
+### Current Status (v1.84.0) - Live Updates Above ☝️
+- 📊 **Book Examples**: See live badge above (currently ~77%)
+- 🎯 **One-liners**: See live badge above (currently ~85%)
+- ✅ **Quality Gates**: 100% syntax/lint pass on valid files
+- 🚀 **Major Improvements**: Error handling & testing framework working!
+- 📈 **Progress**: Continuous improvement with each Ruchy release
+- 📝 **Single Source of Truth**: [`INTEGRATION.md`](./INTEGRATION.md)
 
 ## 🧪 **Verify Everything Works**
 
 ```bash
-# Test all examples
-ruchy test tests/
-# Output: 38 passed, 0 failed
+# Test all book examples (comprehensive)
+make test
+# Output: 85/111 examples passing (77%)
+
+# Test individual components
+deno task extract-examples  # Test all book examples
+deno task test-oneliners   # Test one-liner examples
 
 # Run quality checks
-ruchy lint tests/      # Check code quality (0 issues)
-ruchy score tests/     # Quality scoring (0.85/1.0)
-ruchy prove tests/     # Mathematical verification
+make dogfood-quick         # Syntax & lint validation
+ruchy --version           # Verify ruchy v1.84.0
 
 # Build and serve book
-mdbook build          # Generate static site
-mdbook serve          # Preview at localhost:3000
+mdbook build              # Generate static site
+mdbook serve              # Preview at localhost:3000
 ```
 
 ## 📖 **What Makes This Book Different**
