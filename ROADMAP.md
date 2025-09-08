@@ -1,11 +1,11 @@
 # The Ruchy Programming Language Book - ROADMAP
 
-## 🎯 Current Sprint: v1.38.0 Documentation Excellence & Quality Automation
+## 🎯 Current Sprint: v1.84.0 High-Impact Compiler Improvements
 
-**Sprint Goal**: Professional documentation quality with automated validation
-**Achievement**: 150+ examples, comprehensive DataFrame coverage, zero broken links
-**Tool Status**: 6/6 quality tools validated + PMAT TDG + link validation
-**Priority**: P0 - Production-Ready Documentation
+**Sprint Goal**: Fix highest-impact failures to reach 85% pass rate
+**Current Status**: 77% pass rate (85/111 examples passing)
+**Remaining Failures**: 26 examples across 6 chapters
+**Priority**: P0 - Error Handling & Testing Framework
 
 ## ✅ MAJOR MILESTONE ACHIEVED (v1.35.0)
 
@@ -65,7 +65,58 @@
 
 ---
 
+## 🚨 HIGHEST PRIORITY ISSUES (Based on v1.84.0 Failure Analysis)
+
+### Issue #1: Error Handling - 6 failures in ch17 (36% pass rate)
+**Root Cause**: Missing Result<T,E> and Option<T> types
+**Impact**: Blocks production error handling patterns
+**Fix**: Implement Result/Option types with ? operator
+
+### Issue #2: Testing Framework - 3 failures in ch16 (62% pass rate)  
+**Root Cause**: Missing assert_eq! macro and test runner
+**Impact**: Blocks TDD workflow
+**Fix**: Implement testing macros and #[test] attribute
+
+### Issue #3: Advanced Control Flow - 3 failures in ch05 (82% pass rate)
+**Root Cause**: Incomplete pattern matching
+**Impact**: Limits expressiveness
+**Fix**: Complete match expression support
+
+### Issue #4: Practical Patterns - 5 failures in ch04 (50% pass rate)
+**Root Cause**: Missing closures and iterators
+**Impact**: Real-world patterns broken
+**Fix**: Implement closure and iterator support
+
+### Issue #5: DataFrame Transpilation - 4 failures in ch18
+**Root Cause**: Transpiler generates incorrect Polars API
+**Impact**: DataFrames only work in interpreter
+**Fix**: Generate Series::new() instead of .column()
+
 ## 📋 Active Sprint Tickets
+
+### RUCHY-001: Implement Result<T,E> Type [P0]
+**Status**: 🔴 NOT STARTED
+**Assignee**: Compiler Team
+**Estimate**: 8 hours
+**Description**: Add Result type for error handling
+**Acceptance Criteria**:
+- [ ] Result<T,E> enum with Ok(T) and Err(E) variants
+- [ ] ? operator for error propagation
+- [ ] unwrap() and expect() methods
+- [ ] map() and map_err() combinators
+**Impact**: Fixes 6 failures in ch17, improves to ~82% pass rate
+
+### RUCHY-002: Implement Testing Framework [P0]
+**Status**: 🔴 NOT STARTED
+**Assignee**: Compiler Team
+**Estimate**: 6 hours
+**Description**: Add testing macros and test runner
+**Acceptance Criteria**:
+- [ ] assert_eq! macro implementation
+- [ ] assert! macro implementation
+- [ ] #[test] attribute support
+- [ ] Test runner that finds and executes tests
+**Impact**: Fixes 3 failures in ch16, enables TDD workflow
 
 ### BOOK-030: Markdown Link Validation & Quality [P0]
 **Status**: ✅ COMPLETED
