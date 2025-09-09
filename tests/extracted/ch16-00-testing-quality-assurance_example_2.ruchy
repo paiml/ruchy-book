@@ -1,0 +1,26 @@
+fun factorial(n: i32) -> i32 {
+    if n <= 1 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+fun test_factorial_base_cases() {
+    assert_eq(factorial(0), 1, "0! should equal 1");
+    assert_eq(factorial(1), 1, "1! should equal 1");
+    println("✅ Base cases pass");
+}
+
+fun test_factorial_recursive_cases() {
+    assert_eq(factorial(3), 6, "3! should equal 6");
+    assert_eq(factorial(4), 24, "4! should equal 24");
+    assert_eq(factorial(5), 120, "5! should equal 120");
+    println("✅ Recursive cases pass");
+}
+
+fun main() {
+    test_factorial_base_cases();
+    test_factorial_recursive_cases();
+    println("🎉 All factorial tests passed!");
+}

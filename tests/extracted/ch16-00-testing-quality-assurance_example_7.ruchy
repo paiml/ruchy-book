@@ -1,0 +1,13 @@
+// Clear, specific assertions
+assert_eq(actual, expected, "Descriptive failure message");
+
+// Boolean assertions with context
+assert(condition, "Explain why this should be true");
+
+// Multiple related assertions
+fun test_range_function() {
+    let result = create_range(1, 5);
+    assert_eq(len(result), 4, "Range should have 4 elements");
+    assert_eq(result[0], 1, "First element should be 1");  
+    assert_eq(result[3], 4, "Last element should be 4");
+}

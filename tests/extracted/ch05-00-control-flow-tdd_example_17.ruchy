@@ -1,0 +1,14 @@
+fun main() {
+    let df = DataFrame::from_csv("customers.csv");
+    
+    for row in df.iter_rows() {
+        let category = match row["total_purchases"] {
+            v if v > 10000 => "Platinum",
+            v if v > 5000 => "Gold",
+            v if v > 1000 => "Silver",
+            _ => "Bronze"
+        };
+        
+        println("Customer {} is {} tier", row["name"], category);
+    }
+}

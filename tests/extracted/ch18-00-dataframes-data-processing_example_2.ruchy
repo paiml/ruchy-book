@@ -1,0 +1,14 @@
+fun analyze_sales(df: DataFrame) {
+    println("Analyzing {} sales records", df.rows());
+    println("Data has {} columns", df.columns());
+}
+
+fun main() {
+    let sales = DataFrame::new()
+        .column("product", ["Widget", "Gadget", "Gizmo"])
+        .column("quantity", [100, 150, 200])
+        .column("revenue", [999.00, 1499.00, 1999.00])
+        .build();
+    
+    analyze_sales(sales);
+}

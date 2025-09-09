@@ -1,0 +1,34 @@
+fun validate_age(age: i32) -> i32 {
+    if age < 0 {
+        println("Error: Age cannot be negative. Using 0.");
+        return 0;
+    }
+    
+    if age > 150 {
+        println("Error: Age seems unrealistic. Using 150.");
+        return 150;
+    }
+    
+    age
+}
+
+fun calculate_retirement_year(current_age: i32) -> i32 {
+    let safe_age = validate_age(current_age);
+    let current_year = 2024; // Simplified
+    let retirement_age = 65;
+    
+    if safe_age >= retirement_age {
+        println("Already at retirement age");
+        return current_year;
+    }
+    
+    current_year + (retirement_age - safe_age)
+}
+
+fun main() {
+    let year1 = calculate_retirement_year(30);
+    let year2 = calculate_retirement_year(-5);
+    let year3 = calculate_retirement_year(200);
+    
+    println("Retirement years: {}, {}, {}", year1, year2, year3);
+}

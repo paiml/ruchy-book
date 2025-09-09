@@ -1,0 +1,65 @@
+fun log_error(component: &str, message: &str) {
+    println("[ERROR] {}: {}", component, message);
+}
+
+fun log_warning(component: &str, message: &str) {
+    println("[WARN] {}: {}", component, message);
+}
+
+fun log_info(component: &str, message: &str) {
+    println("[INFO] {}: {}", component, message);
+}
+
+fun process_user_data(user_id: i32, data: &str) -> bool {
+    log_info("DataProcessor", "Starting user data processing");
+    
+    // Validate user ID
+    if user_id <= 0 {
+        log_error("DataProcessor", "Invalid user ID provided");
+        return false;
+    }
+    
+    // Validate data
+    if data.len() == 0 {
+        log_error("DataProcessor", "Empty data received");
+        return false;
+    }
+    
+    if data.len() > 1000 {
+        log_warning("DataProcessor", "Data size exceeds recommended limit");
+    }
+    
+    // Simulate processing
+    log_info("DataProcessor", "Processing data for user");
+    
+    // Simulate potential failure
+    if user_id == 999 {
+        log_error("DataProcessor", "Processing failed for user 999");
+        return false;
+    }
+    
+    log_info("DataProcessor", "Data processing completed successfully");
+    return true;
+}
+
+fun main() {
+    let results = [
+        process_user_data(123, "valid_data"),
+        process_user_data(0, "invalid_user"),
+        process_user_data(456, ""),
+        process_user_data(999, "test_data")
+    ];
+    
+    let mut successful = 0;
+    let mut i = 0;
+    
+    while i < 4 {
+        if results[i] {
+            successful = successful + 1;
+        }
+        i = i + 1;
+    }
+    
+    println("");
+    println("Summary: {}/4 operations successful", successful);
+}

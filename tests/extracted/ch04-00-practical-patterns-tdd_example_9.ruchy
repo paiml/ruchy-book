@@ -1,0 +1,52 @@
+// Test helper function
+fun assert_equal(actual: i32, expected: i32, test_name: &str) {
+    if actual == expected {
+        println("✅ {}: {} == {}", test_name, actual, expected);
+    } else {
+        println("❌ {}: {} != {} (expected)", test_name, actual, expected);
+    }
+}
+
+fun assert_string_equal(actual: &str, expected: &str, test_name: &str) {
+    if actual == expected {
+        println("✅ {}: strings match", test_name);
+    } else {
+        println("❌ {}: '{}' != '{}' (expected)", test_name, actual, expected);
+    }
+}
+
+// Function to test
+fun calculate_discount(price: i32, discount_percent: i32) -> i32 {
+    if discount_percent < 0 || discount_percent > 100 {
+        return price;  // No discount for invalid percentage
+    }
+    
+    let discount_amount = (price * discount_percent) / 100;
+    price - discount_amount
+}
+
+// Test suite
+fun test_discount_calculation() {
+    println("Testing discount calculation...");
+    
+    // Normal cases
+    assert_equal(calculate_discount(100, 10), 90, "10% discount on $100");
+    assert_equal(calculate_discount(50, 20), 40, "20% discount on $50");
+    assert_equal(calculate_discount(200, 0), 200, "0% discount on $200");
+    
+    // Edge cases
+    assert_equal(calculate_discount(100, -5), 100, "Negative discount");
+    assert_equal(calculate_discount(100, 150), 100, "Over 100% discount");
+    assert_equal(calculate_discount(0, 50), 0, "50% discount on $0");
+    
+    println("Discount tests completed.\n");
+}
+
+fun main() {
+    test_discount_calculation();
+    
+    // Demo the actual function
+    println("Discount examples:");
+    println("$100 with 15% discount: ${}", calculate_discount(100, 15));
+    println("$250 with 25% discount: ${}", calculate_discount(250, 25));
+}

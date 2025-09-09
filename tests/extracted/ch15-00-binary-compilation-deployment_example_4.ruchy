@@ -1,0 +1,46 @@
+fun main() {
+    println("Mathematical Functions Demo");
+    
+    let n = 10;
+    println("Factorial of {}: {}", n, factorial(n));
+    
+    let x = 25;
+    println("Square root of {}: {}", x, integer_sqrt(x));
+    
+    let a = 48;
+    let b = 18;
+    println("GCD of {} and {}: {}", a, b, gcd(a, b));
+}
+
+fun factorial(n: i32) -> i64 {
+    if n <= 1 {
+        1
+    } else {
+        (n as i64) * factorial(n - 1)
+    }
+}
+
+fun integer_sqrt(n: i32) -> i32 {
+    if n < 2 {
+        return n;
+    }
+    
+    let mut x = n / 2;
+    let mut prev = 0;
+    
+    while x != prev {
+        prev = x;
+        x = (x + n / x) / 2;
+    }
+    
+    x
+}
+
+fun gcd(mut a: i32, mut b: i32) -> i32 {
+    while b != 0 {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    a
+}

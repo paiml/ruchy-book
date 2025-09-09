@@ -1,0 +1,12 @@
+fun calculate_factorial(n: i32) -> i32 {
+    if n <= 1 {
+        1
+    } else {
+        n * calculate_factorial(n - 1)
+    }
+}
+
+fun main() {
+    let result = calculate_factorial(10);
+    println(result);
+}

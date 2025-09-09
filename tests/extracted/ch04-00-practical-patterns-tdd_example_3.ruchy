@@ -1,0 +1,54 @@
+fun process_score(raw_score: i32, max_score: i32) -> f64 {
+    // Step 1: Validate inputs
+    if max_score <= 0 {
+        println("Error: Max score must be positive");
+        return 0.0;
+    }
+    
+    if raw_score < 0 {
+        println("Warning: Negative score adjusted to 0");
+        return 0.0;
+    }
+    
+    if raw_score > max_score {
+        println("Warning: Score exceeds maximum, capping at {}", max_score);
+        return 100.0;
+    }
+    
+    // Step 2: Calculate percentage
+    let percentage = (raw_score as f64) / (max_score as f64) * 100.0;
+    
+    // Step 3: Round to reasonable precision
+    let rounded = (percentage * 10.0).round() / 10.0;
+    
+    // Step 4: Return result
+    rounded
+}
+
+fun grade_assignment(student: &str, raw_score: i32, max_score: i32) -> &str {
+    let percentage = process_score(raw_score, max_score);
+    
+    println("Student: {}", student);
+    println("Score: {}/{} ({:.1}%)", raw_score, max_score, percentage);
+    
+    // Letter grade assignment
+    if percentage >= 90.0 {
+        return "A";
+    } else if percentage >= 80.0 {
+        return "B";
+    } else if percentage >= 70.0 {
+        return "C";
+    } else if percentage >= 60.0 {
+        return "D";
+    } else {
+        return "F";
+    }
+}
+
+fun main() {
+    let grade1 = grade_assignment("Alice", 95, 100);
+    let grade2 = grade_assignment("Bob", 42, 50);
+    let grade3 = grade_assignment("Charlie", 150, 100);
+    
+    println("Grades: {}, {}, {}", grade1, grade2, grade3);
+}

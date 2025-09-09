@@ -1,0 +1,26 @@
+fun fibonacci(n: i32) -> i32 {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fun test_fibonacci_performance() {
+    // Test reasonable performance expectations
+    let start_time = get_time_ms(); // Placeholder - actual timing would need stdlib
+    let result = fibonacci(20);
+    let end_time = get_time_ms();
+    
+    assert_eq(result, 6765, "Fibonacci(20) should equal 6765");
+    
+    // Performance assertion (conceptual)
+    let duration = end_time - start_time;
+    assert(duration < 1000, "Fibonacci(20) should complete within 1 second");
+    
+    println("✅ Performance test passes");
+}
+
+fun main() {
+    test_fibonacci_performance();
+}

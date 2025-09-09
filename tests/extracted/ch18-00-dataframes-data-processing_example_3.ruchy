@@ -1,0 +1,16 @@
+fun work_with_multiple_dataframes() {
+    let customers = DataFrame::new()
+        .column("customer_id", [1, 2, 3])
+        .column("name", ["Alice", "Bob", "Charlie"])
+        .column("city", ["New York", "Los Angeles", "Chicago"])
+        .build();
+    
+    let orders = DataFrame::new()
+        .column("order_id", [101, 102, 103])
+        .column("customer_id", [1, 2, 1])
+        .column("amount", [99.99, 149.99, 79.99])
+        .build();
+    
+    println("Customers: {} rows", customers.rows());
+    println("Orders: {} rows", orders.rows());
+}

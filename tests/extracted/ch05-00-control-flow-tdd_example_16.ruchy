@@ -1,0 +1,19 @@
+fun main() {
+    let df = DataFrame::from_csv("inventory.csv");
+    
+    // Process each row with for loop
+    for row in df.iter_rows() {
+        if row["quantity"] < 10 {
+            println("Low stock alert: {} ({})", row["product"], row["quantity"]);
+        }
+    }
+    
+    // Conditional aggregation
+    let mut total = 0.0;
+    for value in df["price"].iter() {
+        if value > 0.0 {
+            total = total + value;
+        }
+    }
+    println("Total positive prices: {}", total);
+}

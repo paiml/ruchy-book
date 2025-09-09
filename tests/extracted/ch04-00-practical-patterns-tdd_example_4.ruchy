@@ -1,0 +1,54 @@
+fun get_setting(setting_name: &str, default_value: i32) -> i32 {
+    // Simulate configuration lookup
+    if setting_name == "timeout" {
+        return 30;
+    } else if setting_name == "max_retries" {
+        return 3;
+    } else if setting_name == "buffer_size" {
+        return 1024;
+    } else {
+        println("Warning: Unknown setting '{}', using default {}", setting_name, default_value);
+        return default_value;
+    }
+}
+
+fun initialize_system() -> bool {
+    println("Initializing system...");
+    
+    // Get settings with defaults
+    let timeout = get_setting("timeout", 15);
+    let retries = get_setting("max_retries", 1);
+    let buffer = get_setting("buffer_size", 512);
+    let unknown = get_setting("cache_size", 256);
+    
+    // Display configuration
+    println("Configuration:");
+    println("  Timeout: {} seconds", timeout);
+    println("  Max retries: {}", retries);
+    println("  Buffer size: {} bytes", buffer);
+    println("  Cache size: {} MB", unknown);
+    
+    // Validate critical settings
+    if timeout <= 0 {
+        println("Error: Timeout must be positive");
+        return false;
+    }
+    
+    if retries < 0 {
+        println("Error: Retries cannot be negative");
+        return false;
+    }
+    
+    println("✅ System initialized successfully");
+    return true;
+}
+
+fun main() {
+    let success = initialize_system();
+    
+    if success {
+        println("System is ready for operation");
+    } else {
+        println("System initialization failed");
+    }
+}

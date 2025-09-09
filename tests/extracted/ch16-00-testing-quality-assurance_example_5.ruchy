@@ -1,0 +1,24 @@
+// File: calculator_test.ruchy
+fun test_addition() {
+    assert_eq(add(2, 3), 5, "Basic addition");
+    assert_eq(add(-1, 1), 0, "Adding negative numbers");
+    assert_eq(add(0, 0), 0, "Adding zeros");
+    println("✅ Addition tests pass");
+}
+
+fun test_multiplication() {
+    assert_eq(multiply(3, 4), 12, "Basic multiplication");
+    assert_eq(multiply(-2, 3), -6, "Negative multiplication");
+    assert_eq(multiply(0, 100), 0, "Multiply by zero");
+    println("✅ Multiplication tests pass");
+}
+
+fun run_all_tests() {
+    test_addition();
+    test_multiplication();
+    println("🎉 Calculator test suite complete!");
+}
+
+fun main() {
+    run_all_tests();
+}

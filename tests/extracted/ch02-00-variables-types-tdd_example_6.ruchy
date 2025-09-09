@@ -1,4 +1,6 @@
-// Error: ✗ Compilation failed: Compilation failed:
-let result = value1 + value2;
-
-
+fun main() {
+    let value1 = 10;
+    let value2 = 20;
+    let result = value1 + value2;
+    println(result);  // Output: 30
+}

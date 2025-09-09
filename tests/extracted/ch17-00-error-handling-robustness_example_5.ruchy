@@ -1,0 +1,36 @@
+fun unreliable_operation(attempt: i32) -> bool {
+    // Simulate an operation that fails sometimes
+    if attempt < 3 {
+        println("Operation failed on attempt {}", attempt);
+        return false;
+    }
+    println("Operation succeeded on attempt {}", attempt);
+    return true;
+}
+
+fun retry_with_limit(max_attempts: i32) -> bool {
+    let mut attempt = 1;
+    
+    while attempt <= max_attempts {
+        println("Attempting operation (try {})", attempt);
+        
+        if unreliable_operation(attempt) {
+            return true;
+        }
+        
+        attempt = attempt + 1;
+    }
+    
+    println("Error: Operation failed after {} attempts", max_attempts);
+    return false;
+}
+
+fun main() {
+    let success = retry_with_limit(5);
+    
+    if success {
+        println("✅ Operation completed successfully");
+    } else {
+        println("❌ Operation failed after all retries");
+    }
+}

@@ -1,0 +1,64 @@
+fun sanitize_username(username: &str) -> String {
+    // Check for null or empty
+    if username.len() == 0 {
+        println("Error: Username cannot be empty");
+        return String::from("anonymous");
+    }
+    
+    // Check length limits
+    if username.len() < 3 {
+        println("Error: Username too short, minimum 3 characters");
+        return String::from("user123");
+    }
+    
+    if username.len() > 20 {
+        println("Warning: Username truncated to 20 characters");
+        return username.chars().take(20).collect();
+    }
+    
+    // Return sanitized username
+    username.to_string()
+}
+
+fun validate_email(email: &str) -> bool {
+    // Basic email validation
+    if email.len() == 0 {
+        println("Error: Email cannot be empty");
+        return false;
+    }
+    
+    if !email.contains('@') {
+        println("Error: Invalid email format - missing @");
+        return false;
+    }
+    
+    if !email.contains('.') {
+        println("Error: Invalid email format - missing domain");
+        return false;
+    }
+    
+    return true;
+}
+
+fun create_user_account(username: &str, email: &str) -> bool {
+    println("Creating user account...");
+    
+    let safe_username = sanitize_username(username);
+    let valid_email = validate_email(email);
+    
+    if !valid_email {
+        println("❌ Account creation failed: Invalid email");
+        return false;
+    }
+    
+    println("✅ Account created for user: {}", safe_username);
+    return true;
+}
+
+fun main() {
+    let success1 = create_user_account("john_doe", "john@example.com");
+    let success2 = create_user_account("", "invalid-email");
+    let success3 = create_user_account("ab", "test@domain.co.uk");
+    
+    println("Account creation results: {}, {}, {}", success1, success2, success3);
+}

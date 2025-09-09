@@ -1,0 +1,25 @@
+fun gcd(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        a
+    } else {
+        gcd(b, a % b)
+    }
+}
+
+// Property: gcd(a, b) divides both a and b
+fun test_gcd_properties() {
+    let a = 48;
+    let b = 18;
+    let result = gcd(a, b);
+    
+    // Property verification
+    assert_eq(a % result, 0, "GCD should divide first number");
+    assert_eq(b % result, 0, "GCD should divide second number");
+    assert_eq(result, 6, "GCD(48, 18) should equal 6");
+    
+    println("✅ GCD properties verified");
+}
+
+fun main() {
+    test_gcd_properties();
+}

@@ -1,0 +1,18 @@
+fun main() {
+    let df = DataFrame::from_csv("sales.csv");
+    
+    // Filter based on conditions
+    if df.rows() > 0 {
+        let high_value = df.filter(|row| {
+            if row["amount"] > 1000 {
+                row["status"] == "active"
+            } else {
+                false
+            }
+        });
+        
+        println("Found {} high-value active sales", high_value.rows());
+    } else {
+        println("No data to process");
+    }
+}

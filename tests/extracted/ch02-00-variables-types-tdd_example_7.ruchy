@@ -1,6 +1,12 @@
-// Error: ✗ Compilation failed: Compilation failed:
-let step1 = initial_value * factor;
-let step2 = step1 + adjustment;
-let final_result = step2 / divisor;
-
-
+fun main() {
+    let initial_value = 100;
+    let factor = 2;
+    let adjustment = 50;
+    let divisor = 3;
+    
+    let step1 = initial_value * factor;
+    let step2 = step1 + adjustment;
+    let final_result = step2 / divisor;
+    
+    println(final_result);  // Output: 83
+}

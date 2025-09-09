@@ -1,0 +1,11 @@
+fun add_numbers(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fun main() {
+    // Basic functionality test
+    let result = add_numbers(5, 3);
+    assert_eq(result, 8, "Addition should work correctly");
+    
+    println("✅ All tests passed!");
+}

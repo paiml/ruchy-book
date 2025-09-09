@@ -1,0 +1,14 @@
+fun add_profit_margin(df: DataFrame) -> DataFrame {
+    // Add calculated column to DataFrame
+    df.with_column("margin", |row| {
+        (row["revenue"] - row["cost"]) / row["revenue"] * 100.0
+    })
+}
+
+fun summarize_by_category(df: DataFrame) -> DataFrame {
+    // Aggregate DataFrame by category
+    df.group_by("category")
+      .agg("quantity", "sum")
+      .agg("revenue", "mean")
+      .agg("margin", "mean")
+}

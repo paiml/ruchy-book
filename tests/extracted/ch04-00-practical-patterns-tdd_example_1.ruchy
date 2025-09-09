@@ -1,0 +1,30 @@
+// Calculator with validation and error handling
+fun safe_calculate(operation: &str, a: i32, b: i32) -> i32 {
+    if operation == "add" {
+        a + b
+    } else if operation == "subtract" {
+        a - b
+    } else if operation == "multiply" {
+        a * b
+    } else if operation == "divide" {
+        if b == 0 {
+            println("Error: Division by zero");
+            0  // Safe default
+        } else {
+            a / b
+        }
+    } else {
+        println("Error: Unknown operation '{}'", operation);
+        0  // Safe default
+    }
+}
+
+fun main() {
+    let result1 = safe_calculate("add", 10, 5);
+    let result2 = safe_calculate("divide", 12, 3);
+    let result3 = safe_calculate("divide", 10, 0);
+    
+    println("10 + 5 = {}", result1);
+    println("12 / 3 = {}", result2);
+    println("10 / 0 = {}", result3);
+}

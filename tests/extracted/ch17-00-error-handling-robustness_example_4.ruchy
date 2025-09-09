@@ -1,0 +1,40 @@
+fun safe_array_access(arr: [i32; 5], index: i32) -> i32 {
+    if index < 0 {
+        println("Error: Array index cannot be negative");
+        return arr[0]; // Return first element as default
+    }
+    
+    if index >= 5 {
+        println("Error: Array index {} out of bounds", index);
+        return arr[4]; // Return last element as default
+    }
+    
+    arr[index]
+}
+
+fun find_maximum_safe(numbers: [i32; 5]) -> i32 {
+    let mut max = numbers[0];
+    let mut i = 1;
+    
+    while i < 5 {
+        if numbers[i] > max {
+            max = numbers[i];
+        }
+        i = i + 1;
+    }
+    
+    max
+}
+
+fun main() {
+    let data = [10, 25, 5, 30, 15];
+    
+    let val1 = safe_array_access(data, 2);
+    let val2 = safe_array_access(data, -1);
+    let val3 = safe_array_access(data, 10);
+    
+    let maximum = find_maximum_safe(data);
+    
+    println("Values: {}, {}, {}", val1, val2, val3);
+    println("Maximum: {}", maximum);
+}

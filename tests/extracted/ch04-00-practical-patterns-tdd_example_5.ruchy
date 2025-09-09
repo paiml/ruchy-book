@@ -1,0 +1,52 @@
+fun calculate_total(prices: [i32; 5]) -> i32 {
+    let mut total = 0;  // Accumulator starts at zero
+    let mut i = 0;
+    
+    while i < 5 {
+        total = total + prices[i];  // Accumulate each value
+        i = i + 1;
+    }
+    
+    total  // Return accumulated result
+}
+
+fun find_maximum(numbers: [i32; 5]) -> i32 {
+    let mut max_value = numbers[0];  // Accumulator starts with first value
+    let mut i = 1;
+    
+    while i < 5 {
+        if numbers[i] > max_value {
+            max_value = numbers[i];  // Update accumulator if better value found
+        }
+        i = i + 1;
+    }
+    
+    max_value  // Return best value found
+}
+
+fun count_positives(numbers: [i32; 5]) -> i32 {
+    let mut count = 0;  // Counter accumulator
+    let mut i = 0;
+    
+    while i < 5 {
+        if numbers[i] > 0 {
+            count = count + 1;  // Increment counter for matches
+        }
+        i = i + 1;
+    }
+    
+    count  // Return count
+}
+
+fun main() {
+    let prices = [10, 25, 5, 15, 8];
+    let numbers = [-3, 7, -1, 12, 0];
+    
+    let total = calculate_total(prices);
+    let maximum = find_maximum(prices);
+    let positive_count = count_positives(numbers);
+    
+    println("Total: {}", total);
+    println("Maximum: {}", maximum);
+    println("Positive numbers: {}", positive_count);
+}

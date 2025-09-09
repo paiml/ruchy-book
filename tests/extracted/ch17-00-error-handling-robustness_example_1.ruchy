@@ -1,0 +1,15 @@
+fun safe_divide(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        println("Error: Division by zero attempted");
+        return 0; // Safe default
+    }
+    a / b
+}
+
+fun main() {
+    let result1 = safe_divide(10, 2);   // Normal case
+    let result2 = safe_divide(10, 0);   // Error case
+    
+    println("10 / 2 = {}", result1);   // Output: 5
+    println("10 / 0 = {}", result2);   // Output: 0 (safe)
+}

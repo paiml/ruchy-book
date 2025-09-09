@@ -1,0 +1,29 @@
+fun fibonacci_recursive(n: i32) -> i32 {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)
+    }
+}
+
+fun fibonacci_iterative(n: i32) -> i32 {
+    let mut a = 0;
+    let mut b = 1;
+    let mut i = 0;
+    
+    while i < n {
+        let temp = a + b;
+        a = b;
+        b = temp;
+        i = i + 1;
+    }
+    
+    a
+}
+
+fun main() {
+    let result1 = fibonacci_recursive(10);
+    let result2 = fibonacci_iterative(10);
+    println(result1);
+    println(result2);
+}

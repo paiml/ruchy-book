@@ -1,0 +1,57 @@
+fun build_greeting(name: &str, formal: bool, include_time: bool) -> String {
+    let mut greeting = String::new();
+    
+    // Start with appropriate formality
+    if formal {
+        greeting = greeting + "Good day, ";
+    } else {
+        greeting = greeting + "Hello, ";
+    }
+    
+    // Add the name
+    greeting = greeting + name;
+    
+    // Add time information if requested
+    if include_time {
+        greeting = greeting + "! Hope you're having a great day";
+    } else {
+        greeting = greeting + "!";
+    }
+    
+    greeting
+}
+
+fun build_email_subject(priority: &str, department: &str, topic: &str) -> String {
+    let mut subject = String::new();
+    
+    // Add priority prefix
+    if priority == "urgent" {
+        subject = subject + "[URGENT] ";
+    } else if priority == "high" {
+        subject = subject + "[HIGH] ";
+    }
+    
+    // Add department prefix
+    subject = subject + "[" + department + "] ";
+    
+    // Add main topic
+    subject = subject + topic;
+    
+    subject
+}
+
+fun main() {
+    let greeting1 = build_greeting("Alice", true, true);
+    let greeting2 = build_greeting("Bob", false, false);
+    
+    let subject1 = build_email_subject("urgent", "IT", "Server maintenance required");
+    let subject2 = build_email_subject("normal", "HR", "Team meeting scheduled");
+    
+    println("Greetings:");
+    println("  {}", greeting1);
+    println("  {}", greeting2);
+    
+    println("Email subjects:");
+    println("  {}", subject1);
+    println("  {}", subject2);
+}

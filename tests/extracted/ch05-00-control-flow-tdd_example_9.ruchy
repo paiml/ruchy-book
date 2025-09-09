@@ -1,11 +1,13 @@
-// While loop
-let mut count = 0;
-while count < 3 {
-    println("Count: " + count);
-    count = count + 1;
-}
+fun main() {
+    // While loop
+    let mut count = 0;
+    while count < 3 {
+        println("Count: " + count);
+        count = count + 1;
+    }
 
-// For loop with range
-for i in 1..4 {
-    println("Iteration: " + i);
+    // For loop with range
+    for i in 1..4 {
+        println("Iteration: " + i);
+    }
 }

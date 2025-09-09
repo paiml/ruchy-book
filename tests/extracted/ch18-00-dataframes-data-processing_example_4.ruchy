@@ -1,0 +1,18 @@
+fun conditional_processing() {
+    let df = DataFrame::new()
+        .column("status", ["active", "pending", "closed"])
+        .column("value", [1000, 500, 1500])
+        .build();
+    
+    if df.rows() > 0 {
+        println("DataFrame contains data");
+    }
+    
+    if df.columns() == 2 {
+        println("DataFrame has exactly 2 columns");
+    }
+    
+    for i in 0..df.rows() {
+        println("Processing row {}", i);
+    }
+}

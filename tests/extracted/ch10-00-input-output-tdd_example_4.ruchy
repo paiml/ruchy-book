@@ -1,7 +1,7 @@
-// Error: ✗ Compilation failed: Compilation failed:
-println("text message");
-println(variable);
-println(42);
-println(true);
-
-
+fun main() {
+    let variable = "Hello World";
+    println("text message");
+    println(variable);
+    println(42);
+    println(true);
+}

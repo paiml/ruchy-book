@@ -1,0 +1,11 @@
+fun create_dataframe() {
+    let df = DataFrame::new()
+        .column("employee_id", [101, 102, 103, 104])
+        .column("name", ["Alice", "Bob", "Charlie", "Diana"])
+        .column("department", ["Engineering", "Sales", "Engineering", "HR"])
+        .column("salary", [95000, 75000, 105000, 65000])
+        .build();
+    
+    println("Created DataFrame with {} employees", df.rows());
+    println(df);  // Display the DataFrame
+}

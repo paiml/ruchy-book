@@ -1,0 +1,26 @@
+fun safe_divide(a: i32, b: i32) -> i32 {
+    if b == 0 {
+        println("Error: Division by zero");
+        return 0;
+    }
+    a / b
+}
+
+fun test_division_normal_cases() {
+    assert_eq(safe_divide(10, 2), 5, "Normal division should work");
+    assert_eq(safe_divide(15, 3), 5, "Another normal case");
+    println("✅ Normal division tests pass");
+}
+
+fun test_division_error_cases() {
+    // Test division by zero handling
+    let result = safe_divide(10, 0);
+    assert_eq(result, 0, "Division by zero should return 0");
+    println("✅ Error handling tests pass");
+}
+
+fun main() {
+    test_division_normal_cases();
+    test_division_error_cases();
+    println("🎉 All division tests passed!");
+}

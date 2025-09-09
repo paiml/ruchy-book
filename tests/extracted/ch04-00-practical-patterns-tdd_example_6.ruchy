@@ -1,0 +1,66 @@
+fun process_order_state(current_state: &str, action: &str) -> &str {
+    if current_state == "pending" {
+        if action == "pay" {
+            println("Payment received, order confirmed");
+            return "confirmed";
+        } else if action == "cancel" {
+            println("Order cancelled");
+            return "cancelled";
+        } else {
+            println("Invalid action '{}' for pending order", action);
+            return current_state;
+        }
+    } else if current_state == "confirmed" {
+        if action == "ship" {
+            println("Order shipped");
+            return "shipped";
+        } else if action == "cancel" {
+            println("Confirmed order cancelled, refund processed");
+            return "cancelled";
+        } else {
+            println("Invalid action '{}' for confirmed order", action);
+            return current_state;
+        }
+    } else if current_state == "shipped" {
+        if action == "deliver" {
+            println("Order delivered");
+            return "delivered";
+        } else {
+            println("Cannot modify shipped order");
+            return current_state;
+        }
+    } else if current_state == "delivered" {
+        println("Order already completed");
+        return current_state;
+    } else if current_state == "cancelled" {
+        println("Order was cancelled");
+        return current_state;
+    } else {
+        println("Unknown order state: {}", current_state);
+        return "error";
+    }
+}
+
+fun track_order() -> &str {
+    let mut state = "pending";
+    
+    println("Order tracking simulation:");
+    println("Initial state: {}", state);
+    
+    // Process sequence of actions
+    state = process_order_state(state, "pay");
+    println("Current state: {}", state);
+    
+    state = process_order_state(state, "ship");
+    println("Current state: {}", state);
+    
+    state = process_order_state(state, "deliver");
+    println("Current state: {}", state);
+    
+    state
+}
+
+fun main() {
+    let final_state = track_order();
+    println("Final order state: {}", final_state);
+}

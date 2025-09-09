@@ -1,0 +1,64 @@
+fun process_student_data(name: &str, scores: [i32; 3]) -> String {
+    // Pattern 1: Input validation
+    if name.len() == 0 {
+        return String::from("Error: Student name required");
+    }
+    
+    // Pattern 2: Accumulator for total
+    let mut total = 0;
+    let mut i = 0;
+    while i < 3 {
+        if scores[i] < 0 || scores[i] > 100 {
+            return String::from("Error: Scores must be between 0 and 100");
+        }
+        total = total + scores[i];
+        i = i + 1;
+    }
+    
+    // Pattern 3: Calculation with validation
+    let average = total / 3;
+    
+    // Pattern 4: State-based classification
+    let grade = if average >= 90 {
+        "A"
+    } else if average >= 80 {
+        "B"
+    } else if average >= 70 {
+        "C"
+    } else if average >= 60 {
+        "D"
+    } else {
+        "F"
+    };
+    
+    // Pattern 5: Builder pattern for result
+    let mut result = String::from("Student Report\n");
+    result = result + "Name: " + name + "\n";
+    result = result + "Scores: ";
+    
+    // Add individual scores
+    let mut i = 0;
+    while i < 3 {
+        if i > 0 {
+            result = result + ", ";
+        }
+        result = result + &scores[i].to_string();
+        i = i + 1;
+    }
+    
+    result = result + "\n";
+    result = result + "Average: " + &average.to_string() + "\n";
+    result = result + "Grade: " + grade;
+    
+    result
+}
+
+fun main() {
+    let report1 = process_student_data("Alice Johnson", [95, 87, 92]);
+    let report2 = process_student_data("Bob Smith", [78, 82, 75]);
+    let report3 = process_student_data("", [85, 90, 88]);
+    
+    println("{}\n", report1);
+    println("{}\n", report2);  
+    println("{}\n", report3);
+}

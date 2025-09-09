@@ -1,0 +1,14 @@
+// calculator_test.ruchy
+fun add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fun test_addition() {
+    let result = add(2, 3);
+    assert_eq(result, 5);
+    println("Addition test passed");
+}
+
+fun main() {
+    test_addition();
+}

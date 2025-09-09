@@ -1,0 +1,46 @@
+fun get_config_value(config_name: &str) -> i32 {
+    // Simulate configuration lookup
+    if config_name == "timeout" {
+        return 30;
+    } else if config_name == "retries" {
+        return 3;
+    } else {
+        println("Warning: Unknown config '{}', using default", config_name);
+        return 0; // Safe default
+    }
+}
+
+fun initialize_system() -> bool {
+    let timeout = get_config_value("timeout");
+    let retries = get_config_value("retries");
+    let unknown = get_config_value("unknown_setting");
+    
+    println("System configuration:");
+    println("  Timeout: {} seconds", timeout);
+    println("  Retries: {} attempts", retries);
+    println("  Unknown: {} (default)", unknown);
+    
+    // Validate configuration
+    if timeout <= 0 {
+        println("Error: Invalid timeout configuration");
+        return false;
+    }
+    
+    if retries < 0 {
+        println("Error: Invalid retry configuration");
+        return false;
+    }
+    
+    println("✅ System initialized successfully");
+    return true;
+}
+
+fun main() {
+    let initialized = initialize_system();
+    
+    if initialized {
+        println("System ready for operation");
+    } else {
+        println("System initialization failed");
+    }
+}

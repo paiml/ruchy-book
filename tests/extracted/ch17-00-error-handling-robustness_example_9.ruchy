@@ -1,0 +1,63 @@
+fun test_division_error_handling() {
+    println("Testing division error handling...");
+    
+    // Test normal case
+    let result1 = safe_divide(10, 2);
+    if result1 == 5 {
+        println("✅ Normal division test passed");
+    } else {
+        println("❌ Normal division test failed");
+    }
+    
+    // Test division by zero
+    let result2 = safe_divide(10, 0);
+    if result2 == 0 {
+        println("✅ Division by zero handling passed");
+    } else {
+        println("❌ Division by zero handling failed");
+    }
+    
+    // Test negative numbers
+    let result3 = safe_divide(-10, 2);
+    if result3 == -5 {
+        println("✅ Negative number handling passed");
+    } else {
+        println("❌ Negative number handling failed");
+    }
+}
+
+fun test_input_validation() {
+    println("Testing input validation...");
+    
+    // Test valid age
+    let age1 = validate_age(25);
+    if age1 == 25 {
+        println("✅ Valid age test passed");
+    } else {
+        println("❌ Valid age test failed");
+    }
+    
+    // Test negative age
+    let age2 = validate_age(-5);
+    if age2 == 0 {
+        println("✅ Negative age handling passed");
+    } else {
+        println("❌ Negative age handling failed");
+    }
+    
+    // Test extreme age
+    let age3 = validate_age(200);
+    if age3 == 150 {
+        println("✅ Extreme age handling passed");
+    } else {
+        println("❌ Extreme age handling failed");
+    }
+}
+
+fun main() {
+    test_division_error_handling();
+    println("");
+    test_input_validation();
+    println("");
+    println("🎉 Error handling tests complete!");
+}

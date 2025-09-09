@@ -1,0 +1,50 @@
+fun safe_sqrt(x: f64) -> f64 {
+    if x < 0.0 {
+        println("Error: Cannot compute square root of negative number");
+        return 0.0;
+    }
+    
+    // Simple approximation for square root
+    let mut guess = x / 2.0;
+    let mut i = 0;
+    
+    while i < 10 {
+        if guess * guess > x - 0.01 && guess * guess < x + 0.01 {
+            return guess;
+        }
+        guess = (guess + x / guess) / 2.0;
+        i = i + 1;
+    }
+    
+    guess
+}
+
+fun safe_factorial(n: i32) -> i64 {
+    if n < 0 {
+        println("Error: Factorial undefined for negative numbers");
+        return 0;
+    }
+    
+    if n > 20 {
+        println("Error: Factorial too large, computing factorial(20)");
+        return safe_factorial(20);
+    }
+    
+    if n <= 1 {
+        return 1;
+    }
+    
+    (n as i64) * safe_factorial(n - 1)
+}
+
+fun main() {
+    let sqrt1 = safe_sqrt(16.0);
+    let sqrt2 = safe_sqrt(-4.0);
+    
+    let fact1 = safe_factorial(5);
+    let fact2 = safe_factorial(-3);
+    let fact3 = safe_factorial(25);
+    
+    println("Square roots: {:.2}, {:.2}", sqrt1, sqrt2);
+    println("Factorials: {}, {}, {}", fact1, fact2, fact3);
+}
