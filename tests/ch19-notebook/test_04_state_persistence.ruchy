@@ -1,0 +1,118 @@
+// TDD Test 4: State should persist across cell executions
+// RED -> GREEN cycle
+
+#[test]
+fun test_variable_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Define variable in cell 1
+    notebook.execute_cell("let data = vec![1, 2, 3, 4, 5]")
+    
+    // Act - Use variable in cell 2
+    let result = notebook.execute_cell("data.len()")
+    
+    // Assert
+    assert_eq!(result.output(), "5")
+}
+
+#[test]
+fun test_function_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Define function in cell 1
+    notebook.execute_cell("fun add(a: i32, b: i32) -> i32 { a + b }")
+    
+    // Act - Use function in cell 2
+    let result = notebook.execute_cell("add(10, 20)")
+    
+    // Assert
+    assert_eq!(result.output(), "30")
+}
+
+#[test]
+fun test_struct_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Define struct in cell 1
+    notebook.execute_cell("struct Point { x: f64, y: f64 }")
+    
+    // Act - Create instance in cell 2
+    notebook.execute_cell("let p = Point { x: 1.0, y: 2.0 }")
+    
+    // Act - Access struct in cell 3
+    let result = notebook.execute_cell("p.x + p.y")
+    
+    // Assert
+    assert_eq!(result.output(), "3.0")
+}
+
+#[test]
+fun test_import_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Import in cell 1
+    notebook.execute_cell("use std::collections::HashMap")
+    
+    // Act - Use import in cell 2
+    let result = notebook.execute_cell("let mut map = HashMap::new()")
+    
+    // Assert - Should not error
+    assert!(result.is_ok())
+}
+
+#[test]
+fun test_mutation_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Create mutable vector
+    notebook.execute_cell("let mut vec = vec![1, 2, 3]")
+    
+    // Act - Mutate in next cell
+    notebook.execute_cell("vec.push(4)")
+    
+    // Act - Check mutation persisted
+    let result = notebook.execute_cell("vec.len()")
+    
+    // Assert
+    assert_eq!(result.output(), "4")
+}
+
+#[test]
+fun test_kernel_restart() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    notebook.execute_cell("let x = 42")
+    
+    // Act - Restart kernel (clear state)
+    notebook.restart_kernel()
+    
+    // Act - Try to access previous variable
+    let result = notebook.execute_cell("x")
+    
+    // Assert - Should error as variable no longer exists
+    assert!(result.is_err())
+    assert!(result.error_message().contains("undefined"))
+}
+
+// Extension to Notebook for state management
+impl Notebook {
+    pub fun restart_kernel(&mut self) {
+        // Clear all state
+        self.state = ExecutionState::new()
+        self.execution_count = 0
+        self.cells.clear()
+    }
+    
+    pub fun get_variable(&self, name: &str) -> Option<&Value> {
+        self.state.variables.get(name)
+    }
+    
+    pub fun list_variables(&self) -> Vec<String> {
+        self.state.variables.keys().cloned().collect()
+    }
+}

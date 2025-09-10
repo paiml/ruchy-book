@@ -1,0 +1,61 @@
+// TDD Test 1: Notebook server should start and respond
+// RED: This test should fail initially
+
+#[test]
+fun test_notebook_server_startup() {
+    // Arrange
+    let port = 8888
+    
+    // Act - Start notebook server
+    let server = start_notebook_server(port)
+    
+    // Assert - Server should be running
+    assert!(server.is_running())
+    assert_eq!(server.port(), port)
+    
+    // Cleanup
+    server.shutdown()
+}
+
+#[test]
+fun test_notebook_server_health_check() {
+    // Arrange
+    let server = start_notebook_server(8889)
+    
+    // Act - Check health endpoint
+    let health_status = server.health_check()
+    
+    // Assert
+    assert_eq!(health_status, "healthy")
+    
+    // Cleanup
+    server.shutdown()
+}
+
+// Function stubs that need implementation
+fun start_notebook_server(port: u16) -> NotebookServer {
+    panic!("Not implemented - TDD RED phase")
+}
+
+struct NotebookServer {
+    port: u16,
+    running: bool,
+}
+
+impl NotebookServer {
+    fun is_running(&self) -> bool {
+        self.running
+    }
+    
+    fun port(&self) -> u16 {
+        self.port
+    }
+    
+    fun health_check(&self) -> &str {
+        "not_implemented"
+    }
+    
+    fun shutdown(&mut self) {
+        self.running = false
+    }
+}

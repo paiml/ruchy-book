@@ -1,0 +1,96 @@
+// TDD Test 3: Notebook should support multiple MIME types
+// RED: This test should fail initially
+
+#[test]
+fun test_text_output() {
+    // Arrange
+    let notebook = Notebook::new()
+    
+    // Act
+    let result = notebook.execute_cell("println!(\"Hello, World!\")")
+    
+    // Assert
+    assert_eq!(result.mime_type(), "text/plain")
+    assert_eq!(result.content(), "Hello, World!\n")
+}
+
+#[test]
+fun test_json_output() {
+    // Arrange
+    let notebook = Notebook::new()
+    let code = r#"
+        let data = json!({
+            "name": "Ruchy",
+            "version": "1.96.0"
+        })
+        display_json(data)
+    "#
+    
+    // Act
+    let result = notebook.execute_cell(code)
+    
+    // Assert
+    assert_eq!(result.mime_type(), "application/json")
+    assert!(result.content().contains("\"name\":\"Ruchy\""))
+}
+
+#[test]
+fun test_html_output() {
+    // Arrange
+    let notebook = Notebook::new()
+    let code = r#"
+        display_html("<h1>Ruchy Notebook</h1>")
+    "#
+    
+    // Act
+    let result = notebook.execute_cell(code)
+    
+    // Assert
+    assert_eq!(result.mime_type(), "text/html")
+    assert_eq!(result.content(), "<h1>Ruchy Notebook</h1>")
+}
+
+#[test]
+fun test_latex_math_output() {
+    // Arrange
+    let notebook = Notebook::new()
+    let code = r#"
+        display_latex("E = mc^2")
+    "#
+    
+    // Act
+    let result = notebook.execute_cell(code)
+    
+    // Assert
+    assert_eq!(result.mime_type(), "text/latex")
+    assert_eq!(result.content(), "E = mc^2")
+}
+
+// Enhanced result type for MIME support
+struct MimeResult {
+    mime_type: String,
+    content: String,
+}
+
+impl MimeResult {
+    fun mime_type(&self) -> &str {
+        &self.mime_type
+    }
+    
+    fun content(&self) -> &str {
+        &self.content
+    }
+}
+
+// Display functions for different MIME types
+fun display_json<T>(data: T) {
+    panic!("Not implemented - TDD RED phase")
+}
+
+fun display_html(html: &str) {
+    panic!("Not implemented - TDD RED phase")
+}
+
+fun display_latex(latex: &str) {
+    panic!("Not implemented - TDD RED phase")
+}

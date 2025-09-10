@@ -1,0 +1,98 @@
+// TDD Test 2: Notebook cells should execute code
+// RED: This test should fail initially
+
+#[test]
+fun test_execute_simple_cell() {
+    // Arrange
+    let notebook = Notebook::new()
+    let code = "let x = 42\nprintln!(\"x = {}\", x)"
+    
+    // Act
+    let result = notebook.execute_cell(code)
+    
+    // Assert
+    assert!(result.is_ok())
+    assert_eq!(result.output(), "x = 42\n")
+    assert_eq!(result.execution_count(), 1)
+}
+
+#[test]
+fun test_cell_state_persistence() {
+    // Arrange
+    let mut notebook = Notebook::new()
+    
+    // Act - Execute first cell
+    notebook.execute_cell("let mut counter = 0")
+    
+    // Act - Execute second cell using state from first
+    let result = notebook.execute_cell("counter += 1\ncounter")
+    
+    // Assert - State should persist
+    assert_eq!(result.output(), "1")
+}
+
+#[test]
+fun test_cell_error_handling() {
+    // Arrange
+    let notebook = Notebook::new()
+    let bad_code = "undefined_function()"
+    
+    // Act
+    let result = notebook.execute_cell(bad_code)
+    
+    // Assert
+    assert!(result.is_err())
+    assert!(result.error_message().contains("undefined"))
+}
+
+// Stub implementations for TDD
+struct Notebook {
+    cells: Vec<Cell>,
+    execution_count: usize,
+}
+
+struct Cell {
+    code: String,
+    output: String,
+}
+
+struct ExecutionResult {
+    output: String,
+    execution_count: usize,
+    success: bool,
+}
+
+impl Notebook {
+    fun new() -> Self {
+        Notebook {
+            cells: Vec::new(),
+            execution_count: 0,
+        }
+    }
+    
+    fun execute_cell(&mut self, code: &str) -> ExecutionResult {
+        panic!("Not implemented - TDD RED phase")
+    }
+}
+
+impl ExecutionResult {
+    fun is_ok(&self) -> bool {
+        self.success
+    }
+    
+    fun is_err(&self) -> bool {
+        !self.success
+    }
+    
+    fun output(&self) -> &str {
+        &self.output
+    }
+    
+    fun execution_count(&self) -> usize {
+        self.execution_count
+    }
+    
+    fun error_message(&self) -> &str {
+        &self.output
+    }
+}

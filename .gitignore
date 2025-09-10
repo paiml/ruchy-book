@@ -5,6 +5,8 @@
 *.bak
 
 # Debug artifacts
+# Allow TDD test files in tests/ directory
+!tests/**/test_*.ruchy
 test_*
 debug_*
 *.o
