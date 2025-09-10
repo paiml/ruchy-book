@@ -1,0 +1,6 @@
+// Quick example - data mean calculation
+fun main() {
+    let data = vec![1, 2, 3, 4, 5]
+    let mean = data.iter().sum::<i32>() as f64 / data.len() as f64
+    println!("Mean: {}", mean)
+}
