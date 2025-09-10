@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.84.0*
+*Ruchy version: ruchy 1.96.0*
 <!-- DOC_STATUS_END -->
 
 
