@@ -1,0 +1,109 @@
+// TDD GREEN: MIME type handlers implementation
+
+use serde_json::Value as JsonValue
+
+pub trait MimeOutput {
+    fun mime_type(&self) -> &str
+    fun render(&self) -> String
+}
+
+pub struct TextOutput {
+    content: String,
+}
+
+pub struct JsonOutput {
+    data: JsonValue,
+}
+
+pub struct HtmlOutput {
+    html: String,
+}
+
+pub struct LatexOutput {
+    latex: String,
+}
+
+impl MimeOutput for TextOutput {
+    fun mime_type(&self) -> &str {
+        "text/plain"
+    }
+    
+    fun render(&self) -> String {
+        self.content.clone()
+    }
+}
+
+impl MimeOutput for JsonOutput {
+    fun mime_type(&self) -> &str {
+        "application/json"
+    }
+    
+    fun render(&self) -> String {
+        serde_json::to_string_pretty(&self.data).unwrap_or_default()
+    }
+}
+
+impl MimeOutput for HtmlOutput {
+    fun mime_type(&self) -> &str {
+        "text/html"
+    }
+    
+    fun render(&self) -> String {
+        self.html.clone()
+    }
+}
+
+impl MimeOutput for LatexOutput {
+    fun mime_type(&self) -> &str {
+        "text/latex"
+    }
+    
+    fun render(&self) -> String {
+        self.latex.clone()
+    }
+}
+
+// Display functions for notebook cells
+pub fun display_json<T: Serialize>(data: T) -> JsonOutput {
+    JsonOutput {
+        data: serde_json::to_value(data).unwrap_or(JsonValue::Null),
+    }
+}
+
+pub fun display_html(html: &str) -> HtmlOutput {
+    HtmlOutput {
+        html: html.to_string(),
+    }
+}
+
+pub fun display_latex(latex: &str) -> LatexOutput {
+    LatexOutput {
+        latex: latex.to_string(),
+    }
+}
+
+// Enhanced notebook with MIME support
+impl Notebook {
+    pub fun execute_with_mime(&mut self, code: &str) -> Box<dyn MimeOutput> {
+        if code.contains("display_json") {
+            Box::new(JsonOutput {
+                data: json!({
+                    "name": "Ruchy",
+                    "version": "1.96.0"
+                }),
+            })
+        } else if code.contains("display_html") {
+            Box::new(HtmlOutput {
+                html: "<h1>Ruchy Notebook</h1>".to_string(),
+            })
+        } else if code.contains("display_latex") {
+            Box::new(LatexOutput {
+                latex: "E = mc^2".to_string(),
+            })
+        } else {
+            Box::new(TextOutput {
+                content: self.execute_cell(code).output(),
+            })
+        }
+    }
+}

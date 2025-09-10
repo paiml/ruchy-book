@@ -1,0 +1,71 @@
+// TDD GREEN: Minimal implementation to make server tests pass
+
+use std::sync::Arc
+use std::sync::Mutex
+
+struct NotebookServer {
+    port: u16,
+    running: bool,
+    state: Arc<Mutex<ServerState>>,
+}
+
+struct ServerState {
+    cells_executed: usize,
+    variables: HashMap<String, Value>,
+}
+
+impl NotebookServer {
+    fun new(port: u16) -> Self {
+        NotebookServer {
+            port,
+            running: false,
+            state: Arc::new(Mutex::new(ServerState::new())),
+        }
+    }
+    
+    fun start(&mut self) -> Result<(), String> {
+        if self.running {
+            return Err("Server already running".to_string())
+        }
+        
+        // Minimal implementation - just set flag
+        self.running = true
+        Ok(())
+    }
+    
+    fun is_running(&self) -> bool {
+        self.running
+    }
+    
+    fun port(&self) -> u16 {
+        self.port
+    }
+    
+    fun health_check(&self) -> &str {
+        if self.running {
+            "healthy"
+        } else {
+            "stopped"
+        }
+    }
+    
+    fun shutdown(&mut self) {
+        self.running = false
+    }
+}
+
+impl ServerState {
+    fun new() -> Self {
+        ServerState {
+            cells_executed: 0,
+            variables: HashMap::new(),
+        }
+    }
+}
+
+// Public API function
+pub fun start_notebook_server(port: u16) -> NotebookServer {
+    let mut server = NotebookServer::new(port)
+    server.start().expect("Failed to start server")
+    server
+}
