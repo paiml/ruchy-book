@@ -11,7 +11,7 @@
 | 📋 Planned | 0 | Complete as-is |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 1.84.0*
+*Ruchy version: ruchy 3.38.0*
 <!-- DOC_STATUS_END -->
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)  
@@ -33,7 +33,7 @@ ruchy --version
 
 **Expected Output:**
 ```
-ruchy 1.84.0
+ruchy 3.38.0
 ```
 
 **What this tells us:**
@@ -72,8 +72,8 @@ fi
 
 **Expected Output:**
 ```
-System: ruchy 1.84.0
-Local: ruchy 1.84.0
+System: ruchy 3.38.0
+Local: ruchy 3.38.0
 ```
 
 ### Example 4: Test Basic Compilation with System Ruchy
@@ -181,8 +181,8 @@ fi
 **Expected Output:**
 ```
 === Ruchy Compiler Status ===
-System ruchy: ruchy 1.84.0
-Local build: ruchy 1.84.0
+System ruchy: ruchy 3.38.0
+Local build: ruchy 3.38.0
 Local build size: 5.2M
 
 === Basic Functionality Test ===

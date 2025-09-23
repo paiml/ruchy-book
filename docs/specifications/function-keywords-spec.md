@@ -1,7 +1,7 @@
 # Function Keywords Specification - `fun` vs `fn`
 
 **Document Version**: 1.0  
-**Ruchy Version**: v1.84.0  
+**Ruchy Version**: v3.38.0  
 **Date**: August 22, 2025
 
 ## Design Decision
@@ -35,7 +35,7 @@ fun add(a, b) { a + b }
 fn add(a, b) { a + b }   // Accepted but not preferred
 ```
 
-### Linter Behavior (v1.84.0+)
+### Linter Behavior (v3.38.0+)
 ```bash
 $ ruchy lint code.ruchy
 warning: Use 'fun' instead of 'fn' for Ruchy functions
@@ -83,18 +83,18 @@ fn main() {
 
 ## Migration Strategy
 
-### Phase 1 (v1.84.0) - Documentation Update ✅
+### Phase 1 (v3.38.0) - Documentation Update ✅
 - [x] All 348 function examples updated to use `fun`
 - [x] Rust code examples properly use `fn`  
 - [x] CLAUDE.md guidance updated
 - [x] Book maintains 43% compatibility
 
-### Phase 2 (v1.84.0) - Linter Warnings
+### Phase 2 (v3.38.0) - Linter Warnings
 - [ ] `ruchy lint` warns on `fn` usage
 - [ ] IDE extensions suggest `fun`
 - [ ] Documentation emphasizes `fun` preference
 
-### Phase 3 (v1.84.0) - Strong Convention
+### Phase 3 (v3.38.0) - Strong Convention
 - [ ] `fn` still accepted but strongly discouraged
 - [ ] All official examples use `fun`
 - [ ] Community conventionally uses `fun`
