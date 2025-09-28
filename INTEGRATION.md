@@ -1,27 +1,26 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-09-27T00:00:00.000Z
-**Ruchy Version**: ruchy 3.51.0
-**Book Commit**: 46f46b7460c8b94df6088b48baa47d3e66f8e5c2
+**Generated**: 2025-09-28T14:15:00.000Z
+**Ruchy Version**: ruchy 3.52.0
+**Book Commit**: 3de2b7c (latest)
 
 ## Executive Summary
 - **Total Examples**: 111 (book chapters)
-- **Passing**: 42 (38%)
+- **Passing**: 86 (77%)
 - **Test Coverage**: Comprehensive testing with dogfooding
 - **Lint Grade**: A+ (100% pass rate)
 - **Syntax Validation**: A+ (100% pass rate)
 - **One-liners**: 9/20 passing (45%)
 
-## 🚨 CRITICAL: TRANSPILER BUG DETECTED - DO NOT USE v3.51.0
-**BLOCKING ISSUE**: Ruchy v3.51.0 has critical transpiler regression
-**Bug Report**: `docs/bugs/CRITICAL-v3.51.0-transpiler-regression.md`
-**Recommended Action**: Use v3.45.0 or earlier until hotfix available
+## ✅ TRANSPILER BUG FIXED - v3.52.0 READY FOR USE
+**RESOLVED**: Critical transpiler regression from v3.51.0 has been fixed
+**Status**: v3.52.0 shows 77% success rate (BETTER than v3.38.0 baseline)
+**Recommendation**: v3.52.0 is production-ready for book qualification
 
-**Regression Details**:
-- **Previous (v3.38.0)**: 82/111 passing (74%)
-- **Current (v3.51.0)**: 42/111 passing (38%)
-- **Cause**: Transpiler generates HashSet<T> instead of return values
-- **Impact**: ALL functions with return values fail compilation
+**Version History**:
+- **v3.38.0 (baseline)**: 82/111 passing (74%)
+- **v3.51.0 (broken)**: 42/111 passing (38%) - transpiler bug
+- **v3.52.0 (current)**: 86/111 passing (77%) ✅ FIXED + IMPROVED
 
 ## Comprehensive Test Results
 
@@ -31,9 +30,9 @@
 ==================================
 📄 Chapters processed: 15
 💻 Code examples found: 111
-✅ Examples working: 42
-❌ Examples failing: 69
-📈 Success rate: 38%
+✅ Examples working: 86
+❌ Examples failing: 25
+📈 Success rate: 77%
 ```
 
 ### One-Liner Tests (Chapter 4.1)
@@ -103,7 +102,7 @@ Success Rate: 45%
 - **Chapter 18 (Dataframes)**: 0/4 examples working (0%)
 - **Chapter 21 (Professional Tooling)**: 1/1 examples working (100%)
 
-## Version-Specific Notes (v3.51.0)
+## Version-Specific Notes (v3.52.0)
 
 ### What Works Well
 1. **Basic syntax and operations**: Variables, functions, simple arithmetic
@@ -114,7 +113,7 @@ Success Rate: 45%
 6. **Quality gates**: Syntax validation and linting at 100%
 
 ### Known Issues
-1. 🚨 **CRITICAL TRANSPILER BUG (v3.51.0)**: Functions with return values generate malformed Rust code (HashSet instead of return value)
+1. ✅ **TRANSPILER BUG FIXED**: v3.52.0 resolved the critical v3.51.0 regression
 2. **Multi-variable expressions**: Complex let bindings not evaluating correctly
 3. **Method calls**: `.sqrt()`, `.len()` type methods failing
 4. **Float precision**: Inconsistent handling of integer vs float output
@@ -132,10 +131,10 @@ Success Rate: 45%
 ## Recommendations
 
 ### Immediate Actions (Next Sprint)
-1. 🚨 **CRITICAL**: File transpiler bug report with Ruchy compiler team for v3.51.0
-2. **DOWNGRADE**: Use v3.45.0 or earlier for all book testing until hotfix available
-3. **MONITOR**: Watch for v3.51.1 release with transpiler regression fix
-4. **BLOCK**: Do not qualify any v3.51.0 versions for production use
+1. ✅ **COMPLETED**: Transpiler bug fixed in v3.52.0 - ready for production
+2. **Fix multi-variable expressions**: Address let binding evaluation
+3. **Implement method calls**: Add `.sqrt()`, `.len()` and similar methods
+4. **Standardize numeric output**: Decide on integer vs float representation
 
 ### Medium Term (Next Month)
 1. **Advanced error handling**: Implement remaining Chapter 17 features
