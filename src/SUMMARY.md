@@ -19,6 +19,7 @@
 - [Chapter 16: Testing & Quality Assurance](ch16-00-testing-quality-assurance.md)
 - [Chapter 17: Error Handling & Robustness](ch17-00-error-handling-robustness.md)
 - [Chapter 18: DataFrames & Data Processing](ch18-00-dataframes-data-processing.md)
+- [Chapter 19: Structs and OOP (NEW)](ch19-00-structs-oop.md)
 
 ## Development and Integration
 
