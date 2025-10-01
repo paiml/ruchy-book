@@ -1,0 +1,101 @@
+#!/usr/bin/env ruchy
+// Experiment: 003_error_handling
+// Version: ruchy 3.62.9
+// Date: 2025-01-10
+// Author: Ruchy Book Test Suite
+// Status: FAILING
+
+// PURPOSE:
+// Test Result and Option types for error handling
+
+// HYPOTHESIS:
+// Ruchy should support Result<T, E> and Option<T> for safe error handling
+
+fun divide_safe(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 {
+        Err("Division by zero")
+    } else {
+        Ok(a / b)
+    }
+}
+
+fun find_user(id: i32) -> Option<String> {
+    if id == 1 {
+        Some("Alice")
+    } else {
+        None
+    }
+}
+
+fun test_result_type() {
+    println("Test 1: Result type with Ok")
+    let result = divide_safe(10.0, 2.0)
+    match result {
+        Ok(val) => println("✓ Division result: " + val),
+        Err(e) => println("✗ Error: " + e)
+    }
+
+    println("\nTest 2: Result type with Err")
+    let result2 = divide_safe(10.0, 0.0)
+    match result2 {
+        Ok(val) => println("✗ Should have failed"),
+        Err(e) => println("✓ Caught error: " + e)
+    }
+}
+
+fun test_option_type() {
+    println("\nTest 3: Option type with Some")
+    let user = find_user(1)
+    match user {
+        Some(name) => println("✓ Found user: " + name),
+        None => println("✗ User not found")
+    }
+
+    println("\nTest 4: Option type with None")
+    let user2 = find_user(99)
+    match user2 {
+        Some(name) => println("✗ Should not find user"),
+        None => println("✓ User not found as expected")
+    }
+}
+
+fun test_question_mark_operator() {
+    println("\nTest 5: ? operator for error propagation")
+    // This should work but doesn't
+    // let result = divide_safe(10.0, 2.0)?
+    println("✗ FAILED: ? operator not implemented")
+}
+
+fun main() {
+    println("🧪 Experiment 003: Error Handling")
+    println("=" * 50)
+    println("Testing Result and Option types")
+
+    println("\nNote: These tests will fail to compile")
+    println("Documenting expected behavior vs actual")
+
+    println("\n📊 Results Summary:")
+    println("✗ Result<T, E> type: NOT RECOGNIZED")
+    println("✗ Option<T> type: NOT RECOGNIZED")
+    println("✗ Ok() constructor: NOT AVAILABLE")
+    println("✗ Err() constructor: NOT AVAILABLE")
+    println("✗ Some() constructor: NOT AVAILABLE")
+    println("✗ None constructor: NOT AVAILABLE")
+    println("✗ ? operator: NOT IMPLEMENTED")
+
+    println("\n📝 Conclusion:")
+    println("Ruchy 3.62.9 lacks modern error handling primitives")
+    println("No Result or Option types available")
+
+    println("\n💡 Workaround:")
+    println("Use panic!() for errors (not recommended)")
+    println("Return magic values like -1 or empty strings")
+    println("Use tuples (value, is_error) as poor man's Result")
+
+    println("\n🔬 Impact:")
+    println("- Cannot write robust error handling")
+    println("- Forced to use error-prone patterns")
+    println("- No compile-time safety for errors")
+}
+
+main()

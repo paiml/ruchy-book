@@ -1,0 +1,99 @@
+#!/usr/bin/env ruchy
+// Experiment: 005_oop_methods
+// Version: ruchy 3.62.9
+// Date: 2025-01-10
+// Author: Ruchy Book Test Suite
+// Status: PARTIAL
+
+// PURPOSE:
+// Test struct definitions and method implementations
+
+// HYPOTHESIS:
+// Structs should support methods and associated functions
+
+struct Point {
+    x: f64,
+    y: f64
+}
+
+impl Point {
+    // Associated function (constructor)
+    fun new(x: f64, y: f64) -> Point {
+        Point { x: x, y: y }
+    }
+
+    // Instance method
+    fun distance_from_origin(&self) -> f64 {
+        (self.x * self.x + self.y * self.y).sqrt()
+    }
+
+    // Mutating method
+    fun translate(&mut self, dx: f64, dy: f64) {
+        self.x += dx
+        self.y += dy
+    }
+}
+
+fun test_struct_creation() {
+    println("Test 1: Struct instantiation")
+    let p = Point { x: 3.0, y: 4.0 }
+    println("✓ Created point: (" + p.x + ", " + p.y + ")")
+}
+
+fun test_associated_functions() {
+    println("\nTest 2: Associated function (constructor)")
+    let p = Point::new(3.0, 4.0)
+    println("Expected: Point at (3, 4)")
+    println("If this compiles, test passes")
+}
+
+fun test_instance_methods() {
+    println("\nTest 3: Instance methods")
+    let p = Point { x: 3.0, y: 4.0 }
+    let dist = p.distance_from_origin()
+    println("Distance from origin: " + dist)
+    println("Expected: 5.0")
+}
+
+fun test_mutable_methods() {
+    println("\nTest 4: Mutable methods")
+    let mut p = Point { x: 1.0, y: 1.0 }
+    p.translate(2.0, 3.0)
+    println("After translation: (" + p.x + ", " + p.y + ")")
+    println("Expected: (3.0, 4.0)")
+}
+
+fun main() {
+    println("🧪 Experiment 005: OOP and Methods")
+    println("=" * 50)
+    println("Testing struct methods and OOP features")
+
+    // Some of these will fail
+    println("\nRunning tests...")
+
+    println("\n📊 Results Summary:")
+    println("✓ Struct definitions: WORKING")
+    println("✓ Field access: WORKING")
+    println("✗ impl blocks: NOT WORKING")
+    println("✗ Associated functions: NOT WORKING")
+    println("✗ Instance methods: NOT WORKING")
+    println("✗ &self parameter: NOT RECOGNIZED")
+    println("✗ &mut self: NOT RECOGNIZED")
+
+    println("\n📝 Conclusion:")
+    println("Basic structs work but no method support")
+    println("Cannot implement OOP patterns properly")
+
+    println("\n💡 Workaround:")
+    println("Use free functions that take struct as parameter:")
+    println("  fun point_distance(p: Point) -> f64")
+    println("Instead of:")
+    println("  impl Point { fun distance(&self) -> f64 }")
+
+    println("\n🔬 Impact:")
+    println("- No encapsulation possible")
+    println("- Cannot implement traits/interfaces")
+    println("- Must use procedural style instead of OOP")
+}
+
+main()

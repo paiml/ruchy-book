@@ -120,19 +120,43 @@ echo "✅ All quality gates passed (including dogfooding)"
    ```bash
    # Check if ruchy compiler is available in parent directory
    ls -la ../ruchy/target/release/ruchy 2>/dev/null || echo "No local ruchy build"
-   
+
    # Check current ruchy version being used
    ruchy --version
-   
+
    # If local build exists, compare versions
    if [ -f ../ruchy/target/release/ruchy ]; then
        echo "Local build: $(../ruchy/target/release/ruchy --version)"
        echo "System ruchy: $(ruchy --version)"
    fi
-   
+
    # Check compiler development status
    cd ../ruchy 2>/dev/null && git log --oneline -5 && cd - || echo "No ../ruchy directory"
    ```
+
+2c. **MANDATORY Scientific Reproducibility Reports**: Every version verification MUST produce reproducible scientific experiments:
+   ```bash
+   # Create versioned experiment directory
+   mkdir -p experiments/v$(ruchy --version | grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+')
+
+   # Document each failure as a reproducible experiment
+   # See experiments/EXPERIMENT_TEMPLATE.md for format
+
+   # Run all experiments for a version
+   for exp in experiments/v*/experiment_*.ruchy; do
+       ruchy "$exp" 2>&1 | tee "${exp%.ruchy}.log"
+   done
+
+   # Generate summary report
+   # See experiments/v3.62.9/SUMMARY.md for example
+   ```
+
+   **Requirements for Scientific Reports:**
+   - Each bug/missing feature gets its own experiment file
+   - 100% reproducible with single command
+   - Documents expected vs actual behavior
+   - Includes impact assessment and workarounds
+   - Serves as bug report for Ruchy team
 
 3. **NEVER Leave SATD Comments**: No TODO, FIXME, HACK comments. File GitHub issues instead.
 
