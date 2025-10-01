@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-09-28T14:12:58.128Z",
-  "ruchy_version": "ruchy 3.52.0",
+  "timestamp": "2025-10-01T06:35:03.452Z",
+  "ruchy_version": "ruchy 3.62.9",
   "total_tests": 20,
-  "passed_tests": 9,
-  "failed_tests": 11,
+  "passed_tests": 12,
+  "failed_tests": 8,
   "planned_tests": 12,
-  "success_rate": 45,
+  "success_rate": 60,
   "results": [
     {
       "test": {
@@ -45,9 +45,8 @@
         "expected": "107.9892",
         "category": "Basic Mathematics"
       },
-      "passed": false,
-      "actual": "99.99",
-      "error": "Expected: 107.9892, Got: 99.99"
+      "passed": true,
+      "actual": "107.9892"
     },
     {
       "test": {
@@ -106,9 +105,8 @@
         "expected": "\"Hello Ruchy!\"",
         "category": "String Operations"
       },
-      "passed": false,
-      "actual": "\"Ruchy\"",
-      "error": "Expected: \"Hello Ruchy!\", Got: \"Ruchy\""
+      "passed": true,
+      "actual": "\"Hello Ruchy!\""
     },
     {
       "test": {
@@ -128,9 +126,8 @@
         "expected": "22.360679774997898",
         "category": "Mathematical Functions"
       },
-      "passed": false,
-      "actual": "10.0",
-      "error": "Expected: 22.360679774997898, Got: 10.0"
+      "passed": true,
+      "actual": "22.360679774997898"
     },
     {
       "test": {
@@ -140,8 +137,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "299792458.0",
-      "error": "Expected: 8987551787368177, Got: 299792458.0"
+      "actual": "8987551787368177.0",
+      "error": "Expected: 8987551787368177, Got: 8987551787368177.0"
     },
     {
       "test": {
@@ -151,8 +148,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "120.0",
-      "error": "Expected: 1200, Got: 120.0"
+      "actual": "1200.0",
+      "error": "Expected: 1200, Got: 1200.0"
     },
     {
       "test": {
@@ -162,8 +159,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "10000.0",
-      "error": "Expected: 50, Got: 10000.0"
+      "actual": "50.0",
+      "error": "Expected: 50, Got: 50.0"
     },
     {
       "test": {

@@ -1,26 +1,28 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-09-28T14:15:00.000Z
-**Ruchy Version**: ruchy 3.52.0
-**Book Commit**: 3de2b7c (latest)
+**Generated**: 2025-10-01T07:00:00.000Z
+**Ruchy Version**: ruchy 3.62.9
+**Book Commit**: latest
 
 ## Executive Summary
-- **Total Examples**: 111 (book chapters)
-- **Passing**: 86 (77%)
+- **Total Examples**: 120 (book chapters + new OOP examples)
+- **Passing**: 92 (77%)
 - **Test Coverage**: Comprehensive testing with dogfooding
 - **Lint Grade**: A+ (100% pass rate)
 - **Syntax Validation**: A+ (100% pass rate)
-- **One-liners**: 9/20 passing (45%)
+- **One-liners**: 12/20 passing (60% - improved!)
 
-## ✅ TRANSPILER BUG FIXED - v3.52.0 READY FOR USE
-**RESOLVED**: Critical transpiler regression from v3.51.0 has been fixed
-**Status**: v3.52.0 shows 77% success rate (BETTER than v3.38.0 baseline)
-**Recommendation**: v3.52.0 is production-ready for book qualification
+## 🎉 MAJOR IMPROVEMENTS - v3.62.9 MILESTONE
+**FIXED**: Critical multi-statement bug resolved (commit 8661b16f)
+**NEW**: Actor system implementation (26/27 actor tests passing internally)
+**IMPROVED**: One-liner success rate: 45% → 60%
+**Status**: v3.62.9 shows continued 77% success rate with MORE examples
 
 **Version History**:
 - **v3.38.0 (baseline)**: 82/111 passing (74%)
-- **v3.51.0 (broken)**: 42/111 passing (38%) - transpiler bug
-- **v3.52.0 (current)**: 86/111 passing (77%) ✅ FIXED + IMPROVED
+- **v3.51.0 (regression)**: 42/111 passing (38%) - transpiler bug
+- **v3.52.0 (recovery)**: 86/111 passing (77%) - bug fixed
+- **v3.62.9 (current)**: 92/120 passing (77%) ✅ MORE FEATURES
 
 ## Comprehensive Test Results
 
@@ -28,10 +30,10 @@
 ```
 📊 EXTRACTION AND TESTING SUMMARY
 ==================================
-📄 Chapters processed: 15
-💻 Code examples found: 111
-✅ Examples working: 86
-❌ Examples failing: 25
+📄 Chapters processed: 16
+💻 Code examples found: 120
+✅ Examples working: 92
+❌ Examples failing: 28
 📈 Success rate: 77%
 ```
 
@@ -39,20 +41,23 @@
 ```
 📈 Results Summary
 ==================
-Tests Passed: 9
-Tests Failed: 11
+Tests Passed: 12  ⬆️ (was 9)
+Tests Failed: 8   ⬇️ (was 11)
 Tests Planned: 12
 Total Current Tests: 20
 Total All Examples: 32
-Success Rate: 45%
+Success Rate: 60% ⬆️ (was 45%)
 ```
 
-**Working One-Liners:**
+**Working One-Liners (v3.62.9):**
 - Simple addition: `2 + 2` → `4` ✅
 - Compound interest: `1000.0 * 1.05 * 1.05` → `1102.5` ✅
+- ✅ **NEW**: Multi-step calculation with variables!
 - Boolean operations: `true && false`, `true || false` ✅
 - Conditional expressions: `if 100 > 50 { "expensive" } else { "cheap" }` ✅
 - String concatenation: `"Hello " + "World"` ✅
+- ✅ **NEW**: String with variables: `let name = "Ruchy"; "Hello " + name`
+- ✅ **NEW**: Trigonometric calculations: `(x*x + y*y).sqrt()`
 - JSON output: `ruchy -e "5 + 3" --format json` ✅
 - Manual exponentiation: `2^32` via repeated multiplication ✅
 
@@ -102,23 +107,26 @@ Success Rate: 45%
 - **Chapter 18 (Dataframes)**: 0/4 examples working (0%)
 - **Chapter 21 (Professional Tooling)**: 1/1 examples working (100%)
 
-## Version-Specific Notes (v3.52.0)
+## Version-Specific Notes (v3.62.9)
 
 ### What Works Well
 1. **Basic syntax and operations**: Variables, functions, simple arithmetic
 2. **Control flow**: If/else statements, basic loops
-3. **Data structures**: Arrays, basic object operations
+3. **Data structures**: Arrays, basic object operations, structs
 4. **I/O operations**: File reading, basic output
 5. **Tool integration**: All ruchy tools execute successfully
 6. **Quality gates**: Syntax validation and linting at 100%
+7. ✅ **NEW**: Multi-statement support fixed!
+8. ✅ **NEW**: String interpolation with variables
+9. ✅ **NEW**: Method chaining for some operations
 
-### Known Issues
-1. ✅ **TRANSPILER BUG FIXED**: v3.52.0 resolved the critical v3.51.0 regression
-2. **Multi-variable expressions**: Complex let bindings not evaluating correctly
-3. **Method calls**: `.sqrt()`, `.len()` type methods failing
-4. **Float precision**: Inconsistent handling of integer vs float output
-5. **Advanced features**: Dataframes, advanced error handling not implemented
-6. **Formatter**: 0% pass rate indicates formatting tool needs development
+### Known Issues (Reduced!)
+1. ✅ **FIXED**: Multi-statement bug resolved (8661b16f)
+2. ✅ **PARTIALLY FIXED**: Some method calls now working (.sqrt() in expressions)
+3. **Float precision**: Minor - float vs int output formatting
+4. **Advanced features**: Dataframes, some error handling patterns not implemented
+5. **Formatter**: 0% pass rate indicates formatting tool needs development
+6. **Actor system**: Syntax still evolving, not fully exposed in REPL
 
 ### Testing Infrastructure Status
 - ✅ Automated extraction working correctly

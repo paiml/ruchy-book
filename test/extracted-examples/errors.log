@@ -1,11 +1,7 @@
 === ch16-00-testing-quality-assurance example 5 ===
-DEBUG: transpile_function called for function: test_addition
-DEBUG: transpile_function called for function: test_multiplication
-DEBUG: transpile_function called for function: run_all_tests
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:36
+ --> /tmp/.tmpdtC3l2/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                    ^^^ not found in this scope
@@ -17,7 +13,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:94
+ --> /tmp/.tmpdtC3l2/main.rs:1:94
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                                                                              ^^^ not found in this scope
@@ -29,7 +25,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:163
+ --> /tmp/.tmpdtC3l2/main.rs:1:163
   |
 1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
   |                                                         ^^^ not found in this scope
@@ -41,19 +37,19 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:287
+ --> /tmp/.tmpdtC3l2/main.rs:1:287
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:357
+ --> /tmp/.tmpdtC3l2/main.rs:1:357
   |
 1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:433
+ --> /tmp/.tmpdtC3l2/main.rs:1:433
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
   |                                                       ^^^^^^^^ not found in this scope
@@ -64,7 +60,7 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:36
+ --> /tmp/.tmpdtC3l2/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                    ^^^ not found in this scope
@@ -76,7 +72,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:94
+ --> /tmp/.tmpdtC3l2/main.rs:1:94
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                                                                              ^^^ not found in this scope
@@ -88,7 +84,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:163
+ --> /tmp/.tmpdtC3l2/main.rs:1:163
   |
 1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
   |                                                         ^^^ not found in this scope
@@ -100,19 +96,19 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:287
+ --> /tmp/.tmpdtC3l2/main.rs:1:287
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:357
+ --> /tmp/.tmpdtC3l2/main.rs:1:357
   |
 1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpJDg1UB/main.rs:1:433
+ --> /tmp/.tmpdtC3l2/main.rs:1:433
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
   |                                                       ^^^^^^^^ not found in this scope
@@ -124,114 +120,70 @@ For more information about this error, try `rustc --explain E0425`.
 
 
 === ch16-00-testing-quality-assurance example 6 ===
-DEBUG: transpile_function called for function: fibonacci
-DEBUG: transpile_function called for function: test_fibonacci_performance
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:201
-  |
-1 | ... = get_time_ms () ; { let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:235
-  |
-1 | ... fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765") ; let dur...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:349
-  |
-1 | ...ual 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000 , "{}" , "Fibonacci(20) should complete within 1 secon...
-  |                                                        ^ help: remove this semicolon
-
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpYvBuqI/main.rs:1:152
+ --> /tmp/.tmpdXpOcx/main.rs:1:152
   |
-1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; ...
+1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; let end_time = get_time_ms () ; asse...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpYvBuqI/main.rs:1:218
+ --> /tmp/.tmpdXpOcx/main.rs:1:216
   |
-1 | ...{ let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 67...
+1 | ...; { let result = fibonacci (20) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
-error: aborting due to 2 previous errors; 3 warnings emitted
+error: aborting due to 2 previous errors
 
 For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:201
-  |
-1 | ... = get_time_ms () ; { let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:235
-  |
-1 | ... fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765") ; let dur...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpYvBuqI/main.rs:1:349
-  |
-1 | ...ual 6765") ; let duration = end_time - start_time ; ; assert ! (duration < 1000 , "{}" , "Fibonacci(20) should complete within 1 secon...
-  |                                                        ^ help: remove this semicolon
-
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpYvBuqI/main.rs:1:152
+ --> /tmp/.tmpdXpOcx/main.rs:1:152
   |
-1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; ...
+1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; let end_time = get_time_ms () ; asse...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpYvBuqI/main.rs:1:218
+ --> /tmp/.tmpdXpOcx/main.rs:1:216
   |
-1 | ...{ let result = fibonacci (20) ; ; let end_time = get_time_ms () ; ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 67...
+1 | ...; { let result = fibonacci (20) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
-error: aborting due to 2 previous errors; 3 warnings emitted
+error: aborting due to 2 previous errors
 
 For more information about this error, try `rustc --explain E0425`.
 
 
 
 === ch16-00-testing-quality-assurance example 7 ===
-DEBUG: transpile_function called for function: test_range_function
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:325
+ --> /tmp/.tmpWBydc3/main.rs:1:325
   |
 1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
   |                                                        ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:334
+ --> /tmp/.tmpWBydc3/main.rs:1:334
   |
 1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:395
+ --> /tmp/.tmpWBydc3/main.rs:1:395
   |
 1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:44
+ --> /tmp/.tmpWBydc3/main.rs:1:44
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                            ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:82
+ --> /tmp/.tmpWBydc3/main.rs:1:82
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                                                                  ^^^ not found in this scope
@@ -242,31 +194,31 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:325
+ --> /tmp/.tmpWBydc3/main.rs:1:325
   |
 1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
   |                                                        ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:334
+ --> /tmp/.tmpWBydc3/main.rs:1:334
   |
 1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:395
+ --> /tmp/.tmpWBydc3/main.rs:1:395
   |
 1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:44
+ --> /tmp/.tmpWBydc3/main.rs:1:44
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                            ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmpjBV1I1/main.rs:1:82
+ --> /tmp/.tmpWBydc3/main.rs:1:82
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                                                                  ^^^ not found in this scope
@@ -294,27 +246,9 @@ Caused by:
 
 
 === ch15-00-binary-compilation-deployment example 4 ===
-DEBUG: transpile_function called for function: factorial
-DEBUG: transpile_function called for function: integer_sqrt
-DEBUG: transpile_function called for function: gcd
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:170
-  |
-1 | ...> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:191
-  |
-1 | ...turn n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2F56E/main.rs:1:305
+ --> /tmp/.tmpyd8vq7/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
@@ -322,71 +256,65 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
+1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:504
-  |
-1 | ...rial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:580
-  |
-1 | ...t of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:595
-  |
-1 | ...x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                        ^ help: remove this semicolon
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmpG2F56E/main.rs:1:326
+ --> /tmp/.tmpyd8vq7/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
   |
 help: consider making this binding mutable
   |
-1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , mut b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                                                                                                                                                                                                                                                +++
+1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , mut b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmpG2F56E/main.rs:1:338
+ --> /tmp/.tmpyd8vq7/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
   |
 help: consider making this binding mutable
   |
-1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (mut a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                                                                                                                                                                                                                                      +++
+1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (mut a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                                                                                                                                                                                                                                  +++
 
-error: aborting due to 2 previous errors; 6 warnings emitted
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:491
+  |
+1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+  |
+  = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:569
+  |
+1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:586
+  |
+1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+
+error: aborting due to 2 previous errors; 4 warnings emitted
 
 For more information about this error, try `rustc --explain E0384`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:170
-  |
-1 | ...> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:191
-  |
-1 | ...turn n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpG2F56E/main.rs:1:305
+ --> /tmp/.tmpyd8vq7/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
@@ -394,88 +322,165 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
+1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:504
-  |
-1 | ...rial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:580
-  |
-1 | ...t of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpG2F56E/main.rs:1:595
-  |
-1 | ...x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                        ^ help: remove this semicolon
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmpG2F56E/main.rs:1:326
+ --> /tmp/.tmpyd8vq7/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
   |
 help: consider making this binding mutable
   |
-1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , mut b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                                                                                                                                                                                                                                                +++
+1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , mut b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmpG2F56E/main.rs:1:338
+ --> /tmp/.tmpyd8vq7/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
   |
 help: consider making this binding mutable
   |
-1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; ; let mut prev = 0 ; ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (mut a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let x = 25 ; ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let a = 48 ; ; let b = 18 ; ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } ; }
-  |                                                                                                                                                                                                                                                                      +++
+1 | fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (mut a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                                                                                                                                                                                                                                  +++
 
-error: aborting due to 2 previous errors; 6 warnings emitted
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:491
+  |
+1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+  |
+  = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:569
+  |
+1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+
+warning: variable does not need to be mutable
+ --> /tmp/.tmpyd8vq7/main.rs:1:586
+  |
+1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+  |                                                         ----^
+  |                                                         |
+  |                                                         help: remove this `mut`
+
+error: aborting due to 2 previous errors; 4 warnings emitted
 
 For more information about this error, try `rustc --explain E0384`.
 
 
 
 === ch03-00-functions-tdd example 10 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpo3kxuU/main.rs:1:652
+  |
+1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
 
-Caused by:
-    Expected RightBrace, found DataFrame
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:24
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                        ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:38
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                                      ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:377
+  |
+1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get...
+  |                                                      ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:409
+  |
+1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get ("value") . cloned () . unwrap_...
+  |                                                      ^^^^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.
+
+Error: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpo3kxuU/main.rs:1:652
+  |
+1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:24
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                        ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:38
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                                      ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:377
+  |
+1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get...
+  |                                                      ^^^^^^^^^ not found in this scope
+
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpo3kxuU/main.rs:1:409
+  |
+1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get ("value") . cloned () . unwrap_...
+  |                                                      ^^^^^^^^^ not found in this scope
+
+error: aborting due to 5 previous errors
+
+Some errors have detailed explanations: E0412, E0433.
+For more information about an error, try `rustc --explain E0412`.
+
 
 
 === ch03-00-functions-tdd example 11 ===
-DEBUG: transpile_function called for function: add_profit_margin
-DEBUG: transpile_function called for function: summarize_by_category
 ✗ Compilation failed: Compilation failed:
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:28
+ --> /tmp/.tmpwlVnjO/main.rs:1:28
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                            ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:42
+ --> /tmp/.tmpwlVnjO/main.rs:1:42
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                                          ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:387
+ --> /tmp/.tmpwlVnjO/main.rs:1:387
   |
 1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:401
+ --> /tmp/.tmpwlVnjO/main.rs:1:401
   |
 1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
   |                                                      ^^^^^^^^^ not found in this scope
@@ -486,25 +491,25 @@ For more information about this error, try `rustc --explain E0412`.
 
 Error: Compilation failed:
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:28
+ --> /tmp/.tmpwlVnjO/main.rs:1:28
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                            ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:42
+ --> /tmp/.tmpwlVnjO/main.rs:1:42
   |
 1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
   |                                          ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:387
+ --> /tmp/.tmpwlVnjO/main.rs:1:387
   |
 1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpqdyyQj/main.rs:1:401
+ --> /tmp/.tmpwlVnjO/main.rs:1:401
   |
 1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
   |                                                      ^^^^^^^^^ not found in this scope
@@ -516,26 +521,9 @@ For more information about this error, try `rustc --explain E0412`.
 
 
 === ch17-00-error-handling-robustness example 3 ===
-DEBUG: transpile_function called for function: safe_sqrt
-DEBUG: transpile_function called for function: safe_factorial
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:159
-  |
-1 | ...mber") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * gue...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:177
-  |
-1 | ...64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 {...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmp500jJk/main.rs:1:586
+ --> /tmp/.tmpp9wJQm/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
@@ -543,36 +531,12 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
-1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:723
-  |
-1 | ...e_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:758
-  |
-1 | ..._sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:795
-  |
-1 | ...actorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:831
-  |
-1 | ...ctorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; prin...
-  |                                                        ^ help: remove this semicolon
 
 warning: unreachable expression
- --> /tmp/.tmp500jJk/main.rs:1:599
+ --> /tmp/.tmpp9wJQm/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
@@ -582,7 +546,7 @@ warning: unreachable expression
   = note: `#[warn(unreachable_code)]` on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmp500jJk/main.rs:1:574
+ --> /tmp/.tmpp9wJQm/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -590,27 +554,13 @@ error[E0317]: `if` may be missing an `else` clause
   = note: `if` expressions without `else` evaluate to `()`
   = help: consider adding an `else` block that evaluates to the expected type
 
-error: aborting due to 1 previous error; 8 warnings emitted
+error: aborting due to 1 previous error; 2 warnings emitted
 
 For more information about this error, try `rustc --explain E0317`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:159
-  |
-1 | ...mber") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * gue...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:177
-  |
-1 | ...64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 {...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmp500jJk/main.rs:1:586
+ --> /tmp/.tmpp9wJQm/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
@@ -618,36 +568,12 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
-1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; ; let mut i = 0 ; ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
   |
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:723
-  |
-1 | ...e_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:758
-  |
-1 | ..._sqrt (- 4f64) ; ; let fact1 = safe_factorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:795
-  |
-1 | ...actorial (5) ; ; let fact2 = safe_factorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp500jJk/main.rs:1:831
-  |
-1 | ...ctorial (- 3) ; ; let fact3 = safe_factorial (25) ; ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; prin...
-  |                                                        ^ help: remove this semicolon
 
 warning: unreachable expression
- --> /tmp/.tmp500jJk/main.rs:1:599
+ --> /tmp/.tmpp9wJQm/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
@@ -657,7 +583,7 @@ warning: unreachable expression
   = note: `#[warn(unreachable_code)]` on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmp500jJk/main.rs:1:574
+ --> /tmp/.tmpp9wJQm/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -665,59 +591,18 @@ error[E0317]: `if` may be missing an `else` clause
   = note: `if` expressions without `else` evaluate to `()`
   = help: consider adding an `else` block that evaluates to the expected type
 
-error: aborting due to 1 previous error; 8 warnings emitted
+error: aborting due to 1 previous error; 2 warnings emitted
 
 For more information about this error, try `rustc --explain E0317`.
 
 
 
 === ch17-00-error-handling-robustness example 4 ===
-DEBUG: transpile_function called for function: safe_array_access
-DEBUG: transpile_function called for function: find_maximum_safe
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:376
-  |
-1 | ...; 5]) -> i32 { let mut max = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max { max = numbers ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:394
-  |
-1 | ... mut max = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max { max = numbers [i as usize] } ; i...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:599
-  |
-1 | ..., 15] ; { let val1 = safe_array_access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:645
-  |
-1 | ... 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (da...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:690
-  |
-1 | ...- 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:733
-  |
-1 | ... , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximum: {}"...
-  |                                                        ^ help: remove this semicolon
-
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:587
+ --> /tmp/.tmpv2JLci/main.rs:1:583
   |
-1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_...
+1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_acce...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -725,15 +610,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:631
+ --> /tmp/.tmpv2JLci/main.rs:1:625
   |
-1 | ...access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_ma...
+1 | ...y_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximu...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -741,15 +626,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:677
+ --> /tmp/.tmpv2JLci/main.rs:1:669
   |
-1 | ...cess (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, ...
+1 | ...access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, ...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -757,15 +642,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:725
+ --> /tmp/.tmpv2JLci/main.rs:1:715
   |
-1 | ...ss (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maxi...
+1 | ...cess (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximu...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -773,58 +658,20 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:290
+ --> /tmp/.tmpv2JLci/main.rs:1:290
   |
-1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; ;...
+1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; l...
   |                                                   ^^^^^^^^^^^^^^^^^  -------------------
 
-error: aborting due to 4 previous errors; 6 warnings emitted
+error: aborting due to 4 previous errors
 
 For more information about this error, try `rustc --explain E0308`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:376
-  |
-1 | ...; 5]) -> i32 { let mut max = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max { max = numbers ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:394
-  |
-1 | ... mut max = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max { max = numbers [i as usize] } ; i...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:599
-  |
-1 | ..., 15] ; { let val1 = safe_array_access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:645
-  |
-1 | ... 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (da...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:690
-  |
-1 | ...- 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpkyXvPF/main.rs:1:733
-  |
-1 | ... , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximum: {}"...
-  |                                                        ^ help: remove this semicolon
-
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:587
+ --> /tmp/.tmpv2JLci/main.rs:1:583
   |
-1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_...
+1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_acce...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -832,15 +679,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:631
+ --> /tmp/.tmpv2JLci/main.rs:1:625
   |
-1 | ...access (data , 2) ; ; let val2 = safe_array_access (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_ma...
+1 | ...y_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximu...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -848,15 +695,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:677
+ --> /tmp/.tmpv2JLci/main.rs:1:669
   |
-1 | ...cess (data , - 1) ; ; let val3 = safe_array_access (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, ...
+1 | ...access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, ...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -864,15 +711,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:4
+ --> /tmp/.tmpv2JLci/main.rs:1:4
   |
 1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
   |    ^^^^^^^^^^^^^^^^^  ---------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpkyXvPF/main.rs:1:725
+ --> /tmp/.tmpv2JLci/main.rs:1:715
   |
-1 | ...ss (data , 10) ; ; let maximum = find_maximum_safe (data) ; ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maxi...
+1 | ...cess (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximu...
   |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -880,12 +727,12 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpkyXvPF/main.rs:1:290
+ --> /tmp/.tmpv2JLci/main.rs:1:290
   |
-1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; ;...
+1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; l...
   |                                                   ^^^^^^^^^^^^^^^^^  -------------------
 
-error: aborting due to 4 previous errors; 6 warnings emitted
+error: aborting due to 4 previous errors
 
 For more information about this error, try `rustc --explain E0308`.
 
@@ -908,218 +755,131 @@ Caused by:
 
 
 === ch17-00-error-handling-robustness example 9 ===
-DEBUG: transpile_function called for function: test_division_error_handling
-DEBUG: transpile_function called for function: test_input_validation
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:286
-  |
-1 | ...t failed") } ; let result2 = safe_divide (10 , 0) ; ; if result2 == 0 { println ! ("✅ Division by zero handling passed") } else { print...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:456
-  |
-1 | ...failed") } ; let result3 = safe_divide (- 10 , 2) ; ; if result3 == - 5 { println ! ("✅ Negative number handling passed") } else { prin...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:839
-  |
-1 | ...e test failed") } ; let age2 = validate_age (- 5) ; ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else { println ! ("❌...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:991
-  |
-1 | ...ndling failed") } ; let age3 = validate_age (200) ; ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } else { println ! ("...
-  |                                                        ^ help: remove this semicolon
-
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:105
+ --> /tmp/.tmp7d5cOX/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:263
+ --> /tmp/.tmp7d5cOX/main.rs:1:263
   |
-1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; ; if result2 == 0 { println ! ("✅ Division by zero handling pass...
+1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:431
+ --> /tmp/.tmp7d5cOX/main.rs:1:429
   |
-1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; ; if result3 == - 5 { println ! ("✅ Negative number handling ...
+1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:680
+ --> /tmp/.tmp7d5cOX/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:818
+ --> /tmp/.tmp7d5cOX/main.rs:1:812
   |
-1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; ; if age2 == 0 { println ! ("✅ Negative age handling passed") } el...
+1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:970
+ --> /tmp/.tmp7d5cOX/main.rs:1:962
   |
-1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } e...
+1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
-error: aborting due to 6 previous errors; 4 warnings emitted
+error: aborting due to 6 previous errors
 
 For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:286
-  |
-1 | ...t failed") } ; let result2 = safe_divide (10 , 0) ; ; if result2 == 0 { println ! ("✅ Division by zero handling passed") } else { print...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:456
-  |
-1 | ...failed") } ; let result3 = safe_divide (- 10 , 2) ; ; if result3 == - 5 { println ! ("✅ Negative number handling passed") } else { prin...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:839
-  |
-1 | ...e test failed") } ; let age2 = validate_age (- 5) ; ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else { println ! ("❌...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpvwwGsO/main.rs:1:991
-  |
-1 | ...ndling failed") } ; let age3 = validate_age (200) ; ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } else { println ! ("...
-  |                                                        ^ help: remove this semicolon
-
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:105
+ --> /tmp/.tmp7d5cOX/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:263
+ --> /tmp/.tmp7d5cOX/main.rs:1:263
   |
-1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; ; if result2 == 0 { println ! ("✅ Division by zero handling pass...
+1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:431
+ --> /tmp/.tmp7d5cOX/main.rs:1:429
   |
-1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; ; if result3 == - 5 { println ! ("✅ Negative number handling ...
+1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:680
+ --> /tmp/.tmp7d5cOX/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:818
+ --> /tmp/.tmp7d5cOX/main.rs:1:812
   |
-1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; ; if age2 == 0 { println ! ("✅ Negative age handling passed") } el...
+1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpvwwGsO/main.rs:1:970
+ --> /tmp/.tmp7d5cOX/main.rs:1:962
   |
-1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } e...
+1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
-error: aborting due to 6 previous errors; 4 warnings emitted
+error: aborting due to 6 previous errors
 
 For more information about this error, try `rustc --explain E0425`.
 
 
 
 === ch05-00-control-flow-tdd example 15 ===
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpezbBih/main.rs:1:23
+ --> /tmp/.tmpsbadvr/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpezbBih/main.rs:1:169
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; if df . height () > 0 { { let high_value = df . lazy () . filter (| row | { if r...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 1 previous error; 1 warning emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpezbBih/main.rs:1:23
+ --> /tmp/.tmpsbadvr/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpezbBih/main.rs:1:169
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; if df . height () > 0 { { let high_value = df . lazy () . filter (| row | { if r...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 1 previous error; 1 warning emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0433`.
 
 
 
 === ch05-00-control-flow-tdd example 16 ===
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp37FahC/main.rs:1:23
+ --> /tmp/.tmpq1gVE5/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp37FahC/main.rs:1:173
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp37FahC/main.rs:1:540
-  |
-1 | ... ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key n...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmp37FahC/main.rs:1:206
+ --> /tmp/.tmpq1gVE5/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
@@ -1127,51 +887,37 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp37FahC/main.rs:1:646
+ --> /tmp/.tmpq1gVE5/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
   |
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
-error: aborting due to 1 previous error; 4 warnings emitted
+error: aborting due to 1 previous error; 2 warnings emitted
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp37FahC/main.rs:1:23
+ --> /tmp/.tmpq1gVE5/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp37FahC/main.rs:1:173
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp37FahC/main.rs:1:540
-  |
-1 | ... ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key n...
-  |                                                        ^ help: remove this semicolon
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmp37FahC/main.rs:1:206
+ --> /tmp/.tmpq1gVE5/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
@@ -1179,49 +925,40 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp37FahC/main.rs:1:646
+ --> /tmp/.tmpq1gVE5/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
   |
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
-error: aborting due to 1 previous error; 4 warnings emitted
+error: aborting due to 1 previous error; 2 warnings emitted
 
 For more information about this error, try `rustc --explain E0433`.
 
 
 
 === ch05-00-control-flow-tdd example 17 ===
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpwwbXZz/main.rs:1:23
+ --> /tmp/.tmpBQn61o/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpwwbXZz/main.rs:1:173
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { { let category = match row . get ("total_purcha...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpwwbXZz/main.rs:1:206
+ --> /tmp/.tmpBQn61o/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
@@ -1229,33 +966,25 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error; 1 warning emitted
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpwwbXZz/main.rs:1:23
+ --> /tmp/.tmpBQn61o/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpwwbXZz/main.rs:1:173
-  |
-1 | ... . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { { let category = match row . get ("total_purcha...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpwwbXZz/main.rs:1:206
+ --> /tmp/.tmpBQn61o/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
@@ -1263,23 +992,233 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
+1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error; 1 warning emitted
 
 For more information about this error, try `rustc --explain E0433`.
 
 
 
+=== ch19-00-structs-oop example 4 ===
+✗ Compilation failed: Compilation failed:
+error[E0072]: recursive type `Node` has infinite size
+ --> /tmp/.tmprfjShj/main.rs:1:1
+  |
+1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
+  | ^^^^^^^^^^^                                 ---- recursive without indirection
+  |
+help: insert some indirection (e.g., a `Box`, `Rc`, or `&`) to break the cycle
+  |
+1 | struct Node { value : i32 , next : Option < Box<Node> > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { value : 1 , next : Some (leaf) , } ; println ! ("{:?}" , parent . value) ; }
+  |                                             ++++    +
+
+error[E0391]: cycle detected when computing layout of `Node`
+  |
+  = note: ...which requires computing layout of `core::option::Option<Node>`...
+  = note: ...which again requires computing layout of `Node`, completing the cycle
+note: cycle used when elaborating drops for `main`
+ --> /tmp/.tmprfjShj/main.rs:1:56
+  |
+1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
+  |                                                        ^^^^^^^^^^
+  = note: see https://rustc-dev-guide.rust-lang.org/overview.html#queries and https://rustc-dev-guide.rust-lang.org/query.html for more information
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0072, E0391.
+For more information about an error, try `rustc --explain E0072`.
+
+Error: Compilation failed:
+error[E0072]: recursive type `Node` has infinite size
+ --> /tmp/.tmprfjShj/main.rs:1:1
+  |
+1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
+  | ^^^^^^^^^^^                                 ---- recursive without indirection
+  |
+help: insert some indirection (e.g., a `Box`, `Rc`, or `&`) to break the cycle
+  |
+1 | struct Node { value : i32 , next : Option < Box<Node> > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { value : 1 , next : Some (leaf) , } ; println ! ("{:?}" , parent . value) ; }
+  |                                             ++++    +
+
+error[E0391]: cycle detected when computing layout of `Node`
+  |
+  = note: ...which requires computing layout of `core::option::Option<Node>`...
+  = note: ...which again requires computing layout of `Node`, completing the cycle
+note: cycle used when elaborating drops for `main`
+ --> /tmp/.tmprfjShj/main.rs:1:56
+  |
+1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
+  |                                                        ^^^^^^^^^^
+  = note: see https://rustc-dev-guide.rust-lang.org/overview.html#queries and https://rustc-dev-guide.rust-lang.org/query.html for more information
+
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0072, E0391.
+For more information about an error, try `rustc --explain E0072`.
+
+
+
+=== ch19-00-structs-oop example 6 ===
+✗ Compilation failed: Compilation failed:
+error[E0308]: mismatched types
+ --> /tmp/.tmplTEUvA/main.rs:1:142
+  |
+1 | ...n default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings ...
+  |                                          ^^^^^^- help: try using a conversion method: `.to_string()`
+  |                                          |
+  |                                          expected `String`, found `&str`
+
+error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
+ --> /tmp/.tmplTEUvA/main.rs:1:229
+  |
+1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
+  |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
+
+error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
+ --> /tmp/.tmplTEUvA/main.rs:1:357
+  |
+1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
+  |                                                   ^^^^^^^^ missing `auto_save` and `theme`
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0063, E0308.
+For more information about an error, try `rustc --explain E0063`.
+
+Error: Compilation failed:
+error[E0308]: mismatched types
+ --> /tmp/.tmplTEUvA/main.rs:1:142
+  |
+1 | ...n default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings ...
+  |                                          ^^^^^^- help: try using a conversion method: `.to_string()`
+  |                                          |
+  |                                          expected `String`, found `&str`
+
+error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
+ --> /tmp/.tmplTEUvA/main.rs:1:229
+  |
+1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
+  |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
+
+error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
+ --> /tmp/.tmplTEUvA/main.rs:1:357
+  |
+1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
+  |                                                   ^^^^^^^^ missing `auto_save` and `theme`
+
+error: aborting due to 3 previous errors
+
+Some errors have detailed explanations: E0063, E0308.
+For more information about an error, try `rustc --explain E0063`.
+
+
+
+=== ch19-00-structs-oop example 9 ===
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find value `point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:33
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                 ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:41
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                         ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:91
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                                                                           ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:140
+  |
+1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
+  |                                                        ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:189
+  |
+1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
+  |                                                        ^^^^^ not found in this scope
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpYakwQ2/main.rs:1:456
+  |
+1 | ... . contains ("&str") { println ! ("{}" , result) ; } else { println ! ("{:?}" , result) ; } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0277, E0422, E0425.
+For more information about an error, try `rustc --explain E0277`.
+
+Error: Compilation failed:
+error[E0425]: cannot find value `point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:33
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                 ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:41
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                         ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:91
+  |
+1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
+  |                                                                                           ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:140
+  |
+1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
+  |                                                        ^^^^^ not found in this scope
+
+error[E0422]: cannot find struct, variant or union type `Point` in this scope
+ --> /tmp/.tmpYakwQ2/main.rs:1:189
+  |
+1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
+  |                                                        ^^^^^ not found in this scope
+
+error[E0277]: `()` doesn't implement `std::fmt::Display`
+ --> /tmp/.tmpYakwQ2/main.rs:1:456
+  |
+1 | ... . contains ("&str") { println ! ("{}" , result) ; } else { println ! ("{:?}" , result) ; } }
+  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
+  |                                       |
+  |                                       required by this formatting parameter
+  |
+  = help: the trait `std::fmt::Display` is not implemented for `()`
+  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: aborting due to 6 previous errors
+
+Some errors have detailed explanations: E0277, E0422, E0425.
+For more information about an error, try `rustc --explain E0277`.
+
+
+
 === ch04-00-practical-patterns-tdd example 2 ===
-DEBUG: transpile_function called for function: validate_user_input
-DEBUG: transpile_function called for function: create_user_profile
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0106]: missing lifetime specifier
- --> /tmp/.tmp6gBRKq/main.rs:1:468
+ --> /tmp/.tmp2iTs4l/main.rs:1:468
   |
 1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { println ! ("...
   |                                  -----                       -----     ^ expected named lifetime parameter
@@ -1287,30 +1226,16 @@ error[E0106]: missing lifetime specifier
   = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `name` or `email`
 help: consider introducing a named lifetime parameter
   |
-1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
+1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
   |                                                                                                                                                                                                                                                                                                                                                                                                                                     ++++          ++                             ++           ++
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp6gBRKq/main.rs:1:810
-  |
-1 | ...create_user_profile ("" , 30 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; ; ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp6gBRKq/main.rs:1:890
-  |
-1 | ...profile ("Charlie" , - 5 , "charlie@example.com") ; ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; pr...
-  |                                                        ^ help: remove this semicolon
-
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0106`.
 
 Error: Compilation failed:
 error[E0106]: missing lifetime specifier
- --> /tmp/.tmp6gBRKq/main.rs:1:468
+ --> /tmp/.tmp2iTs4l/main.rs:1:468
   |
 1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { println ! ("...
   |                                  -----                       -----     ^ expected named lifetime parameter
@@ -1318,101 +1243,21 @@ error[E0106]: missing lifetime specifier
   = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `name` or `email`
 help: consider introducing a named lifetime parameter
   |
-1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
+1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
   |                                                                                                                                                                                                                                                                                                                                                                                                                                     ++++          ++                             ++           ++
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp6gBRKq/main.rs:1:810
-  |
-1 | ...create_user_profile ("" , 30 , "bob@example.com") ; ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; ; ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmp6gBRKq/main.rs:1:890
-  |
-1 | ...profile ("Charlie" , - 5 , "charlie@example.com") ; ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; pr...
-  |                                                        ^ help: remove this semicolon
-
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0106`.
 
 
 
 === ch04-00-practical-patterns-tdd example 5 ===
-DEBUG: transpile_function called for function: calculate_total
-DEBUG: transpile_function called for function: find_maximum
-DEBUG: transpile_function called for function: count_positives
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:70
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
-  |                                                                      ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:88
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
-  |                                                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:258
-  |
-1 | ...-> i32 { let mut max_value = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max_value { max_valu...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:276
-  |
-1 | ...ax_value = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max_value { max_value = numbers [i as ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:467
-  |
-1 | ... (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ; while i < 5 { { if numbers [i as usize] > 0 { count = count + ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:485
-  |
-1 | ... 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ; while i < 5 { { if numbers [i as usize] > 0 { count = count + 1 } ; i = i + 1 } ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:687
-  |
-1 | ... ; { let numbers = vec ! [- 3 , 7 , - 1 , 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ;...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:728
-  |
-1 | ... 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (nu...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:768
-  |
-1 | ... (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , tota...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:819
-  |
-1 | ... ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; println ...
-  |                                                        ^ help: remove this semicolon
-
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:718
+ --> /tmp/.tmpTXX7Ra/main.rs:1:708
   |
-1 | ... , - 1 , 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_posit...
+1 | ... - 1 , 12 , 0] ; let mut total = calculate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives...
   |                                     ---------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -1420,15 +1265,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:4
+ --> /tmp/.tmpTXX7Ra/main.rs:1:4
   |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
+1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; let mut i = 0 ; while i < 5 { { total = total + prices [i as usize] ...
   |    ^^^^^^^^^^^^^^^  ------------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:758
+ --> /tmp/.tmpTXX7Ra/main.rs:1:746
   |
-1 | ...e_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}"...
+1 | ...ate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , t...
   |                                       ------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                       |
   |                                       arguments to this function are incorrect
@@ -1436,15 +1281,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:171
+ --> /tmp/.tmpTXX7Ra/main.rs:1:167
   |
 1 | ... prices [i as usize] ; i = i + 1 } } ; total } fn find_maximum (numbers : [i32 ; 5]) -> i32 { let mut max_value = numbers [0 as usize]...
   |                                                      ^^^^^^^^^^^^  -------------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:808
+ --> /tmp/.tmpTXX7Ra/main.rs:1:794
   |
-1 | ...prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ;...
+1 | ... (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; p...
   |                                     ---------------  ^^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -1452,82 +1297,20 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:400
+ --> /tmp/.tmpTXX7Ra/main.rs:1:392
   |
-1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ;...
+1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; let mut i = 0 ; whi...
   |                                                    ^^^^^^^^^^^^^^^  -------------------
 
-error: aborting due to 3 previous errors; 10 warnings emitted
+error: aborting due to 3 previous errors
 
 For more information about this error, try `rustc --explain E0308`.
 
 Error: Compilation failed:
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:70
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
-  |                                                                      ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:88
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
-  |                                                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:258
-  |
-1 | ...-> i32 { let mut max_value = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max_value { max_valu...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:276
-  |
-1 | ...ax_value = numbers [0 as usize] ; ; let mut i = 1 ; ; while i < 5 { { if numbers [i as usize] > max_value { max_value = numbers [i as ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:467
-  |
-1 | ... (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ; while i < 5 { { if numbers [i as usize] > 0 { count = count + ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:485
-  |
-1 | ... 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ; while i < 5 { { if numbers [i as usize] > 0 { count = count + 1 } ; i = i + 1 } ...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:687
-  |
-1 | ... ; { let numbers = vec ! [- 3 , 7 , - 1 , 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ;...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:728
-  |
-1 | ... 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (nu...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:768
-  |
-1 | ... (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , tota...
-  |                                                        ^ help: remove this semicolon
-
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpx6t8ir/main.rs:1:819
-  |
-1 | ... ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; println ...
-  |                                                        ^ help: remove this semicolon
-
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:718
+ --> /tmp/.tmpTXX7Ra/main.rs:1:708
   |
-1 | ... , - 1 , 12 , 0] ; ; let total = calculate_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_posit...
+1 | ... - 1 , 12 , 0] ; let mut total = calculate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives...
   |                                     ---------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -1535,15 +1318,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:4
+ --> /tmp/.tmpTXX7Ra/main.rs:1:4
   |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; ; let mut i = 0 ; ; while i < 5 { { total = total + prices [i as usi...
+1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; let mut i = 0 ; while i < 5 { { total = total + prices [i as usize] ...
   |    ^^^^^^^^^^^^^^^  ------------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:758
+ --> /tmp/.tmpTXX7Ra/main.rs:1:746
   |
-1 | ...e_total (prices) ; ; let maximum = find_maximum (prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}"...
+1 | ...ate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , t...
   |                                       ------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                       |
   |                                       arguments to this function are incorrect
@@ -1551,15 +1334,15 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:171
+ --> /tmp/.tmpTXX7Ra/main.rs:1:167
   |
 1 | ... prices [i as usize] ; i = i + 1 } } ; total } fn find_maximum (numbers : [i32 ; 5]) -> i32 { let mut max_value = numbers [0 as usize]...
   |                                                      ^^^^^^^^^^^^  -------------------
 
 error[E0308]: mismatched types
- --> /tmp/.tmpx6t8ir/main.rs:1:808
+ --> /tmp/.tmpTXX7Ra/main.rs:1:794
   |
-1 | ...prices) ; ; let positive_count = count_positives (numbers) ; ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ;...
+1 | ... (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; p...
   |                                     ---------------  ^^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
   |                                     |
   |                                     arguments to this function are incorrect
@@ -1567,12 +1350,12 @@ error[E0308]: mismatched types
   = note: expected array `[i32; 5]`
             found struct `Vec<{integer}>`
 note: function defined here
- --> /tmp/.tmpx6t8ir/main.rs:1:400
+ --> /tmp/.tmpTXX7Ra/main.rs:1:392
   |
-1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; ; let mut i = 0 ; ;...
+1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; let mut i = 0 ; whi...
   |                                                    ^^^^^^^^^^^^^^^  -------------------
 
-error: aborting due to 3 previous errors; 10 warnings emitted
+error: aborting due to 3 previous errors
 
 For more information about this error, try `rustc --explain E0308`.
 
@@ -1603,57 +1386,38 @@ Caused by:
 
 
 === ch18-00-dataframes-data-processing example 1 ===
-DEBUG: transpile_function called for function: create_dataframe
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpKyleL8/main.rs:1:35
+ --> /tmp/.tmpGR8i7s/main.rs:1:35
   |
 1 | fn create_dataframe () { let df = polars :: prelude :: DataFrame :: empty () . column ("employee_id" , vec ! [101 , 102 , 103 , 104]) . c...
   |                                   ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpKyleL8/main.rs:1:345
-  |
-1 | ...salary" , vec ! [95000 , 75000 , 105000 , 65000]) ; ; println ! ("Created DataFrame with {} employees" , df . height ()) ; println ! (...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 1 previous error; 1 warning emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpKyleL8/main.rs:1:35
+ --> /tmp/.tmpGR8i7s/main.rs:1:35
   |
 1 | fn create_dataframe () { let df = polars :: prelude :: DataFrame :: empty () . column ("employee_id" , vec ! [101 , 102 , 103 , 104]) . c...
   |                                   ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpKyleL8/main.rs:1:345
-  |
-1 | ...salary" , vec ! [95000 , 75000 , 105000 , 65000]) ; ; println ! ("Created DataFrame with {} employees" , df . height ()) ; println ! (...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 1 previous error; 1 warning emitted
+error: aborting due to 1 previous error
 
 For more information about this error, try `rustc --explain E0433`.
 
 
 
 === ch18-00-dataframes-data-processing example 2 ===
-DEBUG: transpile_function called for function: analyze_sales
-DEBUG: transpile_function called for function: main
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmplYHTDx/main.rs:1:189
+ --> /tmp/.tmpCFo1QE/main.rs:1:189
   |
 1 | ...es ()) ; } fn main () { { let sales = polars :: prelude :: DataFrame :: empty () . column ("product" , vec ! ["Widget" , "Gadget" , "G...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -1661,7 +1425,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmplYHTDx/main.rs:1:24
+ --> /tmp/.tmpCFo1QE/main.rs:1:24
   |
 1 | fn analyze_sales (df : DataFrame) { println ! ("Analyzing {} sales records" , df . height ()) ; println ! ("Data has {} columns" , df . g...
   |                        ^^^^^^^^^ not found in this scope
@@ -1673,7 +1437,7 @@ For more information about an error, try `rustc --explain E0412`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmplYHTDx/main.rs:1:189
+ --> /tmp/.tmpCFo1QE/main.rs:1:189
   |
 1 | ...es ()) ; } fn main () { { let sales = polars :: prelude :: DataFrame :: empty () . column ("product" , vec ! ["Widget" , "Gadget" , "G...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -1681,7 +1445,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmplYHTDx/main.rs:1:24
+ --> /tmp/.tmpCFo1QE/main.rs:1:24
   |
 1 | fn analyze_sales (df : DataFrame) { println ! ("Analyzing {} sales records" , df . height ()) ; println ! ("Data has {} columns" , df . g...
   |                        ^^^^^^^^^ not found in this scope
@@ -1694,10 +1458,9 @@ For more information about an error, try `rustc --explain E0412`.
 
 
 === ch18-00-dataframes-data-processing example 3 ===
-DEBUG: transpile_function called for function: work_with_multiple_dataframes
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpMEcRsI/main.rs:1:57
+ --> /tmp/.tmp5kdS4V/main.rs:1:57
   |
 1 | fn work_with_multiple_dataframes () { { let customers = polars :: prelude :: DataFrame :: empty () . column ("customer_id" , vec ! [1 , 2...
   |                                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -1705,28 +1468,20 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpMEcRsI/main.rs:1:285
+ --> /tmp/.tmp5kdS4V/main.rs:1:285
   |
 1 | ...geles" , "Chicago"]) ; { let orders = polars :: prelude :: DataFrame :: empty () . column ("order_id" , vec ! [101 , 102 , 103]) . col...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpMEcRsI/main.rs:1:485
-  |
-1 | ...mount" , vec ! [99.99f64 , 149.99f64 , 79.99f64]) ; ; println ! ("Customers: {} rows" , customers . rows ()) ; println ! ("Orders: {} ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 2 previous errors; 1 warning emitted
+error: aborting due to 2 previous errors
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpMEcRsI/main.rs:1:57
+ --> /tmp/.tmp5kdS4V/main.rs:1:57
   |
 1 | fn work_with_multiple_dataframes () { { let customers = polars :: prelude :: DataFrame :: empty () . column ("customer_id" , vec ! [1 , 2...
   |                                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -1734,48 +1489,31 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpMEcRsI/main.rs:1:285
+ --> /tmp/.tmp5kdS4V/main.rs:1:285
   |
 1 | ...geles" , "Chicago"]) ; { let orders = polars :: prelude :: DataFrame :: empty () . column ("order_id" , vec ! [101 , 102 , 103]) . col...
   |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpMEcRsI/main.rs:1:485
-  |
-1 | ...mount" , vec ! [99.99f64 , 149.99f64 , 79.99f64]) ; ; println ! ("Customers: {} rows" , customers . rows ()) ; println ! ("Orders: {} ...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
-error: aborting due to 2 previous errors; 1 warning emitted
+error: aborting due to 2 previous errors
 
 For more information about this error, try `rustc --explain E0433`.
 
 
 
 === ch18-00-dataframes-data-processing example 4 ===
-DEBUG: transpile_function called for function: conditional_processing
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpGgoJNQ/main.rs:1:41
+ --> /tmp/.tmplTv6IE/main.rs:1:41
   |
 1 | fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "cl...
   |                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpGgoJNQ/main.rs:1:195
-  |
-1 | ...]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_co...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpGgoJNQ/main.rs:1:379
+ --> /tmp/.tmplTv6IE/main.rs:1:377
   |
 1 | ...2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
   |                                                   ^^                                   ^^
@@ -1783,33 +1521,25 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
+1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
+1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error; 1 warning emitted
 
 For more information about this error, try `rustc --explain E0433`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpGgoJNQ/main.rs:1:41
+ --> /tmp/.tmplTv6IE/main.rs:1:41
   |
 1 | fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "cl...
   |                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-warning: unnecessary trailing semicolon
- --> /tmp/.tmpGgoJNQ/main.rs:1:195
-  |
-1 | ...]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_co...
-  |                                                        ^ help: remove this semicolon
-  |
-  = note: `#[warn(redundant_semicolons)]` on by default
-
 warning: unnecessary braces around block return value
- --> /tmp/.tmpGgoJNQ/main.rs:1:379
+ --> /tmp/.tmplTv6IE/main.rs:1:377
   |
 1 | ...2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
   |                                                   ^^                                   ^^
@@ -1817,11 +1547,11 @@ warning: unnecessary braces around block return value
   = note: `#[warn(unused_braces)]` on by default
 help: remove these braces
   |
-1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
+1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
+1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error: aborting due to 1 previous error; 1 warning emitted
 
 For more information about this error, try `rustc --explain E0433`.
 

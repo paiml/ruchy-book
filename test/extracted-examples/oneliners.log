@@ -1,26 +1,26 @@
 🧪 Ruchy One-Liner Test Results
-Generated: 2025-09-28T14:12:58.128Z
-Ruchy Version: ruchy 3.52.0
+Generated: 2025-10-01T06:35:03.452Z
+Ruchy Version: ruchy 3.62.9
 
 📊 Summary:
-Tests Passed: 9
-Tests Failed: 11
+Tests Passed: 12
+Tests Failed: 8
 Tests Planned: 12
-Success Rate: 45%
+Success Rate: 60%
 
 📝 Detailed Results:
 ✅ Simple addition - Basic Mathematics
 ❌ Percentage calculation - Basic Mathematics
 ✅ Compound interest - Basic Mathematics
-❌ Multi-step calculation - Basic Mathematics
+✅ Multi-step calculation - Basic Mathematics
 ✅ Greater than comparison - Boolean Logic
 ✅ Boolean AND operation - Boolean Logic
 ✅ Boolean OR operation - Boolean Logic
 ✅ Conditional expression - Boolean Logic
 ✅ String concatenation - String Operations
-❌ String with variables - String Operations
+✅ String with variables - String Operations
 ❌ Square root function - Mathematical Functions
-❌ Trigonometric sine - Mathematical Functions
+✅ Trigonometric sine - Mathematical Functions
 ❌ Physics: E=mc² - Real-World Calculations
 ❌ Electrical power P=VI - Real-World Calculations
 ❌ Investment return % - Real-World Calculations
