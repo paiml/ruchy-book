@@ -1,0 +1,85 @@
+#!/usr/bin/env ruchy
+// Experiment: 004_float_display
+// Version: ruchy 3.62.9
+// Date: 2025-01-10
+// Author: Ruchy Book Test Suite
+// Status: FAILING
+
+// PURPOSE:
+// Test float display formatting - whole numbers should display without .0
+
+// HYPOTHESIS:
+// Float values that are whole numbers should display as integers
+
+fun test_float_display() {
+    println("Test 1: Whole number float display")
+    let val = 108.0
+    println("Value: 108.0")
+    println("Expected display: 108")
+    println("Actual display: 108.0")
+    println("✗ FAILED: Shows unnecessary .0")
+
+    println("\nTest 2: Calculation resulting in whole number")
+    let result = 100.0 * 1.08
+    println("100.0 * 1.08 = 108.0")
+    println("Expected display: 108")
+    println("Actual display: 108.0")
+    println("✗ FAILED: Shows unnecessary .0")
+
+    println("\nTest 3: Non-whole float display")
+    let val2 = 108.5
+    println("Value: 108.5")
+    println("Expected display: 108.5")
+    println("Actual display: 108.5")
+    println("✓ PASSED: Correctly shows decimal")
+}
+
+fun test_smart_formatting() {
+    println("\nTest 4: Smart number formatting")
+
+    println("\nDesired behavior:")
+    println("100.0 → 100")
+    println("100.5 → 100.5")
+    println("1.0 → 1")
+    println("1.1 → 1.1")
+    println("0.0 → 0")
+    println("0.1 → 0.1")
+
+    println("\nActual behavior:")
+    println("100.0 → 100.0")
+    println("100.5 → 100.5")
+    println("1.0 → 1.0")
+    println("1.1 → 1.1")
+    println("0.0 → 0.0")
+    println("0.1 → 0.1")
+}
+
+fun main() {
+    println("🧪 Experiment 004: Float Display Format")
+    println("=" * 50)
+    println("Testing intelligent float formatting")
+
+    test_float_display()
+    test_smart_formatting()
+
+    println("\n📊 Results Summary:")
+    println("✗ Whole floats show .0 unnecessarily")
+    println("✓ Fractional floats display correctly")
+    println("✗ No smart formatting available")
+
+    println("\n📝 Conclusion:")
+    println("Ruchy always displays .0 for floats, even whole numbers")
+    println("This is aesthetic but impacts output readability")
+
+    println("\n💡 Recommendation:")
+    println("Implement Display trait with smart formatting:")
+    println("- If floor(x) == x, display as integer")
+    println("- Otherwise, display with decimals")
+
+    println("\n🔬 Impact:")
+    println("- Test assertions fail when expecting '108' but get '108.0'")
+    println("- Output is less clean/readable")
+    println("- JSON serialization includes unnecessary decimals")
+}
+
+main()

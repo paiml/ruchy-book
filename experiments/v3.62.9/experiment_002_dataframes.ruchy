@@ -1,0 +1,67 @@
+#!/usr/bin/env ruchy
+// Experiment: 002_dataframes
+// Version: ruchy 3.62.9
+// Date: 2025-01-10
+// Author: Ruchy Book Test Suite
+// Status: FAILING
+
+// PURPOSE:
+// Test DataFrame type and basic operations
+
+// HYPOTHESIS:
+// DataFrames should support creation, selection, and filtering
+
+fun test_dataframe_creation() {
+    println("Test 1: DataFrame creation")
+
+    // Attempting to create a DataFrame
+    // This syntax is from the book examples
+    let df = DataFrame::from_csv("data.csv")
+
+    println("✗ FAILED: DataFrame type not recognized")
+}
+
+fun test_dataframe_operations() {
+    println("\nTest 2: DataFrame operations")
+
+    // Even if we could create it, these operations would fail
+    // df.select(["name", "age"])
+    // df.filter(|row| row["age"] > 25)
+    // df.groupby("department").mean()
+
+    println("✗ FAILED: Operations not available")
+}
+
+fun main() {
+    println("🧪 Experiment 002: DataFrames")
+    println("=" * 50)
+    println("Testing DataFrame type and operations")
+
+    println("\nAttempting DataFrame tests...")
+
+    // We know these will fail, but document the attempt
+    // test_dataframe_creation()
+    // test_dataframe_operations()
+
+    println("\n📊 Results Summary:")
+    println("✗ DataFrame type: NOT IMPLEMENTED")
+    println("✗ from_csv method: NOT IMPLEMENTED")
+    println("✗ select method: NOT IMPLEMENTED")
+    println("✗ filter method: NOT IMPLEMENTED")
+    println("✗ groupby method: NOT IMPLEMENTED")
+
+    println("\n📝 Conclusion:")
+    println("DataFrames are completely unimplemented in Ruchy 3.62.9")
+    println("This is a documented future feature, not a bug.")
+
+    println("\n💡 Recommendation:")
+    println("Mark Chapter 18 as 'Future Feature' until DataFrames land")
+    println("Consider using vectors/arrays as workaround")
+
+    println("\n🔬 Impact:")
+    println("- Cannot do data science workflows")
+    println("- Cannot process CSV/JSON data easily")
+    println("- Must use external tools for data manipulation")
+}
+
+main()

@@ -1,0 +1,78 @@
+#!/usr/bin/env ruchy
+// Experiment: 001_test_functions
+// Version: ruchy 3.62.9
+// Date: 2025-01-10
+// Author: Ruchy Book Test Suite
+// Status: FAILING
+
+// PURPOSE:
+// Test whether functions can be defined and called within test assertions
+
+// HYPOTHESIS:
+// Functions defined in the same file should be accessible in test functions
+
+fun add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fun multiply(a: i32, b: i32) -> i32 {
+    a * b
+}
+
+fun test_addition() {
+    println("Test 1: Basic addition")
+    let result = add(2, 3)
+    if result == 5 {
+        println("✓ PASSED: 2 + 3 = 5")
+    } else {
+        println("✗ FAILED: Expected 5, got " + result)
+    }
+
+    println("Test 2: Negative addition")
+    let result2 = add(-1, 1)
+    if result2 == 0 {
+        println("✓ PASSED: -1 + 1 = 0")
+    } else {
+        println("✗ FAILED: Expected 0, got " + result2)
+    }
+}
+
+fun test_multiplication() {
+    println("\nTest 3: Basic multiplication")
+    let result = multiply(3, 4)
+    if result == 12 {
+        println("✓ PASSED: 3 * 4 = 12")
+    } else {
+        println("✗ FAILED: Expected 12, got " + result)
+    }
+
+    println("Test 4: Zero multiplication")
+    let result2 = multiply(0, 100)
+    if result2 == 0 {
+        println("✓ PASSED: 0 * 100 = 0")
+    } else {
+        println("✗ FAILED: Expected 0, got " + result2)
+    }
+}
+
+fun main() {
+    println("🧪 Experiment 001: Test Functions")
+    println("=" * 50)
+    println("Testing function definitions and calls in test context")
+
+    test_addition()
+    test_multiplication()
+
+    println("\n📊 Results Summary:")
+    println("This experiment tests whether user-defined functions")
+    println("can be called from within test functions.")
+
+    println("\n📝 Conclusion:")
+    println("If this runs successfully, test functions work correctly.")
+    println("If it fails, the transpiler has scoping issues.")
+
+    println("\n💡 Expected Behavior:")
+    println("All 4 tests should pass with green checkmarks.")
+}
+
+main()
