@@ -45,6 +45,11 @@ validation_commands:
     description: "Validate markdown quality"
     passing_criteria: "Zero warnings"
 
+  test_notebook:
+    command: "make test-notebook"
+    description: "Test all examples in Ruchy notebook"
+    passing_criteria: "100% pass rate via notebook API"
+
 sprints:
   # SPRINT 1: Foundation & Infrastructure (Current)
   - id: sprint-1
@@ -733,6 +738,296 @@ sprints:
           - "Complete system"
         estimated_examples: 25
         target_pass_rate: 1.00
+
+  # SPRINT 10-15: EXTREME TDD REFACTORING - Reality-Based Documentation Only
+  # Mission: Remove ALL vaporware, validate with 15 tools + notebook, file bugs
+
+  - id: sprint-10
+    name: "Refactoring Sprint 1: Foundation Chapters"
+    goal: "Achieve 100% validated examples in Ch01-03 with zero vaporware"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 9
+        status: "complete"
+    approach: "7-Layer Validation: Spec → Check → Compile → Run → 15-Tools → Notebook → Commit"
+    tickets:
+      - id: REFACTOR-001
+        title: "Ch01: Installation & Hello World - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 6
+          passing: 6
+          pass_rate: 1.00
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Audit for vaporware (coming soon, TODO, future)"
+          - "Cross-reference language spec"
+          - "Test with all 15 tools"
+          - "Test in notebook"
+          - "Remove any unimplemented feature references"
+        validation_stack:
+          layer_1_syntax: "ruchy check (100% required)"
+          layer_2_compile: "ruchy compile (100% required)"
+          layer_3_run: "ruchy run (100% required)"
+          layer_4_tools: "make dogfood-full (15 tools)"
+          layer_5_notebook: "make test-notebook (API execution)"
+          layer_6_spec: "grep language-spec.md (cross-reference)"
+          layer_7_integration: "deno task test-examples (full suite)"
+        acceptance:
+          - "Zero vaporware text (coming soon, TODO, etc.)"
+          - "100% examples compile"
+          - "100% examples run correctly"
+          - "100% pass blocking gates (6/15 tools)"
+          - "90%+ pass advisory gates (9/15 tools)"
+          - "100% work in notebook"
+          - "All features in language spec"
+          - "INTEGRATION.md updated"
+        bug_protocol:
+          - "File bug if spec says works but doesn't"
+          - "Use template in extreme-tdd-refactoring-plan.md"
+          - "Document in docs/bugs/refactoring-bugs.md"
+        deliverable: "Ch01 with 100% validation, zero vaporware"
+
+      - id: REFACTOR-002
+        title: "Ch02: Variables & Types - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 8
+          passing: 5
+          pass_rate: 0.625
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Fix 3 failing examples or remove if unimplemented"
+          - "Test all primitive types (i32, f64, bool, string)"
+          - "Test type inference"
+          - "Test mutable vs immutable"
+          - "Validate with 15 tools"
+          - "Test in notebook"
+        acceptance:
+          - "100% pass rate (8/8 or fewer if removed)"
+          - "All 15 tools pass"
+          - "Notebook execution works"
+          - "Zero vaporware"
+        expected_bugs: "Type system edge cases"
+        deliverable: "Ch02 with 100% validation"
+
+      - id: REFACTOR-003
+        title: "Ch03: Functions - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 9
+          passing: 8
+          pass_rate: 0.889
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Fix 1 failing example or remove"
+          - "Verify 'fun' keyword (NOT 'fn')"
+          - "Test parameter types"
+          - "Test return types"
+          - "Test lambdas"
+          - "Validate with 15 tools"
+          - "Test in notebook"
+        acceptance:
+          - "100% pass rate"
+          - "All 15 tools pass"
+          - "Notebook execution works"
+          - "fun keyword consistent"
+        expected_bugs: "Lambda syntax issues"
+        deliverable: "Ch03 with 100% validation"
+
+  - id: sprint-11
+    name: "Refactoring Sprint 2: Core Features"
+    goal: "Achieve 100% validated examples in Ch04-06"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 10
+        status: "complete"
+    tickets:
+      - id: REFACTOR-004
+        title: "Ch04: Practical Patterns - Reality Check"
+        priority: high
+        status: pending
+        requirements:
+          - "Audit all pattern examples"
+          - "Remove unimplemented patterns"
+          - "Validate with 15 tools + notebook"
+        acceptance:
+          - "100% pass rate"
+          - "Zero vaporware"
+
+      - id: REFACTOR-005
+        title: "Ch05: Control Flow - Reality Check"
+        priority: high
+        status: pending
+        current_state:
+          vaporware: "Has TODO/future references"
+        requirements:
+          - "Test if/else, match, for, while, loop"
+          - "Remove unimplemented control flow"
+          - "Validate pattern matching"
+        expected_bugs: "Pattern matching edge cases"
+        acceptance:
+          - "100% pass rate"
+          - "All control flow validated"
+
+      - id: REFACTOR-006
+        title: "Ch06: Data Structures - Reality Check"
+        priority: high
+        status: pending
+        current_state:
+          vaporware: "Has vaporware references"
+        requirements:
+          - "Test arrays, lists, tuples, structs"
+          - "Document only implemented structures"
+          - "Remove collection methods that don't exist"
+        expected_bugs: "Collection method availability"
+        acceptance:
+          - "100% pass rate"
+          - "Only working data structures documented"
+
+  - id: sprint-12
+    name: "Refactoring Sprint 3: Advanced Features Part 1"
+    goal: "Achieve 100% validated examples in Ch10, Ch14-17"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 11
+        status: "complete"
+    tickets:
+      - id: REFACTOR-007
+        title: "Ch10: Input/Output - Reality Check"
+        current_state:
+          vaporware: "Has TODO comments"
+
+      - id: REFACTOR-008
+        title: "Ch14: Toolchain Mastery - Reality Check"
+        requirements:
+          - "Document all 15 tools comprehensively"
+
+      - id: REFACTOR-009
+        title: "Ch15: Binary Compilation - Reality Check"
+
+      - id: REFACTOR-010
+        title: "Ch16: Testing & QA - Reality Check"
+
+      - id: REFACTOR-011
+        title: "Ch17: Error Handling - Reality Check"
+
+  - id: sprint-13
+    name: "Refactoring Sprint 4: Advanced Features Part 2"
+    goal: "Achieve 100% validated examples in Ch18-19, Ch21-23"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 12
+        status: "complete"
+    tickets:
+      - id: REFACTOR-012
+        title: "Ch18: DataFrames - Reality Check"
+        current_state:
+          vaporware: "May have incomplete features"
+
+      - id: REFACTOR-013
+        title: "Ch19: Structs & OOP - Reality Check"
+
+      - id: REFACTOR-014
+        title: "Ch21: Professional Tooling - Reality Check"
+
+      - id: REFACTOR-015
+        title: "Ch22: Compiler Development - Reality Check"
+
+      - id: REFACTOR-016
+        title: "Ch23: REPL & Object Inspection - Reality Check"
+
+  - id: sprint-14
+    name: "Refactoring Sprint 5: Notebook Integration Complete"
+    goal: "Ensure ALL examples work in notebook"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 13
+        status: "complete"
+    tickets:
+      - id: NOTEBOOK-001
+        title: "Create notebook test script"
+        requirements:
+          - "Deno script to test via notebook API"
+          - "Start/stop notebook server"
+          - "Execute all examples"
+          - "Validate outputs"
+        deliverable: "scripts/test-in-notebook.ts"
+
+      - id: NOTEBOOK-002
+        title: "Add notebook testing to Makefile"
+        requirements:
+          - "make test-notebook target"
+          - "Start notebook on port 8765"
+          - "Run all examples"
+          - "Kill server after"
+        deliverable: "Makefile test-notebook target"
+
+      - id: NOTEBOOK-003
+        title: "Add notebook tests to CI/CD"
+        requirements:
+          - "GitHub Actions workflow"
+          - "Run notebook tests on every push"
+          - "Fail if any example fails in notebook"
+
+      - id: NOTEBOOK-004
+        title: "Validate all 500 examples in notebook"
+        requirements:
+          - "Run make test-notebook"
+          - "Achieve 100% pass rate"
+          - "Document any notebook-specific issues"
+
+  - id: sprint-15
+    name: "Refactoring Sprint 6: Final Validation & Polish"
+    goal: "Complete refactoring with zero defects"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 14
+        status: "complete"
+    tickets:
+      - id: FINAL-001
+        title: "Complete bug triage"
+        requirements:
+          - "Review all filed bugs"
+          - "Work with Ruchy team on fixes"
+          - "Document workarounds"
+          - "Update book as fixes land"
+
+      - id: FINAL-002
+        title: "Comprehensive validation"
+        requirements:
+          - "Run make dogfood-full on all chapters"
+          - "Run make test-notebook on all chapters"
+          - "Verify zero vaporware"
+          - "Verify zero SATD comments"
+
+      - id: FINAL-003
+        title: "Update INTEGRATION.md"
+        requirements:
+          - "Final pass rates documented"
+          - "All tool results recorded"
+          - "Notebook results recorded"
+          - "Bug summary included"
+
+      - id: FINAL-004
+        title: "Documentation polish"
+        requirements:
+          - "Fix any broken links"
+          - "Ensure consistent formatting"
+          - "Verify all cross-references"
+          - "Update README with final stats"
 
 quality_gates:
   mandatory:
