@@ -1,6 +1,6 @@
 # Five-Whys Analysis: Ruchy Capability Gap
 **Date**: 2025-08-24  
-**Version**: Ruchy v3.38.0  
+**Version**: Ruchy v3.67.0  
 **Purpose**: Understand true language capability vs book complexity requirements
 
 ## Executive Summary
@@ -67,9 +67,9 @@ Why does the Ruchy book show only 19% success rate when other metrics indicate h
 - Functions with parameters/returns
 - Control flow (if/else, loops, match)
 - Basic I/O operations
-- String manipulation (new in v3.38.0)
-- Pipeline operator (new in v3.38.0)
-- Import/export (new in v3.38.0)
+- String manipulation (new in v3.67.0)
+- Pipeline operator (new in v3.67.0)
+- Import/export (new in v3.67.0)
 
 ✅ **Professional Development** (88% ecosystem):
 - Linting

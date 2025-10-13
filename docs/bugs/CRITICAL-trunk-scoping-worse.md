@@ -1,15 +1,15 @@
-# 🚨 CRITICAL: Variable Scoping Bug WORSENED in Trunk (v3.45.0+)
+# 🚨 CRITICAL: Variable Scoping Bug WORSENED in Trunk (v3.67.0+)
 
 **Date**: 2025-09-24
 **Trunk Commit**: 7380d538 [P0-FIX] Fix #10: Preserve test attributes during compilation
 **Version**: 3.45.0 (trunk)
-**Severity**: 🔴🔴 CRITICAL - Even worse than released v3.45.0
+**Severity**: 🔴🔴 CRITICAL - Even worse than released v3.67.0
 
 ## Executive Summary
 
-The variable scoping bug in v3.45.0 has **gotten WORSE** in trunk. Now even function-wrapped code has incorrect scoping due to excessive block nesting. The transpiler is generating deeply nested blocks that trap variables in inaccessible scopes.
+The variable scoping bug in v3.67.0 has **gotten WORSE** in trunk. Now even function-wrapped code has incorrect scoping due to excessive block nesting. The transpiler is generating deeply nested blocks that trap variables in inaccessible scopes.
 
-## Comparison: Released v3.45.0 vs Trunk
+## Comparison: Released v3.67.0 vs Trunk
 
 ### Test Case
 ```ruchy
@@ -20,7 +20,7 @@ fun main() {
 }
 ```
 
-### Released v3.45.0
+### Released v3.67.0
 - **Status**: ✅ This worked in functions (only top-level was broken)
 
 ### Trunk (Current)
@@ -84,7 +84,7 @@ echo 'fun main() { let x = 42; let y = x * 2; println(y) }' > test.ruchy
 ## Impact
 
 This is **WORSE** than the released version:
-- Released v3.45.0: Function-wrapped code worked, only top-level failed
+- Released v3.67.0: Function-wrapped code worked, only top-level failed
 - Trunk: BOTH function-wrapped AND top-level code fail
 
 This means:
