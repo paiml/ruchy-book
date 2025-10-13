@@ -1,231 +1,201 @@
-=== ch16-00-testing-quality-assurance example 5 ===
+=== ch04-00-practical-patterns-tdd example 6 ===
+✗ Compilation failed: Failed to parse Ruchy source
+Error: Failed to parse Ruchy source
+
+Caused by:
+    Expected RightBrace, found Let
+
+
+=== ch04-00-practical-patterns-tdd example 10 ===
+
+thread 'main' (4032275) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.75.0/src/backend/transpiler/expressions.rs:40:18:
+internal error: entered unreachable code
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+=== ch03-00-functions-tdd example 10 ===
 ✗ Compilation failed: Compilation failed:
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:36
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpXHKp4w/main.rs:1:659
   |
-1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
-  |                                    ^^^ not found in this scope
+1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (2.add(3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+  = help: you might be missing a crate named `polars`
 
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:94
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:24
   |
-1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
-  |                                                                                              ^^^ not found in this scope
-  |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! ((- 1).add(1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                        ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:163
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:38
   |
-1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
-  |                                                         ^^^ not found in this scope
-  |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (0.add(0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:287
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:379
   |
-1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row ...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:357
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:411
   |
-1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . un...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:433
+error[E0282]: type annotations needed
+ --> /tmp/.tmpXHKp4w/main.rs:1:453
   |
-1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ... -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > ...
+  |                                                  ^^^   --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . sort_by ("revenue_sum" , { let mut map : std :: collections :: BTreeMap < String , String > = std :: collections :: BTreeMap :: new () ; map . insert ("descending" . to_string () , (true) . to_string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row: /* Type */ | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > threshold) . collect () . expect ("DataFrame lazy operation collection should not fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let top_items = filter_high_value (analysis , 10000f64) ; println ! ("Found {} high-value items" , top_items . rows ()) } } }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ++++++++++++
 
 error: aborting due to 6 previous errors
 
-For more information about this error, try `rustc --explain E0425`.
+Some errors have detailed explanations: E0282, E0412, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:36
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpXHKp4w/main.rs:1:659
   |
-1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
-  |                                    ^^^ not found in this scope
+1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (2.add(3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+  = help: you might be missing a crate named `polars`
 
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:94
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:24
   |
-1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
-  |                                                                                              ^^^ not found in this scope
-  |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! ((- 1).add(1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                        ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:163
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:38
   |
-1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
-  |                                                         ^^^ not found in this scope
-  |
-help: use the `.` operator to call the method `Add::add` on `{integer}`
-  |
-1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (0.add(0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
-  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
+  |                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:287
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:379
   |
-1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row ...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:357
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpXHKp4w/main.rs:1:411
   |
-1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . un...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmpRJeZlO/main.rs:1:433
+error[E0282]: type annotations needed
+ --> /tmp/.tmpXHKp4w/main.rs:1:453
   |
-1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | ... -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > ...
+  |                                                  ^^^   --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . sort_by ("revenue_sum" , { let mut map : std :: collections :: BTreeMap < String , String > = std :: collections :: BTreeMap :: new () ; map . insert ("descending" . to_string () , (true) . to_string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row: /* Type */ | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > threshold) . collect () . expect ("DataFrame lazy operation collection should not fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let top_items = filter_high_value (analysis , 10000f64) ; println ! ("Found {} high-value items" , top_items . rows ()) } } }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ++++++++++++
 
 error: aborting due to 6 previous errors
 
-For more information about this error, try `rustc --explain E0425`.
+Some errors have detailed explanations: E0282, E0412, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 
 
-=== ch16-00-testing-quality-assurance example 6 ===
+=== ch03-00-functions-tdd example 11 ===
 ✗ Compilation failed: Compilation failed:
-error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpMaBFoA/main.rs:1:152
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:28
   |
-1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; let end_time = get_time_ms () ; asse...
-  |                                                     ^^^^^^^^^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                            ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpMaBFoA/main.rs:1:216
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:42
   |
-1 | ...; { let result = fibonacci (20) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765...
-  |                                                     ^^^^^^^^^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                                          ^^^^^^^^^ not found in this scope
 
-error: aborting due to 2 previous errors
-
-For more information about this error, try `rustc --explain E0425`.
-
-Error: Compilation failed:
-error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpMaBFoA/main.rs:1:152
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:392
   |
-1 | ...st_fibonacci_performance () { { let start_time = get_time_ms () ; { let result = fibonacci (20) ; let end_time = get_time_ms () ; asse...
-  |                                                     ^^^^^^^^^^^ not found in this scope
-
-error[E0425]: cannot find function `get_time_ms` in this scope
- --> /tmp/.tmpMaBFoA/main.rs:1:216
-  |
-1 | ...; { let result = fibonacci (20) ; let end_time = get_time_ms () ; assert_eq ! (result , 6765 , "{}" , "Fibonacci(20) should equal 6765...
-  |                                                     ^^^^^^^^^^^ not found in this scope
-
-error: aborting due to 2 previous errors
-
-For more information about this error, try `rustc --explain E0425`.
-
-
-
-=== ch16-00-testing-quality-assurance example 7 ===
-✗ Compilation failed: Compilation failed:
-error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:325
-  |
-1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
-  |                                                        ^^^^^^ not found in this scope
-
-error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:334
-  |
-1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
-  |                                                       ^^^^^^^^ not found in this scope
-
-error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:395
-  |
-1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
+1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
   |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:44
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:406
   |
-1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
-  |                                            ^^^^^^^^^^^^ not found in this scope
+1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:82
+error[E0282]: type annotations needed
+ --> /tmp/.tmpJpzILa/main.rs:1:90
   |
-1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
-  |                                                                                  ^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                                                                                          ^^^      --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row: /* Type */ | { (row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) - row . get ("cost") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) / row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quantity" , "sum") . agg ("revenue" , "mean") . agg ("margin" , "mean") } fn main () { }
+  |                                                                                             ++++++++++++
 
 error: aborting due to 5 previous errors
 
-For more information about this error, try `rustc --explain E0425`.
+Some errors have detailed explanations: E0282, E0412.
+For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
-error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:325
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:28
   |
-1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
-  |                                                        ^^^^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                            ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:334
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:42
   |
-1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
-  |                                                       ^^^^^^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                                          ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:395
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:392
   |
-1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
+1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
   |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:44
+error[E0412]: cannot find type `DataFrame` in this scope
+ --> /tmp/.tmpJpzILa/main.rs:1:406
   |
-1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
-  |                                            ^^^^^^^^^^^^ not found in this scope
+1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
+  |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmpsAyuLE/main.rs:1:82
+error[E0282]: type annotations needed
+ --> /tmp/.tmpJpzILa/main.rs:1:90
   |
-1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
-  |                                                                                  ^^^ not found in this scope
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
+  |                                                                                          ^^^      --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row: /* Type */ | { (row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) - row . get ("cost") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) / row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quantity" , "sum") . agg ("revenue" , "mean") . agg ("margin" , "mean") } fn main () { }
+  |                                                                                             ++++++++++++
 
 error: aborting due to 5 previous errors
 
-For more information about this error, try `rustc --explain E0425`.
+Some errors have detailed explanations: E0282, E0412.
+For more information about an error, try `rustc --explain E0282`.
 
 
 
@@ -237,31 +207,23 @@ Caused by:
     Expected RightBrace, found If
 
 
-=== ch15-00-binary-compilation-deployment example 3 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
-
-Caused by:
-    Expected RightBrace, found Let
-
-
 === ch15-00-binary-compilation-deployment example 4 ===
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxhzTEG/main.rs:1:301
+ --> /tmp/.tmplWjxrB/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
-1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } }  } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmpxhzTEG/main.rs:1:322
+ --> /tmp/.tmplWjxrB/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
@@ -272,7 +234,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmpxhzTEG/main.rs:1:334
+ --> /tmp/.tmplWjxrB/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
@@ -283,17 +245,17 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                  +++
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:491
+ --> /tmp/.tmplWjxrB/main.rs:1:491
   |
 1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
   |                                                         ----^
   |                                                         |
   |                                                         help: remove this `mut`
   |
-  = note: `#[warn(unused_mut)]` on by default
+  = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:569
+ --> /tmp/.tmplWjxrB/main.rs:1:569
   |
 1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
   |                                                         ----^
@@ -301,7 +263,7 @@ warning: variable does not need to be mutable
   |                                                         help: remove this `mut`
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:586
+ --> /tmp/.tmplWjxrB/main.rs:1:586
   |
 1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |                                                         ----^
@@ -314,20 +276,20 @@ For more information about this error, try `rustc --explain E0384`.
 
 Error: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxhzTEG/main.rs:1:301
+ --> /tmp/.tmplWjxrB/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
-1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
+1 + fn factorial (n : i32) -> i64 { if n <= 1 { 1 } else { (n as i64) * factorial (n - 1) } } fn integer_sqrt (n : i32) -> i32 { if n < 2 { return n } ; let mut x = n / 2 ; let mut prev = 0 ; while x != prev { { prev = x ; x = (x + n / x) / 2 } } ; x } fn gcd (a : i32 , b : i32) -> i32 { while b != 0 { { let temp = b ; { b = a % b ; a = temp } }  } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n = 10 ; { println ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmpxhzTEG/main.rs:1:322
+ --> /tmp/.tmplWjxrB/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
@@ -338,7 +300,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmpxhzTEG/main.rs:1:334
+ --> /tmp/.tmplWjxrB/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
@@ -349,17 +311,17 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                  +++
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:491
+ --> /tmp/.tmplWjxrB/main.rs:1:491
   |
 1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
   |                                                         ----^
   |                                                         |
   |                                                         help: remove this `mut`
   |
-  = note: `#[warn(unused_mut)]` on by default
+  = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:569
+ --> /tmp/.tmplWjxrB/main.rs:1:569
   |
 1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
   |                                                         ----^
@@ -367,7 +329,7 @@ warning: variable does not need to be mutable
   |                                                         help: remove this `mut`
 
 warning: variable does not need to be mutable
- --> /tmp/.tmpxhzTEG/main.rs:1:586
+ --> /tmp/.tmplWjxrB/main.rs:1:586
   |
 1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |                                                         ----^
@@ -380,173 +342,227 @@ For more information about this error, try `rustc --explain E0384`.
 
 
 
-=== ch03-00-functions-tdd example 10 ===
+=== ch16-00-testing-quality-assurance example 5 ===
 ✗ Compilation failed: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpnyrJjd/main.rs:1:652
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:36
   |
-1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
+  |                                    ^^^ not found in this scope
   |
-  = help: you might be missing a crate named `polars`
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (2.add(3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:24
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:94
   |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                        ^^^^^^^^^ not found in this scope
+1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
+  |                                                                                              ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! ((- 1).add(1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:38
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:163
   |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                                      ^^^^^^^^^ not found in this scope
+1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
+  |                                                         ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (0.add(0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:377
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:287
   |
-1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get...
+1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:357
+  |
+1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:433
+  |
+1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+Error: Compilation failed:
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:36
+  |
+1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
+  |                                    ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (2.add(3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:94
+  |
+1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
+  |                                                                                              ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! ((- 1).add(1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `add` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:163
+  |
+1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
+  |                                                         ^^^ not found in this scope
+  |
+help: use the `.` operator to call the method `Add::add` on `{integer}`
+  |
+1 - fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+1 + fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative numbers") ; assert_eq ! (0.add(0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication tests pass") ; } fn run_all_tests () { test_addition () ; test_multiplication () ; println ! ("🎉 Calculator test suite complete!") ; } fn main () { run_all_tests () }
+  |
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:287
+  |
+1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:357
+  |
+1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `multiply` in this scope
+ --> /tmp/.tmpYuVjWC/main.rs:1:433
+  |
+1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error: aborting due to 6 previous errors
+
+For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch16-00-testing-quality-assurance example 7 ===
+✗ Compilation failed: Compilation failed:
+error[E0425]: cannot find value `actual` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:325
+  |
+1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
+  |                                                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `expected` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:334
+  |
+1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
+  |                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find value `condition` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:395
+  |
+1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:409
+error[E0425]: cannot find function `create_range` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:44
   |
-1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get ("value") . cloned () . unwrap_...
-  |                                                      ^^^^^^^^^ not found in this scope
+1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
+  |                                            ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `len` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:82
+  |
+1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
+  |                                                                                  ^^^ not found in this scope
 
 error: aborting due to 5 previous errors
 
-Some errors have detailed explanations: E0412, E0433.
-For more information about an error, try `rustc --explain E0412`.
+For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpnyrJjd/main.rs:1:652
+error[E0425]: cannot find value `actual` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:325
   |
-1 | ...t fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") ....
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
+1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
+  |                                                        ^^^^^^ not found in this scope
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:24
+error[E0425]: cannot find value `expected` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:334
   |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                        ^^^^^^^^^ not found in this scope
+1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
+  |                                                       ^^^^^^^^ not found in this scope
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:38
+error[E0425]: cannot find value `condition` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:395
   |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                                      ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:377
-  |
-1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get...
+1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpnyrJjd/main.rs:1:409
+error[E0425]: cannot find function `create_range` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:44
   |
-1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (| row | row . get ("value") . cloned () . unwrap_...
-  |                                                      ^^^^^^^^^ not found in this scope
+1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
+  |                                            ^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find function `len` in this scope
+ --> /tmp/.tmpAkArWG/main.rs:1:82
+  |
+1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
+  |                                                                                  ^^^ not found in this scope
 
 error: aborting due to 5 previous errors
 
-Some errors have detailed explanations: E0412, E0433.
-For more information about an error, try `rustc --explain E0412`.
-
-
-
-=== ch03-00-functions-tdd example 11 ===
-✗ Compilation failed: Compilation failed:
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:28
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
-  |                            ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:42
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
-  |                                          ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:387
-  |
-1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
-  |                                                      ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:401
-  |
-1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
-  |                                                      ^^^^^^^^^ not found in this scope
-
-error: aborting due to 4 previous errors
-
-For more information about this error, try `rustc --explain E0412`.
-
-Error: Compilation failed:
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:28
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
-  |                            ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:42
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , | row | { (row . get ("revenue") . cloned () . unwrap_o...
-  |                                          ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:387
-  |
-1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
-  |                                                      ^^^^^^^^^ not found in this scope
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpAHXeTs/main.rs:1:401
-  |
-1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
-  |                                                      ^^^^^^^^^ not found in this scope
-
-error: aborting due to 4 previous errors
-
-For more information about this error, try `rustc --explain E0412`.
+For more information about this error, try `rustc --explain E0425`.
 
 
 
 === ch17-00-error-handling-robustness example 3 ===
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpZBtN2F/main.rs:1:582
+ --> /tmp/.tmpzoNVib/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
-1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1  ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
   |
 
 warning: unreachable expression
- --> /tmp/.tmpZBtN2F/main.rs:1:595
+ --> /tmp/.tmpzoNVib/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
   |                                   |
   |                                   any code following this expression is unreachable
   |
-  = note: `#[warn(unreachable_code)]` on by default
+  = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmpZBtN2F/main.rs:1:570
+ --> /tmp/.tmpzoNVib/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -560,30 +576,30 @@ For more information about this error, try `rustc --explain E0317`.
 
 Error: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmpZBtN2F/main.rs:1:582
+ --> /tmp/.tmpzoNVib/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
-1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1 ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
+1 + fn safe_sqrt (x : f64) -> f64 { if x < 0f64 { println ! ("Error: Cannot compute square root of negative number") ; return 0f64 } ; let mut guess = x / 2f64 ; let mut i = 0 ; while i < 10 { { if guess * guess > x - 0.01f64 && guess * guess < x + 0.01f64 { return guess } ; guess = (guess + x / guess) / 2f64 ; i = i + 1 } } ; guess } fn safe_factorial (n : i32) -> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { return 1  ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { let sqrt2 = safe_sqrt (- 4f64) ; let fact1 = safe_factorial (5) ; let fact2 = safe_factorial (- 3) ; let fact3 = safe_factorial (25) ; println ! ("{} {:?} {:?}" , "Square roots: {:.2}, {:.2}" , sqrt1 , sqrt2) ; println ! ("Factorials: {}, {}, {}" , fact1 , fact2 , fact3) } } }
   |
 
 warning: unreachable expression
- --> /tmp/.tmpZBtN2F/main.rs:1:595
+ --> /tmp/.tmpzoNVib/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
   |                                   |
   |                                   any code following this expression is unreachable
   |
-  = note: `#[warn(unreachable_code)]` on by default
+  = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmpZBtN2F/main.rs:1:570
+ --> /tmp/.tmpzoNVib/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -597,197 +613,47 @@ For more information about this error, try `rustc --explain E0317`.
 
 
 
-=== ch17-00-error-handling-robustness example 4 ===
-✗ Compilation failed: Compilation failed:
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:583
-  |
-1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_acce...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:625
-  |
-1 | ...y_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximu...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:669
-  |
-1 | ...access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, ...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:715
-  |
-1 | ...cess (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximu...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:290
-  |
-1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; l...
-  |                                                   ^^^^^^^^^^^^^^^^^  -------------------
-
-error: aborting due to 4 previous errors
-
-For more information about this error, try `rustc --explain E0308`.
-
-Error: Compilation failed:
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:583
-  |
-1 | ...25 , 5 , 30 , 15] ; { let val1 = safe_array_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_acce...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:625
-  |
-1 | ...y_access (data , 2) ; let val2 = safe_array_access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximu...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:669
-  |
-1 | ...access (data , - 1) ; let val3 = safe_array_access (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, ...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:4
-  |
-1 | fn safe_array_access (arr : [i32 ; 5] , index : i32) -> i32 { if index < 0 { println ! ("Error: Array index cannot be negative") ; return...
-  |    ^^^^^^^^^^^^^^^^^  ---------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpeyH2t0/main.rs:1:715
-  |
-1 | ...cess (data , 10) ; let maximum = find_maximum_safe (data) ; println ! ("Values: {}, {}, {}" , val1 , val2 , val3) ; println ! ("Maximu...
-  |                                     -----------------  ^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpeyH2t0/main.rs:1:290
-  |
-1 | ...arr [4 as usize] } ; arr [index as usize] } fn find_maximum_safe (numbers : [i32 ; 5]) -> i32 { let mut max = numbers [0 as usize] ; l...
-  |                                                   ^^^^^^^^^^^^^^^^^  -------------------
-
-error: aborting due to 4 previous errors
-
-For more information about this error, try `rustc --explain E0308`.
-
-
-
-=== ch17-00-error-handling-robustness example 7 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
-
-Caused by:
-    Expected RightBrace, found If
-
-
 === ch17-00-error-handling-robustness example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
 
-Caused by:
-    Expected RightBrace, found Let
+thread 'main' (4049009) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.75.0/src/backend/transpiler/expressions.rs:40:18:
+internal error: entered unreachable code
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 
 === ch17-00-error-handling-robustness example 9 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:105
+ --> /tmp/.tmpynAfTk/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:263
+ --> /tmp/.tmpynAfTk/main.rs:1:263
   |
 1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:429
+ --> /tmp/.tmpynAfTk/main.rs:1:429
   |
 1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:674
+ --> /tmp/.tmpynAfTk/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:812
+ --> /tmp/.tmpynAfTk/main.rs:1:812
   |
 1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:962
+ --> /tmp/.tmpynAfTk/main.rs:1:962
   |
 1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
@@ -798,37 +664,37 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:105
+ --> /tmp/.tmpynAfTk/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:263
+ --> /tmp/.tmpynAfTk/main.rs:1:263
   |
 1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:429
+ --> /tmp/.tmpynAfTk/main.rs:1:429
   |
 1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:674
+ --> /tmp/.tmpynAfTk/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:812
+ --> /tmp/.tmpynAfTk/main.rs:1:812
   |
 1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpLBUcvw/main.rs:1:962
+ --> /tmp/.tmpynAfTk/main.rs:1:962
   |
 1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
@@ -836,42 +702,438 @@ error[E0425]: cannot find function `validate_age` in this scope
 error: aborting due to 6 previous errors
 
 For more information about this error, try `rustc --explain E0425`.
+
+
+
+=== ch18-00-dataframes-data-processing example 1 ===
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:42
+  |
+1 | fn create_dataframe () -> i32 { let df = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("employee_id" ...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:88
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("employee_id" , vec ! [101 , 102 , 103 , 104]) , polars :: p...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:173
+  |
+1 | ...d" , vec ! [101 , 102 , 103 , 104]) , polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie" , "Diana"]) , po...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:267
+  |
+1 | ...ce" , "Bob" , "Charlie" , "Diana"]) , polars :: prelude :: Series :: new ("department" , vec ! ["Engineering" , "Sales" , "Engineering...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:376
+  |
+1 | ... , "Sales" , "Engineering" , "HR"]) , polars :: prelude :: Series :: new ("salary" , vec ! [95000 , 75000 , 105000 , 65000])]) . expec...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+Error: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:42
+  |
+1 | fn create_dataframe () -> i32 { let df = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("employee_id" ...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:88
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("employee_id" , vec ! [101 , 102 , 103 , 104]) , polars :: p...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:173
+  |
+1 | ...d" , vec ! [101 , 102 , 103 , 104]) , polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie" , "Diana"]) , po...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:267
+  |
+1 | ...ce" , "Bob" , "Charlie" , "Diana"]) , polars :: prelude :: Series :: new ("department" , vec ! ["Engineering" , "Sales" , "Engineering...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpAuOxxJ/main.rs:1:376
+  |
+1 | ... , "Sales" , "Engineering" , "HR"]) , polars :: prelude :: Series :: new ("salary" , vec ! [95000 , 75000 , 105000 , 65000])]) . expec...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 5 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+
+
+=== ch18-00-dataframes-data-processing example 2 ===
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:28
+  |
+1 | fn main () { { let sales = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("product" , vec ! ["Widget" ...
+  |                            ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:74
+  |
+1 | fn main () { { let sales = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("product" , vec ! ["Widget" ...
+  |                                                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:163
+  |
+1 | ... ! ["Widget" , "Gadget" , "Gizmo"]) , polars :: prelude :: Series :: new ("quantity" , vec ! [100 , 150 , 200]) , polars :: prelude ::...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:239
+  |
+1 | ...uantity" , vec ! [100 , 150 , 200]) , polars :: prelude :: Series :: new ("revenue" , vec ! [999f64 , 1499f64 , 1999f64])]) . expect (...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+Error: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:28
+  |
+1 | fn main () { { let sales = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("product" , vec ! ["Widget" ...
+  |                            ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:74
+  |
+1 | fn main () { { let sales = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("product" , vec ! ["Widget" ...
+  |                                                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:163
+  |
+1 | ... ! ["Widget" , "Gadget" , "Gizmo"]) , polars :: prelude :: Series :: new ("quantity" , vec ! [100 , 150 , 200]) , polars :: prelude ::...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpCXk6uV/main.rs:1:239
+  |
+1 | ...uantity" , vec ! [100 , 150 , 200]) , polars :: prelude :: Series :: new ("revenue" , vec ! [999f64 , 1499f64 , 1999f64])]) . expect (...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+
+
+=== ch18-00-dataframes-data-processing example 3 ===
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:64
+  |
+1 | fn work_with_multiple_dataframes () -> i32 { { let customers = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series ...
+  |                                                                ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:110
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 3]) , polars :: prelude :: Se...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:183
+  |
+1 | ...("customer_id" , vec ! [1 , 2 , 3]) , polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie"]) , polars :: pr...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:267
+  |
+1 | ...ec ! ["Alice" , "Bob" , "Charlie"]) , polars :: prelude :: Series :: new ("city" , vec ! ["New York" , "Los Angeles" , "Chicago"])]) ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:432
+  |
+1 | ...Frame from columns") ; { let orders = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("order_id" , v...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:478
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("order_id" , vec ! [101 , 102 , 103]) , polars :: prelude ::...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:554
+  |
+1 | ...rder_id" , vec ! [101 , 102 , 103]) , polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 1]) , polars :: prelude :: Se...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:627
+  |
+1 | ...("customer_id" , vec ! [1 , 2 , 1]) , polars :: prelude :: Series :: new ("amount" , vec ! [99.99f64 , 149.99f64 , 79.99f64])]) . expe...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+Error: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:64
+  |
+1 | fn work_with_multiple_dataframes () -> i32 { { let customers = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series ...
+  |                                                                ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:110
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 3]) , polars :: prelude :: Se...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:183
+  |
+1 | ...("customer_id" , vec ! [1 , 2 , 3]) , polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie"]) , polars :: pr...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:267
+  |
+1 | ...ec ! ["Alice" , "Bob" , "Charlie"]) , polars :: prelude :: Series :: new ("city" , vec ! ["New York" , "Los Angeles" , "Chicago"])]) ....
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:432
+  |
+1 | ...Frame from columns") ; { let orders = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("order_id" , v...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:478
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("order_id" , vec ! [101 , 102 , 103]) , polars :: prelude ::...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:554
+  |
+1 | ...rder_id" , vec ! [101 , 102 , 103]) , polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 1]) , polars :: prelude :: Se...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpKsTUQu/main.rs:1:627
+  |
+1 | ...("customer_id" , vec ! [1 , 2 , 1]) , polars :: prelude :: Series :: new ("amount" , vec ! [99.99f64 , 149.99f64 , 79.99f64])]) . expe...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 8 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+
+
+=== ch18-00-dataframes-data-processing example 4 ===
+✗ Compilation failed: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:48
+  |
+1 | fn conditional_processing () -> i32 { let df = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("status"...
+  |                                                ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:94
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("status" , vec ! ["active" , "pending" , "closed"]) , polars...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:184
+  |
+1 | ... ["active" , "pending" , "closed"]) , polars :: prelude :: Series :: new ("value" , vec ! [1000 , 500 , 1500])]) . expect ("Failed to ...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
+
+Error: Compilation failed:
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:48
+  |
+1 | fn conditional_processing () -> i32 { let df = polars :: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("status"...
+  |                                                ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:94
+  |
+1 | ...: prelude :: DataFrame :: new (vec ! [polars :: prelude :: Series :: new ("status" , vec ! ["active" , "pending" , "closed"]) , polars...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
+ --> /tmp/.tmpYApkM1/main.rs:1:184
+  |
+1 | ... ["active" , "pending" , "closed"]) , polars :: prelude :: Series :: new ("value" , vec ! [1000 , 500 , 1500])]) . expect ("Failed to ...
+  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
+  |
+  = help: you might be missing a crate named `polars`
+
+error: aborting due to 3 previous errors
+
+For more information about this error, try `rustc --explain E0433`.
 
 
 
 === ch05-00-control-flow-tdd example 15 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp5avyFs/main.rs:1:23
+ --> /tmp/.tmpHhOzHY/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-error: aborting due to 1 previous error
+error[E0282]: type annotations needed
+ --> /tmp/.tmpHhOzHY/main.rs:1:242
+  |
+1 | ...high_value = df . lazy () . filter (move | row | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))...
+  |                                               ^^^        --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; if df . height () > 0 { { let high_value = df . lazy () . filter (move | row: /* Type */ | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > 1000 { row . get ("status") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) == "active" } else { false } }) . collect () . expect ("DataFrame lazy operation collection should not fail") ; println ! ("Found {} high-value active sales" , high_value . rows ()) } } else { println ! ("No data to process") } ; }
+  |                                                                                                                                                                                                                                                     ++++++++++++
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp5avyFs/main.rs:1:23
+ --> /tmp/.tmpHhOzHY/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
   |
   = help: you might be missing a crate named `polars`
 
-error: aborting due to 1 previous error
+error[E0282]: type annotations needed
+ --> /tmp/.tmpHhOzHY/main.rs:1:242
+  |
+1 | ...high_value = df . lazy () . filter (move | row | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))...
+  |                                               ^^^        --- type must be known at this point
+  |
+help: consider giving this closure parameter an explicit type
+  |
+1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; if df . height () > 0 { { let high_value = df . lazy () . filter (move | row: /* Type */ | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > 1000 { row . get ("status") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) == "active" } else { false } }) . collect () . expect ("DataFrame lazy operation collection should not fail") ; println ! ("Found {} high-value active sales" , high_value . rows ()) } } else { println ! ("No data to process") } ; }
+  |                                                                                                                                                                                                                                                     ++++++++++++
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 
 
 === ch05-00-control-flow-tdd example 16 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpxFlrYc/main.rs:1:23
+ --> /tmp/.tmpmZMUT9/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -879,20 +1141,20 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxFlrYc/main.rs:1:204
+ --> /tmp/.tmpmZMUT9/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) }  } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxFlrYc/main.rs:1:642
+ --> /tmp/.tmpmZMUT9/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
@@ -900,16 +1162,23 @@ warning: unnecessary braces around block return value
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value }  } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error[E0282]: type annotations needed
+ --> /tmp/.tmpmZMUT9/main.rs:1:209
+  |
+1 | ...o read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not foun...
+  |                                                            ^^^ cannot infer type
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpxFlrYc/main.rs:1:23
+ --> /tmp/.tmpmZMUT9/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -917,20 +1186,20 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxFlrYc/main.rs:1:204
+ --> /tmp/.tmpmZMUT9/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) }  } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpxFlrYc/main.rs:1:642
+ --> /tmp/.tmpmZMUT9/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
@@ -938,19 +1207,26 @@ warning: unnecessary braces around block return value
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" , total) ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value } } ; println ! ("Total positive prices: {}" , total) ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ; let mut total = 0f64 ; for value in df . get ("price") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) . iter () { if value > 0f64 { total = total + value }  } ; println ! ("Total positive prices: {}" , total) ; }
   |
 
-error: aborting due to 1 previous error; 2 warnings emitted
+error[E0282]: type annotations needed
+ --> /tmp/.tmpmZMUT9/main.rs:1:209
+  |
+1 | ...o read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not foun...
+  |                                                            ^^^ cannot infer type
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors; 2 warnings emitted
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 
 
 === ch05-00-control-flow-tdd example 17 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpRiLrbN/main.rs:1:23
+ --> /tmp/.tmpzaU2tO/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -958,25 +1234,32 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpRiLrbN/main.rs:1:204
+ --> /tmp/.tmpzaU2tO/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) }  } ; }
   |
 
-error: aborting due to 1 previous error; 1 warning emitted
+error[E0282]: type annotations needed
+ --> /tmp/.tmpzaU2tO/main.rs:1:229
+  |
+1 | ...for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key n...
+  |                                                            ^^^ cannot infer type
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpRiLrbN/main.rs:1:23
+ --> /tmp/.tmpzaU2tO/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -984,28 +1267,35 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpRiLrbN/main.rs:1:204
+ --> /tmp/.tmpzaU2tO/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
   |
-  = note: `#[warn(unused_braces)]` on by default
+  = note: `#[warn(unused_braces)]` (part of `#[warn(unused)]`) on by default
 help: remove these braces
   |
 1 - fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
-1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } ; }
+1 + fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; for row in df . iter_rows () { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) }  } ; }
   |
 
-error: aborting due to 1 previous error; 1 warning emitted
+error[E0282]: type annotations needed
+ --> /tmp/.tmpzaU2tO/main.rs:1:229
+  |
+1 | ...for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key n...
+  |                                                            ^^^ cannot infer type
 
-For more information about this error, try `rustc --explain E0433`.
+error: aborting due to 2 previous errors; 1 warning emitted
+
+Some errors have detailed explanations: E0282, E0433.
+For more information about an error, try `rustc --explain E0282`.
 
 
 
 === ch19-00-structs-oop example 4 ===
 ✗ Compilation failed: Compilation failed:
 error[E0072]: recursive type `Node` has infinite size
- --> /tmp/.tmp0mW1nB/main.rs:1:1
+ --> /tmp/.tmpnffX86/main.rs:1:1
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   | ^^^^^^^^^^^                                 ---- recursive without indirection
@@ -1020,7 +1310,7 @@ error[E0391]: cycle detected when computing layout of `Node`
   = note: ...which requires computing layout of `core::option::Option<Node>`...
   = note: ...which again requires computing layout of `Node`, completing the cycle
 note: cycle used when elaborating drops for `main`
- --> /tmp/.tmp0mW1nB/main.rs:1:56
+ --> /tmp/.tmpnffX86/main.rs:1:56
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   |                                                        ^^^^^^^^^^
@@ -1033,7 +1323,7 @@ For more information about an error, try `rustc --explain E0072`.
 
 Error: Compilation failed:
 error[E0072]: recursive type `Node` has infinite size
- --> /tmp/.tmp0mW1nB/main.rs:1:1
+ --> /tmp/.tmpnffX86/main.rs:1:1
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   | ^^^^^^^^^^^                                 ---- recursive without indirection
@@ -1048,7 +1338,7 @@ error[E0391]: cycle detected when computing layout of `Node`
   = note: ...which requires computing layout of `core::option::Option<Node>`...
   = note: ...which again requires computing layout of `Node`, completing the cycle
 note: cycle used when elaborating drops for `main`
- --> /tmp/.tmp0mW1nB/main.rs:1:56
+ --> /tmp/.tmpnffX86/main.rs:1:56
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   |                                                        ^^^^^^^^^^
@@ -1064,21 +1354,24 @@ For more information about an error, try `rustc --explain E0072`.
 === ch19-00-structs-oop example 6 ===
 ✗ Compilation failed: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmpJkWQGj/main.rs:1:142
+ --> /tmp/.tmpHZT2ZF/main.rs:1:142
   |
-1 | ...n default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings ...
-  |                                          ^^^^^^- help: try using a conversion method: `.to_string()`
-  |                                          |
-  |                                          expected `String`, found `&str`
+1 | ...ttings { fn default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings =...
+  |                                                    ^^^^^^ expected `String`, found `&str`
+  |
+help: try using a conversion method
+  |
+1 | struct Settings { theme : String , font_size : i32 , auto_save : bool , } impl Default for Settings { fn default () -> Self { Self { theme : "dark".to_string() , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{:?}" , custom . theme) ; }
+  |                                                                                                                                                    ++++++++++++
 
 error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
- --> /tmp/.tmpJkWQGj/main.rs:1:229
+ --> /tmp/.tmpHZT2ZF/main.rs:1:229
   |
 1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
   |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
 
 error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
- --> /tmp/.tmpJkWQGj/main.rs:1:357
+ --> /tmp/.tmpHZT2ZF/main.rs:1:357
   |
 1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
   |                                                   ^^^^^^^^ missing `auto_save` and `theme`
@@ -1090,21 +1383,24 @@ For more information about an error, try `rustc --explain E0063`.
 
 Error: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmpJkWQGj/main.rs:1:142
+ --> /tmp/.tmpHZT2ZF/main.rs:1:142
   |
-1 | ...n default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings ...
-  |                                          ^^^^^^- help: try using a conversion method: `.to_string()`
-  |                                          |
-  |                                          expected `String`, found `&str`
+1 | ...ttings { fn default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings =...
+  |                                                    ^^^^^^ expected `String`, found `&str`
+  |
+help: try using a conversion method
+  |
+1 | struct Settings { theme : String , font_size : i32 , auto_save : bool , } impl Default for Settings { fn default () -> Self { Self { theme : "dark".to_string() , font_size : 14 , auto_save : true , } } } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{:?}" , custom . theme) ; }
+  |                                                                                                                                                    ++++++++++++
 
 error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
- --> /tmp/.tmpJkWQGj/main.rs:1:229
+ --> /tmp/.tmpHZT2ZF/main.rs:1:229
   |
 1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
   |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
 
 error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
- --> /tmp/.tmpJkWQGj/main.rs:1:357
+ --> /tmp/.tmpHZT2ZF/main.rs:1:357
   |
 1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
   |                                                   ^^^^^^^^ missing `auto_save` and `theme`
@@ -1119,440 +1415,74 @@ For more information about an error, try `rustc --explain E0063`.
 === ch19-00-structs-oop example 9 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:33
+ --> /tmp/.tmpxTHzPl/main.rs:1:33
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                 ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:41
+ --> /tmp/.tmpxTHzPl/main.rs:1:41
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                         ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:91
+ --> /tmp/.tmpxTHzPl/main.rs:1:91
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                                                                           ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:140
+ --> /tmp/.tmpxTHzPl/main.rs:1:140
   |
 1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
   |                                                        ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:189
+ --> /tmp/.tmpxTHzPl/main.rs:1:189
   |
 1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
   |                                                        ^^^^^ not found in this scope
 
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpzhTeri/main.rs:1:456
-  |
-1 | ... . contains ("&str") { println ! ("{}" , result) ; } else { println ! ("{:?}" , result) ; } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+error: aborting due to 5 previous errors
 
-error: aborting due to 6 previous errors
-
-Some errors have detailed explanations: E0277, E0422, E0425.
-For more information about an error, try `rustc --explain E0277`.
+Some errors have detailed explanations: E0422, E0425.
+For more information about an error, try `rustc --explain E0422`.
 
 Error: Compilation failed:
 error[E0425]: cannot find value `point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:33
+ --> /tmp/.tmpxTHzPl/main.rs:1:33
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                 ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:41
+ --> /tmp/.tmpxTHzPl/main.rs:1:41
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                         ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:91
+ --> /tmp/.tmpxTHzPl/main.rs:1:91
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                                                                           ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:140
+ --> /tmp/.tmpxTHzPl/main.rs:1:140
   |
 1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
   |                                                        ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpzhTeri/main.rs:1:189
+ --> /tmp/.tmpxTHzPl/main.rs:1:189
   |
 1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
   |                                                        ^^^^^ not found in this scope
 
-error[E0277]: `()` doesn't implement `std::fmt::Display`
- --> /tmp/.tmpzhTeri/main.rs:1:456
-  |
-1 | ... . contains ("&str") { println ! ("{}" , result) ; } else { println ! ("{:?}" , result) ; } }
-  |                                       --    ^^^^^^ `()` cannot be formatted with the default formatter
-  |                                       |
-  |                                       required by this formatting parameter
-  |
-  = help: the trait `std::fmt::Display` is not implemented for `()`
-  = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
-  = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
+error: aborting due to 5 previous errors
 
-error: aborting due to 6 previous errors
-
-Some errors have detailed explanations: E0277, E0422, E0425.
-For more information about an error, try `rustc --explain E0277`.
-
-
-
-=== ch04-00-practical-patterns-tdd example 2 ===
-✗ Compilation failed: Compilation failed:
-error[E0106]: missing lifetime specifier
- --> /tmp/.tmpSdmDsS/main.rs:1:468
-  |
-1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { println ! ("...
-  |                                  -----                       -----     ^ expected named lifetime parameter
-  |
-  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `name` or `email`
-help: consider introducing a named lifetime parameter
-  |
-1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                     ++++          ++                             ++           ++
-
-error: aborting due to 1 previous error
-
-For more information about this error, try `rustc --explain E0106`.
-
-Error: Compilation failed:
-error[E0106]: missing lifetime specifier
- --> /tmp/.tmpSdmDsS/main.rs:1:468
-  |
-1 | ...n create_user_profile (name : & str , age : i32 , email : & str) -> & str { if validate_user_input (name , age , email) { println ! ("...
-  |                                  -----                       -----     ^ expected named lifetime parameter
-  |
-  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `name` or `email`
-help: consider introducing a named lifetime parameter
-  |
-1 | fn validate_user_input (name : & str , age : i32 , email : & str) -> bool { if name . len () == 0 { println ! ("Error: Name cannot be empty") ; return false } ; if age < 0 || age > 150 { println ! ("Error: Age must be between 0 and 150") ; return false } ; if ! email . contains ('@') { println ! ("Error: Invalid email format") ; return false } ; println ! ("User input is valid") ; return true } fn create_user_profile<'a> (name : &'a  str , age : i32 , email : &'a  str) -> &'a  str { if validate_user_input (name , age , email) { println ! ("Creating profile for: {}" , name) ; return "Profile created successfully" } else { return "Profile creation failed" } } fn main () { { let result1 = create_user_profile ("Alice" , 25 , "alice@example.com") ; { let result2 = create_user_profile ("" , 30 , "bob@example.com") ; let result3 = create_user_profile ("Charlie" , - 5 , "charlie@example.com") ; println ! ("Result 1: {}" , result1) ; println ! ("Result 2: {}" , result2) ; println ! ("Result 3: {}" , result3) } } }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                     ++++          ++                             ++           ++
-
-error: aborting due to 1 previous error
-
-For more information about this error, try `rustc --explain E0106`.
-
-
-
-=== ch04-00-practical-patterns-tdd example 5 ===
-✗ Compilation failed: Compilation failed:
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:708
-  |
-1 | ... - 1 , 12 , 0] ; let mut total = calculate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives...
-  |                                     ---------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:4
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; let mut i = 0 ; while i < 5 { { total = total + prices [i as usize] ...
-  |    ^^^^^^^^^^^^^^^  ------------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:746
-  |
-1 | ...ate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , t...
-  |                                       ------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                       |
-  |                                       arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:167
-  |
-1 | ... prices [i as usize] ; i = i + 1 } } ; total } fn find_maximum (numbers : [i32 ; 5]) -> i32 { let mut max_value = numbers [0 as usize]...
-  |                                                      ^^^^^^^^^^^^  -------------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:794
-  |
-1 | ... (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; p...
-  |                                     ---------------  ^^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:392
-  |
-1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; let mut i = 0 ; whi...
-  |                                                    ^^^^^^^^^^^^^^^  -------------------
-
-error: aborting due to 3 previous errors
-
-For more information about this error, try `rustc --explain E0308`.
-
-Error: Compilation failed:
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:708
-  |
-1 | ... - 1 , 12 , 0] ; let mut total = calculate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives...
-  |                                     ---------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:4
-  |
-1 | fn calculate_total (prices : [i32 ; 5]) -> i32 { let mut total = 0 ; let mut i = 0 ; while i < 5 { { total = total + prices [i as usize] ...
-  |    ^^^^^^^^^^^^^^^  ------------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:746
-  |
-1 | ...ate_total (prices) ; let maximum = find_maximum (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , t...
-  |                                       ------------  ^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                       |
-  |                                       arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:167
-  |
-1 | ... prices [i as usize] ; i = i + 1 } } ; total } fn find_maximum (numbers : [i32 ; 5]) -> i32 { let mut max_value = numbers [0 as usize]...
-  |                                                      ^^^^^^^^^^^^  -------------------
-
-error[E0308]: mismatched types
- --> /tmp/.tmpNBdvkq/main.rs:1:794
-  |
-1 | ... (prices) ; let positive_count = count_positives (numbers) ; println ! ("Total: {}" , total) ; println ! ("Maximum: {}" , maximum) ; p...
-  |                                     ---------------  ^^^^^^^ expected `[i32; 5]`, found `Vec<{integer}>`
-  |                                     |
-  |                                     arguments to this function are incorrect
-  |
-  = note: expected array `[i32; 5]`
-            found struct `Vec<{integer}>`
-note: function defined here
- --> /tmp/.tmpNBdvkq/main.rs:1:392
-  |
-1 | ...[i as usize] } ; i = i + 1 } } ; max_value } fn count_positives (numbers : [i32 ; 5]) -> i32 { let mut count = 0 ; let mut i = 0 ; whi...
-  |                                                    ^^^^^^^^^^^^^^^  -------------------
-
-error: aborting due to 3 previous errors
-
-For more information about this error, try `rustc --explain E0308`.
-
-
-
-=== ch04-00-practical-patterns-tdd example 6 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
-
-Caused by:
-    Expected RightBrace, found Let
-
-
-=== ch04-00-practical-patterns-tdd example 8 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
-
-Caused by:
-    Expected RightBrace, found If
-
-
-=== ch04-00-practical-patterns-tdd example 10 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
-
-Caused by:
-    Expected RightBrace, found Let
-
-
-=== ch18-00-dataframes-data-processing example 1 ===
-✗ Compilation failed: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpx4OXEo/main.rs:1:35
-  |
-1 | fn create_dataframe () { let df = polars :: prelude :: DataFrame :: empty () . column ("employee_id" , vec ! [101 , 102 , 103 , 104]) . c...
-  |                                   ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error: aborting due to 1 previous error
-
-For more information about this error, try `rustc --explain E0433`.
-
-Error: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpx4OXEo/main.rs:1:35
-  |
-1 | fn create_dataframe () { let df = polars :: prelude :: DataFrame :: empty () . column ("employee_id" , vec ! [101 , 102 , 103 , 104]) . c...
-  |                                   ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error: aborting due to 1 previous error
-
-For more information about this error, try `rustc --explain E0433`.
-
-
-
-=== ch18-00-dataframes-data-processing example 2 ===
-✗ Compilation failed: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpR6vktw/main.rs:1:189
-  |
-1 | ...es ()) ; } fn main () { { let sales = polars :: prelude :: DataFrame :: empty () . column ("product" , vec ! ["Widget" , "Gadget" , "G...
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpR6vktw/main.rs:1:24
-  |
-1 | fn analyze_sales (df : DataFrame) { println ! ("Analyzing {} sales records" , df . height ()) ; println ! ("Data has {} columns" , df . g...
-  |                        ^^^^^^^^^ not found in this scope
-
-error: aborting due to 2 previous errors
-
-Some errors have detailed explanations: E0412, E0433.
-For more information about an error, try `rustc --explain E0412`.
-
-Error: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpR6vktw/main.rs:1:189
-  |
-1 | ...es ()) ; } fn main () { { let sales = polars :: prelude :: DataFrame :: empty () . column ("product" , vec ! ["Widget" , "Gadget" , "G...
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> /tmp/.tmpR6vktw/main.rs:1:24
-  |
-1 | fn analyze_sales (df : DataFrame) { println ! ("Analyzing {} sales records" , df . height ()) ; println ! ("Data has {} columns" , df . g...
-  |                        ^^^^^^^^^ not found in this scope
-
-error: aborting due to 2 previous errors
-
-Some errors have detailed explanations: E0412, E0433.
-For more information about an error, try `rustc --explain E0412`.
-
-
-
-=== ch18-00-dataframes-data-processing example 3 ===
-✗ Compilation failed: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpgM66LH/main.rs:1:57
-  |
-1 | fn work_with_multiple_dataframes () { { let customers = polars :: prelude :: DataFrame :: empty () . column ("customer_id" , vec ! [1 , 2...
-  |                                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpgM66LH/main.rs:1:285
-  |
-1 | ...geles" , "Chicago"]) ; { let orders = polars :: prelude :: DataFrame :: empty () . column ("order_id" , vec ! [101 , 102 , 103]) . col...
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error: aborting due to 2 previous errors
-
-For more information about this error, try `rustc --explain E0433`.
-
-Error: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpgM66LH/main.rs:1:57
-  |
-1 | fn work_with_multiple_dataframes () { { let customers = polars :: prelude :: DataFrame :: empty () . column ("customer_id" , vec ! [1 , 2...
-  |                                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpgM66LH/main.rs:1:285
-  |
-1 | ...geles" , "Chicago"]) ; { let orders = polars :: prelude :: DataFrame :: empty () . column ("order_id" , vec ! [101 , 102 , 103]) . col...
-  |                                          ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-error: aborting due to 2 previous errors
-
-For more information about this error, try `rustc --explain E0433`.
-
-
-
-=== ch18-00-dataframes-data-processing example 4 ===
-✗ Compilation failed: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpkobUW9/main.rs:1:41
-  |
-1 | fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "cl...
-  |                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpkobUW9/main.rs:1:377
-  |
-1 | ...2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-  |                                                   ^^                                   ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
-  |
-
-error: aborting due to 1 previous error; 1 warning emitted
-
-For more information about this error, try `rustc --explain E0433`.
-
-Error: Compilation failed:
-error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpkobUW9/main.rs:1:41
-  |
-1 | fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "cl...
-  |                                         ^^^^^^ use of unresolved module or unlinked crate `polars`
-  |
-  = help: you might be missing a crate named `polars`
-
-warning: unnecessary braces around block return value
- --> /tmp/.tmpkobUW9/main.rs:1:377
-  |
-1 | ...2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-  |                                                   ^^                                   ^^
-  |
-  = note: `#[warn(unused_braces)]` on by default
-help: remove these braces
-  |
-1 - fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { { println ! ("Processing row {}" , i) } } ; } fn main () { }
-1 + fn conditional_processing () { let df = polars :: prelude :: DataFrame :: empty () . column ("status" , vec ! ["active" , "pending" , "closed"]) . column ("value" , vec ! [1000 , 500 , 1500]) ; if df . height () > 0 { println ! ("DataFrame contains data") } ; if df . get_column_names () == 2 { println ! ("DataFrame has exactly 2 columns") } ; for i in 0 .. df . height () { println ! ("Processing row {}" , i) } ; } fn main () { }
-  |
-
-error: aborting due to 1 previous error; 1 warning emitted
-
-For more information about this error, try `rustc --explain E0433`.
+Some errors have detailed explanations: E0422, E0425.
+For more information about an error, try `rustc --explain E0422`.
 
 

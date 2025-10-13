@@ -1,16 +1,16 @@
-# 🚨 CRITICAL BUG: Variable Scoping Regression in v3.45.0
+# 🚨 CRITICAL BUG: Variable Scoping Regression in v3.67.0
 
-**Issue Title**: [CRITICAL] Variable scoping completely broken in v3.45.0 - 52% of examples fail
+**Issue Title**: [CRITICAL] Variable scoping completely broken in v3.67.0 - 52% of examples fail
 
 **Severity**: 🔴 CRITICAL - Blocks basic functionality
-**Version Affected**: v3.45.0
-**Version Working**: v3.38.0
+**Version Affected**: v3.67.0
+**Version Working**: v3.67.0
 **Regression**: Yes - Previously fixed bug has returned
 **Impact**: 52% of Ruchy Book examples now fail (58/111)
 
 ## Executive Summary
 
-Ruchy v3.45.0 has reintroduced a critical variable scoping bug that was previously fixed. The transpiler now wraps each statement in its own block scope, making variables inaccessible across statements. This breaks even the most basic multi-statement programs and represents a 26% regression in compatibility.
+Ruchy v3.67.0 has reintroduced a critical variable scoping bug that was previously fixed. The transpiler now wraps each statement in its own block scope, making variables inaccessible across statements. This breaks even the most basic multi-statement programs and represents a 26% regression in compatibility.
 
 ## Environment
 
@@ -71,7 +71,7 @@ error[E0425]: cannot find value `y` in this scope
 
 ### Transpiler Output Comparison
 
-**v3.38.0 (Working):**
+**v3.67.0 (Working):**
 ```rust
 fn main() {
     let x = 42i32;
@@ -80,7 +80,7 @@ fn main() {
 }
 ```
 
-**v3.45.0 (Broken):**
+**v3.67.0 (Broken):**
 ```rust
 fn main() {
     { let x = 42i32; () };     // x is trapped in this scope!
@@ -111,7 +111,7 @@ println(y)
 ```
 **Result**: ❌ FAILS - Variables trapped in separate scopes
 
-This distinction is critical because many book examples use the script-style format for simplicity, which is why they fail in v3.45.0.
+This distinction is critical because many book examples use the script-style format for simplicity, which is why they fail in v3.67.0.
 
 ## Additional Test Cases
 
@@ -161,7 +161,7 @@ fun main() {
 
 ### Ruchy Book Test Results
 
-| Chapter | v3.38.0 | v3.45.0 | Impact |
+| Chapter | v3.67.0 | v3.67.0 | Impact |
 |---------|---------|---------|--------|
 | Ch01: Hello World | 14/14 (100%) | 13/14 (93%) | -1 example |
 | Ch02: Variables & Types | 8/8 (100%) | 4/8 (50%) | -50% regression |
@@ -264,9 +264,9 @@ This is a **CRITICAL** regression that makes Ruchy unusable for any non-trivial 
 
 ## References
 
-- Previous similar bug: [CRITICAL-v1.0.0-transpiler-bugs.md](https://github.com/paiml/ruchy-book/blob/main/docs/bugs/CRITICAL-v1.0.0-transpiler-bugs.md)
+- Previous similar bug: [CRITICAL-v3.67.0-transpiler-bugs.md](https://github.com/paiml/ruchy-book/blob/main/docs/bugs/CRITICAL-v3.67.0-transpiler-bugs.md)
 - Ruchy Book Repository: https://github.com/paiml/ruchy-book
-- Test Suite Results: 53/111 passing (48%) vs 82/111 (74%) in v3.38.0
+- Test Suite Results: 53/111 passing (48%) vs 82/111 (74%) in v3.67.0
 
 ---
 
