@@ -21,6 +21,14 @@ The Ruchy Book is undergoing extreme TDD refactoring to ensure **ZERO vaporware*
 | Ch03: Functions | 9/9 | 100% | ✅ Complete | 042e2cd |
 | **Total Foundation** | **25/25** | **100%** | ✅ | - |
 
+**Core Features Chapters: ✅ MAJOR PROGRESS**
+
+| Chapter | Examples | Pass Rate | Status | Commit |
+|---------|----------|-----------|--------|--------|
+| Ch04: Practical Patterns | 6/10 | 60% | 🟢 Partial | 74c76de |
+| Ch05: Control Flow | 7/7 | 100% | ✅ Complete | 190c1d5 |
+| **Total Core** | **13/17** | **76%** | 🟢 | - |
+
 **Infrastructure: ✅ COMPLETE**
 
 | Component | Status | Commit |
@@ -29,6 +37,55 @@ The Ruchy Book is undergoing extreme TDD refactoring to ensure **ZERO vaporware*
 | Notebook Testing Infrastructure | ✅ Complete | d852575 |
 | Makefile Targets | ✅ Complete | d852575 |
 | Documentation | ✅ Complete | d852575 |
+
+---
+
+## 🎉 MAJOR MILESTONE: Control Flow Complete!
+
+### REFACTOR-005: Ch05 - Control Flow ✅
+
+**Commit**: `190c1d5` - refactor(ch05): ALL control flow works! 100% validation (7/7)
+
+**Historic Achievement**: ALL CORE CONTROL FLOW FEATURES VALIDATED!
+
+**Test Results:**
+- ✅ 7/7 examples passing (100%)
+- ✅ Zero failures
+- ✅ All 7 layers validated
+
+**Critical Features Validated:**
+- ✅ `let mut` - Mutable variables
+- ✅ `while` loops - Conditional iteration
+- ✅ `for..in` with ranges - Range iteration (0..3)
+- ✅ `match` expressions - Pattern matching with wildcard
+- ✅ `break` statement - Early loop termination
+- ✅ `continue` statement - Skip iteration
+- ✅ `if/else` conditionals - Multi-branch logic
+
+**Working Examples:**
+1. ✅ Basic if/else
+2. ✅ If without else (optional else)
+3. ✅ If/else if/else chains
+4. ✅ While loop with let mut
+5. ✅ For loop with range
+6. ✅ Match expression
+7. ✅ Break and continue
+
+**Quality Metrics:**
+- ruchy check: 7/7 (100%)
+- ruchy compile: 7/7 (100%)
+- ruchy lint: 7/7 (100%)
+- ruchy run: 7/7 (100%)
+
+**Significance:**
+Control flow is fundamental to ANY programming language. With Ch01-03 foundation + Ch05 control flow, developers now have a **COMPLETE PROCEDURAL PROGRAMMING MODEL**:
+- Variables (immutable and mutable)
+- Functions (with parameters and returns)
+- Conditionals (if/else, match)
+- Loops (while, for)
+- Loop control (break, continue)
+
+This enables building real, production-ready programs!
 
 ---
 
