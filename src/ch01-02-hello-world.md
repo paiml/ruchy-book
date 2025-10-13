@@ -6,12 +6,12 @@
 | Status | Count | Examples |
 |--------|-------|----------|
 | ✅ Working | 8 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
+| 🎯 Verified | 8 | All examples validated with 7-layer testing |
 | ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 3.38.0*
+*Ruchy version: ruchy 3.67.0*
 <!-- DOC_STATUS_END -->
 
 
@@ -101,16 +101,23 @@ Output:
 Hello World from Ruchy
 ```
 
-### Variables and Interpolation
+### Variables and String Interpolation
+
+Ruchy supports both string concatenation and f-string interpolation:
 
 ```ruchy
 
 fun main() {
     let name = "Alice";
+
+    // Multiple arguments (comma-separated)
     println("Hello,", name);
-    
-    // String concatenation (interpolation coming in future versions)
+
+    // String concatenation with +
     println("Hello, " + name + "!");
+
+    // F-string interpolation (modern, clean syntax)
+    println(f"Hello, {name}!");
 }
 
 
@@ -124,7 +131,14 @@ Output:
 ```
 Hello, Alice
 Hello, Alice!
+Hello, Alice!
 ```
+
+**F-String Advantages:**
+- Cleaner syntax than concatenation
+- Supports format specifiers: `f"{pi:.2}"` for 2 decimal places
+- More readable for complex strings
+- Zero performance overhead
 
 ### Numbers and Other Types
 

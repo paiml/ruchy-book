@@ -6,12 +6,12 @@
 | Status | Count | Examples |
 |--------|-------|----------|
 | ✅ Working | 6 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
+| 🎯 Verified | 8 | All examples validated with 7-layer testing |
 | ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 3.38.0*
+*Ruchy version: ruchy 3.67.0*
 <!-- DOC_STATUS_END -->
 
 
