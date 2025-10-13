@@ -1,0 +1,265 @@
+# Ruchy Book Display Configuration
+# Controls display settings for book metrics and quality gates
+
+version: "1.0"
+
+# Project identification
+project:
+  name: "Ruchy Book"
+  type: "documentation"
+  language: "ruchy"
+  repository: "https://github.com/paiml/ruchy-book"
+
+# Panel configurations
+panels:
+  # Example test results display
+  examples:
+    max_failures: 50        # Maximum failures to display
+    show_passing: false     # Hide passing tests by default
+    group_by: chapter       # Group by: chapter | file | type
+    sort_by: status         # Sort by: status | chapter | name
+
+  # Chapter progress visualization
+  chapters:
+    max_chapters: 25        # Total chapters
+    show_empty: true        # Show chapters with no examples
+    completion_threshold: 1.00  # 100% pass rate required
+
+  # Quality gates display
+  quality:
+    show_all_gates: true    # Show all gates even if passing
+    threshold_warnings: true # Warn when approaching threshold
+    max_violations: 20      # Maximum violations to list
+
+  # Version tracking display
+  versions:
+    show_history: true      # Show version qualification history
+    max_versions: 10        # Maximum versions to display
+    compare_with_previous: true # Compare with previous version
+
+  # Dependency graph (for chapters)
+  dependency:
+    max_nodes: 25           # Maximum chapter nodes
+    max_edges: 50           # Maximum dependencies
+    grouping: sprint        # Grouping: sprint | section | none
+    show_status: true       # Show completion status
+
+# Export configuration
+export:
+  formats:
+    - markdown              # Markdown reports
+    - json                  # JSON data
+    - html                  # HTML dashboard
+
+  locations:
+    markdown: "reports/status.md"
+    json: "reports/metrics.json"
+    html: "reports/dashboard.html"
+
+  include_metadata: true    # Include generation metadata
+  include_raw_data: true    # Include raw test results
+  include_graphs: true      # Include visual graphs
+
+# Metrics configuration
+metrics:
+  # Example testing metrics
+  examples:
+    track_by_chapter: true
+    track_pass_rate: true
+    track_compilation_time: true
+    track_error_types: true
+
+  # Documentation quality metrics
+  quality:
+    track_satd: true        # Track technical debt comments
+    track_links: true       # Track broken links
+    track_coverage: true    # Track feature coverage
+    track_readability: true # Track readability scores
+
+  # Performance metrics
+  performance:
+    track_test_runtime: true
+    track_build_time: true
+    track_dogfood_time: true
+
+  # Version metrics
+  versions:
+    track_pass_rate_delta: true  # Track change in pass rate
+    track_new_failures: true     # Track new failing examples
+    track_fixed_examples: true   # Track newly passing examples
+
+# Performance settings
+performance:
+  cache_enabled: true       # Enable result caching
+  cache_ttl: 3600          # Cache TTL in seconds (1 hour)
+  parallel_workers: 4       # Number of parallel test workers
+  max_memory: 2048         # Max memory in MB
+  timeout_per_example: 30  # Timeout per example in seconds
+
+# Alerting configuration
+alerts:
+  # Alert when pass rate drops
+  pass_rate_threshold: 0.95
+  pass_rate_action: "notify"
+
+  # Alert on SATD comments
+  satd_tolerance: 0
+  satd_action: "block"
+
+  # Alert on broken links
+  broken_links_tolerance: 0
+  broken_links_action: "block"
+
+  # Alert on quality gate failures
+  quality_gate_action: "block"
+
+# Display themes
+themes:
+  default: "github_dark"
+  available:
+    - "github_dark"
+    - "github_light"
+    - "solarized_dark"
+    - "solarized_light"
+
+# Dashboard configuration
+dashboard:
+  title: "Ruchy Book Quality Dashboard"
+  refresh_interval: 300     # Refresh every 5 minutes
+
+  sections:
+    - name: "Overview"
+      widgets:
+        - type: "pass_rate"
+          size: "large"
+        - type: "chapter_progress"
+          size: "large"
+        - type: "recent_tests"
+          size: "medium"
+
+    - name: "Quality Gates"
+      widgets:
+        - type: "gate_status"
+          size: "large"
+        - type: "satd_detector"
+          size: "medium"
+        - type: "link_checker"
+          size: "medium"
+
+    - name: "Trends"
+      widgets:
+        - type: "pass_rate_history"
+          size: "large"
+          days: 30
+        - type: "version_comparison"
+          size: "large"
+
+    - name: "Details"
+      widgets:
+        - type: "failing_examples"
+          size: "full"
+        - type: "recent_commits"
+          size: "medium"
+
+# Notification settings
+notifications:
+  enabled: true
+  channels:
+    - type: "github_commit_status"
+      enabled: true
+    - type: "slack"
+      enabled: false
+      webhook_url: "${SLACK_WEBHOOK_URL}"
+    - type: "email"
+      enabled: false
+      recipients: []
+
+# Report generation
+reports:
+  # Daily status report
+  daily:
+    enabled: true
+    time: "09:00"
+    format: "markdown"
+    include:
+      - pass_rate
+      - recent_failures
+      - quality_gates
+      - version_info
+
+  # Weekly summary report
+  weekly:
+    enabled: true
+    day: "monday"
+    time: "09:00"
+    format: "html"
+    include:
+      - pass_rate_trend
+      - chapter_progress
+      - quality_metrics
+      - version_comparison
+
+  # On-demand reports
+  on_demand:
+    formats:
+      - markdown
+      - json
+      - html
+    max_history: 90       # Keep 90 days of history
+
+# Integration settings
+integrations:
+  # GitHub integration
+  github:
+    enabled: true
+    update_commit_status: true
+    create_issues_on_failure: false
+    label_prefix: "book-"
+
+  # Ruchy compiler integration
+  ruchy:
+    enabled: true
+    version_tracking: true
+    auto_sync: true
+    sync_frequency: "weekly"
+
+  # mdBook integration
+  mdbook:
+    enabled: true
+    build_on_update: true
+    deploy_on_success: true
+
+# Logging configuration
+logging:
+  level: "info"           # trace | debug | info | warn | error
+  format: "json"          # json | text
+  output:
+    - "stdout"
+    - "file:logs/paiml.log"
+
+  # Rotate logs
+  rotation:
+    enabled: true
+    max_size: 100         # MB
+    max_age: 30           # days
+    max_backups: 10
+
+# Advanced settings
+advanced:
+  # Experimental features
+  experimental:
+    ai_failure_analysis: false
+    auto_fix_suggestions: false
+    semantic_search: false
+
+  # Debug settings
+  debug:
+    save_intermediate_results: false
+    verbose_errors: true
+    include_stack_traces: true
+
+  # Optimization settings
+  optimization:
+    skip_passing_tests: false
+    incremental_testing: true
+    cache_compiled_examples: true
