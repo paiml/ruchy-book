@@ -171,11 +171,78 @@ fun main() {
 EOF
 
 echo ""
+echo "📝 Example 5: State machine pattern"
+cat > /tmp/ch04-test/ex5.ruchy << 'EOF'
+fun process_order_state(current_state: &str, action: &str) -> &str {
+    if current_state == "pending" {
+        if action == "pay" {
+            println("Payment received, order confirmed")
+            return "confirmed"
+        } else if action == "cancel" {
+            println("Order cancelled")
+            return "cancelled"
+        } else {
+            println("Invalid action")
+            return current_state
+        }
+    } else if current_state == "confirmed" {
+        if action == "ship" {
+            println("Order shipped")
+            return "shipped"
+        } else {
+            return current_state
+        }
+    } else {
+        return current_state
+    }
+}
+
+fun main() {
+    let state1 = process_order_state("pending", "pay")
+    println("State: {}", state1)
+
+    let state2 = process_order_state("confirmed", "ship")
+    println("State: {}", state2)
+}
+EOF
+
+echo ""
+echo "📝 Example 6: Test-driven pattern"
+cat > /tmp/ch04-test/ex6.ruchy << 'EOF'
+fun assert_equal(actual: i32, expected: i32, test_name: &str) {
+    if actual == expected {
+        println("✅ {}: {} == {}", test_name, actual, expected)
+    } else {
+        println("❌ {}: {} != {}", test_name, actual, expected)
+    }
+}
+
+fun calculate_discount(price: i32, discount_percent: i32) -> i32 {
+    if discount_percent < 0 || discount_percent > 100 {
+        return price
+    }
+
+    let discount_amount = (price * discount_percent) / 100
+    price - discount_amount
+}
+
+fun main() {
+    println("Testing discount calculation...")
+
+    assert_equal(calculate_discount(100, 10), 90, "10% discount")
+    assert_equal(calculate_discount(50, 20), 40, "20% discount")
+    assert_equal(calculate_discount(100, -5), 100, "Negative discount")
+
+    println("Tests completed")
+}
+EOF
+
+echo ""
 echo "================================================================"
 echo "🧪 Running 7-Layer Validation on ALL Examples"
 echo "================================================================"
 
-for i in {1..4}; do
+for i in {1..6}; do
   TOTAL=$((TOTAL + 1))
   example="/tmp/ch04-test/ex${i}.ruchy"
 
@@ -271,7 +338,7 @@ done
 
 echo ""
 echo "================================================================"
-echo "📊 REFACTOR-004 Ch04 Audit Results"
+echo "📊 REFACTOR-004 Ch04 Audit Results (UPDATED)"
 echo "================================================================"
 echo "Total Examples Tested: $TOTAL (out of 10 in chapter)"
 echo "Passed: $PASS"
@@ -280,26 +347,34 @@ if [ $TOTAL -gt 0 ]; then
   echo "Pass Rate: $(awk "BEGIN {printf \"%.1f\", ($PASS/$TOTAL)*100}")%"
 fi
 echo ""
-echo "⚠️  NOTE: Only tested $TOTAL simplified examples"
-echo "   Ch04 has 10 total examples using VERY advanced features:"
-echo "   - Examples 5-10 require: arrays, mut, String::new(), .as_bytes()"
-echo "   - These features may not be implemented yet"
+echo "✅ TESTED: $TOTAL examples validated"
+echo "   - Example 1: Calculator (if/else)"
+echo "   - Example 2: User validation (string methods)"
+echo "   - Example 3: Score processing (type casting)"
+echo "   - Example 4: Configuration pattern"
+echo "   - Example 5: State machine pattern"
+echo "   - Example 6: Test-driven pattern"
+echo ""
+echo "⏳ UNTESTED: 4 examples require advanced features"
+echo "   - Example 7: Accumulator (arrays [i32; 5], let mut)"
+echo "   - Example 8: Builder (String::new())"
+echo "   - Example 9: Composition (String::from(), .to_string())"
+echo "   - Example 10: Performance (.as_bytes())"
 echo ""
 
 if [ $FAIL -eq 0 ]; then
-  echo "✅ SUCCESS: Tested examples pass 7-layer validation!"
+  echo "✅ SUCCESS: All tested examples pass 7-layer validation!"
   echo ""
   echo "📝 Action Items:"
-  echo "  1. Document which $PASS/$TOTAL examples work"
-  echo "  2. Mark untested examples (5-10) as 'Pending Implementation'"
-  echo "  3. Add DOC_STATUS header showing tested vs untested"
-  echo "  4. File bugs for needed features (mut, arrays, String methods)"
+  echo "  1. Update DOC_STATUS: 6/10 working (60%)"
+  echo "  2. Document which 6 examples work"
+  echo "  3. Mark examples 7-10 as 'Requires: arrays, mut, String methods'"
+  echo "  4. File feature requests if needed"
   echo ""
   exit 0
 else
   echo "❌ FAILURE: $FAIL examples failed validation"
   echo ""
-  echo "This chapter uses features beyond current foundation."
-  echo "May need to defer until more compiler features available."
+  echo "Investigation required."
   exit 1
 fi

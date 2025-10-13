@@ -1,33 +1,33 @@
 # Chapter 4: Practical Programming Patterns
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: 🟡 40% Working (4/10 examples)
+**Chapter Status**: 🟢 60% Working (6/10 examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 4 | Validated with 7-layer testing |
-| 🎯 Tested | 4 | Basic patterns work (if/else, validation, casting) |
-| ⏳ Untested | 6 | Advanced features (arrays, mut, String methods) |
-| 📋 Requires Implementation | 6 | Waiting for compiler features |
+| ✅ Working | 6 | Validated with 7-layer testing |
+| 🎯 Tested | 6 | All basic patterns work perfectly |
+| ⏳ Untested | 4 | Advanced features (arrays, mut, String construction) |
+| 📋 Requires Implementation | 4 | Waiting for compiler features |
 
 *Last updated: 2025-10-13*
 *Ruchy version: ruchy v1.84.0*
 
-**Working Examples (4)**:
+**Working Examples (6/10) - 100% Pass Rate**:
 - Example 1: Calculator with if/else ✅
 - Example 2: User validation (string .len(), .contains()) ✅
 - Example 3: Score processing (type casting to f64) ✅
 - Example 4: Configuration pattern ✅
+- Example 5: State machine pattern ✅
+- Example 6: Test-driven pattern (assertions) ✅
 
-**Untested/Advanced (6)**:
-- Example 5: Accumulator pattern (requires arrays `[i32; 5]`, `let mut`)
-- Example 6: State machine (may work, needs testing)
-- Example 7: Builder pattern (requires `String::new()`)
-- Example 8: Pattern composition (requires `String::from()`, `.to_string()`)
-- Example 9: Test-driven pattern (may work, needs testing)
-- Example 10: Performance patterns (requires `.as_bytes()`, byte manipulation)
+**Requires Advanced Features (4/10)**:
+- Example 7: Accumulator pattern - needs arrays `[i32; 5]`, `let mut`
+- Example 8: Builder pattern - needs `String::new()`
+- Example 9: Pattern composition - needs `String::from()`, `.to_string()`
+- Example 10: Performance patterns - needs `.as_bytes()`, byte manipulation
 
-**Next Steps**: Test examples 5-10 or mark as future features
+**Next Steps**: File feature requests for arrays, mut, String construction methods
 <!-- DOC_STATUS_END -->
 
 ## The Problem
