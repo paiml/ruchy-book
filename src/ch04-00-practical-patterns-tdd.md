@@ -1,5 +1,35 @@
 # Chapter 4: Practical Programming Patterns
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: 🟡 40% Working (4/10 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 4 | Validated with 7-layer testing |
+| 🎯 Tested | 4 | Basic patterns work (if/else, validation, casting) |
+| ⏳ Untested | 6 | Advanced features (arrays, mut, String methods) |
+| 📋 Requires Implementation | 6 | Waiting for compiler features |
+
+*Last updated: 2025-10-13*
+*Ruchy version: ruchy v1.84.0*
+
+**Working Examples (4)**:
+- Example 1: Calculator with if/else ✅
+- Example 2: User validation (string .len(), .contains()) ✅
+- Example 3: Score processing (type casting to f64) ✅
+- Example 4: Configuration pattern ✅
+
+**Untested/Advanced (6)**:
+- Example 5: Accumulator pattern (requires arrays `[i32; 5]`, `let mut`)
+- Example 6: State machine (may work, needs testing)
+- Example 7: Builder pattern (requires `String::new()`)
+- Example 8: Pattern composition (requires `String::from()`, `.to_string()`)
+- Example 9: Test-driven pattern (may work, needs testing)
+- Example 10: Performance patterns (requires `.as_bytes()`, byte manipulation)
+
+**Next Steps**: Test examples 5-10 or mark as future features
+<!-- DOC_STATUS_END -->
+
 ## The Problem
 
 You know variables, functions, and control flow, but how do you combine them to solve real problems? Programming isn't just about syntax—it's about recognizing patterns that appear repeatedly and expressing them clearly and efficiently.
