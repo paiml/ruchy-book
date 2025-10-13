@@ -150,6 +150,44 @@ sprints:
         deliverable: "INTEGRATION.md"
         completed: true
 
+      - id: BOOK-006
+        title: "15-tool testing integration"
+        priority: critical
+        status: in_progress
+        requirements:
+          - "Integrate all 15 Ruchy professional tools"
+          - "Define per-tool quality gates"
+          - "Create dogfood-full target"
+          - "Add tool results to INTEGRATION.md"
+        tests:
+          - "test_all_15_tools_execute"
+          - "test_dogfood_full_completes"
+          - "test_results_tracked"
+          - "test_quality_gates_enforced"
+        acceptance:
+          - "All 15 tools integrated in Makefile"
+          - "make dogfood-full passes"
+          - "Per-tool results in INTEGRATION.md"
+          - "CI/CD runs dogfood on every push"
+        deliverable: "docs/specifications/15-tool-testing-strategy.md"
+        estimated_time: "2 hours"
+        tools:
+          - "ruchy check (syntax validation)"
+          - "ruchy test (enhanced testing)"
+          - "ruchy fmt (format validation)"
+          - "ruchy lint (style analysis)"
+          - "ruchy provability (formal verification)"
+          - "ruchy runtime (performance analysis)"
+          - "ruchy score (quality scoring)"
+          - "ruchy quality-gate (gate enforcement)"
+          - "ruchy coverage (coverage reporting)"
+          - "ruchy optimize (hardware optimization)"
+          - "ruchy prove (theorem proving)"
+          - "ruchy doc (documentation generation)"
+          - "ruchy bench (performance benchmarking)"
+          - "ruchy run (execute code)"
+          - "ruchy compile (standalone binary)"
+
   # SPRINT 2: Foundation Chapters (Ch 1-3)
   - id: sprint-2
     name: "Foundation Chapters"
