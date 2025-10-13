@@ -1,7 +1,7 @@
 # Ruchy Book Makefile - Quality Gates and Development Commands
 # Following Toyota Way principles: Kaizen, Genchi Genbutsu, Jidoka
 
-.PHONY: all build serve test test-oneliners test-all-oneliners test-math-oneliners test-comprehensive validate clean lint sync-version verify-version pre-commit help install-deps generate-reports update-integration-docs dogfood-all dogfood-check dogfood-test dogfood-fmt dogfood-lint dogfood-provability dogfood-runtime dogfood-score dogfood-quality-gate dogfood-optimize dogfood-prove dogfood-doc dogfood-bench dogfood-ast dogfood-coverage dogfood-mcp dogfood-full
+.PHONY: all build serve test test-oneliners test-all-oneliners test-math-oneliners test-comprehensive test-notebook test-notebook-ch01 test-notebook-ch02 test-notebook-ch03 validate clean lint sync-version verify-version pre-commit help install-deps generate-reports update-integration-docs dogfood-all dogfood-check dogfood-test dogfood-fmt dogfood-lint dogfood-provability dogfood-runtime dogfood-score dogfood-quality-gate dogfood-optimize dogfood-prove dogfood-doc dogfood-bench dogfood-ast dogfood-coverage dogfood-mcp dogfood-full
 
 # Default target
 all: validate build
@@ -32,6 +32,10 @@ help:
 	@echo "  make test-all-chapters - Test all chapters (1-11)"
 	@echo "  make test-file FILE=x  - Test specific file"
 	@echo "  make test-oneliners    - Test ruchy one-liner examples"
+	@echo "  make test-notebook CHAPTER=chXX - Test chapter in notebook (Layer 5)"
+	@echo "  make test-notebook-ch01 - Test Ch01 in notebook"
+	@echo "  make test-notebook-ch02 - Test Ch02 in notebook"
+	@echo "  make test-notebook-ch03 - Test Ch03 in notebook"
 	@echo "  make test-all          - Run ALL tests"
 	@echo ""
 	@echo "🎨 CODE QUALITY:"
@@ -347,6 +351,23 @@ test-all-chapters: test-foundation test-ch04 test-ch05 test-ch06 test-ch07 test-
 test-oneliners:
 	@echo "🧮 Testing Ruchy one-liners..."
 	@deno task test-oneliners
+
+# Test examples in notebook (Layer 5 validation)
+test-notebook:
+	@echo "📓 Testing examples in Ruchy notebook (Layer 5)..."
+	@deno run --allow-all scripts/test-in-notebook.ts $(CHAPTER)
+
+test-notebook-ch01:
+	@echo "📓 Testing Ch01 in notebook..."
+	@deno run --allow-all scripts/test-in-notebook.ts ch01
+
+test-notebook-ch02:
+	@echo "📓 Testing Ch02 in notebook..."
+	@deno run --allow-all scripts/test-in-notebook.ts ch02
+
+test-notebook-ch03:
+	@echo "📓 Testing Ch03 in notebook..."
+	@deno run --allow-all scripts/test-in-notebook.ts ch03
 
 # Test all examples comprehensively
 test-all:
