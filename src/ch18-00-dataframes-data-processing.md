@@ -1,9 +1,22 @@
 # Chapter 18: DataFrames & Data Processing
 
-> **Implementation Status (v3.67.0)**:
-> - ✅ **Interpreter Mode**: DataFrames work when running `.ruchy` files directly
-> - ❌ **Transpiler Mode**: Not yet supported - use [polars](https://pola.rs) directly in Rust
-> - 📋 **Planned**: Transpiler support coming in v3.8+ (see [#issue](https://github.com/paiml/ruchy/issues))
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ⚠️ Interpreter-Only (4/4 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Interpreter Mode | 4 | Work in `ruchy run` mode |
+| ❌ Transpiler Mode | 0 | Requires polars crate linking |
+
+*Last tested: 2025-10-13*
+*Ruchy version: v3.76.0*
+*Note: DataFrames fully implemented in v3.76.0 for interpreter mode*
+<!-- DOC_STATUS_END -->
+
+> **Implementation Status (v3.76.0 - DataFrames COMPLETE)**:
+> - ✅ **Interpreter Mode**: DataFrames fully working (v3.76.0 DataFrame sprint complete)
+> - ❌ **Transpiler Mode**: Not supported - requires polars crate in Cargo.toml
+> - 📋 **Limitation**: Transpiled code needs `polars = "0.x"` dependency in Cargo.toml
 >
 > **How to Use**:
 > ```bash
