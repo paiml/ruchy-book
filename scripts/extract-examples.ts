@@ -112,28 +112,48 @@ class ExampleExtractor {
     
     try {
       await Deno.writeTextFile(tempFile, example.code);
-      
+
       // Test compilation with ruchy to catch both syntax and method errors
+      // TIMEOUT FIX: 30 second timeout to prevent hanging on DataFrame compilation
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds
+
       const cmd = new Deno.Command("ruchy", {
         args: ["compile", tempFile],
         stdout: "piped",
-        stderr: "piped"
+        stderr: "piped",
+        signal: controller.signal
       });
-      
-      const { success, stdout, stderr } = await cmd.output();
-      
-      if (success) {
-        example.passed = true;
-        example.status = "working";
-      } else {
-        const errorText = new TextDecoder().decode(stderr);
-        example.passed = false;
-        example.error = errorText;
-        example.status = this.classifyError(errorText);
-        example.errorCategory = this.categorizeError(errorText);
-        example.rootCause = this.analyzeRootCause(errorText);
+
+      try {
+        const { success, stdout, stderr } = await cmd.output();
+        clearTimeout(timeoutId);
+
+        if (success) {
+          example.passed = true;
+          example.status = "working";
+        } else {
+          const errorText = new TextDecoder().decode(stderr);
+          example.passed = false;
+          example.error = errorText;
+          example.status = this.classifyError(errorText);
+          example.errorCategory = this.categorizeError(errorText);
+          example.rootCause = this.analyzeRootCause(errorText);
+        }
+      } catch (abortError) {
+        clearTimeout(timeoutId);
+        if (abortError.name === "AbortError") {
+          // Compilation timed out - mark as slow test
+          example.passed = false;
+          example.error = "⏱️  SLOW TEST: Compilation timed out after 30 seconds (likely DataFrame/polars dependency issue)";
+          example.status = "broken";
+          example.errorCategory = "TIMEOUT";
+          example.rootCause = "Compilation hung - possibly waiting for polars crate dependency resolution";
+        } else {
+          throw abortError;
+        }
       }
-      
+
     } catch (error) {
       example.passed = false;
       example.error = error.message;
