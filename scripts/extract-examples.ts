@@ -113,13 +113,14 @@ class ExampleExtractor {
     try {
       await Deno.writeTextFile(tempFile, example.code);
 
-      // Test compilation with ruchy to catch both syntax and method errors
-      // TIMEOUT FIX: 30 second timeout to prevent hanging on DataFrame compilation
+      // Test with ruchy run (interpreter mode) - v3.82.0+ has true interpreter
+      // Falls back to compile mode if needed
+      // TIMEOUT FIX: 30 second timeout to prevent hanging
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds
 
       const cmd = new Deno.Command("ruchy", {
-        args: ["compile", tempFile],
+        args: ["run", tempFile],
         stdout: "piped",
         stderr: "piped",
         signal: controller.signal
