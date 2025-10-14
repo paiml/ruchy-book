@@ -1,708 +1,55 @@
 === ch04-00-practical-patterns-tdd example 6 ===
-✗ Compilation failed: Failed to parse Ruchy source
-Error: Failed to parse Ruchy source
+✗ Compilation failed: Compilation failed:
+error[E0106]: missing lifetime specifier
+ --> /tmp/.tmp3rZNfV/main.rs:1:1228
+  |
+1 | ... return "error" } } } } } } fn track_order () -> & str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; printl...
+  |                                                     ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+help: consider using the `'static` lifetime, but this is uncommon unless you're returning a borrowed value from a `const` or a `static`
+  |
+1 | fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> &'static  str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             +++++++
+help: instead, you are more likely to want to return an owned value
+  |
+1 - fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> & str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+1 + fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> String { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+  |
 
-Caused by:
-    Expected RightBrace, found Let
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0106`.
+
+Error: Compilation failed:
+error[E0106]: missing lifetime specifier
+ --> /tmp/.tmp3rZNfV/main.rs:1:1228
+  |
+1 | ... return "error" } } } } } } fn track_order () -> & str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; printl...
+  |                                                     ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+help: consider using the `'static` lifetime, but this is uncommon unless you're returning a borrowed value from a `const` or a `static`
+  |
+1 | fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> &'static  str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             +++++++
+help: instead, you are more likely to want to return an owned value
+  |
+1 - fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> & str { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+1 + fn process_order_state < 'a > (current_state : & 'a str , action : & 'a str) -> & 'a str { if current_state == "pending" { if action == "pay" { println ! ("Payment received, order confirmed") ; return "confirmed" } else { if action == "cancel" { println ! ("Order cancelled") ; return "cancelled" } else { println ! ("Invalid action '{}' for pending order" , action) ; return current_state } } } else { if current_state == "confirmed" { if action == "ship" { println ! ("Order shipped") ; return "shipped" } else { if action == "cancel" { println ! ("Confirmed order cancelled, refund processed") ; return "cancelled" } else { println ! ("Invalid action '{}' for confirmed order" , action) ; return current_state } } } else { if current_state == "shipped" { if action == "deliver" { println ! ("Order delivered") ; return "delivered" } else { println ! ("Cannot modify shipped order") ; return current_state } } else { if current_state == "delivered" { println ! ("Order already completed") ; return current_state } else { if current_state == "cancelled" { println ! ("Order was cancelled") ; return current_state } else { println ! ("Unknown order state: {}" , current_state) ; return "error" } } } } } } fn track_order () -> String { let mut state = "pending" ; println ! ("Order tracking simulation:") ; println ! ("Initial state: {}" , state) ; state = process_order_state (state , "pay") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "ship") ; println ! ("Current state: {}" , state) ; state = process_order_state (state , "deliver") ; println ! ("Current state: {}" , state) ; state } fn main () { { let final_state = track_order () ; println ! ("Final order state: {}" , final_state) } }
+  |
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0106`.
+
 
 
 === ch04-00-practical-patterns-tdd example 10 ===
 
-thread 'main' (1920170) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.77.0/src/backend/transpiler/expressions.rs:40:18:
+thread 'main' (2541325) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.79.0/src/backend/transpiler/expressions.rs:40:18:
 internal error: entered unreachable code
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-
-
-=== ch03-00-functions-tdd example 10 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling proc-macro2 v1.0.101
-   Compiling libc v0.2.177
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling rayon-core v1.13.0
-   Compiling aho-corasick v1.1.3
-   Compiling syn v2.0.106
-   Compiling crossbeam-deque v0.8.6
-   Compiling ahash v0.8.12
-   Compiling regex-syntax v0.8.8
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling regex-automata v0.4.13
-   Compiling rayon v1.11.0
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling iana-time-zone v0.1.64
-   Compiling smallvec v1.15.1
-   Compiling regex v1.12.2
-   Compiling simdutf8 v0.1.5
-   Compiling scopeguard v1.2.0
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling rustix v1.1.2
-   Compiling static_assertions v1.1.0
-   Compiling equivalent v1.0.2
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling lock_api v0.4.14
-   Compiling indexmap v2.11.4
-   Compiling chrono v0.4.42
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling ryu v1.0.20
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling litrs v0.4.2
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling atoi_simd v0.15.6
-   Compiling document-features v0.2.11
-   Compiling strength_reduce v0.2.4
-   Compiling dyn-clone v1.0.20
-   Compiling foreign_vec v0.1.0
-   Compiling ethnum v1.5.2
-   Compiling streaming-iterator v0.1.9
-   Compiling fast-float v0.2.0
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling multiversion v0.7.4
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling rand_distr v0.4.3
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling crossterm v0.29.0
-   Compiling polars-arrow v0.35.4
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling comfy-table v7.2.1
-   Compiling percent-encoding v2.3.2
-   Compiling heck v0.4.1
-   Compiling bytes v1.10.1
-   Compiling home v0.5.11
-   Compiling serde_core v1.0.228
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmp7zJbq3)
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:24
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                        ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:38
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:379
-  |
-1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row ...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:411
-  |
-1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . un...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0282]: type annotations needed
- --> src/main.rs:1:453
-  |
-1 | ... -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > ...
-  |                                                  ^^^   --- type must be known at this point
-  |
-help: consider giving this closure parameter an explicit type
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . sort_by ("revenue_sum" , { let mut map : std :: collections :: BTreeMap < String , String > = std :: collections :: BTreeMap :: new () ; map . insert ("descending" . to_string () , (true) . to_string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row: /* Type */ | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > threshold) . collect () . expect ("DataFrame lazy operation collection should not fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let top_items = filter_high_value (analysis , 10000f64) ; println ! ("Found {} high-value items" , top_items . rows ()) } } }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ++++++++++++
-
-error[E0599]: no method named `finish` found for struct `CsvReader<'a, R>` in the current scope
-  --> src/main.rs:1:756
-   |
- 1 | ... expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let to...
-   |                                          ^^^^^^ method not found in `CsvReader<'_, std::fs::File>`
-   |
-  ::: /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/polars-io-0.35.4/src/lib.rs:68:8
-   |
-68 |     fn finish(self) -> PolarsResult<DataFrame>;
-   |        ------ the method is available for `CsvReader<'_, std::fs::File>` here
-   |
-   = help: items from traits can only be used if the trait is in scope
-help: trait `SerReader` which provides `finish` is implemented but not in scope; perhaps you want to import it
-   |
- 1 + use polars::prelude::SerReader;
-   |
-
-Some errors have detailed explanations: E0282, E0412, E0599.
-For more information about an error, try `rustc --explain E0282`.
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 6 previous errors
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling proc-macro2 v1.0.101
-   Compiling libc v0.2.177
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling rayon-core v1.13.0
-   Compiling aho-corasick v1.1.3
-   Compiling syn v2.0.106
-   Compiling crossbeam-deque v0.8.6
-   Compiling ahash v0.8.12
-   Compiling regex-syntax v0.8.8
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling regex-automata v0.4.13
-   Compiling rayon v1.11.0
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling iana-time-zone v0.1.64
-   Compiling smallvec v1.15.1
-   Compiling regex v1.12.2
-   Compiling simdutf8 v0.1.5
-   Compiling scopeguard v1.2.0
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling rustix v1.1.2
-   Compiling static_assertions v1.1.0
-   Compiling equivalent v1.0.2
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling lock_api v0.4.14
-   Compiling indexmap v2.11.4
-   Compiling chrono v0.4.42
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling ryu v1.0.20
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling litrs v0.4.2
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling atoi_simd v0.15.6
-   Compiling document-features v0.2.11
-   Compiling strength_reduce v0.2.4
-   Compiling dyn-clone v1.0.20
-   Compiling foreign_vec v0.1.0
-   Compiling ethnum v1.5.2
-   Compiling streaming-iterator v0.1.9
-   Compiling fast-float v0.2.0
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling multiversion v0.7.4
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling rand_distr v0.4.3
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling crossterm v0.29.0
-   Compiling polars-arrow v0.35.4
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling comfy-table v7.2.1
-   Compiling percent-encoding v2.3.2
-   Compiling heck v0.4.1
-   Compiling bytes v1.10.1
-   Compiling home v0.5.11
-   Compiling serde_core v1.0.228
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmp7zJbq3)
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:24
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                        ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:38
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . s...
-  |                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:379
-  |
-1 | ..._string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row ...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:411
-  |
-1 | ..._high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . un...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0282]: type annotations needed
- --> src/main.rs:1:453
-  |
-1 | ... -> DataFrame { df . lazy () . filter (move | row | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > ...
-  |                                                  ^^^   --- type must be known at this point
-  |
-help: consider giving this closure parameter an explicit type
-  |
-1 | fn analyze_sales (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("revenue" , "sum") . sort_by ("revenue_sum" , { let mut map : std :: collections :: BTreeMap < String , String > = std :: collections :: BTreeMap :: new () ; map . insert ("descending" . to_string () , (true) . to_string ()) ; map }) } fn filter_high_value (df : DataFrame , threshold : f64) -> DataFrame { df . lazy () . filter (move | row: /* Type */ | row . get ("value") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) > threshold) . collect () . expect ("DataFrame lazy operation collection should not fail") } fn main () { { let sales = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let top_items = filter_high_value (analysis , 10000f64) ; println ! ("Found {} high-value items" , top_items . rows ()) } } }
-  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ++++++++++++
-
-error[E0599]: no method named `finish` found for struct `CsvReader<'a, R>` in the current scope
-  --> src/main.rs:1:756
-   |
- 1 | ... expect ("Failed to open CSV file") . finish () . expect ("Failed to read CSV file") ; { let analysis = analyze_sales (sales) ; let to...
-   |                                          ^^^^^^ method not found in `CsvReader<'_, std::fs::File>`
-   |
-  ::: /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/polars-io-0.35.4/src/lib.rs:68:8
-   |
-68 |     fn finish(self) -> PolarsResult<DataFrame>;
-   |        ------ the method is available for `CsvReader<'_, std::fs::File>` here
-   |
-   = help: items from traits can only be used if the trait is in scope
-help: trait `SerReader` which provides `finish` is implemented but not in scope; perhaps you want to import it
-   |
- 1 + use polars::prelude::SerReader;
-   |
-
-Some errors have detailed explanations: E0282, E0412, E0599.
-For more information about an error, try `rustc --explain E0282`.
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 6 previous errors
-
-
-
-=== ch03-00-functions-tdd example 11 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling target-features v0.1.6
-   Compiling num-traits v0.2.19
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling syn v2.0.106
-   Compiling crossbeam-deque v0.8.6
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling regex-syntax v0.8.8
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling rayon v1.11.0
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling getrandom v0.2.16
-   Compiling regex-automata v0.4.13
-   Compiling polars-utils v0.35.4
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling rustix v1.1.2
-   Compiling scopeguard v1.2.0
-   Compiling static_assertions v1.1.0
-   Compiling equivalent v1.0.2
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling regex v1.12.2
-   Compiling smallvec v1.15.1
-   Compiling indexmap v2.11.4
-   Compiling chrono v0.4.42
-   Compiling lock_api v0.4.14
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling ryu v1.0.20
-   Compiling polars-error v0.35.4
-   Compiling linux-raw-sys v0.11.0
-   Compiling bitflags v2.9.4
-   Compiling litrs v0.4.2
-   Compiling itoa v1.0.15
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling document-features v0.2.11
-   Compiling fast-float v0.2.0
-   Compiling streaming-iterator v0.1.9
-   Compiling ethnum v1.5.2
-   Compiling atoi_simd v0.15.6
-   Compiling strength_reduce v0.2.4
-   Compiling foreign_vec v0.1.0
-   Compiling dyn-clone v1.0.20
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling multiversion v0.7.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling now v0.1.3
-   Compiling rand_distr v0.4.3
-   Compiling atoi v2.0.0
-   Compiling polars-arrow v0.35.4
-   Compiling comfy-table v7.2.1
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling heck v0.4.1
-   Compiling bytes v1.10.1
-   Compiling percent-encoding v2.3.2
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpx7Az0m)
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:28
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                            ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:42
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                                          ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:392
-  |
-1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:406
-  |
-1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0282]: type annotations needed
- --> src/main.rs:1:90
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                                                                                          ^^^      --- type must be known at this point
-  |
-help: consider giving this closure parameter an explicit type
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row: /* Type */ | { (row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) - row . get ("cost") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) / row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quantity" , "sum") . agg ("revenue" , "mean") . agg ("margin" , "mean") } fn main () { }
-  |                                                                                             ++++++++++++
-
-Some errors have detailed explanations: E0282, E0412.
-For more information about an error, try `rustc --explain E0282`.
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 5 previous errors
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling target-features v0.1.6
-   Compiling num-traits v0.2.19
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling syn v2.0.106
-   Compiling crossbeam-deque v0.8.6
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling regex-syntax v0.8.8
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling rayon v1.11.0
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling getrandom v0.2.16
-   Compiling regex-automata v0.4.13
-   Compiling polars-utils v0.35.4
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling rustix v1.1.2
-   Compiling scopeguard v1.2.0
-   Compiling static_assertions v1.1.0
-   Compiling equivalent v1.0.2
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling regex v1.12.2
-   Compiling smallvec v1.15.1
-   Compiling indexmap v2.11.4
-   Compiling chrono v0.4.42
-   Compiling lock_api v0.4.14
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling ryu v1.0.20
-   Compiling polars-error v0.35.4
-   Compiling linux-raw-sys v0.11.0
-   Compiling bitflags v2.9.4
-   Compiling litrs v0.4.2
-   Compiling itoa v1.0.15
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling document-features v0.2.11
-   Compiling fast-float v0.2.0
-   Compiling streaming-iterator v0.1.9
-   Compiling ethnum v1.5.2
-   Compiling atoi_simd v0.15.6
-   Compiling strength_reduce v0.2.4
-   Compiling foreign_vec v0.1.0
-   Compiling dyn-clone v1.0.20
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling multiversion v0.7.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling now v0.1.3
-   Compiling rand_distr v0.4.3
-   Compiling atoi v2.0.0
-   Compiling polars-arrow v0.35.4
-   Compiling comfy-table v7.2.1
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling heck v0.4.1
-   Compiling bytes v1.10.1
-   Compiling percent-encoding v2.3.2
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpx7Az0m)
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:28
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                            ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:42
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                                          ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:392
-  |
-1 | ...d")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame")...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0412]: cannot find type `DataFrame` in this scope
- --> src/main.rs:1:406
-  |
-1 | ...}) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quant...
-  |                                                      ^^^^^^^^^ not found in this scope
-  |
-help: consider importing this struct
-  |
-1 + use polars::frame::DataFrame;
-  |
-
-error[E0282]: type annotations needed
- --> src/main.rs:1:90
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row | { (row . get ("revenue") . cloned () . unw...
-  |                                                                                          ^^^      --- type must be known at this point
-  |
-help: consider giving this closure parameter an explicit type
-  |
-1 | fn add_profit_margin (df : DataFrame) -> DataFrame { df . with_column ("margin" , move | row: /* Type */ | { (row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) - row . get ("cost") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) / row . get ("revenue") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) * 100f64 }) } fn summarize_by_category (df : DataFrame) -> DataFrame { df . groupby (& []) . expect ("Failed to group DataFrame") . agg ("quantity" , "sum") . agg ("revenue" , "mean") . agg ("margin" , "mean") } fn main () { }
-  |                                                                                             ++++++++++++
-
-Some errors have detailed explanations: E0282, E0412.
-For more information about an error, try `rustc --explain E0282`.
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 5 previous errors
-
 
 
 === ch15-00-binary-compilation-deployment example 2 ===
@@ -716,7 +63,7 @@ Caused by:
 === ch15-00-binary-compilation-deployment example 4 ===
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmp61Nf6h/main.rs:1:301
+ --> /tmp/.tmpskKAh7/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
@@ -729,7 +76,7 @@ help: remove these braces
   |
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmp61Nf6h/main.rs:1:322
+ --> /tmp/.tmpskKAh7/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
@@ -740,7 +87,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmp61Nf6h/main.rs:1:334
+ --> /tmp/.tmpskKAh7/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
@@ -751,7 +98,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                  +++
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:491
+ --> /tmp/.tmpskKAh7/main.rs:1:491
   |
 1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
   |                                                         ----^
@@ -761,7 +108,7 @@ warning: variable does not need to be mutable
   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:569
+ --> /tmp/.tmpskKAh7/main.rs:1:569
   |
 1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
   |                                                         ----^
@@ -769,7 +116,7 @@ warning: variable does not need to be mutable
   |                                                         help: remove this `mut`
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:586
+ --> /tmp/.tmpskKAh7/main.rs:1:586
   |
 1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |                                                         ----^
@@ -782,7 +129,7 @@ For more information about this error, try `rustc --explain E0384`.
 
 Error: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmp61Nf6h/main.rs:1:301
+ --> /tmp/.tmpskKAh7/main.rs:1:301
   |
 1 | ...a : i32 , b : i32) -> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematic...
   |                                               ^^                                           ^^
@@ -795,7 +142,7 @@ help: remove these braces
   |
 
 error[E0384]: cannot assign to immutable argument `b`
- --> /tmp/.tmp61Nf6h/main.rs:1:322
+ --> /tmp/.tmpskKAh7/main.rs:1:322
   |
 1 | ...> i32 { while b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ...
   |                                                ^^^^^^^^^ cannot assign to immutable argument
@@ -806,7 +153,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                            +++
 
 error[E0384]: cannot assign to immutable argument `a`
- --> /tmp/.tmp61Nf6h/main.rs:1:334
+ --> /tmp/.tmpskKAh7/main.rs:1:334
   |
 1 | ...le b != 0 { { { let temp = b ; { b = a % b ; a = temp } } } } ; a } fn main () { println ! ("Mathematical Functions Demo") ; { let n =...
   |                                                 ^^^^^^^^ cannot assign to immutable argument
@@ -817,7 +164,7 @@ help: consider making this binding mutable
   |                                                                                                                                                                                                                                                                  +++
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:491
+ --> /tmp/.tmpskKAh7/main.rs:1:491
   |
 1 | ... ! ("Factorial of {}: {}" , n , factorial (n)) ; let mut x = 25 ; println ! ("Square root of {}: {}" , x , integer_sqrt (x)) ; let mut...
   |                                                         ----^
@@ -827,7 +174,7 @@ warning: variable does not need to be mutable
   = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:569
+ --> /tmp/.tmpskKAh7/main.rs:1:569
   |
 1 | ...Square root of {}: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a ...
   |                                                         ----^
@@ -835,7 +182,7 @@ warning: variable does not need to be mutable
   |                                                         help: remove this `mut`
 
 warning: variable does not need to be mutable
- --> /tmp/.tmp61Nf6h/main.rs:1:586
+ --> /tmp/.tmpskKAh7/main.rs:1:586
   |
 1 | ...: {}" , x , integer_sqrt (x)) ; let mut a = 48 ; let mut b = 18 ; println ! ("GCD of {} and {}: {}" , a , b , gcd (a , b)) } } }
   |                                                         ----^
@@ -851,7 +198,7 @@ For more information about this error, try `rustc --explain E0384`.
 === ch16-00-testing-quality-assurance example 5 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:36
+ --> /tmp/.tmpn6qavV/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                    ^^^ not found in this scope
@@ -863,7 +210,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:94
+ --> /tmp/.tmpn6qavV/main.rs:1:94
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                                                                              ^^^ not found in this scope
@@ -875,7 +222,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:163
+ --> /tmp/.tmpn6qavV/main.rs:1:163
   |
 1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
   |                                                         ^^^ not found in this scope
@@ -887,19 +234,19 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:287
+ --> /tmp/.tmpn6qavV/main.rs:1:287
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:357
+ --> /tmp/.tmpn6qavV/main.rs:1:357
   |
 1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:433
+ --> /tmp/.tmpn6qavV/main.rs:1:433
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
   |                                                       ^^^^^^^^ not found in this scope
@@ -910,7 +257,7 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:36
+ --> /tmp/.tmpn6qavV/main.rs:1:36
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                    ^^^ not found in this scope
@@ -922,7 +269,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:94
+ --> /tmp/.tmpn6qavV/main.rs:1:94
   |
 1 | fn test_addition () { assert_eq ! (add (2 , 3) , 5 , "{}" , "Basic addition") ; assert_eq ! (add (- 1 , 1) , 0 , "{}" , "Adding negative ...
   |                                                                                              ^^^ not found in this scope
@@ -934,7 +281,7 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `add` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:163
+ --> /tmp/.tmpn6qavV/main.rs:1:163
   |
 1 | ...0 , "{}" , "Adding negative numbers") ; assert_eq ! (add (0 , 0) , 0 , "{}" , "Adding zeros") ; println ! ("✅ Addition tests pass") ; }...
   |                                                         ^^^ not found in this scope
@@ -946,19 +293,19 @@ help: use the `.` operator to call the method `Add::add` on `{integer}`
   |
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:287
+ --> /tmp/.tmpn6qavV/main.rs:1:287
   |
 1 | ...ass") ; } fn test_multiplication () { assert_eq ! (multiply (3 , 4) , 12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:357
+ --> /tmp/.tmpn6qavV/main.rs:1:357
   |
 1 | ...12 , "{}" , "Basic multiplication") ; assert_eq ! (multiply (- 2 , 3) , - 6 , "{}" , "Negative multiplication") ; assert_eq ! (multipl...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `multiply` in this scope
- --> /tmp/.tmp27W6qc/main.rs:1:433
+ --> /tmp/.tmpn6qavV/main.rs:1:433
   |
 1 | ..., "{}" , "Negative multiplication") ; assert_eq ! (multiply (0 , 100) , 0 , "{}" , "Multiply by zero") ; println ! ("✅ Multiplication t...
   |                                                       ^^^^^^^^ not found in this scope
@@ -972,31 +319,31 @@ For more information about this error, try `rustc --explain E0425`.
 === ch16-00-testing-quality-assurance example 7 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:325
+ --> /tmp/.tmp6EtJAi/main.rs:1:325
   |
 1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
   |                                                        ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:334
+ --> /tmp/.tmp6EtJAi/main.rs:1:334
   |
 1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:395
+ --> /tmp/.tmp6EtJAi/main.rs:1:395
   |
 1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:44
+ --> /tmp/.tmp6EtJAi/main.rs:1:44
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                            ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:82
+ --> /tmp/.tmp6EtJAi/main.rs:1:82
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                                                                  ^^^ not found in this scope
@@ -1007,31 +354,31 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find value `actual` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:325
+ --> /tmp/.tmp6EtJAi/main.rs:1:325
   |
 1 | ...ement should be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , ...
   |                                                        ^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `expected` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:334
+ --> /tmp/.tmp6EtJAi/main.rs:1:334
   |
 1 | ...ld be 4") } } } fn main () { assert_eq ! (actual , expected , "{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Ex...
   |                                                       ^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find value `condition` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:395
+ --> /tmp/.tmp6EtJAi/main.rs:1:395
   |
 1 | ..."{}" , "Descriptive failure message") ; assert ! (condition , "{}" , "Explain why this should be true") ; }
   |                                                      ^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `create_range` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:44
+ --> /tmp/.tmp6EtJAi/main.rs:1:44
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                            ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `len` in this scope
- --> /tmp/.tmp1lJBDP/main.rs:1:82
+ --> /tmp/.tmp6EtJAi/main.rs:1:82
   |
 1 | fn test_range_function () { { let result = create_range (1 , 5) ; { assert_eq ! (len (result) , 4 , "{}" , "Range should have 4 elements"...
   |                                                                                  ^^^ not found in this scope
@@ -1045,7 +392,7 @@ For more information about this error, try `rustc --explain E0425`.
 === ch17-00-error-handling-robustness example 3 ===
 ✗ Compilation failed: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmp4FyZ32/main.rs:1:582
+ --> /tmp/.tmpwrt2kQ/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
@@ -1058,7 +405,7 @@ help: remove these braces
   |
 
 warning: unreachable expression
- --> /tmp/.tmp4FyZ32/main.rs:1:595
+ --> /tmp/.tmpwrt2kQ/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
@@ -1068,7 +415,7 @@ warning: unreachable expression
   = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmp4FyZ32/main.rs:1:570
+ --> /tmp/.tmpwrt2kQ/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -1082,7 +429,7 @@ For more information about this error, try `rustc --explain E0317`.
 
 Error: Compilation failed:
 warning: unnecessary braces around block return value
- --> /tmp/.tmp4FyZ32/main.rs:1:582
+ --> /tmp/.tmpwrt2kQ/main.rs:1:582
   |
 1 | ...factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let...
   |                                                                 ^^        ^^
@@ -1095,7 +442,7 @@ help: remove these braces
   |
 
 warning: unreachable expression
- --> /tmp/.tmp4FyZ32/main.rs:1:595
+ --> /tmp/.tmpwrt2kQ/main.rs:1:595
   |
 1 | ...ctorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } fn main () { { let sqrt1 = safe_sqrt (16f64) ; { l...
   |                                   --------   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ unreachable expression
@@ -1105,7 +452,7 @@ warning: unreachable expression
   = note: `#[warn(unreachable_code)]` (part of `#[warn(unused)]`) on by default
 
 error[E0317]: `if` may be missing an `else` clause
- --> /tmp/.tmp4FyZ32/main.rs:1:570
+ --> /tmp/.tmpwrt2kQ/main.rs:1:570
   |
 1 | ...-> i64 { if n < 0 { println ! ("Error: Factorial undefined for negative numbers") ; return 0 } ; if n > 20 { println ! ("Error: Factorial too large, computing factorial(20)") ; return safe_factorial (20) } ; if n <= 1 { { return 1 } ((n as i64)) * safe_factorial (n - 1) } } ...
   |       --- expected `i64` because of this return type                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ expected `i64`, found `()`
@@ -1121,7 +468,7 @@ For more information about this error, try `rustc --explain E0317`.
 
 === ch17-00-error-handling-robustness example 8 ===
 
-thread 'main' (1949504) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.77.0/src/backend/transpiler/expressions.rs:40:18:
+thread 'main' (2579973) panicked at /home/noah/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ruchy-3.79.0/src/backend/transpiler/expressions.rs:40:18:
 internal error: entered unreachable code
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
@@ -1129,37 +476,37 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 === ch17-00-error-handling-robustness example 9 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:105
+ --> /tmp/.tmpG6040c/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:263
+ --> /tmp/.tmpG6040c/main.rs:1:263
   |
 1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:429
+ --> /tmp/.tmpG6040c/main.rs:1:429
   |
 1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:674
+ --> /tmp/.tmpG6040c/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:812
+ --> /tmp/.tmpG6040c/main.rs:1:812
   |
 1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:962
+ --> /tmp/.tmpG6040c/main.rs:1:962
   |
 1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
@@ -1170,37 +517,37 @@ For more information about this error, try `rustc --explain E0425`.
 
 Error: Compilation failed:
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:105
+ --> /tmp/.tmpG6040c/main.rs:1:105
   |
 1 | ...g division error handling...") ; { let result1 = safe_divide (10 , 2) ; { if result1 == 5 { println ! ("✅ Normal division test passed")...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:263
+ --> /tmp/.tmpG6040c/main.rs:1:263
   |
 1 | ... Normal division test failed") } ; let result2 = safe_divide (10 , 0) ; if result2 == 0 { println ! ("✅ Division by zero handling passed...
   |                                                      ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `safe_divide` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:429
+ --> /tmp/.tmpG6040c/main.rs:1:429
   |
 1 | ...sion by zero handling failed") } ; let result3 = safe_divide (- 10 , 2) ; if result3 == - 5 { println ! ("✅ Negative number handling pa...
   |                                                     ^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:674
+ --> /tmp/.tmpG6040c/main.rs:1:674
   |
 1 | ...! ("Testing input validation...") ; { let age1 = validate_age (25) ; { if age1 == 25 { println ! ("✅ Valid age test passed") } else { p...
   |                                                     ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:812
+ --> /tmp/.tmpG6040c/main.rs:1:812
   |
 1 | ...tln ! ("❌ Valid age test failed") } ; let age2 = validate_age (- 5) ; if age2 == 0 { println ! ("✅ Negative age handling passed") } else...
   |                                                      ^^^^^^^^^^^^ not found in this scope
 
 error[E0425]: cannot find function `validate_age` in this scope
- --> /tmp/.tmpopcCnA/main.rs:1:962
+ --> /tmp/.tmpG6040c/main.rs:1:962
   |
 1 | ..."❌ Negative age handling failed") } ; let age3 = validate_age (200) ; if age3 == 150 { println ! ("✅ Extreme age handling passed") } els...
   |                                                      ^^^^^^^^^^^^ not found in this scope
@@ -1211,1010 +558,10 @@ For more information about this error, try `rustc --explain E0425`.
 
 
 
-=== ch18-00-dataframes-data-processing example 1 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling proc-macro2 v1.0.101
-   Compiling libc v0.2.177
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling libm v0.2.15
-   Compiling zerocopy v0.8.27
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling rayon-core v1.13.0
-   Compiling crossbeam-epoch v0.9.18
-   Compiling aho-corasick v1.1.3
-   Compiling ahash v0.8.12
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling regex-automata v0.4.13
-   Compiling rayon v1.11.0
-   Compiling getrandom v0.2.16
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling polars-utils v0.35.4
-   Compiling simdutf8 v0.1.5
-   Compiling rustix v1.1.2
-   Compiling equivalent v1.0.2
-   Compiling regex v1.12.2
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling iana-time-zone v0.1.64
-   Compiling static_assertions v1.1.0
-   Compiling smallvec v1.15.1
-   Compiling scopeguard v1.2.0
-   Compiling chrono v0.4.42
-   Compiling indexmap v2.11.4
-   Compiling lock_api v0.4.14
-   Compiling hashbrown v0.14.5
-   Compiling multiversion-macros v0.7.4
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling bytemuck v1.24.0
-   Compiling litrs v0.4.2
-   Compiling polars-error v0.35.4
-   Compiling linux-raw-sys v0.11.0
-   Compiling ryu v1.0.20
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling document-features v0.2.11
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling ethnum v1.5.2
-   Compiling fast-float v0.2.0
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling streaming-iterator v0.1.9
-   Compiling dyn-clone v1.0.20
-   Compiling atoi_simd v0.15.6
-   Compiling rand v0.8.5
-   Compiling multiversion v0.7.4
-   Compiling polars-core v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling rand_distr v0.4.3
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling now v0.1.3
-   Compiling polars-arrow v0.35.4
-   Compiling atoi v2.0.0
-   Compiling comfy-table v7.2.1
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling home v0.5.11
-   Compiling percent-encoding v2.3.2
-   Compiling bytes v1.10.1
-   Compiling serde_core v1.0.228
-   Compiling heck v0.4.1
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpiNS6b0)
-error[E0308]: mismatched types
- --> src/main.rs:1:725
-  |
-1 | ...-> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("employee_id" , vec ! [101 , 102 , 103 , 104]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie" , "Diana"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("department" , vec ! ["Engineering" , "Sales" , "Engineering" , "HR"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("salary" , vec ! [95000 , 75000 , 105000 , 65000]) }]) . expect ("Failed to create DataFrame from columns") } ; df } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:48
-  |
-1 | fn create_dataframe () -> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polar...
-  |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling proc-macro2 v1.0.101
-   Compiling libc v0.2.177
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling libm v0.2.15
-   Compiling zerocopy v0.8.27
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling rayon-core v1.13.0
-   Compiling crossbeam-epoch v0.9.18
-   Compiling aho-corasick v1.1.3
-   Compiling ahash v0.8.12
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling thiserror v1.0.69
-   Compiling syn v1.0.109
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling regex-automata v0.4.13
-   Compiling rayon v1.11.0
-   Compiling getrandom v0.2.16
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling polars-utils v0.35.4
-   Compiling simdutf8 v0.1.5
-   Compiling rustix v1.1.2
-   Compiling equivalent v1.0.2
-   Compiling regex v1.12.2
-   Compiling allocator-api2 v0.2.21
-   Compiling hashbrown v0.16.0
-   Compiling iana-time-zone v0.1.64
-   Compiling static_assertions v1.1.0
-   Compiling smallvec v1.15.1
-   Compiling scopeguard v1.2.0
-   Compiling chrono v0.4.42
-   Compiling indexmap v2.11.4
-   Compiling lock_api v0.4.14
-   Compiling hashbrown v0.14.5
-   Compiling multiversion-macros v0.7.4
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling bytemuck v1.24.0
-   Compiling litrs v0.4.2
-   Compiling polars-error v0.35.4
-   Compiling linux-raw-sys v0.11.0
-   Compiling ryu v1.0.20
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling document-features v0.2.11
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling ethnum v1.5.2
-   Compiling fast-float v0.2.0
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling streaming-iterator v0.1.9
-   Compiling dyn-clone v1.0.20
-   Compiling atoi_simd v0.15.6
-   Compiling rand v0.8.5
-   Compiling multiversion v0.7.4
-   Compiling polars-core v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling rand_distr v0.4.3
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling now v0.1.3
-   Compiling polars-arrow v0.35.4
-   Compiling atoi v2.0.0
-   Compiling comfy-table v7.2.1
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling home v0.5.11
-   Compiling percent-encoding v2.3.2
-   Compiling bytes v1.10.1
-   Compiling serde_core v1.0.228
-   Compiling heck v0.4.1
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpiNS6b0)
-error[E0308]: mismatched types
- --> src/main.rs:1:725
-  |
-1 | ...-> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("employee_id" , vec ! [101 , 102 , 103 , 104]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie" , "Diana"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("department" , vec ! ["Engineering" , "Sales" , "Engineering" , "HR"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("salary" , vec ! [95000 , 75000 , 105000 , 65000]) }]) . expect ("Failed to create DataFrame from columns") } ; df } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:48
-  |
-1 | fn create_dataframe () -> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polar...
-  |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-
-
-=== ch18-00-dataframes-data-processing example 2 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling quote v1.0.41
-   Compiling unicode-ident v1.0.19
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling libm v0.2.15
-   Compiling zerocopy v0.8.27
-   Compiling crossbeam-utils v0.8.21
-   Compiling target-features v0.1.6
-   Compiling num-traits v0.2.19
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling thiserror v1.0.69
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling syn v1.0.109
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling rustix v1.1.2
-   Compiling smallvec v1.15.1
-   Compiling equivalent v1.0.2
-   Compiling scopeguard v1.2.0
-   Compiling regex v1.12.2
-   Compiling static_assertions v1.1.0
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling hashbrown v0.16.0
-   Compiling allocator-api2 v0.2.21
-   Compiling chrono v0.4.42
-   Compiling lock_api v0.4.14
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling indexmap v2.11.4
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling ryu v1.0.20
-   Compiling litrs v0.4.2
-   Compiling parking_lot v0.12.5
-   Compiling rand_chacha v0.3.1
-   Compiling atoi_simd v0.15.6
-   Compiling dyn-clone v1.0.20
-   Compiling document-features v0.2.11
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling fast-float v0.2.0
-   Compiling streaming-iterator v0.1.9
-   Compiling ethnum v1.5.2
-   Compiling rand v0.8.5
-   Compiling multiversion v0.7.4
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling polars-arrow v0.35.4
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling comfy-table v7.2.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling percent-encoding v2.3.2
-   Compiling heck v0.4.1
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpgToeDG)
-error[E0308]: mismatched types
- --> src/main.rs:1:544
-  |
-1 | ... () { { let sales = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("product" , vec ! ["Widget" , "Gadget" , "Gizmo"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("quantity" , vec ! [100 , 150 , 200]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("revenue" , vec ! [999f64 , 1499f64 , 1999f64]) }]) . expect ("Failed to create DataFrame from columns") } ; sales } }
-  |       - expected `()` because of default return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^ expected `()`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:34
-  |
-1 | fn main () { { let sales = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :...
-  |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling quote v1.0.41
-   Compiling unicode-ident v1.0.19
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling libm v0.2.15
-   Compiling zerocopy v0.8.27
-   Compiling crossbeam-utils v0.8.21
-   Compiling target-features v0.1.6
-   Compiling num-traits v0.2.19
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling thiserror v1.0.69
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling syn v1.0.109
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling rustix v1.1.2
-   Compiling smallvec v1.15.1
-   Compiling equivalent v1.0.2
-   Compiling scopeguard v1.2.0
-   Compiling regex v1.12.2
-   Compiling static_assertions v1.1.0
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling hashbrown v0.16.0
-   Compiling allocator-api2 v0.2.21
-   Compiling chrono v0.4.42
-   Compiling lock_api v0.4.14
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling indexmap v2.11.4
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling itoa v1.0.15
-   Compiling bitflags v2.9.4
-   Compiling ryu v1.0.20
-   Compiling litrs v0.4.2
-   Compiling parking_lot v0.12.5
-   Compiling rand_chacha v0.3.1
-   Compiling atoi_simd v0.15.6
-   Compiling dyn-clone v1.0.20
-   Compiling document-features v0.2.11
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling fast-float v0.2.0
-   Compiling streaming-iterator v0.1.9
-   Compiling ethnum v1.5.2
-   Compiling rand v0.8.5
-   Compiling multiversion v0.7.4
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling crossterm v0.29.0
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling rustversion v1.0.22
-   Compiling polars-arrow v0.35.4
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling comfy-table v7.2.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling percent-encoding v2.3.2
-   Compiling heck v0.4.1
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpgToeDG)
-error[E0308]: mismatched types
- --> src/main.rs:1:544
-  |
-1 | ... () { { let sales = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("product" , vec ! ["Widget" , "Gadget" , "Gizmo"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("quantity" , vec ! [100 , 150 , 200]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("revenue" , vec ! [999f64 , 1499f64 , 1999f64]) }]) . expect ("Failed to create DataFrame from columns") } ; sales } }
-  |       - expected `()` because of default return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^ expected `()`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:34
-  |
-1 | fn main () { { let sales = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :...
-  |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-
-
-=== ch18-00-dataframes-data-processing example 3 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling quote v1.0.41
-   Compiling unicode-ident v1.0.19
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling ahash v0.8.12
-   Compiling crossbeam-epoch v0.9.18
-   Compiling syn v1.0.109
-   Compiling thiserror v1.0.69
-   Compiling syn v2.0.106
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling smartstring v1.0.1
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling static_assertions v1.1.0
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling rustix v1.1.2
-   Compiling equivalent v1.0.2
-   Compiling regex v1.12.2
-   Compiling hashbrown v0.16.0
-   Compiling allocator-api2 v0.2.21
-   Compiling scopeguard v1.2.0
-   Compiling smallvec v1.15.1
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling lock_api v0.4.14
-   Compiling indexmap v2.11.4
-   Compiling bytemuck v1.24.0
-   Compiling chrono v0.4.42
-   Compiling polars-error v0.35.4
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling litrs v0.4.2
-   Compiling itoa v1.0.15
-   Compiling ryu v1.0.20
-   Compiling bitflags v2.9.4
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling streaming-iterator v0.1.9
-   Compiling document-features v0.2.11
-   Compiling fast-float v0.2.0
-   Compiling atoi_simd v0.15.6
-   Compiling ethnum v1.5.2
-   Compiling dyn-clone v1.0.20
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling multiversion v0.7.4
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling crossterm v0.29.0
-   Compiling polars-arrow v0.35.4
-   Compiling rustversion v1.0.22
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling comfy-table v7.2.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling heck v0.4.1
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling percent-encoding v2.3.2
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling strum_macros v0.25.3
-   Compiling serde_derive v1.0.228
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpVEDPAg)
-error[E0308]: mismatched types
- --> src/main.rs:1:1100
-  |
-1 | ...-> i32 { { let customers = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 3]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("city" , vec ! ["New York" , "Los Angeles" , "Chicago"]) }]) . expect ("Failed to create DataFrame from columns") } ; { let orders = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("order_id" , vec ! [101 , 102 , 103]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 1]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("amount" , vec ! [99.99f64 , 149.99f64 , 79.99f64]) }]) . expect ("Failed to create DataFrame from columns") } ; customers } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^^^^^^^^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:70
-  |
-1 | fn work_with_multiple_dataframes () -> i32 { { let customers = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: n...
-  |                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:602
-  |
-1 | ...e DataFrame from columns") } ; { let orders = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ u...
-  |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 2 warnings
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 2 warnings emitted
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling quote v1.0.41
-   Compiling unicode-ident v1.0.19
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling memchr v2.7.6
-   Compiling rayon-core v1.13.0
-   Compiling getrandom v0.3.3
-   Compiling aho-corasick v1.1.3
-   Compiling ahash v0.8.12
-   Compiling crossbeam-epoch v0.9.18
-   Compiling syn v1.0.109
-   Compiling thiserror v1.0.69
-   Compiling syn v2.0.106
-   Compiling regex-syntax v0.8.8
-   Compiling crossbeam-deque v0.8.6
-   Compiling smartstring v1.0.1
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling parking_lot_core v0.9.12
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling getrandom v0.2.16
-   Compiling polars-utils v0.35.4
-   Compiling static_assertions v1.1.0
-   Compiling iana-time-zone v0.1.64
-   Compiling simdutf8 v0.1.5
-   Compiling rustix v1.1.2
-   Compiling equivalent v1.0.2
-   Compiling regex v1.12.2
-   Compiling hashbrown v0.16.0
-   Compiling allocator-api2 v0.2.21
-   Compiling scopeguard v1.2.0
-   Compiling smallvec v1.15.1
-   Compiling multiversion-macros v0.7.4
-   Compiling hashbrown v0.14.5
-   Compiling lock_api v0.4.14
-   Compiling indexmap v2.11.4
-   Compiling bytemuck v1.24.0
-   Compiling chrono v0.4.42
-   Compiling polars-error v0.35.4
-   Compiling rand_core v0.6.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling linux-raw-sys v0.11.0
-   Compiling litrs v0.4.2
-   Compiling itoa v1.0.15
-   Compiling ryu v1.0.20
-   Compiling bitflags v2.9.4
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling streaming-iterator v0.1.9
-   Compiling document-features v0.2.11
-   Compiling fast-float v0.2.0
-   Compiling atoi_simd v0.15.6
-   Compiling ethnum v1.5.2
-   Compiling dyn-clone v1.0.20
-   Compiling foreign_vec v0.1.0
-   Compiling strength_reduce v0.2.4
-   Compiling multiversion v0.7.4
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling crossterm v0.29.0
-   Compiling polars-arrow v0.35.4
-   Compiling rustversion v1.0.22
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling comfy-table v7.2.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling heck v0.4.1
-   Compiling serde_core v1.0.228
-   Compiling home v0.5.11
-   Compiling percent-encoding v2.3.2
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde v1.0.228
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling strum_macros v0.25.3
-   Compiling serde_derive v1.0.228
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpVEDPAg)
-error[E0308]: mismatched types
- --> src/main.rs:1:1100
-  |
-1 | ...-> i32 { { let customers = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 3]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("name" , vec ! ["Alice" , "Bob" , "Charlie"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("city" , vec ! ["New York" , "Los Angeles" , "Chicago"]) }]) . expect ("Failed to create DataFrame from columns") } ; { let orders = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("order_id" , vec ! [101 , 102 , 103]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("customer_id" , vec ! [1 , 2 , 1]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("amount" , vec ! [99.99f64 , 149.99f64 , 79.99f64]) }]) . expect ("Failed to create DataFrame from columns") } ; customers } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^^^^^^^^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:70
-  |
-1 | fn work_with_multiple_dataframes () -> i32 { { let customers = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: n...
-  |                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:602
-  |
-1 | ...e DataFrame from columns") } ; { let orders = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ u...
-  |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 2 warnings
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 2 warnings emitted
-
-
-
-=== ch18-00-dataframes-data-processing example 4 ===
-✗ Compilation failed: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling rayon-core v1.13.0
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling syn v1.0.109
-   Compiling thiserror v1.0.69
-   Compiling crossbeam-deque v0.8.6
-   Compiling regex-syntax v0.8.8
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling getrandom v0.2.16
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling polars-utils v0.35.4
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling scopeguard v1.2.0
-   Compiling equivalent v1.0.2
-   Compiling hashbrown v0.16.0
-   Compiling iana-time-zone v0.1.64
-   Compiling static_assertions v1.1.0
-   Compiling simdutf8 v0.1.5
-   Compiling regex v1.12.2
-   Compiling allocator-api2 v0.2.21
-   Compiling smallvec v1.15.1
-   Compiling rustix v1.1.2
-   Compiling indexmap v2.11.4
-   Compiling hashbrown v0.14.5
-   Compiling chrono v0.4.42
-   Compiling multiversion-macros v0.7.4
-   Compiling lock_api v0.4.14
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling litrs v0.4.2
-   Compiling ryu v1.0.20
-   Compiling linux-raw-sys v0.11.0
-   Compiling bitflags v2.9.4
-   Compiling itoa v1.0.15
-   Compiling document-features v0.2.11
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling atoi_simd v0.15.6
-   Compiling ethnum v1.5.2
-   Compiling dyn-clone v1.0.20
-   Compiling streaming-iterator v0.1.9
-   Compiling foreign_vec v0.1.0
-   Compiling fast-float v0.2.0
-   Compiling strength_reduce v0.2.4
-   Compiling multiversion v0.7.4
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling crossterm v0.29.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling polars-arrow v0.35.4
-   Compiling rustversion v1.0.22
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling comfy-table v7.2.1
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling heck v0.4.1
-   Compiling percent-encoding v2.3.2
-   Compiling home v0.5.11
-   Compiling serde_core v1.0.228
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpzasqcX)
-error[E0308]: mismatched types
- --> src/main.rs:1:437
-  |
-1 | ...-> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("status" , vec ! ["active" , "pending" , "closed"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("value" , vec ! [1000 , 500 , 1500]) }]) . expect ("Failed to create DataFrame from columns") } ; df } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                           ^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:54
-  |
-1 | fn conditional_processing () -> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use...
-  |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-Error: Cargo build failed:
-    Updating crates.io index
-     Locking 162 packages to latest compatible versions
-      Adding polars v0.35.4 (available: v0.51.0)
-   Compiling version_check v0.9.5
-   Compiling libc v0.2.177
-   Compiling proc-macro2 v1.0.101
-   Compiling unicode-ident v1.0.19
-   Compiling quote v1.0.41
-   Compiling cfg-if v1.0.3
-   Compiling autocfg v1.5.0
-   Compiling zerocopy v0.8.27
-   Compiling libm v0.2.15
-   Compiling crossbeam-utils v0.8.21
-   Compiling memchr v2.7.6
-   Compiling num-traits v0.2.19
-   Compiling target-features v0.1.6
-   Compiling getrandom v0.3.3
-   Compiling rayon-core v1.13.0
-   Compiling aho-corasick v1.1.3
-   Compiling crossbeam-epoch v0.9.18
-   Compiling ahash v0.8.12
-   Compiling syn v1.0.109
-   Compiling thiserror v1.0.69
-   Compiling crossbeam-deque v0.8.6
-   Compiling regex-syntax v0.8.8
-   Compiling syn v2.0.106
-   Compiling smartstring v1.0.1
-   Compiling parking_lot_core v0.9.12
-   Compiling either v1.15.0
-   Compiling once_cell v1.21.3
-   Compiling getrandom v0.2.16
-   Compiling rayon v1.11.0
-   Compiling regex-automata v0.4.13
-   Compiling polars-utils v0.35.4
-   Compiling thiserror-impl v1.0.69
-   Compiling bytemuck_derive v1.10.2
-   Compiling scopeguard v1.2.0
-   Compiling equivalent v1.0.2
-   Compiling hashbrown v0.16.0
-   Compiling iana-time-zone v0.1.64
-   Compiling static_assertions v1.1.0
-   Compiling simdutf8 v0.1.5
-   Compiling regex v1.12.2
-   Compiling allocator-api2 v0.2.21
-   Compiling smallvec v1.15.1
-   Compiling rustix v1.1.2
-   Compiling indexmap v2.11.4
-   Compiling hashbrown v0.14.5
-   Compiling chrono v0.4.42
-   Compiling multiversion-macros v0.7.4
-   Compiling lock_api v0.4.14
-   Compiling bytemuck v1.24.0
-   Compiling rand_core v0.6.4
-   Compiling polars-error v0.35.4
-   Compiling ppv-lite86 v0.2.21
-   Compiling litrs v0.4.2
-   Compiling ryu v1.0.20
-   Compiling linux-raw-sys v0.11.0
-   Compiling bitflags v2.9.4
-   Compiling itoa v1.0.15
-   Compiling document-features v0.2.11
-   Compiling rand_chacha v0.3.1
-   Compiling parking_lot v0.12.5
-   Compiling atoi_simd v0.15.6
-   Compiling ethnum v1.5.2
-   Compiling dyn-clone v1.0.20
-   Compiling streaming-iterator v0.1.9
-   Compiling foreign_vec v0.1.0
-   Compiling fast-float v0.2.0
-   Compiling strength_reduce v0.2.4
-   Compiling multiversion v0.7.4
-   Compiling rand v0.8.5
-   Compiling polars-core v0.35.4
-   Compiling unicode-segmentation v1.12.0
-   Compiling crossterm v0.29.0
-   Compiling unicode-width v0.2.2
-   Compiling polars-ops v0.35.4
-   Compiling xxhash-rust v0.8.15
-   Compiling argminmax v0.6.3
-   Compiling polars-arrow v0.35.4
-   Compiling rustversion v1.0.22
-   Compiling rand_distr v0.4.3
-   Compiling now v0.1.3
-   Compiling comfy-table v7.2.1
-   Compiling atoi v2.0.0
-   Compiling memmap2 v0.7.1
-   Compiling polars-plan v0.35.4
-   Compiling bytes v1.10.1
-   Compiling heck v0.4.1
-   Compiling percent-encoding v2.3.2
-   Compiling home v0.5.11
-   Compiling serde_core v1.0.228
-   Compiling polars-lazy v0.35.4
-   Compiling polars v0.35.4
-   Compiling serde_json v1.0.145
-   Compiling glob v0.3.3
-   Compiling serde v1.0.228
-   Compiling serde_derive v1.0.228
-   Compiling strum_macros v0.25.3
-   Compiling polars-row v0.35.4
-   Compiling polars-time v0.35.4
-   Compiling polars-io v0.35.4
-   Compiling ruchy_binary v0.1.0 (/tmp/.tmpzasqcX)
-error[E0308]: mismatched types
- --> src/main.rs:1:437
-  |
-1 | ...-> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("status" , vec ! ["active" , "pending" , "closed"]) } , { use polars :: prelude :: NamedFrom ; polars :: prelude :: Series :: new ("value" , vec ! [1000 , 500 , 1500]) }]) . expect ("Failed to create DataFrame from columns") } ; df } ...
-  |       --- expected `i32` because of return type                                                                                                                                                                                                                                                                                                                                                                           ^^ expected `i32`, found `DataFrame`
-
-warning: unused import: `polars :: prelude :: NamedFrom`
- --> src/main.rs:1:54
-  |
-1 | fn conditional_processing () -> i32 { let df = { use polars :: prelude :: NamedFrom ; polars :: prelude :: DataFrame :: new (vec ! [{ use...
-  |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |
-  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
-
-For more information about this error, try `rustc --explain E0308`.
-warning: `ruchy_binary` (bin "ruchy_binary") generated 1 warning
-error: could not compile `ruchy_binary` (bin "ruchy_binary") due to 1 previous error; 1 warning emitted
-
-
-
 === ch05-00-control-flow-tdd example 15 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpUGzstn/main.rs:1:23
+ --> /tmp/.tmpP9B7yF/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2222,7 +569,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0282]: type annotations needed
- --> /tmp/.tmpUGzstn/main.rs:1:242
+ --> /tmp/.tmpP9B7yF/main.rs:1:242
   |
 1 | ...high_value = df . lazy () . filter (move | row | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))...
   |                                               ^^^        --- type must be known at this point
@@ -2239,7 +586,7 @@ For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpUGzstn/main.rs:1:23
+ --> /tmp/.tmpP9B7yF/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("sales.csv") . expect ("Failed to open CSV file") . finish () . expect...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2247,7 +594,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 error[E0282]: type annotations needed
- --> /tmp/.tmpUGzstn/main.rs:1:242
+ --> /tmp/.tmpP9B7yF/main.rs:1:242
   |
 1 | ...high_value = df . lazy () . filter (move | row | { if row . get ("amount") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))...
   |                                               ^^^        --- type must be known at this point
@@ -2267,7 +614,7 @@ For more information about an error, try `rustc --explain E0282`.
 === ch05-00-control-flow-tdd example 16 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpIDZjzF/main.rs:1:23
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2275,7 +622,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpIDZjzF/main.rs:1:204
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
@@ -2288,7 +635,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpIDZjzF/main.rs:1:642
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
@@ -2300,7 +647,7 @@ help: remove these braces
   |
 
 error[E0282]: type annotations needed
- --> /tmp/.tmpIDZjzF/main.rs:1:209
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:209
   |
 1 | ...o read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not foun...
   |                                                            ^^^ cannot infer type
@@ -2312,7 +659,7 @@ For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmpIDZjzF/main.rs:1:23
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("inventory.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2320,7 +667,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpIDZjzF/main.rs:1:204
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:204
   |
 1 | ... { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) < 10 { println ! ("Low stock alert: {} ({})" , row . get ("product") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not found"))) } } } ...
   |       ^^                                                                                                                                                                                                                                                                                                              ^^
@@ -2333,7 +680,7 @@ help: remove these braces
   |
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmpIDZjzF/main.rs:1:642
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:642
   |
 1 | ... (|| panic ! ("Key not found")) . iter () { { if value > 0f64 { total = total + value } } } ; println ! ("Total positive prices: {}" ,...
   |                                                ^^                                         ^^
@@ -2345,7 +692,7 @@ help: remove these braces
   |
 
 error[E0282]: type annotations needed
- --> /tmp/.tmpIDZjzF/main.rs:1:209
+ --> /tmp/.tmpjQ1Ls4/main.rs:1:209
   |
 1 | ...o read CSV file") ; for row in df . iter_rows () { { if row . get ("quantity") . cloned () . unwrap_or_else (|| panic ! ("Key not foun...
   |                                                            ^^^ cannot infer type
@@ -2360,7 +707,7 @@ For more information about an error, try `rustc --explain E0282`.
 === ch05-00-control-flow-tdd example 17 ===
 ✗ Compilation failed: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp5RKNB2/main.rs:1:23
+ --> /tmp/.tmp7tb0s6/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2368,7 +715,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp5RKNB2/main.rs:1:204
+ --> /tmp/.tmp7tb0s6/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
@@ -2381,7 +728,7 @@ help: remove these braces
   |
 
 error[E0282]: type annotations needed
- --> /tmp/.tmp5RKNB2/main.rs:1:229
+ --> /tmp/.tmp7tb0s6/main.rs:1:229
   |
 1 | ...for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key n...
   |                                                            ^^^ cannot infer type
@@ -2393,7 +740,7 @@ For more information about an error, try `rustc --explain E0282`.
 
 Error: Compilation failed:
 error[E0433]: failed to resolve: use of unresolved module or unlinked crate `polars`
- --> /tmp/.tmp5RKNB2/main.rs:1:23
+ --> /tmp/.tmp7tb0s6/main.rs:1:23
   |
 1 | fn main () { let df = polars :: prelude :: CsvReader :: from_path ("customers.csv") . expect ("Failed to open CSV file") . finish () . ex...
   |                       ^^^^^^ use of unresolved module or unlinked crate `polars`
@@ -2401,7 +748,7 @@ error[E0433]: failed to resolve: use of unresolved module or unlinked crate `pol
   = help: you might be missing a crate named `polars`
 
 warning: unnecessary braces around block return value
- --> /tmp/.tmp5RKNB2/main.rs:1:204
+ --> /tmp/.tmp7tb0s6/main.rs:1:204
   |
 1 | ... { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) { v if v > 10000 => "Platinum" , v if v > 5000 => "Gold" , v if v > 1000 => "Silver" , _ => "Bronze" , } ; println ! ("Customer {} is {} tier" , row . get ("name") . cloned () . unwrap_or_else (|| panic ! ("Key not found")) , category) } } } ; }
   |       ^^                                                                                                                                                                                                                                                                                                                                                              ^^
@@ -2414,7 +761,7 @@ help: remove these braces
   |
 
 error[E0282]: type annotations needed
- --> /tmp/.tmp5RKNB2/main.rs:1:229
+ --> /tmp/.tmp7tb0s6/main.rs:1:229
   |
 1 | ...for row in df . iter_rows () { { { let category = match row . get ("total_purchases") . cloned () . unwrap_or_else (|| panic ! ("Key n...
   |                                                            ^^^ cannot infer type
@@ -2429,7 +776,7 @@ For more information about an error, try `rustc --explain E0282`.
 === ch19-00-structs-oop example 4 ===
 ✗ Compilation failed: Compilation failed:
 error[E0072]: recursive type `Node` has infinite size
- --> /tmp/.tmp3z62UD/main.rs:1:1
+ --> /tmp/.tmpEWzGBR/main.rs:1:1
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   | ^^^^^^^^^^^                                 ---- recursive without indirection
@@ -2444,7 +791,7 @@ error[E0391]: cycle detected when computing layout of `Node`
   = note: ...which requires computing layout of `core::option::Option<Node>`...
   = note: ...which again requires computing layout of `Node`, completing the cycle
 note: cycle used when elaborating drops for `main`
- --> /tmp/.tmp3z62UD/main.rs:1:56
+ --> /tmp/.tmpEWzGBR/main.rs:1:56
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   |                                                        ^^^^^^^^^^
@@ -2457,7 +804,7 @@ For more information about an error, try `rustc --explain E0072`.
 
 Error: Compilation failed:
 error[E0072]: recursive type `Node` has infinite size
- --> /tmp/.tmp3z62UD/main.rs:1:1
+ --> /tmp/.tmpEWzGBR/main.rs:1:1
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   | ^^^^^^^^^^^                                 ---- recursive without indirection
@@ -2472,7 +819,7 @@ error[E0391]: cycle detected when computing layout of `Node`
   = note: ...which requires computing layout of `core::option::Option<Node>`...
   = note: ...which again requires computing layout of `Node`, completing the cycle
 note: cycle used when elaborating drops for `main`
- --> /tmp/.tmp3z62UD/main.rs:1:56
+ --> /tmp/.tmpEWzGBR/main.rs:1:56
   |
 1 | struct Node { value : i32 , next : Option < Node > , } fn main () { let leaf = Node { value : 3 , next : None , } ; let parent = Node { v...
   |                                                        ^^^^^^^^^^
@@ -2488,7 +835,7 @@ For more information about an error, try `rustc --explain E0072`.
 === ch19-00-structs-oop example 6 ===
 ✗ Compilation failed: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmpINtCkS/main.rs:1:142
+ --> /tmp/.tmpKJv9IV/main.rs:1:142
   |
 1 | ...ttings { fn default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings =...
   |                                                    ^^^^^^ expected `String`, found `&str`
@@ -2499,13 +846,13 @@ help: try using a conversion method
   |                                                                                                                                                    ++++++++++++
 
 error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
- --> /tmp/.tmpINtCkS/main.rs:1:229
+ --> /tmp/.tmpKJv9IV/main.rs:1:229
   |
 1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
   |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
 
 error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
- --> /tmp/.tmpINtCkS/main.rs:1:357
+ --> /tmp/.tmpKJv9IV/main.rs:1:357
   |
 1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
   |                                                   ^^^^^^^^ missing `auto_save` and `theme`
@@ -2517,7 +864,7 @@ For more information about an error, try `rustc --explain E0063`.
 
 Error: Compilation failed:
 error[E0308]: mismatched types
- --> /tmp/.tmpINtCkS/main.rs:1:142
+ --> /tmp/.tmpKJv9IV/main.rs:1:142
   |
 1 | ...ttings { fn default () -> Self { Self { theme : "dark" , font_size : 14 , auto_save : true , } } } fn main () { let default_settings =...
   |                                                    ^^^^^^ expected `String`, found `&str`
@@ -2528,13 +875,13 @@ help: try using a conversion method
   |                                                                                                                                                    ++++++++++++
 
 error[E0063]: missing fields `auto_save`, `font_size` and `theme` in initializer of `Settings`
- --> /tmp/.tmpINtCkS/main.rs:1:229
+ --> /tmp/.tmpKJv9IV/main.rs:1:229
   |
 1 | ...} } fn main () { let default_settings = Settings { } ; println ! ("{:?}" , default_settings . theme) ; println ! ("{:?}" , default_set...
   |                                            ^^^^^^^^ missing `auto_save`, `font_size` and `theme`
 
 error[E0063]: missing fields `auto_save` and `theme` in initializer of `Settings`
- --> /tmp/.tmpINtCkS/main.rs:1:357
+ --> /tmp/.tmpKJv9IV/main.rs:1:357
   |
 1 | ..., default_settings . font_size) ; let custom = Settings { font_size : 16 , } ; println ! ("{:?}" , custom . font_size) ; println ! ("{...
   |                                                   ^^^^^^^^ missing `auto_save` and `theme`
@@ -2549,31 +896,31 @@ For more information about an error, try `rustc --explain E0063`.
 === ch19-00-structs-oop example 9 ===
 ✗ Compilation failed: Compilation failed:
 error[E0425]: cannot find value `point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:33
+ --> /tmp/.tmpJNyhpx/main.rs:1:33
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                 ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:41
+ --> /tmp/.tmpJNyhpx/main.rs:1:41
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                         ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:91
+ --> /tmp/.tmpJNyhpx/main.rs:1:91
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                                                                           ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:140
+ --> /tmp/.tmpJNyhpx/main.rs:1:140
   |
 1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
   |                                                        ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:189
+ --> /tmp/.tmpJNyhpx/main.rs:1:189
   |
 1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
   |                                                        ^^^^^ not found in this scope
@@ -2585,31 +932,31 @@ For more information about an error, try `rustc --explain E0422`.
 
 Error: Compilation failed:
 error[E0425]: cannot find value `point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:33
+ --> /tmp/.tmpJNyhpx/main.rs:1:33
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                 ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:41
+ --> /tmp/.tmpJNyhpx/main.rs:1:41
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                         ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:91
+ --> /tmp/.tmpJNyhpx/main.rs:1:91
   |
 1 | fn main () { let result = match point { Point { x : 0 , y : 0 } => println ! ("Origin") , Point { x : 0 , y } => println ! ("On Y axis") ...
   |                                                                                           ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:140
+ --> /tmp/.tmpJNyhpx/main.rs:1:140
   |
 1 | ... , Point { x : 0 , y } => println ! ("On Y axis") , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("Ge...
   |                                                        ^^^^^ not found in this scope
 
 error[E0422]: cannot find struct, variant or union type `Point` in this scope
- --> /tmp/.tmpO3WXXC/main.rs:1:189
+ --> /tmp/.tmpJNyhpx/main.rs:1:189
   |
 1 | ... , Point { x , y : 0 } => println ! ("On X axis") , Point { x , y } => println ! ("General point") , } ; if std :: any :: type_name_of...
   |                                                        ^^^^^ not found in this scope
