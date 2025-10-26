@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-14T20:00:11.845Z",
-  "ruchy_version": "ruchy 3.82.0",
+  "timestamp": "2025-10-26T12:32:10.332Z",
+  "ruchy_version": "ruchy 3.128.0",
   "chapters_processed": 16,
-  "examples_found": 134,
-  "examples_working": 130,
-  "examples_failing": 4,
-  "success_rate": 97,
+  "examples_found": 132,
+  "examples_working": 132,
+  "examples_failing": 0,
+  "success_rate": 100,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -394,8 +394,8 @@
     "ch15-00-binary-compilation-deployment": {
       "chapter": "ch15-00-binary-compilation-deployment",
       "total_examples": 4,
-      "working_examples": 3,
-      "failing_examples": 1,
+      "working_examples": 4,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
@@ -410,11 +410,8 @@
           "example_number": 2,
           "line_number": 58,
           "code": "fun main() {\n    let args = std::env::args();\n    \n    if args.len() < 2 {\n        println(\"Usage: calculator <expression>\");\n        return;\n    }\n    \n    let expr = args[1];\n    let result = evaluate_expression(expr);\n    println(\"Result: {}\", result);\n}\n\nfun evaluate_expression(expr: String) -> f64 {\n    // Simple calculator - supports +, -, *, /\n    if expr.contains('+') {\n        let parts = expr.split('+');\n        return parts[0].parse::<f64>() + parts[1].parse::<f64>();\n    } else if expr.contains('-') {\n        let parts = expr.split('-');\n        return parts[0].parse::<f64>() - parts[1].parse::<f64>();\n    } else if expr.contains('*') {\n        let parts = expr.split('*');\n        return parts[0].parse::<f64>() * parts[1].parse::<f64>();\n    } else if expr.contains('/') {\n        let parts = expr.split('/');\n        let divisor = parts[1].parse::<f64>();\n        if divisor != 0.0 {\n            return parts[0].parse::<f64>() / divisor;\n        }\n    }\n    \n    expr.parse::<f64>()\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Expected RightBrace, found If\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
@@ -508,9 +505,9 @@
     },
     "ch16-00-testing-quality-assurance": {
       "chapter": "ch16-00-testing-quality-assurance",
-      "total_examples": 8,
+      "total_examples": 7,
       "working_examples": 7,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
@@ -562,19 +559,8 @@
         },
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
-          "example_number": 7,
-          "line_number": 366,
-          "code": "// Clear, specific assertions\nassert_eq(actual, expected, \"Descriptive failure message\");\n\n// Boolean assertions with context\nassert(condition, \"Explain why this should be true\");\n\n// Multiple related assertions\nfun test_range_function() {\n    let result = create_range(1, 5);\n    assert_eq(len(result), 4, \"Range should have 4 elements\");\n    assert_eq(result[0], 1, \"First element should be 1\");  \n    assert_eq(result[3], 4, \"Last element should be 4\");\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Undefined variable: actual\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch16-00-testing-quality-assurance.md",
           "example_number": 8,
-          "line_number": 391,
+          "line_number": 392,
           "code": "fun gcd(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        a\n    } else {\n        gcd(b, a % b)\n    }\n}\n\n// Property: gcd(a, b) divides both a and b\nfun test_gcd_properties() {\n    let a = 48;\n    let b = 18;\n    let result = gcd(a, b);\n    \n    // Property verification\n    assert_eq(a % result, 0, \"GCD should divide first number\");\n    assert_eq(b % result, 0, \"GCD should divide second number\");\n    assert_eq(result, 6, \"GCD(48, 18) should equal 6\");\n    \n    println(\"✅ GCD properties verified\");\n}\n\nfun main() {\n    test_gcd_properties();\n}",
           "passed": true,
           "status": "working"
@@ -958,7 +944,7 @@
         {
           "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 1,
-          "line_number": 38,
+          "line_number": 46,
           "code": "fun create_dataframe() {\n    let df = df![\n        \"employee_id\" => [101, 102, 103, 104],\n        \"name\" => [\"Alice\", \"Bob\", \"Charlie\", \"Diana\"],\n        \"department\" => [\"Engineering\", \"Sales\", \"Engineering\", \"HR\"],\n        \"salary\" => [95000, 75000, 105000, 65000]\n    ];\n\n    // Display the DataFrame (returns as last expression)\n    df\n}",
           "passed": true,
           "status": "working"
@@ -966,7 +952,7 @@
         {
           "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 2,
-          "line_number": 56,
+          "line_number": 64,
           "code": "fun main() {\n    let sales = df![\n        \"product\" => [\"Widget\", \"Gadget\", \"Gizmo\"],\n        \"quantity\" => [100, 150, 200],\n        \"revenue\" => [999.00, 1499.00, 1999.00]\n    ];\n\n    // Display the DataFrame\n    sales\n}",
           "passed": true,
           "status": "working"
@@ -974,7 +960,7 @@
         {
           "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 3,
-          "line_number": 71,
+          "line_number": 79,
           "code": "fun work_with_multiple_dataframes() {\n    let customers = df![\n        \"customer_id\" => [1, 2, 3],\n        \"name\" => [\"Alice\", \"Bob\", \"Charlie\"],\n        \"city\" => [\"New York\", \"Los Angeles\", \"Chicago\"]\n    ];\n\n    let orders = df![\n        \"order_id\" => [101, 102, 103],\n        \"customer_id\" => [1, 2, 1],\n        \"amount\" => [99.99, 149.99, 79.99]\n    ];\n\n    // Display both DataFrames\n    customers\n}",
           "passed": true,
           "status": "working"
@@ -982,7 +968,7 @@
         {
           "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 4,
-          "line_number": 92,
+          "line_number": 100,
           "code": "fun conditional_processing() {\n    let df = df![\n        \"status\" => [\"active\", \"pending\", \"closed\"],\n        \"value\" => [1000, 500, 1500]\n    ];\n\n    // Display the DataFrame\n    df\n}",
           "passed": true,
           "status": "working"
@@ -1135,9 +1121,9 @@
     },
     "ch19-00-structs-oop": {
       "chapter": "ch19-00-structs-oop",
-      "total_examples": 9,
-      "working_examples": 7,
-      "failing_examples": 2,
+      "total_examples": 8,
+      "working_examples": 8,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch19-00-structs-oop.md",
@@ -1160,11 +1146,8 @@
           "example_number": 3,
           "line_number": 80,
           "code": "struct Counter {\n    count: i32\n}\n\nlet mut c = Counter { count: 0 }\nprintln(c.count)  // 0\n\n// Field mutation now works!\nc.count = 5\nprintln(c.count)  // 5\n\nc.count = c.count + 1\nprintln(c.count)  // 6",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Cannot access field 'count' on non-object\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch19-00-structs-oop.md",
@@ -1205,17 +1188,6 @@
           "code": "struct Task {\n    id: i32,\n    title: String,\n    completed: bool\n}\n\nlet tasks = [\n    Task { id: 1, title: \"Write docs\", completed: false },\n    Task { id: 2, title: \"Review PR\", completed: true },\n    Task { id: 3, title: \"Fix bug\", completed: false }\n]\n\n// Count completed tasks\nlet mut completed_count = 0\nfor task in tasks {\n    if task.completed {\n        completed_count = completed_count + 1\n    }\n}\nprintln(completed_count)  // 1",
           "passed": true,
           "status": "working"
-        },
-        {
-          "file": "src/ch19-00-structs-oop.md",
-          "example_number": 9,
-          "line_number": 232,
-          "code": "// PLANNED FEATURE - Not yet working\nmatch point {\n    Point { x: 0, y: 0 } => println(\"Origin\"),\n    Point { x: 0, y } => println(\"On Y axis\"),\n    Point { x, y: 0 } => println(\"On X axis\"),\n    Point { x, y } => println(\"General point\")\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Undefined variable: point\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     }

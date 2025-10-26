@@ -229,6 +229,7 @@ println(completed_count)  // 1
 
 *Note: Pattern matching for structs is planned but not yet implemented in v3.52.0*
 
+<!-- skip-test: planned-feature (struct pattern matching not implemented) -->
 ```ruchy
 // PLANNED FEATURE - Not yet working
 match point {

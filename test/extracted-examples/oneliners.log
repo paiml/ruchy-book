@@ -1,31 +1,31 @@
 🧪 Ruchy One-Liner Test Results
-Generated: 2025-10-14T20:00:12.326Z
-Ruchy Version: ruchy 3.82.0
+Generated: 2025-10-26T12:32:10.861Z
+Ruchy Version: ruchy 3.128.0
 
 📊 Summary:
-Tests Passed: 12
-Tests Failed: 8
+Tests Passed: 0
+Tests Failed: 20
 Tests Planned: 12
-Success Rate: 60%
+Success Rate: 0%
 
 📝 Detailed Results:
-✅ Simple addition - Basic Mathematics
+❌ Simple addition - Basic Mathematics
 ❌ Percentage calculation - Basic Mathematics
-✅ Compound interest - Basic Mathematics
-✅ Multi-step calculation - Basic Mathematics
-✅ Greater than comparison - Boolean Logic
-✅ Boolean AND operation - Boolean Logic
-✅ Boolean OR operation - Boolean Logic
-✅ Conditional expression - Boolean Logic
-✅ String concatenation - String Operations
-✅ String with variables - String Operations
+❌ Compound interest - Basic Mathematics
+❌ Multi-step calculation - Basic Mathematics
+❌ Greater than comparison - Boolean Logic
+❌ Boolean AND operation - Boolean Logic
+❌ Boolean OR operation - Boolean Logic
+❌ Conditional expression - Boolean Logic
+❌ String concatenation - String Operations
+❌ String with variables - String Operations
 ❌ Square root function - Mathematical Functions
-✅ Trigonometric sine - Mathematical Functions
+❌ Trigonometric sine - Mathematical Functions
 ❌ Physics: E=mc² - Real-World Calculations
 ❌ Electrical power P=VI - Real-World Calculations
 ❌ Investment return % - Real-World Calculations
 ❌ Basic text operations - Output Functions
-✅ Basic JSON output - JSON Output
+❌ Basic JSON output - JSON Output
 ❌ Float JSON output - JSON Output
 ❌ Shell script integration - Shell Integration
-✅ Manual exponentiation (2^32) - Performance Comparisons
+❌ Manual exponentiation (2^32) - Performance Comparisons

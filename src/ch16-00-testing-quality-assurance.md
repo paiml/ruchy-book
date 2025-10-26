@@ -362,7 +362,8 @@ CMD ["ruchy", "test", "--watch", "."]
 - Group related tests: `test_calculator_addition()`, `test_calculator_subtraction()`
 - Include edge cases: `test_empty_input()`, `test_large_numbers()`
 
-### 2. Assertion Strategies  
+### 2. Assertion Strategies
+<!-- skip-test: documentation-only (uses placeholder variables) -->
 ```ruchy
 // Clear, specific assertions
 assert_eq(actual, expected, "Descriptive failure message");
