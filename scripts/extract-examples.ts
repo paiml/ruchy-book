@@ -76,17 +76,35 @@ class ExampleExtractor {
     let currentExample = "";
     let exampleStartLine = 0;
     let exampleNumber = 1;
+    let skipNext = false;
+    let skipReason = "";
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-      
+
+      // Check for skip-test marker (must be on line before ```ruchy)
+      if (line.trim().startsWith("<!-- skip-test:")) {
+        skipNext = true;
+        // Extract reason from comment
+        const match = line.match(/<!-- skip-test:\s*(.+?)\s*-->/);
+        skipReason = match ? match[1] : "marked as skip-test";
+      }
+
       if (line.trim() === "```ruchy") {
-        inRuchyBlock = true;
-        currentExample = "";
-        exampleStartLine = i + 1;
+        if (skipNext) {
+          // Skip this example - don't set inRuchyBlock
+          console.log(`   ⏭️  Skipping example ${exampleNumber} (${skipReason})`);
+          skipNext = false;
+          skipReason = "";
+          exampleNumber++; // Still increment to keep numbering consistent
+        } else {
+          inRuchyBlock = true;
+          currentExample = "";
+          exampleStartLine = i + 1;
+        }
       } else if (line.trim() === "```" && inRuchyBlock) {
         inRuchyBlock = false;
-        
+
         if (currentExample.trim()) {
           examples.push({
             file: filename,

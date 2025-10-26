@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-14T20:00:12.326Z",
-  "ruchy_version": "ruchy 3.82.0",
+  "timestamp": "2025-10-26T12:32:10.861Z",
+  "ruchy_version": "ruchy 3.128.0",
   "total_tests": 20,
-  "passed_tests": 12,
-  "failed_tests": 8,
+  "passed_tests": 0,
+  "failed_tests": 20,
   "planned_tests": 12,
-  "success_rate": 60,
+  "success_rate": 0,
   "results": [
     {
       "test": {
@@ -14,8 +14,9 @@
         "expected": "4",
         "category": "Basic Mathematics"
       },
-      "passed": true,
-      "actual": "4"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: 4, Got: "
     },
     {
       "test": {
@@ -25,8 +26,8 @@
         "category": "Basic Mathematics"
       },
       "passed": false,
-      "actual": "108.0",
-      "error": "Expected: 108, Got: 108.0"
+      "actual": "",
+      "error": "Expected: 108, Got: "
     },
     {
       "test": {
@@ -35,8 +36,9 @@
         "expected": "1102.5",
         "category": "Basic Mathematics"
       },
-      "passed": true,
-      "actual": "1102.5"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: 1102.5, Got: "
     },
     {
       "test": {
@@ -45,8 +47,9 @@
         "expected": "107.9892",
         "category": "Basic Mathematics"
       },
-      "passed": true,
-      "actual": "107.9892"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: 107.9892, Got: "
     },
     {
       "test": {
@@ -55,8 +58,9 @@
         "expected": "true",
         "category": "Boolean Logic"
       },
-      "passed": true,
-      "actual": "true"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: true, Got: "
     },
     {
       "test": {
@@ -65,8 +69,9 @@
         "expected": "false",
         "category": "Boolean Logic"
       },
-      "passed": true,
-      "actual": "false"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: false, Got: "
     },
     {
       "test": {
@@ -75,8 +80,9 @@
         "expected": "true",
         "category": "Boolean Logic"
       },
-      "passed": true,
-      "actual": "true"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: true, Got: "
     },
     {
       "test": {
@@ -85,8 +91,9 @@
         "expected": "\"expensive\"",
         "category": "Boolean Logic"
       },
-      "passed": true,
-      "actual": "\"expensive\""
+      "passed": false,
+      "actual": "",
+      "error": "Expected: \"expensive\", Got: "
     },
     {
       "test": {
@@ -95,8 +102,9 @@
         "expected": "\"Hello World\"",
         "category": "String Operations"
       },
-      "passed": true,
-      "actual": "\"Hello World\""
+      "passed": false,
+      "actual": "",
+      "error": "Expected: \"Hello World\", Got: "
     },
     {
       "test": {
@@ -105,8 +113,9 @@
         "expected": "\"Hello Ruchy!\"",
         "category": "String Operations"
       },
-      "passed": true,
-      "actual": "\"Hello Ruchy!\""
+      "passed": false,
+      "actual": "",
+      "error": "Expected: \"Hello Ruchy!\", Got: "
     },
     {
       "test": {
@@ -116,8 +125,8 @@
         "category": "Mathematical Functions"
       },
       "passed": false,
-      "actual": "4.0",
-      "error": "Expected: 4, Got: 4.0"
+      "actual": "",
+      "error": "Expected: 4, Got: "
     },
     {
       "test": {
@@ -126,8 +135,9 @@
         "expected": "22.360679774997898",
         "category": "Mathematical Functions"
       },
-      "passed": true,
-      "actual": "22.360679774997898"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: 22.360679774997898, Got: "
     },
     {
       "test": {
@@ -137,8 +147,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "8987551787368177.0",
-      "error": "Expected: 8987551787368177, Got: 8987551787368177.0"
+      "actual": "",
+      "error": "Expected: 8987551787368177, Got: "
     },
     {
       "test": {
@@ -148,8 +158,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "1200.0",
-      "error": "Expected: 1200, Got: 1200.0"
+      "actual": "",
+      "error": "Expected: 1200, Got: "
     },
     {
       "test": {
@@ -159,8 +169,8 @@
         "category": "Real-World Calculations"
       },
       "passed": false,
-      "actual": "50.0",
-      "error": "Expected: 50, Got: 50.0"
+      "actual": "",
+      "error": "Expected: 50, Got: "
     },
     {
       "test": {
@@ -170,8 +180,8 @@
         "category": "Output Functions"
       },
       "passed": false,
-      "actual": "\"Processing text data...\"\nnil",
-      "error": "Expected: Processing text data...\n(), Got: \"Processing text data...\"\nnil"
+      "actual": "Processing text data...",
+      "error": "Expected: Processing text data...\n(), Got: Processing text data..."
     },
     {
       "test": {
@@ -180,8 +190,9 @@
         "expected": "{\"success\":true,\"result\":\"8\"}",
         "category": "JSON Output"
       },
-      "passed": true,
-      "actual": "{\"success\":true,\"result\":\"8\"}"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: {\"success\":true,\"result\":\"8\"}, Got: "
     },
     {
       "test": {
@@ -191,8 +202,8 @@
         "category": "JSON Output"
       },
       "passed": false,
-      "actual": "{\"success\":true,\"result\":\"108.0\"}",
-      "error": "Expected: {\"success\":true,\"result\":\"108\"}, Got: {\"success\":true,\"result\":\"108.0\"}"
+      "actual": "",
+      "error": "Expected: {\"success\":true,\"result\":\"108\"}, Got: "
     },
     {
       "test": {
@@ -202,8 +213,8 @@
         "category": "Shell Integration"
       },
       "passed": false,
-      "actual": "108.0",
-      "error": "Expected: 108, Got: 108.0"
+      "actual": "",
+      "error": "Expected: 108, Got: "
     },
     {
       "test": {
@@ -212,8 +223,9 @@
         "expected": "4294967296",
         "category": "Performance Comparisons"
       },
-      "passed": true,
-      "actual": "4294967296"
+      "passed": false,
+      "actual": "",
+      "error": "Expected: 4294967296, Got: "
     }
   ]
 }
