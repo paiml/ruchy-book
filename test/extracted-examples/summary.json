@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-30T12:58:03.545Z",
+  "timestamp": "2025-10-30T13:11:26.658Z",
   "ruchy_version": "ruchy 3.150.0",
   "chapters_processed": 17,
-  "examples_found": 142,
+  "examples_found": 138,
   "examples_working": 133,
-  "examples_failing": 9,
-  "success_rate": 94,
+  "examples_failing": 5,
+  "success_rate": 96,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -260,9 +260,9 @@
     },
     "ch03-00-functions-tdd": {
       "chapter": "ch03-00-functions-tdd",
-      "total_examples": 11,
+      "total_examples": 10,
       "working_examples": 10,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch03-00-functions-tdd.md",
@@ -340,17 +340,6 @@
           "file": "src/ch03-00-functions-tdd.md",
           "example_number": 10,
           "line_number": 230,
-          "code": "fun analyze_sales(df: DataFrame) -> DataFrame {\n    // Function that processes a DataFrame\n    df.group_by(\"product\")\n      .agg(\"revenue\", \"sum\")\n      .sort_by(\"revenue_sum\", descending: true)\n}\n\nfun filter_high_value(df: DataFrame, threshold: f64) -> DataFrame {\n    // Function with DataFrame and parameter\n    df.filter(|row| row[\"value\"] > threshold)\n}\n\nfun main() {\n    let sales = DataFrame::from_csv(\"sales.csv\");\n    let analysis = analyze_sales(sales);\n    let top_items = filter_high_value(analysis, 10000.0);\n    println(\"Found {} high-value items\", top_items.rows());\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch03-00-functions-tdd.md",
-          "example_number": 11,
-          "line_number": 252,
           "code": "fun add_profit_margin(df: DataFrame) -> DataFrame {\n    // Add calculated column to DataFrame\n    df.with_column(\"margin\", |row| {\n        (row[\"revenue\"] - row[\"cost\"]) / row[\"revenue\"] * 100.0\n    })\n}\n\nfun summarize_by_category(df: DataFrame) -> DataFrame {\n    // Aggregate DataFrame by category\n    df.group_by(\"category\")\n      .agg(\"quantity\", \"sum\")\n      .agg(\"revenue\", \"mean\")\n      .agg(\"margin\", \"mean\")\n}",
           "passed": true,
           "status": "working"
@@ -1083,9 +1072,9 @@
     },
     "ch05-00-control-flow-tdd": {
       "chapter": "ch05-00-control-flow-tdd",
-      "total_examples": 17,
+      "total_examples": 14,
       "working_examples": 14,
-      "failing_examples": 3,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1198,39 +1187,6 @@
           "code": "fun main() {\n    let status_code = 200;\n    match status_code {\n        200 => println(\"Success\"),\n        404 => println(\"Not Found\"),\n        500 => println(\"Server Error\"),\n        _ => println(\"Unknown Status\")\n    }\n}",
           "passed": true,
           "status": "working"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 15,
-          "line_number": 363,
-          "code": "fun main() {\n    let df = DataFrame::from_csv(\"sales.csv\");\n    \n    // Filter based on conditions\n    if df.rows() > 0 {\n        let high_value = df.filter(|row| {\n            if row[\"amount\"] > 1000 {\n                row[\"status\"] == \"active\"\n            } else {\n                false\n            }\n        });\n        \n        println(\"Found {} high-value active sales\", high_value.rows());\n    } else {\n        println(\"No data to process\");\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 16,
-          "line_number": 385,
-          "code": "fun main() {\n    let df = DataFrame::from_csv(\"inventory.csv\");\n    \n    // Process each row with for loop\n    for row in df.iter_rows() {\n        if row[\"quantity\"] < 10 {\n            println(\"Low stock alert: {} ({})\", row[\"product\"], row[\"quantity\"]);\n        }\n    }\n    \n    // Conditional aggregation\n    let mut total = 0.0;\n    for value in df[\"price\"].iter() {\n        if value > 0.0 {\n            total = total + value;\n        }\n    }\n    println(\"Total positive prices: {}\", total);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 17,
-          "line_number": 408,
-          "code": "fun main() {\n    let df = DataFrame::from_csv(\"customers.csv\");\n    \n    for row in df.iter_rows() {\n        let category = match row[\"total_purchases\"] {\n            v if v > 10000 => \"Platinum\",\n            v if v > 5000 => \"Gold\",\n            v if v > 1000 => \"Silver\",\n            _ => \"Bronze\"\n        };\n        \n        println(\"Customer {} is {} tier\", row[\"name\"], category);\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },

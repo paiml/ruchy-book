@@ -226,29 +226,7 @@ fun main_calculation(n: i32) -> i32 {
 
 ```
 
-### Pattern 4: DataFrame Processing Functions
-```ruchy
-fun analyze_sales(df: DataFrame) -> DataFrame {
-    // Function that processes a DataFrame
-    df.group_by("product")
-      .agg("revenue", "sum")
-      .sort_by("revenue_sum", descending: true)
-}
-
-fun filter_high_value(df: DataFrame, threshold: f64) -> DataFrame {
-    // Function with DataFrame and parameter
-    df.filter(|row| row["value"] > threshold)
-}
-
-fun main() {
-    let sales = DataFrame::from_csv("sales.csv");
-    let analysis = analyze_sales(sales);
-    let top_items = filter_high_value(analysis, 10000.0);
-    println("Found {} high-value items", top_items.rows());
-}
-```
-
-### Pattern 5: DataFrame Transformation Functions
+### Pattern 4: DataFrame Transformation Functions
 ```ruchy
 fun add_profit_margin(df: DataFrame) -> DataFrame {
     // Add calculated column to DataFrame

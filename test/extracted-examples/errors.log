@@ -2,10 +2,6 @@
 Error: Evaluation error: Type error: Cannot cast integer to usize
 
 
-=== ch03-00-functions-tdd example 10 ===
-Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv
-
-
 === ch15-00-binary-compilation-deployment example 2 ===
 Error: Evaluation error: Runtime error: Object has no field named 'env'
 
@@ -20,16 +16,4 @@ Error: Evaluation error: Type error: Cannot compare integer and byte for orderin
 
 === ch17-00-error-handling-robustness example 11 ===
 Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments
-
-
-=== ch05-00-control-flow-tdd example 15 ===
-Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv
-
-
-=== ch05-00-control-flow-tdd example 16 ===
-Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv
-
-
-=== ch05-00-control-flow-tdd example 17 ===
-Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv
 
