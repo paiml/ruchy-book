@@ -1,0 +1,125 @@
+📊 TICKET-018-17: ruchy coverage baseline test
+========================================
+
+Testing sample files to understand coverage behavior...
+
+=== tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy ===
+📊 Coverage Report
+==================
+
+📄 tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy
+   Lines: 3/3 (100.0%)
+   Functions: 1/1 (100.0%)
+
+=== tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy ===
+📊 Coverage Report
+==================
+
+📄 tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy
+   Lines: 4/4 (100.0%)
+   Functions: 1/1 (100.0%)
+
+=== tests/extracted/ch03-00-functions-tdd_example_1.ruchy ===
+📊 Coverage Report
+==================
+
+📄 tests/extracted/ch03-00-functions-tdd_example_1.ruchy
+   Lines: 6/6 (100.0%)
+   Functions: 2/2 (100.0%)
+
+=== tests/ch04-practical-patterns/test_01_safe_calculator.ruchy ===
+📊 Coverage Report
+==================
+
+📄 tests/ch04-practical-patterns/test_01_safe_calculator.ruchy
+   Lines: 35/35 (100.0%)
+   Functions: 2/2 (100.0%)
+
+========================================
+Running comprehensive coverage analysis on all files...
+
+✅ tests/extracted/ch01-02-hello-world_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_7.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world_example_8.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy - 100.0% coverage
+✅ tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy - 100.0% coverage
+✅ tests/extracted/ch03-00-functions-tdd_example_9.ruchy - 100.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy - 90.0% coverage
+✅ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy - 90.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy - 100.0% coverage
+✅ tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_10.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_2.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_3.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_5.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_6.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_7.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_8.ruchy - 100.0% coverage
+✅ tests/extracted/ch10-00-input-output-tdd_example_9.ruchy - 100.0% coverage
+✅ tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy - 100.0% coverage
+✅ tests/extracted/conclusion_example_1.ruchy - 100.0% coverage
+✅ tests/ch04-modules/test_01_basic_module.ruchy - 100.0% coverage
+✅ tests/ch04-modules/test_02_use_statement.ruchy - 100.0% coverage
+✅ tests/ch04-practical-patterns/test_01_safe_calculator.ruchy - 90.0% coverage
+✅ tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy - 90.0% coverage
+
+========================================
+Summary:
+Total files: 69
+Coverage reports generated: 69
+Failed to generate coverage: 0
+Average coverage: 97.6%
+
+=== Analysis ===
+✅ ruchy coverage reports execution coverage (not test coverage)
+   - Measures what code runs when file is executed
+   - Different from traditional test coverage tools
+   - 100% coverage means all code paths executed
+
+Tool Status: ruchy coverage works correctly
+Validation: Tool measures execution coverage successfully
