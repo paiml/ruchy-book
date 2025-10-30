@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-30T11:16:12.345Z",
+  "timestamp": "2025-10-30T11:42:46.344Z",
   "ruchy_version": "ruchy 3.149.0",
-  "chapters_processed": 16,
-  "examples_found": 132,
-  "examples_working": 119,
+  "chapters_processed": 17,
+  "examples_found": 142,
+  "examples_working": 129,
   "examples_failing": 13,
-  "success_rate": 90,
+  "success_rate": 91,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -948,6 +948,94 @@
           "example_number": 15,
           "line_number": 371,
           "code": "fun show_options() {\n    println(\"Choose an option:\");\n    println(\"1. Start\");\n    println(\"2. Stop\");\n    println(\"3. Help\");\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch13-00-debugging-tracing-tdd": {
+      "chapter": "ch13-00-debugging-tracing-tdd",
+      "total_examples": 10,
+      "working_examples": 10,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 1,
+          "line_number": 17,
+          "code": "fun square(x) {\n    x * x\n}\n\nsquare(5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 2,
+          "line_number": 42,
+          "code": "fun greet(name) {\n    \"Hello, \" + name\n}\n\ngreet(\"Alice\")",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 3,
+          "line_number": 62,
+          "code": "fun add(a, b) {\n    a + b\n}\n\nadd(10, 20)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 4,
+          "line_number": 81,
+          "code": "fun is_even(n) {\n    n % 2 == 0\n}\n\nis_even(42)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 5,
+          "line_number": 96,
+          "code": "fun divide(a, b) {\n    a / b\n}\n\ndivide(10.5, 2.5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 6,
+          "line_number": 111,
+          "code": "fun process(arr) {\n    arr\n}\n\nprocess([1, 2, 3])",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 7,
+          "line_number": 131,
+          "code": "fun factorial(n) {\n    if n <= 1 {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}\n\nfactorial(4)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 8,
+          "line_number": 166,
+          "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfibonacci(5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 9,
+          "line_number": 224,
+          "code": "fun compute(x) {\n    let y = x * 2\n    y + 10\n}\n\ncompute(5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 10,
+          "line_number": 249,
+          "code": "fun calculate_discount(price, percent) {\n    price * (1.0 - percent / 100.0)\n}\n\ncalculate_discount(100.0, 20.0)",
           "passed": true,
           "status": "working"
         }
