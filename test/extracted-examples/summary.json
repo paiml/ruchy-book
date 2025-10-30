@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-30T13:32:15.268Z",
+  "timestamp": "2025-10-30T13:33:29.002Z",
   "ruchy_version": "ruchy 3.151.0",
   "chapters_processed": 17,
   "examples_found": 135,
-  "examples_working": 134,
-  "examples_failing": 1,
-  "success_rate": 99,
+  "examples_working": 135,
+  "examples_failing": 0,
+  "success_rate": 100,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -482,8 +482,8 @@
     "ch16-00-testing-quality-assurance": {
       "chapter": "ch16-00-testing-quality-assurance",
       "total_examples": 7,
-      "working_examples": 6,
-      "failing_examples": 1,
+      "working_examples": 7,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
@@ -521,17 +521,14 @@
           "file": "src/ch16-00-testing-quality-assurance.md",
           "example_number": 5,
           "line_number": 244,
-          "code": "// File: calculator_test.ruchy\nfun test_addition() {\n    assert_eq(add(2, 3), 5, \"Basic addition\");\n    assert_eq(add(-1, 1), 0, \"Adding negative numbers\");\n    assert_eq(add(0, 0), 0, \"Adding zeros\");\n    println(\"✅ Addition tests pass\");\n}\n\nfun test_multiplication() {\n    assert_eq(multiply(3, 4), 12, \"Basic multiplication\");\n    assert_eq(multiply(-2, 3), -6, \"Negative multiplication\");\n    assert_eq(multiply(0, 100), 0, \"Multiply by zero\");\n    println(\"✅ Multiplication tests pass\");\n}\n\nfun run_all_tests() {\n    test_addition();\n    test_multiplication();\n    println(\"🎉 Calculator test suite complete!\");\n}\n\nfun main() {\n    run_all_tests();\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Assertion failed: \"Basic addition\"\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "// File: calculator_test.ruchy\n\n// Implementation functions being tested\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun multiply(a: i32, b: i32) -> i32 {\n    a * b\n}\n\n// Test functions\nfun test_addition() {\n    assert_eq(add(2, 3), 5, \"Basic addition\");\n    assert_eq(add(-1, 1), 0, \"Adding negative numbers\");\n    assert_eq(add(0, 0), 0, \"Adding zeros\");\n    println(\"✅ Addition tests pass\");\n}\n\nfun test_multiplication() {\n    assert_eq(multiply(3, 4), 12, \"Basic multiplication\");\n    assert_eq(multiply(-2, 3), -6, \"Negative multiplication\");\n    assert_eq(multiply(0, 100), 0, \"Multiply by zero\");\n    println(\"✅ Multiplication tests pass\");\n}\n\nfun run_all_tests() {\n    test_addition();\n    test_multiplication();\n    println(\"🎉 Calculator test suite complete!\");\n}\n\nfun main() {\n    run_all_tests();\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
           "example_number": 6,
-          "line_number": 272,
+          "line_number": 283,
           "code": "fun fibonacci(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfun test_fibonacci_performance() {\n    // Test reasonable performance expectations\n    let start_time = get_time_ms(); // Placeholder - actual timing would need stdlib\n    let result = fibonacci(20);\n    let end_time = get_time_ms();\n    \n    assert_eq(result, 6765, \"Fibonacci(20) should equal 6765\");\n    \n    // Performance assertion (conceptual)\n    let duration = end_time - start_time;\n    assert(duration < 1000, \"Fibonacci(20) should complete within 1 second\");\n    \n    println(\"✅ Performance test passes\");\n}\n\nfun main() {\n    test_fibonacci_performance();\n}",
           "passed": true,
           "status": "working"
@@ -539,7 +536,7 @@
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
           "example_number": 8,
-          "line_number": 392,
+          "line_number": 403,
           "code": "fun gcd(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        a\n    } else {\n        gcd(b, a % b)\n    }\n}\n\n// Property: gcd(a, b) divides both a and b\nfun test_gcd_properties() {\n    let a = 48;\n    let b = 18;\n    let result = gcd(a, b);\n    \n    // Property verification\n    assert_eq(a % result, 0, \"GCD should divide first number\");\n    assert_eq(b % result, 0, \"GCD should divide second number\");\n    assert_eq(result, 6, \"GCD(48, 18) should equal 6\");\n    \n    println(\"✅ GCD properties verified\");\n}\n\nfun main() {\n    test_gcd_properties();\n}",
           "passed": true,
           "status": "working"

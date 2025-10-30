@@ -243,6 +243,17 @@ echo "✅ All quality gates passed!"
 ### Test Organization
 ```ruchy
 // File: calculator_test.ruchy
+
+// Implementation functions being tested
+fun add(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+fun multiply(a: i32, b: i32) -> i32 {
+    a * b
+}
+
+// Test functions
 fun test_addition() {
     assert_eq(add(2, 3), 5, "Basic addition");
     assert_eq(add(-1, 1), 0, "Adding negative numbers");
