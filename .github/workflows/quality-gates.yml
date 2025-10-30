@@ -18,7 +18,25 @@ jobs:
         curl -L https://github.com/paiml/ruchy/releases/download/v1.29.1/ruchy-linux-x64.tar.gz | tar xz
         sudo mv ruchy /usr/local/bin/
         ruchy --version
-    
+
+    - name: Syntax Validation (ruchy check)
+      run: |
+        echo "🔍 TICKET-018-04: Running syntax validation..."
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            if ! ruchy check "$file" 2>/dev/null; then
+              echo "❌ Syntax error: $file"
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        if [ $failed -gt 0 ]; then
+          echo "❌ $failed files have syntax errors"
+          exit 1
+        fi
+        echo "✅ All files pass syntax validation"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
