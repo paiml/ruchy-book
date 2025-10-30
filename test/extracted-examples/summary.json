@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-10-30T13:30:14.037Z",
+  "timestamp": "2025-10-30T13:32:15.268Z",
   "ruchy_version": "ruchy 3.151.0",
   "chapters_processed": 17,
-  "examples_found": 136,
+  "examples_found": 135,
   "examples_working": 134,
-  "examples_failing": 2,
+  "examples_failing": 1,
   "success_rate": 99,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
@@ -377,9 +377,9 @@
     },
     "ch15-00-binary-compilation-deployment": {
       "chapter": "ch15-00-binary-compilation-deployment",
-      "total_examples": 4,
+      "total_examples": 3,
       "working_examples": 3,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
@@ -393,25 +393,14 @@
           "file": "src/ch15-00-binary-compilation-deployment.md",
           "example_number": 2,
           "line_number": 58,
-          "code": "fun main() {\n    let args = std::env::args();\n    \n    if args.len() < 2 {\n        println(\"Usage: calculator <expression>\");\n        return;\n    }\n    \n    let expr = args[1];\n    let result = evaluate_expression(expr);\n    println(\"Result: {}\", result);\n}\n\nfun evaluate_expression(expr: String) -> f64 {\n    // Simple calculator - supports +, -, *, /\n    if expr.contains('+') {\n        let parts = expr.split('+');\n        return parts[0].parse::<f64>() + parts[1].parse::<f64>();\n    } else if expr.contains('-') {\n        let parts = expr.split('-');\n        return parts[0].parse::<f64>() - parts[1].parse::<f64>();\n    } else if expr.contains('*') {\n        let parts = expr.split('*');\n        return parts[0].parse::<f64>() * parts[1].parse::<f64>();\n    } else if expr.contains('/') {\n        let parts = expr.split('/');\n        let divisor = parts[1].parse::<f64>();\n        if divisor != 0.0 {\n            return parts[0].parse::<f64>() / divisor;\n        }\n    }\n    \n    expr.parse::<f64>()\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Object has no field named 'env'\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch15-00-binary-compilation-deployment.md",
-          "example_number": 3,
-          "line_number": 104,
           "code": "fun main() {\n    let data = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n    \n    let sum = calculate_sum(&data);\n    let avg = calculate_average(&data);\n    let max = find_maximum(&data);\n    \n    println(\"Data Analysis Results:\");\n    println(\"Sum: {}\", sum);\n    println(\"Average: {:.2}\", avg);\n    println(\"Maximum: {}\", max);\n}\n\nfun calculate_sum(data: &Vec<i32>) -> i32 {\n    let mut total = 0;\n    let mut i = 0;\n    while i < data.len() {\n        total = total + data[i];\n        i = i + 1;\n    }\n    total\n}\n\nfun calculate_average(data: &Vec<i32>) -> f64 {\n    let sum = calculate_sum(data);\n    (sum as f64) / (data.len() as f64)\n}\n\nfun find_maximum(data: &Vec<i32>) -> i32 {\n    let mut max = data[0];\n    let mut i = 1;\n    while i < data.len() {\n        if data[i] > max {\n            max = data[i];\n        }\n        i = i + 1;\n    }\n    max\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
-          "example_number": 4,
-          "line_number": 156,
+          "example_number": 3,
+          "line_number": 110,
           "code": "fun main() {\n    println(\"Mathematical Functions Demo\");\n    \n    let n = 10;\n    println(\"Factorial of {}: {}\", n, factorial(n));\n    \n    let x = 25;\n    println(\"Square root of {}: {}\", x, integer_sqrt(x));\n    \n    let a = 48;\n    let b = 18;\n    println(\"GCD of {} and {}: {}\", a, b, gcd(a, b));\n}\n\nfun factorial(n: i32) -> i64 {\n    if n <= 1 {\n        1\n    } else {\n        (n as i64) * factorial(n - 1)\n    }\n}\n\nfun integer_sqrt(n: i32) -> i32 {\n    if n < 2 {\n        return n;\n    }\n    \n    let mut x = n / 2;\n    let mut prev = 0;\n    \n    while x != prev {\n        prev = x;\n        x = (x + n / x) / 2;\n    }\n    \n    x\n}\n\nfun gcd(mut a: i32, mut b: i32) -> i32 {\n    while b != 0 {\n        let temp = b;\n        b = a % b;\n        a = temp;\n    }\n    a\n}",
           "passed": true,
           "status": "working"

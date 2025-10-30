@@ -1,7 +1,3 @@
-=== ch15-00-binary-compilation-deployment example 2 ===
-Error: Evaluation error: Runtime error: Object has no field named 'env'
-
-
 === ch16-00-testing-quality-assurance example 5 ===
 Error: Evaluation error: Assertion failed: "Basic addition"
 
