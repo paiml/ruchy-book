@@ -1,24 +1,36 @@
 # 📊 Ruchy Documentation Status Report
-*Generated: 9/2/2025, 7:38:44 PM*
-*Ruchy Version: ruchy 1.35.0*
+*Generated: 10/30/2025, 12:16:55 PM*
+*Ruchy Version: ruchy 3.149.0*
 
 ## 🎯 Executive Summary
 
-**Overall Status**: 🟢 99% Implementation Complete
-`██████████████████████████████` 99%
+**Overall Status**: 🟢 90% Implementation Complete
+`███████████████████████████░░░` 90%
 
 | Metric | Value |
 |--------|-------|
-| 📚 Chapters Processed | 10 |
-| 💻 Total Examples | 69 |
-| ✅ Working Examples | 68 |
-| ❌ Failing Examples | 1 |
-| 📈 Success Rate | 99% |
-| 🧮 One-Liner Tests | 17/20 passing |
+| 📚 Chapters Processed | 16 |
+| 💻 Total Examples | 132 |
+| ✅ Working Examples | 119 |
+| ❌ Failing Examples | 13 |
+| 📈 Success Rate | 90% |
+| 🧮 One-Liner Tests | 0/20 passing |
 
 ## 📖 Chapter Status Breakdown
 
-### 🟢 Ch02 00 Variables Types Tdd
+### 🟢 Conclusion
+`███████████████` 100% (1/1)
+- ✅ 1 working
+
+### 🟢 Ch06 00 Data Structures Tdd
+`███████████████` 100% (17/17)
+- ✅ 17 working
+
+### 🟢 Ch14 00 Toolchain Mastery Tdd
+`███████████████` 100% (4/4)
+- ✅ 4 working
+
+### 🟢 Ch01 02 Hello World
 `███████████████` 100% (8/8)
 - ✅ 8 working
 
@@ -26,27 +38,7 @@
 `███████████████` 100% (1/1)
 - ✅ 1 working
 
-### 🟢 Conclusion
-`███████████████` 100% (1/1)
-- ✅ 1 working
-
-### 🟢 Ch10 00 Input Output Tdd
-`███████████████` 100% (10/10)
-- ✅ 10 working
-
-### 🟢 Ch03 00 Functions Tdd
-`███████████████` 100% (9/9)
-- ✅ 9 working
-
-### 🟢 Ch05 00 Control Flow Tdd
-`███████████████` 100% (14/14)
-- ✅ 14 working
-
-### 🟢 Ch01 02 Hello World
-`███████████████` 100% (8/8)
-- ✅ 8 working
-
-### 🟢 Ch06 00 Data Structures Tdd
+### 🟢 Ch02 00 Variables Types Tdd
 `███████████████` 100% (8/8)
 - ✅ 8 working
 
@@ -54,50 +46,87 @@
 `███████████████` 100% (6/6)
 - ✅ 6 working
 
-### 🟡 Ch14 00 Toolchain Mastery Tdd
+### 🟢 Ch10 00 Input Output Tdd
+`███████████████` 100% (15/15)
+- ✅ 15 working
+
+### 🟢 Ch18 00 Dataframes Data Processing
+`███████████████` 100% (4/4)
+- ✅ 4 working
+
+### 🟢 Ch19 00 Structs Oop
+`███████████████` 100% (8/8)
+- ✅ 8 working
+
+### 🟢 Ch03 00 Functions Tdd
+`██████████████░` 91% (10/11)
+- ✅ 10 working
+- ❌ 1 broken
+
+### 🟢 Ch04 00 Practical Patterns Tdd
+`██████████████░` 90% (9/10)
+- ✅ 9 working
+- ❌ 1 broken
+
+### 🟡 Ch16 00 Testing Quality Assurance
+`█████████████░░` 86% (6/7)
+- ✅ 6 working
+- ❌ 1 broken
+
+### 🟡 Ch17 00 Error Handling Robustness
+`████████████░░░` 82% (9/11)
+- ✅ 9 working
+- ❌ 2 broken
+
+### 🟡 Ch15 00 Binary Compilation Deployment
 `███████████░░░░` 75% (3/4)
 - ✅ 3 working
 - ❌ 1 broken
 
+### 🟠 Ch05 00 Control Flow Tdd
+`█████████░░░░░░` 59% (10/17)
+- ✅ 10 working
+- ❌ 7 broken
+
 ## 📊 Status Distribution
 
 ```ascii
-Status Distribution (69 total examples):
+Status Distribution (132 total examples):
 
-✅ Working        █████████████████████████ 68
-❌ Broken         ░░░░░░░░░░░░░░░░░░░░░░░░░ 1
+✅ Working        ███████████████████████░░ 119
+❌ Broken         ██░░░░░░░░░░░░░░░░░░░░░░░ 13
 ⚠️  Not Impl      ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
 📋 Planned       ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
 ```
 
 ## 🧮 One-Liner Test Status
 
-**One-Liner Success Rate**: 🟡 85%
-`█████████████████░░░` 17/20 tests passing
+**One-Liner Success Rate**: 🔴 0%
+`░░░░░░░░░░░░░░░░░░░░` 0/20 tests passing
 
 | Category | Status |
 |----------|--------|
-| ✅ Passing Tests | 17 |
-| ❌ Failing Tests | 3 |
+| ✅ Passing Tests | 0 |
+| ❌ Failing Tests | 20 |
 | 📋 Planned Tests | 12 |
-| 🎯 Total Coverage | 17/32 |
+| 🎯 Total Coverage | 0/32 |
 
 ## 🏆 Quality Metrics
 
-**Documentation Coverage**: 🔴 10/35 chapters
-`██████░░░░░░░░░░░░░░` 29%
+**Documentation Coverage**: 🔴 16/35 chapters
+`█████████░░░░░░░░░░░` 46%
 
-**Example Testing**: 🟢 69 examples tested
+**Example Testing**: 🟢 132 examples tested
 `████████████████████` 100%
 
-**Implementation Status**: 🟢 99% working
-`████████████████████` 99%
+**Implementation Status**: 🟢 90% working
+`██████████████████░░` 90%
 
 ## 🔧 Recommendations
 
-- 🎉 **Excellent**: Success rate 99% - documentation is production ready!
-- 🔨 Focus on fixing 1 broken examples before implementing new features
+- 🎉 **Excellent**: Success rate 90% - documentation is production ready!
+- 🔨 Focus on fixing 13 broken examples before implementing new features
 
 ---
 *Report generated by Documentation Status Testing system*
-*Last test run: 2025-09-02T17:37:18.139Z*
+*Last test run: 2025-10-30T11:16:12.345Z*

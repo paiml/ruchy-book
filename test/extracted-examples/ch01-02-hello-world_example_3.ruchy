@@ -1,5 +1,0 @@
-let name = "Alice"
-println("Hello,", name)
-
-// Or with string interpolation
-println(f"Hello, {name}!")

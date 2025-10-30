@@ -1,5 +1,0 @@
-// ❌ These are different variables
-let userName = "Alice"
-let username = "Bob"
-println(userName)  // Prints "Alice", not "Bob"
-println(f"Username: {username}")
