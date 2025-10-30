@@ -30,18 +30,16 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-10-30 14:00 UTC
-**Ruchy Version**: v3.151.0
+**Last Updated**: 2025-10-30 13:50 UTC
+**Ruchy Version**: v1.84.0
 
-- 🎉 **Book Examples**: **135/135 passing (100%)** - PERFECT SCORE
-- 🎉 **One-liners**: **18/18 passing (100%)** - ALL WORKING
-- ✅ **Quality Gates**: 69/69 files pass syntax check (100%)
-- ✅ **Lint Grade**: A+ (69/69 files, 100% pass rate)
-- ✅ **Vaporware**: 0 violations (zero tolerance)
-- 🚀 **GitHub Issues**: 2 filed ([#91](https://github.com/paiml/ruchy/issues/91), [#92](https://github.com/paiml/ruchy/issues/92))
+- 📊 **Book Examples**: 97/135 passing (72%)
+- 🎯 **One-liners**: 12/18 passing (66%)
+- ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
+- 🚀 **CI Status**: ✅ success
 <!-- STATUS_END -->
 
-### Key Improvements
+###
 - 🎉 **100% Pass Rate**: All 135 examples working (was 91%)
 - 🎯 **DataFrames**: 4/4 examples passing (100%)
 - ✅ **One-liners**: 18/18 passing (100%, was 0%)
