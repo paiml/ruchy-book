@@ -549,9 +549,9 @@ fun calculate_monthly_payment(principal: f64, rate: f64, months: i32) -> f64 {
     
     // Calculate monthly payment
     let monthly_rate = rate / 12.0;
-    let payment = principal * monthly_rate * 
-        ((1.0 + monthly_rate).powf(months as f64)) /
-        (((1.0 + monthly_rate).powf(months as f64)) - 1.0);
+    let payment = principal * monthly_rate *
+        ((1.0 + monthly_rate) ** (months as f64)) /
+        (((1.0 + monthly_rate) ** (months as f64)) - 1.0);
     
     // Postcondition - validate result
     if payment <= 0.0 {

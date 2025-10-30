@@ -5,7 +5,3 @@ Error: Evaluation error: Runtime error: Object has no field named 'env'
 === ch16-00-testing-quality-assurance example 5 ===
 Error: Evaluation error: Assertion failed: "Basic addition"
 
-
-=== ch17-00-error-handling-robustness example 10 ===
-Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments
-
