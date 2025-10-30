@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test all Ch04 examples with 7-layer validation
 # Part of REFACTOR-004
 # WARNING: Ch04 uses MANY advanced features

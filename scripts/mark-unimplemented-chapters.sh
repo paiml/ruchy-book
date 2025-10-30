@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Mark all non-working chapters as "NOT IMPLEMENTED"
 
 set -e

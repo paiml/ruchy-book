@@ -1,7 +1,14 @@
 # Ruchy Book Makefile - Quality Gates and Development Commands
 # Following Toyota Way principles: Kaizen, Genchi Genbutsu, Jidoka
+#
+# BASHRS INTEGRATION: All bash scripts use bashrs (v6.20.0)
+# - Bash scripts: Validated with `bashrs lint`, `bashrs score`, `bashrs audit`
+# - Makefile: Processed with `bashrs make` for purification and verification
 
-.PHONY: all build serve test test-oneliners test-all-oneliners test-math-oneliners test-comprehensive test-notebook test-notebook-ch01 test-notebook-ch02 test-notebook-ch03 validate clean lint sync-version verify-version pre-commit help install-deps generate-reports update-integration-docs dogfood-all dogfood-check dogfood-test dogfood-fmt dogfood-lint dogfood-provability dogfood-runtime dogfood-score dogfood-quality-gate dogfood-optimize dogfood-prove dogfood-doc dogfood-bench dogfood-ast dogfood-coverage dogfood-mcp dogfood-full
+# bashrs binary location
+BASHRS := ../bashrs/target/release/bashrs
+
+.PHONY: all build serve test test-oneliners test-all-oneliners test-math-oneliners test-comprehensive test-notebook test-notebook-ch01 test-notebook-ch02 test-notebook-ch03 validate clean lint sync-version verify-version pre-commit help install-deps generate-reports update-integration-docs dogfood-all dogfood-check dogfood-test dogfood-fmt dogfood-lint dogfood-provability dogfood-runtime dogfood-score dogfood-quality-gate dogfood-optimize dogfood-prove dogfood-doc dogfood-bench dogfood-ast dogfood-coverage dogfood-mcp dogfood-full bashrs-lint bashrs-score bashrs-audit bashrs-make
 
 # Default target
 all: validate build
@@ -88,6 +95,16 @@ help:
 	@echo "  make dogfood-ast       - AST analysis"
 	@echo "  make dogfood-coverage  - Coverage reporting with ruchy-coverage"
 	@echo "  make dogfood-mcp       - MCP server quality analysis"
+	@echo ""
+	@echo "🦀 BASHRS QUALITY TOOLS (v6.20.0 - Bash Script Quality):"
+	@echo "  make bashrs-lint       - Lint all bash scripts for safety issues"
+	@echo "  make bashrs-score      - Score bash script quality"
+	@echo "  make bashrs-audit      - Comprehensive quality audit"
+	@echo "  make bashrs-make       - Makefile purification and verification"
+	@echo "  make bashrs-format     - Format all bash scripts"
+	@echo "  make bashrs-coverage   - Generate bash script coverage report"
+	@echo "  make bashrs-test       - Run bash script tests"
+	@echo "  make bashrs-all        - Run ALL bashrs quality tools"
 
 # Install dependencies
 install-deps:
@@ -895,5 +912,85 @@ dogfood-quality: dogfood-check dogfood-lint dogfood-provability dogfood-score do
 # Dogfood with performance focus
 dogfood-performance: dogfood-runtime dogfood-optimize dogfood-bench
 	@echo "⚡ Performance-focused dogfooding complete"
+
+#############################################################################
+# BASHRS QUALITY TOOLS (v6.20.0)
+#############################################################################
+
+# bashrs lint - Lint all bash scripts for safety issues
+bashrs-lint:
+	@echo "🔍 BASHRS: Linting all bash scripts..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Linting $$file..."; \
+			$(BASHRS) lint "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs lint complete"
+
+# bashrs score - Score bash script quality
+bashrs-score:
+	@echo "🏆 BASHRS: Scoring bash script quality..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Scoring $$file..."; \
+			$(BASHRS) score "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs score complete"
+
+# bashrs audit - Comprehensive quality audit
+bashrs-audit:
+	@echo "🔬 BASHRS: Running comprehensive quality audit..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Auditing $$file..."; \
+			$(BASHRS) audit "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs audit complete"
+
+# bashrs make - Makefile purification and verification
+bashrs-make:
+	@echo "📋 BASHRS: Analyzing Makefile..."
+	@$(BASHRS) make parse Makefile 2>&1 || true
+	@echo "✅ bashrs make complete"
+
+# bashrs format - Format all bash scripts
+bashrs-format:
+	@echo "🎨 BASHRS: Formatting bash scripts..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Formatting $$file..."; \
+			$(BASHRS) format "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs format complete"
+
+# bashrs coverage - Generate coverage report for bash scripts
+bashrs-coverage:
+	@echo "📊 BASHRS: Generating coverage report..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Coverage for $$file..."; \
+			$(BASHRS) coverage "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs coverage complete"
+
+# bashrs test - Run bash script tests
+bashrs-test:
+	@echo "🧪 BASHRS: Running bash script tests..."
+	@for file in hooks/*.sh scripts/*.sh hooks/pre-commit; do \
+		if [ -f "$$file" ]; then \
+			echo "  Testing $$file..."; \
+			$(BASHRS) test "$$file" 2>&1 || true; \
+		fi; \
+	done
+	@echo "✅ bashrs test complete"
+
+# Run all bashrs quality tools
+bashrs-all: bashrs-lint bashrs-score bashrs-audit bashrs-make bashrs-format bashrs-coverage bashrs-test
+	@echo "🎉 BASHRS: All quality tools complete"
 
 .DEFAULT_GOAL := help
