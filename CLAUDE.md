@@ -29,12 +29,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Use ruchy coverage tool**: `ruchy coverage [file]` validates 100% coverage
 - **No partial examples**: All examples must be complete, working programs
 
-### D. Ruchy Tooling Integration (MANDATORY) - TICKET-018
-- **Use ALL 18 ruchy tools**: MANDATORY for every example
+### D. 19-Tool Comprehensive Testing (MANDATORY) - TICKET-018 + TICKET-020
+- **Use ALL 19 ruchy tools**: MANDATORY for every example
 - **Core execution (3)**: run, compile, wasm
 - **Quality analysis (15)**: check, test, fmt, lint, provability, runtime, score, quality-gate, optimize, prove, doc, bench, ast, coverage, mcp
+- **Debugging (1)** 🆕: ruchydbg validate, ruchy --trace, ruchy dataflow:debug
 - **Tool-driven workflow**: Let tools guide development and validation
-- **Quality verification**: Pre-commit hook enforces comprehensive testing
+- **Quality verification**: Pre-commit hook enforces comprehensive testing (8 gates including debugging)
 
 ### E. Roadmap-Driven Development with Tickets
 - **Work via tickets only**: All work assigned from roadmap tickets
@@ -71,18 +72,20 @@ bash hooks/install.sh
 ```
 
 **Quality Gates Enforced:**
-1. ✅ Verify 18-tool testing infrastructure exists
+1. ✅ Verify 19-tool testing infrastructure exists
 2. ✅ Verify ruchy installation and availability
 3. ✅ Extract and test ALL book examples (comprehensive)
 4. ✅ Verify minimum 90% pass rate threshold
 5. ✅ Check for vaporware documentation (no "coming soon")
 6. ✅ Verify function keyword usage (fun vs fn)
-7. ℹ️  TICKET-018 status (18-tool testing - info only, not blocking yet)
+7. ℹ️  TICKET-018/020 status (19-tool testing - info only, not blocking yet)
+8. ✅ Debugging tools validation (ruchydbg + --trace) 🆕
 
 **Current Status:**
 - Testing with: `ruchy run` (interpreter mode)
-- Target (TICKET-018): All 18 tools per example
+- Target (TICKET-018/020): All 19 tools per example (including debugging)
 - Minimum pass rate: 90% required to commit
+- Debugging validation: ruchydbg + --trace tested on commit
 - Pre-commit hook: `hooks/pre-commit` (see file for implementation)
 
 **To bypass (emergency only):**

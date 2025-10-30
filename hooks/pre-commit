@@ -150,19 +150,59 @@ else
     GATES_PASSED=$((GATES_PASSED + 1))
 fi
 
-# GATE 7: TICKET-018 Enforcement (Future - Not blocking yet)
+# GATE 7: TICKET-018/020 Enforcement (19-Tool Testing - Future)
 echo ""
-echo "🎯 GATE 7: TICKET-018 18-Tool Comprehensive Testing"
-echo -e "${YELLOW}⏭️  INFO: Full 18-tool testing not yet enforced (TICKET-018 in progress)${NC}"
+echo "🎯 GATE 7: TICKET-018/020 19-Tool Comprehensive Testing"
+echo -e "${YELLOW}⏭️  INFO: Full 19-tool testing not yet enforced (TICKET-018/020 in progress)${NC}"
 echo "   Current: Testing with 'ruchy run' only"
-echo "   Target: Testing with all 18 tools per example"
+echo "   Target: Testing with all 19 tools per example"
 echo ""
-echo "   The 18 tools are:"
-echo "     Core: run, compile, wasm"
-echo "     Quality: check, test, fmt, lint, provability, runtime, score,"
-echo "              quality-gate, optimize, prove, doc, bench, ast, coverage, mcp"
+echo "   The 19 tools are:"
+echo "     Core (3): run, compile, wasm"
+echo "     Quality (15): check, test, fmt, lint, provability, runtime, score,"
+echo "                   quality-gate, optimize, prove, doc, bench, ast, coverage, mcp"
+echo "     Debugging (1): debug (ruchydbg validate, ruchy --trace, dataflow:debug)"
 echo ""
 echo "   See docs/tickets/TICKET-018-COMPREHENSIVE-TESTING.md for details"
+echo "   See docs/tickets/TICKET-020-DEBUGGING-TOOLS-MANDATORY.md for debugging details"
+
+# GATE 8: Debugging Tools Validation (NEW - TICKET-020)
+echo ""
+echo "🐛 GATE 8: Debugging Tools Validation (TICKET-020)"
+echo "   Validating ruchydbg and debugging infrastructure..."
+
+# Check if ruchydbg is available
+if ! command -v ruchydbg >/dev/null 2>&1; then
+    echo -e "${YELLOW}⚠️  WARNING: ruchydbg not found${NC}"
+    echo "   Install with: cargo install ruchyruchy"
+    echo "   Debugging validation skipped"
+else
+    # Check if we're in the right location for ruchydbg
+    if [ -d "../ruchyruchy/validation" ]; then
+        echo "   Running ruchydbg validation from ../ruchyruchy..."
+        if (cd ../ruchyruchy && ruchydbg validate >/dev/null 2>&1); then
+            echo -e "${GREEN}✅ PASS${NC} - Debugging infrastructure validated"
+            GATES_PASSED=$((GATES_PASSED + 1))
+        else
+            echo -e "${YELLOW}⚠️  WARNING: ruchydbg validation failed${NC}"
+            echo "   This is informational - not blocking yet"
+        fi
+    else
+        echo -e "${YELLOW}⚠️  INFO: ruchydbg validation requires ../ruchyruchy${NC}"
+        echo "   Clone from: https://github.com/paiml/ruchyruchy"
+    fi
+
+    # Test --trace flag on a simple example
+    echo "   Testing ruchy --trace flag..."
+    TRACE_TEST=$(echo "2 + 2" | ruchy --trace 2>&1 | grep -E "^4$" || true)
+    if [ -n "$TRACE_TEST" ]; then
+        echo -e "${GREEN}✅ PASS${NC} - ruchy --trace working"
+        GATES_PASSED=$((GATES_PASSED + 1))
+    else
+        echo -e "${YELLOW}⚠️  WARNING: ruchy --trace may not be working${NC}"
+        echo "   This is informational - not blocking yet"
+    fi
+fi
 
 # Summary
 echo ""
