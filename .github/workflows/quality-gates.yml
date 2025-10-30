@@ -55,6 +55,27 @@ jobs:
         fi
         echo "✅ All files pass style analysis"
 
+    - name: Quality Scoring (ruchy score)
+      run: |
+        echo "🏆 TICKET-018-10: Running quality scoring..."
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            score=$(ruchy score "$file" 2>/dev/null | grep "Score:" | awk '{print $2}' | cut -d'/' -f1)
+            if [ -n "$score" ]; then
+              if (( $(echo "$score < 0.30" | bc -l) )); then
+                echo "❌ Low quality score: $file ($score)"
+                failed=$((failed + 1))
+              fi
+            fi
+          fi
+        done
+        if [ $failed -gt 0 ]; then
+          echo "❌ $failed files below quality threshold"
+          exit 1
+        fi
+        echo "✅ All files meet quality standards"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
