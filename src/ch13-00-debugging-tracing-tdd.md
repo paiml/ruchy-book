@@ -2,13 +2,19 @@
 
 When developing programs, understanding how your code executes is crucial. Ruchy provides powerful debugging and tracing tools that help you see exactly what your functions are doing, what values they receive, and what they return—all with full type information.
 
+> **⚠️ Important Note (v3.149.0)**: This chapter's examples originally showed `ruchy --trace -e`, but in v3.149.0, the `-e` flag has [known issues](../docs/bugs/ruchy-v3.149.0-eval-flag-bug.md). The **working method** is:
+> ```bash
+> echo 'EXPR' | RUCHY_TRACE=1 ruchy
+> ```
+> All examples below work correctly with this approach. See [trace flag inconsistency bug](../docs/bugs/ruchy-v3.149.0-trace-flag-inconsistency.md) for details.
+
 ## Why Debugging Tools Matter
 
 Debugging is not just about fixing errors—it's about understanding program flow, validating assumptions, and learning how your code behaves. Traditional print debugging (`println!`) scatters your code with temporary statements that you must remember to remove. Ruchy's built-in tracing gives you professional debugging capabilities without modifying your source code.
 
 ## Type-Aware Function Tracing
 
-Ruchy's `--trace` flag enables automatic tracing of all function calls with complete type information. Every function entry and exit is logged, showing argument values with their types and return values with their types.
+Ruchy's `RUCHY_TRACE` environment variable enables automatic tracing of all function calls with complete type information. Every function entry and exit is logged, showing argument values with their types and return values with their types.
 
 ### Basic Tracing
 
@@ -25,9 +31,10 @@ square(5)
 Run this with tracing enabled:
 
 ```bash
-$ ruchy --trace -e 'fun square(x) { x * x }; square(5)'
+$ echo 'fun square(x) { x * x }; square(5)' | RUCHY_TRACE=1 ruchy
 TRACE: → square(5: integer)
 TRACE: ← square = 25: integer
+25
 ```
 
 The trace output shows:
