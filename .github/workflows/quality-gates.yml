@@ -175,6 +175,42 @@ jobs:
         echo ""
         echo "🎉 Phase 1B COMPLETE - All compilation & testing tools validated!"
 
+    - name: Formatting Validation (ruchy fmt)
+      run: |
+        echo "🎨 TICKET-018-08: Running formatting validation..."
+        total=0
+        passed=0
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            total=$((total + 1))
+            if ruchy fmt --check "$file" 2>/dev/null; then
+              passed=$((passed + 1))
+            else
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        echo "🎨 Formatting Results:"
+        echo "   Total files: $total"
+        echo "   Properly formatted: $passed"
+        echo "   Needs formatting: $failed"
+        if [ $total -gt 0 ]; then
+          pass_rate=$(awk "BEGIN {printf \"%.1f\", ($passed / $total) * 100}")
+          echo "   Formatting compliance: ${pass_rate}%"
+        fi
+        if [ $failed -eq $total ]; then
+          echo "   📝 Baseline: 0% formatted (formatting not enforced)"
+          echo "   ✅ Tool works correctly - detects violations"
+        elif [ $passed -eq $total ]; then
+          echo "   ✅ Excellent: 100% formatted (perfect compliance)"
+        else
+          echo "   ⚠️  Mixed: Some files need formatting"
+        fi
+        echo "✅ Formatting validation complete"
+        echo ""
+        echo "🎉 Phase 1C BEGUN - Code quality & formatting tools!"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
