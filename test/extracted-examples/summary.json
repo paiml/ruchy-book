@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-10-30T12:33:27.665Z",
+  "timestamp": "2025-10-30T12:38:02.808Z",
   "ruchy_version": "ruchy 3.149.0",
   "chapters_processed": 17,
   "examples_found": 142,
@@ -978,7 +978,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 3,
-          "line_number": 69,
+          "line_number": 70,
           "code": "fun add(a, b) {\n    a + b\n}\n\nadd(10, 20)",
           "passed": true,
           "status": "working"
@@ -986,7 +986,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 4,
-          "line_number": 88,
+          "line_number": 90,
           "code": "fun is_even(n) {\n    n % 2 == 0\n}\n\nis_even(42)",
           "passed": true,
           "status": "working"
@@ -994,7 +994,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 5,
-          "line_number": 103,
+          "line_number": 106,
           "code": "fun divide(a, b) {\n    a / b\n}\n\ndivide(10.5, 2.5)",
           "passed": true,
           "status": "working"
@@ -1002,7 +1002,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 6,
-          "line_number": 118,
+          "line_number": 122,
           "code": "fun process(arr) {\n    arr\n}\n\nprocess([1, 2, 3])",
           "passed": true,
           "status": "working"
@@ -1010,7 +1010,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 7,
-          "line_number": 138,
+          "line_number": 143,
           "code": "fun factorial(n) {\n    if n <= 1 {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}\n\nfactorial(4)",
           "passed": true,
           "status": "working"
@@ -1018,7 +1018,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 8,
-          "line_number": 173,
+          "line_number": 179,
           "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfibonacci(5)",
           "passed": true,
           "status": "working"
@@ -1026,7 +1026,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 9,
-          "line_number": 231,
+          "line_number": 237,
           "code": "fun compute(x) {\n    let y = x * 2\n    y + 10\n}\n\ncompute(5)",
           "passed": true,
           "status": "working"
@@ -1034,7 +1034,7 @@
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 10,
-          "line_number": 256,
+          "line_number": 263,
           "code": "fun calculate_discount(price, percent) {\n    price * (1.0 - percent / 100.0)\n}\n\ncalculate_discount(100.0, 20.0)",
           "passed": true,
           "status": "working"
