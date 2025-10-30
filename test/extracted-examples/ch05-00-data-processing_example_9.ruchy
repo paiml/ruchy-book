@@ -1,4 +1,0 @@
-let sales_data = load_csv("sales.csv")
-let total = sales_data.map(|row| row.amount.to_f()).sum()
-let average = total / sales_data.len()
-println(f"Average sale: ${average:.2f}")

@@ -1,9 +1,0 @@
-// ❌ Error
-let x = 42
-let y = 24
-
-// ✅ Fixed
-let x = 42;
-let y = 24;
-
-// Note: Semicolons needed for statements, not expressions

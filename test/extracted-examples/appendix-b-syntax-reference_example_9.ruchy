@@ -1,7 +1,0 @@
-// Compile-time constants
-const MAX_SIZE: usize = 1024
-const PI: f64 = 3.14159265359
-
-// Static variables
-static GLOBAL_COUNTER: AtomicUsize = AtomicUsize::new(0)
-static mut GLOBAL_STATE: i32 = 0  // Unsafe to mutate

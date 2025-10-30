@@ -1,17 +1,17 @@
 {
-  "timestamp": "2025-10-26T12:32:10.332Z",
-  "ruchy_version": "ruchy 3.128.0",
+  "timestamp": "2025-10-30T11:16:12.345Z",
+  "ruchy_version": "ruchy 3.149.0",
   "chapters_processed": 16,
   "examples_found": 132,
-  "examples_working": 132,
-  "examples_failing": 0,
-  "success_rate": 100,
+  "examples_working": 119,
+  "examples_failing": 13,
+  "success_rate": 90,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
       "total_examples": 10,
-      "working_examples": 10,
-      "failing_examples": 0,
+      "working_examples": 9,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
@@ -90,8 +90,11 @@
           "example_number": 10,
           "line_number": 588,
           "code": "fun count_word_frequencies(text: &str) -> i32 {\n    // Simple word counting simulation\n    // In real implementation, this would be more sophisticated\n    let mut word_count = 0;\n    let mut in_word = false;\n    let chars = text.as_bytes();\n    let mut i = 0;\n    \n    while i < text.len() {\n        let ch = chars[i];\n        \n        // Simple word boundary detection\n        if ch == b' ' || ch == b'\\n' || ch == b'\\t' {\n            if in_word {\n                word_count = word_count + 1;\n                in_word = false;\n            }\n        } else {\n            if !in_word {\n                in_word = true;\n            }\n        }\n        \n        i = i + 1;\n    }\n    \n    // Count the last word if text doesn't end with whitespace\n    if in_word {\n        word_count = word_count + 1;\n    }\n    \n    word_count\n}\n\nfun process_text_efficiently(text: &str) -> String {\n    let word_count = count_word_frequencies(text);\n    let char_count = text.len();\n    \n    // Build result efficiently\n    let mut result = String::from(\"Text Analysis:\\n\");\n    result = result + \"Characters: \" + &char_count.to_string() + \"\\n\";\n    result = result + \"Words: \" + &word_count.to_string() + \"\\n\";\n    \n    // Calculate average word length\n    let avg_word_length = if word_count > 0 {\n        char_count / (word_count as usize)\n    } else {\n        0\n    };\n    \n    result = result + \"Average word length: \" + &avg_word_length.to_string();\n    \n    result\n}\n\nfun main() {\n    let sample_text = \"Hello world this is a simple text processing example\";\n    let analysis = process_text_efficiently(sample_text);\n    \n    println(\"Sample text: \\\"{}\\\"\", sample_text);\n    println(\"{}\", analysis);\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
@@ -258,8 +261,8 @@
     "ch03-00-functions-tdd": {
       "chapter": "ch03-00-functions-tdd",
       "total_examples": 11,
-      "working_examples": 11,
-      "failing_examples": 0,
+      "working_examples": 10,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch03-00-functions-tdd.md",
@@ -338,8 +341,11 @@
           "example_number": 10,
           "line_number": 230,
           "code": "fun analyze_sales(df: DataFrame) -> DataFrame {\n    // Function that processes a DataFrame\n    df.group_by(\"product\")\n      .agg(\"revenue\", \"sum\")\n      .sort_by(\"revenue_sum\", descending: true)\n}\n\nfun filter_high_value(df: DataFrame, threshold: f64) -> DataFrame {\n    // Function with DataFrame and parameter\n    df.filter(|row| row[\"value\"] > threshold)\n}\n\nfun main() {\n    let sales = DataFrame::from_csv(\"sales.csv\");\n    let analysis = analyze_sales(sales);\n    let top_items = filter_high_value(analysis, 10000.0);\n    println(\"Found {} high-value items\", top_items.rows());\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch03-00-functions-tdd.md",
@@ -394,8 +400,8 @@
     "ch15-00-binary-compilation-deployment": {
       "chapter": "ch15-00-binary-compilation-deployment",
       "total_examples": 4,
-      "working_examples": 4,
-      "failing_examples": 0,
+      "working_examples": 3,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
@@ -410,8 +416,11 @@
           "example_number": 2,
           "line_number": 58,
           "code": "fun main() {\n    let args = std::env::args();\n    \n    if args.len() < 2 {\n        println(\"Usage: calculator <expression>\");\n        return;\n    }\n    \n    let expr = args[1];\n    let result = evaluate_expression(expr);\n    println(\"Result: {}\", result);\n}\n\nfun evaluate_expression(expr: String) -> f64 {\n    // Simple calculator - supports +, -, *, /\n    if expr.contains('+') {\n        let parts = expr.split('+');\n        return parts[0].parse::<f64>() + parts[1].parse::<f64>();\n    } else if expr.contains('-') {\n        let parts = expr.split('-');\n        return parts[0].parse::<f64>() - parts[1].parse::<f64>();\n    } else if expr.contains('*') {\n        let parts = expr.split('*');\n        return parts[0].parse::<f64>() * parts[1].parse::<f64>();\n    } else if expr.contains('/') {\n        let parts = expr.split('/');\n        let divisor = parts[1].parse::<f64>();\n        if divisor != 0.0 {\n            return parts[0].parse::<f64>() / divisor;\n        }\n    }\n    \n    expr.parse::<f64>()\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Object has no field named 'env'\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch15-00-binary-compilation-deployment.md",
@@ -506,8 +515,8 @@
     "ch16-00-testing-quality-assurance": {
       "chapter": "ch16-00-testing-quality-assurance",
       "total_examples": 7,
-      "working_examples": 7,
-      "failing_examples": 0,
+      "working_examples": 6,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
@@ -546,8 +555,11 @@
           "example_number": 5,
           "line_number": 244,
           "code": "// File: calculator_test.ruchy\nfun test_addition() {\n    assert_eq(add(2, 3), 5, \"Basic addition\");\n    assert_eq(add(-1, 1), 0, \"Adding negative numbers\");\n    assert_eq(add(0, 0), 0, \"Adding zeros\");\n    println(\"✅ Addition tests pass\");\n}\n\nfun test_multiplication() {\n    assert_eq(multiply(3, 4), 12, \"Basic multiplication\");\n    assert_eq(multiply(-2, 3), -6, \"Negative multiplication\");\n    assert_eq(multiply(0, 100), 0, \"Multiply by zero\");\n    println(\"✅ Multiplication tests pass\");\n}\n\nfun run_all_tests() {\n    test_addition();\n    test_multiplication();\n    println(\"🎉 Calculator test suite complete!\");\n}\n\nfun main() {\n    run_all_tests();\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Assertion failed: \"Basic addition\"\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch16-00-testing-quality-assurance.md",
@@ -658,8 +670,8 @@
     "ch17-00-error-handling-robustness": {
       "chapter": "ch17-00-error-handling-robustness",
       "total_examples": 11,
-      "working_examples": 11,
-      "failing_examples": 0,
+      "working_examples": 9,
+      "failing_examples": 2,
       "examples": [
         {
           "file": "src/ch17-00-error-handling-robustness.md",
@@ -722,8 +734,11 @@
           "example_number": 8,
           "line_number": 385,
           "code": "fun parse_positive_integer(input: &str) -> i32 {\n    // Simulate string to integer conversion\n    let mut result = 0;\n    let mut i = 0;\n    let chars = input.as_bytes();\n    \n    if input.len() == 0 {\n        println(\"Error: Empty input, using 0\");\n        return 0;\n    }\n    \n    // Check for negative sign\n    if chars[0] == b'-' {\n        println(\"Error: Negative numbers not allowed, using 0\");\n        return 0;\n    }\n    \n    // Simple digit parsing (simplified for example)\n    while i < input.len() {\n        let ch = chars[i];\n        if ch >= b'0' && ch <= b'9' {\n            let digit = (ch - b'0') as i32;\n            result = result * 10 + digit;\n        } else {\n            println(\"Error: Invalid character in number, stopping at {}\", result);\n            break;\n        }\n        i = i + 1;\n    }\n    \n    // Validate range\n    if result > 1000 {\n        println(\"Warning: Value {} too large, capping at 1000\", result);\n        return 1000;\n    }\n    \n    result\n}\n\nfun calculate_score(correct: &str, total: &str) -> f64 {\n    let correct_num = parse_positive_integer(correct);\n    let total_num = parse_positive_integer(total);\n    \n    if total_num == 0 {\n        println(\"Error: Cannot calculate score with zero total\");\n        return 0.0;\n    }\n    \n    if correct_num > total_num {\n        println(\"Error: Correct answers cannot exceed total\");\n        return 0.0;\n    }\n    \n    (correct_num as f64) / (total_num as f64) * 100.0\n}\n\nfun main() {\n    let score1 = calculate_score(\"8\", \"10\");\n    let score2 = calculate_score(\"abc\", \"10\");\n    let score3 = calculate_score(\"15\", \"10\");\n    let score4 = calculate_score(\"5\", \"0\");\n    \n    println(\"Scores: {:.1}%, {:.1}%, {:.1}%, {:.1}%\", score1, score2, score3, score4);\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch17-00-error-handling-robustness.md",
@@ -746,8 +761,11 @@
           "example_number": 11,
           "line_number": 595,
           "code": "fun calculate_monthly_payment(principal: f64, rate: f64, months: i32) -> f64 {\n    // Preconditions - validate inputs\n    if principal <= 0.0 {\n        println(\"Error: Principal must be positive\");\n        return 0.0;\n    }\n    \n    if rate < 0.0 {\n        println(\"Error: Interest rate cannot be negative\");\n        return 0.0;\n    }\n    \n    if months <= 0 {\n        println(\"Error: Loan term must be positive\");\n        return 0.0;\n    }\n    \n    // Handle edge case of zero interest\n    if rate == 0.0 {\n        return principal / (months as f64);\n    }\n    \n    // Calculate monthly payment\n    let monthly_rate = rate / 12.0;\n    let payment = principal * monthly_rate * \n        ((1.0 + monthly_rate).powf(months as f64)) /\n        (((1.0 + monthly_rate).powf(months as f64)) - 1.0);\n    \n    // Postcondition - validate result\n    if payment <= 0.0 {\n        println(\"Error: Calculated payment is invalid\");\n        return 0.0;\n    }\n    \n    payment\n}\n\nfun main() {\n    let payment1 = calculate_monthly_payment(100000.0, 0.05, 360);\n    let payment2 = calculate_monthly_payment(-1000.0, 0.05, 360);\n    let payment3 = calculate_monthly_payment(50000.0, 0.0, 60);\n    \n    println(\"Monthly payments: {:.2}, {:.2}, {:.2}\", payment1, payment2, payment3);\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
@@ -978,8 +996,8 @@
     "ch05-00-control-flow-tdd": {
       "chapter": "ch05-00-control-flow-tdd",
       "total_examples": 17,
-      "working_examples": 17,
-      "failing_examples": 0,
+      "working_examples": 10,
+      "failing_examples": 7,
       "examples": [
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1050,8 +1068,11 @@
           "example_number": 9,
           "line_number": 272,
           "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count: \" + count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration: \" + i);\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1066,24 +1087,33 @@
           "example_number": 11,
           "line_number": 316,
           "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value: \" + user_input);\n    } else {\n        println(\"Normal value: \" + user_input);\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 12,
           "line_number": 330,
           "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is: \" + count);\n        count = count + 1;\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 13,
           "line_number": 341,
           "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item \" + i);\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1098,24 +1128,33 @@
           "example_number": 15,
           "line_number": 363,
           "code": "fun main() {\n    let df = DataFrame::from_csv(\"sales.csv\");\n    \n    // Filter based on conditions\n    if df.rows() > 0 {\n        let high_value = df.filter(|row| {\n            if row[\"amount\"] > 1000 {\n                row[\"status\"] == \"active\"\n            } else {\n                false\n            }\n        });\n        \n        println(\"Found {} high-value active sales\", high_value.rows());\n    } else {\n        println(\"No data to process\");\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 16,
           "line_number": 385,
           "code": "fun main() {\n    let df = DataFrame::from_csv(\"inventory.csv\");\n    \n    // Process each row with for loop\n    for row in df.iter_rows() {\n        if row[\"quantity\"] < 10 {\n            println(\"Low stock alert: {} ({})\", row[\"product\"], row[\"quantity\"]);\n        }\n    }\n    \n    // Conditional aggregation\n    let mut total = 0.0;\n    for value in df[\"price\"].iter() {\n        if value > 0.0 {\n            total = total + value;\n        }\n    }\n    println(\"Total positive prices: {}\", total);\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 17,
           "line_number": 408,
           "code": "fun main() {\n    let df = DataFrame::from_csv(\"customers.csv\");\n    \n    for row in df.iter_rows() {\n        let category = match row[\"total_purchases\"] {\n            v if v > 10000 => \"Platinum\",\n            v if v > 5000 => \"Gold\",\n            v if v > 1000 => \"Silver\",\n            _ => \"Bronze\"\n        };\n        \n        println(\"Customer {} is {} tier\", row[\"name\"], category);\n    }\n}",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Unknown qualified name: DataFrame::from_csv\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
