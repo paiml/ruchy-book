@@ -17,11 +17,11 @@ This book has undergone a complete Test-Driven Development (TDD) transformation.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-10-30 12:14 UTC
+**Last Updated**: 2025-10-30 12:30 UTC
 **Ruchy Version**: v1.84.0
 
 - 📊 **Book Examples**: 96/142 passing (68%)
-- 🎯 **One-liners**: 17/20 passing (85%)
+- 🎯 **One-liners**: 12/18 passing (66%)
 - ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
 - 🚀 **CI Status**: ✅ success
 <!-- STATUS_END -->
