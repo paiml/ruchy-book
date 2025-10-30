@@ -1,22 +1,22 @@
 {
-  "timestamp": "2025-10-30T13:11:26.658Z",
-  "ruchy_version": "ruchy 3.150.0",
+  "timestamp": "2025-10-30T13:23:35.179Z",
+  "ruchy_version": "ruchy 3.151.0",
   "chapters_processed": 17,
-  "examples_found": 138,
+  "examples_found": 136,
   "examples_working": 133,
-  "examples_failing": 5,
-  "success_rate": 96,
+  "examples_failing": 3,
+  "success_rate": 98,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
-      "total_examples": 10,
+      "total_examples": 9,
       "working_examples": 9,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 1,
-          "line_number": 39,
+          "line_number": 38,
           "code": "// Calculator with validation and error handling\nfun safe_calculate(operation: &str, a: i32, b: i32) -> i32 {\n    if operation == \"add\" {\n        a + b\n    } else if operation == \"subtract\" {\n        a - b\n    } else if operation == \"multiply\" {\n        a * b\n    } else if operation == \"divide\" {\n        if b == 0 {\n            println(\"Error: Division by zero\");\n            0  // Safe default\n        } else {\n            a / b\n        }\n    } else {\n        println(\"Error: Unknown operation '{}'\", operation);\n        0  // Safe default\n    }\n}\n\nfun main() {\n    let result1 = safe_calculate(\"add\", 10, 5);\n    let result2 = safe_calculate(\"divide\", 12, 3);\n    let result3 = safe_calculate(\"divide\", 10, 0);\n    \n    println(\"10 + 5 = {}\", result1);\n    println(\"12 / 3 = {}\", result2);\n    println(\"10 / 0 = {}\", result3);\n}",
           "passed": true,
           "status": "working"
@@ -24,7 +24,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 2,
-          "line_number": 99,
+          "line_number": 98,
           "code": "fun validate_user_input(name: &str, age: i32, email: &str) -> bool {\n    // Guard clause: check for empty name\n    if name.len() == 0 {\n        println(\"Error: Name cannot be empty\");\n        return false;\n    }\n    \n    // Guard clause: check age range\n    if age < 0 || age > 150 {\n        println(\"Error: Age must be between 0 and 150\");\n        return false;\n    }\n    \n    // Guard clause: basic email validation\n    if !email.contains('@') {\n        println(\"Error: Invalid email format\");\n        return false;\n    }\n    \n    // All validations passed\n    println(\"User input is valid\");\n    return true;\n}\n\nfun create_user_profile(name: &str, age: i32, email: &str) -> &str {\n    if validate_user_input(name, age, email) {\n        println(\"Creating profile for: {}\", name);\n        return \"Profile created successfully\";\n    } else {\n        return \"Profile creation failed\";\n    }\n}\n\nfun main() {\n    let result1 = create_user_profile(\"Alice\", 25, \"alice@example.com\");\n    let result2 = create_user_profile(\"\", 30, \"bob@example.com\");\n    let result3 = create_user_profile(\"Charlie\", -5, \"charlie@example.com\");\n    \n    println(\"Result 1: {}\", result1);\n    println(\"Result 2: {}\", result2); \n    println(\"Result 3: {}\", result3);\n}",
           "passed": true,
           "status": "working"
@@ -32,7 +32,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 3,
-          "line_number": 146,
+          "line_number": 145,
           "code": "fun process_score(raw_score: i32, max_score: i32) -> f64 {\n    // Step 1: Validate inputs\n    if max_score <= 0 {\n        println(\"Error: Max score must be positive\");\n        return 0.0;\n    }\n    \n    if raw_score < 0 {\n        println(\"Warning: Negative score adjusted to 0\");\n        return 0.0;\n    }\n    \n    if raw_score > max_score {\n        println(\"Warning: Score exceeds maximum, capping at {}\", max_score);\n        return 100.0;\n    }\n    \n    // Step 2: Calculate percentage\n    let percentage = (raw_score as f64) / (max_score as f64) * 100.0;\n    \n    // Step 3: Round to reasonable precision\n    let rounded = (percentage * 10.0).round() / 10.0;\n    \n    // Step 4: Return result\n    rounded\n}\n\nfun grade_assignment(student: &str, raw_score: i32, max_score: i32) -> &str {\n    let percentage = process_score(raw_score, max_score);\n    \n    println(\"Student: {}\", student);\n    println(\"Score: {}/{} ({:.1}%)\", raw_score, max_score, percentage);\n    \n    // Letter grade assignment\n    if percentage >= 90.0 {\n        return \"A\";\n    } else if percentage >= 80.0 {\n        return \"B\";\n    } else if percentage >= 70.0 {\n        return \"C\";\n    } else if percentage >= 60.0 {\n        return \"D\";\n    } else {\n        return \"F\";\n    }\n}\n\nfun main() {\n    let grade1 = grade_assignment(\"Alice\", 95, 100);\n    let grade2 = grade_assignment(\"Bob\", 42, 50);\n    let grade3 = grade_assignment(\"Charlie\", 150, 100);\n    \n    println(\"Grades: {}, {}, {}\", grade1, grade2, grade3);\n}",
           "passed": true,
           "status": "working"
@@ -40,7 +40,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 4,
-          "line_number": 205,
+          "line_number": 204,
           "code": "fun get_setting(setting_name: &str, default_value: i32) -> i32 {\n    // Simulate configuration lookup\n    if setting_name == \"timeout\" {\n        return 30;\n    } else if setting_name == \"max_retries\" {\n        return 3;\n    } else if setting_name == \"buffer_size\" {\n        return 1024;\n    } else {\n        println(\"Warning: Unknown setting '{}', using default {}\", setting_name, default_value);\n        return default_value;\n    }\n}\n\nfun initialize_system() -> bool {\n    println(\"Initializing system...\");\n    \n    // Get settings with defaults\n    let timeout = get_setting(\"timeout\", 15);\n    let retries = get_setting(\"max_retries\", 1);\n    let buffer = get_setting(\"buffer_size\", 512);\n    let unknown = get_setting(\"cache_size\", 256);\n    \n    // Display configuration\n    println(\"Configuration:\");\n    println(\"  Timeout: {} seconds\", timeout);\n    println(\"  Max retries: {}\", retries);\n    println(\"  Buffer size: {} bytes\", buffer);\n    println(\"  Cache size: {} MB\", unknown);\n    \n    // Validate critical settings\n    if timeout <= 0 {\n        println(\"Error: Timeout must be positive\");\n        return false;\n    }\n    \n    if retries < 0 {\n        println(\"Error: Retries cannot be negative\");\n        return false;\n    }\n    \n    println(\"✅ System initialized successfully\");\n    return true;\n}\n\nfun main() {\n    let success = initialize_system();\n    \n    if success {\n        println(\"System is ready for operation\");\n    } else {\n        println(\"System initialization failed\");\n    }\n}",
           "passed": true,
           "status": "working"
@@ -48,7 +48,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 5,
-          "line_number": 266,
+          "line_number": 265,
           "code": "fun calculate_total(prices: [i32; 5]) -> i32 {\n    let mut total = 0;  // Accumulator starts at zero\n    let mut i = 0;\n    \n    while i < 5 {\n        total = total + prices[i];  // Accumulate each value\n        i = i + 1;\n    }\n    \n    total  // Return accumulated result\n}\n\nfun find_maximum(numbers: [i32; 5]) -> i32 {\n    let mut max_value = numbers[0];  // Accumulator starts with first value\n    let mut i = 1;\n    \n    while i < 5 {\n        if numbers[i] > max_value {\n            max_value = numbers[i];  // Update accumulator if better value found\n        }\n        i = i + 1;\n    }\n    \n    max_value  // Return best value found\n}\n\nfun count_positives(numbers: [i32; 5]) -> i32 {\n    let mut count = 0;  // Counter accumulator\n    let mut i = 0;\n    \n    while i < 5 {\n        if numbers[i] > 0 {\n            count = count + 1;  // Increment counter for matches\n        }\n        i = i + 1;\n    }\n    \n    count  // Return count\n}\n\nfun main() {\n    let prices = [10, 25, 5, 15, 8];\n    let numbers = [-3, 7, -1, 12, 0];\n    \n    let total = calculate_total(prices);\n    let maximum = find_maximum(prices);\n    let positive_count = count_positives(numbers);\n    \n    println(\"Total: {}\", total);\n    println(\"Maximum: {}\", maximum);\n    println(\"Positive numbers: {}\", positive_count);\n}",
           "passed": true,
           "status": "working"
@@ -56,7 +56,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 6,
-          "line_number": 323,
+          "line_number": 322,
           "code": "fun process_order_state(current_state: &str, action: &str) -> &str {\n    if current_state == \"pending\" {\n        if action == \"pay\" {\n            println(\"Payment received, order confirmed\");\n            return \"confirmed\";\n        } else if action == \"cancel\" {\n            println(\"Order cancelled\");\n            return \"cancelled\";\n        } else {\n            println(\"Invalid action '{}' for pending order\", action);\n            return current_state;\n        }\n    } else if current_state == \"confirmed\" {\n        if action == \"ship\" {\n            println(\"Order shipped\");\n            return \"shipped\";\n        } else if action == \"cancel\" {\n            println(\"Confirmed order cancelled, refund processed\");\n            return \"cancelled\";\n        } else {\n            println(\"Invalid action '{}' for confirmed order\", action);\n            return current_state;\n        }\n    } else if current_state == \"shipped\" {\n        if action == \"deliver\" {\n            println(\"Order delivered\");\n            return \"delivered\";\n        } else {\n            println(\"Cannot modify shipped order\");\n            return current_state;\n        }\n    } else if current_state == \"delivered\" {\n        println(\"Order already completed\");\n        return current_state;\n    } else if current_state == \"cancelled\" {\n        println(\"Order was cancelled\");\n        return current_state;\n    } else {\n        println(\"Unknown order state: {}\", current_state);\n        return \"error\";\n    }\n}\n\nfun track_order() -> &str {\n    let mut state = \"pending\";\n    \n    println(\"Order tracking simulation:\");\n    println(\"Initial state: {}\", state);\n    \n    // Process sequence of actions\n    state = process_order_state(state, \"pay\");\n    println(\"Current state: {}\", state);\n    \n    state = process_order_state(state, \"ship\");\n    println(\"Current state: {}\", state);\n    \n    state = process_order_state(state, \"deliver\");\n    println(\"Current state: {}\", state);\n    \n    state\n}\n\nfun main() {\n    let final_state = track_order();\n    println(\"Final order state: {}\", final_state);\n}",
           "passed": true,
           "status": "working"
@@ -64,7 +64,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 7,
-          "line_number": 394,
+          "line_number": 393,
           "code": "fun build_greeting(name: &str, formal: bool, include_time: bool) -> String {\n    let mut greeting = String::new();\n    \n    // Start with appropriate formality\n    if formal {\n        greeting = greeting + \"Good day, \";\n    } else {\n        greeting = greeting + \"Hello, \";\n    }\n    \n    // Add the name\n    greeting = greeting + name;\n    \n    // Add time information if requested\n    if include_time {\n        greeting = greeting + \"! Hope you're having a great day\";\n    } else {\n        greeting = greeting + \"!\";\n    }\n    \n    greeting\n}\n\nfun build_email_subject(priority: &str, department: &str, topic: &str) -> String {\n    let mut subject = String::new();\n    \n    // Add priority prefix\n    if priority == \"urgent\" {\n        subject = subject + \"[URGENT] \";\n    } else if priority == \"high\" {\n        subject = subject + \"[HIGH] \";\n    }\n    \n    // Add department prefix\n    subject = subject + \"[\" + department + \"] \";\n    \n    // Add main topic\n    subject = subject + topic;\n    \n    subject\n}\n\nfun main() {\n    let greeting1 = build_greeting(\"Alice\", true, true);\n    let greeting2 = build_greeting(\"Bob\", false, false);\n    \n    let subject1 = build_email_subject(\"urgent\", \"IT\", \"Server maintenance required\");\n    let subject2 = build_email_subject(\"normal\", \"HR\", \"Team meeting scheduled\");\n    \n    println(\"Greetings:\");\n    println(\"  {}\", greeting1);\n    println(\"  {}\", greeting2);\n    \n    println(\"Email subjects:\");\n    println(\"  {}\", subject1);\n    println(\"  {}\", subject2);\n}",
           "passed": true,
           "status": "working"
@@ -72,7 +72,7 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 8,
-          "line_number": 458,
+          "line_number": 457,
           "code": "fun process_student_data(name: &str, scores: [i32; 3]) -> String {\n    // Pattern 1: Input validation\n    if name.len() == 0 {\n        return String::from(\"Error: Student name required\");\n    }\n    \n    // Pattern 2: Accumulator for total\n    let mut total = 0;\n    let mut i = 0;\n    while i < 3 {\n        if scores[i] < 0 || scores[i] > 100 {\n            return String::from(\"Error: Scores must be between 0 and 100\");\n        }\n        total = total + scores[i];\n        i = i + 1;\n    }\n    \n    // Pattern 3: Calculation with validation\n    let average = total / 3;\n    \n    // Pattern 4: State-based classification\n    let grade = if average >= 90 {\n        \"A\"\n    } else if average >= 80 {\n        \"B\"\n    } else if average >= 70 {\n        \"C\"\n    } else if average >= 60 {\n        \"D\"\n    } else {\n        \"F\"\n    };\n    \n    // Pattern 5: Builder pattern for result\n    let mut result = String::from(\"Student Report\\n\");\n    result = result + \"Name: \" + name + \"\\n\";\n    result = result + \"Scores: \";\n    \n    // Add individual scores\n    let mut i = 0;\n    while i < 3 {\n        if i > 0 {\n            result = result + \", \";\n        }\n        result = result + &scores[i].to_string();\n        i = i + 1;\n    }\n    \n    result = result + \"\\n\";\n    result = result + \"Average: \" + &average.to_string() + \"\\n\";\n    result = result + \"Grade: \" + grade;\n    \n    result\n}\n\nfun main() {\n    let report1 = process_student_data(\"Alice Johnson\", [95, 87, 92]);\n    let report2 = process_student_data(\"Bob Smith\", [78, 82, 75]);\n    let report3 = process_student_data(\"\", [85, 90, 88]);\n    \n    println(\"{}\\n\", report1);\n    println(\"{}\\n\", report2);  \n    println(\"{}\\n\", report3);\n}",
           "passed": true,
           "status": "working"
@@ -80,21 +80,10 @@
         {
           "file": "src/ch04-00-practical-patterns-tdd.md",
           "example_number": 9,
-          "line_number": 529,
+          "line_number": 528,
           "code": "// Test helper function\nfun assert_equal(actual: i32, expected: i32, test_name: &str) {\n    if actual == expected {\n        println(\"✅ {}: {} == {}\", test_name, actual, expected);\n    } else {\n        println(\"❌ {}: {} != {} (expected)\", test_name, actual, expected);\n    }\n}\n\nfun assert_string_equal(actual: &str, expected: &str, test_name: &str) {\n    if actual == expected {\n        println(\"✅ {}: strings match\", test_name);\n    } else {\n        println(\"❌ {}: '{}' != '{}' (expected)\", test_name, actual, expected);\n    }\n}\n\n// Function to test\nfun calculate_discount(price: i32, discount_percent: i32) -> i32 {\n    if discount_percent < 0 || discount_percent > 100 {\n        return price;  // No discount for invalid percentage\n    }\n    \n    let discount_amount = (price * discount_percent) / 100;\n    price - discount_amount\n}\n\n// Test suite\nfun test_discount_calculation() {\n    println(\"Testing discount calculation...\");\n    \n    // Normal cases\n    assert_equal(calculate_discount(100, 10), 90, \"10% discount on $100\");\n    assert_equal(calculate_discount(50, 20), 40, \"20% discount on $50\");\n    assert_equal(calculate_discount(200, 0), 200, \"0% discount on $200\");\n    \n    // Edge cases\n    assert_equal(calculate_discount(100, -5), 100, \"Negative discount\");\n    assert_equal(calculate_discount(100, 150), 100, \"Over 100% discount\");\n    assert_equal(calculate_discount(0, 50), 0, \"50% discount on $0\");\n    \n    println(\"Discount tests completed.\\n\");\n}\n\nfun main() {\n    test_discount_calculation();\n    \n    // Demo the actual function\n    println(\"Discount examples:\");\n    println(\"$100 with 15% discount: ${}\", calculate_discount(100, 15));\n    println(\"$250 with 25% discount: ${}\", calculate_discount(250, 25));\n}",
           "passed": true,
           "status": "working"
-        },
-        {
-          "file": "src/ch04-00-practical-patterns-tdd.md",
-          "example_number": 10,
-          "line_number": 588,
-          "code": "fun count_word_frequencies(text: &str) -> i32 {\n    // Simple word counting simulation\n    // In real implementation, this would be more sophisticated\n    let mut word_count = 0;\n    let mut in_word = false;\n    let chars = text.as_bytes();\n    let mut i = 0;\n    \n    while i < text.len() {\n        let ch = chars[i];\n        \n        // Simple word boundary detection\n        if ch == b' ' || ch == b'\\n' || ch == b'\\t' {\n            if in_word {\n                word_count = word_count + 1;\n                in_word = false;\n            }\n        } else {\n            if !in_word {\n                in_word = true;\n            }\n        }\n        \n        i = i + 1;\n    }\n    \n    // Count the last word if text doesn't end with whitespace\n    if in_word {\n        word_count = word_count + 1;\n    }\n    \n    word_count\n}\n\nfun process_text_efficiently(text: &str) -> String {\n    let word_count = count_word_frequencies(text);\n    let char_count = text.len();\n    \n    // Build result efficiently\n    let mut result = String::from(\"Text Analysis:\\n\");\n    result = result + \"Characters: \" + &char_count.to_string() + \"\\n\";\n    result = result + \"Words: \" + &word_count.to_string() + \"\\n\";\n    \n    // Calculate average word length\n    let avg_word_length = if word_count > 0 {\n        char_count / (word_count as usize)\n    } else {\n        0\n    };\n    \n    result = result + \"Average word length: \" + &avg_word_length.to_string();\n    \n    result\n}\n\nfun main() {\n    let sample_text = \"Hello world this is a simple text processing example\";\n    let analysis = process_text_efficiently(sample_text);\n    \n    println(\"Sample text: \\\"{}\\\"\", sample_text);\n    println(\"{}\", analysis);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot cast integer to usize\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
@@ -658,9 +647,9 @@
     },
     "ch17-00-error-handling-robustness": {
       "chapter": "ch17-00-error-handling-robustness",
-      "total_examples": 11,
+      "total_examples": 10,
       "working_examples": 9,
-      "failing_examples": 2,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch17-00-error-handling-robustness.md",
@@ -721,34 +710,23 @@
         {
           "file": "src/ch17-00-error-handling-robustness.md",
           "example_number": 8,
-          "line_number": 385,
-          "code": "fun parse_positive_integer(input: &str) -> i32 {\n    // Simulate string to integer conversion\n    let mut result = 0;\n    let mut i = 0;\n    let chars = input.as_bytes();\n    \n    if input.len() == 0 {\n        println(\"Error: Empty input, using 0\");\n        return 0;\n    }\n    \n    // Check for negative sign\n    if chars[0] == b'-' {\n        println(\"Error: Negative numbers not allowed, using 0\");\n        return 0;\n    }\n    \n    // Simple digit parsing (simplified for example)\n    while i < input.len() {\n        let ch = chars[i];\n        if ch >= b'0' && ch <= b'9' {\n            let digit = (ch - b'0') as i32;\n            result = result * 10 + digit;\n        } else {\n            println(\"Error: Invalid character in number, stopping at {}\", result);\n            break;\n        }\n        i = i + 1;\n    }\n    \n    // Validate range\n    if result > 1000 {\n        println(\"Warning: Value {} too large, capping at 1000\", result);\n        return 1000;\n    }\n    \n    result\n}\n\nfun calculate_score(correct: &str, total: &str) -> f64 {\n    let correct_num = parse_positive_integer(correct);\n    let total_num = parse_positive_integer(total);\n    \n    if total_num == 0 {\n        println(\"Error: Cannot calculate score with zero total\");\n        return 0.0;\n    }\n    \n    if correct_num > total_num {\n        println(\"Error: Correct answers cannot exceed total\");\n        return 0.0;\n    }\n    \n    (correct_num as f64) / (total_num as f64) * 100.0\n}\n\nfun main() {\n    let score1 = calculate_score(\"8\", \"10\");\n    let score2 = calculate_score(\"abc\", \"10\");\n    let score3 = calculate_score(\"15\", \"10\");\n    let score4 = calculate_score(\"5\", \"0\");\n    \n    println(\"Scores: {:.1}%, {:.1}%, {:.1}%, {:.1}%\", score1, score2, score3, score4);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot compare integer and byte for ordering\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
-        },
-        {
-          "file": "src/ch17-00-error-handling-robustness.md",
-          "example_number": 9,
-          "line_number": 455,
+          "line_number": 387,
           "code": "fun test_division_error_handling() {\n    println(\"Testing division error handling...\");\n    \n    // Test normal case\n    let result1 = safe_divide(10, 2);\n    if result1 == 5 {\n        println(\"✅ Normal division test passed\");\n    } else {\n        println(\"❌ Normal division test failed\");\n    }\n    \n    // Test division by zero\n    let result2 = safe_divide(10, 0);\n    if result2 == 0 {\n        println(\"✅ Division by zero handling passed\");\n    } else {\n        println(\"❌ Division by zero handling failed\");\n    }\n    \n    // Test negative numbers\n    let result3 = safe_divide(-10, 2);\n    if result3 == -5 {\n        println(\"✅ Negative number handling passed\");\n    } else {\n        println(\"❌ Negative number handling failed\");\n    }\n}\n\nfun test_input_validation() {\n    println(\"Testing input validation...\");\n    \n    // Test valid age\n    let age1 = validate_age(25);\n    if age1 == 25 {\n        println(\"✅ Valid age test passed\");\n    } else {\n        println(\"❌ Valid age test failed\");\n    }\n    \n    // Test negative age\n    let age2 = validate_age(-5);\n    if age2 == 0 {\n        println(\"✅ Negative age handling passed\");\n    } else {\n        println(\"❌ Negative age handling failed\");\n    }\n    \n    // Test extreme age\n    let age3 = validate_age(200);\n    if age3 == 150 {\n        println(\"✅ Extreme age handling passed\");\n    } else {\n        println(\"❌ Extreme age handling failed\");\n    }\n}\n\nfun main() {\n    test_division_error_handling();\n    println(\"\");\n    test_input_validation();\n    println(\"\");\n    println(\"🎉 Error handling tests complete!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch17-00-error-handling-robustness.md",
-          "example_number": 10,
-          "line_number": 524,
+          "example_number": 9,
+          "line_number": 456,
           "code": "fun log_error(component: &str, message: &str) {\n    println(\"[ERROR] {}: {}\", component, message);\n}\n\nfun log_warning(component: &str, message: &str) {\n    println(\"[WARN] {}: {}\", component, message);\n}\n\nfun log_info(component: &str, message: &str) {\n    println(\"[INFO] {}: {}\", component, message);\n}\n\nfun process_user_data(user_id: i32, data: &str) -> bool {\n    log_info(\"DataProcessor\", \"Starting user data processing\");\n    \n    // Validate user ID\n    if user_id <= 0 {\n        log_error(\"DataProcessor\", \"Invalid user ID provided\");\n        return false;\n    }\n    \n    // Validate data\n    if data.len() == 0 {\n        log_error(\"DataProcessor\", \"Empty data received\");\n        return false;\n    }\n    \n    if data.len() > 1000 {\n        log_warning(\"DataProcessor\", \"Data size exceeds recommended limit\");\n    }\n    \n    // Simulate processing\n    log_info(\"DataProcessor\", \"Processing data for user\");\n    \n    // Simulate potential failure\n    if user_id == 999 {\n        log_error(\"DataProcessor\", \"Processing failed for user 999\");\n        return false;\n    }\n    \n    log_info(\"DataProcessor\", \"Data processing completed successfully\");\n    return true;\n}\n\nfun main() {\n    let results = [\n        process_user_data(123, \"valid_data\"),\n        process_user_data(0, \"invalid_user\"),\n        process_user_data(456, \"\"),\n        process_user_data(999, \"test_data\")\n    ];\n    \n    let mut successful = 0;\n    let mut i = 0;\n    \n    while i < 4 {\n        if results[i] {\n            successful = successful + 1;\n        }\n        i = i + 1;\n    }\n    \n    println(\"\");\n    println(\"Summary: {}/4 operations successful\", successful);\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch17-00-error-handling-robustness.md",
-          "example_number": 11,
-          "line_number": 595,
+          "example_number": 10,
+          "line_number": 527,
           "code": "fun calculate_monthly_payment(principal: f64, rate: f64, months: i32) -> f64 {\n    // Preconditions - validate inputs\n    if principal <= 0.0 {\n        println(\"Error: Principal must be positive\");\n        return 0.0;\n    }\n    \n    if rate < 0.0 {\n        println(\"Error: Interest rate cannot be negative\");\n        return 0.0;\n    }\n    \n    if months <= 0 {\n        println(\"Error: Loan term must be positive\");\n        return 0.0;\n    }\n    \n    // Handle edge case of zero interest\n    if rate == 0.0 {\n        return principal / (months as f64);\n    }\n    \n    // Calculate monthly payment\n    let monthly_rate = rate / 12.0;\n    let payment = principal * monthly_rate * \n        ((1.0 + monthly_rate).powf(months as f64)) /\n        (((1.0 + monthly_rate).powf(months as f64)) - 1.0);\n    \n    // Postcondition - validate result\n    if payment <= 0.0 {\n        println(\"Error: Calculated payment is invalid\");\n        return 0.0;\n    }\n    \n    payment\n}\n\nfun main() {\n    let payment1 = calculate_monthly_payment(100000.0, 0.05, 360);\n    let payment2 = calculate_monthly_payment(-1000.0, 0.05, 360);\n    let payment3 = calculate_monthly_payment(50000.0, 0.0, 60);\n    \n    println(\"Monthly payments: {:.2}, {:.2}, {:.2}\", payment1, payment2, payment3);\n}",
           "passed": false,
           "status": "broken",
