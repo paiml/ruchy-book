@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-30T13:23:35.179Z",
+  "timestamp": "2025-10-30T13:30:14.037Z",
   "ruchy_version": "ruchy 3.151.0",
   "chapters_processed": 17,
   "examples_found": 136,
-  "examples_working": 133,
-  "examples_failing": 3,
-  "success_rate": 98,
+  "examples_working": 134,
+  "examples_failing": 2,
+  "success_rate": 99,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -648,8 +648,8 @@
     "ch17-00-error-handling-robustness": {
       "chapter": "ch17-00-error-handling-robustness",
       "total_examples": 10,
-      "working_examples": 9,
-      "failing_examples": 1,
+      "working_examples": 10,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch17-00-error-handling-robustness.md",
@@ -727,12 +727,9 @@
           "file": "src/ch17-00-error-handling-robustness.md",
           "example_number": 10,
           "line_number": 527,
-          "code": "fun calculate_monthly_payment(principal: f64, rate: f64, months: i32) -> f64 {\n    // Preconditions - validate inputs\n    if principal <= 0.0 {\n        println(\"Error: Principal must be positive\");\n        return 0.0;\n    }\n    \n    if rate < 0.0 {\n        println(\"Error: Interest rate cannot be negative\");\n        return 0.0;\n    }\n    \n    if months <= 0 {\n        println(\"Error: Loan term must be positive\");\n        return 0.0;\n    }\n    \n    // Handle edge case of zero interest\n    if rate == 0.0 {\n        return principal / (months as f64);\n    }\n    \n    // Calculate monthly payment\n    let monthly_rate = rate / 12.0;\n    let payment = principal * monthly_rate * \n        ((1.0 + monthly_rate).powf(months as f64)) /\n        (((1.0 + monthly_rate).powf(months as f64)) - 1.0);\n    \n    // Postcondition - validate result\n    if payment <= 0.0 {\n        println(\"Error: Calculated payment is invalid\");\n        return 0.0;\n    }\n    \n    payment\n}\n\nfun main() {\n    let payment1 = calculate_monthly_payment(100000.0, 0.05, 360);\n    let payment2 = calculate_monthly_payment(-1000.0, 0.05, 360);\n    let payment3 = calculate_monthly_payment(50000.0, 0.0, 60);\n    \n    println(\"Monthly payments: {:.2}, {:.2}, {:.2}\", payment1, payment2, payment3);\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "fun calculate_monthly_payment(principal: f64, rate: f64, months: i32) -> f64 {\n    // Preconditions - validate inputs\n    if principal <= 0.0 {\n        println(\"Error: Principal must be positive\");\n        return 0.0;\n    }\n    \n    if rate < 0.0 {\n        println(\"Error: Interest rate cannot be negative\");\n        return 0.0;\n    }\n    \n    if months <= 0 {\n        println(\"Error: Loan term must be positive\");\n        return 0.0;\n    }\n    \n    // Handle edge case of zero interest\n    if rate == 0.0 {\n        return principal / (months as f64);\n    }\n    \n    // Calculate monthly payment\n    let monthly_rate = rate / 12.0;\n    let payment = principal * monthly_rate *\n        ((1.0 + monthly_rate) ** (months as f64)) /\n        (((1.0 + monthly_rate) ** (months as f64)) - 1.0);\n    \n    // Postcondition - validate result\n    if payment <= 0.0 {\n        println(\"Error: Calculated payment is invalid\");\n        return 0.0;\n    }\n    \n    payment\n}\n\nfun main() {\n    let payment1 = calculate_monthly_payment(100000.0, 0.05, 360);\n    let payment2 = calculate_monthly_payment(-1000.0, 0.05, 360);\n    let payment3 = calculate_monthly_payment(50000.0, 0.0, 60);\n    \n    println(\"Monthly payments: {:.2}, {:.2}, {:.2}\", payment1, payment2, payment3);\n}",
+          "passed": true,
+          "status": "working"
         }
       ]
     },
