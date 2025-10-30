@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-30T12:53:39.475Z",
-  "ruchy_version": "ruchy 3.149.0",
+  "timestamp": "2025-10-30T12:58:03.545Z",
+  "ruchy_version": "ruchy 3.150.0",
   "chapters_processed": 17,
   "examples_found": 142,
-  "examples_working": 129,
-  "examples_failing": 13,
-  "success_rate": 91,
+  "examples_working": 133,
+  "examples_failing": 9,
+  "success_rate": 94,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -92,7 +92,7 @@
           "code": "fun count_word_frequencies(text: &str) -> i32 {\n    // Simple word counting simulation\n    // In real implementation, this would be more sophisticated\n    let mut word_count = 0;\n    let mut in_word = false;\n    let chars = text.as_bytes();\n    let mut i = 0;\n    \n    while i < text.len() {\n        let ch = chars[i];\n        \n        // Simple word boundary detection\n        if ch == b' ' || ch == b'\\n' || ch == b'\\t' {\n            if in_word {\n                word_count = word_count + 1;\n                in_word = false;\n            }\n        } else {\n            if !in_word {\n                in_word = true;\n            }\n        }\n        \n        i = i + 1;\n    }\n    \n    // Count the last word if text doesn't end with whitespace\n    if in_word {\n        word_count = word_count + 1;\n    }\n    \n    word_count\n}\n\nfun process_text_efficiently(text: &str) -> String {\n    let word_count = count_word_frequencies(text);\n    let char_count = text.len();\n    \n    // Build result efficiently\n    let mut result = String::from(\"Text Analysis:\\n\");\n    result = result + \"Characters: \" + &char_count.to_string() + \"\\n\";\n    result = result + \"Words: \" + &word_count.to_string() + \"\\n\";\n    \n    // Calculate average word length\n    let avg_word_length = if word_count > 0 {\n        char_count / (word_count as usize)\n    } else {\n        0\n    };\n    \n    result = result + \"Average word length: \" + &avg_word_length.to_string();\n    \n    result\n}\n\nfun main() {\n    let sample_text = \"Hello world this is a simple text processing example\";\n    let analysis = process_text_efficiently(sample_text);\n    \n    println(\"Sample text: \\\"{}\\\"\", sample_text);\n    println(\"{}\", analysis);\n}",
           "passed": false,
           "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes\n",
+          "error": "Error: Evaluation error: Type error: Cannot cast integer to usize\n",
           "errorCategory": "UNKNOWN",
           "rootCause": "Unknown error - needs manual investigation"
         }
@@ -736,7 +736,7 @@
           "code": "fun parse_positive_integer(input: &str) -> i32 {\n    // Simulate string to integer conversion\n    let mut result = 0;\n    let mut i = 0;\n    let chars = input.as_bytes();\n    \n    if input.len() == 0 {\n        println(\"Error: Empty input, using 0\");\n        return 0;\n    }\n    \n    // Check for negative sign\n    if chars[0] == b'-' {\n        println(\"Error: Negative numbers not allowed, using 0\");\n        return 0;\n    }\n    \n    // Simple digit parsing (simplified for example)\n    while i < input.len() {\n        let ch = chars[i];\n        if ch >= b'0' && ch <= b'9' {\n            let digit = (ch - b'0') as i32;\n            result = result * 10 + digit;\n        } else {\n            println(\"Error: Invalid character in number, stopping at {}\", result);\n            break;\n        }\n        i = i + 1;\n    }\n    \n    // Validate range\n    if result > 1000 {\n        println(\"Warning: Value {} too large, capping at 1000\", result);\n        return 1000;\n    }\n    \n    result\n}\n\nfun calculate_score(correct: &str, total: &str) -> f64 {\n    let correct_num = parse_positive_integer(correct);\n    let total_num = parse_positive_integer(total);\n    \n    if total_num == 0 {\n        println(\"Error: Cannot calculate score with zero total\");\n        return 0.0;\n    }\n    \n    if correct_num > total_num {\n        println(\"Error: Correct answers cannot exceed total\");\n        return 0.0;\n    }\n    \n    (correct_num as f64) / (total_num as f64) * 100.0\n}\n\nfun main() {\n    let score1 = calculate_score(\"8\", \"10\");\n    let score2 = calculate_score(\"abc\", \"10\");\n    let score3 = calculate_score(\"15\", \"10\");\n    let score4 = calculate_score(\"5\", \"0\");\n    \n    println(\"Scores: {:.1}%, {:.1}%, {:.1}%, {:.1}%\", score1, score2, score3, score4);\n}",
           "passed": false,
           "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes\n",
+          "error": "Error: Evaluation error: Type error: Cannot compare integer and byte for ordering\n",
           "errorCategory": "UNKNOWN",
           "rootCause": "Unknown error - needs manual investigation"
         },
@@ -1084,8 +1084,8 @@
     "ch05-00-control-flow-tdd": {
       "chapter": "ch05-00-control-flow-tdd",
       "total_examples": 17,
-      "working_examples": 10,
-      "failing_examples": 7,
+      "working_examples": 14,
+      "failing_examples": 3,
       "examples": [
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1155,12 +1155,9 @@
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 9,
           "line_number": 272,
-          "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count: \" + count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration: \" + i);\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count:\", count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration:\", i);\n    }\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
@@ -1174,34 +1171,25 @@
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 11,
           "line_number": 316,
-          "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value: \" + user_input);\n    } else {\n        println(\"Normal value: \" + user_input);\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value:\", user_input);\n    } else {\n        println(\"Normal value:\", user_input);\n    }\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 12,
           "line_number": 330,
-          "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is: \" + count);\n        count = count + 1;\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is:\", count);\n        count = count + 1;\n    }\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 13,
           "line_number": 341,
-          "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item \" + i);\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Type error: Cannot add string and integer\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
+          "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item\", i);\n    }\n}",
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch05-00-control-flow-tdd.md",

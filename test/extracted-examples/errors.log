@@ -1,5 +1,5 @@
 === ch04-00-practical-patterns-tdd example 10 ===
-Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes
+Error: Evaluation error: Type error: Cannot cast integer to usize
 
 
 === ch03-00-functions-tdd example 10 ===
@@ -15,27 +15,11 @@ Error: Evaluation error: Assertion failed: "Basic addition"
 
 
 === ch17-00-error-handling-robustness example 8 ===
-Error: Evaluation error: Runtime error: Unknown zero-argument string method: as_bytes
+Error: Evaluation error: Type error: Cannot compare integer and byte for ordering
 
 
 === ch17-00-error-handling-robustness example 11 ===
 Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments
-
-
-=== ch05-00-control-flow-tdd example 9 ===
-Error: Evaluation error: Type error: Cannot add string and integer
-
-
-=== ch05-00-control-flow-tdd example 11 ===
-Error: Evaluation error: Type error: Cannot add string and integer
-
-
-=== ch05-00-control-flow-tdd example 12 ===
-Error: Evaluation error: Type error: Cannot add string and integer
-
-
-=== ch05-00-control-flow-tdd example 13 ===
-Error: Evaluation error: Type error: Cannot add string and integer
 
 
 === ch05-00-control-flow-tdd example 15 ===
