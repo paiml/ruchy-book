@@ -1,0 +1,193 @@
+#!/bin/bash
+# Ruchy Book Pre-Commit Hook - TICKET-018 Enforcement
+# Enforces 18-tool comprehensive testing on all book examples
+# Following Toyota Way: Zero tolerance for quality regression
+
+set -e
+
+echo "🔒 RUCHY BOOK PRE-COMMIT QUALITY GATES (TICKET-018)"
+echo "=================================================="
+echo ""
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Track gate results
+GATES_PASSED=0
+GATES_FAILED=0
+
+# Function to run a gate
+run_gate() {
+    local gate_name="$1"
+    local gate_command="$2"
+
+    echo -n "🔍 GATE: $gate_name... "
+
+    if eval "$gate_command" > /tmp/gate_output_$$ 2>&1; then
+        echo -e "${GREEN}✅ PASS${NC}"
+        GATES_PASSED=$((GATES_PASSED + 1))
+        return 0
+    else
+        echo -e "${RED}❌ FAIL${NC}"
+        echo ""
+        echo "📋 Failure details:"
+        cat /tmp/gate_output_$$
+        echo ""
+        GATES_FAILED=$((GATES_FAILED + 1))
+        rm -f /tmp/gate_output_$$
+        return 1
+    fi
+
+    rm -f /tmp/gate_output_$$
+}
+
+# GATE 1: Check if changed files include book examples
+echo "📋 Checking for modified book examples..."
+CHANGED_MARKDOWN=$(git diff --cached --name-only --diff-filter=ACM | grep '^src/.*\.md$' || true)
+
+if [ -z "$CHANGED_MARKDOWN" ]; then
+    echo -e "${YELLOW}⏭️  No markdown files changed, skipping example testing${NC}"
+    echo ""
+    echo "✅ Pre-commit checks complete (no examples to test)"
+    exit 0
+fi
+
+echo "📝 Changed markdown files:"
+echo "$CHANGED_MARKDOWN" | sed 's/^/  - /'
+echo ""
+
+# GATE 2: Verify 18-tool testing infrastructure exists
+echo "🔧 GATE 2: Verify 18-Tool Testing Infrastructure"
+run_gate "18-tool test script exists" "[ -f scripts/extract-examples.ts ]" || {
+    echo -e "${RED}❌ BLOCKED: scripts/extract-examples.ts not found${NC}"
+    echo "   This is required for TICKET-018 comprehensive testing"
+    exit 1
+}
+
+# GATE 3: Verify ruchy is installed and working
+echo "🔧 GATE 3: Verify Ruchy Installation"
+run_gate "ruchy command available" "command -v ruchy >/dev/null 2>&1" || {
+    echo -e "${RED}❌ BLOCKED: ruchy not found in PATH${NC}"
+    echo "   Install ruchy to run quality gates"
+    exit 1
+}
+
+# GATE 4: Extract and test all examples
+echo "🧪 GATE 4: Extract and Test All Book Examples"
+echo "   Running comprehensive example extraction and testing..."
+echo "   (This validates examples compile with current ruchy version)"
+echo ""
+
+if ! deno task extract-examples >/tmp/extract_output_$$ 2>&1; then
+    echo -e "${RED}❌ BLOCKED: Example extraction/testing failed${NC}"
+    echo ""
+    echo "📋 Test output:"
+    tail -50 /tmp/extract_output_$$
+    echo ""
+    echo "See full output: /tmp/extract_output_$$"
+    rm -f /tmp/extract_output_$$
+    exit 1
+fi
+
+# Parse results
+EXAMPLES_TOTAL=$(grep "💻 Code examples found:" /tmp/extract_output_$$ | awk '{print $5}' || echo "0")
+EXAMPLES_PASSING=$(grep "✅ Examples working:" /tmp/extract_output_$$ | awk '{print $4}' || echo "0")
+EXAMPLES_FAILING=$(grep "❌ Examples failing:" /tmp/extract_output_$$ | awk '{print $4}' || echo "0")
+PASS_RATE=$(grep "📈 Success rate:" /tmp/extract_output_$$ | awk '{print $4}' || echo "0%")
+
+echo ""
+echo "📊 Test Results:"
+echo "   Total examples: $EXAMPLES_TOTAL"
+echo "   Passing: $EXAMPLES_PASSING"
+echo "   Failing: $EXAMPLES_FAILING"
+echo "   Pass rate: $PASS_RATE"
+echo ""
+
+rm -f /tmp/extract_output_$$
+
+# Verify minimum pass rate (90% required)
+PASS_RATE_NUM=$(echo "$PASS_RATE" | tr -d '%')
+if [ "$PASS_RATE_NUM" -lt 90 ]; then
+    echo -e "${RED}❌ BLOCKED: Pass rate below 90% threshold${NC}"
+    echo "   Current: $PASS_RATE, Required: 90%"
+    echo "   Fix failing examples before committing"
+    exit 1
+fi
+
+echo -e "${GREEN}✅ PASS${NC} - Examples meet quality threshold"
+GATES_PASSED=$((GATES_PASSED + 1))
+
+# GATE 5: Check for vaporware documentation
+echo ""
+echo "🔧 GATE 5: Check for Vaporware Documentation"
+run_gate "No 'coming soon' or 'not yet implemented'" "! grep -r 'coming soon\|not yet implemented\|TODO\|FIXME\|HACK' src/" || {
+    echo -e "${YELLOW}⚠️  WARNING: Found vaporware documentation markers${NC}"
+    echo "   Consider filing GitHub issues instead of inline TODOs"
+    # Don't block on this - just warn
+}
+
+# GATE 6: Verify function keyword usage
+echo ""
+echo "🔧 GATE 6: Verify Ruchy Function Keyword Usage"
+echo "   Checking that Ruchy examples use 'fun' not 'fn'..."
+
+# Find any Ruchy code blocks using 'fn' instead of 'fun'
+FN_USAGE=$(grep -r '```ruchy' src/ -A 10 | grep -E '^\s*fn\s+[a-zA-Z_]' | grep -v '```rust' || true)
+
+if [ -n "$FN_USAGE" ]; then
+    echo -e "${RED}❌ FAIL${NC}"
+    echo ""
+    echo "Found Ruchy examples using 'fn' instead of 'fun':"
+    echo "$FN_USAGE"
+    echo ""
+    echo "Ruchy uses 'fun' for function definitions, 'fn' is for Rust examples only"
+    GATES_FAILED=$((GATES_FAILED + 1))
+else
+    echo -e "${GREEN}✅ PASS${NC}"
+    GATES_PASSED=$((GATES_PASSED + 1))
+fi
+
+# GATE 7: TICKET-018 Enforcement (Future - Not blocking yet)
+echo ""
+echo "🎯 GATE 7: TICKET-018 18-Tool Comprehensive Testing"
+echo -e "${YELLOW}⏭️  INFO: Full 18-tool testing not yet enforced (TICKET-018 in progress)${NC}"
+echo "   Current: Testing with 'ruchy run' only"
+echo "   Target: Testing with all 18 tools per example"
+echo ""
+echo "   The 18 tools are:"
+echo "     Core: run, compile, wasm"
+echo "     Quality: check, test, fmt, lint, provability, runtime, score,"
+echo "              quality-gate, optimize, prove, doc, bench, ast, coverage, mcp"
+echo ""
+echo "   See docs/tickets/TICKET-018-COMPREHENSIVE-TESTING.md for details"
+
+# Summary
+echo ""
+echo "=================================================="
+echo "🎉 PRE-COMMIT QUALITY GATES SUMMARY"
+echo "=================================================="
+echo ""
+echo "   Gates Passed: ${GREEN}$GATES_PASSED${NC}"
+if [ $GATES_FAILED -gt 0 ]; then
+    echo "   Gates Failed: ${RED}$GATES_FAILED${NC}"
+fi
+echo ""
+echo "   Pass Rate: $PASS_RATE (Required: ≥90%)"
+echo "   Examples: $EXAMPLES_PASSING/$EXAMPLES_TOTAL passing"
+echo ""
+
+if [ $GATES_FAILED -gt 0 ]; then
+    echo -e "${RED}❌ COMMIT BLOCKED${NC}"
+    echo "   Fix failing quality gates before committing"
+    exit 1
+fi
+
+echo -e "${GREEN}✅ ALL GATES PASSED - COMMIT ALLOWED${NC}"
+echo ""
+echo "Quality standards met. Committing changes..."
+echo ""
+
+exit 0

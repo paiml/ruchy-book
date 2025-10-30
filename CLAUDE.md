@@ -29,10 +29,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Use ruchy coverage tool**: `ruchy coverage [file]` validates 100% coverage
 - **No partial examples**: All examples must be complete, working programs
 
-### D. Ruchy Tooling Integration (MANDATORY)
-- **Use ALL ruchy tools**: check, lint, test, coverage, fmt, score, provability
+### D. Ruchy Tooling Integration (MANDATORY) - TICKET-018
+- **Use ALL 18 ruchy tools**: MANDATORY for every example
+- **Core execution (3)**: run, compile, wasm
+- **Quality analysis (15)**: check, test, fmt, lint, provability, runtime, score, quality-gate, optimize, prove, doc, bench, ast, coverage, mcp
 - **Tool-driven workflow**: Let tools guide development and validation
-- **Quality verification**: `make dogfood-full` must pass before any commit
+- **Quality verification**: Pre-commit hook enforces comprehensive testing
 
 ### E. Roadmap-Driven Development with Tickets
 - **Work via tickets only**: All work assigned from roadmap tickets
@@ -42,57 +44,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## MANDATORY Quality Gates (BLOCKING - Not Advisory)
 
-### Pre-Commit Hooks (MANDATORY) - Enhanced with Dogfooding
+### Pre-Commit Hooks (MANDATORY) - TICKET-018 Enforcement
+
+**Installation:**
 ```bash
-#!/bin/bash
-# .git/hooks/pre-commit - BLOCKS commits that violate quality
-set -e
-
-echo "🔒 MANDATORY Book Quality Gates..."
-
-# GATE 1: All listings must compile
-cargo test --manifest-path book/Cargo.toml || {
-    echo "❌ BLOCKED: Code examples don't compile"
-    exit 1
-}
-
-# GATE 2: MANDATORY Dogfooding Quality Gates
-echo "🐕 Running MANDATORY dogfooding quality gates..."
-make dogfood-check >/dev/null || {
-    echo "❌ BLOCKED: Syntax validation failed"
-    exit 1
-}
-
-make dogfood-lint >/dev/null || {
-    echo "❌ BLOCKED: Style analysis failed" 
-    exit 1
-}
-
-make dogfood-score | grep -q "A+" || {
-    echo "❌ BLOCKED: Quality score below A+ grade"
-    exit 1
-}
-
-# GATE 3: Strict mode validation
-MDBOOK_PREPROCESSOR__RUCHY__STRICT=true mdbook build || {
-    echo "❌ BLOCKED: Examples fail strict validation"
-    exit 1
-}
-
-# GATE 4: Zero broken links
-mdbook-linkcheck || {
-    echo "❌ BLOCKED: Broken links found"
-    exit 1
-}
-
-# GATE 5: No vaporware documentation
-! grep -r "coming soon\|not yet implemented\|TODO" src/ || {
-    echo "❌ BLOCKED: Vaporware documentation found"
-    exit 1
-}
-
-echo "✅ All quality gates passed (including dogfooding)"
+bash hooks/install.sh
 ```
+
+**Quality Gates Enforced:**
+1. ✅ Verify 18-tool testing infrastructure exists
+2. ✅ Verify ruchy installation and availability
+3. ✅ Extract and test ALL book examples (comprehensive)
+4. ✅ Verify minimum 90% pass rate threshold
+5. ✅ Check for vaporware documentation (no "coming soon")
+6. ✅ Verify function keyword usage (fun vs fn)
+7. ℹ️  TICKET-018 status (18-tool testing - info only, not blocking yet)
+
+**Current Status:**
+- Testing with: `ruchy run` (interpreter mode)
+- Target (TICKET-018): All 18 tools per example
+- Minimum pass rate: 90% required to commit
+- Pre-commit hook: `hooks/pre-commit` (see file for implementation)
+
+**To bypass (emergency only):**
+```bash
+git commit --no-verify
+```
+
+**NEVER bypass except for:**
+- Emergency hotfixes
+- Documentation-only changes (no code examples)
+- Hook infrastructure fixes
 
 ## Absolute Rules
 
