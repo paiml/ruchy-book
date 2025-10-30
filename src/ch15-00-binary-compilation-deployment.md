@@ -54,52 +54,6 @@ Ruchy's `compile` command transpiles your code to Rust and then creates a native
 
 ## Practical Usage
 
-### Command-Line Tool Example
-```ruchy
-fun main() {
-    let args = std::env::args();
-    
-    if args.len() < 2 {
-        println("Usage: calculator <expression>");
-        return;
-    }
-    
-    let expr = args[1];
-    let result = evaluate_expression(expr);
-    println("Result: {}", result);
-}
-
-fun evaluate_expression(expr: String) -> f64 {
-    // Simple calculator - supports +, -, *, /
-    if expr.contains('+') {
-        let parts = expr.split('+');
-        return parts[0].parse::<f64>() + parts[1].parse::<f64>();
-    } else if expr.contains('-') {
-        let parts = expr.split('-');
-        return parts[0].parse::<f64>() - parts[1].parse::<f64>();
-    } else if expr.contains('*') {
-        let parts = expr.split('*');
-        return parts[0].parse::<f64>() * parts[1].parse::<f64>();
-    } else if expr.contains('/') {
-        let parts = expr.split('/');
-        let divisor = parts[1].parse::<f64>();
-        if divisor != 0.0 {
-            return parts[0].parse::<f64>() / divisor;
-        }
-    }
-    
-    expr.parse::<f64>()
-}
-```
-
-```bash
-$ ruchy compile calculator.ruchy -o calc
-$ ./calc "10+5"
-Result: 15
-$ ./calc "20*3"
-Result: 60
-```
-
 ### Data Processing Binary
 ```ruchy
 fun main() {
