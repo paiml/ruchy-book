@@ -1,7 +1,3 @@
-=== ch04-00-practical-patterns-tdd example 10 ===
-Error: Evaluation error: Type error: Cannot cast integer to usize
-
-
 === ch15-00-binary-compilation-deployment example 2 ===
 Error: Evaluation error: Runtime error: Object has no field named 'env'
 
@@ -10,10 +6,6 @@ Error: Evaluation error: Runtime error: Object has no field named 'env'
 Error: Evaluation error: Assertion failed: "Basic addition"
 
 
-=== ch17-00-error-handling-robustness example 8 ===
-Error: Evaluation error: Type error: Cannot compare integer and byte for ordering
-
-
-=== ch17-00-error-handling-robustness example 11 ===
+=== ch17-00-error-handling-robustness example 10 ===
 Error: Evaluation error: Runtime error: Float method 'powf' takes no arguments
 
