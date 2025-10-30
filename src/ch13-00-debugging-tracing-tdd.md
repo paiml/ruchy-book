@@ -55,9 +55,10 @@ greet("Alice")
 ```
 
 ```bash
-$ ruchy --trace -e 'fun greet(name) { "Hello, " + name }; greet("Alice")'
+$ echo 'fun greet(name) { "Hello, " + name }; greet("Alice")' | RUCHY_TRACE=1 ruchy
 TRACE: → greet("Alice": string)
 TRACE: ← greet = "Hello, Alice": string
+"Hello, Alice"
 ```
 
 Notice how string values are shown in quotes with `: string` type annotation.
@@ -75,9 +76,10 @@ add(10, 20)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun add(a, b) { a + b }; add(10, 20)'
+$ echo 'fun add(a, b) { a + b }; add(10, 20)' | RUCHY_TRACE=1 ruchy
 TRACE: → add(10: integer, 20: integer)
 TRACE: ← add = 30: integer
+30
 ```
 
 ### Different Types
@@ -94,9 +96,10 @@ is_even(42)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun is_even(n) { n % 2 == 0 }; is_even(42)'
+$ echo 'fun is_even(n) { n % 2 == 0 }; is_even(42)' | RUCHY_TRACE=1 ruchy
 TRACE: → is_even(42: integer)
 TRACE: ← is_even = true: boolean
+true
 ```
 
 **Floating-point numbers:**
@@ -109,9 +112,10 @@ divide(10.5, 2.5)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun divide(a, b) { a / b }; divide(10.5, 2.5)'
+$ echo 'fun divide(a, b) { a / b }; divide(10.5, 2.5)' | RUCHY_TRACE=1 ruchy
 TRACE: → divide(10.5: float, 2.5: float)
 TRACE: ← divide = 4.2: float
+4.2
 ```
 
 **Arrays:**
@@ -124,9 +128,10 @@ process([1, 2, 3])
 ```
 
 ```bash
-$ ruchy --trace -e 'fun process(arr) { arr }; process([1, 2, 3])'
+$ echo 'fun process(arr) { arr }; process([1, 2, 3])' | RUCHY_TRACE=1 ruchy
 TRACE: → process([1, 2, 3]: array)
 TRACE: ← process = [1, 2, 3]: array
+[1, 2, 3]
 ```
 
 ## Tracing Recursive Functions
@@ -148,7 +153,7 @@ factorial(4)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun factorial(n) { if n <= 1 { 1 } else { n * factorial(n - 1) } }; factorial(4)'
+$ echo 'fun factorial(n) { if n <= 1 { 1 } else { n * factorial(n - 1) } }; factorial(4)' | RUCHY_TRACE=1 ruchy
 TRACE: → factorial(4: integer)
 TRACE: → factorial(3: integer)
 TRACE: → factorial(2: integer)
@@ -157,6 +162,7 @@ TRACE: ← factorial = 1: integer
 TRACE: ← factorial = 2: integer
 TRACE: ← factorial = 6: integer
 TRACE: ← factorial = 24: integer
+24
 ```
 
 The trace reveals the recursive call pattern:
@@ -183,7 +189,7 @@ fibonacci(5)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun fibonacci(n) { if n <= 1 { n } else { fibonacci(n-1) + fibonacci(n-2) } }; fibonacci(5)'
+$ echo 'fun fibonacci(n) { if n <= 1 { n } else { fibonacci(n-1) + fibonacci(n-2) } }; fibonacci(5)' | RUCHY_TRACE=1 ruchy
 TRACE: → fibonacci(5: integer)
 TRACE: → fibonacci(4: integer)
 TRACE: → fibonacci(3: integer)
@@ -238,9 +244,10 @@ compute(5)
 ```
 
 ```bash
-$ ruchy --trace -e 'fun compute(x) { let y = x * 2; y + 10 }; compute(5)'
+$ echo 'fun compute(x) { let y = x * 2; y + 10 }; compute(5)' | RUCHY_TRACE=1 ruchy
 TRACE: → compute(5: integer)
 TRACE: ← compute = 20: integer
+20
 ```
 
 You can verify:
