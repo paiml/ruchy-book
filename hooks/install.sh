@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Install Ruchy Book Pre-Commit Hooks
 # Run this script to set up quality gates
 

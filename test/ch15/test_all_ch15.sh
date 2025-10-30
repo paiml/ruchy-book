@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test Ch15 Binary Compilation - Focus on compilation capability
 # Part of REFACTOR-017
 

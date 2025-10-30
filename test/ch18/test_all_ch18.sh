@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test all Ch18 DataFrame examples with 7-layer validation
 # DataFrames are PRODUCTION READY in Ruchy v3.76.0!
 

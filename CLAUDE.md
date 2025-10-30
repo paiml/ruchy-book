@@ -38,9 +38,28 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### E. Roadmap-Driven Development with Tickets
 - **Work via tickets only**: All work assigned from roadmap tickets
-- **Roadmap updates mandatory**: Update roadmap after each ticket completion  
+- **Roadmap updates mandatory**: Update roadmap after each ticket completion
 - **Progress tracking**: Link all changes to specific roadmap tickets
 - **No ad-hoc work**: Every change traces back to planned roadmap item
+
+### F. bashrs Integration (MANDATORY) - Bash Script Quality
+- **Use bashrs for ALL bash scripts**: Located at `../bashrs/target/release/bashrs` (v6.20.0)
+- **All bash shebangs updated**: `#!/usr/bin/env -S ../bashrs/target/release/bashrs`
+- **bashrs quality tools (7)**: lint, score, audit, make, format, coverage, test
+- **Makefile integration**: All bashrs tools available via `make bashrs-*` commands
+- **Quality verification**: Use `make bashrs-all` to run comprehensive bash quality checks
+
+**bashrs Quality Tools:**
+```bash
+make bashrs-lint       # Lint all bash scripts for safety issues
+make bashrs-score      # Score bash script quality
+make bashrs-audit      # Comprehensive quality audit
+make bashrs-make       # Makefile purification and verification
+make bashrs-format     # Format all bash scripts
+make bashrs-coverage   # Generate bash script coverage report
+make bashrs-test       # Run bash script tests
+make bashrs-all        # Run ALL bashrs quality tools
+```
 
 ## MANDATORY Quality Gates (BLOCKING - Not Advisory)
 

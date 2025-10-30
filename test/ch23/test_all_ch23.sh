@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test Ch23 REPL & Object Inspection - Document chapter as REPL-only
 # Part of REFACTOR-016
 

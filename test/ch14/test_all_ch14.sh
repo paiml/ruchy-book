@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test all Ch14 examples with 7-layer validation
 # Part of REFACTOR-008
 # NOTE: This chapter is about TOOLING, not language features

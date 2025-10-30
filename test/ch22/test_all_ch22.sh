@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Test Ch22 Compiler Development - Extract and validate Ruchy code examples
 # Part of REFACTOR-015
 
