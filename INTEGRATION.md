@@ -12,7 +12,8 @@
 - **Lint Grade**: A+ (69/69 files pass, 100% rate)
 - **Syntax Validation**: A+ (69/69 files pass, 100% rate)
 - **Quality Score**: 1.00/1.0 (A+ grade)
-- **One-liners**: 0/20 passing (0% - test infrastructure issue)
+- **One-liners**: 18/18 passing (100%) - **FIXED via TICKET-019!** 🎉
+- **Debugging Tools**: Validated (ruchydbg + --trace working)
 - **Latest Addition**: Chapter 13: Debugging and Tracing (10/10 passing, 100%)
 
 ## 🎉 NEW IN v3.149.0 - Type-Aware Debugging & Production Quality
@@ -27,6 +28,14 @@
 - ✅ **Enterprise Code Quality** - 280+ clippy errors fixed, production code at zero errors
 - ✅ **Published to crates.io** - Both `ruchy` and `ruchy-wasm` v3.149.0 available
 - ✅ **NEW CHAPTER** - Chapter 13: Debugging and Tracing (10 examples, 100% passing)
+
+### Critical Bug Fixes (2025-10-30 - TICKET-019)
+- ✅ **One-Liner Test Infrastructure Fixed** - 0/18 → 18/18 (100%) via EXTREME TDD
+  - Root Cause: `ruchy -e` flag produces no output in v3.149.0
+  - Workaround: Switched to stdin piping (`echo "EXPR" | ruchy`)
+  - Impact: Complete regression eliminated using TDD approach
+  - Files: scripts/test-oneliners.ts, test/test-oneliner-infrastructure.sh
+  - Documentation: docs/bugs/ruchy-v3.149.0-eval-flag-bug.md
 
 ### Debugging Example (NEW!)
 ```bash
