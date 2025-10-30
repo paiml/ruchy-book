@@ -37,6 +37,24 @@ jobs:
         fi
         echo "✅ All files pass syntax validation"
 
+    - name: Style Analysis (ruchy lint)
+      run: |
+        echo "🎨 TICKET-018-07: Running style analysis..."
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            if ! ruchy lint "$file" 2>/dev/null; then
+              echo "❌ Style issues: $file"
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        if [ $failed -gt 0 ]; then
+          echo "❌ $failed files have style issues"
+          exit 1
+        fi
+        echo "✅ All files pass style analysis"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
