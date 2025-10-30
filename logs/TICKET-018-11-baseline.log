@@ -1,0 +1,106 @@
+📚 TICKET-018-11: ruchy doc baseline test
+========================================
+
+Testing sample files to understand documentation behavior...
+
+=== tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy ===
+⚠️  Command not implemented
+
+=== tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy ===
+⚠️  Command not implemented
+
+=== tests/extracted/ch03-00-functions-tdd_example_1.ruchy ===
+⚠️  Command not implemented
+
+=== tests/ch04-practical-patterns/test_01_safe_calculator.ruchy ===
+⚠️  Command not implemented
+
+========================================
+Running comprehensive documentation validation on all files...
+
+⚠️  tests/extracted/ch01-02-hello-world_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch03-00-functions-tdd_example_9.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_10.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_2.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_3.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_4.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_5.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_6.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_7.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_8.ruchy (not implemented)
+⚠️  tests/extracted/ch10-00-input-output-tdd_example_9.ruchy (not implemented)
+⚠️  tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy (not implemented)
+⚠️  tests/extracted/conclusion_example_1.ruchy (not implemented)
+⚠️  tests/ch04-modules/test_01_basic_module.ruchy (not implemented)
+⚠️  tests/ch04-modules/test_02_use_statement.ruchy (not implemented)
+⚠️  tests/ch04-practical-patterns/test_01_safe_calculator.ruchy (not implemented)
+⚠️  tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy (not implemented)
+
+========================================
+Summary:
+Total files: 69
+Documentation generated: 0
+Failed: 0
+Not implemented: 69
+Success rate: 0.0%
+Fail rate: 0.0%
+Not implemented rate: 100.0%
+
+=== Analysis ===
+⚠️  Tool not yet implemented - skip for now
+   This tool will be revisited when implementation is available
+
+Tool Status: ruchy doc behavior documented
+Validation: Tool status identified

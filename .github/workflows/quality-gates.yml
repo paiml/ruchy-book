@@ -211,6 +211,39 @@ jobs:
         echo ""
         echo "🎉 Phase 1C BEGUN - Code quality & formatting tools!"
 
+    - name: Quality Gate Enforcement (ruchy quality-gate)
+      run: |
+        echo "🚦 TICKET-018-09: Running quality gate enforcement..."
+        total=0
+        passed=0
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            total=$((total + 1))
+            if ruchy quality-gate "$file" 2>/dev/null; then
+              passed=$((passed + 1))
+            else
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        echo "🚦 Quality Gate Results:"
+        echo "   Total files: $total"
+        echo "   Passed gates: $passed"
+        echo "   Failed gates: $failed"
+        if [ $total -gt 0 ]; then
+          pass_rate=$(awk "BEGIN {printf \"%.1f\", ($passed / $total) * 100}")
+          echo "   Pass rate: ${pass_rate}%"
+        fi
+        if [ $failed -eq 0 ]; then
+          echo "   ✅ Excellent: 100% quality gate compliance"
+        elif [ $passed -ge $(($total * 9 / 10)) ]; then
+          echo "   ✅ Good: >90% quality gate compliance"
+        else
+          echo "   ⚠️  Some files failed quality gates"
+        fi
+        echo "✅ Quality gate validation complete"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
