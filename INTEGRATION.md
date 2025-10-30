@@ -1,7 +1,7 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-10-14T18:00:00.000Z
-**Ruchy Version**: ruchy 3.82.0 🎉
+**Generated**: 2025-10-30T00:00:00.000Z
+**Ruchy Version**: ruchy 3.149.0 🎉
 **Book Commit**: latest
 
 ## Executive Summary
@@ -11,6 +11,26 @@
 - **Lint Grade**: A+ (100% pass rate)
 - **Syntax Validation**: A+ (100% pass rate)
 - **One-liners**: 17/20 tested passing (85% ✅)
+
+## 🎉 NEW IN v3.149.0 - Type-Aware Debugging & Production Quality
+
+**Latest Release**: v3.149.0 adds professional debugging tools and enterprise-grade code quality!
+
+### New Features in v3.149.0 (2025-10-30)
+- ✅ **Type-Aware Tracing** - `--trace` flag now shows argument and return types
+  - Example: `TRACE: → square(5: integer)` / `TRACE: ← square = 25: integer`
+  - Supports all types: integer, float, string, boolean, array, object
+- ✅ **RUCHY_TRACE Environment Variable** - Enable tracing without code changes
+- ✅ **Enterprise Code Quality** - 280+ clippy errors fixed, production code at zero errors
+- ✅ **Published to crates.io** - Both `ruchy` and `ruchy-wasm` v3.149.0 available
+
+### Debugging Example (NEW!)
+```bash
+$ ruchy --trace -e "fun square(x) { x * x }; square(5)"
+TRACE: → square(5: integer)
+TRACE: ← square = 25: integer
+25
+```
 
 ## 🎉 GAME-CHANGING BREAKTHROUGH - v3.82.0 THE INTERPRETER RELEASE
 
@@ -30,6 +50,7 @@
 - **v3.62.9 (plateau)**: 92/120 passing (77%)
 - **v3.77.0-v3.81.0 (stagnant)**: 113/134 passing (84%) - identical across 5 versions
 - **v3.82.0 (BREAKTHROUGH)**: 130/134 passing (97%) 🚀 **+13% IMPROVEMENT**
+- **v3.149.0 (PRODUCTION QUALITY)**: 130/134 passing (97%) + Type-aware debugging + Zero production errors
 
 ### What Changed in v3.82.0
 **Before (v3.81.0 and earlier)**:
