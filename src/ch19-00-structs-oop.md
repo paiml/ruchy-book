@@ -225,21 +225,6 @@ for task in tasks {
 println(completed_count)  // 1
 ```
 
-## Pattern Matching with Structs (Planned)
-
-*Note: Pattern matching for structs is planned but not yet implemented in v3.52.0*
-
-<!-- skip-test: planned-feature (struct pattern matching not implemented) -->
-```ruchy
-// PLANNED FEATURE - Not yet working
-match point {
-    Point { x: 0, y: 0 } => println("Origin"),
-    Point { x: 0, y } => println("On Y axis"),
-    Point { x, y: 0 } => println("On X axis"),
-    Point { x, y } => println("General point")
-}
-```
-
 ## Summary
 
 Ruchy's struct implementation provides:
