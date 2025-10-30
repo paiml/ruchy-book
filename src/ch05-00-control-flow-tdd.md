@@ -274,13 +274,13 @@ fun main() {
     // While loop
     let mut count = 0;
     while count < 3 {
-        println("Count: " + count);
+        println("Count:", count);
         count = count + 1;
     }
 
     // For loop with range
     for i in 1..4 {
-        println("Iteration: " + i);
+        println("Iteration:", i);
     }
 }
 ```
@@ -319,9 +319,9 @@ fun main() {
     let threshold = 50;
 
     if user_input > threshold {
-        println("High value: " + user_input);
+        println("High value:", user_input);
     } else {
-        println("Normal value: " + user_input);
+        println("Normal value:", user_input);
     }
 }
 ```
@@ -331,7 +331,7 @@ fun main() {
 fun main() {
     let mut count = 0;
     while count < 10 {
-        println("Count is: " + count);
+        println("Count is:", count);
         count = count + 1;
     }
 }
@@ -341,7 +341,7 @@ fun main() {
 ```ruchy
 fun main() {
     for i in 1..5 {
-        println("Processing item " + i);
+        println("Processing item", i);
     }
 }
 ```
