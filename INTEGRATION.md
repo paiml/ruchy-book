@@ -3042,3 +3042,48 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next**: TICKET-028-32 (ruchydbg help)
 
+
+---
+
+### TICKET-028-32: ruchydbg help Command - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (2/8)
+**Category**: Debugger Commands
+**Command**: `ruchydbg help` / `ruchydbg -h`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**Test Results**:
+- Help command (`ruchydbg help`): ✅ Works
+- Short form (`ruchydbg -h`): ✅ Works
+- All commands documented: ✅ Complete (run, validate, version, help)
+- Features documented: ✅ Yes (timeout detection, type-aware tracing)
+- Examples provided: ✅ Yes
+- Output quality: ✅ Clean and comprehensive
+- Performance: ✅ 2.80ms (<10ms target)
+
+**Features Validated**:
+- Long form command: `ruchydbg help`
+- Short form: `ruchydbg -h`
+- Command documentation: All 4 commands covered
+- Feature documentation: Debugging capabilities explained
+- Usage examples: Provided
+- Clean formatting: USAGE, COMMANDS, DEBUGGING FEATURES sections
+
+**Functionality**: Command provides comprehensive debugger help including all commands, debugging features, and usage examples. Both long and short forms work correctly. Essential for discoverability and usability.
+
+**Test Infrastructure**: `test/tools/test-ruchydbg-help.ts`
+**Baseline Log**: `logs/TICKET-028-32-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 2/8 (25%) 🎉 PROGRESSING!
+
+**Overall Progress**: 42/48 tools (87.5%)
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 2/8 (25%) 🎉 PROGRESSING!
+
+**Next**: TICKET-028-33 (--verbose flag)
+
