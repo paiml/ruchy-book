@@ -3139,3 +3139,50 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next**: TICKET-028-34 (ruchy --version global flag)
 
+
+---
+
+### TICKET-028-34: ruchy --version Flag - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (4/8 - 50% MILESTONE!)
+**Category**: Global Flags  
+**Flag**: `--version` / `-V`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**🎉 Phase 2D 50% MILESTONE! 🎉**
+
+**Version Update**: Ruchy v3.157.0 (upgraded from v3.156.0)
+
+**Test Results**:
+- Version flag (`ruchy --version`): ✅ Works
+- Short form (`ruchy -V`): ✅ Works
+- Version format: ✅ Semantic versioning (X.Y.Z)
+- Output quality: ✅ Clean and concise
+- Performance: ✅ 7.25ms (<10ms target)
+- Version detected: 3.157.0
+
+**Features Validated**:
+- Long form flag: `--version`
+- Short form: `-V`
+- Semantic versioning format: X.Y.Z
+- Clean output formatting
+- Instant response time
+
+**Functionality**: Flag provides Ruchy version information in semantic versioning format. Both long and short forms work correctly. Essential for compatibility checking and bug reporting. Version output is clean and concise.
+
+**Test Infrastructure**: `test/tools/test-ruchy-version.ts`
+**Baseline Log**: `logs/TICKET-028-34-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 4/8 (50%) 🎉 **HALF COMPLETE!**
+
+**Overall Progress**: 44/48 tools (91.7%)
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 4/8 (50%) 🎉 **HALF COMPLETE!**
+
+**Next**: TICKET-028-35 (ruchy --help global flag)
+

@@ -2301,3 +2301,46 @@ EOF
         echo "📊 Phase 2D: 3/8 (37.5%) 🎉 PROGRESSING!"
         echo ""
         echo "🎊 90% MILESTONE ACHIEVED! Just 5 more tools to 100%! 🎊"
+
+    - name: "Phase 2D: ruchy --version - FOURTH! + Phase 2D 50%!"
+      run: |
+        echo "📚 TICKET-028-34: Running ruchy --version validation..."
+        echo ""
+
+        # Test ruchy --version
+        if ruchy --version 2>&1 | grep -qE "ruchy [0-9]+\.[0-9]+\.[0-9]+"; then
+          echo "   ✅ ruchy --version works"
+        else
+          echo "   ❌ ruchy --version failed"
+          exit 1
+        fi
+
+        # Test short form
+        if ruchy -V 2>&1 | grep -qE "ruchy [0-9]+\.[0-9]+\.[0-9]+"; then
+          echo "   ✅ ruchy -V works"
+        else
+          echo "   ❌ ruchy -V failed"
+          exit 1
+        fi
+
+        echo ""
+        echo "   ✅ STATUS: Fully functional"
+        echo "   📝 Features: Version flag, short form, semantic versioning"
+        echo ""
+        echo "✅ ruchy --version validation complete"
+        echo ""
+        echo "🎉 Phase 2D: HALF COMPLETE (4/8 - 50%)!"
+        echo "   ✅ TICKET-028-31: ruchydbg version"
+        echo "   ✅ TICKET-028-32: ruchydbg help"
+        echo "   ✅ TICKET-028-33: --verbose flag"
+        echo "   ✅ TICKET-028-34: ruchy --version"
+        echo "   🔜 4 more Phase 2D tools"
+        echo ""
+        echo "🎯 Overall Progress: 44/48 tools (91.7%)"
+        echo "📊 Phase 1: 18/18 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2C: 10/10 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2D: 4/8 (50%) 🎉 HALF COMPLETE!"
+        echo ""
+        echo "🎊 Phase 2D 50% Milestone! Just 4 more tools! 🎊"
