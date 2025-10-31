@@ -170,6 +170,8 @@ git push origin main
 - Previous: TICKET-018-14 (ruchy provability - with bug #99 filed)
 - Next: TICKET-018-16 or Phase 1E planning
 - Related: INTEGRATION.md section on Phase 1D progress
+- **GitHub Issue**: https://github.com/paiml/ruchy/issues/100 (not implemented)
+- **Bug Report**: `docs/bugs/RUCHY-BUG-bench-not-implemented.md`
 
 ---
 
