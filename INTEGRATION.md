@@ -3087,3 +3087,55 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next**: TICKET-028-33 (--verbose flag)
 
+
+---
+
+### TICKET-028-33: --verbose Flag - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (3/8)
+**Category**: Global Flags
+**Flag**: `--verbose`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**🎉🎉🎉 90% MILESTONE ACHIEVED! 🎉🎉🎉**
+
+**Test Results**:
+- Flag recognized: ✅ Yes
+- Output more detailed: ✅ Yes (+166.7% detail)
+- Works with 'run' command: ✅ Yes
+- Works with 'check' command: ✅ Yes
+- Performance acceptable: ✅ Yes (10.76ms)
+- Normal output: 12 chars
+- Verbose output: 32 chars (+20 chars additional detail)
+
+**Features Validated**:
+- Long form flag: `--verbose`
+- Works with run command
+- Works with check command
+- Provides diagnostic information:
+  - Running file information
+  - Execution mode details
+  - Additional context
+- Original output preserved
+- Minimal performance overhead
+
+**Functionality**: Flag provides detailed diagnostic output mode. When used with any command, adds execution context (file being run, execution mode) while preserving original output. Works across multiple commands. Essential for debugging and troubleshooting.
+
+**Test Infrastructure**: `test/tools/test-verbose-flag.ts`
+**Baseline Log**: `logs/TICKET-028-33-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 3/8 (37.5%) 🎉 PROGRESSING!
+
+**Overall Progress**: 43/48 tools (89.6%) - **90% MILESTONE!** 🎯
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 3/8 (37.5%) 🎉 PROGRESSING!
+
+**90% Milestone**: Achieved with this ticket! Just 5 more tools to reach 100%!
+
+**Next**: TICKET-028-34 (ruchy --version global flag)
+
