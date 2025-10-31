@@ -276,6 +276,41 @@ jobs:
         echo "🎉 Phase 1C COMPLETE - All code quality & formatting tools validated!"
         echo "🎉 MILESTONE: 50% COMPLETION - 9/18 tools integrated!"
 
+    - name: Performance Analysis (ruchy runtime)
+      run: |
+        echo "⚡ TICKET-018-13: Running performance analysis..."
+        total=0
+        success=0
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            total=$((total + 1))
+            if ruchy runtime --bigo "$file" > /dev/null 2>&1; then
+              success=$((success + 1))
+            else
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        echo "⚡ Performance Results:"
+        echo "   Total files: $total"
+        echo "   Analyzed: $success"
+        echo "   Failed: $failed"
+        if [ $total -gt 0 ]; then
+          pass_rate=$(awk "BEGIN {printf \"%.1f\", ($success / $total) * 100}")
+          echo "   Success rate: ${pass_rate}%"
+        fi
+        if [ $success -eq $total ]; then
+          echo "   ✅ Excellent: 100% performance analysis success"
+        elif [ $success -ge $(($total * 95 / 100)) ]; then
+          echo "   ✅ Good: >95% performance analysis success"
+        else
+          echo "   ⚠️  Some files failed performance analysis"
+        fi
+        echo "✅ Performance analysis complete"
+        echo ""
+        echo "🚀 Phase 1D STARTED - Performance & Analysis tools!"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."

@@ -1,0 +1,110 @@
+⚡ TICKET-018-13: ruchy runtime baseline test
+==========================================
+
+Testing sample files with BigO analysis...
+=== tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy ===
+✅ Performance analysis completed
+   BigO: O(1)
+   Output lines: 6
+
+=== tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy ===
+✅ Performance analysis completed
+   BigO: O(1)
+   Output lines: 6
+
+=== tests/extracted/ch03-00-functions-tdd_example_1.ruchy ===
+✅ Performance analysis completed
+   BigO: O(1)
+   Output lines: 6
+
+=== tests/ch04-practical-patterns/test_01_safe_calculator.ruchy ===
+✅ Performance analysis completed
+   BigO: O(n^5)
+   Output lines: 6
+
+==========================================
+Running comprehensive runtime validation...
+
+✅ tests/extracted/ch01-02-hello-world_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_4.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_5.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_6.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_7.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_8.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_1.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_2.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_3.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_5.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_6.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_9.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_10.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_1.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_2.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_3.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_5.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_6.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_7.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_8.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_9.ruchy
+✅ tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy
+✅ tests/extracted/conclusion_example_1.ruchy
+✅ tests/ch04-modules/test_01_basic_module.ruchy
+✅ tests/ch04-modules/test_02_use_statement.ruchy
+✅ tests/ch04-practical-patterns/test_01_safe_calculator.ruchy
+✅ tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy
+
+========================================
+Summary:
+Total files: 69
+Success: 69
+Failed: 0
+Success rate: 100.0%
+Fail rate: 0.0%
+
+=== Analysis ===
+✅ All files analyzed successfully - excellent!
+
+Tool Status: ruchy runtime works correctly
+Validation: Performance analysis operational
