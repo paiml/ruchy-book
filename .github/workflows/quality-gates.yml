@@ -311,6 +311,44 @@ jobs:
         echo ""
         echo "🚀 Phase 1D STARTED - Performance & Analysis tools!"
 
+    - name: Formal Verification (ruchy provability)
+      run: |
+        echo "🔬 TICKET-018-14: Running provability analysis..."
+        echo "⚠️  KNOWN BUG: Scores only count assertions (GitHub issue #99)"
+        echo "   Expected: All scores 0.0/100 (teaching code has no assert() calls)"
+        total=0
+        success=0
+        failed=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            total=$((total + 1))
+            if ruchy provability "$file" > /dev/null 2>&1; then
+              success=$((success + 1))
+            else
+              failed=$((failed + 1))
+            fi
+          fi
+        done
+        echo "🔬 Provability Results:"
+        echo "   Total files: $total"
+        echo "   Tool success: $success (no crashes)"
+        echo "   Tool failed: $failed"
+        if [ $total -gt 0 ]; then
+          pass_rate=$(awk "BEGIN {printf \"%.1f\", ($success / $total) * 100}")
+          echo "   Success rate: ${pass_rate}%"
+        fi
+        echo "   Note: All scores 0.0/100 expected (bug: only counts assertions)"
+        echo "   Note: Tool still performs safety/purity/termination analysis"
+        echo "   GitHub Issue: https://github.com/paiml/ruchy/issues/99"
+        if [ $success -eq $total ]; then
+          echo "   ✅ Excellent: 100% tool success (baseline established)"
+        elif [ $success -ge $(($total * 95 / 100)) ]; then
+          echo "   ✅ Good: >95% tool success"
+        else
+          echo "   ⚠️  Some files failed provability analysis"
+        fi
+        echo "✅ Provability baseline complete"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
