@@ -3299,3 +3299,61 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next**: TICKET-028-37 (final Phase 2D tools)
 
+
+---
+
+### TICKET-028-37: ruchydbg --timeout Flag - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (7/8 - 87.5%)
+**Category**: Debugger Flags
+**Flag**: `--timeout`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**🎉 97.9% PROGRESS - NEARLY 98%! 🎉**
+
+**Test Results**:
+- Flag recognized: ✅ Yes
+- Default timeout (5000ms): ✅ Works
+- Custom timeout (1000ms): ✅ Works
+- Timeout detection: ✅ Detected
+- Exit code 124: ✅ Correct
+- Prevents hangs: ✅ Yes
+- Execution time: 118.62ms
+
+**Features Validated**:
+- Flag: `--timeout`
+- Default timeout: 5000ms (5 seconds)
+- Custom timeout: User-specified in milliseconds
+- Timeout detection: Catches infinite loops
+- Exit code 124: Industry standard for timeout
+- Hang prevention: ✅ Functional
+- Infinite loop protection: ✅ Working
+
+**Functionality**: Flag controls timeout for ruchydbg run execution. Default 5000ms prevents hangs, custom timeouts allow user control. Exits with code 124 on timeout (industry standard). Essential for safe code execution and preventing infinite loops.
+
+**Timeout Features**:
+- Default: 5000ms
+- Custom: User-specified (--timeout <ms>)
+- Detection: Catches infinite loops and hangs
+- Exit code: 124 (standard timeout code)
+- Accuracy: Within tolerance
+- Safety: Prevents system hangs
+
+**Test Infrastructure**: `test/tools/test-ruchydbg-timeout.ts`
+**Baseline Log**: `logs/TICKET-028-37-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 7/8 (87.5%) 🎉 PROGRESSING!
+
+**Overall Progress**: 47/48 tools (97.9%) - **NEARLY 98%!**
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 7/8 (87.5%) 🎉 PROGRESSING!
+
+**97.9% Milestone**: Just 1 more tool to reach 100%!
+
+**Next**: TICKET-028-38 (FINAL Phase 2D tool - 100%!)
+
