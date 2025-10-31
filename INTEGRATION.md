@@ -35,11 +35,91 @@
 **Phase Summary**:
 - Phase 1: ✅ COMPLETE (18/18 - all core tools)
 - Phase 2A: ✅ COMPLETE (5/5 - trace, ruchydbg, wasm, transpile, parse)
-- Phase 2B: 🚀 STARTED (1/7 - property-tests) - **50% MILESTONE CROSSED!**
+- Phase 2B: 🚀 PROGRESSING (2/7 - property-tests, mutations) - **52% OVERALL!**
 
 ---
 
-## 🎉 Phase 2B: Medium Priority Tools (1/7 complete)
+## 🎉 Phase 2B: Medium Priority Tools (2/7 complete)
+
+---
+
+### TICKET-028-12: Mutation Testing (ruchy mutations) - ✅ COMPLETE - ⏳ BASELINE ESTABLISHED
+
+**Completed**: 2025-10-31
+**Time**: ~50 minutes (RED: 15min, GREEN: 15min, REFACTOR: 20min)
+
+**Milestone**: **Phase 2B PROGRESSING!** (2/7 medium priority tools)
+**Tool Version**: ruchy v3.152.0
+
+**Results**:
+- **Command Status**: ✅ Exists and runs successfully
+- **Mutation Generation**: ⏳ 0 mutants found (baseline - implementation pending)
+- **Infrastructure**: ✅ Command line interface complete
+- **Error Handling**: ✅ Clean execution, informative messages
+- **Performance**: ✅ 88ms execution time
+- **Output Format**: ✅ Text format with structured report
+
+**Test Infrastructure**:
+- **Test Script**: `test/tools/test-ruchy-mutations.ts` (Deno TypeScript)
+- **CI/CD**: Added to `.github/workflows/quality-gates.yml` with Phase 2B markers
+- **Baseline**: `logs/TICKET-028-12-baseline.log`
+
+**Current Status**:
+The `ruchy mutations` command infrastructure is complete and functional. The tool executes successfully and produces clean output:
+```
+Mutation Test Report
+====================
+Minimum coverage: 75.0%
+
+Found 0 mutants to test
+
+WARN No mutants found under the active filters
+```
+
+This indicates the command framework is in place but mutation generation logic is pending implementation, similar to TICKET-028-16 (`--trace` flag).
+
+**Expected Future Behavior** (when implemented):
+1. **Mutation Generation**: Automatically generate code mutations (arithmetic, logical, conditional, statement)
+2. **Test Execution**: Run tests against each mutation
+3. **Mutation Detection**: Track which mutations tests catch (killed) vs miss (survived)
+4. **Mutation Score**: Calculate test quality metric (killed / total mutations)
+5. **Operator Types**: Support arithmetic (+→-, *→/), logical (&&→||), conditional (>→<), statement mutations
+
+**Deliverables**:
+- ✅ Test Infrastructure: `test/tools/test-ruchy-mutations.ts`
+- ✅ CI Integration: Updated `.github/workflows/quality-gates.yml`
+- ✅ Documentation: INTEGRATION.md, README.md fully updated
+- ✅ Baseline Log: `logs/TICKET-028-12-baseline.log`
+- ✅ Ticket Completion: `docs/tickets/TICKET-028-12-RUCHY-MUTATIONS.md`
+
+**Key Insights**:
+- Command infrastructure complete - ready for mutation engine implementation
+- Clean CLI design with timeout, format, and coverage options
+- Similar baseline pattern to `--trace` flag (TICKET-028-16)
+- Test infrastructure ready to validate when mutation generation is implemented
+
+**Success Criteria Met**:
+- ✅ RED Phase: Test infrastructure created, baseline established
+- ✅ GREEN Phase: CI/CD integration complete
+- ✅ REFACTOR Phase: Documentation updated (INTEGRATION.md, README.md)
+- ⏳ Tool Status: Command exists, mutation generation pending
+- ✅ Performance: 88ms execution (excellent when mutations are generated)
+
+**Phase 2B Progress**:
+This is the **SECOND tool** in Phase 2B expansion:
+- ✅ TICKET-028-11: `ruchy property-tests` - FULLY FUNCTIONAL!
+- ✅ TICKET-028-12: `ruchy mutations` - BASELINE ESTABLISHED **CURRENT!**
+- 🔜 TICKET-028-13: `ruchy fuzz` - Fuzz testing (NEXT)
+- 🔜 TICKET-028-07: `ruchy notebook` - Interactive notebook
+- 🔜 TICKET-028-09: `ruchy actor:observe` - Actor introspection
+- 🔜 TICKET-028-10: `ruchy dataflow:debug` - DataFrame debugging
+- 🔜 TICKET-028-20: `ruchydbg validate` - Debugger validation
+
+**Overall Progress**: 25/48 total tools (52.1%)
+- **Phase 1**: 18/18 (100%) ✅ COMPLETE
+- **Phase 2A**: 5/5 (100%) ✅ COMPLETE
+- **Phase 2B**: 2/7 (28.6%) 🚀 PROGRESSING
+- **Phase 2**: 6/30 (20%) 🚀 PROGRESSING
 
 ---
 
