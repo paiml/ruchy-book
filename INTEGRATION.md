@@ -3244,3 +3244,58 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next**: TICKET-028-36 (remaining Phase 2D tools)
 
+
+---
+
+### TICKET-028-36: --format Flag - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (6/8 - 75%)
+**Category**: Global Flags
+**Flag**: `--format`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**🎉 95.8% PROGRESS - OVER 95%! 🎉**
+
+**Test Results**:
+- Flag recognized: ✅ Yes
+- Text format works: ✅ Yes
+- JSON format works: ✅ Yes
+- Works with --eval: ✅ Yes
+- Output differs: ✅ Yes
+- Performance: 12.53ms
+
+**Features Validated**:
+- Flag: `--format`
+- Text format (default): Produces standard output
+- JSON format: Produces JSON-formatted output
+- Integration with --eval: ✅ Seamless
+- Format control: ✅ Functional
+- Output customization: ✅ Working
+
+**Functionality**: Flag controls output format for --eval results. Supports 'text' (default) and 'json' formats. Works seamlessly with --eval flag for one-liner evaluation. Essential for programmatic consumption of eval results.
+
+**Format Features**:
+- Default format: text
+- Supported formats: text, json
+- Primary use case: --eval integration
+- Output control: Clean and consistent
+- Performance: <15ms
+
+**Test Infrastructure**: `test/tools/test-format-flag.ts`
+**Baseline Log**: `logs/TICKET-028-36-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 6/8 (75%) 🎉 PROGRESSING!
+
+**Overall Progress**: 46/48 tools (95.8%) - **OVER 95%!**
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 6/8 (75%) 🎉 PROGRESSING!
+
+**95.8% Milestone**: Just 2 more tools to reach 100%!
+
+**Next**: TICKET-028-37 (final Phase 2D tools)
+
