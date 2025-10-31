@@ -2045,3 +2045,59 @@ EOF
         echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
         echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
         echo "📊 Phase 2C: 8/10 (80%) 🎉 80% MILESTONE!"
+
+    - name: "Phase 2C: Eval Flag (--eval) - NINTH!"
+      run: |
+        echo "📝 TICKET-028-29: Running --eval flag validation..."
+        echo ""
+
+        # Test basic evaluation
+        RESULT=$(ruchy -e "println(2 + 2)" 2>&1)
+        if [ "$RESULT" = "4" ]; then
+          echo "   ✅ Basic evaluation works"
+        else
+          echo "   ❌ Basic evaluation failed"
+          exit 1
+        fi
+
+        # Test JSON format
+        JSON_RESULT=$(ruchy -e "println(42)" --format json 2>&1)
+        if [ "$JSON_RESULT" = "42" ]; then
+          echo "   ✅ JSON format works"
+        else
+          echo "   ❌ JSON format failed"
+          exit 1
+        fi
+
+        # Test complex expression
+        COMPLEX=$(ruchy -e "fun double(x) { x * 2 }; println(double(5))" 2>&1)
+        if [ "$COMPLEX" = "10" ]; then
+          echo "   ✅ Complex expressions work"
+        else
+          echo "   ❌ Complex expressions failed"
+          exit 1
+        fi
+
+        echo ""
+        echo "   ✅ STATUS: Fully functional"
+        echo "   📝 Features: One-liner eval, text/JSON formats, functions"
+        echo ""
+        echo "✅ Eval flag validation complete"
+        echo ""
+        echo "🎯 Phase 2C Progress (9/10 - 90% MILESTONE!):"
+        echo "   ✅ TICKET-028-21: ruchy new (fully functional!)"
+        echo "   ✅ TICKET-028-22: ruchy build (fully functional!)"
+        echo "   ✅ TICKET-028-23: ruchy add (fully functional!)"
+        echo "   ✅ TICKET-028-24: ruchy publish (baseline established)"
+        echo "   ✅ TICKET-028-25: ruchy serve (fully functional!)"
+        echo "   ✅ TICKET-028-26: ruchy doc (fully functional!)"
+        echo "   ✅ TICKET-028-27: ruchy replay-to-tests (baseline established)"
+        echo "   ✅ TICKET-028-28: --vm-mode (fully functional!)"
+        echo "   ✅ TICKET-028-29: --eval (CURRENT - fully functional!)"
+        echo "   🔜 1 more Phase 2C tool"
+        echo ""
+        echo "🎯 Overall Progress: 39/48 tools (81.3%)"
+        echo "📊 Phase 1: 18/18 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2C: 9/10 (90%) 🎉 90% MILESTONE!"
