@@ -52,12 +52,12 @@ async function testRuchyReplayToTests(): Promise<ReplayToTestsResult> {
         session_id: "test-session-001",
         created_at: "2025-10-31T15:25:00Z",
         timestamp: "2025-10-31T15:25:00Z",
-        ruchy_version: "3.155.0",
+        ruchy_version: "3.156.0",
         tags: ["test"]
       },
       environment: {
         platform: "linux",
-        ruchy_version: "3.155.0"
+        ruchy_version: "3.156.0"
       },
       entries: [
         {
