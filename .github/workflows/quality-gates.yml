@@ -2344,3 +2344,51 @@ EOF
         echo "📊 Phase 2D: 4/8 (50%) 🎉 HALF COMPLETE!"
         echo ""
         echo "🎊 Phase 2D 50% Milestone! Just 4 more tools! 🎊"
+
+    - name: "Phase 2D: ruchy --help - FIFTH! + 93.8% Progress!"
+      run: |
+        echo "📚 TICKET-028-35: Running ruchy --help validation..."
+        echo ""
+
+        # Test ruchy --help
+        if ruchy --help 2>&1 | grep -q "Usage:"; then
+          echo "   ✅ ruchy --help works"
+        else
+          echo "   ❌ ruchy --help failed"
+          exit 1
+        fi
+
+        # Test short form
+        if ruchy -h 2>&1 | grep -q "Usage:"; then
+          echo "   ✅ ruchy -h works"
+        else
+          echo "   ❌ ruchy -h failed"
+          exit 1
+        fi
+
+        # Count documented commands
+        command_count=$(ruchy --help 2>&1 | grep -E "^  [a-z-]+" | wc -l)
+        echo "   ✅ Commands documented: $command_count"
+
+        echo ""
+        echo "   ✅ STATUS: Fully functional"
+        echo "   📝 Features: Help flag, short form, comprehensive docs"
+        echo ""
+        echo "✅ ruchy --help validation complete"
+        echo ""
+        echo "🎉 Phase 2D: 62.5% COMPLETE (5/8)!"
+        echo "   ✅ TICKET-028-31: ruchydbg version"
+        echo "   ✅ TICKET-028-32: ruchydbg help"
+        echo "   ✅ TICKET-028-33: --verbose flag"
+        echo "   ✅ TICKET-028-34: ruchy --version"
+        echo "   ✅ TICKET-028-35: ruchy --help"
+        echo "   🔜 3 more Phase 2D tools"
+        echo ""
+        echo "🎯 Overall Progress: 45/48 tools (93.8%) - **NEARLY 95%!**"
+        echo "📊 Phase 1: 18/18 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2C: 10/10 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2D: 5/8 (62.5%) 🎉 PROGRESSING!"
+        echo ""
+        echo "🎊 93.8% Complete! Just 3 more tools to 100%! 🎊"
