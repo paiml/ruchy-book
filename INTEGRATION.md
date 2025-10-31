@@ -2407,3 +2407,44 @@ All 20 one-liner tests failing - requires investigation:
 **Progress**: 28/48 tools (58.3%)
 
 **Features Defined**: Config files, Refresh intervals, Message tracing, Deadlock detection, View modes
+
+### TICKET-028-10: DataFrame Debugging (ruchy dataflow:debug) - ⏳ BASELINE ESTABLISHED
+
+**Completed**: 2025-10-31
+**Tool**: `ruchy dataflow:debug`
+**Status**: BASELINE ESTABLISHED (CLI ready, implementation pending)
+**Progress**: 29/48 tools (60.4%)
+
+**Results**:
+- Command exists: ✅
+- Help system: ✅ (10 features defined)
+- Implementation: ⏳ (pending - similar to mutations/actor:observe)
+- Performance: 7.59ms command check
+
+**Features Defined**:
+- Config file support (--config)
+- Max rows limit (--max-rows)
+- Auto-materialize (--auto-materialize)
+- Performance profiling (--enable-profiling)
+- Timeout control (--timeout)
+- Memory tracking (--track-memory)
+- Stage diffs (--compute-diffs)
+- Data sampling (--sample-rate)
+- Breakpoint support (--breakpoint)
+- Multiple formats (--format: interactive, json, text)
+
+**Expected Functionality** (when implemented):
+- DataFrame pipeline debugging
+- Stage-by-stage inspection
+- Performance profiling
+- Memory consumption tracking
+- Data quality validation
+- Interactive debugging with breakpoints
+
+**Test Infrastructure**: `test/tools/test-ruchy-dataflow-debug.ts`
+**Baseline Log**: `logs/TICKET-028-10-baseline.log`
+**CI/CD**: Integrated in `.github/workflows/quality-gates.yml`
+
+**Phase 2B Progress**: 6/7 (85.7%) - ONE MORE TO GO!
+
+**Next**: TICKET-028-20 (ruchydbg validate - FINAL Phase 2B tool!)
