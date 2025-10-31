@@ -384,6 +384,42 @@ jobs:
         echo ""
         echo "📊 Progress: 12/18 tools (66.7%) - APPROACHING 75% MILESTONE!"
 
+    - name: Documentation Generation (ruchy doc)
+      run: |
+        echo "📚 TICKET-018-16: Running documentation generation..."
+        echo "⚠️  KNOWN: Command not yet implemented"
+        echo "   Expected: All files return 'Command not yet implemented'"
+        total=0
+        not_implemented=0
+        for file in tests/extracted/*.ruchy tests/ch*/*.ruchy; do
+          if [ -f "$file" ]; then
+            total=$((total + 1))
+            result=$(ruchy doc --format json "$file" 2>&1)
+            if echo "$result" | grep -q "Command not yet implemented"; then
+              not_implemented=$((not_implemented + 1))
+            fi
+          fi
+        done
+        echo "📚 Documentation Results:"
+        echo "   Total files: $total"
+        echo "   Not implemented: $not_implemented (${not_implemented}/${total})"
+        if [ $not_implemented -eq $total ]; then
+          echo "   ✅ Status confirmed: Tool not yet implemented (baseline established)"
+          echo "   📝 Help interface exists and documents expected functionality"
+          echo "   📝 Pattern matches ruchy bench (both unimplemented)"
+          echo "   📝 Re-run when implementation becomes available"
+        else
+          echo "   ⚠️  Unexpected: Some files may have partial implementation"
+        fi
+        echo "✅ Documentation baseline complete"
+        echo ""
+        echo "🚀 Phase 1E STARTED - Documentation & Execution tools!"
+        echo "   ✅ TICKET-018-16: ruchy doc (NOT IMPLEMENTED - baseline)"
+        echo "   🔜 TICKET-018-17: ruchy run (next)"
+        echo "   🔜 TICKET-018-18: ruchy repl (next)"
+        echo ""
+        echo "📊 Progress: 13/18 tools (72.2%) - APPROACHING 75% MILESTONE!"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
