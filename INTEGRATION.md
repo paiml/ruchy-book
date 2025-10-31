@@ -2996,3 +2996,49 @@ All 20 one-liner tests failing - requires investigation:
 
 **Next Steps**: Continue with remaining 8 tools to reach 100% coverage
 
+
+---
+
+### TICKET-028-31: ruchydbg version Command - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Phase**: Phase 2D - Debugger Utilities (1/8 - FIRST!)
+**Category**: Debugger Commands
+**Command**: `ruchydbg version` / `ruchydbg -v`
+**Status**: ✅ FULLY FUNCTIONAL
+
+**🎉 PHASE 2D STARTED! 🎉**
+
+**Test Results**:
+- Version command (`ruchydbg version`): ✅ Works
+- Short form (`ruchydbg -v`): ✅ Works
+- Version format: ✅ Semantic versioning (X.Y.Z)
+- Output quality: ✅ Clean and concise
+- Performance: ✅ 2.71ms (<10ms target)
+
+**Features Validated**:
+- Long form command: `ruchydbg version`
+- Short form: `ruchydbg -v`
+- Semantic versioning format: X.Y.Z
+- Clean output formatting
+- Instant response time
+
+**Version Detected**: ruchydbg 1.9.1
+
+**Functionality**: Command provides debugger version information in semantic versioning format. Both long and short forms work correctly. Essential for compatibility checking and version management.
+
+**Test Infrastructure**: `test/tools/test-ruchydbg-version.ts`
+**Baseline Log**: `logs/TICKET-028-31-baseline.log`
+**CI/CD Integration**: Added to `.github/workflows/quality-gates.yml`
+
+**Phase 2D Progress**: 1/8 (12.5%) 🎉 STARTED!
+
+**Overall Progress**: 41/48 tools (85.4%)
+- Phase 1: 18/18 (100%) ✅ COMPLETE
+- Phase 2A: 5/5 (100%) ✅ COMPLETE
+- Phase 2B: 7/7 (100%) ✅ COMPLETE
+- Phase 2C: 10/10 (100%) ✅ COMPLETE
+- Phase 2D: 1/8 (12.5%) 🎉 STARTED!
+
+**Next**: TICKET-028-32 (ruchydbg help)
+

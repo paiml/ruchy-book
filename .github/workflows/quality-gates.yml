@@ -2156,3 +2156,43 @@ EOF
         echo "📊 Phase 2C: 10/10 (100%) ✅ COMPLETE!"
         echo ""
         echo "🎊 PHASE 2C COMPLETE! 🎊"
+
+    - name: "Phase 2D: ruchydbg version - FIRST!"
+      run: |
+        echo "📚 TICKET-028-31: Running ruchydbg version validation..."
+        echo ""
+
+        # Test ruchydbg version
+        if ruchydbg version 2>&1 | grep -qE "ruchydbg [0-9]+\.[0-9]+\.[0-9]+"; then
+          echo "   ✅ ruchydbg version works"
+        else
+          echo "   ❌ ruchydbg version failed"
+          exit 1
+        fi
+
+        # Test short form
+        if ruchydbg -v 2>&1 | grep -qE "ruchydbg [0-9]+\.[0-9]+\.[0-9]+"; then
+          echo "   ✅ ruchydbg -v works"
+        else
+          echo "   ❌ ruchydbg -v failed"
+          exit 1
+        fi
+
+        echo ""
+        echo "   ✅ STATUS: Fully functional"
+        echo "   📝 Features: Version command, short form, semantic versioning"
+        echo ""
+        echo "✅ ruchydbg version validation complete"
+        echo ""
+        echo "🎉 Phase 2D: STARTED (1/8 - 12.5%)!"
+        echo "   ✅ TICKET-028-31: ruchydbg version (FIRST!)"
+        echo "   🔜 7 more Phase 2D tools"
+        echo ""
+        echo "🎯 Overall Progress: 41/48 tools (85.4%)"
+        echo "📊 Phase 1: 18/18 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2C: 10/10 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2D: 1/8 (12.5%) 🎉 STARTED!"
+        echo ""
+        echo "🎊 PHASE 2D STARTED! Moving towards 90% overall coverage! 🎊"
