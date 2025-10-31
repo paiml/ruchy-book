@@ -167,6 +167,8 @@ git push origin main
 - Previous: TICKET-018-15 (ruchy bench - not implemented, baseline established)
 - Next: TICKET-018-17 (ruchy run - code execution)
 - Related: INTEGRATION.md section on Phase 1E progress
+- **GitHub Issue**: https://github.com/paiml/ruchy/issues/101 (not implemented)
+- **Bug Report**: `docs/bugs/RUCHY-BUG-doc-not-implemented.md`
 
 ---
 

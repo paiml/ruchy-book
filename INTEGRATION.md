@@ -657,6 +657,7 @@ score = (assertion_count / total_statements) * 100
 **Integration**: CI/CD pipeline, test infrastructure, implementation tracking
 **Milestone**: Phase 1D COMPLETE (3/3 tools) 🎉
 **🚨 FINDING**: Command returns "Command not yet implemented" for all files
+**GitHub Issue**: https://github.com/paiml/ruchy/issues/100
 
 **Results**:
 - **Files Tested**: 69/69 Ruchy source files
@@ -732,6 +733,7 @@ Command not yet implemented
 **Integration**: CI/CD pipeline, test infrastructure, implementation tracking
 **Milestone**: Phase 1E STARTED (1/3 tools) 🚀
 **🚨 FINDING**: Command returns "Command not yet implemented" for all files (same as bench)
+**GitHub Issue**: https://github.com/paiml/ruchy/issues/101
 
 **Results**:
 - **Files Tested**: 69/69 Ruchy source files
@@ -943,8 +945,36 @@ This is not just another tool - it's proof the language WORKS!
 12. **ruchy run ✅ (THE CRITICAL ONE!)** ⬅️ **NEW!**
 
 **Not Yet Implemented** (2/14 completed tools, 14.3%):
-1. ruchy bench ⏳ (placeholder, baseline established)
-2. ruchy doc ⏳ (placeholder, baseline established)
+1. ruchy bench ⏳ (placeholder, baseline established) - **Issue #100**
+2. ruchy doc ⏳ (placeholder, baseline established) - **Issue #101**
+
+### GitHub Issues Filed
+
+**From TICKET-018 Validation**:
+1. **Issue #99**: `ruchy provability` scoring algorithm bug
+   - Root cause: Only counts `assert()` calls, ignores purity/safety/termination
+   - Status: Open
+   - Impact: Tool works but scoring is misleading
+   - Filed: 2025-10-30
+
+2. **Issue #100**: `ruchy bench` not implemented
+   - Status: Open
+   - Impact: Cannot benchmark performance
+   - Workaround: Manual timing with `time ruchy run`
+   - Filed: 2025-10-31
+
+3. **Issue #101**: `ruchy doc` not implemented
+   - Status: Open
+   - Impact: Cannot auto-generate documentation
+   - Workaround: Manual documentation
+   - Filed: 2025-10-31
+
+**Bug Reports Available**:
+- `docs/bugs/RUCHY-BUG-provability-score-only-counts-assertions.md`
+- `docs/bugs/RUCHY-BUG-bench-not-implemented.md`
+- `docs/bugs/RUCHY-BUG-doc-not-implemented.md`
+
+All issues are **fully reproducible** with detailed reproduction steps.
 
 **Remaining to Test** (4 tools):
 1. ruchy repl (next in Phase 1E)
