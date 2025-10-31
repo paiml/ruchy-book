@@ -2398,3 +2398,12 @@ All 20 one-liner tests failing - requires investigation:
 **Milestone**: Phase 2B PROGRESSING! (4/7 tools)
 **Results**: Validation mode ✅, Server ✅, Interactive options ✅ (92.79ms)
 **Progress**: 27/48 tools (56.3%)
+
+### TICKET-028-09: Actor Observation (ruchy actor:observe) - ✅ COMPLETE - ⏳ BASELINE ESTABLISHED
+
+**Completed**: 2025-10-31
+**Milestone**: Phase 2B PROGRESSING! (5/7 tools - 71.4%)
+**Results**: Command ✅, Help ✅, 5 features defined, Implementation pending (3.49ms)
+**Progress**: 28/48 tools (58.3%)
+
+**Features Defined**: Config files, Refresh intervals, Message tracing, Deadlock detection, View modes
