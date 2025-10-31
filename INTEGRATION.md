@@ -5,7 +5,7 @@
 **Book Commit**: latest
 **Test Run**: 2025-10-31 Documentation Enhancement + 100% Tool Validation 🎉🎉🎉
 
-## 📚 LATEST: "Why Ruchy?" Section Added (2025-10-31)
+## 📚 LATEST: "Why Ruchy?" Section Enhanced with Real-World Examples (2025-10-31)
 
 **Completed**: 2025-10-31
 **Motivation**: LinkedIn feedback from Ville Vainio requesting clarity on use cases
@@ -20,18 +20,44 @@ Added comprehensive "Why Ruchy?" section addressing:
    - A. Script quickly without compilation (like Python/Ruby)
    - B. Compile for performance when needed (transpile to Rust)
    - C. Explore interactively like IPython (REPL-driven development)
-3. **Benefits Summary**: Bridge between scripting and systems programming
+3. **Real-World Examples**: Concrete production code from ubuntu-config-scripts
+4. **Benefits Summary**: Bridge between scripting and systems programming
+
+### Real-World Examples Added
+
+**Simple Script Example** (from ubuntu-config-scripts):
+```ruchy
+fun test_addition() {
+    let result = 2 + 3
+    if result == 5 {
+        println!("✅ Test passed")
+    } else {
+        println!("❌ Test failed")
+    }
+}
+# Output: ✅ Test passed ✅
+```
+
+**Production System Tool** (400-line diagnostic tool):
+- Link to [ubuntu-config-scripts](https://github.com/paiml/ubuntu-config-scripts)
+- Link to [system_diagnostic.ruchy](https://github.com/paiml/ubuntu-config-scripts/blob/main/ruchy-scripts/system/system_diagnostic.ruchy)
+- Quality metrics: 0.95/1.0 Ruchy score, 100% test coverage, <1s execution
+- Demonstrates real systems programming (reads /proc, executes commands)
 
 ### Example Validation
 
-Verified factorial REPL example works in Ruchy v3.159.0:
-```ruchy
-fun factorial(n) { if n <= 1 { 1 } else { n * factorial(n - 1) } }
-println(factorial(5))
-# Output: 120 ✅
-```
+All examples verified working in Ruchy v3.159.0:
 
-**Impact**: Addresses early reader confusion about "why would I use this?"
+1. ✅ Factorial REPL example: `factorial(5)` → 120
+2. ✅ test_addition script: Outputs "✅ Test passed"
+3. ✅ system_diagnostic.ruchy: Links verified, metrics confirmed
+
+**Impact**:
+- Addresses early reader confusion about "why would I use this?"
+- Provides concrete, clickable examples from production code
+- Shows progression from simple scripts to production systems
+- Links to public GitHub repo for exploration
+
 **Quality**: All examples tested and verified before documentation
 
 ---
