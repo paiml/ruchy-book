@@ -1,0 +1,107 @@
+🌳 TICKET-018-12: ruchy ast baseline test
+========================================
+
+Testing sample files to understand AST behavior...
+
+=== tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy ===
+✅ AST generated successfully
+   AST output: 69 lines
+
+=== tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy ===
+✅ AST generated successfully
+   AST output: 97 lines
+
+=== tests/extracted/ch03-00-functions-tdd_example_1.ruchy ===
+✅ AST generated successfully
+   AST output: 136 lines
+
+=== tests/ch04-practical-patterns/test_01_safe_calculator.ruchy ===
+✅ AST generated successfully
+   AST output: 1679 lines
+
+========================================
+Running comprehensive AST validation on all files...
+
+✅ tests/extracted/ch01-02-hello-world_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_4.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_5.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_6.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_7.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_8.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_1.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_2.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_3.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_5.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_6.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_9.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_10.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_1.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_2.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_3.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_5.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_6.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_7.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_8.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_9.ruchy
+✅ tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy
+✅ tests/extracted/conclusion_example_1.ruchy
+✅ tests/ch04-modules/test_01_basic_module.ruchy
+✅ tests/ch04-modules/test_02_use_statement.ruchy
+✅ tests/ch04-practical-patterns/test_01_safe_calculator.ruchy
+✅ tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy
+
+========================================
+Summary:
+Total files: 69
+AST generated: 69
+Failed: 0
+Success rate: 100.0%
+Fail rate: 0.0%
+
+=== Analysis ===
+✅ All files generate AST successfully - excellent!
+
+Tool Status: ruchy ast works correctly
+Validation: AST generation successful
