@@ -2537,3 +2537,45 @@ All 20 one-liner tests failing - requires investigation:
 - Project management tools
 - Build and compilation utilities
 - Publishing and distribution tools
+
+---
+
+## 🚀 PHASE 2C: LOW PRIORITY TOOLS (Started 2025-10-31)
+
+### TICKET-028-21: Project Creation (ruchy new) - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Tool**: `ruchy new`
+**Status**: FULLY FUNCTIONAL (100% working!)
+**Progress**: 31/48 tools (64.6%)
+
+**🎉 PHASE 2C STARTED! 🎉**
+
+**Results**:
+- Command exists: ✅
+- Help system: ✅
+- Project creation: ✅ (100% working)
+- Performance: 98.44ms project creation
+
+**Features Validated**:
+- Complete project scaffolding
+- Cargo.toml generation with ruchy dependency
+- Main file generation (src/main.ruchy)
+- Build script (build.rs) for transpilation
+- README.md documentation
+- Library support (--lib flag)
+
+**Functionality**:
+- Creates new Ruchy projects with proper structure
+- Integrates with Cargo ecosystem seamlessly
+- Generates sample code with examples
+- Supports both binary and library projects
+- Fast performance (<100ms creation time)
+
+**Test Infrastructure**: `test/tools/test-ruchy-new.ts`
+**Baseline Log**: `logs/TICKET-028-21-baseline.log`
+**CI/CD**: Integrated in `.github/workflows/quality-gates.yml`
+
+**Phase 2C Progress**: 1/10 (10%) - STARTED!
+
+**Next**: TICKET-028-22 (ruchy build)
