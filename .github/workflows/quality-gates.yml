@@ -1975,3 +1975,73 @@ EOF
         echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
         echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
         echo "📊 Phase 2C: 7/10 (70%) 🚀 PROGRESSING!"
+
+    - name: "Phase 2C: VM Mode Flag (--vm-mode) - EIGHTH!"
+      run: |
+        echo "🚀 TICKET-028-28: Running --vm-mode flag validation..."
+        echo ""
+
+        # Create test file
+        TEST_FILE="/tmp/vm_test_$$.ruchy"
+        cat > "$TEST_FILE" << 'EOF'
+fun fibonacci(n) {
+  if (n <= 1) { n }
+  else { fibonacci(n - 1) + fibonacci(n - 2) }
+}
+println(fibonacci(10))
+EOF
+
+        # Test AST mode (default)
+        echo "   Testing AST mode..."
+        AST_OUTPUT=$(ruchy --vm-mode ast "$TEST_FILE" 2>&1)
+        if [ "$AST_OUTPUT" = "55" ]; then
+          echo "   ✅ AST mode works"
+        else
+          echo "   ❌ AST mode failed"
+          exit 1
+        fi
+
+        # Test bytecode mode (experimental)
+        echo "   Testing bytecode mode..."
+        BYTECODE_OUTPUT=$(ruchy --vm-mode bytecode "$TEST_FILE" 2>&1)
+        if [ "$BYTECODE_OUTPUT" = "55" ]; then
+          echo "   ✅ Bytecode mode works"
+        else
+          echo "   ❌ Bytecode mode failed"
+          exit 1
+        fi
+
+        # Verify output matches
+        if [ "$AST_OUTPUT" = "$BYTECODE_OUTPUT" ]; then
+          echo "   ✅ Output correctness verified (100% match)"
+        else
+          echo "   ❌ Output mismatch"
+          exit 1
+        fi
+
+        # Cleanup
+        rm -f "$TEST_FILE"
+
+        echo ""
+        echo "   ✅ STATUS: Fully functional"
+        echo "   📝 Modes: ast (stable), bytecode (experimental)"
+        echo "   📝 Correctness: 100% output match"
+        echo ""
+        echo "✅ VM mode flag validation complete"
+        echo ""
+        echo "🎯 Phase 2C Progress (8/10 - 80% MILESTONE!):"
+        echo "   ✅ TICKET-028-21: ruchy new (fully functional!)"
+        echo "   ✅ TICKET-028-22: ruchy build (fully functional!)"
+        echo "   ✅ TICKET-028-23: ruchy add (fully functional!)"
+        echo "   ✅ TICKET-028-24: ruchy publish (baseline established)"
+        echo "   ✅ TICKET-028-25: ruchy serve (fully functional!)"
+        echo "   ✅ TICKET-028-26: ruchy doc (fully functional!)"
+        echo "   ✅ TICKET-028-27: ruchy replay-to-tests (baseline established)"
+        echo "   ✅ TICKET-028-28: --vm-mode (CURRENT - fully functional!)"
+        echo "   🔜 2 more Phase 2C tools"
+        echo ""
+        echo "🎯 Overall Progress: 38/48 tools (79.2%)"
+        echo "📊 Phase 1: 18/18 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2A: 5/5 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2B: 7/7 (100%) ✅ COMPLETE"
+        echo "📊 Phase 2C: 8/10 (80%) 🎉 80% MILESTONE!"
