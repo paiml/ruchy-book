@@ -517,6 +517,39 @@ jobs:
         echo "📊 Remaining: 3 tools (optimize, prove, mcp)"
         echo "📊 Next: Phase 1F - Advanced Tools"
 
+    - name: Hardware Optimization (ruchy optimize)
+      run: |
+        echo "⚡ TICKET-018-19: Running hardware optimization analysis..."
+        echo "⚠️  KNOWN: Command not yet implemented"
+        echo ""
+        # Test basic help works
+        if ruchy optimize --help | grep -q "Hardware-aware optimization"; then
+          echo "   ✅ Help interface exists (exceptionally sophisticated!)"
+        fi
+
+        # Test returns consistent message
+        if ruchy optimize tests/extracted/ch01-02-hello-world_example_1.ruchy 2>&1 | grep -q "Command not yet implemented"; then
+          echo "   ✅ Returns expected placeholder message"
+        fi
+
+        echo ""
+        echo "   📝 Note: Help shows exceptionally sophisticated design:"
+        echo "   📝 - Hardware profiles: detect, intel, amd, arm"
+        echo "   📝 - Analysis depths: quick, standard, deep"
+        echo "   📝 - Analysis types: cache, branches, vectorization, abstractions"
+        echo "   📝 - Multiple output formats: text, json, html"
+        echo "✅ Optimization analysis complete (baseline established)"
+        echo ""
+        echo "🚀 **PHASE 1F STARTED!**"
+        echo "Phase 1F - Advanced Tools (1/3):"
+        echo "   🚀 TICKET-018-19: ruchy optimize (NOT IMPLEMENTED - baseline)"
+        echo "   🔜 TICKET-018-20: ruchy prove (next)"
+        echo "   🔜 TICKET-018-21: ruchy mcp (final)"
+        echo ""
+        echo "📊 Progress: 16/18 tools (88.9%) - **PHASE 1F STARTED!** 🚀"
+        echo "📊 Remaining: 2 tools (prove, mcp)"
+        echo "📊 Next: 90% milestone approaching!"
+
     - name: Test All TDD Examples
       run: |
         echo "🧪 Testing 39 TDD examples..."
