@@ -32,6 +32,62 @@ $ ruchy repl
 120
 ```
 
+### Real-World Example: System Administration
+
+Want to see Ruchy in action? Check out the [ubuntu-config-scripts](https://github.com/paiml/ubuntu-config-scripts) repository, which includes production-ready system administration tools written in Ruchy.
+
+**Quick script example** - A simple test that runs immediately:
+
+```ruchy
+fun test_addition() {
+    let result = 2 + 3
+    if result == 5 {
+        println!("✅ Test passed")
+    } else {
+        println!("❌ Test failed")
+    }
+}
+```
+
+Just save it and run: `ruchy test.ruchy` - no compilation step needed!
+
+**Production-ready example** - The [system diagnostic tool](https://github.com/paiml/ubuntu-config-scripts/blob/main/ruchy-scripts/system/system_diagnostic.ruchy) demonstrates Ruchy's capabilities for real system work:
+
+```ruchy
+// Collect comprehensive system information
+fun collect_system_info() -> SystemInfo {
+    let (mem_total, mem_available) = get_memory_info();
+
+    SystemInfo {
+        hostname: get_hostname(),
+        kernel: get_kernel_version(),
+        cpu_count: get_cpu_count(),
+        disk_usage: get_disk_usage(),
+        network_interfaces: get_network_interfaces(),
+        // ... more diagnostics
+    }
+}
+```
+
+This 400-line diagnostic tool:
+- Reads `/proc/cpuinfo` and `/proc/meminfo` for system stats
+- Executes shell commands (`df`, `ip`, `systemctl`) to gather data
+- Outputs formatted reports (text or JSON)
+- Demonstrates real-world Rust-like systems programming
+
+**Run it yourself:**
+```bash
+git clone https://github.com/paiml/ubuntu-config-scripts
+cd ubuntu-config-scripts
+make ruchy-showcase  # Builds and runs the diagnostic tool
+```
+
+**Quality metrics from production use:**
+- Ruchy Score: 0.95/1.0 ✅
+- Test Coverage: 100% ✅
+- Performance: <1 second execution ✅
+- Binary Size: <5MB ✅
+
 ### The Best of Both Worlds
 
 Ruchy bridges the gap between scripting languages and systems programming:
