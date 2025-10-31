@@ -27,16 +27,16 @@
 
 ## 🚀 NEW: TICKET-018 - Comprehensive 18-Tool Testing (IN PROGRESS)
 
-**Status**: 🚀 **Phase 1D STARTED!** 10/18 tools (55.6%) ✅
+**Status**: 🚀 **Phase 1D PROGRESSING!** 11/18 tools (61.1%) ✅
 **Goal**: Expand from 1-tool to 18-tool validation per example (135 × 18 = 2,430 validations)
-**Current Progress**: 10/18 tools integrated (55.6%) - **Beyond halfway!**
-**Milestone**: Phase 1A, 1B, 1C COMPLETE + Phase 1D STARTED
+**Current Progress**: 11/18 tools integrated (61.1%) - **Approaching 75% milestone!**
+**Milestone**: Phase 1A, 1B, 1C COMPLETE + Phase 1D PROGRESSING (2/3)
 
 **Phase Summary**:
 - Phase 1A: ✅ COMPLETE (3/3 - check, lint, score)
 - Phase 1B: ✅ COMPLETE (3/3 - compile, test, coverage)
 - Phase 1C: ✅ COMPLETE (3/3 - fmt, quality-gate, ast)
-- Phase 1D: 🚀 STARTED (1/3 - runtime, provability planned, bench planned)
+- Phase 1D: 🚀 PROGRESSING (2/3 - runtime, provability; bench remaining)
 
 ### TICKET-018-04: Syntax Validation (ruchy check) - ✅ COMPLETE
 
@@ -574,6 +574,86 @@
 - 🔜 TICKET-018-15: `ruchy bench` - Planned (benchmarking)
 
 **Overall TICKET-018 Progress**: 10/18 tools complete (55.6%) - Phase 1D started! 🚀
+
+---
+
+### TICKET-018-14: Formal Verification (ruchy provability) - ✅ COMPLETE (with bug filed)
+
+**Completed**: 2025-10-30
+**Status**: ✅ 100% tool success - baseline established despite scoring bug
+**Integration**: CI/CD pipeline, test infrastructure, bug filed with GitHub
+**Milestone**: Phase 1D progressing (2/3 tools)
+**⚠️ BUG FILED**: Provability score only counts assertions (GitHub issue #99)
+
+**Results**:
+- **Files Analyzed**: 69/69 Ruchy source files
+- **Tool Success Rate**: 100% (69/69 files analyzed without crashing)
+- **Failed**: 0/69 (0%)
+- **Provability Scores**: All 0.0/100 (EXPECTED due to bug #99)
+- **Performance**: 3ms average per file, 201ms total
+- **Tool Version**: ruchy v3.152.0
+- **Test Script**: `test/tools/test-ruchy-provability.ts` (Deno-based validator)
+- **CI/CD**: Added to `.github/workflows/quality-gates.yml` with bug documentation
+- **Baseline**: `logs/TICKET-018-14-baseline.log`
+- **Bug Report**: `docs/bugs/RUCHY-BUG-provability-score-only-counts-assertions.md`
+- **GitHub Issue**: https://github.com/paiml/ruchy/issues/99
+
+**Bug Discovery (Five Whys Analysis)**:
+After systematic debugging and source code review, discovered that `calculate_provability_score()` in `src/bin/handlers/commands.rs` **only counts `assert()` calls**, completely ignoring:
+- Purity analysis (from `--verify` flag) ❌
+- Safety analysis (from `--verify` flag) ❌
+- Termination analysis (from `--termination` flag) ❌
+- Bounds checking (from `--bounds` flag) ❌
+
+**Bug Formula**:
+```rust
+// Current (BUGGY):
+score = (assertion_count / total_statements) * 100
+// Result: 0 assertions → 0.0/100 (even if code is provably safe/pure/terminating)
+```
+
+**Why All Scores Are 0.0/100**:
+- Teaching examples have NO `assert()` calls
+- Score formula **only counts assertions**
+- Tool DOES perform safety/purity/termination analysis correctly
+- But these analyses **don't contribute to score** (design bug)
+
+**Success Criteria Met (Despite Bug)**:
+- ✅ All files analyzed (100% tool success)
+- ✅ Execution time < 5 seconds (201ms << 5s)
+- ✅ Provability scores reported (all 0.0/100 due to bug)
+- ✅ CI/CD integration complete
+- ✅ Test infrastructure created
+- ✅ Bug filed with comprehensive evidence
+- ✅ Baseline established for future comparison
+
+**Key Insights**:
+- Tool runs reliably: 100% success (no crashes)
+- Scoring is buggy but tool infrastructure works
+- Safety/purity/termination analyses are functional (via flags)
+- Baseline value: When bug is fixed, we have comparison data
+- Scientific approach: Found bug via source code analysis
+
+**Formal Verification Analyses (These Work!)**:
+- **`--verify`**: Reports "✓ All functions are pure", "✓ No unsafe operations", "✓ No side effects"
+- **`--bounds`**: Reports "✓ Array access is bounds-checked"
+- **`--termination`**: Reports "✓ All functions terminate"
+- **`--contracts`**: Reports "No contracts defined" (accurate)
+- **Problem**: None of these contribute to score!
+
+**Comparison with Phase 1D Tools**:
+- Performance matches runtime (3ms vs 3ms)
+- 100% success rate (consistent with runtime)
+- Provides formal verification dimension
+- Bug doesn't affect tool reliability, only scoring
+- All Phase 1D tools fast and deterministic
+
+**Phase 1D**: 🚀 Progressing (2/3 tools)
+- ✅ TICKET-018-13: `ruchy runtime` - COMPLETE (100% analysis, 5 BigO patterns)
+- ✅ TICKET-018-14: `ruchy provability` - COMPLETE (100% tool success, bug filed)
+- 🔜 TICKET-018-15: `ruchy bench` - Next (benchmarking)
+
+**Overall TICKET-018 Progress**: 11/18 tools complete (61.1%) - Toward 75% milestone! 🚀
 
 ---
 
