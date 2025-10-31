@@ -2776,3 +2776,41 @@ All 20 one-liner tests failing - requires investigation:
 **Phase 2C Progress**: 6/10 (60%) - PROGRESSING!
 
 **Next**: 4 more Phase 2C tools to reach 80% overall milestone
+
+---
+
+### TICKET-028-27: Replay Conversion (ruchy replay-to-tests) - ⏳ BASELINE ESTABLISHED
+
+**Completed**: 2025-10-31
+**Tool**: `ruchy replay-to-tests`
+**Status**: BASELINE ESTABLISHED (CLI ready, format complex)
+**Progress**: 37/48 tools (77.1%)
+
+**Results**:
+- Command exists: ✅
+- Help system: ✅
+- Replay parsing: ❌ (complex JSON format with multiple required fields)
+- Test generation: ❌ (depends on valid replay file)
+- Performance: 12.11ms
+
+**Features Defined**:
+- Replay file format (JSON with SemVer, metadata, environment, entries)
+- Rust test generation (--output)
+- Property test generation (--property-tests)
+- Performance benchmarks (--benchmarks)
+- Timeout configuration (--timeout, default: 5000ms)
+
+**Functionality**:
+- CLI infrastructure complete
+- Accepts .replay files or directories
+- Converts REPL sessions to Rust regression tests
+- Supports property tests and benchmarks
+- Requires REPL recording via `ruchy repl --record`
+
+**Test Infrastructure**: `test/tools/test-ruchy-replay-to-tests.ts`
+**Baseline Log**: `logs/TICKET-028-27-baseline.log`
+**CI/CD**: Integrated in `.github/workflows/quality-gates.yml`
+
+**Phase 2C Progress**: 7/10 (70%) - PROGRESSING!
+
+**Next**: 3 more Phase 2C tools
