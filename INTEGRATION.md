@@ -2732,3 +2732,47 @@ All 20 one-liner tests failing - requires investigation:
 **Phase 2C Progress**: 5/10 (50%) - HALF COMPLETE!
 
 **Next**: Remaining 5 Phase 2C tools
+
+---
+
+### TICKET-028-26: Documentation Generation (ruchy doc) - ✅ FULLY FUNCTIONAL
+
+**Completed**: 2025-10-31
+**Tool**: `ruchy doc`
+**Status**: FULLY FUNCTIONAL (100% working!)
+**Progress**: 36/48 tools (75.0%)
+
+**🎯 75% MILESTONE ACHIEVED! 🎯**
+
+**Results**:
+- Command exists: ✅
+- Help system: ✅
+- Documentation generation: ✅ (100% working)
+- Output created: ✅ (100% working)
+- HTML format: ✅ (valid HTML structure)
+- Performance: 7.85ms (extremely fast!)
+
+**Features Validated**:
+- HTML output (default format)
+- Markdown format (--format markdown)
+- JSON format (--format json)
+- Custom output directory (--output)
+- Private items inclusion (--private)
+- Auto-open browser (--open)
+- Project-wide docs (--all)
+
+**Functionality**:
+- Extracts doc comments (/// syntax)
+- Generates formatted HTML documentation
+- Multiple output formats supported
+- Project-wide generation capability
+- Clean, professional output structure
+- Fast generation (<10ms)
+
+**Test Infrastructure**: `test/tools/test-ruchy-doc.ts`
+**Baseline Log**: `logs/TICKET-028-26-baseline.log`
+**CI/CD**: Integrated in `.github/workflows/quality-gates.yml`
+
+**Phase 2C Progress**: 6/10 (60%) - PROGRESSING!
+
+**Next**: 4 more Phase 2C tools to reach 80% overall milestone
