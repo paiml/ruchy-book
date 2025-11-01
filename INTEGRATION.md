@@ -1,11 +1,73 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-11-01T00:00:00.000Z
+**Generated**: 2025-11-01T01:00:00.000Z
 **Ruchy Version**: ruchy 3.169.0 🎉
 **Book Commit**: latest
-**Test Run**: 2025-11-01 Version Sync v3.67.0 → v3.169.0 (102 versions!) 🚀
+**Test Run**: 2025-11-01 New Tools Documentation + Version Sync 🚀
 
-## 🚀 LATEST: Version Update v3.67.0 → v3.169.0 (2025-11-01)
+## 📚 LATEST: Three New Tools Documented in Chapter 14 (2025-11-01)
+
+**Completed**: 2025-11-01
+**Chapter**: Chapter 14 (The Ruchy Toolchain - Professional Development Tools)
+**Ruchy Version**: v3.169.0
+
+### New Tools Added
+
+Added comprehensive documentation for THREE new tools introduced in Ruchy v3.169.0:
+
+**1. ruchy publish** - Package Publishing
+- Purpose: Publish Ruchy packages to the registry
+- Documentation: Complete workflow from validation to publishing
+- Includes: Ruchy.toml manifest format, --dry-run validation, publishing options
+- Located: After "Documentation Generation" section
+- Status: ✅ Fully documented with examples
+
+**2. ruchy mcp** - Real-Time Quality Server
+- Purpose: Model Context Protocol server for real-time quality analysis
+- Documentation: MCP server configuration, IDE integration, use cases
+- Includes: Server options, VS Code integration example, protocol features
+- Located: In "Advanced Quality Tools" section (after Quality Scoring)
+- Status: ✅ Fully documented with examples
+
+**3. ruchy optimize** - Hardware-Aware Optimization
+- Purpose: Analyze code for hardware-specific optimization opportunities
+- Documentation: Quick/deep analysis, cache behavior, branch prediction, vectorization
+- Includes: All analysis options, HTML report generation, benchmarking
+- Located: After "Performance Analysis" section
+- Status: ✅ Fully documented with examples
+
+### Chapter Updates
+
+**Chapter Status Header**:
+- Updated from v1.84.0 → v3.169.0
+- Added 3 new tools to documented tools list
+- Updated last modified date: 2025-11-01
+
+**Summary Section**:
+- Reorganized tools into categories (Core, Quality, Performance, Advanced)
+- Marked new tools with 🆕 indicator
+- Added v3.169.0 version tags
+
+### Test Results
+
+All examples continue to pass:
+- Book Examples: 136/136 passing (100% ✅)
+- Chapter 14 Examples: 5/5 passing (100% ✅)
+- Zero regressions from documentation additions
+
+### Documentation Quality
+
+- All three tools documented with real examples
+- Includes practical use cases and workflows
+- Command-line options fully documented
+- Integration examples provided (VS Code, CI/CD)
+- Follows existing chapter structure and style
+
+**Impact**: Chapter 14 now documents all 14 Ruchy tools including the latest v3.169.0 additions
+
+---
+
+## 🚀 PREVIOUS: Version Update v3.67.0 → v3.169.0 (2025-11-01)
 
 **Completed**: 2025-11-01
 **Version Jump**: 102 versions (v3.67.0 → v3.169.0)

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-01T10:49:07.444Z",
+  "timestamp": "2025-11-01T10:54:47.239Z",
   "ruchy_version": "ruchy 3.169.0",
   "chapters_processed": 18,
   "examples_found": 136,
@@ -344,7 +344,7 @@
         {
           "file": "src/ch14-00-toolchain-mastery-tdd.md",
           "example_number": 1,
-          "line_number": 44,
+          "line_number": 54,
           "code": "fun greet(name: String) -> String {\n    \"Hello, \" + name + \"!\"\n}\n\nfun main() {\n    let message = greet(\"Ruchy Developer\");\n    println(message);\n}",
           "passed": true,
           "status": "working"
@@ -352,7 +352,7 @@
         {
           "file": "src/ch14-00-toolchain-mastery-tdd.md",
           "example_number": 2,
-          "line_number": 80,
+          "line_number": 90,
           "code": "// calculator_test.ruchy\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun test_addition() {\n    let result = add(2, 3);\n    assert_eq(result, 5);\n    println(\"Addition test passed\");\n}\n\nfun main() {\n    test_addition();\n}",
           "passed": true,
           "status": "working"
@@ -360,7 +360,7 @@
         {
           "file": "src/ch14-00-toolchain-mastery-tdd.md",
           "example_number": 3,
-          "line_number": 145,
+          "line_number": 228,
           "code": "fun calculate_factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * calculate_factorial(n - 1)\n    }\n}\n\nfun main() {\n    let result = calculate_factorial(10);\n    println(result);\n}",
           "passed": true,
           "status": "working"
@@ -368,7 +368,7 @@
         {
           "file": "src/ch14-00-toolchain-mastery-tdd.md",
           "example_number": 4,
-          "line_number": 282,
+          "line_number": 500,
           "code": "fun fibonacci_recursive(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)\n    }\n}\n\nfun fibonacci_iterative(n: i32) -> i32 {\n    let mut a = 0;\n    let mut b = 1;\n    let mut i = 0;\n    \n    while i < n {\n        let temp = a + b;\n        a = b;\n        b = temp;\n        i = i + 1;\n    }\n    \n    a\n}\n\nfun main() {\n    let result1 = fibonacci_recursive(10);\n    let result2 = fibonacci_iterative(10);\n    println(result1);\n    println(result2);\n}",
           "passed": true,
           "status": "working"
