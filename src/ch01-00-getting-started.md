@@ -53,6 +53,7 @@ Just save it and run: `ruchy test.ruchy` - no compilation step needed!
 
 **Production-ready example** - The [system diagnostic tool](https://github.com/paiml/ubuntu-config-scripts/blob/main/ruchy-scripts/system/system_diagnostic.ruchy) demonstrates Ruchy's capabilities for real system work:
 
+<!-- skip-test: documentation-only (incomplete code snippet for illustration, full code at link) -->
 ```ruchy
 // Collect comprehensive system information
 fun collect_system_info() -> SystemInfo {

@@ -29,7 +29,7 @@ ruchy --version
 
 **Expected Output:**
 ```
-ruchy 3.67.0
+ruchy 3.169.0
 ```
 
 **What this tells us:**
@@ -68,8 +68,8 @@ fi
 
 **Expected Output:**
 ```
-System: ruchy 3.67.0
-Local: ruchy 3.67.0
+System: ruchy 3.169.0
+Local: ruchy 3.169.0
 ```
 
 ### Example 4: Test Basic Compilation with System Ruchy
@@ -177,8 +177,8 @@ fi
 **Expected Output:**
 ```
 === Ruchy Compiler Status ===
-System ruchy: ruchy 3.67.0
-Local build: ruchy 3.67.0
+System ruchy: ruchy 3.169.0
+Local build: ruchy 3.169.0
 Local build size: 5.2M
 
 === Basic Functionality Test ===

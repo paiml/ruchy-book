@@ -387,7 +387,7 @@ make dogfood-score
 
 ### INTEGRATION.md Format
 ```markdown
-## Dogfooding Results (v1.84.0)
+## Dogfooding Results (v3.169.0)
 
 **Date**: 2025-10-13
 **Examples Tested**: 381
@@ -559,12 +559,12 @@ ruchy check example.ruchy --cache $CACHE_DIR
 
 ## Success Metrics
 
-### Current (v1.84.0)
+### Current (v3.169.0)
 - check: 231/381 (61%)
 - lint: 231/381 (61%)
 - score: TBD
 
-### Target (v2.0.0)
+### Target (v3.169.0)
 - check: 381/381 (100%) ✅
 - lint: 381/381 (100%) ✅
 - score: 381/381 A+ ✅

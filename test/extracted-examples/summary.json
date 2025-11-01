@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-10-31T17:45:35.525Z",
-  "ruchy_version": "ruchy 3.159.0",
+  "timestamp": "2025-11-01T10:47:55.248Z",
+  "ruchy_version": "ruchy 3.169.0",
   "chapters_processed": 18,
-  "examples_found": 137,
+  "examples_found": 136,
   "examples_working": 136,
-  "examples_failing": 1,
-  "success_rate": 99,
+  "examples_failing": 0,
+  "success_rate": 100,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -993,9 +993,9 @@
     },
     "ch01-00-getting-started": {
       "chapter": "ch01-00-getting-started",
-      "total_examples": 2,
+      "total_examples": 1,
       "working_examples": 1,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch01-00-getting-started.md",
@@ -1004,17 +1004,6 @@
           "code": "fun test_addition() {\n    let result = 2 + 3\n    if result == 5 {\n        println!(\"✅ Test passed\")\n    } else {\n        println!(\"❌ Test failed\")\n    }\n}",
           "passed": true,
           "status": "working"
-        },
-        {
-          "file": "src/ch01-00-getting-started.md",
-          "example_number": 2,
-          "line_number": 56,
-          "code": "// Collect comprehensive system information\nfun collect_system_info() -> SystemInfo {\n    let (mem_total, mem_available) = get_memory_info();\n\n    SystemInfo {\n        hostname: get_hostname(),\n        kernel: get_kernel_version(),\n        cpu_count: get_cpu_count(),\n        disk_usage: get_disk_usage(),\n        network_interfaces: get_network_interfaces(),\n        // ... more diagnostics\n    }\n}",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Syntax error: Expected RightBrace, found Let\nError: Syntax error: Expected RightBrace, found Let\n",
-          "errorCategory": "PARSER_ERROR",
-          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },

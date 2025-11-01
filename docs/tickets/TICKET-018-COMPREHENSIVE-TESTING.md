@@ -126,7 +126,7 @@ Currently, book examples are only tested with `ruchy run` (1 tool). This is insu
 - [ ] Create tool-specific fix recommendations
 - [ ] Track improvement over time
 
-## Expected Baseline (v3.149.0)
+## Expected Baseline (v3.169.0)
 
 Based on current dogfooding results:
 - **run**: ~91% (129/142)
@@ -196,7 +196,7 @@ Based on current dogfooding results:
 
 ## Dependencies
 
-- Ruchy v3.149.0 or later (all 18 tools available)
+- Ruchy v3.169.0 or later (all 18 tools available)
 - Updated test infrastructure (Deno/TypeScript)
 - Pre-commit hook system
 - Adequate CI/CD resources (18x testing load)
@@ -228,7 +228,7 @@ Based on current dogfooding results:
 - INTEGRATION.md (current testing status)
 - CLAUDE.md (development protocol)
 - Makefile (dogfooding commands)
-- DEBUGGER_RESEARCH_v3.149.0.md (tool documentation)
+- DEBUGGER_RESEARCH_v3.169.0.md (tool documentation)
 
 ---
 

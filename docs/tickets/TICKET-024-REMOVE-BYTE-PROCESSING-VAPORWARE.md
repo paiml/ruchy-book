@@ -9,7 +9,7 @@
 
 ## Problem
 
-2 examples document low-level byte processing that doesn't work properly in v3.149.0:
+2 examples document low-level byte processing that doesn't work properly in v3.169.0:
 - Ch04 example 10: Word frequency counting with byte processing
 - Ch17 example 8: Integer parsing with byte processing
 
@@ -60,7 +60,7 @@ Error: Cannot compare integer and byte for ordering
    If it doesn't compile in current `ruchy`, it doesn't go in the book.
 ```
 
-These examples don't compile/run successfully in v3.149.0.
+These examples don't compile/run successfully in v3.169.0.
 
 ## Impact
 

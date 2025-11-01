@@ -8,7 +8,7 @@
 **Phase**: Phase 1C (Code Quality & Formatting) - 2/3
 **Predecessor**: TICKET-018-08 (ruchy fmt - COMPLETE, Phase 1C 1/3)
 **Estimated Effort**: 30 minutes (continued acceleration)
-**Ruchy Version**: v3.152.0
+**Ruchy Version**: v3.169.0
 
 ## Executive Summary
 
@@ -185,7 +185,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-doc.ts
    - **Pass Rate**: X% (document actual)
    - **Common Patterns**: Document findings
    - **Status**: Phase 1C tool 2/3
-   - **Tool Version**: ruchy v3.152.0
+   - **Tool Version**: ruchy v3.169.0
    ```
 
 2. **README.md**: Update progress
@@ -280,7 +280,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-doc.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.152.0 installed
+- ✅ Ruchy v3.169.0 installed
 - ✅ Phase 1A complete (3/3 tools)
 - ✅ Phase 1B complete (3/3 tools)
 - ✅ Phase 1C begun (1/3 tools - fmt)
@@ -414,7 +414,7 @@ ruchy doc tests/extracted/ch03-00-functions-tdd_example_1.ruchy
 - **Files Tested**: 69/69 Ruchy source files
 - **Implementation Status**: 0/69 (0%) - "Command not yet implemented"
 - **Test Duration**: ~8 minutes (comprehensive baseline test)
-- **Tool Version**: ruchy v3.152.0
+- **Tool Version**: ruchy v3.169.0
 
 **Key Finding**:
 - `ruchy doc` command exists in help text
