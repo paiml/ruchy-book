@@ -1,0 +1,10 @@
+=== Optimization Analysis ===
+File: factorial.ruchy
+Hardware Profile: detect
+Analysis Depth: standard
+Threshold: 5.00%
+
+=== Recommendations ===
+• Consider loop unrolling for tight loops
+• Use const generics where possible
+• Profile-guided optimization recommended

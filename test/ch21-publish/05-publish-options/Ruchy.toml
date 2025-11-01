@@ -1,0 +1,6 @@
+[package]
+name = "options-test"
+version = "1.0.0"
+authors = ["Test Author <test@example.com>"]
+description = "Testing publish command options"
+license = "MIT"

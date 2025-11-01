@@ -1,0 +1,12 @@
+[package]
+name = "my-library"
+version = "0.1.0"
+authors = ["Developer Name <dev@example.com>"]
+description = "A brief description of what this does"
+license = "MIT"
+repository = "https://github.com/username/my-library"
+keywords = ["data", "analysis", "scientific"]
+categories = ["science", "development-tools"]
+
+[dependencies]
+# Add dependencies here when Ruchy package registry grows
