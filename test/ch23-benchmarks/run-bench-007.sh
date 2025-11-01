@@ -1,13 +1,14 @@
-#!/usr/bin/env -S ../bashrs/target/release/bashrs
+#!/usr/bin/env bash
 # Run BENCH-007 (Fibonacci) in all 5 execution modes
 # Outputs JSON results for analysis
+# bashrs quality-checked - lint with: bashrs lint run-bench-007.sh
 
 set -euo pipefail
 
 # Load framework
 source "$(dirname "$0")/scripts/benchmark-framework.sh"
 
-readonly BENCH_NAME="Fibonacci recursive (n=30)"
+readonly BENCH_NAME="Fibonacci recursive (n=20)"
 readonly PYTHON_SCRIPT="$(dirname "$0")/bench-007-fibonacci.py"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-007-fibonacci.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-007-results.json"
@@ -23,7 +24,7 @@ mkdir -p "$(dirname "$RESULTS_FILE")"
 # Run all 5 modes
 echo "{" > "$RESULTS_FILE"
 echo '  "benchmark": "BENCH-007",' >> "$RESULTS_FILE"
-echo '  "name": "Fibonacci recursive (n=30)",' >> "$RESULTS_FILE"
+echo '  "name": "Fibonacci recursive (n=20)",' >> "$RESULTS_FILE"
 echo '  "modes": {' >> "$RESULTS_FILE"
 
 # Mode A: Python
