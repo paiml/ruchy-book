@@ -3,6 +3,7 @@
 **Date**: 2025-11-01
 **Ruchy Version**: (current)
 **Severity**: BLOCKING - Prevents compilation of transpiled code
+**GitHub Issue**: [paiml/ruchy#113](https://github.com/paiml/ruchy/issues/113)
 
 ## Summary
 
