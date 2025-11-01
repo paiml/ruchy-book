@@ -1,0 +1,10 @@
+// my-library - Complete manifest example
+
+fun calculate(x, y) {
+    x * y + x - y
+}
+
+fun process_data(data) {
+    // Data processing logic here
+    data
+}

@@ -1,0 +1,4 @@
+[package]
+name = "incomplete-package"
+version = "1.0.0"
+# Missing: authors, description, license (required fields)

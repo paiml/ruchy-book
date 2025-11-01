@@ -1,0 +1,14 @@
+{
+  "file": "factorial.ruchy",
+  "hardware": "detect",
+  "depth": "standard",
+  "threshold": 0.05,
+  "analyses": {
+
+  },
+  "recommendations": [
+    "Consider loop unrolling for tight loops",
+    "Use const generics where possible",
+    "Profile-guided optimization recommended"
+  ]
+}
