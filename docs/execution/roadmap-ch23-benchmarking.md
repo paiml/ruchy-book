@@ -25,7 +25,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 - BENCH-002: Write/append operations (100K writes)
 
 ### String Processing (2 examples)
-- BENCH-003: String concatenation (1M operations)
+- BENCH-003: String concatenation (10K operations) ⚠️ INCOMPLETE - Blocked by [issue #113](https://github.com/paiml/ruchy/issues/113) (same transpiler bugs)
 - BENCH-004: Regex matching (100K patterns)
 
 ### Data Structures (2 examples)
@@ -55,7 +55,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 |----|-------------|--------|------------|----------|
 | BENCH-001 | File read (10MB text) | pending | 8 | P0 |
 | BENCH-002 | File write (100K operations) | pending | 8 | P0 |
-| BENCH-003 | String concatenation (1M ops) | pending | 6 | P0 |
+| BENCH-003 | String concatenation (10K ops) | ⚠️ incomplete | 6 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) |
 | BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 |
 | BENCH-005 | List operations (1M elements) | pending | 8 | P0 |
 | BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 |

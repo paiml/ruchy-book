@@ -167,12 +167,42 @@ For now, BENCH-008 can only be benchmarked in:
 
 Transpile and compile modes are blocked until transpiler bugs are fixed.
 
+## Debugging with ruchydbg
+
+Use the Ruchy debugging toolchain to validate and trace these bugs:
+
+```bash
+# Validate with ruchydbg
+../../../ruchydbg/target/release/ruchydbg validate bench-008-primes.ruchy
+
+# Trace type inference during transpilation
+ruchy --trace transpile bench-008-primes.ruchy 2>&1 | grep "type inference"
+
+# Dataflow analysis to track type propagation
+ruchy dataflow:debug bench-008-primes.ruchy
+```
+
+**Expected ruchydbg Output:**
+- ⚠️ Function `is_prime` return type mismatch: expected `bool`, inferred `i32`
+- ⚠️ Function `generate_primes` parameter `count` type mismatch: expected `i32`, inferred `&str`
+- ⚠️ Function `generate_primes` return type mismatch: expected `Vec<i32>`, inferred `i32`
+
+**Using ruchy --trace:**
+```
+trace: type inference: is_prime return -> defaulting to i32 (INCORRECT)
+trace: type inference: count parameter -> defaulting to &str (INCORRECT)
+trace: type inference: generate_primes return -> defaulting to i32 (INCORRECT)
+```
+
+This debugging workflow makes the bugs immediately visible before even attempting Rust compilation.
+
 ## Next Steps
 
-1. File detailed bug report with Ruchy compiler team
-2. Continue with other benchmarks that may not trigger these bugs
-3. Revisit BENCH-008 transpile/compile modes after fixes
-4. Document these limitations in Chapter 23
+1. ✅ Filed detailed bug report with Ruchy compiler team ([#113](https://github.com/paiml/ruchy/issues/113))
+2. ✅ Added `ruchydbg` debugging instructions for reproducibility
+3. Continue with other benchmarks that may not trigger these bugs
+4. Revisit BENCH-008 transpile/compile modes after fixes
+5. Document these limitations in Chapter 23
 
 ---
 
