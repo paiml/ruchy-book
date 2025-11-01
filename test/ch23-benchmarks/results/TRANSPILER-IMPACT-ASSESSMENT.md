@@ -82,27 +82,43 @@ The Ruchy transpiler has systematic type inference failures:
 
 ## Debugging Tools
 
-### Using ruchydbg v1.1.6
+### Using ruchydbg v1.16.0
 
-**Version**: ruchydbg 1.1.6 (installed)
+**Version**: ruchydbg 1.16.0 (installed)
 **Documentation**: `book/src/phase4_debugger/debugger-047-performance-profiler.md` (1052 LOC)
 
+**🚨 CRITICAL FINDING**: The Ruchy interpreter has CORRECT types at runtime, but the transpiler infers them INCORRECTLY!
+
 ```bash
-# Validate type consistency (v1.1.6)
-ruchydbg validate <file>.ruchy
+# Run type-aware tracing (v1.16.0) on BENCH-008
+$ ruchydbg run bench-008-primes.ruchy --timeout 5000 --trace
 
-# Expected output for BENCH-008:
-# ⚠️  Type inference error: Function 'is_prime'
-#     Expected return type: bool
-#     Inferred return type: i32
-#     Location: bench-008-primes.ruchy:5:1
+TRACE: → is_prime(2: integer)      # ✅ Parameter is integer (CORRECT!)
+TRACE: ← is_prime = true: boolean  # ✅ Returns boolean (CORRECT!)
 
-# Expected output for BENCH-003:
-# ⚠️  Type inference error: Function 'string_concatenation'
-#     Expected parameter 'iterations' type: i32
-#     Inferred parameter 'iterations' type: &str
-#     Location: bench-003-string-concat.ruchy:5:1
+# Compare with transpiled code:
+fn is_prime(n: i32) -> i32 {  # ❌ Transpiler says -> i32 (WRONG!)
+    if n < 2 {
+        return false;  # ❌ Type error: expected i32, found bool
+    }
+    true  # ❌ Type error
+}
 ```
+
+```bash
+# Run type-aware tracing on BENCH-003
+$ ruchydbg run bench-003-string-concat.ruchy --timeout 5000 --trace
+
+TRACE: → string_concatenation(10000: integer)  # ✅ Parameter is integer!
+TRACE: ← string_concatenation = "xxx...": string  # ✅ Returns string!
+
+⏱️  Execution time: 12ms
+
+# Compare with transpiled code:
+fn string_concatenation(iterations: &str) -> i32 {  # ❌ BOTH WRONG!
+```
+
+**Key Discovery**: Type information EXISTS in the runtime but transpiler doesn't use it!
 
 ### Using ruchy --trace
 

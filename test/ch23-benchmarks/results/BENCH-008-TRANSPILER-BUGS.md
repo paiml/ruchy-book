@@ -167,38 +167,55 @@ For now, BENCH-008 can only be benchmarked in:
 
 Transpile and compile modes are blocked until transpiler bugs are fixed.
 
-## Debugging with ruchydbg v1.1.6
+## Debugging with ruchydbg v1.16.0
 
-**Version**: ruchydbg 1.1.6 (installed)
+**Version**: ruchydbg 1.16.0 (installed and TESTED)
 **Documentation**: `book/src/phase4_debugger/debugger-047-performance-profiler.md` (1052 LOC)
 **Phases**: RED-GREEN-REFACTOR-TOOL methodology
 
-Use the Ruchy debugging toolchain to validate and trace these bugs:
+**🚨 CRITICAL DISCOVERY**: The Ruchy interpreter has CORRECT types at runtime!
+
+### ACTUAL ruchydbg Output (v1.16.0)
 
 ```bash
-# Validate with ruchydbg v1.1.6
-ruchydbg validate bench-008-primes.ruchy
+# Run with type-aware tracing
+$ ruchydbg run bench-008-primes.ruchy --timeout 5000 --trace
 
-# Trace type inference during transpilation
-ruchy --trace transpile bench-008-primes.ruchy 2>&1 | grep "type inference"
+🔍 Running: bench-008-primes.ruchy
+⏱️  Timeout: 5000ms
+🔍 Type-aware tracing: enabled
 
-# Dataflow analysis to track type propagation
-ruchy dataflow:debug bench-008-primes.ruchy
+TRACE: → main()
+TRACE: → generate_primes(10000: integer)  # ✅ Parameter is integer (CORRECT!)
+TRACE: → is_prime(2: integer)             # ✅ Parameter is integer (CORRECT!)
+TRACE: ← is_prime = true: boolean         # ✅ Returns boolean (CORRECT!)
+TRACE: → is_prime(3: integer)
+TRACE: ← is_prime = true: boolean
+...
 ```
 
-**Expected ruchydbg Output:**
-- ⚠️ Function `is_prime` return type mismatch: expected `bool`, inferred `i32`
-- ⚠️ Function `generate_primes` parameter `count` type mismatch: expected `i32`, inferred `&str`
-- ⚠️ Function `generate_primes` return type mismatch: expected `Vec<i32>`, inferred `i32`
+**Key Finding**: The interpreter correctly identifies ALL types:
+- ✅ `is_prime` parameter: `integer` (transpiler says `i32` ✅ - this part is correct!)
+- ✅ `is_prime` return: `boolean` (transpiler says `i32` ❌ **BUG!**)
+- ✅ `generate_primes` parameter: `integer` (transpiler says `&str` ❌ **BUG!**)
 
-**Using ruchy --trace:**
-```
-trace: type inference: is_prime return -> defaulting to i32 (INCORRECT)
-trace: type inference: count parameter -> defaulting to &str (INCORRECT)
-trace: type inference: generate_primes return -> defaulting to i32 (INCORRECT)
+### Pathological Input Detection
+
+```bash
+$ ruchydbg detect bench-008-primes.ruchy --threshold 15
+
+=== Pathological Input Detection ===
+File: bench-008-primes.ruchy
+Performance:
+  Baseline: 5.60 µs
+  Actual: 42.00 µs
+  Slowdown: 7.50x
+✅ Performance within acceptable bounds
 ```
 
-This debugging workflow makes the bugs immediately visible before even attempting Rust compilation.
+### Root Cause
+
+The transpiler has a **separate, broken type inference system** that doesn't use the runtime's correct type information. The type information EXISTS but the transpiler ignores it!
 
 ## Next Steps
 
