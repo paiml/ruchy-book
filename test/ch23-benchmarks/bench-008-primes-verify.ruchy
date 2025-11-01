@@ -1,0 +1,43 @@
+// BENCH-008: Prime number generation (verification version)
+// This version has output to verify correctness
+
+fun is_prime(n) {
+    if n < 2 {
+        return false
+    }
+    if n == 2 {
+        return true
+    }
+    if n % 2 == 0 {
+        return false
+    }
+
+    let mut i = 3
+    while i * i <= n {
+        if n % i == 0 {
+            return false
+        }
+        i = i + 2
+    }
+    true
+}
+
+fun generate_primes(count) {
+    let mut primes = []
+    let mut candidate = 2
+
+    while primes.len() < count {
+        if is_prime(candidate) {
+            primes.push(candidate)
+        }
+        candidate = candidate + 1
+    }
+
+    primes
+}
+
+fun main() {
+    let primes = generate_primes(10000)
+    println("Generated " + primes.len().to_string() + " primes")
+    println("10,000th prime: " + primes[9999].to_string())
+}

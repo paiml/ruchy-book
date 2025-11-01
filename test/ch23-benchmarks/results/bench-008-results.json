@@ -1,0 +1,65 @@
+{
+  "benchmark": "BENCH-008",
+  "name": "Prime generation (first 10K primes)",
+  "modes": {
+    "python": 
+{
+  "name": "Prime generation (first 10K primes)",
+  "mode": "python",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 90.60,
+  "median_ms": 90.00,
+  "stddev_ms": 2.50,
+  "min_ms": 88,
+  "max_ms": 97,
+  "raw_results": [90,97,89,90,89,90,92,88,91,90],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:21:55+01:00"
+  }
+}
+,
+    "ruchy-ast": 
+{
+  "name": "Prime generation (first 10K primes)",
+  "mode": "ruchy-ast",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3357.30,
+  "median_ms": 3365.00,
+  "stddev_ms": 41.77,
+  "min_ms": 3292,
+  "max_ms": 3413,
+  "raw_results": [3413,3318,3365,3387,3292,3383,3357,3365,3396,3297],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:21:55+01:00"
+  }
+}
+,
+    "ruchy-bytecode": 
+{
+  "name": "Prime generation (first 10K primes)",
+  "mode": "ruchy-bytecode",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3.70,
+  "median_ms": 4.00,
+  "stddev_ms": 0.67,
+  "min_ms": 3,
+  "max_ms": 5,
+  "raw_results": [4,4,4,3,4,5,3,4,3,3],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:21:55+01:00"
+  }
+}
+,
+    "ruchy-transpiled": 
