@@ -25,7 +25,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 - BENCH-002: Write/append operations (100K writes)
 
 ### String Processing (2 examples)
-- BENCH-003: String concatenation (10K operations) ⚠️ INCOMPLETE - Blocked by [issue #113](https://github.com/paiml/ruchy/issues/113) (same transpiler bugs)
+- BENCH-003: String concatenation (10K operations) ⚠️ PARTIAL FIX - v3.171.0 fixed parameters, string return type still blocked ([#113](https://github.com/paiml/ruchy/issues/113))
 - BENCH-004: Regex matching (100K patterns)
 
 ### Data Structures (2 examples)
@@ -34,7 +34,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 
 ### Mathematics (2 examples)
 - BENCH-007: Fibonacci (recursive, n=20) ✅ COMPLETE
-- BENCH-008: Prime number generation (first 10K primes) ⚠️ INCOMPLETE - Blocked by [issue #113](https://github.com/paiml/ruchy/issues/113) (transpiler type inference bugs)
+- BENCH-008: Prime number generation (first 10K primes) ⚠️ NEARLY COMPLETE - Major bugs FIXED in v3.171.0! Minor usize issue remains ([#113](https://github.com/paiml/ruchy/issues/113))
 
 ### System Operations (2 examples)
 - BENCH-009: JSON parsing (10K objects)
@@ -55,12 +55,12 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 |----|-------------|--------|------------|----------|
 | BENCH-001 | File read (10MB text) | pending | 8 | P0 |
 | BENCH-002 | File write (100K operations) | pending | 8 | P0 |
-| BENCH-003 | String concatenation (10K ops) | ⚠️ incomplete | 6 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) |
-| BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 |
-| BENCH-005 | List operations (1M elements) | pending | 8 | P0 |
-| BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 |
-| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 |
-| BENCH-008 | Prime generation (10K primes) | ⚠️ incomplete | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) |
+| BENCH-003 | String concatenation (10K ops) | ⚠️ partial | 6 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.171.0 |
+| BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 | Retest with v3.171.0 |
+| BENCH-005 | List operations (1M elements) | pending | 8 | P0 | Retest with v3.171.0 |
+| BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 | Retest with v3.171.0 |
+| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 | v3.171.0 verified |
+| BENCH-008 | Prime generation (10K primes) | ⚠️ nearly | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.171.0 |
 | BENCH-009 | JSON parsing (10K objects) | pending | 10 | P0 |
 | BENCH-010 | HTTP mock (1K requests) | pending | 12 | P0 |
 
