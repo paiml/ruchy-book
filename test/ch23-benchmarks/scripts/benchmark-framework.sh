@@ -1,7 +1,7 @@
-#!/usr/bin/env -S ../../bashrs/target/release/bashrs
+#!/usr/bin/env bash
 # Chapter 23: Scientific Benchmarking Framework
 # Implements rigorous, reproducible performance testing
-# bashrs compliant - strict mode enabled
+# bashrs quality-checked - lint with: bashrs lint benchmark-framework.sh
 
 set -euo pipefail
 
@@ -25,49 +25,15 @@ readonly ENV_DATE=$(date -Iseconds)
 # ============================================================================
 
 calculate_mean() {
-    local values=("$@")
-    local sum=0
-    local count=${#values[@]}
-
-    for val in "${values[@]}"; do
-        sum=$(echo "$sum + $val" | bc)
-    done
-
-    echo "scale=3; $sum / $count" | bc
+    python3 -c "import sys; vals = [float(x) for x in sys.argv[1:]]; print(f'{sum(vals)/len(vals):.2f}')" "$@"
 }
 
 calculate_median() {
-    local values=("$@")
-    local count=${#values[@]}
-
-    # Sort values
-    IFS=$'\n' sorted=($(sort -n <<<"${values[*]}"))
-    unset IFS
-
-    if (( count % 2 == 0 )); then
-        local mid1=$((count / 2 - 1))
-        local mid2=$((count / 2))
-        echo "scale=3; (${sorted[$mid1]} + ${sorted[$mid2]}) / 2" | bc
-    else
-        local mid=$((count / 2))
-        echo "${sorted[$mid]}"
-    fi
+    python3 -c "import sys; vals = sorted([float(x) for x in sys.argv[1:]]); n = len(vals); print(f'{vals[n//2] if n % 2 else (vals[n//2-1] + vals[n//2])/2:.2f}')" "$@"
 }
 
 calculate_stddev() {
-    local values=("$@")
-    local mean=$(calculate_mean "${values[@]}")
-    local count=${#values[@]}
-    local sum_sq_diff=0
-
-    for val in "${values[@]}"; do
-        local diff=$(echo "$val - $mean" | bc)
-        local sq=$(echo "$diff * $diff" | bc)
-        sum_sq_diff=$(echo "$sum_sq_diff + $sq" | bc)
-    done
-
-    local variance=$(echo "scale=6; $sum_sq_diff / $count" | bc)
-    echo "scale=3; sqrt($variance)" | bc
+    python3 -c "import sys, statistics; vals = [float(x) for x in sys.argv[1:]]; print(f'{statistics.stdev(vals):.2f}')" "$@"
 }
 
 calculate_min() {
