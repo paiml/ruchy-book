@@ -1,12 +1,12 @@
 # Chapter 14: The Ruchy Toolchain - Professional Development Tools
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Validated (5/5 examples)
+**Chapter Status**: ✅ 100% Validated (5/5 code examples) + 🆕 3 New Tools Documented
 
 **Chapter Type**: Tooling Documentation (not language features)
 
-*Last updated: 2025-10-13*
-*Ruchy version: v1.84.0*
+*Last updated: 2025-11-01*
+*Ruchy version: v3.169.0*
 
 **Validated Examples (5/5) - 100% Pass Rate**:
 - Example 1: Basic greet function ✅
@@ -15,11 +15,21 @@
 - Example 4: Recursive factorial ✅
 - Example 5: Iterative fibonacci ✅
 
-**Tools Validated**:
+**Tools Documented**:
 - ✅ ruchy check - Syntax validation
+- ✅ ruchy test - Testing with coverage
 - ✅ ruchy lint - Style analysis
 - ✅ ruchy score - Quality scoring (A+ grades achieved)
 - ✅ ruchy runtime - Performance analysis
+- ✅ ruchy fmt - Code formatting
+- ✅ ruchy doc - Documentation generation
+- ✅ ruchy prove - Formal verification
+- ✅ ruchy ast - AST analysis
+- ✅ ruchy bench - Benchmarking
+- ✅ ruchy-coverage - Coverage reporting
+- 🆕 ruchy publish - Package publishing (v3.169.0)
+- 🆕 ruchy mcp - Real-time quality server (v3.169.0)
+- 🆕 ruchy optimize - Hardware optimization analysis (v3.169.0)
 
 **Note**: This chapter documents HOW to use Ruchy's professional tooling suite. All code examples have been validated to compile and run successfully.
 <!-- DOC_STATUS_END -->
@@ -132,9 +142,82 @@ Analysis Depth: standard
 
 **Score Interpretation**:
 - **1.00 (A+)**: Production ready
-- **0.85-0.99 (A)**: High quality  
+- **0.85-0.99 (A)**: High quality
 - **0.70-0.84 (B)**: Good quality
 - **< 0.70**: Needs improvement
+
+### Real-Time Quality Server - `ruchy mcp` 🆕
+
+**New in v3.169.0** - Model Context Protocol server for real-time quality analysis:
+
+```bash
+# Start MCP server for IDE integration
+$ ruchy mcp
+🚀 Ruchy MCP Server started
+📡 Listening on: stdio
+🔧 Quality threshold: 0.8
+⚡ Streaming: disabled
+
+# Start with custom configuration
+$ ruchy mcp --name my-project-quality \\
+           --min-score 0.9 \\
+           --max-complexity 8 \\
+           --streaming \\
+           --verbose
+🚀 Ruchy MCP Server: my-project-quality
+📊 Min quality score: 0.9
+🔧 Max complexity: 8
+⚡ Streaming updates: enabled
+📡 Ready for connections
+
+# With timeout configuration
+$ ruchy mcp --timeout 7200
+⏱️  Session timeout: 2 hours
+```
+
+**MCP Server Options**:
+
+- `--name <NAME>`: Server name for MCP identification (default: ruchy-mcp)
+- `--streaming`: Enable streaming quality updates
+- `--timeout <TIMEOUT>`: Session timeout in seconds (default: 3600)
+- `--min-score <MIN_SCORE>`: Minimum quality score threshold (default: 0.8)
+- `--max-complexity <MAX_COMPLEXITY>`: Maximum complexity threshold (default: 10)
+- `-v, --verbose`: Enable verbose logging
+- `-c, --config <CONFIG>`: Configuration file path
+
+**Use Cases**:
+
+1. **IDE Integration** - Real-time quality feedback in editors (VS Code, Cursor, etc.)
+2. **CI/CD Monitoring** - Continuous quality analysis during builds
+3. **Team Dashboards** - Live quality metrics visualization
+4. **Code Review** - Automated quality checks during PR reviews
+
+**Example Integration with VS Code**:
+
+```json
+{
+  "ruchy.mcp": {
+    "enabled": true,
+    "server": "ruchy mcp --streaming --min-score 0.9",
+    "autoStart": true
+  }
+}
+```
+
+**MCP Protocol Features**:
+
+- Real-time syntax validation
+- Live quality scoring
+- Streaming complexity analysis
+- Instant lint feedback
+- Coverage monitoring
+- Performance metrics
+
+**When to use**:
+- During active development for immediate feedback
+- In team environments for shared quality standards
+- With CI/CD for continuous monitoring
+- For dashboard integration and visualization
 
 ## Advanced Quality Tools
 
@@ -161,9 +244,82 @@ fun main() {
 $ ruchy runtime factorial.ruchy
 === Performance Analysis ===
 - Time Complexity: O(n)
-- Space Complexity: O(n) 
+- Space Complexity: O(n)
 - Optimization Score: 85%
 ```
+
+### Hardware-Aware Optimization - `ruchy optimize` 🆕
+
+**New in v3.169.0** - Analyze code for hardware-specific optimization opportunities:
+
+```bash
+# Quick optimization analysis
+$ ruchy optimize factorial.ruchy --depth quick
+=== Optimization Analysis ===
+File: factorial.ruchy
+Hardware Profile: detect
+Analysis Depth: quick
+Threshold: 5.00%
+
+=== Recommendations ===
+• Consider loop unrolling for tight loops
+• Use const generics where possible
+• Profile-guided optimization recommended
+
+# Deep analysis with all details
+$ ruchy optimize factorial.ruchy --depth deep --cache --branches --vectorization
+=== Deep Optimization Analysis ===
+
+📊 Cache Behavior:
+• L1 cache misses: Low (< 5%)
+• L2 cache utilization: Good
+• Recommendation: Data locality is optimal
+
+🔀 Branch Prediction:
+• Branch mispredictions: 2.3%
+• Recommendation: Consider branch-free algorithms for hot paths
+
+⚡ Vectorization:
+• SIMD opportunities: 3 found
+• Recommendation: Use array operations for auto-vectorization
+
+💰 Abstraction Cost:
+• Function call overhead: Minimal
+• Recommendation: Current abstraction level is optimal
+
+# Benchmark hardware characteristics
+$ ruchy optimize --benchmark
+=== Hardware Benchmarking ===
+CPU: Intel Core i7-9750H @ 2.60GHz
+Architecture: x86_64
+Cache sizes: L1: 64KB, L2: 256KB, L3: 12MB
+SIMD: AVX2, AVX512 available
+Branch predictor: Modern (> 95% accuracy)
+
+# Generate HTML report
+$ ruchy optimize factorial.ruchy --format html --output optimization_report.html
+📊 Saved optimization analysis to: optimization_report.html
+```
+
+**Optimization Analysis Options**:
+
+- `--hardware <HARDWARE>`: Target hardware profile (detect, intel, amd, arm)
+- `--depth <DEPTH>`: Analysis depth (quick, standard, deep)
+- `--cache`: Show cache behavior analysis
+- `--branches`: Show branch prediction analysis
+- `--vectorization`: Show SIMD vectorization opportunities
+- `--abstractions`: Show abstraction cost analysis
+- `--benchmark`: Benchmark hardware characteristics
+- `--format <FORMAT>`: Output format (text, json, html)
+- `--output <OUTPUT>`: Save analysis to file
+- `--threshold <THRESHOLD>`: Minimum impact threshold (0.0-1.0)
+
+**When to use**:
+- Optimizing performance-critical code
+- Understanding hardware-specific bottlenecks
+- Planning SIMD/vectorization strategies
+- Analyzing cache behavior
+- Making informed optimization decisions
 
 ### Formal Verification - `ruchy prove`
 
@@ -208,6 +364,68 @@ $ ruchy doc --output docs/ src/
 ```
 
 The doc tool extracts function signatures, comments, and examples to create professional documentation.
+
+### Package Publishing - `ruchy publish` 🆕
+
+**New in v3.169.0** - Publish your Ruchy packages to the registry for community sharing:
+
+```bash
+# Validate package before publishing (dry-run)
+$ ruchy publish --dry-run
+🔍 Dry-run mode: Validating package 'my-package'
+✅ Package validation successful
+📦 Package: my-package v1.0.0
+👤 Authors: Your Name <you@example.com>
+📝 License: MIT
+
+✨ Would publish package (skipped in dry-run mode)
+
+# Publish to Ruchy registry
+$ ruchy publish
+📦 Publishing my-package v1.0.0 to https://ruchy.dev/registry
+✅ Successfully published my-package v1.0.0
+🌐 Available at: https://ruchy.dev/registry/my-package
+```
+
+**Package Configuration** - Create a `Ruchy.toml` manifest:
+
+```toml
+[package]
+name = "my-awesome-library"
+version = "1.0.0"
+authors = ["Your Name <you@example.com>"]
+description = "A fantastic Ruchy library"
+license = "MIT"
+repository = "https://github.com/username/my-awesome-library"
+
+[dependencies]
+# Add dependencies here
+```
+
+**Publishing Options**:
+
+```bash
+# Specify version explicitly
+$ ruchy publish --version 1.0.1
+
+# Allow publishing with uncommitted changes
+$ ruchy publish --allow-dirty
+
+# Use custom registry
+$ ruchy publish --registry https://custom-registry.example.com
+```
+
+**Publishing Workflow**:
+
+1. **Validate locally**: `ruchy publish --dry-run`
+2. **Run quality gates**: Ensure all tests pass, A+ score
+3. **Publish**: `ruchy publish`
+4. **Verify**: Check package at registry URL
+
+**When to publish**:
+- After achieving quality gates (A+ score, 100% tests)
+- For reusable libraries and tools
+- To share with the Ruchy community
 
 ## Professional Workflow Integration
 
@@ -533,17 +751,27 @@ $ ruchy score --history low_quality.ruchy
 
 The Ruchy toolchain provides professional-grade development tools:
 
+**Core Development Tools:**
 - ✅ **ruchy check**: Syntax validation and compilation verification
 - ✅ **ruchy test**: Comprehensive testing with coverage analysis
+- ✅ **ruchy fmt**: Consistent code formatting
+- ✅ **ruchy ast**: Code structure analysis
+
+**Quality Analysis Tools:**
 - ✅ **ruchy lint**: Style analysis and best practices enforcement
 - ✅ **ruchy score**: Unified quality scoring (target: A+ grade)
-- ✅ **ruchy fmt**: Consistent code formatting
-- ✅ **ruchy doc**: Automated documentation generation
+- 🆕 **ruchy mcp**: Real-time quality server via Model Context Protocol (v3.169.0)
+
+**Performance Tools:**
 - ✅ **ruchy runtime**: Performance analysis and optimization
-- ✅ **ruchy prove**: Formal verification capabilities
-- ✅ **ruchy ast**: Code structure analysis
+- 🆕 **ruchy optimize**: Hardware-aware optimization analysis (v3.169.0)
 - ✅ **ruchy bench**: Performance benchmarking
+
+**Advanced Tools:**
+- ✅ **ruchy prove**: Formal verification capabilities
 - ✅ **ruchy-coverage**: Detailed coverage reporting
+- ✅ **ruchy doc**: Automated documentation generation
+- 🆕 **ruchy publish**: Package publishing to Ruchy registry (v3.169.0)
 
 ## Key Takeaways
 
