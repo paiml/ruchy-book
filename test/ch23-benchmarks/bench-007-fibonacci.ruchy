@@ -1,0 +1,20 @@
+// BENCH-007: Fibonacci recursive (n=30)
+// Ruchy implementation matching Python baseline
+
+fun fibonacci(n) {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fun main() {
+    let result = fibonacci(30)
+    println("fib(30) = " + result.to_string())
+
+    // Verify correctness
+    if result != 832040 {
+        panic("Expected 832040, got " + result.to_string())
+    }
+}
