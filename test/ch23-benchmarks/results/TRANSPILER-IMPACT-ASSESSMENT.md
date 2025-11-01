@@ -82,14 +82,26 @@ The Ruchy transpiler has systematic type inference failures:
 
 ## Debugging Tools
 
-### Using ruchydbg
+### Using ruchydbg v1.1.6
+
+**Version**: ruchydbg 1.1.6 (installed)
+**Documentation**: `book/src/phase4_debugger/debugger-047-performance-profiler.md` (1052 LOC)
 
 ```bash
-# Validate type consistency
-../../../ruchydbg/target/release/ruchydbg validate <file>.ruchy
+# Validate type consistency (v1.1.6)
+ruchydbg validate <file>.ruchy
 
-# Expected output for buggy code:
-# ⚠️ Function return type mismatch: expected T, inferred U
+# Expected output for BENCH-008:
+# ⚠️  Type inference error: Function 'is_prime'
+#     Expected return type: bool
+#     Inferred return type: i32
+#     Location: bench-008-primes.ruchy:5:1
+
+# Expected output for BENCH-003:
+# ⚠️  Type inference error: Function 'string_concatenation'
+#     Expected parameter 'iterations' type: i32
+#     Inferred parameter 'iterations' type: &str
+#     Location: bench-003-string-concat.ruchy:5:1
 ```
 
 ### Using ruchy --trace
