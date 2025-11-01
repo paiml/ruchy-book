@@ -34,7 +34,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 
 ### Mathematics (2 examples)
 - BENCH-007: Fibonacci (recursive, n=20) ✅ COMPLETE
-- BENCH-008: Prime number generation (first 10K primes) ⚠️ BLOCKED - Transpiler bugs found
+- BENCH-008: Prime number generation (first 10K primes) ⚠️ INCOMPLETE - Blocked by [issue #113](https://github.com/paiml/ruchy/issues/113) (transpiler type inference bugs)
 
 ### System Operations (2 examples)
 - BENCH-009: JSON parsing (10K objects)
@@ -60,7 +60,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 | BENCH-005 | List operations (1M elements) | pending | 8 | P0 |
 | BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 |
 | BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 |
-| BENCH-008 | Prime generation (10K primes) | ⚠️ blocked | 8 | P0 |
+| BENCH-008 | Prime generation (10K primes) | ⚠️ incomplete | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) |
 | BENCH-009 | JSON parsing (10K objects) | pending | 10 | P0 |
 | BENCH-010 | HTTP mock (1K requests) | pending | 12 | P0 |
 
