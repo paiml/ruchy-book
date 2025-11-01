@@ -71,9 +71,7 @@ with open('results/bench-007-results.json') as f:
 
 print(f"\nBenchmark: {data['name']}\n")
 print("Mode                | Mean (ms)  | Median (ms) | StdDev (ms)")
-print("--------------------|-----------
-
-|-------------|------------")
+print("--------------------|-----------:|------------:|-----------:")
 
 for mode_name, mode_data in data['modes'].items():
     mean = mode_data['mean_ms']
