@@ -1,35 +1,105 @@
 {
   "benchmark": "BENCH-007",
-  "name": "Fibonacci recursive (n=30)",
+  "name": "Fibonacci recursive (n=20)",
   "modes": {
     "python": 
 {
-  "name": "Fibonacci recursive (n=30)",
+  "name": "Fibonacci recursive (n=20)",
   "mode": "python",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 8.100,
-  "median_ms": ,
-  "stddev_ms": 72.920573,
-  "min_ms": fib(30) = 832040,
-  "max_ms": 84,
-  "raw_results": [fib(30) = 832040
-80,fib(30) = 832040
-80,fib(30) = 832040
-79,fib(30) = 832040
-84,fib(30) = 832040
-82,fib(30) = 832040
-81,fib(30) = 832040
-84,fib(30) = 832040
-79,fib(30) = 832040
-80,fib(30) = 832040
-81],
+  "mean_ms": 16.20,
+  "median_ms": 16.00,
+  "stddev_ms": 0.63,
+  "min_ms": 15,
+  "max_ms": 17,
+  "raw_results": [16,16,16,16,16,17,17,17,15,16],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-01T13:01:58+01:00"
+    "timestamp": "2025-11-01T13:15:38+01:00"
   }
 }
 ,
     "ruchy-ast": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-ast",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 149.50,
+  "median_ms": 149.50,
+  "stddev_ms": 4.65,
+  "min_ms": 144,
+  "max_ms": 160,
+  "raw_results": [149,147,151,151,150,144,144,152,160,147],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:15:38+01:00"
+  }
+}
+,
+    "ruchy-bytecode": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-bytecode",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3.40,
+  "median_ms": 3.00,
+  "stddev_ms": 0.52,
+  "min_ms": 3,
+  "max_ms": 4,
+  "raw_results": [3,4,3,3,4,3,3,4,4,3],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:15:38+01:00"
+  }
+}
+,
+    "ruchy-transpiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-transpile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.10,
+  "median_ms": 1.00,
+  "stddev_ms": 0.32,
+  "min_ms": 1,
+  "max_ms": 2,
+  "raw_results": [1,1,1,1,1,2,1,1,1,1],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:15:38+01:00"
+  }
+}
+,
+    "ruchy-compiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-compile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.10,
+  "median_ms": 1.00,
+  "stddev_ms": 0.32,
+  "min_ms": 1,
+  "max_ms": 2,
+  "raw_results": [1,1,1,1,1,1,1,2,1,1],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-01T13:15:38+01:00"
+  }
+}
+  }
+}

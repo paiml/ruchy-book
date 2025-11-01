@@ -54,7 +54,7 @@ calculate_max() {
 time_execution() {
     local start end elapsed
     start=$(date +%s%N)
-    "$@"
+    "$@" > /dev/null 2>&1  # Suppress stdout/stderr during timing
     end=$(date +%s%N)
     elapsed=$(( (end - start) / 1000000 ))  # Convert to milliseconds
     echo "$elapsed"
@@ -71,20 +71,43 @@ run_benchmark() {
 
     echo "Running: $name [$mode]" >&2
 
+    # Prepare compiled artifacts (not timed)
+    local binary=""
+    local rust_file=""
+    if [[ "$mode" == "ruchy-transpile" ]]; then
+        rust_file="${script%.ruchy}.rs"
+        binary="${script%.ruchy}-transpiled"
+        echo "  Transpiling..." >&2
+        ruchy transpile "$script" > "$rust_file" 2>/dev/null
+        rustc -O "$rust_file" -o "$binary" 2>/dev/null
+    elif [[ "$mode" == "ruchy-compile" ]]; then
+        binary="${script%.ruchy}-compiled"
+        echo "  Compiling..." >&2
+        ruchy compile "$script" -o "$binary" >/dev/null 2>&1
+    fi
+
     # Warmup
     echo "  Warmup ($WARMUP_ITERATIONS iterations)..." >&2
     for i in $(seq 1 $WARMUP_ITERATIONS); do
-        execute_benchmark "$mode" "$script" > /dev/null
+        execute_benchmark "$mode" "$script" "$binary" > /dev/null
     done
 
     # Measure
     echo "  Measuring ($MEASURED_ITERATIONS iterations)..." >&2
     local results=()
     for i in $(seq 1 $MEASURED_ITERATIONS); do
-        local time_ms=$(execute_benchmark "$mode" "$script")
+        local time_ms=$(execute_benchmark "$mode" "$script" "$binary")
         results+=("$time_ms")
         echo "    Iteration $i: ${time_ms}ms" >&2
     done
+
+    # Cleanup compiled artifacts
+    if [[ -n "$binary" ]]; then
+        rm -f "$binary"
+    fi
+    if [[ -n "$rust_file" ]]; then
+        rm -f "$rust_file"
+    fi
 
     # Calculate statistics
     local mean=$(calculate_mean "${results[@]}")
@@ -119,6 +142,7 @@ EOF
 execute_benchmark() {
     local mode=$1
     local script=$2
+    local binary=$3  # Pre-compiled binary (for transpile/compile modes)
 
     case "$mode" in
         python)
@@ -130,25 +154,9 @@ execute_benchmark() {
         ruchy-bytecode)
             time_execution ruchy --vm-mode bytecode run "$script"
             ;;
-        ruchy-transpile)
-            # Transpile first (not timed)
-            local rust_file="${script%.ruchy}.rs"
-            local binary="${script%.ruchy}-transpiled"
-            ruchy transpile "$script" > "$rust_file" 2>/dev/null
-            rustc -O "$rust_file" -o "$binary" 2>/dev/null
-            # Time execution
+        ruchy-transpile|ruchy-compile)
+            # Binary already compiled, just execute
             time_execution "./$binary"
-            # Cleanup
-            rm -f "$rust_file" "$binary"
-            ;;
-        ruchy-compile)
-            # Compile first (not timed)
-            local binary="${script%.ruchy}-compiled"
-            ruchy compile "$script" -o "$binary" 2>/dev/null
-            # Time execution
-            time_execution "./$binary"
-            # Cleanup
-            rm -f "$binary"
             ;;
         *)
             echo "Unknown mode: $mode" >&2
