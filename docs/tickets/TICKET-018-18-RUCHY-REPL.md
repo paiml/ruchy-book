@@ -38,7 +38,7 @@ Based on initial testing:
 ```bash
 # Basic usage (interactive mode)
 ruchy repl
-# Welcome to Ruchy REPL v3.152.0
+# Welcome to Ruchy REPL v3.169.0
 # Type :help for commands, :quit to exit
 # > println("Hello")
 # Hello

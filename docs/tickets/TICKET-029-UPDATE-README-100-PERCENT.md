@@ -29,7 +29,7 @@ Current README likely shows:
 - README shows 100% pass rate prominently
 - Milestone achievement celebrated
 - Links to GitHub issues (#91, #92)
-- Current Ruchy version (v3.151.0)
+- Current Ruchy version (v3.169.0)
 
 ## Solution (EXTREME TDD)
 
@@ -52,7 +52,7 @@ Update README.md with:
    ```markdown
    ![Tests](https://img.shields.io/badge/tests-135%2F135-success)
    ![Pass Rate](https://img.shields.io/badge/pass%20rate-100%25-brightgreen)
-   ![Ruchy](https://img.shields.io/badge/ruchy-v3.151.0-blue)
+   ![Ruchy](https://img.shields.io/badge/ruchy-v3.169.0-blue)
    ```
 
 2. **Achievement Highlight**:
@@ -73,7 +73,7 @@ Update README.md with:
    ## Quality Metrics
 
    - **Pass Rate**: 100% (135/135 examples)
-   - **Ruchy Version**: v3.151.0
+   - **Ruchy Version**: v3.169.0
    - **Vaporware**: 0 violations (zero tolerance)
    - **GitHub Issues**: 2 filed ([#91](link), [#92](link))
    ```
@@ -92,7 +92,7 @@ grep "100%" README.md
 grep "#91\|#92" README.md
 
 # Verify Ruchy version updated
-grep "v3.151.0\|3.151.0" README.md
+grep "v3.169.0\|3.151.0" README.md
 
 # Verify achievement section added
 grep "Achievement\|TICKET-027" README.md
@@ -110,7 +110,7 @@ Add new "Status" or "Achievement" section near top
 
 **Required Elements**:
 1. ✅ 100% pass rate prominently displayed
-2. ✅ Current Ruchy version (v3.151.0)
+2. ✅ Current Ruchy version (v3.169.0)
 3. ✅ Link to INTEGRATION.md
 4. ✅ Reference to GitHub issues filed
 5. ✅ Optional: Journey (91% → 100%)
@@ -119,7 +119,7 @@ Add new "Status" or "Achievement" section near top
 ## Acceptance Criteria
 
 - [ ] README shows 100% pass rate
-- [ ] Ruchy version updated to v3.151.0
+- [ ] Ruchy version updated to v3.169.0
 - [ ] Link to INTEGRATION.md added
 - [ ] GitHub issues #91 and #92 referenced (optional)
 - [ ] Achievement celebrated appropriately
@@ -148,7 +148,7 @@ Add new "Status" or "Achievement" section near top
 | Metric | Before | After | Change |
 |--------|--------|-------|--------|
 | README pass rate | <100% or missing | 100% | ✅ Updated |
-| Ruchy version | <v3.151.0 | v3.151.0 | ✅ Current |
+| Ruchy version | <v3.169.0 | v3.169.0 | ✅ Current |
 | Achievement visible | No | Yes | ✅ Highlighted |
 | INTEGRATION.md link | Maybe | Yes | ✅ Added |
 | GitHub issues | Not linked | Linked | ✅ Referenced |

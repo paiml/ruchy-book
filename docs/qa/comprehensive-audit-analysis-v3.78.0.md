@@ -1,8 +1,8 @@
-# Comprehensive Analysis: Ruchy v3.78.0 + Gemini Audit Report
+# Comprehensive Analysis: Ruchy v3.169.0 + Gemini Audit Report
 
 **Date**: 2025-10-14
-**Ruchy Version Tested**: v3.78.0 (updated from v3.76.0)
-**Audit Version**: v3.77.0 (Gemini audit)
+**Ruchy Version Tested**: v3.169.0 (updated from v3.169.0)
+**Audit Version**: v3.169.0 (Gemini audit)
 **Book Status**: 84% passing (113/134 examples)
 
 ---
@@ -10,13 +10,13 @@
 ## Executive Summary
 
 ### Current State
-- **Updated Ruchy**: v3.76.0 → v3.78.0 (2 minor versions)
+- **Updated Ruchy**: v3.169.0 → v3.169.0 (2 minor versions)
 - **Audit Results**: 84% book examples, 60% one-liners passing
 - **Critical Issue**: **DataFrames still not working in transpiler mode**
 - **Alignment**: Our testing matches Gemini audit findings (84% success rate)
 
 ### Key Finding
-**DataFrame "fixes" in v3.78.0 did NOT resolve transpilation issues**
+**DataFrame "fixes" in v3.169.0 did NOT resolve transpilation issues**
 - REPL still fails on `df!` macro syntax
 - Compilation times out or fails
 - Same errors as before: missing `polars` crate
@@ -34,10 +34,10 @@
   - `df[0]` → "Cannot index dataframe with integer"
   - `df.employee_id` → "Cannot access field 'employee_id' on type dataframe"
 
-**Our Testing (v3.78.0)**:
+**Our Testing (v3.169.0)**:
 - ❌ REPL test: "Error: In backslash lambda after params: Expected Arrow, found Bang"
 - ❌ Compilation: Times out (>2 minutes)
-- ❌ Status: **No improvement from v3.76.0**
+- ❌ Status: **No improvement from v3.169.0**
 
 **Root Causes** (confirmed):
 1. **Transpiler issue**: Missing polars crate integration
@@ -209,7 +209,7 @@ Error: cannot find value `actual` in this scope
 
 ---
 
-## What v3.78.0 Update Did (or Didn't Do)
+## What v3.169.0 Update Did (or Didn't Do)
 
 ### Expected (Based on "DataFrame fixes" claim)
 - ✅ Fix DataFrame transpilation
@@ -223,7 +223,7 @@ Error: cannot find value `actual` in this scope
 - ❓ May have fixed OTHER issues (not DataFrame-specific)
 
 ### Conclusion
-**v3.78.0 did NOT fix DataFrame transpilation as expected.**
+**v3.169.0 did NOT fix DataFrame transpilation as expected.**
 
 Possible explanations:
 1. "DataFrame fixes" were for interpreter mode only
@@ -336,7 +336,7 @@ Possible explanations:
 
 ### Immediate Actions (This Week)
 
-1. **Verify v3.78.0 changelog**
+1. **Verify v3.169.0 changelog**
    - What were the actual "DataFrame fixes"?
    - Were they for interpreter or transpiler?
 
@@ -379,7 +379,7 @@ Possible explanations:
 - ✅ Our testing **aligns perfectly** with Gemini audit (84%)
 - ✅ DataFrame issue is **confirmed critical**
 - ✅ Clear breakdown of all 21 failures
-- ❌ v3.78.0 did **NOT** fix DataFrames
+- ❌ v3.169.0 did **NOT** fix DataFrames
 
 ### What's Blocking 100%
 1. **DataFrames** (43% of failures) - CRITICAL

@@ -17,7 +17,7 @@ Validate `ruchydbg run` command for debug execution with time-travel debugging f
 ### RED Phase - Test Infrastructure
 - [x] Create `test/tools/test-ruchydbg-run.ts` with debugger validation
 - [x] Test timeout detection on infinite loops
-- [x] Test type-aware tracing (v3.149.0+)
+- [x] Test type-aware tracing (v3.169.0+)
 - [x] Test record-replay functionality
 - [x] Generate baseline performance metrics
 - [x] Performance: Target <100ms avg per file (achieved 4ms - excellent!)
@@ -35,7 +35,7 @@ Validate `ruchydbg run` command for debug execution with time-travel debugging f
 
 ## Expected Tool Behavior
 
-Based on `ruchydbg --help` (v1.9.1):
+Based on `ruchydbg --help` (v3.169.0):
 
 ```bash
 # Basic debug execution
@@ -183,7 +183,7 @@ git push origin main
 - Parent: TICKET-028 (Comprehensive Tool Expansion)
 - Previous: TICKET-028-16 (--trace flag - Phase 2A STARTED)
 - Next: TICKET-028-15 (ruchy wasm - WebAssembly toolkit)
-- Related: ruchydbg v1.9.1, Ruchy v3.152.0
+- Related: ruchydbg v3.169.0, Ruchy v3.169.0
 
 ---
 

@@ -45,7 +45,7 @@ ruchydbg -v
 ruchydbg --version
 
 # Expected output format
-# RuchyRuchy Debugging Tools CLI v1.9.1
+# RuchyRuchy Debugging Tools CLI v3.169.0
 ```
 
 ## Key Metrics to Track

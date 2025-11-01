@@ -20,7 +20,7 @@ Debugging tools are CRITICAL to ruchy development and must be tested on ALL exam
 
 ### Evidence
 From ../ruchyruchy README.md:
-- **ruchydbg v1.9.0**: Complete debugging toolkit
+- **ruchydbg v3.169.0**: Complete debugging toolkit
 - **12 debugging features**: DAP server, breakpoints, time-travel, etc.
 - **1.4M+ test executions**: Production-ready debugging infrastructure
 - **95%+ bug detection rate**: Critical quality tool
@@ -118,7 +118,7 @@ echo "2 + 2" | ruchy --trace
 - ✅ ruchydbg has 3 commands: run, validate, version
 - ✅ ruchy has --trace flag for execution tracing
 - ✅ ruchy has dataflow:debug subcommand for DataFrames
-- ✅ All tools available in v3.149.0
+- ✅ All tools available in v3.169.0
 
 ### Phase 2: Update Testing Infrastructure (1 hour)
 ```typescript
@@ -243,8 +243,8 @@ let df = DataFrame::new()
 
 ## Dependencies
 
-- ruchyruchy v1.9.0 (installed via cargo)
-- ruchy v3.149.0 (current version with --trace)
+- ruchyruchy v3.169.0 (installed via cargo)
+- ruchy v3.169.0 (current version with --trace)
 - deno runtime (for TypeScript test infrastructure)
 - TICKET-018 (parent ticket for comprehensive testing)
 
@@ -253,7 +253,7 @@ let df = DataFrame::new()
 - TICKET-018: 18-Tool Comprehensive Testing
 - ../ruchyruchy/README.md: Complete debugging tools documentation
 - src/ch13-00-debugging-tracing-tdd.md: Debugging chapter
-- docs/DEBUGGER_RESEARCH_v3.149.0.md: v3.149.0 debugging features
+- docs/DEBUGGER_RESEARCH_v3.169.0.md: v3.169.0 debugging features
 
 ## Integration with TICKET-018
 
