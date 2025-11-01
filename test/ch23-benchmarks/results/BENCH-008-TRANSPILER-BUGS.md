@@ -167,13 +167,17 @@ For now, BENCH-008 can only be benchmarked in:
 
 Transpile and compile modes are blocked until transpiler bugs are fixed.
 
-## Debugging with ruchydbg
+## Debugging with ruchydbg v1.1.6
+
+**Version**: ruchydbg 1.1.6 (installed)
+**Documentation**: `book/src/phase4_debugger/debugger-047-performance-profiler.md` (1052 LOC)
+**Phases**: RED-GREEN-REFACTOR-TOOL methodology
 
 Use the Ruchy debugging toolchain to validate and trace these bugs:
 
 ```bash
-# Validate with ruchydbg
-../../../ruchydbg/target/release/ruchydbg validate bench-008-primes.ruchy
+# Validate with ruchydbg v1.1.6
+ruchydbg validate bench-008-primes.ruchy
 
 # Trace type inference during transpilation
 ruchy --trace transpile bench-008-primes.ruchy 2>&1 | grep "type inference"
