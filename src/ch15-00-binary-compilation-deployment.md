@@ -10,7 +10,7 @@
 | ⚠️ Advanced Features | Some | Chapter examples use advanced stdlib |
 
 *Last tested: 2025-10-13*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 *Features: Binary compilation, standalone executables, no runtime dependencies*
 <!-- DOC_STATUS_END -->
 

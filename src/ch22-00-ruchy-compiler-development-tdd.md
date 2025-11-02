@@ -10,7 +10,7 @@
 | ❌ Broken | 0 | - |
 
 *Last tested: 2025-10-13*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 *Note: Chapter documents bash workflows; embedded Ruchy code validated*
 <!-- DOC_STATUS_END -->
 

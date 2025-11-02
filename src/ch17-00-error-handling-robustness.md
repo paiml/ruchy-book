@@ -11,7 +11,7 @@
 | ❌ Broken | 0 | ALL CORE ERROR HANDLING WORKS! |
 
 *Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 
 **Core Error Handling (4/4) - 100% Pass Rate**:
 - Example 1: Safe division with guard clause ✅

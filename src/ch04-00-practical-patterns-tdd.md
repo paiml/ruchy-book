@@ -11,7 +11,7 @@
 | 📋 Requires Implementation | 3 | Waiting for compiler features |
 
 *Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 
 **Working Examples (6/9) - 100% Pass Rate**:
 - Example 1: Calculator with if/else ✅
