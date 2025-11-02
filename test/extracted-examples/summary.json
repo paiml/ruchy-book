@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-11-02T20:55:52.747Z",
-  "ruchy_version": "ruchy 3.174.0",
+  "timestamp": "2025-11-02T21:25:16.734Z",
+  "ruchy_version": "ruchy 3.175.0",
   "chapters_processed": 19,
-  "examples_found": 137,
-  "examples_working": 137,
+  "examples_found": 135,
+  "examples_working": 135,
   "examples_failing": 0,
   "success_rate": 100,
   "chapters": {
@@ -249,8 +249,8 @@
     },
     "ch03-00-functions-tdd": {
       "chapter": "ch03-00-functions-tdd",
-      "total_examples": 10,
-      "working_examples": 10,
+      "total_examples": 9,
+      "working_examples": 9,
       "failing_examples": 0,
       "examples": [
         {
@@ -322,14 +322,6 @@
           "example_number": 9,
           "line_number": 216,
           "code": "fun helper(x: i32) -> i32 {\n    x * x\n}\n\nfun main_calculation(n: i32) -> i32 {\n    helper(n) + helper(n + 1)\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch03-00-functions-tdd.md",
-          "example_number": 10,
-          "line_number": 230,
-          "code": "fun add_profit_margin(df: DataFrame) -> DataFrame {\n    // Add calculated column to DataFrame\n    df.with_column(\"margin\", |row| {\n        (row[\"revenue\"] - row[\"cost\"]) / row[\"revenue\"] * 100.0\n    })\n}\n\nfun summarize_by_category(df: DataFrame) -> DataFrame {\n    // Aggregate DataFrame by category\n    df.group_by(\"category\")\n      .agg(\"quantity\", \"sum\")\n      .agg(\"revenue\", \"mean\")\n      .agg(\"margin\", \"mean\")\n}",
           "passed": true,
           "status": "working"
         }
@@ -561,8 +553,8 @@
     },
     "ch02-00-variables-types-tdd": {
       "chapter": "ch02-00-variables-types-tdd",
-      "total_examples": 8,
-      "working_examples": 8,
+      "total_examples": 7,
+      "working_examples": 7,
       "failing_examples": 0,
       "examples": [
         {
@@ -618,14 +610,6 @@
           "example_number": 7,
           "line_number": 173,
           "code": "fun main() {\n    let initial_value = 100;\n    let factor = 2;\n    let adjustment = 50;\n    let divisor = 3;\n    \n    let step1 = initial_value * factor;\n    let step2 = step1 + adjustment;\n    let final_result = step2 / divisor;\n    \n    println(final_result);  // Output: 83\n}",
-          "passed": true,
-          "status": "working"
-        },
-        {
-          "file": "src/ch02-00-variables-types-tdd.md",
-          "example_number": 8,
-          "line_number": 189,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet PI = 3.14159;\nlet GRAVITY = 9.81;",
           "passed": true,
           "status": "working"
         }
