@@ -92,4 +92,4 @@ Different modes optimize for different things:
 
 ---
 
-*This legend helps understand Chapter 23 benchmarking results.*
+*This legend helps understand Chapter 21 benchmarking results.*

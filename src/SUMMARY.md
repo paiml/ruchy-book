@@ -22,6 +22,7 @@
 - [Chapter 18: DataFrames & Data Processing](ch18-00-dataframes-data-processing.md)
 - [Chapter 19: Structs and OOP (NEW)](ch19-00-structs-oop.md)
 - [Chapter 20: HTTP Server - Production-Ready Static File Serving](ch20-00-http-server.md)
+- [Chapter 21: Scientific Benchmarking - Python vs Ruchy](ch21-00-scientific-benchmarking.md)
 
 ## Development and Integration
 

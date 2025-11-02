@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-Successfully ported the Chapter 23 benchmarking framework to use **bashrs bench v6.25.0**, the new built-in benchmarking command with scientific rigor and quality gates.
+Successfully ported the Chapter 21 benchmarking framework to use **bashrs bench v6.25.0**, the new built-in benchmarking command with scientific rigor and quality gates.
 
 ## Key Improvements
 
@@ -219,7 +219,7 @@ mean=$(python3 -c "import json; data = json.load(open('results.json')); print(da
 1. ✅ **COMPLETE**: Port BENCH-007 to bashrs bench v6.25.0
 2. ⏳ **TODO**: Port remaining benchmarks (BENCH-001-006, BENCH-008-010)
 3. ⏳ **TODO**: Create comparison report between old and new framework
-4. ⏳ **TODO**: Update Chapter 23 documentation with bashrs bench examples
+4. ⏳ **TODO**: Update Chapter 21 documentation with bashrs bench examples
 5. ⏳ **TODO**: Integrate bashrs bench into CI/CD pipeline
 
 ## Files Created/Modified
@@ -231,7 +231,7 @@ mean=$(python3 -c "import json; data = json.load(open('results.json')); print(da
 - `results/BASHRS-V6.25.0-INTEGRATION.md` - This document
 
 ### Modified Files
-- `docs/execution/roadmap-ch23-benchmarking.md` - Updated with bashrs bench info
+- `docs/execution/roadmap-ch21-benchmarking.md` - Updated with bashrs bench info
 
 ### Existing Files (Preserved)
 - `scripts/benchmark-framework.sh` - Old framework (for comparison)
@@ -240,7 +240,7 @@ mean=$(python3 -c "import json; data = json.load(open('results.json')); print(da
 
 ## Conclusion
 
-The integration of **bashrs bench v6.25.0** significantly improves the Chapter 23 benchmarking infrastructure:
+The integration of **bashrs bench v6.25.0** significantly improves the Chapter 21 benchmarking infrastructure:
 
 - ✅ **Scientific Rigor**: Built-in statistical analysis and quality gates
 - ✅ **Reproducibility**: Determinism verification and environment capture

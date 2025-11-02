@@ -223,7 +223,7 @@ The transpiler has a **separate, broken type inference system** that doesn't use
 2. ✅ Added `ruchydbg` debugging instructions for reproducibility
 3. Continue with other benchmarks that may not trigger these bugs
 4. Revisit BENCH-008 transpile/compile modes after fixes
-5. Document these limitations in Chapter 23
+5. Document these limitations in Chapter 21
 
 ---
 

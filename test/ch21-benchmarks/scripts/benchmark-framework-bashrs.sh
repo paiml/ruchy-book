@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Chapter 23: Scientific Benchmarking Framework (bashrs v6.25.0)
+# Chapter 21: Scientific Benchmarking Framework (bashrs v6.25.0)
 # Uses bashrs bench for rigorous, reproducible performance testing
 # bashrs quality-checked - lint with: bashrs lint benchmark-framework-bashrs.sh
 
