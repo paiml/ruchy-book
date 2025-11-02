@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-11-01T11:41:40.767Z",
-  "ruchy_version": "ruchy 3.170.0",
-  "chapters_processed": 18,
-  "examples_found": 136,
-  "examples_working": 136,
+  "timestamp": "2025-11-02T11:26:07.382Z",
+  "ruchy_version": "ruchy 3.171.0",
+  "chapters_processed": 19,
+  "examples_found": 137,
+  "examples_working": 137,
   "examples_failing": 0,
   "success_rate": 100,
   "chapters": {
@@ -1042,6 +1042,22 @@
           "example_number": 4,
           "line_number": 100,
           "code": "fun conditional_processing() {\n    let df = df![\n        \"status\" => [\"active\", \"pending\", \"closed\"],\n        \"value\" => [1000, 500, 1500]\n    ];\n\n    // Display the DataFrame\n    df\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch21-00-scientific-benchmarking": {
+      "chapter": "ch21-00-scientific-benchmarking",
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch21-00-scientific-benchmarking.md",
+          "example_number": 1,
+          "line_number": 111,
+          "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nlet result = fibonacci(20)\n// Expected: 6765",
           "passed": true,
           "status": "working"
         }

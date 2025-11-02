@@ -37,7 +37,9 @@ Ruchy Transpiled:  1.70ms  (9.8x FASTER)
 Ruchy Compiled:    1.68ms  (9.9x FASTER!) ⚡
 ```
 
-**Key Finding:** Ruchy compiled code runs **10x faster than Python** on recursive algorithms, while bytecode mode achieves **4.5x speedup** with instant startup.
+**⚠️ IMPORTANT CAVEAT:** This result represents a **best-case scenario** for Ruchy's compiled mode. Naive recursive Fibonacci is ideally suited to AOT compilation (minimal function call overhead, pure CPU-bound computation, zero I/O). This single benchmark **does not** represent overall language performance across diverse workloads.
+
+**Key Finding (Qualified):** For naive recursive algorithms, Ruchy compiled code runs **up to 10x faster than Python** by eliminating interpreter overhead, while bytecode mode achieves **4.5x speedup** with instant startup. Real-world performance will vary significantly based on workload characteristics (I/O-bound, memory-bound, algorithmic complexity).
 
 ## Execution Modes Explained (ELI5)
 
@@ -401,11 +403,13 @@ The benchmarking infrastructure is **production-ready**:
 
 **What We Learned:**
 
-1. **Ruchy delivers 10x Python performance** for CPU-bound algorithms
-2. **Ruchy bytecode achieves 4.5x speedup** with instant startup
-3. **Deno JIT is slower than Python** for short-running recursive code
+1. **Ruchy achieves up to 10x Python performance** for naive recursive, CPU-bound algorithms (best-case scenario - not representative of all workloads)
+2. **Ruchy bytecode achieves 4.5x speedup** with instant startup for the tested workload
+3. **Deno JIT is slower than Python** for short-running recursive code (but excels at long-running processes)
 4. **Multiple execution modes** optimize for different use cases
-5. **Scientific methodology** ensures reproducible, trustworthy results
+5. **Scientific methodology framework** is established and ready for comprehensive testing
+
+**⚠️ CRITICAL LIMITATION:** These conclusions are based on a **single microbenchmark** (recursive Fibonacci). Comprehensive performance claims require completion of all 10 planned benchmarks covering diverse workload types (I/O, string processing, data structures, etc.).
 
 **Key Metrics (Fibonacci n=20):**
 
@@ -416,11 +420,13 @@ The benchmarking infrastructure is **production-ready**:
 | Memory | 10-15MB | 5MB | 500KB |
 | Binary Size | 4MB | N/A | 2MB |
 
-**The Verdict:**
+**The Verdict (Qualified):**
 
-Ruchy achieves **"Python syntax with Rust performance"** - the 10x speedup is real, measurable, and reproducible.
+For naive recursive algorithms, Ruchy achieves **"Python syntax with Rust performance"** - the 10x speedup is real, measurable, and reproducible for this specific workload class.
 
-**For production workloads requiring both ease-of-use AND performance, Ruchy compiled mode delivers.**
+**Broader Performance Claims Require More Evidence:** Completing the remaining 9 benchmarks (I/O, string processing, data structures, system operations) is essential before making general performance statements.
+
+**Current Status:** 1/10 benchmarks complete. Framework validated. Comprehensive evaluation pending.
 
 ## Exercises
 
