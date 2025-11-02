@@ -16,7 +16,7 @@
 
 
 **Chapter Status**: ✅ 100% Test-Driven (9/9 examples passing)
-**Ruchy Version**: v1.84.0
+**Ruchy Version**: v3.175.0
 **Testing**: All examples verified with `make test-ch03` and 7-layer validation
 
 ## The Problem
@@ -226,24 +226,6 @@ fun main_calculation(n: i32) -> i32 {
 
 ```
 
-### Pattern 4: DataFrame Transformation Functions
-```ruchy
-fun add_profit_margin(df: DataFrame) -> DataFrame {
-    // Add calculated column to DataFrame
-    df.with_column("margin", |row| {
-        (row["revenue"] - row["cost"]) / row["revenue"] * 100.0
-    })
-}
-
-fun summarize_by_category(df: DataFrame) -> DataFrame {
-    // Aggregate DataFrame by category
-    df.group_by("category")
-      .agg("quantity", "sum")
-      .agg("revenue", "mean")
-      .agg("margin", "mean")
-}
-```
-
 ## Function Scope
 
 - Functions can call other functions defined before or after them
@@ -282,4 +264,4 @@ With variables and functions mastered, you have the foundation for writing real 
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.175.0*
