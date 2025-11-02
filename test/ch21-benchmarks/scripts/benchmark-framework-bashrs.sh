@@ -167,18 +167,19 @@ EOF
             ;;
     esac
 
-    # Run bashrs bench with scientific rigor
-    echo "  Benchmarking with bashrs bench..." >&2
+    # Run bashrs bench with scientific rigor + memory tracking
+    echo "  Benchmarking with bashrs bench (with memory tracking)..." >&2
     bashrs bench \
         --warmup "$WARMUP_ITERATIONS" \
         --iterations "$MEASURED_ITERATIONS" \
         --output "$bench_output" \
         --verify-determinism \
+        --measure-memory \
         --quiet \
         "$wrapper_script" >/dev/null 2>&1 || true
 
-    # Parse bashrs bench JSON output (v6.25.0 format)
-    local mean median stddev min max
+    # Parse bashrs bench JSON output (v6.25.0 format with memory tracking)
+    local mean median stddev min max mem_peak_kb mem_mean_kb
     if [[ -f "$bench_output" ]]; then
         # bashrs bench nests data under benchmarks[0].statistics
         mean=$(python3 -c "import json; data = json.load(open('$bench_output')); print(f\"{data['benchmarks'][0]['statistics']['mean_ms']:.2f}\")")
@@ -189,6 +190,10 @@ EOF
 
         # Get raw results as comma-separated integers (rounded to nearest ms)
         local raw_results=$(python3 -c "import json; data = json.load(open('$bench_output')); print(','.join([str(int(round(x))) for x in data['benchmarks'][0]['raw_results_ms']]))")
+
+        # Extract memory metrics if available (v6.25.0+)
+        mem_peak_kb=$(python3 -c "import json; data = json.load(open('$bench_output')); mem = data['benchmarks'][0].get('memory'); print(int(mem['peak_kb']) if mem else 0)" 2>/dev/null || echo "0")
+        mem_mean_kb=$(python3 -c "import json; data = json.load(open('$bench_output')); mem = data['benchmarks'][0].get('memory'); print(int(mem['mean_kb']) if mem else 0)" 2>/dev/null || echo "0")
     else
         echo "Error: bashrs bench did not produce output file" >&2
         return 1
@@ -203,7 +208,7 @@ EOF
         rm -f "$rust_file"
     fi
 
-    # Output JSON in our standard format
+    # Output JSON in our standard format (with memory metrics)
     cat <<EOF
 {
   "name": "$name",
@@ -216,6 +221,12 @@ EOF
   "min_ms": $min,
   "max_ms": $max,
   "raw_results": [$raw_results],
+  "memory": {
+    "peak_kb": $mem_peak_kb,
+    "mean_kb": $mem_mean_kb,
+    "peak_mb": $(python3 -c "print(f'{$mem_peak_kb / 1024:.2f}')"),
+    "mean_mb": $(python3 -c "print(f'{$mem_mean_kb / 1024:.2f}')")
+  },
   "environment": {
     "cpu": "$ENV_CPU",
     "ram": "$ENV_RAM",

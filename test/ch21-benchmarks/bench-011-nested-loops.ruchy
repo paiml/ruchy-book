@@ -1,0 +1,19 @@
+// BENCH-011: Nested Loops (1000x1000 iterations) - Ruchy
+// Simple nested loop benchmark testing iteration performance
+
+fun nested_loops(outer, inner) {
+    let mut sum = 0
+    let mut i = 0
+    while i < outer {
+        let mut j = 0
+        while j < inner {
+            sum = sum + i * j
+            j = j + 1
+        }
+        i = i + 1
+    }
+    sum
+}
+
+let result = nested_loops(1000, 1000)
+// Expected: 249500250000
