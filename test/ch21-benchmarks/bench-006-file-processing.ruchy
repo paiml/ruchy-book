@@ -1,0 +1,26 @@
+// BENCH-006: File line processing (100MB log file) - Ruchy
+// Count lines containing "error" (case-insensitive)
+
+fun count_error_lines(filename) {
+    let mut count = 0
+    let file = open(filename, "r")
+
+    while true {
+        let line = readline(file)
+        if line == null { break }
+
+        if line.to_lowercase().contains("error") {
+            count = count + 1
+        }
+    }
+
+    close(file)
+    count
+}
+
+fun main() {
+    let filename = "test-data/sample-100mb.log"
+    let count = count_error_lines(filename)
+    // Silent for benchmarking
+    // Expected: ~10% of lines contain ERROR
+}
