@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run BENCH-004 (Binary Tree) in all 9 execution modes
+# Run BENCH-004 (Binary Tree) in all 10 execution modes
 # Uses bashrs bench v6.25.0 for scientific benchmarking
 
 set -euo pipefail
@@ -57,22 +57,27 @@ echo '    "rust": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "rust" "$RUST_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 6: Ruchy AST
+# Mode 6: C (compiled)
+echo '    "c": ' >> "$RESULTS_FILE"
+run_benchmark "$BENCH_NAME" "c" "$C_SCRIPT" >> "$RESULTS_FILE"
+echo ',' >> "$RESULTS_FILE"
+
+# Mode 7: Ruchy AST
 echo '    "ruchy-ast": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-ast" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 7: Ruchy Bytecode
+# Mode 8: Ruchy Bytecode
 echo '    "ruchy-bytecode": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-bytecode" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 8: Ruchy Transpiled
+# Mode 9: Ruchy Transpiled
 echo '    "ruchy-transpiled": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-transpile" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 9: Ruchy Compiled
+# Mode 10: Ruchy Compiled
 echo '    "ruchy-compiled": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-compile" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 
@@ -90,7 +95,7 @@ echo "Summary:" >&2
 python3 << 'EOF'
 import json
 
-with open('results/bench-007-results-full.json') as f:
+with open('results/bench-004-results-full.json') as f:
     data = json.load(f)
 
 print(f"\nBenchmark: {data['name']}")
