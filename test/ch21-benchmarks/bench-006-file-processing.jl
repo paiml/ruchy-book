@@ -1,23 +1,16 @@
-# BENCH-006: File line processing (100MB log file) - Julia
-# Count lines containing "error" (case-insensitive)
+#!/usr/bin/env julia
+# BENCH-006: File Line Processing - Julia
 
-function count_error_lines(filename::String)::Int64
+function count_error_lines(filename)
     count = 0
-    open(filename, "r") do file
-        for line in eachline(file)
-            if occursin("error", lowercase(line))
-                count += 1
-            end
+    for line in eachline(filename)
+        if occursin("error", lowercase(line))
+            count += 1
         end
     end
     return count
 end
 
-function main()
-    filename = length(ARGS) > 0 ? ARGS[1] : "test-data/sample-100mb.log"
-    count = count_error_lines(filename)
-    # Silent for benchmarking
-    # Expected: ~10% of lines contain ERROR
-end
-
-main()
+result = count_error_lines("testdata/bench-006-logs-100mb.txt")
+println(result)
+# Expected: 126076

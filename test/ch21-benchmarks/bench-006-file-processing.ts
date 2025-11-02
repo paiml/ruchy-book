@@ -1,38 +1,21 @@
-// BENCH-006: File line processing (100MB log file) - Deno TypeScript
+#!/usr/bin/env -S deno run --allow-read
+// BENCH-006: File Line Processing - Deno TypeScript
 // Count lines containing "error" (case-insensitive)
 
+import { readLines } from "https://deno.land/std@0.208.0/io/mod.ts";
+
 async function countErrorLines(filename: string): Promise<number> {
-    const file = await Deno.open(filename);
-    const decoder = new TextDecoder();
     let count = 0;
-    let buffer = "";
-
-    for await (const chunk of file.readable) {
-        buffer += decoder.decode(chunk, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || ""; // Keep incomplete line in buffer
-
-        for (const line of lines) {
-            if (line.toLowerCase().includes("error")) {
-                count++;
-            }
+    const file = await Deno.open(filename);
+    for await (const line of readLines(file)) {
+        if (line.toLowerCase().includes('error')) {
+            count++;
         }
     }
-
-    // Process final line
-    if (buffer && buffer.toLowerCase().includes("error")) {
-        count++;
-    }
-
     file.close();
     return count;
 }
 
-async function main(): Promise<void> {
-    const filename = Deno.args[0] || "test-data/sample-100mb.log";
-    const count = await countErrorLines(filename);
-    // Silent for benchmarking
-    // Expected: ~10% of lines contain ERROR
-}
-
-main();
+const result = await countErrorLines('testdata/bench-006-logs-100mb.txt');
+console.log(result);
+// Expected: 126076

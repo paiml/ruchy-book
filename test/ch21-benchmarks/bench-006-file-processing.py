@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-# BENCH-006: File line processing (100MB log file) - Python
-# Count lines containing "error" (case-insensitive)
-
-import sys
+# BENCH-006: File Line Processing (Large File grep-like operation)
+# Task: Read 100MB log file, count lines containing "error" (case-insensitive)
+# Measures: Buffered I/O efficiency, string search performance
 
 def count_error_lines(filename):
     """Count lines containing 'error' (case-insensitive)"""
@@ -13,11 +12,7 @@ def count_error_lines(filename):
                 count += 1
     return count
 
-def main():
-    filename = sys.argv[1] if len(sys.argv) > 1 else "test-data/sample-100mb.log"
-    count = count_error_lines(filename)
-    # Silent for benchmarking
-    # Expected: ~10% of lines contain ERROR
-
-if __name__ == "__main__":
-    main()
+# Execute benchmark
+result = count_error_lines('testdata/bench-006-logs-100mb.txt')
+print(result)
+# Expected: 126076
