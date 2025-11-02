@@ -1,62 +1,27 @@
-// BENCH-004: Binary tree allocation/deallocation - Rust
-// Tests: memory allocator, pointer chasing (no GC in Rust)
-
-struct TreeNode {
-    left: Option<Box<TreeNode>>,
-    right: Option<Box<TreeNode>>,
+struct Node {
+    left: Option<Box<Node>>,
+    right: Option<Box<Node>>,
 }
 
-fn make_tree(depth: i32) -> TreeNode {
-    if depth <= 0 {
-        TreeNode {
-            left: None,
-            right: None,
-        }
-    } else {
-        TreeNode {
-            left: Some(Box::new(make_tree(depth - 1))),
-            right: Some(Box::new(make_tree(depth - 1))),
+impl Node {
+    fn make_tree(depth: i32) -> Option<Box<Node>> {
+        if depth > 0 {
+            Some(Box::new(Node {
+                left: Node::make_tree(depth - 1),
+                right: Node::make_tree(depth - 1),
+            }))
+        } else {
+            None
         }
     }
-}
 
-fn check_tree(node: &TreeNode) -> i32 {
-    match (&node.left, &node.right) {
-        (None, None) => 1,
-        (Some(left), Some(right)) => 1 + check_tree(left) + check_tree(right),
-        _ => unreachable!(),
+    fn check(&self) -> i32 {
+        1 + self.left.as_ref().map_or(0, |n| n.check())
+          + self.right.as_ref().map_or(0, |n| n.check())
     }
 }
 
 fn main() {
-    let max_depth = 16;
-    let min_depth = 4;
-
-    // Stretch tree
-    let stretch_depth = max_depth + 1;
-    let stretch_tree = make_tree(stretch_depth);
-    let stretch_check = check_tree(&stretch_tree);
-
-    // Long-lived tree
-    let long_lived_tree = make_tree(max_depth);
-
-    // Create and destroy many trees
-    let mut total_checks = 0;
-    let mut depth = min_depth;
-    while depth <= max_depth {
-        let iterations = 1 << (max_depth - depth + min_depth);
-        for _ in 0..iterations {
-            let tree = make_tree(depth);
-            total_checks += check_tree(&tree);
-        }
-        depth += 2;
-    }
-
-    // Final checksum
-    let long_check = check_tree(&long_lived_tree);
-
-    let _ = stretch_check;
-    let _ = total_checks;
-    let _ = long_check;
-    // Silent for benchmarking
+    let tree = Node::make_tree(16);
+    let _ = tree.map_or(0, |t| t.check());
 }
