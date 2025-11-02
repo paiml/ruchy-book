@@ -16,7 +16,7 @@
 
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)
-**Ruchy Version**: v1.84.0
+**Ruchy Version**: v3.174.0
 **Testing**: All examples verified with `make test-ch02` and 7-layer validation
 
 ## The Problem
@@ -185,16 +185,6 @@ fun main() {
 }
 ```
 
-### Pattern 3: Named Constants
-```ruchy
-// Error: ✗ Compilation failed: Compilation failed:
-let PI = 3.14159;
-let GRAVITY = 9.81;
-
-
-```
-
-
 ## Type Safety
 
 Ruchy enforces type safety:
@@ -233,4 +223,4 @@ In Chapter 3, we'll explore functions - how to create reusable blocks of code wi
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.174.0*
