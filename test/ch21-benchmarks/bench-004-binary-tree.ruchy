@@ -1,0 +1,52 @@
+// BENCH-004: Binary tree allocation/deallocation - Ruchy
+// Tests: memory allocator, GC, pointer chasing
+
+// Note: Using simple dict-based nodes if structs not available
+fun make_tree(depth) {
+    if depth <= 0 {
+        return { "left": null, "right": null }
+    }
+    return {
+        "left": make_tree(depth - 1),
+        "right": make_tree(depth - 1)
+    }
+}
+
+fun check_tree(node) {
+    if node["left"] == null {
+        return 1
+    }
+    return 1 + check_tree(node["left"]) + check_tree(node["right"])
+}
+
+fun main() {
+    let max_depth = 16
+    let min_depth = 4
+
+    // Stretch tree
+    let stretch_depth = max_depth + 1
+    let stretch_tree = make_tree(stretch_depth)
+    let stretch_check = check_tree(stretch_tree)
+
+    // Long-lived tree
+    let long_lived_tree = make_tree(max_depth)
+
+    // Create and destroy many trees
+    let mut total_checks = 0
+    let mut depth = min_depth
+    while depth <= max_depth {
+        let iterations = 1 << (max_depth - depth + min_depth)
+        let mut i = 0
+        while i < iterations {
+            let tree = make_tree(depth)
+            total_checks = total_checks + check_tree(tree)
+            i = i + 1
+        }
+        depth = depth + 2
+    }
+
+    // Final checksum
+    let long_check = check_tree(long_lived_tree)
+
+    // Silent for benchmarking
+}
