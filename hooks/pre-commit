@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ../bashrs/target/release/bashrs
+#!/usr/bin/env bashrs
 # Ruchy Book Pre-Commit Hook - TICKET-018 Enforcement
 # Enforces 18-tool comprehensive testing on all book examples
 # Following Toyota Way: Zero tolerance for quality regression
