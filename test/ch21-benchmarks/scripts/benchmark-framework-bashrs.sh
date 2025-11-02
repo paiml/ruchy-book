@@ -27,7 +27,7 @@ readonly ENV_DATE=$(date -Iseconds)
 
 run_benchmark() {
     local name=$1
-    local mode=$2  # python, deno, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
+    local mode=$2  # python, deno, julia, go, rust, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
     local script=$3
 
     echo "Running: $name [$mode]" >&2
@@ -60,6 +60,44 @@ EOF
             chmod +x "$wrapper_script"
             ;;
 
+
+        julia)
+            # Create wrapper for Julia execution
+            cat > "$wrapper_script" << EOF
+#!/usr/bin/env bash
+julia "$script" > /dev/null 2>&1
+EOF
+            chmod +x "$wrapper_script"
+            ;;
+
+        go)
+            # Compile Go ONCE (not timed)
+            binary="$TEMP_DIR/go-binary-$$"
+            echo "  Compiling Go..." >&2
+            go build -o "$binary" "$script" >/dev/null 2>&1
+
+            # Create wrapper that executes pre-compiled binary
+            cat > "$wrapper_script" << EOF
+#!/usr/bin/env bash
+"$binary" > /dev/null 2>&1
+EOF
+            chmod +x "$wrapper_script"
+            ;;
+
+        rust)
+            # Compile Rust ONCE (not timed)
+            rust_file="$script"
+            binary="$TEMP_DIR/rust-binary-$$"
+            echo "  Compiling Rust..." >&2
+            rustc -O "$rust_file" -o "$binary" 2>/dev/null
+
+            # Create wrapper that executes pre-compiled binary
+            cat > "$wrapper_script" << EOF
+#!/usr/bin/env bash
+"$binary" > /dev/null 2>&1
+EOF
+            chmod +x "$wrapper_script"
+            ;;
         ruchy-ast)
             # Create wrapper for Ruchy AST interpretation
             cat > "$wrapper_script" << EOF
