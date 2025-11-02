@@ -95,7 +95,7 @@ echo "Summary:" >&2
 python3 << 'EOF'
 import json
 
-with open('results/bench-007-results-full.json') as f:
+with open('results/bench-008-results-full.json') as f:
     data = json.load(f)
 
 print(f"\nBenchmark: {data['name']}")
