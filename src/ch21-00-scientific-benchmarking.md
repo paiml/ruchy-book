@@ -414,7 +414,7 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 ### Planned Benchmarks
 
 1. **BENCH-001:** File I/O - Read 10MB text file - ⚠️ **Blocked** (Issue #118)
-2. **BENCH-002:** Matrix multiplication (100x100) - ⚠️ **Blocked** (Bug #003)
+2. **BENCH-002:** Matrix multiplication (100x100) - ⚠️ **Blocked** (Issue #119)
 3. **BENCH-003:** String concatenation (10K operations) - ✅ **Complete**
 4. **BENCH-004:** Binary tree (memory stress test) - ✅ **Complete**
 5. **BENCH-005:** Array sum (1M integers) - ✅ **Complete**

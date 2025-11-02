@@ -7,10 +7,10 @@ This document tracks bugs discovered in the Ruchy compiler/runtime while testing
 ## Bug #003: Array Index Assignment Not Supported in v3.173.0
 
 **Filed**: 2025-11-02
-**Ruchy Version**: v3.173.0
+**Ruchy Version**: v3.173.0 (broken), v3.174.0 (fixed)
 **Platform**: Linux 6.8.0-85-generic x86_64
 **Severity**: High - Blocks matrix/array benchmarks
-**Status**: ⏳ **OPEN**
+**Status**: ✅ **FIXED** in v3.174.0
 
 ### Description
 Ruchy v3.173.0 does not support assignment to array indices (e.g., `arr[i][j] = value`), failing with "Invalid assignment target" error. This blocks implementation of matrix operations and array-based algorithms.
