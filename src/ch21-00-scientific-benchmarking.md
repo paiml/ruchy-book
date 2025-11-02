@@ -46,6 +46,8 @@ Here's what we discovered across **7 validated benchmarks** (string concatenatio
 
 ### Geometric Mean Performance (7 benchmarks)
 
+> **📊 Note:** These geometric mean results are from comprehensive v3.173.0 testing. Re-benchmarking with v3.174.0 compiler optimizations is in progress (see BENCH-011 update above showing dramatic improvements).
+
 ```
 🥇 Julia:            24.79x faster  ⚡ JIT + LLVM dominance
 🥈 C:                18.51x faster  🏆 Native baseline
@@ -444,7 +446,7 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 
 The benchmarking infrastructure is **production-ready**:
 - ✅ bashrs bench v6.25.0 integration
-- ✅ 6 execution modes supported
+- ✅ 10 execution modes supported (Python, Deno, Julia, Go, Rust, C, + 4 Ruchy modes)
 - ✅ Scientific rigor (warmup, statistics, determinism)
 - ✅ Quality gates (lint, determinism checks)
 - ✅ ELI5 documentation
@@ -462,7 +464,7 @@ The benchmarking infrastructure is **production-ready**:
 4. **Breakthrough performance**: Ruchy bytecode matches C within 0.26% on BENCH-008
 5. **Fast startup**: Ruchy compiled within 2.6% of C (1.59ms vs 1.55ms)
 6. **Complete binary tree support**: BENCH-004 validates memory allocation and GC performance
-7. **Nested loop efficiency**: BENCH-011 shows 82% of C performance on iteration-heavy code
+7. **Nested loop efficiency**: BENCH-011 (v3.174.0) shows **96% of C performance** on iteration-heavy code - BEATS Rust!
 8. **Multiple execution modes** provide flexibility from development to production
 9. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
 
