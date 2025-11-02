@@ -27,7 +27,7 @@ readonly ENV_DATE=$(date -Iseconds)
 
 run_benchmark() {
     local name=$1
-    local mode=$2  # python, deno, julia, go, rust, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
+    local mode=$2  # python, deno, julia, go, rust, c, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
     local script=$3
 
     echo "Running: $name [$mode]" >&2
@@ -98,6 +98,21 @@ EOF
 EOF
             chmod +x "$wrapper_script"
             ;;
+
+        c)
+            # Compile C ONCE (not timed) with -O3 optimization
+            binary="$TEMP_DIR/c-binary-$$"
+            echo "  Compiling C..." >&2
+            gcc -O3 "$script" -o "$binary" -lm 2>/dev/null
+
+            # Create wrapper that executes pre-compiled binary
+            cat > "$wrapper_script" << EOF
+#!/usr/bin/env bash
+"$binary" > /dev/null 2>&1
+EOF
+            chmod +x "$wrapper_script"
+            ;;
+
         ruchy-ast)
             # Create wrapper for Ruchy AST interpretation
             cat > "$wrapper_script" << EOF
