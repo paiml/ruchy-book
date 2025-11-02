@@ -4,6 +4,97 @@ This document tracks bugs discovered in the Ruchy compiler/runtime while testing
 
 ---
 
+## ISSUE-117: JSON Support Missing (FIXED in v3.175.0)
+
+**Filed**: 2025-11-02
+**Ruchy Version**: v3.174.0 (blocked), v3.175.0 (fixed)
+**GitHub Issue**: #117
+**Platform**: Linux 6.8.0-85-generic x86_64
+**Severity**: High - Blocks JSON benchmarks
+**Status**: ✅ **FIXED** in v3.175.0
+
+### Description
+Ruchy v3.174.0 and earlier lack JSON parsing and stringification support, blocking benchmarks and real-world applications requiring JSON data interchange.
+
+### What Was Missing
+- No `JSON.parse()` method
+- No `JSON.stringify()` method
+- Unable to process JSON API responses
+- Unable to serialize data to JSON format
+
+### What Was Fixed in v3.175.0
+✅ `JSON.parse(json_string)` - Parse JSON strings to Ruchy objects
+✅ `JSON.stringify(object)` - Convert Ruchy objects to JSON strings
+✅ Complete JSON object support
+
+### Impact
+- **BENCH-009 NOW UNBLOCKED** (JSON parsing - 10K objects)
+- **Real-world applications** can now consume APIs
+- **Data interchange** with external systems enabled
+
+### Verification (v3.175.0)
+```bash
+$ ruchy --version
+ruchy 3.175.0
+
+$ ruchy repl
+>>> let data = JSON.parse('{"name":"Alice","age":30}')
+>>> println(data["name"])  # Works!
+Alice
+>>> let json_str = JSON.stringify(data)
+>>> println(json_str)  # Works!
+{"name":"Alice","age":30}
+```
+
+---
+
+## ISSUE-116: File I/O Support Missing (FIXED in v3.175.0)
+
+**Filed**: 2025-11-02
+**Ruchy Version**: v3.174.0 (blocked), v3.175.0 (fixed)
+**GitHub Issue**: #116
+**Platform**: Linux 6.8.0-85-generic x86_64
+**Severity**: High - Blocks file I/O benchmarks
+**Status**: ✅ **FIXED** in v3.175.0
+
+### Description
+Ruchy v3.174.0 and earlier lack file I/O operations, blocking benchmarks and applications requiring file reading/writing.
+
+### What Was Missing
+- No `File.open()` method
+- No `.read_line()` method
+- No `.close()` method
+- No `.read()` method for reading entire files
+- Unable to process text files
+
+### What Was Fixed in v3.175.0
+✅ `File.open(path, mode)` - Open files for reading/writing
+✅ `file.read_line()` - Read files line-by-line
+✅ `file.close()` - Properly close file handles
+✅ `file.read()` - Read entire file contents
+✅ Complete file handle support
+
+### Impact
+- **BENCH-001 NOW UNBLOCKED** (File I/O - Read 10MB text file)
+- **Real-world applications** can now process files
+- **Data processing pipelines** enabled
+
+### Verification (v3.175.0)
+```bash
+$ ruchy --version
+ruchy 3.175.0
+
+$ echo "Hello from file" > test.txt
+$ ruchy repl
+>>> let file = File.open("test.txt", "r")
+>>> let contents = file.read()
+>>> println(contents)  # Works!
+Hello from file
+>>> file.close()
+```
+
+---
+
 ## Bug #003: Array Index Assignment Not Supported in v3.173.0
 
 **Filed**: 2025-11-02
