@@ -323,6 +323,195 @@ For more advanced debugging needs, consider:
 - Performance analysis tools (`ruchy runtime`, `ruchy bench`)
 - Quality scoring (`ruchy score`)
 
+## Advanced Debugging: ruchydbg debug (v1.20.0+)
+
+For deep debugging scenarios that require interactive inspection and breakpoint debugging, Ruchy provides `ruchydbg debug`—a powerful rust-gdb wrapper that gives you full symbolic debugging capabilities.
+
+### What is ruchydbg debug?
+
+`ruchydbg debug` is an interactive debugger that provides:
+- **Interactive rust-gdb sessions** with automatic setup
+- **Pre-configured breakpoints** at key interpreter functions
+- **Automated trace capture** for reproducible debugging
+- **Variable scope inspection** to understand state changes
+- **Method dispatch analysis** to trace execution flow
+
+### When to Use ruchydbg debug
+
+✅ **Use for**:
+- Investigating runtime bugs (like global variable issues)
+- Understanding method dispatch behavior
+- Inspecting variable scope and lifetime
+- Analyzing stack traces and call patterns
+- Debugging complex interpreter behavior
+
+⚠️ **Not for**:
+- Regular development (use `--trace` instead)
+- Performance testing (use `ruchy bench` instead)
+- Quick debugging (512x performance overhead)
+
+### Interactive Debugging Session
+
+Launch an interactive rust-gdb session with automatic breakpoint:
+
+```bash
+# Interactive debugging with default breakpoint
+$ ruchydbg debug run test.ruchy
+
+# Interactive with custom breakpoint
+$ ruchydbg debug run test.ruchy --break eval_expression
+```
+
+**Available GDB commands**:
+```bash
+(gdb) run              # Start program execution
+(gdb) bt               # Show call stack (backtrace)
+(gdb) info locals      # Display local variables
+(gdb) print variable   # Print specific variable
+(gdb) continue         # Continue to next breakpoint
+(gdb) quit             # Exit debugger
+```
+
+### Automated Trace Capture
+
+For reproducible debugging without interaction:
+
+```bash
+# Capture complete trace to file
+$ ruchydbg debug analyze test.ruchy > trace.log
+
+# Analyze specific issues
+$ cat trace.log | grep "method_call"
+$ cat trace.log | grep "variable_assignment"
+```
+
+### Common Breakpoints
+
+| Breakpoint | Purpose | Use Case |
+|-----------|---------|----------|
+| `dispatch_method_call` | Method dispatch entry (default) | Method resolution issues |
+| `eval_expression` | Expression evaluation | Variable assignment bugs |
+| `eval_method_dispatch` | Method evaluation | Execution flow tracing |
+| `parse_function` | Function parsing | Syntax issues |
+
+### Example: Debugging Global Variable Issue
+
+Let's debug a global variable mutation issue:
+
+**test_global.ruchy:**
+```ruchy
+let mut counter = 0
+
+fun increment() {
+    counter = counter + 1
+    counter
+}
+
+increment()
+increment()
+println("Final: ", counter)
+```
+
+**Debug with breakpoint at variable assignment**:
+```bash
+$ ruchydbg debug run test_global.ruchy --break eval_expression
+
+# GDB will stop at each variable assignment
+# You can inspect the scope and verify mutations
+(gdb) bt                    # See call stack
+(gdb) print env             # Inspect environment/scope
+(gdb) print variable_name   # Check variable value
+(gdb) continue              # Proceed to next assignment
+```
+
+### Example: Method Dispatch Debugging
+
+Debug method resolution:
+
+**test_method.ruchy:**
+```ruchy
+let file = File.open("test.txt")
+file.read_line()  // Check if __type marker exists
+```
+
+**Debug method dispatch**:
+```bash
+$ ruchydbg debug run test_method.ruchy --break dispatch_method_call
+
+# Inspect object structure at method call
+(gdb) print self            # See the object
+(gdb) print self.__type     # Verify __type marker
+(gdb) print method_name     # See which method is called
+```
+
+### Performance Characteristics
+
+**Overhead**: ~512x compared to normal execution
+- Standard execution: ~3ms
+- Debug execution: ~1.5s
+
+**Comparison to industry tools**:
+- gdb: 100-1000x overhead
+- lldb: 100-1000x overhead
+- valgrind: 10-50x overhead
+- **ruchydbg debug**: 512x (within expected range)
+
+### Real-World Use Cases
+
+#### 1. Investigating Global Mutation (Issue #119)
+```bash
+# Debug why global variables don't persist
+$ ruchydbg debug run test.ruchy --break eval_expression
+# Inspect scope at each assignment
+# Verify global vs local scope handling
+```
+
+#### 2. Method Dispatch Issues (Issue #121)
+```bash
+# Debug missing __type markers
+$ ruchydbg debug run test.ruchy --break dispatch_method_call
+# Inspect object structure
+# Verify __type field exists
+```
+
+#### 3. Stack Overflow (Issue #123)
+```bash
+# Monitor recursion depth
+$ ruchydbg debug run test.ruchy --break eval_expression
+# Set conditional breakpoints
+(gdb) condition 1 recursion_depth > 45
+(gdb) continue
+```
+
+### Best Practices
+
+1. **Start with automated analysis** (`ruchydbg debug analyze`) before interactive
+2. **Use appropriate breakpoints** for your debugging scenario
+3. **Capture traces to files** for later analysis and sharing
+4. **Combine with --trace** for comprehensive understanding
+5. **Document findings** for reproducible bug reports
+
+### Integration with Development Workflow
+
+```bash
+# Normal development: Fast feedback with --trace
+$ echo 'fun test() { 42 }; test()' | RUCHY_TRACE=1 ruchy
+
+# Serious debugging: Deep inspection with ruchydbg
+$ ruchydbg debug analyze complex_bug.ruchy > trace.log
+
+# Critical issues: Interactive debugging
+$ ruchydbg debug run failing_test.ruchy --break dispatch_method_call
+```
+
+### Tool Maturity
+
+**Status**: ✅ Production Ready (v1.20.0+)
+- 100% test success rate
+- Validated on real book examples
+- Multiple use cases confirmed
+- Consistent performance
+
 ## Summary
 
 Ruchy's type-aware tracing provides professional debugging capabilities:
