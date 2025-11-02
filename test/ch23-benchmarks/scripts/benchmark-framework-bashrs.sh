@@ -27,7 +27,7 @@ readonly ENV_DATE=$(date -Iseconds)
 
 run_benchmark() {
     local name=$1
-    local mode=$2  # python, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
+    local mode=$2  # python, deno, ruchy-ast, ruchy-bytecode, ruchy-transpile, ruchy-compile
     local script=$3
 
     echo "Running: $name [$mode]" >&2
@@ -47,6 +47,15 @@ run_benchmark() {
             cat > "$wrapper_script" << EOF
 #!/usr/bin/env bash
 python3 "$script" > /dev/null 2>&1
+EOF
+            chmod +x "$wrapper_script"
+            ;;
+
+        deno)
+            # Create wrapper for Deno TypeScript execution
+            cat > "$wrapper_script" << EOF
+#!/usr/bin/env bash
+deno run "$script" > /dev/null 2>&1
 EOF
             chmod +x "$wrapper_script"
             ;;

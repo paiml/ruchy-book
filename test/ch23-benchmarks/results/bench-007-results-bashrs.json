@@ -9,17 +9,38 @@
   "mode": "python",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 18.21,
-  "median_ms": 18.47,
-  "stddev_ms": 0.78,
-  "min_ms": 16.74,
-  "max_ms": 19.19,
-  "raw_results": [19,17,19,17,19,19,18,18,19,18],
+  "mean_ms": 16.65,
+  "median_ms": 16.78,
+  "stddev_ms": 1.00,
+  "min_ms": 15.09,
+  "max_ms": 18.00,
+  "raw_results": [17,15,15,17,17,15,17,18,18,18],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-02T12:11:05+01:00"
+    "timestamp": "2025-11-02T12:17:36+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "deno": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "deno",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 27.40,
+  "median_ms": 27.52,
+  "stddev_ms": 1.01,
+  "min_ms": 26.06,
+  "max_ms": 29.17,
+  "raw_results": [26,29,29,28,27,28,27,26,28,26],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:17:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -30,17 +51,17 @@
   "mode": "ruchy-ast",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 142.78,
-  "median_ms": 143.26,
-  "stddev_ms": 4.97,
-  "min_ms": 136.55,
-  "max_ms": 152.53,
-  "raw_results": [153,138,137,137,142,139,144,144,148,145],
+  "mean_ms": 149.43,
+  "median_ms": 148.80,
+  "stddev_ms": 2.21,
+  "min_ms": 146.50,
+  "max_ms": 154.71,
+  "raw_results": [146,152,147,150,155,150,149,149,148,149],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-02T12:11:05+01:00"
+    "timestamp": "2025-11-02T12:17:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -51,17 +72,17 @@
   "mode": "ruchy-bytecode",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 3.99,
-  "median_ms": 4.16,
-  "stddev_ms": 0.46,
-  "min_ms": 3.33,
-  "max_ms": 4.83,
-  "raw_results": [3,5,4,4,4,3,4,4,4,4],
+  "mean_ms": 3.69,
+  "median_ms": 3.62,
+  "stddev_ms": 0.38,
+  "min_ms": 3.29,
+  "max_ms": 4.66,
+  "raw_results": [4,3,4,3,5,4,3,4,4,4],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-02T12:11:05+01:00"
+    "timestamp": "2025-11-02T12:17:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -72,17 +93,17 @@
   "mode": "ruchy-transpile",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 1.68,
-  "median_ms": 1.53,
-  "stddev_ms": 0.24,
-  "min_ms": 1.49,
-  "max_ms": 2.13,
-  "raw_results": [2,2,2,1,2,2,1,1,2,2],
+  "mean_ms": 1.70,
+  "median_ms": 1.60,
+  "stddev_ms": 0.42,
+  "min_ms": 1.37,
+  "max_ms": 2.85,
+  "raw_results": [2,1,1,1,2,1,3,2,2,2],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-02T12:11:05+01:00"
+    "timestamp": "2025-11-02T12:17:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -93,17 +114,17 @@
   "mode": "ruchy-compile",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 1.77,
-  "median_ms": 1.74,
-  "stddev_ms": 0.30,
-  "min_ms": 1.38,
-  "max_ms": 2.42,
-  "raw_results": [2,2,2,2,2,2,1,1,2,1],
+  "mean_ms": 1.68,
+  "median_ms": 1.58,
+  "stddev_ms": 0.20,
+  "min_ms": 1.52,
+  "max_ms": 2.19,
+  "raw_results": [2,2,2,2,2,2,2,2,2,2],
   "environment": {
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-02T12:11:05+01:00"
+    "timestamp": "2025-11-02T12:17:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
