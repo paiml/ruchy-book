@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
-# Run BENCH-007 (Fibonacci) in all 9 execution modes
+# Run BENCH-008 (Prime Generation) in all 9 execution modes
 # Uses bashrs bench v6.25.0 for scientific benchmarking
 
 set -euo pipefail
 
 source "$(dirname "$0")/scripts/benchmark-framework-bashrs.sh"
 
-readonly BENCH_NAME="Fibonacci recursive (n=20)"
-readonly PYTHON_SCRIPT="$(dirname "$0")/bench-007-fibonacci.py"
-readonly DENO_SCRIPT="$(dirname "$0")/bench-007-fibonacci.ts"
-readonly JULIA_SCRIPT="$(dirname "$0")/bench-007-fibonacci.jl"
-readonly GO_SCRIPT="$(dirname "$0")/bench-007-fibonacci.go"
-readonly RUST_SCRIPT="$(dirname "$0")/bench-007-fibonacci.rs"
-readonly RUCHY_SCRIPT="$(dirname "$0")/bench-007-fibonacci.ruchy"
-readonly RESULTS_FILE="$(dirname "$0")/results/bench-007-results-full.json"
+readonly BENCH_NAME="Prime generation (first 10K primes)"
+readonly PYTHON_SCRIPT="$(dirname "$0")/bench-008-primes.py"
+readonly DENO_SCRIPT="$(dirname "$0")/bench-008-primes.ts"
+readonly JULIA_SCRIPT="$(dirname "$0")/bench-008-primes.jl"
+readonly GO_SCRIPT="$(dirname "$0")/bench-008-primes.go"
+readonly RUST_SCRIPT="$(dirname "$0")/bench-008-primes-rust.rs"
+readonly RUCHY_SCRIPT="$(dirname "$0")/bench-008-primes.ruchy"
+readonly RESULTS_FILE="$(dirname "$0")/results/bench-008-results-full.json"
 
 echo "========================================" >&2
-echo "BENCH-007: Fibonacci Benchmark (Full)" >&2
+echo "BENCH-008: Prime Generation Benchmark (Full)" >&2
 echo "9 Execution Modes Comparison" >&2
 echo "Using bashrs bench v6.25.0" >&2
 echo "========================================" >&2
@@ -26,8 +26,8 @@ mkdir -p "$(dirname "$RESULTS_FILE")"
 
 # Build JSON output
 echo "{" > "$RESULTS_FILE"
-echo '  "benchmark": "BENCH-007",' >> "$RESULTS_FILE"
-echo '  "name": "Fibonacci recursive (n=20)",' >> "$RESULTS_FILE"
+echo '  "benchmark": "BENCH-008",' >> "$RESULTS_FILE"
+echo '  "name": "Prime generation (first 10K primes)",' >> "$RESULTS_FILE"
 echo '  "tool": "bashrs bench v6.25.0",' >> "$RESULTS_FILE"
 echo '  "modes": {' >> "$RESULTS_FILE"
 
