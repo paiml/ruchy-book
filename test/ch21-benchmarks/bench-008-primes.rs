@@ -1,4 +1,4 @@
-fn is_prime(n: i32) -> i32 {
+fn is_prime(n: i32) -> bool {
     if n < 2 {
         return false;
     }
@@ -19,7 +19,7 @@ fn is_prime(n: i32) -> i32 {
     }
     true
 }
-fn generate_primes(count: &str) -> i32 {
+fn generate_primes(count: i32) -> Vec<i32> {
     let mut primes = vec![];
     let mut candidate = 2;
     while primes.len() < count {

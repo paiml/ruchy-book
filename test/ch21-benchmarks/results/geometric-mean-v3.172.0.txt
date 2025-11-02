@@ -1,0 +1,38 @@
+\n================================================================================
+GEOMETRIC MEAN ANALYSIS - 3 Completed Benchmarks
+================================================================================\n
+Individual Benchmark Results:
+Benchmark                                |            deno |              go |           julia |          python |       ruchy-ast |  ruchy-bytecode |  ruchy-compiled | ruchy-transpiled |            rust
+--------------------------------------------------------------------------------
+BENCH-003: String concatenation (10K operations) |           0.63x |           8.75x |          13.20x |        baseline |           1.27x |           4.41x |           5.01x |           5.33x |           9.60x
+BENCH-007: Fibonacci recursive (n=20)    |           0.66x |             N/A |             N/A |        baseline |           0.13x |           4.64x |          10.18x |          11.12x |             N/A
+BENCH-012: Startup time (Hello World)    |           0.61x |           7.80x |          12.10x |        baseline |           4.06x |           4.47x |          10.00x |          10.31x |           9.23x
+
+================================================================================
+GEOMETRIC MEAN (Overall Performance):
+================================================================================
+
+  julia                   12.64x
+  rust                     9.41x
+  ruchy-transpiled         8.49x
+  go                       8.26x
+  ruchy-compiled           7.99x
+  ruchy-bytecode           4.51x
+  python                   1.00x  (baseline)
+  ruchy-ast                0.87x
+  deno                     0.63x
+
+================================================================================
+INTERPRETATION:
+================================================================================
+  Benchmarks analyzed: 3
+  Geometric mean is the honest average speedup across all benchmarks
+  Values > 1.0x mean faster than Python baseline
+  Values < 1.0x mean slower than Python baseline
+
+RUCHY PERFORMANCE SUMMARY:
+  ruchy-transpiled         8.49x average speedup
+  ruchy-compiled           7.99x average speedup
+  ruchy-bytecode           4.51x average speedup
+  ruchy-ast                0.87x average speedup
+
