@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run BENCH-004 (Fibonacci) in all 9 execution modes
+# Run BENCH-004 (Binary Tree) in all 9 execution modes
 # Uses bashrs bench v6.25.0 for scientific benchmarking
 
 set -euo pipefail
@@ -11,12 +11,12 @@ readonly PYTHON_SCRIPT="$(dirname "$0")/bench-004-binary-tree.py"
 readonly DENO_SCRIPT="$(dirname "$0")/bench-004-binary-tree.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-004-binary-tree.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-004-binary-tree.go"
-readonly RUST_SCRIPT="$(dirname "$0")/bench-004-binary-tree.rs"
+readonly RUST_SCRIPT="$(dirname "$0")/bench-004-binary-tree-rust.rs"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-004-binary-tree.ruchy"
-readonly RESULTS_FILE="$(dirname "$0")/results/bench-007-results-full.json"
+readonly RESULTS_FILE="$(dirname "$0")/results/bench-004-results-full.json"
 
 echo "========================================" >&2
-echo "BENCH-004: Fibonacci Benchmark (Full)" >&2
+echo "BENCH-004: Binary Tree Benchmark (Full)" >&2
 echo "9 Execution Modes Comparison" >&2
 echo "Using bashrs bench v6.25.0" >&2
 echo "========================================" >&2
