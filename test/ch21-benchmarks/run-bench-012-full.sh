@@ -12,12 +12,13 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-012-startup.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-012-startup.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-012-startup.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-012-startup-rust.rs"
+readonly C_SCRIPT="$(dirname "$0")/bench-bench-012-*".c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-012-startup.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-012-results-full.json"
 
 echo "========================================" >&2
 echo "BENCH-012: Startup Time" >&2
-echo "9 Execution Modes Comparison" >&2
+echo "10 Execution Modes Comparison" >&2
 echo "Using bashrs bench v6.25.0" >&2
 echo "========================================" >&2
 echo "" >&2
