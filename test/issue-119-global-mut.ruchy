@@ -1,0 +1,57 @@
+// ISSUE #119: Global mutable state not persisting
+// Comprehensive test case for v3.175.0
+//
+// **SEVERITY: CRITICAL**
+// This bug causes SILENTLY WRONG RESULTS, not just blocking.
+// BENCH-002 produces incorrect output without any error message.
+
+let mut global_counter = 0
+
+fun increment() {
+    global_counter = global_counter + 1
+    println("Inside increment(): ", global_counter)
+    global_counter
+}
+
+fun get_counter() {
+    println("Reading global_counter: ", global_counter)
+    global_counter
+}
+
+fun main() {
+    println("=== Test 1: Simple Counter ===")
+    println("Initial value: ", global_counter)
+
+    let result1 = increment()
+    println("increment() returned: ", result1)
+    println("Global after call 1: ", get_counter())
+
+    let result2 = increment()
+    println("increment() returned: ", result2)
+    println("Global after call 2: ", get_counter())
+
+    let result3 = increment()
+    println("increment() returned: ", result3)
+    println("Global after call 3: ", get_counter())
+
+    println("")
+    println("=== Expected Results ===")
+    println("increment() should return: 1, 2, 3")
+    println("global_counter should be: 3")
+    println("")
+    println("=== Actual Results ===")
+    println("increment() returned: ", result1, ", ", result2, ", ", result3)
+    println("global_counter is: ", global_counter)
+
+    // Assertion for automated testing
+    if global_counter == 3 {
+        println("")
+        println("✅ TEST PASSED - Global mutable state working correctly")
+    } else {
+        println("")
+        println("❌ TEST FAILED - Global mutable state not persisting")
+        println("   Expected: 3, Got: ", global_counter)
+    }
+}
+
+main()

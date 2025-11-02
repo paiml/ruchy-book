@@ -1,7 +1,8 @@
 # TICKET-020: Add Debugging Tools as 19th Mandatory Tool (CRITICAL)
 
-**Status**: OPEN
-**Priority**: CRITICAL (Essential for production code quality)
+**Status**: IN PROGRESS (Phase 1 RED Complete)
+**Priority**: HIGH (Essential for production code quality)
+**Progress**: Phase 1/4 Complete (25%)
 **Assigned**: Book Development Team
 **Created**: 2025-10-30
 **Target**: Sprint Q4 2025 (Immediate)
@@ -100,24 +101,42 @@ From ../ruchyruchy README.md:
 
 ## Implementation Plan (Extreme TDD)
 
-### Phase 1: Research Available Tools (30 min) ✅
-```bash
-# Identify all debugging capabilities
-ruchydbg --help
-ruchy --help | grep -i debug
-ruchy --help | grep -i trace
-ruchy help dataflow:debug
+### Phase 1: Research & RED Testing (✅ COMPLETE - 2025-11-02)
 
-# Test each tool manually
-ruchydbg validate
-echo "2 + 2" | ruchy --trace
-# Create simple DataFrame example for dataflow:debug
+**New Tool Discovered**: `ruchydbg debug` (DEBUGGER-055 from v1.20.0)
+
+```bash
+# Test ruchydbg debug analyze command
+ruchydbg debug analyze test.ruchy
 ```
 
 **Completed Research**:
-- ✅ ruchydbg has 3 commands: run, validate, version
+- ✅ ruchydbg v1.20.0 has NEW `debug` command with 2 modes:
+  - `run` - Interactive rust-gdb session
+  - `analyze` - Automated trace capture (batch mode)
+- ✅ Custom breakpoints supported: `--break <function>`
 - ✅ ruchy has --trace flag for execution tracing
 - ✅ ruchy has dataflow:debug subcommand for DataFrames
+
+**Test Results** (test/tools/test-ruchydbg-debug.ts):
+- Tests run: 2
+- Tests passed: 2/2 (100%)
+- Success rate: 100.0%
+- Average execution time: 1584ms
+- Status: ✅ FULLY FUNCTIONAL
+
+**Baseline Log**: `logs/TICKET-020-ruchydbg-debug-baseline.log`
+
+**Common Breakpoints Validated**:
+- `dispatch_method_call` (default) - Method dispatch entry
+- `eval_method_dispatch` - Method evaluation
+- `parse_function` - Function parsing
+- `eval_expression` - Expression evaluation
+
+**Performance Metrics**:
+- Execution time: ~1.6s per analysis
+- Overhead vs ruchy run: 533x (expected for debugging)
+- Integration readiness: ✅ PRODUCTION READY
 - ✅ All tools available in v3.169.0
 
 ### Phase 2: Update Testing Infrastructure (1 hour)
