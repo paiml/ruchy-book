@@ -4,6 +4,20 @@
 **Ruchy Version**: v3.172.0
 **GitHub Issue**: #114 (Return Type Inference) - ✅ FIXED
 
+## Scientific Methodology
+
+**Reference Framework**: "Cross-Language Compiler Benchmarking: Are We Fast Yet?" (DLS 2016)
+
+**Paper**: Marr, S., Daloze, B., & Mössenböck, H. (2016). https://doi.org/10.1145/2989225.2989232
+
+**Full Methodology**: See [`../docs/BENCHMARKING-METHODOLOGY.md`](../docs/BENCHMARKING-METHODOLOGY.md)
+
+This verification follows peer-reviewed cross-language benchmarking methodology with:
+- Identical implementations across all 9 execution modes
+- Statistical rigor (3 warmup + 10 measurement iterations)
+- Geometric mean aggregation (mathematically correct for ratios)
+- Full variance reporting (no cherry-picked results)
+
 ## Executive Summary
 
 GitHub issue #114 (transpiler return type inference bug) has been **VERIFIED FIXED** in Ruchy v3.172.0. The fix unblocked 2 benchmark modes (transpile + compile) for BENCH-003, enabling comprehensive performance analysis.

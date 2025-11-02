@@ -4,6 +4,27 @@
 **Target**: 12 benchmarks covering algorithmic, systems, and real-world performance
 **Framework**: bashrs bench v6.25.0 with 9-language comparison
 
+## Scientific Methodology
+
+**Reference Framework**: "Cross-Language Compiler Benchmarking: Are We Fast Yet?" (DLS 2016)
+
+**Paper**: Marr, S., Daloze, B., & Mössenböck, H. (2016). Cross-Language Compiler Benchmarking: Are We Fast Yet? In *Proceedings of the 12th Symposium on Dynamic Languages (DLS 2016)*, 120-131. ACM. https://doi.org/10.1145/2989225.2989232
+
+**Author's Version**: https://stefan-marr.de/papers/dls-marr-et-al-cross-language-compiler-benchmarking-are-we-fast-yet/
+
+**Full Methodology**: See [`docs/BENCHMARKING-METHODOLOGY.md`](./docs/BENCHMARKING-METHODOLOGY.md)
+
+### Core Principles Applied
+
+1. **Identical Implementations**: Benchmarks use same algorithms across all 9 languages
+2. **Idiomatic Usage**: Balance strict comparability with language best practices
+3. **Core Abstractions Only**: Test compiler effectiveness (objects, closures, arrays, primitives)
+4. **Deterministic Execution**: Fixed inputs, reproducible results across runs
+5. **Statistical Rigor**: Warmup phase (3 iterations) + measurement (10 iterations)
+6. **Geometric Mean**: Honest aggregation across diverse workloads (no cherry-picking)
+
+**Why This Matters**: Following peer-reviewed methodology ensures our "8.49x faster than Python" claim is scientifically defensible, not marketing hype.
+
 ## Benchmark Suite Design
 
 ### Part 1: Core Performance Suite (Ruchy vs Rust vs Python vs Julia)
