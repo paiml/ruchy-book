@@ -4,6 +4,63 @@ This document tracks bugs discovered in the Ruchy compiler/runtime while testing
 
 ---
 
+## Bug #003: Array Index Assignment Not Supported in v3.173.0
+
+**Filed**: 2025-11-02
+**Ruchy Version**: v3.173.0
+**Platform**: Linux 6.8.0-85-generic x86_64
+**Severity**: High - Blocks matrix/array benchmarks
+**Status**: ⏳ **OPEN**
+
+### Description
+Ruchy v3.173.0 does not support assignment to array indices (e.g., `arr[i][j] = value`), failing with "Invalid assignment target" error. This blocks implementation of matrix operations and array-based algorithms.
+
+### Reproduction Steps
+
+```bash
+# Environment
+$ ruchy --version
+ruchy 3.173.0
+
+# Step 1: Create minimal test case
+$ cat > test-array-assignment.ruchy <<'EOF'
+let matrix = [[0, 1], [2, 3]]
+matrix[0][1] = 99  // Should work but fails
+println(matrix[0][1])
+EOF
+
+# Step 2: Attempt to run (FAILS)
+$ ruchy run test-array-assignment.ruchy
+Error: Evaluation error: Runtime error: Invalid assignment target
+```
+
+### Expected vs Actual
+- **Expected**: `matrix[0][1] = 99` should update the array element
+- **Actual**: Runtime error "Invalid assignment target"
+
+### Impact
+- **Blocks BENCH-002** (Matrix Multiplication 100x100)
+- **Blocks all array-based algorithms** requiring element updates
+- **Prevents implementation of**:
+  - Matrix operations
+  - In-place array sorting
+  - Dynamic programming algorithms
+  - Graph adjacency matrices
+
+### Workaround
+None currently. Array manipulation requiring in-place updates is not possible.
+
+### Related Files
+- `/home/noah/src/ruchy-book/test/ch21-benchmarks/bench-002-matrix-multiply.ruchy` (blocked)
+- `/home/noah/src/ruchy-book/test/bugs/array-index-assignment.ruchy` (minimal test case)
+
+### Additional Context
+- Array **reading** works: `let x = matrix[0][1]` ✅
+- Array **assignment** fails: `matrix[0][1] = 99` ❌
+- This appears to be a limitation in the assignment statement parser/evaluator
+
+---
+
 ## Bug #002: Main Function Incorrect Return Type in v3.169.0
 
 **Filed**: August 26, 2025
