@@ -204,6 +204,92 @@ else
     fi
 fi
 
+# GATE 9: Version Consistency Check (NEW - From Systematic Verification)
+echo ""
+echo "🔧 GATE 9: Version Consistency Check"
+echo "   Checking for version inconsistencies in changed files..."
+
+# Get current Ruchy version
+CURRENT_VERSION=$(ruchy --version 2>&1 | grep -oP 'ruchy \K[0-9]+\.[0-9]+\.[0-9]+' || echo "unknown")
+echo "   Current ruchy version: $CURRENT_VERSION"
+
+# Check for old version references in changed files
+VERSION_ISSUES=""
+for file in $CHANGED_MARKDOWN; do
+    # Look for version references that don't match current version
+    OLD_VERSIONS=$(grep -n "ruchy v[0-9]\+\.[0-9]\+\.[0-9]\+\|Ruchy [Vv]ersion.*[0-9]\+\.[0-9]\+\.[0-9]\+" "$file" | grep -v "$CURRENT_VERSION" | grep -v "v3\.169\.0\|v3\.82\.0\|v3\.67\.0" || true)
+
+    if [ -n "$OLD_VERSIONS" ]; then
+        VERSION_ISSUES="${VERSION_ISSUES}File: $file\n$OLD_VERSIONS\n\n"
+    fi
+done
+
+if [ -n "$VERSION_ISSUES" ]; then
+    echo -e "${RED}❌ FAIL${NC}"
+    echo ""
+    echo "Found version inconsistencies (should be $CURRENT_VERSION):"
+    echo -e "$VERSION_ISSUES"
+    echo "Historical versions (v3.169.0, v3.82.0, v3.67.0) are OK for context."
+    echo "Update version references to match current ruchy version."
+    GATES_FAILED=$((GATES_FAILED + 1))
+else
+    echo -e "${GREEN}✅ PASS${NC} - All version references consistent"
+    GATES_PASSED=$((GATES_PASSED + 1))
+fi
+
+# GATE 10: Enhanced Vaporware & Quality Regression Detection (NEW)
+echo ""
+echo "🔧 GATE 10: Enhanced Vaporware & Quality Regression Detection"
+echo "   Checking for documentation quality issues..."
+
+QUALITY_ISSUES=0
+
+# Check for common vaporware patterns in changed files
+for file in $CHANGED_MARKDOWN; do
+    echo "   Checking $file..."
+
+    # Pattern 1: Uncommented "will be" or "planned" features
+    FUTURE_PROMISES=$(grep -n "will be\|planned feature\|upcoming\|soon\|future version" "$file" | grep -v "^#\|^\*\*Note\*\*\|^>" || true)
+    if [ -n "$FUTURE_PROMISES" ]; then
+        echo -e "   ${YELLOW}⚠️  Found future promises in $file:${NC}"
+        echo "$FUTURE_PROMISES" | head -3
+        QUALITY_ISSUES=$((QUALITY_ISSUES + 1))
+    fi
+
+    # Pattern 2: Example code without output verification
+    EXAMPLES_WITHOUT_OUTPUT=$(awk '/```ruchy/,/```/{if(/```ruchy/)p=1; if(p&&/```/&&!/```ruchy/)p=0; if(p)print NR": "$0}' "$file" | head -20)
+    if [ -n "$EXAMPLES_WITHOUT_OUTPUT" ]; then
+        # Check if there's an **Output:** section nearby
+        if ! grep -q "\*\*Output:\*\*" "$file"; then
+            echo -e "   ${YELLOW}⚠️  Examples may lack output verification in $file${NC}"
+            QUALITY_ISSUES=$((QUALITY_ISSUES + 1))
+        fi
+    fi
+
+    # Pattern 3: Broken function definitions (using 'fn' in Ruchy code)
+    # This is redundant with GATE 6 but provides file-specific feedback
+    FN_IN_RUCHY=$(awk '/```ruchy/,/```/{if(/```ruchy/)p=1; if(p&&/```/&&!/```ruchy/)p=0; if(p&&/^\s*fn\s+[a-zA-Z_]/)print NR": "$0}' "$file" || true)
+    if [ -n "$FN_IN_RUCHY" ]; then
+        echo -e "   ${RED}❌ FAIL: Found 'fn' in Ruchy code (should be 'fun'):${NC}"
+        echo "$FN_IN_RUCHY"
+        QUALITY_ISSUES=$((QUALITY_ISSUES + 1))
+        GATES_FAILED=$((GATES_FAILED + 1))
+    fi
+done
+
+if [ $QUALITY_ISSUES -eq 0 ]; then
+    echo -e "${GREEN}✅ PASS${NC} - No quality issues detected"
+    GATES_PASSED=$((GATES_PASSED + 1))
+elif [ $QUALITY_ISSUES -le 2 ]; then
+    echo -e "${YELLOW}⚠️  WARNING${NC} - $QUALITY_ISSUES quality issues found (not blocking)"
+    echo "   Consider addressing these for production-ready documentation"
+    GATES_PASSED=$((GATES_PASSED + 1))
+else
+    echo -e "${RED}❌ FAIL${NC} - $QUALITY_ISSUES quality issues found"
+    echo "   Fix quality issues before committing"
+    GATES_FAILED=$((GATES_FAILED + 1))
+fi
+
 # Summary
 echo ""
 echo "=================================================="
