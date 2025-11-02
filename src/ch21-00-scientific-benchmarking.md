@@ -5,9 +5,9 @@
 
 | Status | Count | Details |
 |--------|-------|---------|
-| ✅ Benchmarking Framework | Complete | bashrs bench v6.25.0 + 10-mode support |
-| ✅ Validated Benchmarks | 5/5 | BENCH-003, 005, 007, 008, 012 (10 modes each) |
-| ✅ Geometric Mean Analysis | Complete | Cross-benchmark performance |
+| ✅ Benchmarking Framework | Complete | bashrs bench v6.25.0 + 10-mode support + memory tracking |
+| ✅ Validated Benchmarks | 6/6 | BENCH-003, 005, 007, 008, 011, 012 (10 modes each) |
+| ✅ Geometric Mean Analysis | Complete | Cross-benchmark performance (6 benchmarks) |
 | ✅ C Language Baseline | Complete | Native performance comparison |
 | ✅ ELI5 Documentation | Complete | All 10 execution modes explained |
 
@@ -30,43 +30,47 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 
 ## Quick Example: 10-Language Performance Analysis
 
-Here's what we discovered across **5 validated benchmarks** (string concatenation, array sum, Fibonacci, prime generation, startup time) comparing **10 execution modes**:
+Here's what we discovered across **6 validated benchmarks** (string concatenation, array sum, Fibonacci, prime generation, nested loops, startup time) comparing **10 execution modes**:
 
-### Geometric Mean Performance (5 benchmarks)
+### Geometric Mean Performance (6 benchmarks)
 
 ```
-🥇 Julia:            21.78x faster  ⚡ JIT + LLVM dominance
-🥈 C:                16.04x faster  🏆 Native baseline
-🥉 Rust:             14.26x faster  🦀 Safety + performance
-4️⃣  Ruchy Compiled:   13.04x faster  ⭐ EXCEEDS GO!
-5️⃣  Ruchy Transpiled: 12.93x faster  ⭐ 81% of C
-6️⃣  Go:               12.16x faster  🚀 Fast compilation
-7️⃣  Ruchy Bytecode:    2.72x faster  ⚡ Fast interpretation
-8️⃣  Deno:              1.03x faster  🌐 JIT warmup issues
+🥇 Julia:            24.79x faster  ⚡ JIT + LLVM dominance
+🥈 C:                18.51x faster  🏆 Native baseline
+🥉 Rust:             16.49x faster  🦀 Safety + performance
+4️⃣  Ruchy Transpiled: 15.12x faster  ⭐ 82% of C, EXCEEDS GO!
+5️⃣  Ruchy Compiled:   14.89x faster  ⭐ 80% of C, EXCEEDS GO!
+6️⃣  Go:               13.37x faster  🚀 Fast compilation
+7️⃣  Deno:              2.33x faster  🌐 JIT warmup improved
+8️⃣  Ruchy Bytecode:    1.49x faster  ⚡ Variable performance
 9️⃣  Python:            1.00x (baseline)
-🔟 Ruchy AST:          0.27x faster  🐛 Debug/development
+🔟 Ruchy AST:          0.37x faster  🐛 Debug/development
 ```
 
 **🎯 KEY ACHIEVEMENTS:**
-- **Ruchy compiled (13.04x) now EXCEEDS Go (12.16x)** in geometric mean!
-- **Ruchy achieves 81% of C performance** across diverse workloads
+- **Ruchy transpiled (15.12x) and compiled (14.89x) EXCEED Go (13.37x)** in geometric mean!
+- **Ruchy achieves 82% of C performance** across diverse workloads
 - **BENCH-005 breakthrough**: Ruchy transpiled within 12% of C on array sum!
 - **BENCH-008 breakthrough**: Ruchy bytecode matches C within 0.26%!
+- **BENCH-011 breakthrough**: Ruchy transpiled within 12% of C on nested loops!
 - **BENCH-012 result**: Ruchy compiled within 2.6% of C startup time
+- **Memory tracking**: All benchmarks include comprehensive memory metrics
 
-**⚠️ METHODOLOGY:** These results are based on **5 validated benchmarks** covering:
+**⚠️ METHODOLOGY:** These results are based on **6 validated benchmarks** covering:
 - String manipulation (BENCH-003)
 - Array iteration (BENCH-005)
 - Recursive algorithms (BENCH-007)
 - CPU-bound computation (BENCH-008)
+- Nested loops (BENCH-011)
 - Startup performance (BENCH-012)
 
 **Key Findings (Evidence-Based):**
-1. **Ruchy achieves native-level performance**: 13.04x geometric mean
-2. **Julia dominates** numeric code (21.8x via JIT + LLVM)
+1. **Ruchy achieves native-level performance**: 15.12x geometric mean
+2. **Julia dominates** numeric code (24.79x via JIT + LLVM)
 3. **"Python syntax with C-like performance"** validated across multiple workloads
 4. **Four execution modes** optimize for different use cases
 5. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
+6. **Memory tracking**: bashrs v6.25.0 captures peak/mean memory usage
 
 ## Execution Modes Explained (ELI5)
 

@@ -117,83 +117,105 @@ Comprehensive performance analysis across 10 execution modes:
 - Excellent startup performance for CLI tools and short-running scripts
 - Ruchy compiled faster than Rust (1.67ms) for startup
 
-## Geometric Mean Analysis (5 Benchmarks)
+### BENCH-011: Nested Loops (1,000 x 1,000 iterations)
+
+| Mode             | Mean (ms) | Median (ms) | StdDev (ms) | Speedup vs Python |
+|------------------|-----------|-------------|-------------|-------------------|
+| julia            | 1.24      | 1.22        | 0.06        | 47.37x            |
+| c                | 1.55      | 1.40        | 0.32        | 37.90x            |
+| rust             | 1.72      | 1.60        | 0.26        | 34.15x            |
+| ruchy-transpiled | 1.74      | 1.69        | 0.19        | 33.76x            |
+| ruchy-compiled   | 2.03      | 1.99        | 0.30        | 28.94x            |
+| go               | 2.81      | 2.85        | 0.44        | 20.90x            |
+| deno             | 31.21     | 29.99       | 4.83        | 1.88x             |
+| python           | 58.74     | 58.09       | 2.22        | baseline          |
+| ruchy-bytecode   | 788.85    | 789.47      | 12.65       | 0.07x             |
+| ruchy-ast        | 789.10    | 785.95      | 20.11       | 0.07x             |
+
+**Key Insights**:
+- **BREAKTHROUGH**: Ruchy transpiled (1.74ms) within **12% of C** (1.55ms)!
+- Ruchy compiled (2.03ms) achieves 28.9x speedup over Python
+- Nested loops test pure iteration performance without complex operations
+- Ruchy's compiled modes excel at computational workloads
+
+## Geometric Mean Analysis (6 Benchmarks)
 
 ### Calculation Method
-Geometric mean of speedup ratios across BENCH-003, BENCH-005, BENCH-007, BENCH-008, BENCH-012:
+Geometric mean of speedup ratios across BENCH-003, BENCH-005, BENCH-007, BENCH-008, BENCH-011, BENCH-012:
 ```
-GM = (speedup₁ × speedup₂ × speedup₃ × speedup₄ × speedup₅)^(1/5)
+GM = (speedup₁ × speedup₂ × speedup₃ × speedup₄ × speedup₅ × speedup₆)^(1/6)
 ```
 
 ### Results by Execution Mode
 
-| Mode             | BENCH-003 | BENCH-005 | BENCH-007 | BENCH-008 | BENCH-012 | Geometric Mean |
-|------------------|-----------|-----------|-----------|-----------|-----------|----------------|
-| julia            | 12.96x    | 33.54x    | 12.90x    | 71.30x    | 12.25x    | **21.78x**     |
-| c                | 11.56x    | 34.20x    | 11.51x    | 22.72x    | 10.28x    | **16.04x**     |
-| rust             | 10.18x    | 28.59x    | 10.38x    | 20.44x    | 9.54x     | **14.26x**     |
-| ruchy-compiled   | 5.38x     | 30.24x    | 10.20x    | 22.66x    | 10.02x    | **13.04x**     |
-| ruchy-transpiled | 5.28x     | 30.60x    | 10.51x    | 21.50x    | 9.89x     | **12.93x**     |
-| go               | 8.11x     | 23.05x    | 8.15x     | 23.26x    | 7.51x     | **12.16x**     |
-| ruchy-bytecode   | 4.30x     | 0.08x     | 4.40x     | 22.78x    | 4.17x     | **2.72x**      |
-| deno             | 0.65x     | 1.74x     | 0.60x     | 2.82x     | 0.60x     | **1.03x**      |
-| python           | 1.00x     | 1.00x     | 1.00x     | 1.00x     | 1.00x     | **1.00x**      |
-| ruchy-ast        | 1.19x     | 0.08x     | 0.12x     | 0.03x     | 4.33x     | **0.27x**      |
+| Mode             | BENCH-003 | BENCH-005 | BENCH-007 | BENCH-008 | BENCH-011 | BENCH-012 | Geometric Mean |
+|------------------|-----------|-----------|-----------|-----------|-----------|-----------|----------------|
+| julia            | 12.96x    | 33.54x    | 12.90x    | 71.30x    | 47.37x    | 12.25x    | **24.79x**     |
+| c                | 11.56x    | 34.20x    | 11.51x    | 22.72x    | 37.90x    | 10.28x    | **18.51x**     |
+| rust             | 10.18x    | 28.59x    | 10.38x    | 20.44x    | 34.15x    | 9.54x     | **16.49x**     |
+| ruchy-transpiled | 5.17x     | 30.60x    | 10.51x    | 21.50x    | 33.76x    | 9.89x     | **15.12x**     |
+| ruchy-compiled   | 5.38x     | 30.24x    | 10.20x    | 22.66x    | 28.94x    | 10.02x    | **14.89x**     |
+| go               | 8.26x     | 23.05x    | 8.22x     | 23.26x    | 20.90x    | 7.51x     | **13.37x**     |
+| deno             | 3.67x     | 1.74x     | 7.88x     | 2.82x     | 1.88x     | 0.60x     | **2.33x**      |
+| ruchy-bytecode   | 4.65x     | 0.08x     | 4.42x     | 22.78x    | 0.07x     | 4.17x     | **1.49x**      |
+| python           | 1.00x     | 1.00x     | 1.00x     | 1.00x     | 1.00x     | 1.00x     | **1.00x**      |
+| ruchy-ast        | 1.82x     | 0.08x     | 1.81x     | 0.03x     | 0.07x     | 4.33x     | **0.37x**      |
 
 ### Key Performance Achievements
 
-1. **Ruchy Compiled Mode: 13.04x geometric mean** ⬆️ *improved!*
-   - 81% of C performance (16.04x)
-   - 91% of Rust performance (14.26x)
-   - Exceeds Go (12.16x)
+1. **Ruchy Transpiled Mode: 15.12x geometric mean** ⬆️ *improved!*
+   - 82% of C performance (18.51x)
+   - 92% of Rust performance (16.49x)
+   - Exceeds Go (13.37x)
 
-2. **Ruchy Transpiled Mode: 12.93x geometric mean** ⬆️ *improved!*
-   - 81% of C performance
-   - 91% of Rust performance
-   - Exceeds Go performance
+2. **Ruchy Compiled Mode: 14.89x geometric mean** ⬆️ *improved!*
+   - 80% of C performance (18.51x)
+   - 90% of Rust performance (16.49x)
+   - Exceeds Go (13.37x)
 
-3. **Ruchy Bytecode Mode: 2.72x geometric mean**
+3. **Ruchy Bytecode Mode: 1.49x geometric mean**
    - **Matches C in BENCH-008** (prime generation)
-   - Excellent for CPU-bound tasks
-   - Tight loops expose interpreter overhead
+   - Variable performance across benchmark types
+   - Best for moderate workloads
 
 ## Performance Categories
 
 ### World-Class Performance (>20x Python)
-- **Julia**: 21.51x geometric mean
+- **Julia**: 24.79x geometric mean
   - JIT compilation with LLVM type inference
   - Exceptional performance on numerical workloads
 
-### Native Performance Tier (10-14x Python)
-- **C**: 13.63x (baseline native performance)
-- **Rust**: 12.42x (safety + performance)
-- **Go**: 11.24x (fast compilation)
-- **Ruchy Compiled**: 11.14x ✨ **New entry!**
-- **Ruchy Transpiled**: 10.84x ✨ **New entry!**
+### Native Performance Tier (13-19x Python)
+- **C**: 18.51x (baseline native performance)
+- **Rust**: 16.49x (safety + performance)
+- **Ruchy Transpiled**: 15.12x ✨ **82% of C performance!**
+- **Ruchy Compiled**: 14.89x ✨ **80% of C performance!**
+- **Go**: 13.37x (fast compilation + GC)
 
-### High-Performance Interpreted (5-10x Python)
-- **Ruchy Bytecode**: 7.58x
-
-### Interpreted Baseline (1-3x Python)
-- **Deno**: 2.92x (V8 JIT)
-- **Ruchy AST**: 1.11x (tree-walking interpreter)
+### Interpreted Tier (1-3x Python)
+- **Deno**: 2.33x (V8 JIT)
+- **Ruchy Bytecode**: 1.49x (fast interpreter)
 - **Python**: 1.00x (baseline)
+- **Ruchy AST**: 0.37x (tree-walking interpreter)
 
 ## Technical Conclusions
 
 ### 1. Ruchy Achieves Native-Level Performance
-**Ruchy's compiled modes (11.14x, 10.84x) compete directly with C, Rust, and Go.**
+**Ruchy's compiled modes (15.12x, 14.89x) compete directly with C, Rust, and Go.**
 
 Evidence:
-- BENCH-007: Ruchy transpiled 91% of C performance
-- BENCH-008: Ruchy compiled matches C within 0.26%
-- BENCH-012: Ruchy compiled within 2.6% of C startup time
+- **6-Benchmark GM**: Ruchy transpiled 82% of C, exceeds Go by 13%
+- **BENCH-005**: Ruchy transpiled within 12% of C (1.71ms vs 1.53ms)
+- **BENCH-007**: Ruchy transpiled 91% of C performance
+- **BENCH-008**: Ruchy compiled matches C within 0.26%
+- **BENCH-011**: Ruchy transpiled within 12% of C (1.74ms vs 1.55ms)
+- **BENCH-012**: Ruchy compiled within 2.6% of C startup time
 
 ### 2. Four Execution Modes Provide Flexibility
-- **AST** (1.11x): Development, debugging, REPL
-- **Bytecode** (7.58x): Fast interpretation, good startup
-- **Transpiled** (10.84x): Leverage Rust ecosystem
-- **Compiled** (11.14x): Maximum performance
+- **AST** (0.37x): Development, debugging, REPL
+- **Bytecode** (1.49x): Fast interpretation, moderate performance
+- **Transpiled** (15.12x): Leverage Rust ecosystem, **best overall**
+- **Compiled** (14.89x): Maximum performance, fast startup
 
 ### 3. Exceptional Startup Performance
 Ruchy compiled (1.59ms) startup time:
@@ -202,7 +224,7 @@ Ruchy compiled (1.59ms) startup time:
 - Ideal for CLI tools and short-running scripts
 
 ### 4. Julia Sets Performance Ceiling
-Julia's 21.51x geometric mean demonstrates what's possible with:
+Julia's 24.79x geometric mean demonstrates what's possible with:
 - LLVM-based JIT compilation
 - Type specialization
 - Runtime optimization
@@ -233,11 +255,12 @@ Julia's 21.51x geometric mean demonstrates what's possible with:
 
 ## Conclusion
 
-**Ruchy has achieved its performance goals:**
+**Ruchy has achieved its performance goals (6-benchmark validation):**
 
-✅ **Native-level performance**: 11.14x geometric mean (82% of C)
-✅ **Multiple execution modes**: Development to production
-✅ **Fast startup**: 1.59ms (ideal for CLI tools)
-✅ **Matching C**: Within 0.26% on BENCH-008
+✅ **Native-level performance**: 15.12x geometric mean (82% of C, exceeds Go)
+✅ **Multiple execution modes**: Development to production (4 modes)
+✅ **Fast startup**: 1.59ms (within 2.6% of C, ideal for CLI tools)
+✅ **Matching C**: Within 0.26% on BENCH-008, within 12% on BENCH-005/011
+✅ **Memory tracking**: Complete memory usage metrics via bashrs v6.25.0
 
-Ruchy provides Python-like simplicity with C-like performance, validated through rigorous scientific benchmarking.
+Ruchy provides Python-like simplicity with C-like performance, validated through rigorous scientific benchmarking across 6 diverse workloads.
