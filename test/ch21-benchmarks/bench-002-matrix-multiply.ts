@@ -16,10 +16,14 @@ function matrixMultiply(a: number[][], b: number[][], n: number): number[][] {
 }
 
 function createTestMatrix(n: number, seed: number): number[][] {
-    // Simple deterministic PRNG (LCG)
+    // Simple deterministic PRNG (LCG) - using Math.imul for 32-bit int math
     let state = seed;
     const next = () => {
-        state = (state * 1103515245 + 12345) % 2147483648;
+        // Use Math.imul for proper 32-bit integer multiplication
+        state = Math.imul(state, 1103515245);
+        state = (state + 12345) | 0;  // | 0 converts to 32-bit int
+        state = state >>> 0;  // Convert to unsigned 32-bit
+        state = state % 2147483648;  // Apply modulo
         return state / 2147483648;
     };
 
