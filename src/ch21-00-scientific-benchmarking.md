@@ -413,7 +413,7 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 
 ### Planned Benchmarks
 
-1. **BENCH-001:** File I/O - Read 10MB text file
+1. **BENCH-001:** File I/O - Read 10MB text file - ⚠️ **Blocked** (Issue #118)
 2. **BENCH-002:** Matrix multiplication (100x100) - ⚠️ **Blocked** (Bug #003)
 3. **BENCH-003:** String concatenation (10K operations) - ✅ **Complete**
 4. **BENCH-004:** Binary tree (memory stress test) - ✅ **Complete**
@@ -426,7 +426,7 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 11. **BENCH-011:** Nested loops (1000x1000) - ✅ **Complete**
 12. **BENCH-012:** Startup time (Hello World) - ✅ **Complete**
 
-**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 3 blocked (BENCH-002, 006, 009), 2 pending (BENCH-001, 010)
+**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 4 blocked (BENCH-001, 002, 006, 009), 1 pending (BENCH-010)
 
 ### Framework Ready
 
