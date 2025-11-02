@@ -1,0 +1,51 @@
+========================================
+BENCH-011: Nested Loops Benchmark (Full)
+10 Execution Modes Comparison
+Using bashrs bench v6.25.0
+========================================
+
+Running: Nested loops (1000x1000) [python]
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [deno]
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [julia]
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [go]
+  Compiling Go...
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [rust]
+  Compiling Rust...
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [c]
+  Compiling C...
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [ruchy-ast]
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [ruchy-bytecode]
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [ruchy-transpile]
+  Transpiling...
+  Benchmarking with bashrs bench...
+Running: Nested loops (1000x1000) [ruchy-compile]
+  Compiling...
+  Benchmarking with bashrs bench...
+
+✅ BENCH-011 complete! Results saved to:
+   /home/noah/src/ruchy-book/test/ch21-benchmarks/results/bench-011-results-full.json
+
+======================================================================
+BENCH-011 RESULTS: Nested loops (1000x1000)
+======================================================================
+Mode                 Mean (ms)    Median (ms)  StdDev (ms)  Speedup
+----------------------------------------------------------------------
+julia                      1.24        1.22        0.06     47.37x
+c                          1.55        1.40        0.32     37.90x
+rust                       1.72        1.60        0.26     34.15x
+ruchy-transpiled           1.74        1.69        0.19     33.76x
+ruchy-compiled             2.03        1.99        0.30     28.94x
+go                         2.81        2.85        0.44     20.90x
+deno                      31.21       29.99        4.83      1.88x
+python                    58.74       58.09        2.22      1.00x
+ruchy-bytecode           788.85      789.47       12.65      0.07x
+ruchy-ast                789.10      785.95       20.11      0.07x
+======================================================================
