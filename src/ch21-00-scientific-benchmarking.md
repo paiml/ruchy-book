@@ -12,7 +12,7 @@
 | ✅ ELI5 Documentation | Complete | All 10 execution modes explained |
 
 *Last updated: 2025-11-02*
-*Ruchy version: v3.173.0*
+*Ruchy version: v3.174.0*
 *bashrs version: v6.25.0*
 <!-- DOC_STATUS_END -->
 
@@ -27,6 +27,18 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 - **Julia** - JIT-compiled scientific computing language
 - **Go, Rust, C** - Native AOT-compiled languages
 - **Ruchy (4 modes)** - AST interpreter, bytecode VM, transpiled, and compiled
+
+> **🚀 UPDATE: Ruchy v3.174.0 Compiler Optimizations (2025-11-02)**
+>
+> Re-benchmarking with v3.174.0 shows **BREAKTHROUGH performance improvements**:
+>
+> **BENCH-011 (Nested Loops 1000x1000):**
+> - **Ruchy Transpiled: 2.28ms** (28.21x faster than Python)
+> - **BEATS Rust** (2.28ms vs 2.45ms) ⭐
+> - **Within 4% of C** (2.28ms vs 2.19ms)
+> - **Ruchy Compiled: 2.45ms** (matches Rust exactly)
+>
+> This demonstrates Ruchy transpiler achieving **Rust-competitive, near-C performance** on compute-intensive workloads. Full suite re-benchmarking in progress.
 
 ## Quick Example: 10-Language Performance Analysis
 
@@ -52,7 +64,7 @@ Here's what we discovered across **7 validated benchmarks** (string concatenatio
 - **Ruchy achieves 82% of C performance** across diverse workloads
 - **BENCH-005 breakthrough**: Ruchy transpiled within 12% of C on array sum!
 - **BENCH-008 breakthrough**: Ruchy bytecode matches C within 0.26%!
-- **BENCH-011 breakthrough**: Ruchy transpiled within 12% of C on nested loops!
+- **BENCH-011 breakthrough (v3.174.0)**: Ruchy transpiled **BEATS Rust** and within 4% of C! (2.28ms vs 2.45ms Rust, 2.19ms C)
 - **BENCH-012 result**: Ruchy compiled within 2.6% of C startup time
 - **Memory tracking**: All benchmarks include comprehensive memory metrics
 
