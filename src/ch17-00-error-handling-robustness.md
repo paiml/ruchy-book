@@ -10,8 +10,8 @@
 | ⏳ Untested | ~5 | Advanced patterns (Result, Option types) |
 | ❌ Broken | 0 | ALL CORE ERROR HANDLING WORKS! |
 
-*Last updated: 2025-10-13*
-*Ruchy version: ruchy v1.84.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 
 **Core Error Handling (4/4) - 100% Pass Rate**:
 - Example 1: Safe division with guard clause ✅

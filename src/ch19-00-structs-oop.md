@@ -10,8 +10,8 @@
 | ⚠️ Limitation | 1 | &str in struct fields (lifetime issue) |
 | ❌ Broken | 0 | Basic structs work! |
 
-*Last updated: 2025-10-13*
-*Ruchy version: ruchy v1.84.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 
 **Core Struct Features (3/4) - 75% Pass Rate**:
 - Example 1: Basic struct definition (i32 fields) ✅

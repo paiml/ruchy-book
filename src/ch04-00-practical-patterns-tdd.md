@@ -10,8 +10,8 @@
 | ⏳ Untested | 3 | Advanced features (arrays, mut, String construction) |
 | 📋 Requires Implementation | 3 | Waiting for compiler features |
 
-*Last updated: 2025-10-30*
-*Ruchy version: ruchy v3.149.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 
 **Working Examples (6/9) - 100% Pass Rate**:
 - Example 1: Calculator with if/else ✅
