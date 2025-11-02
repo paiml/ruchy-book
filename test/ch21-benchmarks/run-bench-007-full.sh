@@ -12,7 +12,7 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-007-fibonacci.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-007-fibonacci.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-007-fibonacci.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-007-fibonacci.rs"
-readonly C_SCRIPT="$(dirname "$0")/bench-bench-007-*".c"
+readonly C_SCRIPT="$(dirname "$0")/bench-007-fibonacci.c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-007-fibonacci.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-007-results-full.json"
 

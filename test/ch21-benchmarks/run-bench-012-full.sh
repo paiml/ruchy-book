@@ -12,7 +12,7 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-012-startup.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-012-startup.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-012-startup.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-012-startup-rust.rs"
-readonly C_SCRIPT="$(dirname "$0")/bench-bench-012-*".c"
+readonly C_SCRIPT="$(dirname "$0")/bench-012-startup.c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-012-startup.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-012-results-full.json"
 
