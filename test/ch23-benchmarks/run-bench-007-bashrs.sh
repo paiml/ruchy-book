@@ -92,4 +92,13 @@ for mode_name, mode_data in data['modes'].items():
     speedup = python_mean / mean
     speedup_str = f"{speedup:5.2f}x" if mode_name != 'python' else "baseline"
     print(f"{mode_name:19} | {mean:10.2f} | {median:11.2f} | {stddev:11.2f} | {min_ms:8.2f} | {max_ms:8.2f} | {speedup_str}")
+
+print("\n📖 Execution Modes Explained (ELI5):")
+print("─" * 70)
+print("python:          Run directly with Python interpreter (baseline)")
+print("deno:            Run with Deno's JIT compiler (TypeScript)")
+print("ruchy-ast:       Walk through code tree step-by-step (slowest)")
+print("ruchy-bytecode:  Run pre-processed instructions (fast startup)")
+print("ruchy-transpiled: Convert to Rust, then compile (fast execution)")
+print("ruchy-compiled:  Direct compilation to machine code (fastest)")
 EOF

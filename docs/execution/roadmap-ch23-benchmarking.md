@@ -123,6 +123,30 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 - [ ] Random seeds fixed for reproducibility
 - [ ] No manual intervention required
 
+## Execution Modes Explained (ELI5)
+
+**6 ways to run the same code - what's the difference?**
+
+| Mode | How It Works | Speed | Best For |
+|------|--------------|-------|----------|
+| **Python** | Python interpreter reads code line-by-line | Medium | Baseline comparison |
+| **Deno** | TypeScript JIT compiles as it runs | Fast* | Long-running servers |
+| **Ruchy AST** | Walk through code tree step-by-step | Slow | Development/debugging |
+| **Ruchy Bytecode** | Pre-compiled VM instructions | Fast | Scripts, CLI tools |
+| **Ruchy Transpiled** | Convert to Rust → compile | Very Fast | Performance-critical |
+| **Ruchy Compiled** | Direct compilation to machine code | Fastest | Production binaries |
+
+*Deno JIT: Slow startup (warmup), fast after warmup
+
+**Key Terms:**
+- **AST**: Code represented as a tree (like a flowchart)
+- **Bytecode**: Numbered instructions (like LEGO building steps)
+- **Transpile**: Translate code to another language (Ruchy → Rust)
+- **Compile**: Convert code to machine code (1s and 0s)
+- **JIT**: Compile while running (gets faster over time)
+
+See `test/ch23-benchmarks/LEGEND.md` for detailed explanations.
+
 ## Methodology
 
 ### Benchmark Execution (Updated: bashrs bench v6.25.0)
