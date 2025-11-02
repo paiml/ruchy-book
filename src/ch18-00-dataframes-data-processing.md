@@ -9,7 +9,7 @@
 | ⚠️ Transpiler Mode | 0 | Optional - requires polars crate for production binaries |
 
 *Last tested: 2025-10-14*
-*Ruchy version: ruchy 3.174.0 (BREAKTHROUGH RELEASE)*
+*Ruchy version: ruchy 3.175.0 (BREAKTHROUGH RELEASE)*
 *Note: DataFrames fully working in v3.82.0 interpreter - all 4 examples passing*
 <!-- DOC_STATUS_END -->
 

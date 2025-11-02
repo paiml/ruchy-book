@@ -11,7 +11,7 @@
 | ❌ Broken | 0 | ALL CORE I/O WORKS! |
 
 *Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 
 **Core I/O Operations (8/8) - 100% Pass Rate**:
 - Example 1: Simple output (println) ✅

@@ -11,7 +11,7 @@
 | ❌ Broken | 0 | - |
 
 *Last tested: 2025-10-13*
-*Ruchy version: ruchy 3.174.0*
+*Ruchy version: ruchy 3.175.0*
 *Note: Meta-documentation chapter - documents professional tooling usage*
 <!-- DOC_STATUS_END -->
 
