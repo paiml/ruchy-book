@@ -1,9 +1,9 @@
-// BENCH-006: File line processing (100MB log file) - Go
-// Count lines containing "error" (case-insensitive)
+// BENCH-006: File Line Processing - Go
 package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strings"
 )
@@ -17,10 +17,8 @@ func countErrorLines(filename string) (int, error) {
 
 	count := 0
 	scanner := bufio.NewScanner(file)
-
 	for scanner.Scan() {
-		line := scanner.Text()
-		if strings.Contains(strings.ToLower(line), "error") {
+		if strings.Contains(strings.ToLower(scanner.Text()), "error") {
 			count++
 		}
 	}
@@ -33,17 +31,10 @@ func countErrorLines(filename string) (int, error) {
 }
 
 func main() {
-	filename := "test-data/sample-100mb.log"
-	if len(os.Args) > 1 {
-		filename = os.Args[1]
-	}
-
-	count, err := countErrorLines(filename)
+	result, err := countErrorLines("testdata/bench-006-logs-100mb.txt")
 	if err != nil {
 		panic(err)
 	}
-
-	_ = count
-	// Silent for benchmarking
-	// Expected: ~10% of lines contain ERROR
+	fmt.Println(result)
+	// Expected: 126076
 }
