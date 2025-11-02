@@ -1,11 +1,81 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-11-02T22:30:00.000Z
+**Generated**: 2025-11-02T23:45:00.000Z
 **Ruchy Version**: ruchy 3.175.0 🎉
 **Book Commit**: latest
-**Test Run**: 2025-11-02 Systematic Chapter Verification (21/21 - 100% Complete!) 🎉
+**Test Run**: 2025-11-02 Bug #003 Discovery + Benchmark Analysis
 
-## 🎉🎉🎉 LATEST: ALL 21 CHAPTERS SYSTEMATICALLY VERIFIED (100% COMPLETE!)
+## 🔍 LATEST: Bug #003 Discovered - Global Mutable State Broken (2025-11-02)
+
+**Task**: Benchmark Chapter Review + Feature Testing
+**Discovered**: Bug #003 - Global mutable state does not persist across function calls
+**Ruchy Version**: v3.175.0
+**Methodology**: EXTREME TDD (RED-GREEN-REFACTOR)
+
+### Critical Discovery: Issue #119 Partially Resolved
+
+**Previous Status**: Issue #119 (global let mut) marked as blocker for BENCH-002
+**Current Status**:
+- ✅ **Syntax Support**: `let mut` global variables now parse without errors
+- ❌ **Semantic Bug**: Global mutable state does NOT persist across function calls (Bug #003)
+
+### Bug #003 - Global Mutable State Does Not Persist
+
+**Test Case 1: Simple Counter**
+```ruchy
+let mut global_counter = 0
+
+fun increment() {
+    global_counter = global_counter + 1
+    global_counter
+}
+
+fun main() {
+    println(increment())  // Expect: 1, Actual: 1 ✅
+    println(increment())  // Expect: 2, Actual: 1 ❌
+    println(increment())  // Expect: 3, Actual: 1 ❌
+    println(global_counter)  // Expect: 3, Actual: 0 ❌
+}
+```
+
+**Result**: Each function call resets global mutable state to initial value.
+
+**Test Case 2: BENCH-002 Matrix Multiplication**
+- Expected output: `248683.505429`
+- Actual output: `0.00003304627079793454`
+- **Analysis**: LCG random state resets on each access, producing incorrect matrix values
+
+**Impact**: BENCH-002 produces silently wrong results (worse than being blocked).
+
+### Benchmark Status Update (v3.175.0)
+
+**Benchmarks with Scripts** (8/12):
+- BENCH-002 ✅ (exists) - ⚠️ **Blocked by Bug #003** (produces wrong output)
+- BENCH-003 ✅ (complete)
+- BENCH-004 ✅ (complete)
+- BENCH-005 ✅ (complete)
+- BENCH-007 ✅ (complete)
+- BENCH-008 ✅ (complete)
+- BENCH-011 ✅ (complete)
+- BENCH-012 ✅ (complete)
+
+**Benchmarks Without Scripts** (4/12):
+- BENCH-001 ❌ (File I/O - waiting on Issue #118)
+- BENCH-006 ❌ (HashMap - waiting on Issue #116)
+- BENCH-009 ❌ (JSON parsing - waiting on Issues #116, #117)
+- BENCH-010 ❌ (HTTP mock - not yet implemented)
+
+**Files Created**:
+- `docs/bugs/RUCHY-BUG-003-global-mutable-state.md` - Comprehensive bug report
+- Updated `src/ch21-00-scientific-benchmarking.md` - Changed BENCH-002 from "Issue #119" to "Bug #003"
+
+**Key Finding**: Global mutable variables are syntactically supported but semantically broken.
+
+**Recommendation**: Avoid all global `let mut` in book examples until Bug #003 is fixed.
+
+---
+
+## 🎉🎉🎉 PREVIOUS: ALL 21 CHAPTERS SYSTEMATICALLY VERIFIED (100% COMPLETE!)
 
 **Completed**: 2025-11-02
 **Task**: Systematic Chapter Verification with Extreme TDD
