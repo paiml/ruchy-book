@@ -81,7 +81,7 @@ fn string_concatenation(iterations: i32) -> String {  // ✅ Fixed!
 
 | Benchmark | Status | Blocker | Impact |
 |-----------|--------|---------|--------|
-| BENCH-008 | ❌ Blocked | usize casting issue | transpile/compile modes fail |
+| BENCH-008 | ❌ Blocked | usize casting issue (GitHub #115) | transpile/compile modes fail |
 
 **BENCH-008 Error**:
 ```rust
@@ -94,7 +94,7 @@ error[E0308]: mismatched types
 
 **Root Cause**: `Vec::len()` returns `usize` but Ruchy parameters default to `i32`
 
-**Note**: This is a **separate issue** from #114 and should be filed as its own GitHub issue.
+**GitHub Issue**: #115 - Filed for usize casting problem (separate from #114)
 
 ## Individual Benchmark Results
 
