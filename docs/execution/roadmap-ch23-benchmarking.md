@@ -45,10 +45,31 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 ### Infrastructure Tasks
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| INFRA-001 | Create benchmarking framework with bashrs | pending | 15 | P0 |
+| INFRA-001 | Create benchmarking framework with bashrs bench v6.25.0 | ✅ complete | 15 | P0 |
 | INFRA-002 | Create test data generators | pending | 8 | P0 |
-| INFRA-003 | Implement timing harness | pending | 10 | P0 |
-| INFRA-004 | Create results aggregator | pending | 12 | P0 |
+| INFRA-003 | Implement timing harness with bashrs bench | ✅ complete | 10 | P0 |
+| INFRA-004 | Create results aggregator | ✅ complete | 12 | P0 |
+
+**INFRA-001 Notes:**
+- Created `scripts/benchmark-framework-bashrs.sh` using bashrs bench v6.25.0
+- Framework creates temporary wrapper scripts for each execution mode
+- Handles compilation outside of timing (transpile/compile modes)
+- Properly suppresses stdout to avoid output contamination
+- Parses bashrs bench JSON output format (nested under benchmarks[0].statistics)
+
+**INFRA-003 Notes:**
+- bashrs bench provides built-in timing harness with:
+  - Configurable warmup iterations (default: 3)
+  - Configurable measured iterations (default: 10)
+  - Statistical analysis (mean, median, stddev, min, max)
+  - Determinism verification
+  - Quality gates (lint + determinism checks)
+
+**INFRA-004 Notes:**
+- Results aggregated from bashrs bench JSON output
+- Environment information captured (CPU, RAM, OS, timestamp)
+- Raw iteration times preserved for transparency
+- Speedup calculations vs Python baseline included
 
 ### Benchmark Implementation (TDD)
 | ID | Description | Status | Complexity | Priority |
@@ -59,7 +80,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 | BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 | Retest with v3.171.0 |
 | BENCH-005 | List operations (1M elements) | pending | 8 | P0 | Retest with v3.171.0 |
 | BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 | Retest with v3.171.0 |
-| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 | v3.171.0 verified |
+| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 | v3.171.0, bashrs bench v6.25.0 |
 | BENCH-008 | Prime generation (10K primes) | ⚠️ nearly | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.171.0 |
 | BENCH-009 | JSON parsing (10K objects) | pending | 10 | P0 |
 | BENCH-010 | HTTP mock (1K requests) | pending | 12 | P0 |
@@ -104,40 +125,45 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 
 ## Methodology
 
-### Benchmark Execution
+### Benchmark Execution (Updated: bashrs bench v6.25.0)
+
+**NEW**: Using bashrs bench v6.25.0 built-in benchmarking with quality gates!
 
 ```bash
-#!/usr/bin/env -S ../bashrs/target/release/bashrs
+#!/usr/bin/env bash
 
-# For each benchmark:
-# 1. Generate test data (deterministic)
-# 2. Warm-up runs (3 iterations, discarded)
-# 3. Measured runs (10 iterations)
-# 4. Calculate mean, median, stddev, min, max
-# 5. Output results to JSON
+# bashrs bench provides:
+# - Warmup iterations (default: 3)
+# - Measured iterations (default: 10)
+# - Statistical analysis (mean, median, stddev, min, max)
+# - JSON output with structured results
+# - Quality gates (lint + determinism checking)
+# - Reproducibility verification
 
-# Example:
-run_benchmark() {
-    local name=$1
-    local iterations=10
-    local warmup=3
+# Example usage:
+bashrs bench \
+    --warmup 3 \
+    --iterations 10 \
+    --output results.json \
+    --verify-determinism \
+    --strict \
+    script.sh
 
-    # Warmup
-    for i in $(seq 1 $warmup); do
-        run_test "$name" > /dev/null
-    done
-
-    # Measure
-    local results=()
-    for i in $(seq 1 $iterations); do
-        local time=$(run_test "$name")
-        results+=("$time")
-    done
-
-    # Aggregate
-    calculate_stats "${results[@]}"
-}
+# Framework creates temporary wrapper scripts for each mode:
+# - python: python3 script.py
+# - ruchy-ast: ruchy run script.ruchy
+# - ruchy-bytecode: ruchy --vm-mode bytecode run script.ruchy
+# - ruchy-transpile: Pre-compile, then benchmark binary
+# - ruchy-compile: Pre-compile, then benchmark binary
 ```
+
+**Key Improvements:**
+- ✅ Built-in statistical analysis (no custom Python scripts needed)
+- ✅ Determinism verification (ensures reproducibility)
+- ✅ Quality gates (lint checks on benchmark scripts)
+- ✅ Structured JSON output (version, environment, statistics)
+- ✅ Compilation separated from timing (transpile/compile modes)
+- ✅ Stdout suppression (no output contamination)
 
 ### Five Execution Modes
 
@@ -167,12 +193,33 @@ time rustc -O benchmark.rs && time ./benchmark
 time ruchy compile benchmark.ruchy -o benchmark && time ./benchmark
 ```
 
-## Expected Results Table Format
+## Actual Results (bashrs bench v6.25.0)
+
+### BENCH-007: Fibonacci recursive (n=20)
 
 | Benchmark | Python (ms) | Ruchy AST (ms) | Ruchy Bytecode (ms) | Ruchy Transpiled (ms) | Ruchy Compiled (ms) | Best Speedup vs Python |
 |-----------|-------------|----------------|---------------------|----------------------|---------------------|------------------------|
-| File Read 10MB | 245 ± 12 | 389 ± 18 | 243 ± 15 | 156 ± 8 | 148 ± 6 | 1.65x (compiled) |
-| Fibonacci (n=30) | 580 ± 25 | 920 ± 40 | 575 ± 28 | 85 ± 4 | 82 ± 3 | 7.07x (compiled) |
+| Fibonacci (n=20) | 18.21 ± 0.78 | 142.78 ± 4.97 | 3.99 ± 0.46 | 1.68 ± 0.24 | 1.77 ± 0.30 | **10.84x** (transpiled) |
+
+**Key Findings:**
+- ✅ Ruchy bytecode: **4.56x faster** than Python
+- ✅ Ruchy transpiled: **10.84x faster** than Python
+- ✅ Ruchy compiled: **10.29x faster** than Python
+- ⚠️ Ruchy AST: 7.84x slower than Python (interpreter overhead)
+
+**Environment:**
+- CPU: AMD Ryzen Threadripper 7960X 24-Cores
+- RAM: 125Gi
+- OS: Linux 6.8.0-85-generic
+- Date: 2025-11-02
+- Tool: bashrs bench v6.25.0 with determinism verification
+
+## Expected Results Table Format (Remaining Benchmarks)
+
+| Benchmark | Python (ms) | Ruchy AST (ms) | Ruchy Bytecode (ms) | Ruchy Transpiled (ms) | Ruchy Compiled (ms) | Best Speedup vs Python |
+|-----------|-------------|----------------|---------------------|----------------------|---------------------|------------------------|
+| File Read 10MB | TBD | TBD | TBD | TBD | TBD | TBD |
+| String Concat (10K) | TBD | TBD | TBD | Blocked [#113] | Blocked [#113] | TBD |
 | ... | ... | ... | ... | ... | ... | ... |
 
 ## Definition of Done

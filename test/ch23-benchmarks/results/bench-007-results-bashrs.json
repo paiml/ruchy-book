@@ -1,0 +1,111 @@
+{
+  "benchmark": "BENCH-007",
+  "name": "Fibonacci recursive (n=20)",
+  "tool": "bashrs bench v6.25.0",
+  "modes": {
+    "python": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "python",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 18.21,
+  "median_ms": 18.47,
+  "stddev_ms": 0.78,
+  "min_ms": 16.74,
+  "max_ms": 19.19,
+  "raw_results": [19,17,19,17,19,19,18,18,19,18],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:11:05+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-ast": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-ast",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 142.78,
+  "median_ms": 143.26,
+  "stddev_ms": 4.97,
+  "min_ms": 136.55,
+  "max_ms": 152.53,
+  "raw_results": [153,138,137,137,142,139,144,144,148,145],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:11:05+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-bytecode": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-bytecode",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3.99,
+  "median_ms": 4.16,
+  "stddev_ms": 0.46,
+  "min_ms": 3.33,
+  "max_ms": 4.83,
+  "raw_results": [3,5,4,4,4,3,4,4,4,4],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:11:05+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-transpiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-transpile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.68,
+  "median_ms": 1.53,
+  "stddev_ms": 0.24,
+  "min_ms": 1.49,
+  "max_ms": 2.13,
+  "raw_results": [2,2,2,1,2,2,1,1,2,2],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:11:05+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-compiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-compile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.77,
+  "median_ms": 1.74,
+  "stddev_ms": 0.30,
+  "min_ms": 1.38,
+  "max_ms": 2.42,
+  "raw_results": [2,2,2,2,2,2,1,1,2,1],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T12:11:05+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+  }
+}
