@@ -197,15 +197,16 @@ time ruchy compile benchmark.ruchy -o benchmark && time ./benchmark
 
 ### BENCH-007: Fibonacci recursive (n=20)
 
-| Benchmark | Python (ms) | Ruchy AST (ms) | Ruchy Bytecode (ms) | Ruchy Transpiled (ms) | Ruchy Compiled (ms) | Best Speedup vs Python |
-|-----------|-------------|----------------|---------------------|----------------------|---------------------|------------------------|
-| Fibonacci (n=20) | 18.21 ± 0.78 | 142.78 ± 4.97 | 3.99 ± 0.46 | 1.68 ± 0.24 | 1.77 ± 0.30 | **10.84x** (transpiled) |
+| Benchmark | Python (ms) | Deno (ms) | Ruchy AST (ms) | Ruchy Bytecode (ms) | Ruchy Transpiled (ms) | Ruchy Compiled (ms) | Best Speedup |
+|-----------|-------------|-----------|----------------|---------------------|----------------------|---------------------|--------------|
+| Fibonacci (n=20) | 16.65 ± 1.00 | 27.40 ± 1.01 | 149.43 ± 2.21 | 3.69 ± 0.38 | 1.70 ± 0.42 | 1.68 ± 0.20 | **9.91x** (compiled) |
 
 **Key Findings:**
-- ✅ Ruchy bytecode: **4.56x faster** than Python
-- ✅ Ruchy transpiled: **10.84x faster** than Python
-- ✅ Ruchy compiled: **10.29x faster** than Python
-- ⚠️ Ruchy AST: 7.84x slower than Python (interpreter overhead)
+- ⚠️ Deno TypeScript: **0.61x** (1.6x SLOWER than Python - JIT warmup overhead)
+- ✅ Ruchy bytecode: **4.51x faster** than Python
+- ✅ Ruchy transpiled: **9.79x faster** than Python
+- ✅ Ruchy compiled: **9.91x faster** than Python
+- ⚠️ Ruchy AST: 0.11x (interpreter overhead - expected)
 
 **Environment:**
 - CPU: AMD Ryzen Threadripper 7960X 24-Cores
