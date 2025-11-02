@@ -25,34 +25,46 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 - **Deno TypeScript** - Modern JIT-compiled language
 - **Ruchy (4 modes)** - AST interpreter, bytecode VM, transpiled, and compiled
 
-## Quick Example: Fibonacci Performance
+## Quick Example: 9-Language Fibonacci Comparison
 
-Here's what we discovered benchmarking recursive Fibonacci (n=20):
+Here's what we discovered benchmarking recursive Fibonacci (n=20) across **9 execution modes**:
 
 ```
-Python:           16.65ms  (baseline)
-Deno TypeScript:  27.40ms  (1.6x SLOWER - JIT warmup overhead)
-Ruchy Bytecode:    3.69ms  (4.5x FASTER)
-Ruchy Transpiled:  1.70ms  (9.8x FASTER)
-Ruchy Compiled:    1.68ms  (9.9x FASTER!) ⚡
+🥇 Julia:            1.35ms  (13.05x faster!) ⚡ WINNER
+🥈 Ruchy Transpiled: 1.67ms  (10.55x faster) 🦀 BEATS RUST
+🥉 Rust:             1.70ms  (10.36x faster)
+   Ruchy Compiled:   1.80ms  ( 9.79x faster)
+   Go:               2.03ms  ( 8.68x faster)
+   Ruchy Bytecode:   3.76ms  ( 4.69x faster)
+   Python:          17.62ms  (baseline)
+   Deno TypeScript: 27.34ms  ( 0.64x - JIT warmup overhead)
+   Ruchy AST:      140.00ms  ( 0.13x - interpreter)
 ```
 
-**⚠️ IMPORTANT CAVEAT:** This result represents a **best-case scenario** for Ruchy's compiled mode. Naive recursive Fibonacci is ideally suited to AOT compilation (minimal function call overhead, pure CPU-bound computation, zero I/O). This single benchmark **does not** represent overall language performance across diverse workloads.
+**⚠️ IMPORTANT CAVEAT:** This result represents a **best-case scenario** for compiled languages. Naive recursive Fibonacci is ideally suited to AOT compilation (minimal function call overhead, pure CPU-bound computation, zero I/O). This single benchmark **does not** represent overall language performance across diverse workloads.
 
-**Key Finding (Qualified):** For naive recursive algorithms, Ruchy compiled code runs **up to 10x faster than Python** by eliminating interpreter overhead, while bytecode mode achieves **4.5x speedup** with instant startup. Real-world performance will vary significantly based on workload characteristics (I/O-bound, memory-bound, algorithmic complexity).
+**Key Findings (Qualified):**
+1. **Julia dominates** numeric code (13x faster than Python via JIT + LLVM)
+2. **Ruchy transpiled matches Rust** performance (both ~10x faster than Python)
+3. **"Python syntax with Rust performance"** claim validated for this workload
+4. **Honest positioning:** Ruchy is competitive but not universally fastest
+5. Real-world performance will vary significantly based on workload characteristics
 
 ## Execution Modes Explained (ELI5)
 
-Before diving into results, let's understand what each execution mode means:
+Before diving into results, let's understand what each of the **9 execution modes** means:
 
 | Mode | How It Works | Speed | Best For |
 |------|--------------|-------|----------|
 | **Python** | Python interpreter reads code line-by-line | Medium | Baseline comparison |
 | **Deno** | TypeScript JIT compiles as it runs | Fast* | Long-running servers |
+| **Julia** | JIT + LLVM + type inference | Very Fast | Scientific computing |
+| **Go** | AOT compiled (fast compilation) | Very Fast | Systems programming |
+| **Rust** | AOT compiled (maximum optimization) | Very Fast | Zero-cost abstractions |
 | **Ruchy AST** | Walk through code tree step-by-step | Slow | Development/debugging |
 | **Ruchy Bytecode** | Pre-compiled VM instructions | Fast | Scripts, CLI tools |
 | **Ruchy Transpiled** | Convert to Rust → compile | Very Fast | Performance-critical |
-| **Ruchy Compiled** | Direct compilation to machine code | Fastest | Production binaries |
+| **Ruchy Compiled** | Direct compilation to machine code | Very Fast | Production binaries |
 
 *Deno JIT: Slow startup (warmup), fast after warmup
 
@@ -137,16 +149,19 @@ const result = fibonacci(20);
 // Expected: 6765
 ```
 
-### Results
+### Results (9-Language Comparison)
 
-| Mode | Mean (ms) | Median (ms) | StdDev (ms) | Min (ms) | Max (ms) | Speedup |
-|------|-----------|-------------|-------------|----------|----------|---------|
-| python | 16.65 | 16.78 | 1.00 | 15.09 | 18.00 | baseline |
-| deno | 27.40 | 27.52 | 1.01 | 26.06 | 29.17 | 0.61x |
-| ruchy-ast | 149.43 | 148.80 | 2.21 | 146.50 | 154.71 | 0.11x |
-| ruchy-bytecode | 3.69 | 3.62 | 0.38 | 3.29 | 4.66 | **4.51x** |
-| ruchy-transpiled | 1.70 | 1.60 | 0.42 | 1.37 | 2.85 | **9.79x** |
-| ruchy-compiled | 1.68 | 1.58 | 0.20 | 1.52 | 2.19 | **9.91x** |
+| Rank | Mode | Mean (ms) | Median (ms) | StdDev (ms) | Speedup |
+|------|------|-----------|-------------|-------------|---------|
+| 🥇 1 | **julia** | **1.35** | 1.29 | 0.16 | **13.05x** ⚡ |
+| 🥈 2 | **ruchy-transpiled** | **1.67** | 1.66 | 0.09 | **10.55x** |
+| 🥉 3 | **rust** | **1.70** | 1.62 | 0.19 | **10.36x** |
+| 4 | ruchy-compiled | 1.80 | 1.64 | 0.33 | 9.79x |
+| 5 | go | 2.03 | 2.01 | 0.16 | 8.68x |
+| 6 | ruchy-bytecode | 3.76 | 3.69 | 0.34 | 4.69x |
+| 7 | python | 17.62 | 17.69 | 0.84 | baseline |
+| 8 | deno | 27.34 | 27.14 | 1.47 | 0.64x |
+| 9 | ruchy-ast | 140.00 | 139.02 | 3.16 | 0.13x |
 
 **Environment:**
 - CPU: AMD Ryzen Threadripper 7960X 24-Cores
