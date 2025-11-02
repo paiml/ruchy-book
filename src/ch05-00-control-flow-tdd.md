@@ -36,7 +36,7 @@
 
 
 **Chapter Status**: ✅ 100% Test-Driven (7/7 examples passing)
-**Ruchy Version**: v1.84.0
+**Ruchy Version**: v3.175.0
 **Testing**: All examples verified with `make test-ch05` and 7-layer validation
 
 ## The Problem
@@ -400,4 +400,4 @@ Control flow gives you the tools to build interactive and dynamic programs. In t
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v1.10.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.175.0*
