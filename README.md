@@ -290,10 +290,10 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-11-02 22:36 UTC
+**Last Updated**: 2025-11-02 22:42 UTC
 **Ruchy Version**: v1.84.0
 
-- 📊 **Book Examples**: 98/135 passing (73%)
+- 📊 **Book Examples**: 98/137 passing (72%)
 - 🎯 **One-liners**: 12/18 passing (66%)
 - ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
 - 🚀 **CI Status**: ✅ success
