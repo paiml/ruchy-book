@@ -12,12 +12,13 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-008-primes.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-008-primes.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-008-primes.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-008-primes-rust.rs"
+readonly C_SCRIPT="$(dirname "$0")/bench-008-primes.c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-008-primes.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-008-results-full.json"
 
 echo "========================================" >&2
 echo "BENCH-008: Prime Generation Benchmark (Full)" >&2
-echo "9 Execution Modes Comparison" >&2
+echo "10 Execution Modes Comparison" >&2
 echo "Using bashrs bench v6.25.0" >&2
 echo "========================================" >&2
 echo "" >&2
@@ -56,22 +57,27 @@ echo '    "rust": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "rust" "$RUST_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 6: Ruchy AST
+# Mode 6: C (compiled)
+echo '    "c": ' >> "$RESULTS_FILE"
+run_benchmark "$BENCH_NAME" "c" "$C_SCRIPT" >> "$RESULTS_FILE"
+echo ',' >> "$RESULTS_FILE"
+
+# Mode 7: Ruchy AST
 echo '    "ruchy-ast": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-ast" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 7: Ruchy Bytecode
+# Mode 8: Ruchy Bytecode
 echo '    "ruchy-bytecode": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-bytecode" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 8: Ruchy Transpiled
+# Mode 9: Ruchy Transpiled
 echo '    "ruchy-transpiled": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-transpile" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 echo ',' >> "$RESULTS_FILE"
 
-# Mode 9: Ruchy Compiled
+# Mode 10: Ruchy Compiled
 echo '    "ruchy-compiled": ' >> "$RESULTS_FILE"
 run_benchmark "$BENCH_NAME" "ruchy-compile" "$RUCHY_SCRIPT" >> "$RESULTS_FILE"
 

@@ -12,12 +12,13 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-003-string-concat.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-003-string-concat.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-003-string-concat.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-003-string-concat-rust.rs"
+readonly C_SCRIPT="$(dirname "$0")/bench-bench-003-*".c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-003-string-concat.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-003-results-full.json"
 
 echo "========================================" >&2
 echo "BENCH-003: String Concatenation" >&2
-echo "9 Execution Modes Comparison" >&2
+echo "10 Execution Modes Comparison" >&2
 echo "Using bashrs bench v6.25.0" >&2
 echo "========================================" >&2
 echo "" >&2
