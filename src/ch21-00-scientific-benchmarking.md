@@ -6,7 +6,7 @@
 | Status | Count | Details |
 |--------|-------|---------|
 | ✅ Benchmarking Framework | Complete | bashrs bench v6.25.0 + 10-mode support |
-| ✅ Validated Benchmarks | 4/5 | BENCH-003, 007, 008, 012 (10 modes each) |
+| ✅ Validated Benchmarks | 5/5 | BENCH-003, 005, 007, 008, 012 (10 modes each) |
 | ✅ Geometric Mean Analysis | Complete | Cross-benchmark performance |
 | ✅ C Language Baseline | Complete | Native performance comparison |
 | ✅ ELI5 Documentation | Complete | All 10 execution modes explained |
@@ -30,38 +30,40 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 
 ## Quick Example: 10-Language Performance Analysis
 
-Here's what we discovered across **4 validated benchmarks** (string concatenation, Fibonacci, prime generation, startup time) comparing **10 execution modes**:
+Here's what we discovered across **5 validated benchmarks** (string concatenation, array sum, Fibonacci, prime generation, startup time) comparing **10 execution modes**:
 
-### Geometric Mean Performance (4 benchmarks)
+### Geometric Mean Performance (5 benchmarks)
 
 ```
-🥇 Julia:            21.51x faster  ⚡ JIT + LLVM dominance
-🥈 C:                13.63x faster  🏆 Native baseline
-🥉 Rust:             12.42x faster  🦀 Safety + performance
-4️⃣  Go:               11.24x faster  🚀 Fast compilation
-5️⃣  Ruchy Compiled:   11.14x faster  ⭐ MATCHES GO!
-6️⃣  Ruchy Transpiled: 10.84x faster  ⭐ 80% of C
-7️⃣  Ruchy Bytecode:    7.58x faster  ⚡ Fast interpretation
-8️⃣  Deno:              2.92x faster  🌐 JIT warmup issues
-9️⃣  Ruchy AST:         1.11x faster  🐛 Debug/development
-🔟 Python:            1.00x (baseline)
+🥇 Julia:            21.78x faster  ⚡ JIT + LLVM dominance
+🥈 C:                16.04x faster  🏆 Native baseline
+🥉 Rust:             14.26x faster  🦀 Safety + performance
+4️⃣  Ruchy Compiled:   13.04x faster  ⭐ EXCEEDS GO!
+5️⃣  Ruchy Transpiled: 12.93x faster  ⭐ 81% of C
+6️⃣  Go:               12.16x faster  🚀 Fast compilation
+7️⃣  Ruchy Bytecode:    2.72x faster  ⚡ Fast interpretation
+8️⃣  Deno:              1.03x faster  🌐 JIT warmup issues
+9️⃣  Python:            1.00x (baseline)
+🔟 Ruchy AST:          0.27x faster  🐛 Debug/development
 ```
 
 **🎯 KEY ACHIEVEMENTS:**
-- **Ruchy compiled (11.14x) matches/exceeds Go (11.24x)** in geometric mean
-- **Ruchy achieves 82% of C performance** across diverse workloads
+- **Ruchy compiled (13.04x) now EXCEEDS Go (12.16x)** in geometric mean!
+- **Ruchy achieves 81% of C performance** across diverse workloads
+- **BENCH-005 breakthrough**: Ruchy transpiled within 12% of C on array sum!
 - **BENCH-008 breakthrough**: Ruchy bytecode matches C within 0.26%!
 - **BENCH-012 result**: Ruchy compiled within 2.6% of C startup time
 
-**⚠️ METHODOLOGY:** These results are based on **4 validated benchmarks** covering:
+**⚠️ METHODOLOGY:** These results are based on **5 validated benchmarks** covering:
 - String manipulation (BENCH-003)
+- Array iteration (BENCH-005)
 - Recursive algorithms (BENCH-007)
 - CPU-bound computation (BENCH-008)
 - Startup performance (BENCH-012)
 
 **Key Findings (Evidence-Based):**
-1. **Ruchy achieves native-level performance**: 11.14x geometric mean
-2. **Julia dominates** numeric code (21.5x via JIT + LLVM)
+1. **Ruchy achieves native-level performance**: 13.04x geometric mean
+2. **Julia dominates** numeric code (21.8x via JIT + LLVM)
 3. **"Python syntax with C-like performance"** validated across multiple workloads
 4. **Four execution modes** optimize for different use cases
 5. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
@@ -408,16 +410,18 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 
 1. **BENCH-001:** File I/O - Read 10MB text file
 2. **BENCH-002:** File I/O - Write 100K operations
-3. **BENCH-003:** String concatenation (10K operations) - *Partially blocked by [#113](https://github.com/paiml/ruchy/issues/113)*
+3. **BENCH-003:** String concatenation (10K operations) - ✅ **Complete**
 4. **BENCH-004:** Regex matching (100K patterns)
-5. **BENCH-005:** List operations (1M elements)
+5. **BENCH-005:** Array sum (1M integers) - ✅ **Complete**
 6. **BENCH-006:** HashMap operations (100K entries)
 7. **BENCH-007:** Fibonacci recursive (n=20) - ✅ **Complete**
-8. **BENCH-008:** Prime generation (10K primes) - *Nearly complete with v3.171.0*
+8. **BENCH-008:** Prime generation (10K primes) - ✅ **Complete**
 9. **BENCH-009:** JSON parsing (10K objects)
 10. **BENCH-010:** HTTP mock (1K requests)
+11. **BENCH-011:** Reserved
+12. **BENCH-012:** Startup time (Hello World) - ✅ **Complete**
 
-**Status:** 1/10 complete, 9 pending
+**Status:** 5/12 complete (BENCH-003, 005, 007, 008, 012), 7 pending
 
 ### Framework Ready
 
@@ -433,42 +437,44 @@ The benchmarking infrastructure is **production-ready**:
 
 ## Summary
 
-**What We Learned (Evidence-Based - 4 Benchmarks):**
+**What We Learned (Evidence-Based - 5 Benchmarks):**
 
-1. **Ruchy achieves 11.14x geometric mean performance** across 4 diverse benchmarks (82% of C performance)
-2. **Ruchy matches/exceeds Go** in compiled mode (11.14x vs 11.24x geometric mean)
-3. **Breakthrough performance**: Ruchy bytecode matches C within 0.26% on BENCH-008
-4. **Fast startup**: Ruchy compiled within 2.6% of C (1.59ms vs 1.55ms)
-5. **Multiple execution modes** provide flexibility from development to production
-6. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
+1. **Ruchy achieves 13.04x geometric mean performance** across 5 diverse benchmarks (81% of C performance)
+2. **Ruchy EXCEEDS Go** in compiled mode (13.04x vs 12.16x geometric mean)
+3. **Breakthrough performance**: Ruchy transpiled within 12% of C on BENCH-005!
+4. **Breakthrough performance**: Ruchy bytecode matches C within 0.26% on BENCH-008
+5. **Fast startup**: Ruchy compiled within 2.6% of C (1.59ms vs 1.55ms)
+6. **Multiple execution modes** provide flexibility from development to production
+7. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
 
-**🏆 Performance Tiers (Geometric Mean Across 4 Benchmarks):**
+**🏆 Performance Tiers (Geometric Mean Across 5 Benchmarks):**
 
 | Tier | Languages | Speedup | Description |
 |------|-----------|---------|-------------|
-| **World-Class** | Julia | 21.51x | JIT + LLVM optimization |
-| **Native** | C, Rust, Go, **Ruchy Compiled**, **Ruchy Transpiled** | 10-14x | AOT compilation |
-| **High-Performance** | Ruchy Bytecode | 7.58x | Fast interpretation |
-| **Interpreted** | Deno, Ruchy AST, Python | 1-3x | Dynamic execution |
+| **World-Class** | Julia | 21.78x | JIT + LLVM optimization |
+| **Native** | C, Rust, **Ruchy Compiled**, **Ruchy Transpiled**, Go | 12-16x | AOT compilation |
+| **High-Performance** | Ruchy Bytecode | 2.72x | Fast interpretation |
+| **Interpreted** | Deno, Python, Ruchy AST | 0.27-1.03x | Dynamic execution |
 
-**Key Metrics Summary (4 Benchmarks Average):**
+**Key Metrics Summary (5 Benchmarks Average):**
 
 | Metric | Python | Ruchy Bytecode | Ruchy Compiled | C |
 |--------|--------|----------------|----------------|---|
-| Speed | baseline | 7.58x faster | 11.14x faster | 13.63x faster |
+| Speed | baseline | 2.72x faster | 13.04x faster | 16.04x faster |
 | Startup | ~16ms | ~3.8ms | ~1.6ms | ~1.6ms |
-| Performance | 100% | 56% of C | 82% of C | 100% |
+| Performance | 100% | 17% of C | 81% of C | 100% |
 | Use Case | Scripts | CLI tools | Production | Baseline |
 
 **The Verdict (Validated):**
 
-Ruchy delivers **"Python syntax with native-level performance"** - validated across 4 diverse benchmarks:
+Ruchy delivers **"Python syntax with native-level performance"** - validated across 5 diverse benchmarks:
 - ✅ String manipulation (BENCH-003)
+- ✅ Array iteration (BENCH-005)
 - ✅ Recursive algorithms (BENCH-007)
 - ✅ CPU-bound computation (BENCH-008)
 - ✅ Startup performance (BENCH-012)
 
-**Evidence Strength:** 4/10 benchmarks complete. Framework validated. Geometric mean analysis complete. Performance claims substantiated with cross-language scientific benchmarking.
+**Evidence Strength:** 5/12 benchmarks complete. Framework validated. Geometric mean analysis complete. Performance claims substantiated with cross-language scientific benchmarking.
 
 ## Exercises
 
