@@ -2,11 +2,11 @@
 
 **Date**: 2025-11-01
 **GitHub Issue**: [paiml/ruchy#113](https://github.com/paiml/ruchy/issues/113)
-**Status**: CRITICAL - Blocking Chapter 23 benchmarking
+**Status**: CRITICAL - Blocking Chapter 21 benchmarking
 
 ## Executive Summary
 
-Through EXTREME TDD methodology applied to Chapter 23 benchmarking, we discovered **critical type inference bugs** in the Ruchy transpiler that prevent compilation of transpiled code. These bugs affect **multiple benchmarks** and likely **most real-world Ruchy code**.
+Through EXTREME TDD methodology applied to Chapter 21 benchmarking, we discovered **critical type inference bugs** in the Ruchy transpiler that prevent compilation of transpiled code. These bugs affect **multiple benchmarks** and likely **most real-world Ruchy code**.
 
 ## Affected Benchmarks
 
@@ -140,7 +140,7 @@ ruchy dataflow:debug <file>.ruchy
 
 ## Benchmark Status
 
-### Chapter 23 Progress
+### Chapter 21 Progress
 
 **Completed**: 1/10 benchmarks (10%)
 
@@ -219,7 +219,7 @@ This is **EXACTLY what TDD is for**:
 1. **Test remaining benchmarks**: Map full extent of type inference bugs
 2. **Monitor issue #113**: Wait for transpiler fixes
 3. **Continue with working modes**: Python + AST comparisons
-4. **Document in Chapter 23**: Be transparent about limitations
+4. **Document in Chapter 21**: Be transparent about limitations
 5. **Revisit after fixes**: Re-run all blocked benchmarks
 
 ---

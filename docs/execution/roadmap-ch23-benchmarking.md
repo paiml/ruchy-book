@@ -1,4 +1,4 @@
-# PMAT Development Roadmap - Chapter 23: Scientific Benchmarking
+# PMAT Development Roadmap - Chapter 21: Scientific Benchmarking
 
 ## Current Sprint: Python vs Ruchy Scientific Performance Comparison
 - **Duration**: 2025-11-01 to 2025-11-08

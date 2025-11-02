@@ -88,7 +88,7 @@ Direct compilation to native binary via Ruchy compiler.
 To reproduce these results:
 
 ```bash
-cd test/ch23-benchmarks
+cd test/ch21-benchmarks
 ./run-bench-007.sh
 ```
 

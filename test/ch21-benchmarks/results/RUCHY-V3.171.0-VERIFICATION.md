@@ -9,7 +9,7 @@
 
 **Major transpiler type inference bugs have been FIXED in v3.171.0!**
 
-The Ruchy team responded to our bug reports and fixed the critical type inference issues that were blocking Chapter 23 benchmarking.
+The Ruchy team responded to our bug reports and fixed the critical type inference issues that were blocking Chapter 21 benchmarking.
 
 ## Test Results
 
@@ -137,7 +137,7 @@ fn string_concatenation(iterations: i32) -> i32 {  // ✅ Parameter fixed, ❌ R
 **After**: Still transpiles as `-> i32` (NOT FIXED)
 **Evidence**: BENCH-003 `string_concatenation` function
 
-## Impact on Chapter 23 Benchmarking
+## Impact on Chapter 21 Benchmarking
 
 **Before v3.171.0:**
 - Working: 1/10 benchmarks (10%)
@@ -176,11 +176,11 @@ The v3.171.0 fixes mean the **transpiler now matches the runtime's correct type 
 
 ### Short-term
 1. Request fix for string return type inference
-2. Complete all 10 benchmarks for Chapter 23
+2. Complete all 10 benchmarks for Chapter 21
 3. Create comprehensive performance comparison table
 
 ### Long-term
-1. Document transpiler improvements in Chapter 23
+1. Document transpiler improvements in Chapter 21
 2. Add note about version requirements (v3.171.0+)
 3. Thank Ruchy team in acknowledgments!
 
@@ -192,7 +192,7 @@ The v3.171.0 fixes mean the **transpiler now matches the runtime's correct type 
 - ✅ Vector returns
 - ❌ String returns (remaining)
 
-**Chapter 23 benchmarking is now 70-80% unblocked** (estimated).
+**Chapter 21 benchmarking is now 70-80% unblocked** (estimated).
 
 The quality of the Ruchy project is evident in how quickly they responded to our detailed bug reports and fixed the issues!
 
