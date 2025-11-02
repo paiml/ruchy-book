@@ -12,7 +12,7 @@ readonly DENO_SCRIPT="$(dirname "$0")/bench-003-string-concat.ts"
 readonly JULIA_SCRIPT="$(dirname "$0")/bench-003-string-concat.jl"
 readonly GO_SCRIPT="$(dirname "$0")/bench-003-string-concat.go"
 readonly RUST_SCRIPT="$(dirname "$0")/bench-003-string-concat-rust.rs"
-readonly C_SCRIPT="$(dirname "$0")/bench-bench-003-*".c"
+readonly C_SCRIPT="$(dirname "$0")/bench-003-string-concat.c"
 readonly RUCHY_SCRIPT="$(dirname "$0")/bench-003-string-concat.ruchy"
 readonly RESULTS_FILE="$(dirname "$0")/results/bench-003-results-full.json"
 
