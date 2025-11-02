@@ -10,8 +10,8 @@
 | ⏳ Untested | ~7 | DataFrame examples (advanced) |
 | ❌ Broken | 0 | ALL CONTROL FLOW WORKS! |
 
-*Last updated: 2025-10-13*
-*Ruchy version: ruchy v1.84.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 
 **Core Control Flow (7/7) - 100% Pass Rate**:
 - Example 1: If/else ✅

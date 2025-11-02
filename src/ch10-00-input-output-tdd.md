@@ -10,8 +10,8 @@
 | ⏳ Untested | ~5 | Advanced features (stdin, file I/O, etc.) |
 | ❌ Broken | 0 | ALL CORE I/O WORKS! |
 
-*Last updated: 2025-10-13*
-*Ruchy version: ruchy v1.84.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 
 **Core I/O Operations (8/8) - 100% Pass Rate**:
 - Example 1: Simple output (println) ✅

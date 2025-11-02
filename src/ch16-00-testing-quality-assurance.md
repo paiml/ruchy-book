@@ -10,7 +10,7 @@
 | ❌ Broken | 0 | - |
 
 *Last tested: 2025-10-13*
-*Ruchy version: v3.76.0*
+*Ruchy version: ruchy 3.174.0*
 *Features: Unit testing, factorial tests, error handling tests, property-based testing, test organization*
 <!-- DOC_STATUS_END -->
 

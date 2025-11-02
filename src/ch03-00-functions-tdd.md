@@ -10,8 +10,8 @@
 | ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-10-13*
-*Ruchy version: ruchy v1.84.0*
+*Last updated: 2025-11-02*
+*Ruchy version: ruchy 3.174.0*
 <!-- DOC_STATUS_END -->
 
 
