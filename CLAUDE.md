@@ -528,41 +528,253 @@ pre-commit: validate # Run pre-commit quality gates
 - **ruchy provability**: ✅ 100% provability score on simple functions
 - **ruchy runtime**: ✅ O(1) complexity, 100% optimization score
 
-## Bug Reporting Protocol
+## Bug Reporting Protocol (MANDATORY - BLOCKING)
 
-When encountering issues with the Ruchy compiler/runtime:
+**CRITICAL REQUIREMENT**: EVERY Ruchy compiler/runtime bug MUST be reported to GitHub with comprehensive debugging information. This is NOT optional.
 
-1. **File bugs locally first**: Create detailed reports in `docs/bugs/ruchy-runtime-bugs.md`
-2. **Include reproducibility**: Every bug must have exact steps to reproduce
-3. **Document workarounds**: If found, include them to unblock progress
-4. **Track impact**: Describe how the bug affects book testing and documentation
-5. **Version specificity**: Always include `ruchy --version` and platform details
+### MANDATORY Requirements for ALL Bug Reports
 
-### Bug Report Template
-```markdown
-## Bug #XXX: [Title]
+When encountering ANY issue with the Ruchy compiler/runtime, you MUST:
 
-**Filed**: [Date]
-**Ruchy Version**: v[X.Y.Z]
-**Platform**: [OS and architecture]
-**Severity**: Critical/High/Medium/Low
-**Status**: Open/Fixed/Workaround
+1. ✅ **Create GitHub Issue IMMEDIATELY** (not just local documentation)
+2. ✅ **Include minimal reproducible test case** (single .ruchy file)
+3. ✅ **Provide ruchydbg debugging workflow** (GDB commands, breakpoints)
+4. ✅ **Include ruchydbg output** (actual debugging session results)
+5. ✅ **Document impact** on book/benchmarks with specific examples
+6. ✅ **Provide workarounds** if discovered
+7. ✅ **Version specificity**: `ruchy --version`, platform, date
 
-### Description
-[Clear description of the issue]
+**NO EXCEPTIONS**: Do not wait, do not defer, do not document only locally. Create the GitHub issue WITH full debugging immediately.
 
-### Reproduction Steps
-[Exact commands to reproduce]
+### GitHub Issue Creation Workflow (MANDATORY)
 
-### Expected vs Actual
-[What should happen vs what does happen]
+#### Step 1: Create Minimal Reproducible Test Case
+```bash
+# Create single-file test case in test/
+cat > test/issue-XXX-description.ruchy << 'EOF'
+// Issue #XXX: Brief description
+// Minimal reproducible test case
 
-### Impact
-[How this affects book testing]
+// Code that reproduces the bug
+fun demonstrate_bug() {
+    // Minimal working example
+}
 
-### Workaround
-[If any]
+fun main() {
+    demonstrate_bug()
+}
+EOF
+
+# Verify it reproduces the bug
+ruchy run test/issue-XXX-description.ruchy
 ```
+
+#### Step 2: Run ruchydbg Debugging Session
+```bash
+# Run comprehensive debugging
+cd /home/noah/src/ruchy
+ruchydbg validate test/issue-XXX-description.ruchy
+
+# Document the GDB session:
+# - Breakpoints set
+# - Variables inspected
+# - Call stack analyzed
+# - Hypotheses tested
+```
+
+#### Step 3: Create GitHub Issue with Template
+```bash
+# Use gh CLI to create issue
+cd /home/noah/src/ruchy
+gh issue create --title "Issue #XXX: Brief Description" --body-file /tmp/issue-XXX-report.md
+```
+
+### MANDATORY GitHub Issue Template
+
+**EVERY GitHub issue MUST include ALL of these sections:**
+
+```markdown
+# Issue #XXX: [Brief Description]
+
+## Status: ❌ BLOCKING / ⚠️ PARTIAL / ✅ FIXED
+
+## Summary
+
+[2-3 sentence summary of the bug and its impact]
+
+## Minimal Reproducible Test Case
+
+**File**: `test/issue-XXX-description.ruchy`
+
+\`\`\`ruchy
+// Paste complete, runnable test case here
+// Must be single-command reproducible
+
+fun main() {
+    // Demonstrate bug
+}
+\`\`\`
+
+## Reproduction Steps
+
+\`\`\`bash
+# Single command to reproduce
+cd /home/noah/src/ruchy-book
+ruchy run test/issue-XXX-description.ruchy
+
+# Expected output:
+# [paste expected]
+
+# Actual output:
+# [paste actual]
+\`\`\`
+
+## ruchydbg Debugging Workflow (MANDATORY)
+
+### Hypothesis 1: [Most likely cause]
+
+**Location**: `runtime/[file].rs` line [approx]
+
+**GDB Commands**:
+\`\`\`bash
+cd /home/noah/src/ruchy
+ruchydbg validate test/issue-XXX-description.ruchy
+
+# In GDB:
+break [file].rs:[line]
+condition 1 if [condition]
+run
+backtrace
+print [variable]
+info locals
+\`\`\`
+
+**Expected**: [what should happen]
+**Actual**: [what does happen]
+
+### Hypothesis 2: [Second most likely]
+
+[Same format as Hypothesis 1]
+
+### Hypothesis 3: [Third possibility]
+
+[Same format as Hypothesis 1]
+
+## ruchydbg Output (MANDATORY)
+
+**Actual debugging session output**:
+\`\`\`
+[Paste actual ruchydbg/GDB output showing:]
+- Breakpoint hits
+- Variable values
+- Stack traces
+- Any error messages
+\`\`\`
+
+## Expected vs Actual Behavior
+
+**Expected**:
+\`\`\`
+[Exact expected output/behavior]
+\`\`\`
+
+**Actual**:
+\`\`\`
+[Exact actual output/behavior]
+\`\`\`
+
+## Impact Assessment
+
+### Blocked Features/Benchmarks
+
+- ❌ **BENCH-XXX**: [Benchmark name] - Cannot run due to this bug
+- ❌ **Chapter XX**: [Feature] - Documentation incomplete
+- ⚠️ **[Other impact]**: Describe
+
+### Workaround (if any)
+
+\`\`\`ruchy
+// If workaround exists, provide complete code
+fun workaround() {
+    // Alternative approach
+}
+\`\`\`
+
+## Environment
+
+- **Ruchy Version**: v[X.Y.Z] (from `ruchy --version`)
+- **Platform**: [OS] [architecture]
+- **Date**: [ISO-8601]
+- **Hardware**: [CPU, RAM if relevant]
+- **ruchydbg Version**: v[X.Y.Z]
+
+## Implementation Guidance (if applicable)
+
+**Suggested fix location**: `[file]:[line]`
+
+**Code example** (if you know the fix):
+\`\`\`rust
+// Suggested implementation
+pub fn fix_bug() {
+    // ...
+}
+\`\`\`
+
+## Related Issues
+
+- Related to #XXX
+- Blocks #YYY
+- Duplicate of #ZZZ
+
+## Test Files Created
+
+- `test/issue-XXX-description.ruchy` - Minimal reproducible case
+- `test/test-data/sample-XXX.txt` - Test data (if needed)
+```
+
+### Quality Standards for Bug Reports (MANDATORY)
+
+All bug reports MUST meet these standards:
+
+1. ✅ **Single-command reproducible**: `ruchy run test/issue-XXX.ruchy` MUST demonstrate bug
+2. ✅ **Minimal test case**: Remove ALL unnecessary code, keep only what's needed
+3. ✅ **ruchydbg workflow**: Provide 3 testable hypotheses with GDB commands
+4. ✅ **ruchydbg output**: Include actual debugging session output
+5. ✅ **Impact documented**: List specific blocked features/benchmarks
+6. ✅ **Version pinned**: Exact Ruchy version, not "latest"
+7. ✅ **Scientific reproducibility**: Anyone should reproduce with exact steps
+
+### Examples of HIGH QUALITY Bug Reports
+
+See previous exemplary reports:
+- **Issue #119**: Global mutable state (v3.177.0 verification)
+  - https://github.com/paiml/ruchy/issues/119
+  - Includes: Minimal test, debug workflow, hypotheses, impact, workaround
+
+- **Issue #116**: File object methods (v3.177.0 verification)
+  - https://github.com/paiml/ruchy/issues/116
+  - Includes: Implementation guidance, debug workflow, API specification
+
+### NEVER Do This (Anti-Patterns)
+
+❌ **DO NOT**:
+- File bugs only in local docs without GitHub issue
+- Report bugs without reproducible test case
+- Skip ruchydbg debugging workflow
+- Omit ruchydbg output
+- Use vague descriptions like "doesn't work"
+- Forget to document impact on book/benchmarks
+- Skip version information
+- Create issues without minimal test case
+
+✅ **ALWAYS DO**:
+- Create GitHub issue IMMEDIATELY
+- Include complete reproducible test case
+- Provide ruchydbg debugging workflow with 3 hypotheses
+- Include actual ruchydbg/GDB output
+- Document impact with specific examples
+- Pin exact Ruchy version
+- Make it single-command reproducible
 
 ## Testing Commands
 
