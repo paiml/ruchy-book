@@ -49,6 +49,7 @@
 ## Appendices
 
 - [Appendix A: Installation Guide](./appendix-a-installation.md)
+- [Appendix B: Ruchy vs Julia - Architecture Deep Dive](./appendix-b-ruchy-vs-julia.md)
 - [Appendix D: Glossary](./appendix-d-glossary.md)
 - [Appendix E: Learning Resources](./appendix-e-resources.md)
 - [Appendix F: Development Roadmap](./appendix-roadmap.md)
