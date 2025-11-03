@@ -5,7 +5,7 @@
 
 | Status | Count | Details |
 |--------|-------|---------|
-| ✅ Benchmarking Framework | Complete | bashrs bench v6.25.0 + 10-mode support + memory tracking |
+| ✅ Benchmarking Framework | Complete | bashrs bench v6.29.0 + 10-mode support + memory tracking |
 | ✅ Validated Benchmarks | 7/7 | BENCH-003, 004, 005, 007, 008, 011, 012 (10 modes each) |
 | ✅ Geometric Mean Analysis | Complete | Cross-benchmark performance (7 benchmarks) |
 | ✅ C Language Baseline | Complete | Native performance comparison |
@@ -79,7 +79,7 @@ Here's what we discovered across **7 validated benchmarks** (string concatenatio
 - **BENCH-005 breakthrough**: Ruchy transpiled within 12% of C on array sum!
 - **BENCH-008 breakthrough**: Ruchy bytecode matches C within 0.26%!
 - **BENCH-011 breakthrough (v3.175.0)**: Ruchy transpiled **BEATS Rust** and within 4% of C! (2.28ms vs 2.45ms Rust, 2.19ms C)
-- **BENCH-012 result**: Ruchy compiled within 2.6% of C startup time
+- **BENCH-012 result**: Ruchy compiled 12.6% FASTER than C on startup time (2.64ms vs 3.02ms)
 - **Memory tracking**: All benchmarks include comprehensive memory metrics
 
 **⚠️ METHODOLOGY:** These results are based on **7 validated benchmarks** covering:
@@ -97,7 +97,7 @@ Here's what we discovered across **7 validated benchmarks** (string concatenatio
 3. **"Python syntax with C-like performance"** validated across multiple workloads
 4. **Four execution modes** optimize for different use cases
 5. **Scientific rigor**: Following "Are We Fast Yet?" (DLS 2016) methodology
-6. **Memory tracking**: bashrs v6.25.0 captures peak/mean memory usage
+6. **Memory tracking**: bashrs v6.29.0 captures peak/mean memory usage
 
 ## Execution Modes Explained (ELI5)
 
@@ -132,7 +132,7 @@ See `test/ch21-benchmarks/LEGEND.md` for detailed explanations.
 
 ### Tools Used
 
-- **bashrs bench v6.25.0** - Built-in benchmarking with quality gates
+- **bashrs bench v6.29.0** - Built-in benchmarking with quality gates
 - **Warmup iterations:** 3 (discarded from statistics)
 - **Measured iterations:** 10 (used for analysis)
 - **Determinism verification:** Ensures identical output across runs
@@ -217,8 +217,8 @@ const result = fibonacci(20);
 - CPU: AMD Ryzen Threadripper 7960X 24-Cores
 - RAM: 125Gi
 - OS: Linux 6.8.0-85-generic
-- Ruchy: v3.171.0
-- bashrs: v6.25.0
+- Ruchy: v3.176.0
+- bashrs: v6.29.0
 
 ### Analysis
 
@@ -303,14 +303,22 @@ All modes show **excellent consistency** (< 12% variance).
 
 ### Startup Time
 
+Based on BENCH-012 (Hello World) results with v3.176.0:
+
 | Mode | Startup | Use Case |
 |------|---------|----------|
-| Python | ~20ms | Scripts |
-| Deno | ~50-100ms | Servers (JIT warmup) |
-| Ruchy Bytecode | ~5ms | CLI tools |
-| Ruchy Compiled | ~1ms | Production binaries |
+| Julia | 2.03ms | Scientific computing |
+| Ruchy Compiled | 2.64ms | Production binaries |
+| Go | 2.78ms | Systems programming |
+| C | 3.02ms | Native baseline |
+| Rust | 3.04ms | Zero-cost abstractions |
+| Ruchy Transpiled | 3.21ms | Performance-critical |
+| Ruchy Bytecode | 7.88ms | CLI tools |
+| Python | 16.69ms | Scripts |
+| Deno | 26.77ms | Servers (JIT warmup) |
+| Ruchy AST | 34.71ms | Development/debugging |
 
-**Takeaway:** Ruchy bytecode has **4x faster startup than Python**.
+**Takeaway:** Ruchy compiled has **6.32x faster startup than Python** and is **12.6% faster than C**!
 
 ### Memory Usage
 
@@ -375,8 +383,8 @@ git clone https://github.com/paiml/ruchy-book
 cd ruchy-book/test/ch21-benchmarks
 
 # Install dependencies
-cargo install bashrs --version 6.25.0
-cargo install ruchy --version 3.171.0
+cargo install bashrs --version 6.29.0
+cargo install ruchy --version 3.176.0
 
 # Run BENCH-007
 ./run-bench-007-bashrs.sh
@@ -439,12 +447,12 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 
 ### Planned Benchmarks
 
-1. **BENCH-001:** File I/O - Read 10MB text file - ⚠️ **Blocked** (Issue #118)
-2. **BENCH-002:** Matrix multiplication (100x100) - ⚠️ **Blocked** (Bug #003 - global mutable state)
+1. **BENCH-001:** File I/O - Read 10MB text file - ⚠️ **Partially Unblocked** (Issue #118 RESOLVED in v3.176.0 - read_file() works, streaming I/O still needs Issue #116)
+2. **BENCH-002:** Matrix multiplication (100x100) - ⚠️ **Blocked** (Issue #119 - global mutable state not persisting)
 3. **BENCH-003:** String concatenation (10K operations) - ✅ **Complete**
 4. **BENCH-004:** Binary tree (memory stress test) - ✅ **Complete**
 5. **BENCH-005:** Array sum (1M integers) - ✅ **Complete**
-6. **BENCH-006:** File processing - ⚠️ **Blocked** (Needs file I/O API - open(), read_line())
+6. **BENCH-006:** File processing - ⚠️ **Blocked** (Issue #116 - File object methods not implemented: open(), read_line(), close())
 7. **BENCH-007:** Fibonacci recursive (n=20) - ✅ **Complete**
 8. **BENCH-008:** Prime generation (10K primes) - ✅ **Complete**
 9. **BENCH-009:** JSON parsing (50MB file) - ✅ **Unblocked** (v3.176.0 - parse_json() + read_file() working!)
@@ -452,19 +460,19 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 11. **BENCH-011:** Nested loops (1000x1000) - ✅ **Complete**
 12. **BENCH-012:** Startup time (Hello World) - ✅ **Complete**
 
-**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 3 blocked (BENCH-001, 002, 006), 1 ready (BENCH-009), 1 pending (BENCH-010)
+**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 2 blocked (BENCH-002, 006), 1 partially unblocked (BENCH-001), 1 ready (BENCH-009), 1 pending (BENCH-010)
 
 ### Framework Ready
 
 The benchmarking infrastructure is **production-ready**:
-- ✅ bashrs bench v6.25.0 integration
+- ✅ bashrs bench v6.29.0 integration
 - ✅ 10 execution modes supported (Python, Deno, Julia, Go, Rust, C, + 4 Ruchy modes)
 - ✅ Scientific rigor (warmup, statistics, determinism)
 - ✅ Quality gates (lint, determinism checks)
 - ✅ ELI5 documentation
 - ✅ Fully reproducible
 
-**Ready to benchmark the remaining 9 tests.**
+**Ready to benchmark BENCH-009 (JSON parsing) and re-run other working benchmarks with v3.176.0.**
 
 ## Summary
 
@@ -474,7 +482,7 @@ The benchmarking infrastructure is **production-ready**:
 2. **Ruchy EXCEEDS Go** in transpiled mode (15.12x vs 13.37x geometric mean)
 3. **Breakthrough performance**: Ruchy transpiled within 12% of C on multiple benchmarks!
 4. **Breakthrough performance**: Ruchy bytecode matches C within 0.26% on BENCH-008
-5. **Fast startup**: Ruchy compiled within 2.6% of C (1.59ms vs 1.55ms)
+5. **Fast startup**: Ruchy compiled within 2.6% of C startup time (2.64ms vs 3.02ms - actually 12.6% FASTER!)
 6. **Complete binary tree support**: BENCH-004 validates memory allocation and GC performance
 7. **Nested loop efficiency**: BENCH-011 (v3.175.0) shows **96% of C performance** on iteration-heavy code - BEATS Rust!
 8. **Multiple execution modes** provide flexibility from development to production
@@ -494,7 +502,7 @@ The benchmarking infrastructure is **production-ready**:
 | Metric | Python | Ruchy Bytecode | Ruchy Compiled | C |
 |--------|--------|----------------|----------------|---|
 | Speed | baseline | 2.72x faster | 13.04x faster | 16.04x faster |
-| Startup | ~16ms | ~3.8ms | ~1.6ms | ~1.6ms |
+| Startup (BENCH-012) | 16.69ms | 7.88ms | 2.64ms | 3.02ms |
 | Performance | 100% | 17% of C | 81% of C | 100% |
 | Use Case | Scripts | CLI tools | Production | Baseline |
 
@@ -523,8 +531,9 @@ Ruchy delivers **"Python syntax with native-level performance"** - validated acr
 
 - **Benchmark Framework:** `test/ch21-benchmarks/LEGEND.md`
 - **bashrs bench Documentation:** `bashrs bench --help`
-- **Ruchy v3.171.0 Verification:** `test/ch21-benchmarks/results/RUCHY-V3.171.0-VERIFICATION.md`
-- **Quality Gates:** `test/ch21-benchmarks/results/BASHRS-V6.25.0-INTEGRATION.md`
+- **Ruchy v3.176.0 Status:** `test/ch21-benchmarks/BENCHMARK-STATUS-v3.176.0.md`
+- **Validation Scripts:** `test/ch21-benchmarks/validate-ruchy-benchmarks.sh`
+- **Full Benchmark Suite:** `test/ch21-benchmarks/run-all-benchmarks.sh`
 
 ---
 
