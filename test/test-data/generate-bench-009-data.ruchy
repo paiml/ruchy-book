@@ -1,0 +1,31 @@
+// Generate JSON test data for BENCH-009
+// Creates users array with 1000 entries, each with nested profile/location
+
+fun generate_user(id) {
+    let cities = ["London", "Paris", "Tokyo", "NewYork", "Berlin", "Sydney", "Toronto", "Dubai"]
+    let city_index = id % 8
+    let city = cities[city_index]
+
+    // Build JSON string manually (since we don't have json_stringify yet)
+    let user = '{"id": ' + id.to_string() + ', "name": "User' + id.to_string() + '", "profile": {"age": ' + (20 + (id % 50)).to_string() + ', "location": {"city": "' + city + '", "country": "TestCountry"}}}'
+    user
+}
+
+fun main() {
+    println('{"users": [')
+
+    let mut i = 0
+    while i < 1000 {
+        let user = generate_user(i)
+        print(user)
+
+        if i < 999 {
+            println(',')
+        }
+
+        i = i + 1
+    }
+
+    println('')
+    println(']}')
+}

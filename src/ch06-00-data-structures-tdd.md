@@ -10,8 +10,8 @@
 | ⏳ Untested | ~10 | Advanced features (HashMap, Vec methods, etc.) |
 | ❌ Broken | 0 | ALL CORE DATA STRUCTURES WORK! |
 
-*Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.175.0*
+*Last updated: 2025-11-03*
+*Ruchy version: ruchy 3.182.0*
 
 **Core Data Structures (9/9) - 100% Pass Rate**:
 - Example 1: String literals ✅
@@ -35,7 +35,7 @@
 <!-- DOC_STATUS_END -->
 
 **Chapter Status**: ✅ 100% Test-Driven (9/9 examples passing)
-**Ruchy Version**: v3.175.0
+**Ruchy Version**: v3.182.0
 **Testing**: All examples verified with 7-layer validation
 
 ## The Problem
@@ -373,7 +373,7 @@ fun main() {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v3.175.0):
+✅ **What Works** (Test-Verified in v3.182.0):
 - String literal creation with double quotes
 - Multiple string variables in same scope
 - Mixed data types (strings, integers, booleans)
@@ -410,4 +410,4 @@ Data structures provide the foundation for organizing information in your progra
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v3.175.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.182.0*

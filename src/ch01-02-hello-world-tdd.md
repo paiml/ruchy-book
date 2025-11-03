@@ -10,13 +10,13 @@
 | ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-11-02*  
-*Ruchy version: ruchy 3.175.0*
+*Last updated: 2025-11-03*  
+*Ruchy version: ruchy 3.182.0*
 <!-- DOC_STATUS_END -->
 
 
-**Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.10.0  
+**Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)
+**Ruchy Version**: v3.182.0
 **Testing**: All examples verified with `make test-ch01`
 
 ## The Problem

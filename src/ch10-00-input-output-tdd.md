@@ -10,8 +10,8 @@
 | ⏳ Untested | ~5 | Advanced features (stdin, file I/O, etc.) |
 | ❌ Broken | 0 | ALL CORE I/O WORKS! |
 
-*Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.175.0*
+*Last updated: 2025-11-03*
+*Ruchy version: ruchy 3.182.0*
 
 **Core I/O Operations (8/8) - 100% Pass Rate**:
 - Example 1: Simple output (println) ✅
@@ -35,7 +35,7 @@
 <!-- DOC_STATUS_END -->
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)
-**Ruchy Version**: v3.175.0
+**Ruchy Version**: v3.182.0
 **Testing**: All examples verified with 7-layer validation
 
 ## The Problem
@@ -390,7 +390,7 @@ fun show_options() {
 
 ## Summary
 
-✅ **What Works** (Test-Verified in v3.175.0):
+✅ **What Works** (Test-Verified in v3.182.0):
 - println() function for text output
 - Variable printing (strings, numbers, booleans)
 - Array and tuple printing
@@ -429,4 +429,4 @@ Input and output operations provide the foundation for user interaction. In the 
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v3.175.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.182.0*

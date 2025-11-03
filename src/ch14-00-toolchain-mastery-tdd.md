@@ -5,8 +5,8 @@
 
 **Chapter Type**: Tooling Documentation (not language features)
 
-*Last updated: 2025-11-02*
-*Ruchy version: ruchy 3.175.0*
+*Last updated: 2025-11-03*
+*Ruchy version: ruchy 3.182.0*
 
 **Validated Examples (5/5) - 100% Pass Rate**:
 - Example 1: Basic greet function ✅

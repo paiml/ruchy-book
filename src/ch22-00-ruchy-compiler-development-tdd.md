@@ -10,7 +10,7 @@
 | ❌ Broken | 0 | - |
 
 *Last tested: 2025-10-13*
-*Ruchy version: ruchy 3.175.0*
+*Ruchy version: ruchy 3.182.0*
 *Note: Chapter documents bash workflows; embedded Ruchy code validated*
 <!-- DOC_STATUS_END -->
 
@@ -207,9 +207,9 @@ Compiler functional test
 When creating book content:
 
 1. **Always use system ruchy** for examples
-2. **Check local build** for upcoming features
+2. **Check local build** for feature validation against development version
 3. **Document only working features** in current system version
-4. **Note development features** in roadmap/future sections
+4. **Note incomplete features** in roadmap sections with clear status
 
 ## Compiler Development Workflow
 
