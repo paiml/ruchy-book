@@ -1,23 +1,25 @@
 #!/usr/bin/env bash
 # Run all working benchmarks and generate comprehensive report
-# Ruchy v3.176.0 validation
+# Ruchy v3.182.0 validation
 
 set -euo pipefail
 
 echo "=========================================="
-echo "RUCHY v3.176.0 COMPREHENSIVE BENCHMARK SUITE"
+echo "RUCHY v3.182.0 COMPREHENSIVE BENCHMARK SUITE"
 echo "=========================================="
 echo ""
-echo "Running 7 complete benchmarks..."
-echo "Estimated time: ~30 minutes"
+echo "Running 9 complete benchmarks..."
+echo "Estimated time: ~45-60 minutes"
 echo ""
 
 BENCHMARKS=(
+    "002:Matrix multiplication (100x100)"
     "003:String concatenation (10K operations)"
     "004:Binary tree (memory stress test)"
     "005:Array sum (1M integers)"
     "007:Fibonacci recursive (n=20)"
     "008:Prime generation (10K primes)"
+    "009:JSON parsing (50MB file)"
     "011:Nested loops (1000x1000)"
     "012:Startup time (Hello World)"
 )
@@ -62,10 +64,10 @@ for json_file in sorted(results_dir.glob("bench-*-results-full.json")):
         benchmarks.append(data)
 
 print("\n" + "="*80)
-print("COMPREHENSIVE BENCHMARK SUMMARY - Ruchy v3.176.0")
+print("COMPREHENSIVE BENCHMARK SUMMARY - Ruchy v3.182.0")
 print("="*80)
 print(f"\nTotal Benchmarks: {len(benchmarks)}")
-print(f"Tool: bashrs bench v6.29.0")
+print(f"Tool: bashrs bench v6.25.0")
 print(f"Hardware: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM")
 print("\n" + "="*80)
 
