@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-03T09:48:53.843Z",
+  "timestamp": "2025-11-03T10:20:28.334Z",
   "ruchy_version": "ruchy 3.176.0",
-  "chapters_processed": 19,
-  "examples_found": 136,
-  "examples_working": 136,
-  "examples_failing": 0,
-  "success_rate": 100,
+  "chapters_processed": 20,
+  "examples_found": 140,
+  "examples_working": 139,
+  "examples_failing": 1,
+  "success_rate": 99,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -394,6 +394,49 @@
           "example_number": 3,
           "line_number": 110,
           "code": "fun main() {\n    println(\"Mathematical Functions Demo\");\n    \n    let n = 10;\n    println(\"Factorial of {}: {}\", n, factorial(n));\n    \n    let x = 25;\n    println(\"Square root of {}: {}\", x, integer_sqrt(x));\n    \n    let a = 48;\n    let b = 18;\n    println(\"GCD of {} and {}: {}\", a, b, gcd(a, b));\n}\n\nfun factorial(n: i32) -> i64 {\n    if n <= 1 {\n        1\n    } else {\n        (n as i64) * factorial(n - 1)\n    }\n}\n\nfun integer_sqrt(n: i32) -> i32 {\n    if n < 2 {\n        return n;\n    }\n    \n    let mut x = n / 2;\n    let mut prev = 0;\n    \n    while x != prev {\n        prev = x;\n        x = (x + n / x) / 2;\n    }\n    \n    x\n}\n\nfun gcd(mut a: i32, mut b: i32) -> i32 {\n    while b != 0 {\n        let temp = b;\n        b = a % b;\n        a = temp;\n    }\n    a\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "appendix-b-ruchy-vs-julia": {
+      "chapter": "appendix-b-ruchy-vs-julia",
+      "total_examples": 4,
+      "working_examples": 3,
+      "failing_examples": 1,
+      "examples": [
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 1,
+          "line_number": 325,
+          "code": "# All types determined at runtime\nfun compute(x, y) {\n    let result = x + y      // Type checked at runtime\n    result * 2              // Type checked again\n}\n\ncompute(1, 2)               // Value::Integer operations\ncompute(1.0, 2.0)           // Value::Float operations\ncompute(\"a\", \"b\")           // Value::String operations",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 2,
+          "line_number": 713,
+          "code": "# CLI tool for log processing\nfun process_logs(file) {\n    let lines = read_file(file).split(\"\\n\")\n    lines.filter(|l| l.contains(\"ERROR\"))\n         .map(|l| parse_log(l))\n         .foreach(|log| println(log.format()))\n}\n\n# Compiles to 2MB binary\n# ruchy compile log-processor.ruchy -o logproc\n# Ship single ./logproc file",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 3,
+          "line_number": 744,
+          "code": "# deploy.ruchy - Production inference in Ruchy\nlet model = parse_json(read_file(\"model.json\"))\nfun predict(input) {\n    model.apply(input)  // Fast inference\n}\n\n// Compile to 2MB binary for edge deployment",
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Failed to read file 'model.json': No such file or directory (os error 2)\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 4,
+          "line_number": 755,
+          "code": "// frontend CLI tool (Ruchy)\nfun fetch_data(endpoint) {\n    http_get(endpoint)\n}\n\n// Processes data locally, sends to Julia server",
           "passed": true,
           "status": "working"
         }
