@@ -11,9 +11,9 @@
 | ✅ C Language Baseline | Complete | Native performance comparison |
 | ✅ ELI5 Documentation | Complete | All 10 execution modes explained |
 
-*Last updated: 2025-11-02*
-*Ruchy version: v3.175.0*
-*bashrs version: v6.25.0*
+*Last updated: 2025-11-03*
+*Ruchy version: v3.176.0*
+*bashrs version: v6.29.0*
 <!-- DOC_STATUS_END -->
 
 ## The Problem
@@ -28,9 +28,21 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 - **Go, Rust, C** - Native AOT-compiled languages
 - **Ruchy (4 modes)** - AST interpreter, bytecode VM, transpiled, and compiled
 
-> **🚀 UPDATE: Ruchy v3.175.0 Compiler Optimizations (2025-11-02)**
+> **🚀 UPDATE: Ruchy v3.176.0 API Enhancements (2025-11-03)**
 >
-> Re-benchmarking with v3.175.0 shows **BREAKTHROUGH performance improvements**:
+> Ruchy v3.176.0 adds critical JSON parsing APIs that **unblock BENCH-009**:
+>
+> **New APIs Available:**
+> - ✅ `parse_json()` - Plain function API for JSON parsing (Issue #117 fixed)
+> - ✅ `read_file()` - Unwrapped string return for file reading (Issue #121 fixed)
+>
+> **BENCH-009 Status:** Ready to run! Manual validation confirms JSON parsing works correctly on 50MB test file (~1.4s execution time with ruchy run).
+>
+> ---
+>
+> **Previous: Ruchy v3.175.0 Compiler Optimizations (2025-11-02)**
+>
+> Re-benchmarking with v3.175.0 showed **BREAKTHROUGH performance improvements**:
 >
 > **BENCH-011 (Nested Loops 1000x1000):**
 > - **Ruchy Transpiled: 2.28ms** (28.21x faster than Python)
@@ -38,7 +50,7 @@ Without rigorous, reproducible benchmarks, these questions remain speculation. T
 > - **Within 4% of C** (2.28ms vs 2.19ms)
 > - **Ruchy Compiled: 2.45ms** (matches Rust exactly)
 >
-> This demonstrates Ruchy transpiler achieving **Rust-competitive, near-C performance** on compute-intensive workloads. Full suite re-benchmarking in progress.
+> This demonstrated Ruchy transpiler achieving **Rust-competitive, near-C performance** on compute-intensive workloads.
 
 ## Quick Example: 10-Language Performance Analysis
 
@@ -432,15 +444,15 @@ This chapter showed **one benchmark (BENCH-007)**. The complete suite includes:
 3. **BENCH-003:** String concatenation (10K operations) - ✅ **Complete**
 4. **BENCH-004:** Binary tree (memory stress test) - ✅ **Complete**
 5. **BENCH-005:** Array sum (1M integers) - ✅ **Complete**
-6. **BENCH-006:** HashMap operations (100K entries) - ⚠️ **Blocked** (Issue #116)
+6. **BENCH-006:** File processing - ⚠️ **Blocked** (Needs file I/O API - open(), read_line())
 7. **BENCH-007:** Fibonacci recursive (n=20) - ✅ **Complete**
 8. **BENCH-008:** Prime generation (10K primes) - ✅ **Complete**
-9. **BENCH-009:** JSON parsing (10K objects) - ⚠️ **Blocked** (Issues #116, #117)
+9. **BENCH-009:** JSON parsing (50MB file) - ✅ **Unblocked** (v3.176.0 - parse_json() + read_file() working!)
 10. **BENCH-010:** HTTP mock (1K requests)
 11. **BENCH-011:** Nested loops (1000x1000) - ✅ **Complete**
 12. **BENCH-012:** Startup time (Hello World) - ✅ **Complete**
 
-**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 4 blocked (BENCH-001, 002, 006, 009), 1 pending (BENCH-010)
+**Status:** 7/12 complete (BENCH-003, 004, 005, 007, 008, 011, 012), 3 blocked (BENCH-001, 002, 006), 1 ready (BENCH-009), 1 pending (BENCH-010)
 
 ### Framework Ready
 

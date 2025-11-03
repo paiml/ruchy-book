@@ -4,14 +4,15 @@
 **Ruchy Version**: ruchy 3.176.0 🎉 **NEW**
 **Book Examples**: 136/136 passing (100%) ✅
 **Test Status**: All systems operational
-**Benchmarks**: BENCH-006 & BENCH-009 unblocked ✅
+**Benchmarks**: BENCH-009 unblocked ✅ (BENCH-006 still needs file I/O API)
 
 ## 🚀 LATEST: v3.176.0 Qualified - Benchmarks Unblocked! (2025-11-03)
 
 **Release**: Ruchy v3.176.0
 **Issues Fixed**: #117 (JSON API), #121 (read_file unwrapped)
-**Impact**: BENCH-006 and BENCH-009 now ready to run!
+**Impact**: BENCH-009 now ready to run! ✅ (BENCH-006 still needs file I/O API)
 **Qualification**: 136/136 examples passing (100%) ✅
+**Benchmark Status**: BENCH-009 validated working (~1.4s execution time with ruchy run on 50MB JSON)
 
 **Manual Validation**:
 ```ruchy
@@ -91,8 +92,8 @@ fun main() {
 
 **Benchmarks Without Scripts** (4/12):
 - BENCH-001 ❌ (File I/O - waiting on Issue #118)
-- BENCH-006 ❌ (HashMap - waiting on Issue #116)
-- BENCH-009 ❌ (JSON parsing - waiting on Issues #116, #117)
+- BENCH-006 ❌ (File processing - needs file I/O API: open(), read_line())
+- BENCH-009 ✅ (JSON parsing - UNBLOCKED in v3.176.0! parse_json() + read_file() working)
 - BENCH-010 ❌ (HTTP mock - not yet implemented)
 
 **Files Created**:
