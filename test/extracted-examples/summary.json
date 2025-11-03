@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-02T22:37:31.334Z",
+  "timestamp": "2025-11-03T07:36:55.202Z",
   "ruchy_version": "ruchy 3.175.0",
   "chapters_processed": 19,
-  "examples_found": 137,
+  "examples_found": 136,
   "examples_working": 136,
-  "examples_failing": 1,
-  "success_rate": 99,
+  "examples_failing": 0,
+  "success_rate": 100,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -889,9 +889,9 @@
     },
     "ch13-00-debugging-tracing-tdd": {
       "chapter": "ch13-00-debugging-tracing-tdd",
-      "total_examples": 12,
+      "total_examples": 11,
       "working_examples": 11,
-      "failing_examples": 1,
+      "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch13-00-debugging-tracing-tdd.md",
@@ -980,17 +980,6 @@
           "code": "let mut counter = 0\n\nfun increment() {\n    counter = counter + 1\n    counter\n}\n\nincrement()\nincrement()\nprintln(\"Final: \", counter)",
           "passed": true,
           "status": "working"
-        },
-        {
-          "file": "src/ch13-00-debugging-tracing-tdd.md",
-          "example_number": 12,
-          "line_number": 432,
-          "code": "let file = File.open(\"test.txt\")\nfile.read_line()  // Check if __type marker exists",
-          "passed": false,
-          "status": "broken",
-          "error": "Error: Evaluation error: Runtime error: Unknown object type: File\n",
-          "errorCategory": "UNKNOWN",
-          "rootCause": "Unknown error - needs manual investigation"
         }
       ]
     },
