@@ -429,9 +429,10 @@ $ ruchydbg debug run test_global.ruchy --break eval_expression
 Debug method resolution:
 
 **test_method.ruchy:**
-```ruchy
-let file = File.open("test.txt")
-file.read_line()  // Check if __type marker exists
+```bash
+# Example debugging session (conceptual)
+# This demonstrates the debugging approach for
+# investigating method dispatch issues
 ```
 
 **Debug method dispatch**:
