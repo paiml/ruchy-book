@@ -6,7 +6,7 @@
 **Chapter Type**: Case Study - Production Package Publication
 
 *Published: 2025-11-01*
-*Ruchy version: ruchy 3.175.0*
+*Ruchy version: ruchy 3.182.0*
 
 **Real Package**:
 - ✅ **Live on crates.io**: [ruchy-reaper v1.0.0](https://crates.io/crates/ruchy-reaper)

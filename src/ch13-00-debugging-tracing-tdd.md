@@ -312,7 +312,7 @@ ruchy bench script.ruchy      # Performance benchmarking
 
 ## Limitations and Future Features
 
-Current limitations (v3.175.0):
+Current limitations (v3.182.0):
 - No visual indentation for call depth
 - All traced output goes to stdout (mixed with program output)
 - No conditional tracing (all functions are traced when enabled)

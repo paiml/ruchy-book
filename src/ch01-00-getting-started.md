@@ -106,7 +106,7 @@ The fastest way to try Ruchy is with the REPL:
 
 ```bash
 $ ruchy repl
-Ruchy 0.4.11 - Interactive REPL
+Ruchy 3.182.0 - Interactive REPL
 >>> println("Hello, Ruchy!")
 Hello, Ruchy!
 ```
