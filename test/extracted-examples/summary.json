@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-03T09:13:12.830Z",
+  "timestamp": "2025-11-03T09:20:41.992Z",
   "ruchy_version": "ruchy 3.176.0",
   "chapters_processed": 19,
   "examples_found": 136,
@@ -1048,7 +1048,7 @@
         {
           "file": "src/ch21-00-scientific-benchmarking.md",
           "example_number": 1,
-          "line_number": 163,
+          "line_number": 175,
           "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nlet result = fibonacci(20)\n// Expected: 6765",
           "passed": true,
           "status": "working"
