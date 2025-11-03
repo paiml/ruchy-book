@@ -1,0 +1,14 @@
+let mut call_count = 0
+
+fun increment_and_return() {
+    call_count = call_count + 1
+    println("  [TRACE] Function called, count is now:", call_count)
+    call_count
+}
+
+fun main() {
+    println("Test 1:", increment_and_return())
+    println("Test 2:", increment_and_return())
+    println("Test 3:", increment_and_return())
+    println("Final count:", call_count)
+}
