@@ -1,0 +1,18 @@
+// Minimal test case for transpiler bug with global mutable state
+// Issue: Transpiler generates invalid Rust code
+
+let mut global_state = 0
+
+fun modify_global(value) {
+    global_state = value
+}
+
+fun get_global() {
+    global_state
+}
+
+fun main() {
+    modify_global(42)
+    let result = get_global()
+    println("Result:", result)
+}
