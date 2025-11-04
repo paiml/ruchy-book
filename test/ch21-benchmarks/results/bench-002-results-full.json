@@ -9,12 +9,12 @@
   "mode": "python",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 68.31,
-  "median_ms": 68.22,
-  "stddev_ms": 1.09,
-  "min_ms": 66.81,
-  "max_ms": 70.75,
-  "raw_results": [67,68,68,68,69,67,68,69,68,71],
+  "mean_ms": 69.86,
+  "median_ms": 69.57,
+  "stddev_ms": 2.14,
+  "min_ms": 66.92,
+  "max_ms": 74.79,
+  "raw_results": [75,71,67,69,71,70,70,67,69,70],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -25,7 +25,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -36,12 +36,12 @@
   "mode": "deno",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 35.85,
-  "median_ms": 35.61,
-  "stddev_ms": 0.91,
-  "min_ms": 34.81,
-  "max_ms": 38.05,
-  "raw_results": [36,38,35,35,36,36,35,35,37,36],
+  "mean_ms": 36.55,
+  "median_ms": 36.77,
+  "stddev_ms": 1.01,
+  "min_ms": 34.95,
+  "max_ms": 38.43,
+  "raw_results": [36,37,37,36,35,38,37,35,37,37],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -52,7 +52,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -63,12 +63,12 @@
   "mode": "julia",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 2.11,
-  "median_ms": 2.04,
-  "stddev_ms": 0.22,
+  "mean_ms": 2.02,
+  "median_ms": 1.96,
+  "stddev_ms": 0.15,
   "min_ms": 1.86,
-  "max_ms": 2.53,
-  "raw_results": [3,2,2,2,2,2,2,2,2,2],
+  "max_ms": 2.31,
+  "raw_results": [2,2,2,2,2,2,2,2,2,2],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -79,7 +79,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -90,12 +90,12 @@
   "mode": "go",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 5.64,
-  "median_ms": 5.63,
-  "stddev_ms": 0.24,
-  "min_ms": 5.33,
-  "max_ms": 6.22,
-  "raw_results": [6,5,6,6,6,6,6,6,5,6],
+  "mean_ms": 5.62,
+  "median_ms": 5.59,
+  "stddev_ms": 0.26,
+  "min_ms": 5.28,
+  "max_ms": 6.24,
+  "raw_results": [6,5,5,5,5,5,6,6,6,6],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -106,7 +106,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -117,12 +117,12 @@
   "mode": "rust",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 5.28,
-  "median_ms": 5.23,
-  "stddev_ms": 0.31,
-  "min_ms": 4.80,
-  "max_ms": 5.99,
-  "raw_results": [6,6,5,5,5,5,5,5,5,5],
+  "mean_ms": 5.24,
+  "median_ms": 5.27,
+  "stddev_ms": 0.28,
+  "min_ms": 4.67,
+  "max_ms": 5.68,
+  "raw_results": [5,5,5,5,5,6,5,5,5,5],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -133,7 +133,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -144,12 +144,12 @@
   "mode": "c",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 2.85,
-  "median_ms": 2.69,
-  "stddev_ms": 0.35,
-  "min_ms": 2.56,
-  "max_ms": 3.72,
-  "raw_results": [3,4,3,3,3,3,3,3,3,3],
+  "mean_ms": 2.96,
+  "median_ms": 2.90,
+  "stddev_ms": 0.30,
+  "min_ms": 2.65,
+  "max_ms": 3.55,
+  "raw_results": [3,3,3,4,3,3,3,3,3,3],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -160,7 +160,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -171,12 +171,12 @@
   "mode": "ruchy-ast",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 2926.35,
-  "median_ms": 2924.58,
-  "stddev_ms": 51.90,
-  "min_ms": 2830.87,
-  "max_ms": 2994.31,
-  "raw_results": [2991,2914,2992,2994,2884,2831,2935,2883,2900,2941],
+  "mean_ms": 2901.75,
+  "median_ms": 2910.36,
+  "stddev_ms": 37.21,
+  "min_ms": 2816.28,
+  "max_ms": 2945.62,
+  "raw_results": [2921,2908,2913,2932,2883,2941,2946,2888,2816,2869],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -187,7 +187,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
@@ -198,12 +198,12 @@
   "mode": "ruchy-bytecode",
   "iterations": 10,
   "warmup": 3,
-  "mean_ms": 52.77,
-  "median_ms": 52.38,
-  "stddev_ms": 0.93,
-  "min_ms": 51.77,
-  "max_ms": 54.24,
-  "raw_results": [54,54,54,52,52,53,52,52,53,52],
+  "mean_ms": 52.67,
+  "median_ms": 52.51,
+  "stddev_ms": 1.31,
+  "min_ms": 50.50,
+  "max_ms": 54.73,
+  "raw_results": [52,50,52,54,54,53,53,52,52,55],
   "memory": {
     "peak_kb": 0,
     "mean_kb": 0,
@@ -214,7 +214,7 @@
     "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
     "ram": "125Gi",
     "os": "Linux 6.8.0-85-generic",
-    "timestamp": "2025-11-03T16:46:52+01:00"
+    "timestamp": "2025-11-04T19:15:36+01:00"
   },
   "tool": "bashrs bench v6.25.0"
 }
