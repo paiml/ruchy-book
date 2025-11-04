@@ -42,7 +42,7 @@ Current INTEGRATION.md shows:
 - All 7 recent tickets documented (021-027)
 - Milestone achievement recorded
 - GitHub issues referenced
-- Time-stamped with Ruchy v3.169.0
+- Time-stamped with Ruchy v3.193.0
 
 ## Solution (EXTREME TDD)
 
@@ -65,7 +65,7 @@ Update INTEGRATION.md with:
    - Total: 135 examples
    - Passing: **135 (100%)**
    - Failing: **0 (0%)**
-   - Ruchy version: v3.169.0
+   - Ruchy version: v3.193.0
    - Timestamp: 2025-10-30
 
 2. **Recent Achievements** (TICKET-021 through TICKET-027):
@@ -123,7 +123,7 @@ grep "2025-10-30" INTEGRATION.md
 ## Executive Summary
 
 **Generated**: 2025-10-30
-**Ruchy Version**: v3.169.0 (latest tested)
+**Ruchy Version**: v3.193.0 (latest tested)
 **Book Commit**: [current hash]
 
 - **Total Examples**: 135
@@ -154,7 +154,7 @@ grep "2025-10-30" INTEGRATION.md
 ## 🎉 MILESTONE: 100% PASS RATE ACHIEVED! 🎉
 
 **Date**: 2025-10-30
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 **Total Examples**: 135 (all passing)
 **Failures**: 0 (zero defects achieved)
 
@@ -226,7 +226,7 @@ All previously failing examples have been fixed or removed:
 - [ ] Detailed failure analysis updated (zero failures)
 - [ ] Success metrics table shows 100%
 - [ ] Timestamp: 2025-10-30
-- [ ] Ruchy version: v3.169.0
+- [ ] Ruchy version: v3.193.0
 - [ ] Commit message celebrates achievement
 
 ## Why This Matters

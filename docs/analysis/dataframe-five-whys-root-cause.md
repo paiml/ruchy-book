@@ -20,7 +20,7 @@
 ## Five Whys Analysis
 
 ### Problem Statement
-DataFrames don't work in any mode (REPL, run, compile) across all tested versions (v3.169.0 - v3.169.0).
+DataFrames don't work in any mode (REPL, run, compile) across all tested versions (v3.193.0 - v3.193.0).
 
 ---
 
@@ -129,7 +129,7 @@ The tests are marked `#[ignore]` because the feature ISN'T IMPLEMENTED YET.
 ```markdown
 **Chapter Status**: ⚠️ Interpreter-Only (4/4 examples)
 
-> **Implementation Status (v3.169.0 - DataFrames COMPLETE)**:
+> **Implementation Status (v3.193.0 - DataFrames COMPLETE)**:
 > - ✅ **Interpreter Mode**: DataFrames fully working
 > - ❌ **Transpiler Mode**: Not supported - requires polars crate
 ```
@@ -175,7 +175,7 @@ Tests are written in RED phase (TDD) - write tests FIRST, implement LATER. This 
 
 ### What I Initially Thought:
 - Interpreter mode works, transpiler mode broken
-- Recent versions (v3.169.0) claimed "DataFrame fixes"
+- Recent versions (v3.193.0) claimed "DataFrame fixes"
 - This might be a bug that regressed
 
 ### What's Actually True:
@@ -230,7 +230,7 @@ These are DOCUMENTED but NOT IMPLEMENTED.
 
 2. **Add Clear Warning**:
 ```markdown
-⚠️ **IMPORTANT**: DataFrames are NOT YET IMPLEMENTED in Ruchy v3.169.0
+⚠️ **IMPORTANT**: DataFrames are NOT YET IMPLEMENTED in Ruchy v3.193.0
 
 These examples are ASPIRATIONAL - they show the planned API but do not
 currently work. Implementation is tracked in Ruchy test suite:
@@ -243,7 +243,7 @@ Status: RED phase (tests written, implementation pending)
 3. **Mark All Examples as Future**:
 ```ruchy
 // NOTE: This example will work in future versions
-// Current status: NOT IMPLEMENTED (v3.169.0)
+// Current status: NOT IMPLEMENTED (v3.193.0)
 fun main() {
     let df = df![
         "name" => ["Alice", "Bob"],

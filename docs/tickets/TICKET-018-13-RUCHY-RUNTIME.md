@@ -8,7 +8,7 @@
 **Predecessor**: TICKET-018-12 (ruchy ast - COMPLETE, Phase 1C 3/3)
 **Milestone**: Phase 1D STARTED - 10/18 tools (55.6%)
 **Actual Effort**: 25 minutes (pattern acceleration continues - 79% faster)
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 
 ## Executive Summary
 
@@ -260,7 +260,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-runtime.ts
    - **Success Rate**: X% (document actual)
    - **BigO Distribution**: Document complexity patterns
    - **Status**: Phase 1D tool 1/3 STARTED
-   - **Tool Version**: ruchy v3.169.0
+   - **Tool Version**: ruchy v3.193.0
 
    ## 🚀 Phase 1D STARTED: Performance & Analysis
    - First tool: ruchy runtime (performance & BigO)

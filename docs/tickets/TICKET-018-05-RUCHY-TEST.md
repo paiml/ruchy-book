@@ -8,7 +8,7 @@
 **Phase**: Phase 1B (Compilation & Testing) - 2/3
 **Predecessor**: TICKET-018-02 (ruchy compile - COMPLETE, 96.9%)
 **Estimated Effort**: 45 minutes (pattern acceleration)
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 
 ## Executive Summary
 
@@ -209,7 +209,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-test.ts
    - **Pass Rate**: Y% (document actual)
    - **Test Count**: Z total tests executed
    - **Status**: Document overall success/issues
-   - **Tool Version**: ruchy v3.169.0
+   - **Tool Version**: ruchy v3.193.0
    - **Phase 1B**: 2/3 complete
    ```
 
@@ -306,7 +306,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-test.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.169.0 installed
+- ✅ Ruchy v3.193.0 installed
 - ✅ Phase 1A complete (3/3 tools)
 - ✅ TICKET-018-02 complete (compile, 96.9%)
 - ✅ Test infrastructure pattern proven

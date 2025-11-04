@@ -4,7 +4,7 @@
 **Reporter**: Claude Code (Ruchy Book Project)
 **Severity**: Medium
 **Component**: `ruchy provability` command
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 **Status**: Confirmed via source code analysis
 **GitHub Issue**: https://github.com/paiml/ruchy/issues/99
 

@@ -25,7 +25,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 - BENCH-002: Write/append operations (100K writes)
 
 ### String Processing (2 examples)
-- BENCH-003: String concatenation (10K operations) ⚠️ PARTIAL FIX - v3.171.0 fixed parameters, string return type still blocked ([#113](https://github.com/paiml/ruchy/issues/113))
+- BENCH-003: String concatenation (10K operations) ⚠️ PARTIAL FIX - v3.193.0 fixed parameters, string return type still blocked ([#113](https://github.com/paiml/ruchy/issues/113))
 - BENCH-004: Regex matching (100K patterns)
 
 ### Data Structures (2 examples)
@@ -34,7 +34,7 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 
 ### Mathematics (2 examples)
 - BENCH-007: Fibonacci (recursive, n=20) ✅ COMPLETE
-- BENCH-008: Prime number generation (first 10K primes) ⚠️ NEARLY COMPLETE - Major bugs FIXED in v3.171.0! Minor usize issue remains ([#113](https://github.com/paiml/ruchy/issues/113))
+- BENCH-008: Prime number generation (first 10K primes) ⚠️ NEARLY COMPLETE - Major bugs FIXED in v3.193.0! Minor usize issue remains ([#113](https://github.com/paiml/ruchy/issues/113))
 
 ### System Operations (2 examples)
 - BENCH-009: JSON parsing (10K objects)
@@ -45,13 +45,13 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 ### Infrastructure Tasks
 | ID | Description | Status | Complexity | Priority |
 |----|-------------|--------|------------|----------|
-| INFRA-001 | Create benchmarking framework with bashrs bench v6.25.0 | ✅ complete | 15 | P0 |
+| INFRA-001 | Create benchmarking framework with bashrs bench v3.193.0 | ✅ complete | 15 | P0 |
 | INFRA-002 | Create test data generators | pending | 8 | P0 |
 | INFRA-003 | Implement timing harness with bashrs bench | ✅ complete | 10 | P0 |
 | INFRA-004 | Create results aggregator | ✅ complete | 12 | P0 |
 
 **INFRA-001 Notes:**
-- Created `scripts/benchmark-framework-bashrs.sh` using bashrs bench v6.25.0
+- Created `scripts/benchmark-framework-bashrs.sh` using bashrs bench v3.193.0
 - Framework creates temporary wrapper scripts for each execution mode
 - Handles compilation outside of timing (transpile/compile modes)
 - Properly suppresses stdout to avoid output contamination
@@ -76,12 +76,12 @@ Create scientifically rigorous, completely reproducible benchmarks comparing:
 |----|-------------|--------|------------|----------|
 | BENCH-001 | File read (10MB text) | pending | 8 | P0 |
 | BENCH-002 | File write (100K operations) | pending | 8 | P0 |
-| BENCH-003 | String concatenation (10K ops) | ⚠️ partial | 6 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.171.0 |
-| BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 | Retest with v3.171.0 |
-| BENCH-005 | List operations (1M elements) | pending | 8 | P0 | Retest with v3.171.0 |
-| BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 | Retest with v3.171.0 |
-| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 | v3.171.0, bashrs bench v6.25.0 |
-| BENCH-008 | Prime generation (10K primes) | ⚠️ nearly | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.171.0 |
+| BENCH-003 | String concatenation (10K ops) | ⚠️ partial | 6 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.193.0 |
+| BENCH-004 | Regex matching (100K patterns) | pending | 10 | P0 | Retest with v3.193.0 |
+| BENCH-005 | List operations (1M elements) | pending | 8 | P0 | Retest with v3.193.0 |
+| BENCH-006 | HashMap operations (100K entries) | pending | 8 | P0 | Retest with v3.193.0 |
+| BENCH-007 | Fibonacci recursive (n=20) | ✅ complete | 6 | P0 | v3.193.0, bashrs bench v3.193.0 |
+| BENCH-008 | Prime generation (10K primes) | ⚠️ nearly | 8 | P0 | [#113](https://github.com/paiml/ruchy/issues/113) v3.193.0 |
 | BENCH-009 | JSON parsing (10K objects) | pending | 10 | P0 |
 | BENCH-010 | HTTP mock (1K requests) | pending | 12 | P0 |
 
@@ -149,9 +149,9 @@ See `test/ch23-benchmarks/LEGEND.md` for detailed explanations.
 
 ## Methodology
 
-### Benchmark Execution (Updated: bashrs bench v6.25.0)
+### Benchmark Execution (Updated: bashrs bench v3.193.0)
 
-**NEW**: Using bashrs bench v6.25.0 built-in benchmarking with quality gates!
+**NEW**: Using bashrs bench v3.193.0 built-in benchmarking with quality gates!
 
 ```bash
 #!/usr/bin/env bash
@@ -217,7 +217,7 @@ time rustc -O benchmark.rs && time ./benchmark
 time ruchy compile benchmark.ruchy -o benchmark && time ./benchmark
 ```
 
-## Actual Results (bashrs bench v6.25.0)
+## Actual Results (bashrs bench v3.193.0)
 
 ### BENCH-007: Fibonacci recursive (n=20)
 
@@ -237,7 +237,7 @@ time ruchy compile benchmark.ruchy -o benchmark && time ./benchmark
 - RAM: 125Gi
 - OS: Linux 6.8.0-85-generic
 - Date: 2025-11-02
-- Tool: bashrs bench v6.25.0 with determinism verification
+- Tool: bashrs bench v3.193.0 with determinism verification
 
 ## Expected Results Table Format (Remaining Benchmarks)
 

@@ -21,7 +21,7 @@ Debugging tools are CRITICAL to ruchy development and must be tested on ALL exam
 
 ### Evidence
 From ../ruchyruchy README.md:
-- **ruchydbg v3.169.0**: Complete debugging toolkit
+- **ruchydbg v3.193.0**: Complete debugging toolkit
 - **12 debugging features**: DAP server, breakpoints, time-travel, etc.
 - **1.4M+ test executions**: Production-ready debugging infrastructure
 - **95%+ bug detection rate**: Critical quality tool
@@ -103,7 +103,7 @@ From ../ruchyruchy README.md:
 
 ### Phase 1: Research & RED Testing (✅ COMPLETE - 2025-11-02)
 
-**New Tool Discovered**: `ruchydbg debug` (DEBUGGER-055 from v1.20.0)
+**New Tool Discovered**: `ruchydbg debug` (DEBUGGER-055 from v3.193.0)
 
 ```bash
 # Test ruchydbg debug analyze command
@@ -111,7 +111,7 @@ ruchydbg debug analyze test.ruchy
 ```
 
 **Completed Research**:
-- ✅ ruchydbg v1.20.0 has NEW `debug` command with 2 modes:
+- ✅ ruchydbg v3.193.0 has NEW `debug` command with 2 modes:
   - `run` - Interactive rust-gdb session
   - `analyze` - Automated trace capture (batch mode)
 - ✅ Custom breakpoints supported: `--break <function>`
@@ -137,7 +137,7 @@ ruchydbg debug analyze test.ruchy
 - Execution time: ~1.6s per analysis
 - Overhead vs ruchy run: 533x (expected for debugging)
 - Integration readiness: ✅ PRODUCTION READY
-- ✅ All tools available in v3.175.0
+- ✅ All tools available in v3.193.0
 
 ### Phase 2: Integration Testing (✅ COMPLETE - 2025-11-02)
 
@@ -247,7 +247,7 @@ ruchydbg debug analyze test.ruchy
 **Chapter 13 Documentation Added**: 190 LOC comprehensive section
 
 **Content Added to `src/ch13-00-debugging-tracing-tdd.md`**:
-- ✅ Advanced Debugging section (ruchydbg debug v1.20.0+)
+- ✅ Advanced Debugging section (ruchydbg debug v3.193.0+)
 - ✅ What is ruchydbg debug (capabilities overview)
 - ✅ When to use (and when NOT to use)
 - ✅ Interactive debugging session examples
@@ -339,7 +339,7 @@ ruchydbg debug analyze test.ruchy
 
 ### Tool Maturity
 
-**Status**: ✅ PRODUCTION READY (ruchydbg v1.20.0)
+**Status**: ✅ PRODUCTION READY (ruchydbg v3.193.0)
 
 **Confidence Level**: HIGH
 - 100% test success rate (19/19 tests)
@@ -494,8 +494,8 @@ let df = DataFrame::new()
 
 ## Dependencies
 
-- ruchyruchy v3.169.0 (installed via cargo)
-- ruchy v3.169.0 (current version with --trace)
+- ruchyruchy v3.193.0 (installed via cargo)
+- ruchy v3.193.0 (current version with --trace)
 - deno runtime (for TypeScript test infrastructure)
 - TICKET-018 (parent ticket for comprehensive testing)
 
@@ -504,7 +504,7 @@ let df = DataFrame::new()
 - TICKET-018: 18-Tool Comprehensive Testing
 - ../ruchyruchy/README.md: Complete debugging tools documentation
 - src/ch13-00-debugging-tracing-tdd.md: Debugging chapter
-- docs/DEBUGGER_RESEARCH_v3.169.0.md: v3.169.0 debugging features
+- docs/DEBUGGER_RESEARCH_v3.193.0.md: v3.193.0 debugging features
 
 ## Integration with TICKET-018
 

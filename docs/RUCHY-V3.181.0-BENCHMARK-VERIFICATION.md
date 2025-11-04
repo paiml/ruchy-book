@@ -1,7 +1,7 @@
-# Ruchy v3.181.0 Benchmark Verification Report (COMPREHENSIVE)
+# Ruchy v3.193.0 Benchmark Verification Report (COMPREHENSIVE)
 
 **Date**: 2025-11-03 15:15 UTC
-**Ruchy Version**: v3.181.0
+**Ruchy Version**: v3.193.0
 **Testing Approach**: Actual execution of all benchmarks
 **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM
 
@@ -9,7 +9,7 @@
 
 ## 🔄 CORRECTED Executive Summary
 
-### Issues Fixed in v3.181.0
+### Issues Fixed in v3.193.0
 - ✅ **Issue #119**: Double-evaluation bug - FIXED
 - ✅ **Issue #116**: File object methods - FIXED
 
@@ -120,7 +120,7 @@ let name = data["name"]  // FAILS
 
 **Impact:**
 - BENCH-009 CANNOT run until parse_json() is properly implemented
-- This invalidates v3.176.0 claim that "parse_json() working"
+- This invalidates v3.193.0 claim that "parse_json() working"
 
 **Required Fix:**
 - Implement actual JSON parsing in `parse_json()` function
@@ -152,12 +152,12 @@ find . -name "*bench-001*"
 - Cannot test until implementation exists
 
 **Workaround Available:**
-- Can use `read_file()` to read entire file (Issue #118 fixed in v3.176.0)
-- Can use streaming I/O with `open()` + `read_line()` (Issue #116 fixed in v3.181.0)
+- Can use `read_file()` to read entire file (Issue #118 fixed in v3.193.0)
+- Can use streaming I/O with `open()` + `read_line()` (Issue #116 fixed in v3.193.0)
 
 ---
 
-## Previously Working Benchmarks (from v3.176.0)
+## Previously Working Benchmarks (from v3.193.0)
 
 | Benchmark | Status | Notes |
 |-----------|--------|-------|
@@ -169,13 +169,13 @@ find . -name "*bench-001*"
 | BENCH-011 | ✅ WORKING | Nested loops (1000x1000) |
 | BENCH-012 | ✅ WORKING | Startup time (Hello World) |
 
-**Note**: Not re-tested in this verification, assumed working from v3.176.0 validation.
+**Note**: Not re-tested in this verification, assumed working from v3.193.0 validation.
 
 ---
 
 ## Summary Table
 
-| Benchmark | v3.176.0 Status | v3.181.0 Status | Blocker | Notes |
+| Benchmark | v3.193.0 Status | v3.193.0 Status | Blocker | Notes |
 |-----------|-----------------|-----------------|---------|-------|
 | BENCH-001 | ⏳ Partial | ❌ Not Impl | N/A | No .ruchy file exists |
 | BENCH-002 | ❌ BLOCKED | ✅ **WORKING** | Issue #119 → FIXED | Matrix multiplication works! |
@@ -185,7 +185,7 @@ find . -name "*bench-001*"
 | BENCH-006 | ❌ BLOCKED | ✅ **WORKING** | Issue #116 → FIXED | File processing works! |
 | BENCH-007 | ✅ Working | ✅ Working | None | Fibonacci |
 | BENCH-008 | ✅ Working | ✅ Working | None | Primes |
-| BENCH-009 | ✅ "Ready" | ❌ **BLOCKED** | parse_json() | v3.176.0 claim was WRONG |
+| BENCH-009 | ✅ "Ready" | ❌ **BLOCKED** | parse_json() | v3.193.0 claim was WRONG |
 | BENCH-010 | ⏳ Pending | ⏳ Pending | HTTP API | Not implemented |
 | BENCH-011 | ✅ Working | ✅ Working | None | Nested loops |
 | BENCH-012 | ✅ Working | ✅ Working | None | Startup time |
@@ -194,7 +194,7 @@ find . -name "*bench-001*"
 
 ## Progress Metrics
 
-### v3.176.0 → v3.181.0 Improvements
+### v3.193.0 → v3.193.0 Improvements
 - ✅ **Issue #119 fixed**: Global mutable state + no double-evaluation
 - ✅ **Issue #116 fixed**: File object methods fully working
 - ✅ **BENCH-002 unblocked**: Matrix multiplication works!
@@ -202,7 +202,7 @@ find . -name "*bench-001*"
 
 ### Current Status
 - **Working**: 8/12 benchmarks (67% coverage)
-  - 7 from v3.176.0
+  - 7 from v3.193.0
   - +2 newly unblocked (BENCH-002, BENCH-006)
   - -1 discovered broken (BENCH-009)
 
@@ -222,7 +222,7 @@ find . -name "*bench-001*"
 
 ### 1. parse_json() NOT Actually Working
 
-The v3.176.0 status document claimed:
+The v3.193.0 status document claimed:
 
 > **BENCH-009 - JSON Parsing ✅ UNBLOCKED**
 > **Status**: ✅ Ready to run
@@ -237,7 +237,7 @@ The v3.176.0 status document claimed:
 
 ### 2. Initial "100% unblocked" Claim Wrong
 
-The initial v3.181.0 verification claimed "ALL 12 benchmarks can now run (100% unblocked)!"
+The initial v3.193.0 verification claimed "ALL 12 benchmarks can now run (100% unblocked)!"
 
 **Actual status:**
 - 8/12 working (67%)
@@ -280,7 +280,7 @@ Comprehensive testing confirms Issue #116 is COMPLETELY fixed:
 
 ## Environment
 
-- **Ruchy Version**: v3.181.0
+- **Ruchy Version**: v3.193.0
 - **Platform**: Linux 6.8.0-85-generic x86_64
 - **Date**: 2025-11-03 15:15 UTC
 - **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM

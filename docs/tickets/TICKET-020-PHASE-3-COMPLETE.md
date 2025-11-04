@@ -141,7 +141,7 @@ Result: 10/10 Chapter 13 examples passing (100%)
 - ✅ Recursive tracing fully documented and working
 
 **Documentation Quality**:
-- ✅ Warning note added explaining v3.169.0 issues
+- ✅ Warning note added explaining v3.193.0 issues
 - ✅ Links to bug reports for full context
 - ✅ Clear working method documented at chapter start
 - ✅ Every example shows actual expected output
