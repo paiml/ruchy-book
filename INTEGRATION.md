@@ -36,23 +36,23 @@ println(data["users"][2]["profile"]["location"]["city"])
 
 ---
 
-## 🔍 KNOWN ISSUE: Bug #003 - Global Mutable State (2025-11-02)
+## ✅ RESOLVED: Bug #003 - Global Mutable State (Fixed in v3.180.0)
 
 **Task**: Benchmark Chapter Review + Feature Testing
-**Discovered**: Bug #003 - Global mutable state does not persist across function calls
-**Ruchy Version**: v3.175.0
+**Discovered**: Bug #003 - Global mutable state did not persist across function calls (2025-11-02)
+**Fixed**: ISSUE-119 (v3.180.0) - Shared environment reference using Rc<RefCell<HashMap>>
 **Methodology**: EXTREME TDD (RED-GREEN-REFACTOR)
 
-### Critical Discovery: Issue #119 Partially Resolved
+### Resolution: Issue #119 Completely Fixed (v3.180.0)
 
-**Previous Status**: Issue #119 (global let mut) marked as blocker for BENCH-002
-**Current Status**:
-- ✅ **Syntax Support**: `let mut` global variables now parse without errors
-- ❌ **Semantic Bug**: Global mutable state does NOT persist across function calls (Bug #003)
+**Previous Status** (v3.175.0): Global mutable state reset on each function call
+**Current Status** (v3.180.0+):
+- ✅ **Syntax Support**: `let mut` global variables parse without errors
+- ✅ **Semantic Fix**: Global mutable state PERSISTS across function calls (Bug #003 RESOLVED)
 
-### Bug #003 - Global Mutable State Does Not Persist
+### Bug #003 - RESOLVED Test Cases
 
-**Test Case 1: Simple Counter**
+**Test Case 1: Simple Counter** (NOW WORKING ✅)
 ```ruchy
 let mut global_counter = 0
 
@@ -63,46 +63,46 @@ fun increment() {
 
 fun main() {
     println(increment())  // Expect: 1, Actual: 1 ✅
-    println(increment())  // Expect: 2, Actual: 1 ❌
-    println(increment())  // Expect: 3, Actual: 1 ❌
-    println(global_counter)  // Expect: 3, Actual: 0 ❌
+    println(increment())  // Expect: 2, Actual: 2 ✅ (FIXED!)
+    println(increment())  // Expect: 3, Actual: 3 ✅ (FIXED!)
+    println(global_counter)  // Expect: 3, Actual: 3 ✅ (FIXED!)
 }
 ```
 
-**Result**: Each function call resets global mutable state to initial value.
+**Result**: ✅ Global mutable state now persists correctly (verified 2025-11-03)
 
-**Test Case 2: BENCH-002 Matrix Multiplication**
-- Expected output: `248683.505429`
-- Actual output: `0.00003304627079793454`
-- **Analysis**: LCG random state resets on each access, producing incorrect matrix values
+**Test Case 2: BENCH-002 Matrix Multiplication** (NOW WORKING ✅)
+- Expected output: `✅ BENCH-002 PASSED - Matrix multiplication correct!`
+- Status: ✅ **UNBLOCKED** - Global LCG state now persists correctly
+- **Fix**: Shared environment using Rc<RefCell<HashMap>> (ISSUE-119)
 
-**Impact**: BENCH-002 produces silently wrong results (worse than being blocked).
+**Impact**: BENCH-002 and all global mutable examples now work correctly.
 
-### Benchmark Status Update (v3.175.0)
+### Benchmark Status Update (v3.192.0+)
 
-**Benchmarks with Scripts** (8/12):
-- BENCH-002 ✅ (exists) - ⚠️ **Blocked by Bug #003** (produces wrong output)
-- BENCH-003 ✅ (complete)
+**Benchmarks Working** (9/12 = 75%):
+- BENCH-002 ✅ (UNBLOCKED in v3.180.0! - Global state fix)
+- BENCH-003 ✅ (String concatenation)
 - BENCH-004 ✅ (complete)
 - BENCH-005 ✅ (complete)
+- BENCH-006 ✅ (File processing - UNBLOCKED in v3.176.0!)
 - BENCH-007 ✅ (complete)
-- BENCH-008 ✅ (complete)
+- BENCH-008 ✅ (Prime generation)
+- BENCH-009 ✅ (JSON parsing - UNBLOCKED in v3.176.0!)
 - BENCH-011 ✅ (complete)
 - BENCH-012 ✅ (complete)
 
-**Benchmarks Without Scripts** (4/12):
-- BENCH-001 ❌ (File I/O - waiting on Issue #118)
-- BENCH-006 ❌ (File processing - needs file I/O API: open(), read_line())
-- BENCH-009 ✅ (JSON parsing - UNBLOCKED in v3.176.0! parse_json() + read_file() working)
+**Benchmarks Missing** (3/12):
+- BENCH-001 ❌ (Not yet implemented)
 - BENCH-010 ❌ (HTTP mock - not yet implemented)
 
 **Files Created**:
-- `docs/bugs/RUCHY-BUG-003-global-mutable-state.md` - Comprehensive bug report
-- Updated `src/ch21-00-scientific-benchmarking.md` - Changed BENCH-002 from "Issue #119" to "Bug #003"
+- `docs/bugs/RUCHY-BUG-003-global-mutable-state.md` - Comprehensive bug report (NOW RESOLVED)
+- Updated `src/ch21-00-scientific-benchmarking.md` - BENCH-002 now working
 
-**Key Finding**: Global mutable variables are syntactically supported but semantically broken.
+**Key Finding**: Global mutable variables now work correctly as of v3.180.0 (ISSUE-119).
 
-**Recommendation**: Avoid all global `let mut` in book examples until Bug #003 is fixed.
+**Recommendation**: ✅ Global `let mut` is now safe to use in all book examples.
 
 ---
 
