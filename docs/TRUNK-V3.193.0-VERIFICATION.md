@@ -11,11 +11,17 @@
 
 ✅ **ALL BOOK EXAMPLES COMPATIBLE** - Trunk v3.193.0 maintains 99% pass rate with no regressions.
 
+❌ **CRITICAL: TRANSPILER STILL BROKEN** - Global state bug NOT FIXED in v3.193.0.
+
 **Key Findings:**
 - ✅ PARSER-079 fix verified: Labeled loop tokens now parse correctly
-- ✅ Zero regressions: All 139 working examples still pass
+- ✅ Zero regressions: All 139 working examples still pass (using interpreter)
 - ✅ Book compatibility maintained across version updates
-- ⚠️ Transpiler global state bug still present (expected, not addressed in this release)
+- ❌ **TRANSPILER GLOBAL STATE BUG: STILL COMPLETELY BROKEN** - NOT addressed in this release
+  - `ruchy transpile` generates INVALID Rust code
+  - `ruchy compile` CANNOT work (uses transpiler internally)
+  - BENCH-002 transpile/compile modes BLOCKED (2/10 modes unavailable)
+  - Functions with global mutable state DO NOT TRANSPILE
 
 ---
 
@@ -66,7 +72,9 @@
 
 ---
 
-### 3. Transpiler Global State Bug Status ⚠️
+### 3. ❌ CRITICAL: Transpiler Global State Bug STILL BROKEN
+
+**Status:** ❌ **NOT FIXED** - Transpiler completely broken for global mutable state
 
 **Test Case:**
 ```ruchy
@@ -81,17 +89,36 @@ fun main() {
 }
 ```
 
-**Results:**
-- ❌ Transpiler still generates invalid Rust code
-- ❌ Functions omitted from output
-- ❌ Global variables in wrong scope
-- ✅ Interpreter mode works correctly
+**Transpiler Output:** ❌ **INVALID RUST CODE** - DOES NOT COMPILE
 
-**Expected Status:** This bug was NOT addressed in v3.193.0. Still blocking:
-- BENCH-002 transpile mode (2/10 execution modes)
-- BENCH-002 compile mode (2/10 execution modes)
+**Root Causes (All Still Present):**
+1. ❌ **Functions completely omitted** from transpiled output
+2. ❌ **Global variables declared in wrong scope** (inside main() instead of module level)
+3. ❌ **Function calls inlined incorrectly** with undefined variable references
 
-**Impact**: 8/10 benchmark modes work (interpreter, bytecode, all reference languages)
+**Compilation Errors:**
+```
+error[E0425]: cannot find value `global_state` in this scope
+error[E0425]: cannot find value `value` in this scope
+```
+
+**What Works:**
+- ✅ `ruchy run` (interpreter) - Works perfectly
+- ✅ `ruchy --vm-mode bytecode run` - Works perfectly
+
+**What's BROKEN:**
+- ❌ `ruchy transpile` - Generates invalid Rust code
+- ❌ `ruchy compile` - Cannot work (uses transpiler internally)
+
+**Benchmark Impact:**
+- ❌ BENCH-002 transpile mode BLOCKED
+- ❌ BENCH-002 compile mode BLOCKED
+- ❌ 2/10 execution modes unavailable (20% coverage lost)
+- ✅ 8/10 modes work (interpreter, bytecode, all reference languages)
+
+**When Will This Be Fixed:** Unknown - not addressed in v3.193.0 release
+
+**Workaround:** Use `ruchy run` or `ruchy --vm-mode bytecode run` for all code with global mutable state
 
 ---
 
@@ -192,15 +219,30 @@ fun main() {
 
 ## Known Issues
 
-### 1. Transpiler Global State Bug ❌
+### 1. ❌ CRITICAL: Transpiler Global State Bug - NOT FIXED
 
-**Status:** Known issue, documented in `docs/GITHUB-ISSUE-TRANSPILER-GLOBAL-STATE.md`
+**Status:** ❌ **COMPLETELY BROKEN** - Documented in `docs/GITHUB-ISSUE-TRANSPILER-GLOBAL-STATE.md`
 
-**Workaround:** Use interpreter or bytecode modes
+**Severity:** HIGH - Blocks 20% of benchmark execution modes
 
-**Impact:** 2/10 execution modes blocked for BENCH-002
+**What's Broken:**
+- ❌ `ruchy transpile` generates invalid Rust code
+- ❌ `ruchy compile` cannot work (uses broken transpiler)
+- ❌ Functions with global mutable state DO NOT TRANSPILE
 
-**ETA:** Upstream fix in progress
+**Impact:**
+- ❌ BENCH-002 transpile mode BLOCKED
+- ❌ BENCH-002 compile mode BLOCKED
+- ❌ 2/10 execution modes unavailable (20% coverage lost)
+- ❌ Any user code with global mutable state CANNOT be transpiled
+
+**Workaround:**
+- ✅ Use `ruchy run` (interpreter mode)
+- ✅ Use `ruchy --vm-mode bytecode run`
+
+**When Fixed:** Unknown - NOT addressed in v3.193.0, no ETA available
+
+**Upstream Status:** Bug reported, awaiting fix
 
 ---
 
