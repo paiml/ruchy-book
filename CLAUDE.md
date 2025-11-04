@@ -1159,10 +1159,100 @@ make build
 ### Automation Success Metrics
 
 - 🎯 **One Command**: `make sync-version` handles everything
-- ⏱️ **Time**: Complete update in <2 minutes  
+- ⏱️ **Time**: Complete update in <2 minutes
 - 🔒 **Reliability**: Zero manual steps required
 - ✅ **Verification**: Automated testing of all changes
 - 📊 **Reporting**: Auto-generated status reports
+
+## CRATES.IO RELEASE POLICY (MANDATORY)
+
+### Friday-Only Releases
+
+**RULE**: Ruchy crates.io releases happen **FRIDAY ONLY** (weekly cadence)
+
+### Tag and Release Protocol
+
+#### 1. Tag Format
+- **Format**: `book-vX.Y.Z` (aligns with ruchy crates.io version)
+- **Example**: `book-v3.194.0`
+- **Namespace**: `book-` prefix distinguishes book releases from compiler releases
+
+#### 2. Tag Creation (Friday Only)
+```bash
+# Get current ruchy crates.io version
+RUCHY_VERSION=$(cd ../ruchy && cargo metadata --format-version 1 | jq -r '.packages[] | select(.name == "ruchy") | .version')
+
+# Create annotated tag
+git tag -a "book-v${RUCHY_VERSION}" -m "book-v${RUCHY_VERSION} - [Brief milestone description]
+
+Aligns with ruchy v${RUCHY_VERSION} crates.io release
+
+[Detailed release notes]
+
+Release Policy: Book releases align with ruchy crates.io releases (Fridays only)"
+
+# Push tag to GitHub
+git push origin "book-v${RUCHY_VERSION}"
+```
+
+#### 3. Release Schedule
+- **Day**: Friday only
+- **Frequency**: Weekly (if changes warrant release)
+- **Alignment**: Synchronized with ruchy crates.io version
+- **Time**: After ruchy crates.io release is published
+
+#### 4. What Triggers a Release
+- ✅ Major bug fixes (e.g., Issue #132)
+- ✅ New chapter completion
+- ✅ Significant documentation improvements
+- ✅ Benchmark updates
+- ✅ Test coverage improvements
+- ❌ Minor typo fixes (batched until next Friday)
+- ❌ Work-in-progress changes
+
+#### 5. Pre-Release Checklist (BLOCKING)
+```bash
+# GATE 1: All tests passing
+deno task extract-examples  # Must show >90% pass rate
+
+# GATE 2: Version consistency
+make verify-version
+
+# GATE 3: Book builds successfully
+make build
+
+# GATE 4: Pre-commit hooks pass
+git commit --dry-run  # Verify hooks would pass
+
+# GATE 5: Integration doc updated
+git diff INTEGRATION.md  # Must reflect latest status
+```
+
+#### 6. Emergency Hotfix Exception
+**Only exception to Friday-only rule**: Critical bugs blocking production use
+- Requires explicit approval
+- Must document reason in tag message
+- Example: Transpiler generating unsafe code
+
+### Tag History and Version Tracking
+```bash
+# View all book releases
+git tag -l "book-v*"
+
+# View release details
+git tag -l -n20 "book-v3.194.0"
+
+# Compare releases
+git diff book-v3.193.0..book-v3.194.0
+```
+
+### Automation Notes
+- Tags trigger GitHub release creation (if configured)
+- Book version updates happen via `make sync-version`
+- Release notes generated from commit history
+- Status reports auto-updated in INTEGRATION.md
+
+**REMEMBER**: Tags are permanent. Never force-push or delete pushed tags unless absolutely necessary.
 
 ## Remember
 
