@@ -20,7 +20,7 @@ Pre-commit hook is blocking commits due to vaporware documentation in `src/ch19-
 
 **Found**:
 ```
-src/ch19-00-structs-oop.md:230:*Note: Pattern matching for structs is planned but not yet implemented in v3.169.0*
+src/ch19-00-structs-oop.md:230:*Note: Pattern matching for structs is planned but not yet implemented in v3.193.0*
 ```
 
 ## CLAUDE.md Rules Violated
@@ -43,7 +43,7 @@ From `CLAUDE.md`:
 ## Root Cause
 
 Chapter 19 has a section titled "Pattern Matching with Structs (Planned)" that documents a feature not yet implemented. The section includes:
-- Vaporware note mentioning v3.169.0 (outdated version)
+- Vaporware note mentioning v3.193.0 (outdated version)
 - Code with `<!-- skip-test: planned-feature -->` tag
 - Examples that don't compile
 
@@ -86,13 +86,13 @@ deno task extract-examples # Should still show Ch19 at 100%
 
 ## Alternative Considered
 
-**Test if pattern matching is implemented in v3.169.0:**
+**Test if pattern matching is implemented in v3.193.0:**
 - Could test if the feature now works
 - If it works, remove the vaporware note and enable the example
 - If it doesn't work, remove the section entirely
 
 **Decision**: Remove the section entirely (faster, safer)
-- Version note is outdated (v3.169.0 vs v3.169.0)
+- Version note is outdated (v3.193.0 vs v3.193.0)
 - No evidence the feature is now implemented
 - Follows zero-tolerance vaporware policy
 

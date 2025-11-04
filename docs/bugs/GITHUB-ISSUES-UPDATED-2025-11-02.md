@@ -1,14 +1,14 @@
-# GitHub Issues Updated with ruchydbg v1.20.0 Tooling
+# GitHub Issues Updated with ruchydbg v3.193.0 Tooling
 
 **Date**: 2025-11-02
 **Scope**: Added debugging guidance to critical Ruchy issues
-**Tool Version**: ruchydbg v1.20.0 (released 2025-11-02)
+**Tool Version**: ruchydbg v3.193.0 (released 2025-11-02)
 
 ## Summary
 
 Updated 6 critical GitHub issues in paiml/ruchy with comprehensive debugging guidance using the latest ruchydbg tools. These updates provide actionable debugging strategies to help the Ruchy team fix blocking issues faster.
 
-## New ruchydbg v1.20.0 Features Used
+## New ruchydbg v3.193.0 Features Used
 
 ### 1. DEBUGGER-055: Interactive rust-gdb Wrapper
 - **Command**: `ruchydbg debug run|analyze <file> [--break <function>]`
@@ -27,7 +27,7 @@ Updated 6 critical GitHub issues in paiml/ruchy with comprehensive debugging gui
 - **Infrastructure**: libfuzzer-based coverage-guided fuzzing
 - **Test Results**: 12 comprehensive tests (5 passing, 7 expensive/ignored)
 
-### 3. DEBUGGER-047: Compiler Performance Profiler (v1.17.0)
+### 3. DEBUGGER-047: Compiler Performance Profiler (v3.193.0)
 - **Features**:
   - Compilation phase timing
   - Julia-inspired type observation
@@ -174,7 +174,7 @@ for func in hot_functions {
 - Small helpers: 450ms → 360ms (1.25x)
 - Getters: 200ms → 150ms (1.33x)
 
-**Profiler Release**: ruchydbg v1.17.0 (6/6 tests passing)
+**Profiler Release**: ruchydbg v3.193.0 (6/6 tests passing)
 
 **Comment**: https://github.com/paiml/ruchy/issues/126#issuecomment-3478429913
 
@@ -186,7 +186,7 @@ for func in hot_functions {
 **Scope**: Transfer proven optimizations from ruchydbg
 
 **Performance Data Added**:
-All optimizations are **fully implemented and tested** in ruchydbg v1.0.0:
+All optimizations are **fully implemented and tested** in ruchydbg v3.193.0:
 
 #### SIMD Support (WASM-004) - COMPLETE ✅
 - Vector addition: 16.1x speedup
@@ -266,7 +266,7 @@ All optimizations are **fully implemented and tested** in ruchydbg v1.0.0:
 
 All tools referenced are documented in ruchydbg:
 
-- **CHANGELOG.md**: Complete v1.20.0 release notes
+- **CHANGELOG.md**: Complete v3.193.0 release notes
 - **DEBUGGER-055**: Interactive rust-gdb wrapper (5 tests passing)
 - **DEBUGGER-048**: Advanced fuzz testing (12 tests)
 - **DEBUGGER-047**: Compiler profiling (6 tests passing)

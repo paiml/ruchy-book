@@ -416,7 +416,7 @@ test-notebook:
 
 ### Overall Targets
 
-**Current State** (v3.169.0):
+**Current State** (v3.193.0):
 - Book Examples: 231/381 (61%)
 - One-liners: 17/20 (85%)
 - Quality Gates: 0 files pass

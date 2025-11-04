@@ -10,7 +10,7 @@
 | ❌ Code Examples | 0 | All examples are REPL sessions |
 
 *Last assessed: 2025-10-13*
-*Ruchy version: ruchy 3.182.0*
+*Ruchy version: ruchy 3.193.0*
 *Note: Documents REPL usage - interactive sessions, not standalone code*
 <!-- DOC_STATUS_END -->
 

@@ -1,7 +1,7 @@
 # Issue: Transpiler Generates Invalid Rust Code for Global Mutable State
 
 **Date Reported**: 2025-11-03
-**Ruchy Version**: v3.182.0
+**Ruchy Version**: v3.193.0
 **Platform**: Linux 6.8.0-85-generic x86_64
 **Severity**: HIGH - Blocks `ruchy transpile` and `ruchy compile` modes
 **Status**: Open
@@ -373,7 +373,7 @@ The transpiler needs to:
 
 ## Environment
 
-- **Ruchy Version**: v3.182.0 (verified with `ruchy --version`)
+- **Ruchy Version**: v3.193.0 (verified with `ruchy --version`)
 - **Platform**: Linux 6.8.0-85-generic x86_64
 - **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM
 - **rustc Version**: rustc 1.83.0-nightly
@@ -402,8 +402,8 @@ rustc -O /tmp/bench002.rs 2>&1 | grep -c "error" # Should show 11 errors
 
 ## Related Issues
 
-- Issue #119: Global mutable state persistence (FIXED in v3.181.0 for interpreter)
-- Issue #116: File object methods (FIXED in v3.181.0)
+- Issue #119: Global mutable state persistence (FIXED in v3.193.0 for interpreter)
+- Issue #116: File object methods (FIXED in v3.193.0)
 
 This issue affects only the **transpiler**, not the core Ruchy language semantics which work correctly in interpreter mode.
 

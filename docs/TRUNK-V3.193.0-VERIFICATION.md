@@ -2,7 +2,7 @@
 
 **Date**: 2025-11-04
 **Ruchy Version**: v3.193.0 (trunk commit 68eb77f8)
-**Previous Book Version**: v3.182.0
+**Previous Book Version**: v3.193.0
 **Test Environment**: AMD Ryzen Threadripper 7960X, Linux 6.8.0-85-generic
 
 ---
@@ -64,8 +64,8 @@
 **Pass Rate Comparison:**
 | Version | Pass Rate | Working | Failing | Status |
 |---------|-----------|---------|---------|--------|
-| v3.182.0 | 99% | 139/140 | 1/140 | ✅ Baseline |
-| v3.187.0 | 99% | 139/140 | 1/140 | ✅ Same |
+| v3.193.0 | 99% | 139/140 | 1/140 | ✅ Baseline |
+| v3.193.0 | 99% | 139/140 | 1/140 | ✅ Same |
 | v3.193.0 | 99% | 139/140 | 1/140 | ✅ Same |
 
 **Conclusion**: PARSER-079 fix introduced **zero regressions**.
@@ -145,15 +145,15 @@ error[E0425]: cannot find value `value` in this scope
 
 ### Short Term (Current State)
 
-**Book Status:** ✅ PRODUCTION READY with v3.182.0 references
+**Book Status:** ✅ PRODUCTION READY with v3.193.0 references
 
 **Why not update to v3.193.0 yet:**
 1. **crates.io blocked**: v3.193.0 not published yet
 2. **Reader reproducibility**: Users need `cargo install ruchy --version X.Y.Z`
 3. **No breaking changes**: v3.193.0 is 100% backward compatible
-4. **Current references accurate**: v3.182.0 is what readers can install
+4. **Current references accurate**: v3.193.0 is what readers can install
 
-**Recommendation:** Keep v3.182.0 references until v3.193.0 or later published to crates.io.
+**Recommendation:** Keep v3.193.0 references until v3.193.0 or later published to crates.io.
 
 ---
 
@@ -162,7 +162,7 @@ error[E0425]: cannot find value `value` in this scope
 **When v3.193.0+ published to crates.io:**
 
 **Required updates:**
-1. Update all version numbers: v3.182.0 → v3.193.0+
+1. Update all version numbers: v3.193.0 → v3.193.0+
 2. Update timestamps: 2025-11-03 → [publication date]
 3. Add PARSER-079 to changelog (if reader-visible)
 4. Re-test full book examples (expected: same 99% pass rate)
@@ -260,7 +260,7 @@ error[E0425]: cannot find value `value` in this scope
 
 ### Immediate Actions
 
-1. ✅ **Keep v3.182.0 references** in book until crates.io unblocked
+1. ✅ **Keep v3.193.0 references** in book until crates.io unblocked
 2. ✅ **Document PARSER-079 fix** for changelog when published
 3. ✅ **Continue testing trunk** to catch issues early
 

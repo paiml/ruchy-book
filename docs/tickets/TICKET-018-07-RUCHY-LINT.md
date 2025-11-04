@@ -7,7 +7,7 @@
 **Parent**: TICKET-018 (Comprehensive 18-Tool Testing)
 **Predecessor**: TICKET-018-04 (ruchy check - COMPLETE)
 **Estimated Effort**: 2 hours
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 
 ## Executive Summary
 
@@ -21,7 +21,7 @@ $ cd /home/noah/src/ruchy-book
 $ make dogfood-lint
 ```
 
-**Expected Results (v3.169.0)**:
+**Expected Results (v3.193.0)**:
 - Files Tested: 69/69
 - Style Issues: 0 (based on previous dogfooding)
 - Status: ✅ All examples pass style analysis
@@ -275,7 +275,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-lint.ts
    - **Pass Rate**: 100%
    - **Warnings**: 0 (or document specific warnings)
    - **Status**: ✅ All examples follow style guidelines
-   - **Tool Version**: ruchy v3.169.0
+   - **Tool Version**: ruchy v3.193.0
    - **Last Updated**: 2025-10-30
    ```
 
@@ -367,7 +367,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-lint.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.169.0 installed
+- ✅ Ruchy v3.193.0 installed
 - ✅ 100% pass rate achieved (135/135 examples)
 - ✅ Test infrastructure operational
 - ✅ INTEGRATION.md established

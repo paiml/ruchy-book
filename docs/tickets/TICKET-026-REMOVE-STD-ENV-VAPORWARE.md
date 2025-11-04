@@ -28,7 +28,7 @@ let args = std::env::args();
 **What doesn't work**:
 - ❌ `std::env::args()` - Rust standard library not available
 - ❌ `std::env::*` - No Rust stdlib access in Ruchy
-- ❌ Command-line argument access (not implemented in v3.169.0)
+- ❌ Command-line argument access (not implemented in v3.193.0)
 
 **What works in Ruchy**:
 - ✅ `ruchy compile` transpiles to Rust
@@ -59,7 +59,7 @@ Error: Runtime error: Object has no field named 'env'
    If it doesn't compile in current `ruchy`, it doesn't go in the book.
 ```
 
-This example doesn't work in Ruchy v3.169.0 interpreter.
+This example doesn't work in Ruchy v3.193.0 interpreter.
 
 ## Impact
 

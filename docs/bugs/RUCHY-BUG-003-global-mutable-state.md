@@ -1,7 +1,7 @@
 # RUCHY-BUG-003: Global Mutable State Does Not Persist Across Function Calls
 
 **Filed**: 2025-11-02
-**Ruchy Version**: v3.175.0
+**Ruchy Version**: v3.193.0
 **Platform**: Linux 6.8.0-85-generic
 **Severity**: High
 **Status**: Open

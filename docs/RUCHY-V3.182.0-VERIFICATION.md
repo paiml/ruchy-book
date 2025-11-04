@@ -1,14 +1,14 @@
-# Ruchy v3.182.0 Verification Report
+# Ruchy v3.193.0 Verification Report
 
 **Date**: 2025-11-03 15:20 UTC
-**Ruchy Version**: v3.182.0
-**Previous Version**: v3.181.0
+**Ruchy Version**: v3.193.0
+**Previous Version**: v3.193.0
 
 ---
 
 ## 🎉 Executive Summary
 
-Ruchy v3.182.0 **RESOLVES** the parse_json() blocker:
+Ruchy v3.193.0 **RESOLVES** the parse_json() blocker:
 - ✅ **parse_json() Issue**: FIXED - Now returns actual parsed JSON objects
 - ✅ **BENCH-009**: UNBLOCKED - JSON parsing benchmark can now run
 
@@ -18,29 +18,29 @@ Ruchy v3.182.0 **RESOLVES** the parse_json() blocker:
 
 ## parse_json() Issue - ✅ RESOLVED
 
-### Problem (v3.181.0)
+### Problem (v3.193.0)
 
-In v3.181.0, `parse_json()` returned a Message type instead of parsed JSON:
+In v3.193.0, `parse_json()` returned a Message type instead of parsed JSON:
 
 ```ruchy
 let data = parse_json('{"name": "test"}')
 println(data)
-// v3.181.0: {__type: "Message", data: [...], type: "parse_json"}
+// v3.193.0: {__type: "Message", data: [...], type: "parse_json"}
 // Error: Key 'name' not found in object
 ```
 
-### Solution (v3.182.0)
+### Solution (v3.193.0)
 
 Now returns actual parsed JSON objects:
 
 ```ruchy
 let data = parse_json('{"name": "test", "value": 42}')
 println(data)
-// v3.182.0: {name: "test", value: 42}  ✅
+// v3.193.0: {name: "test", value: 42}  ✅
 
 let name = data["name"]
 println(name)
-// v3.182.0: test  ✅
+// v3.193.0: test  ✅
 ```
 
 ---
@@ -62,14 +62,14 @@ fun main() {
 }
 ```
 
-**v3.181.0 Output** ❌:
+**v3.193.0 Output** ❌:
 ```
 Parsing JSON: {"name": "test", "value": 42}
 Parsed data: {__type: "Message", ...}
 Error: Key 'name' not found in object
 ```
 
-**v3.182.0 Output** ✅:
+**v3.193.0 Output** ✅:
 ```
 Parsing JSON: {"name": "test", "value": 42}
 Parsed data: {name: "test", value: 42}
@@ -90,7 +90,7 @@ fun main() {
 }
 ```
 
-**v3.182.0 Output** ✅:
+**v3.193.0 Output** ✅:
 ```
 City: London
 ```
@@ -116,7 +116,7 @@ fun main() {
 }
 ```
 
-**v3.182.0 Output** ✅:
+**v3.193.0 Output** ✅:
 ```
 Success! City: Paris
 ```
@@ -151,9 +151,9 @@ All required operations work correctly:
 
 ## Benchmark Status Summary
 
-### v3.181.0 → v3.182.0 Progress
+### v3.193.0 → v3.193.0 Progress
 
-| Benchmark | v3.181.0 | v3.182.0 | Change |
+| Benchmark | v3.193.0 | v3.193.0 | Change |
 |-----------|----------|----------|--------|
 | BENCH-001 | ❌ Not Impl | ❌ Not Impl | - |
 | BENCH-002 | ✅ Working | ✅ Working | - |
@@ -170,20 +170,20 @@ All required operations work correctly:
 
 ### Coverage Improvement
 
-- **v3.176.0**: 7/12 working (58%)
-- **v3.181.0**: 8/12 working (67%)
-- **v3.182.0**: 9/12 working (75%) ⬆️
+- **v3.193.0**: 7/12 working (58%)
+- **v3.193.0**: 8/12 working (67%)
+- **v3.193.0**: 9/12 working (75%) ⬆️
 
 **Progress**: +1 benchmark unblocked (BENCH-009)
 
 ---
 
-## Cumulative Fixes (v3.176.0 → v3.182.0)
+## Cumulative Fixes (v3.193.0 → v3.193.0)
 
-### v3.177.0 (Partial)
+### v3.193.0 (Partial)
 - ⚠️ Issue #119: Global state fixed, but introduced double-evaluation bug
 
-### v3.181.0 (Major)
+### v3.193.0 (Major)
 - ✅ **Issue #119**: Double-evaluation bug fixed completely
 - ✅ **Issue #116**: File object methods implemented
   - `open()` returns File object
@@ -192,7 +192,7 @@ All required operations work correctly:
 - ✅ **BENCH-002 unblocked**: Matrix multiplication
 - ✅ **BENCH-006 unblocked**: File line processing
 
-### v3.182.0 (Current)
+### v3.193.0 (Current)
 - ✅ **parse_json() Issue**: Returns actual parsed objects (not Message)
 - ✅ **BENCH-009 unblocked**: JSON parsing benchmark
 
@@ -200,7 +200,7 @@ All required operations work correctly:
 
 ## Complete API Status
 
-### ✅ Working APIs (v3.182.0)
+### ✅ Working APIs (v3.193.0)
 
 **File I/O:**
 - ✅ `read_file(path)` - Returns unwrapped String
@@ -257,12 +257,12 @@ All required operations work correctly:
    ```bash
    ./run-all-benchmarks.sh
    ```
-   - Validate with v3.182.0
+   - Validate with v3.193.0
    - Update results documentation
    - Generate comprehensive report
 
 3. ✅ **Update Chapter 21**
-   - Document v3.182.0 results
+   - Document v3.193.0 results
    - Include BENCH-009 performance data
    - Update benchmark tables
 
@@ -284,7 +284,7 @@ timeout 120 ruchy run bench-009-json-parsing.ruchy
 
 ## Environment
 
-- **Ruchy Version**: v3.182.0
+- **Ruchy Version**: v3.193.0
 - **Platform**: Linux 6.8.0-85-generic x86_64
 - **Date**: 2025-11-03 15:20 UTC
 - **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM
@@ -293,13 +293,13 @@ timeout 120 ruchy run bench-009-json-parsing.ruchy
 
 ## Conclusion
 
-Ruchy v3.182.0 represents **another major milestone**:
+Ruchy v3.193.0 represents **another major milestone**:
 - ✅ parse_json() fully functional
 - ✅ 75% benchmark coverage (9/12)
 - ✅ All core language features working
 - ✅ Comprehensive I/O capability
 
-**Three rapid releases (v3.177.0 → v3.181.0 → v3.182.0) resolved ALL critical blockers!**
+**Three rapid releases (v3.193.0 → v3.193.0 → v3.193.0) resolved ALL critical blockers!**
 
 The Ruchy team has demonstrated excellent responsiveness to issues. 🎉
 

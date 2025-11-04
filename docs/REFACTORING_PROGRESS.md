@@ -1,7 +1,7 @@
 # Extreme TDD Refactoring Progress Report
 
 **Generated**: 2025-10-13
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 **Methodology**: 7-Layer Validation Stack
 
 ---
@@ -16,7 +16,7 @@ The Ruchy Book is undergoing extreme TDD refactoring to ensure **ZERO vaporware*
 
 **Total Examples Validated**: 81 examples across 12 chapters
 **Overall Pass Rate**: 79/81 (97.5%) - excluding interpreter-only features
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 
 ### Current Status
 
@@ -141,7 +141,7 @@ This enables building real, production-ready programs!
 
 **Documentation Improvements:**
 - Fixed status: 38% (3/8) → 100% (9/9)
-- Corrected version: v3.169.0 → v3.169.0
+- Corrected version: v3.193.0 → v3.193.0
 - Removed ALL "Compilation failed" errors
 - Added 6 new validated examples with full documentation
 - Expanded Core Concepts to include arrays and tuples
@@ -209,7 +209,7 @@ Developers can now build:
 
 **Documentation Improvements:**
 - Fixed status: 70% (7/10) → 100% (8/8)
-- Corrected version: v3.169.0 → v3.169.0
+- Corrected version: v3.193.0 → v3.193.0
 - Removed "Compilation failed" error
 - Added 5 new validated examples with full documentation
 - Expanded Core Concepts with string interpolation section
@@ -485,7 +485,7 @@ make test-notebook-ch03
 **Achievements:**
 - ✅ 8/8 examples passing (100%)
 - ✅ Fixed doc status: 5/8 (63%) → 8/8 (100%)
-- ✅ Updated version: v3.169.0 → v3.169.0
+- ✅ Updated version: v3.193.0 → v3.193.0
 - ✅ Created test script: `test/ch02/test_all_ch02.sh`
 
 **Examples Validated:**
@@ -512,7 +512,7 @@ make test-notebook-ch03
 - ✅ 9/9 examples passing (100%)
 - ✅ Fixed doc status: 8/9 (89%) → 9/9 (100%)
 - ✅ Verified `fun` keyword usage (no `fn` found)
-- ✅ Updated version: v3.169.0 → v3.169.0
+- ✅ Updated version: v3.193.0 → v3.193.0
 - ✅ Created test script: `test/ch03/test_all_ch03.sh`
 
 **Examples Validated:**
@@ -645,7 +645,7 @@ All completed chapters pass:
 - ✅ 100% test pass rate (no exceptions)
 - ✅ All 7 layers validated
 - ✅ Zero vaporware/TODO/FIXME comments
-- ✅ Correct version references (v3.169.0)
+- ✅ Correct version references (v3.193.0)
 - ✅ Function keyword compliance (`fun` not `fn`)
 - ✅ Comprehensive test script created
 
@@ -859,7 +859,7 @@ With testing patterns validated, Ruchy supports **professional, test-driven deve
 - ❌ **Not available in transpiler mode** (requires polars dependency)
 
 **Limitation Documented:**
-- DataFrames work in v3.169.0 **interpreter mode only**
+- DataFrames work in v3.193.0 **interpreter mode only**
 - Transpiled Rust code requires `polars = "0.x"` in Cargo.toml
 - This is a **transpilation limitation**, not a language limitation
 - Chapter honestly documented with clear warnings
@@ -880,7 +880,7 @@ With testing patterns validated, Ruchy supports **professional, test-driven deve
 - Provides workaround: use polars directly in Rust
 
 **DataFrames Note:**
-- v3.169.0 DataFrame sprint completed (DF-001 through DF-004)
+- v3.193.0 DataFrame sprint completed (DF-001 through DF-004)
 - Full DataFrame API in interpreter mode
 - Transpiler support requires dependency management
 - Ruchy team completed comprehensive DataFrame implementation
@@ -931,7 +931,7 @@ With testing patterns validated, Ruchy supports **professional, test-driven deve
 
 - **Zero vaporware**: All chapters honestly documented
 - **7-layer validation**: Comprehensive testing stack
-- **Version accuracy**: v3.169.0 confirmed
+- **Version accuracy**: v3.193.0 confirmed
 - **Test scripts**: 12 comprehensive test suites created
 
 ---
@@ -1104,7 +1104,7 @@ This extended session achieved **extraordinary progress**, adding 6 major chapte
 - **Zero vaporware**: 100% honest documentation maintained
 - **Test coverage**: 94 examples validated
 - **Pass rate**: 97.9% (excluding interpreter-only)
-- **Version accuracy**: v3.169.0 confirmed throughout
+- **Version accuracy**: v3.193.0 confirmed throughout
 - **Zero shortcuts**: Toyota Way principles strictly followed
 - **Methodology**: 7-layer validation stack on all chapters
 

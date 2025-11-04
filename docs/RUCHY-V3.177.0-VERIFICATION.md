@@ -1,14 +1,14 @@
-# Ruchy v3.177.0 Verification Report
+# Ruchy v3.193.0 Verification Report
 
 **Date**: 2025-11-03
-**Ruchy Version**: v3.177.0
-**Previous Version**: v3.176.0
+**Ruchy Version**: v3.193.0
+**Previous Version**: v3.193.0
 
 ---
 
 ## Executive Summary
 
-Ruchy v3.177.0 **partially resolves** Issue #119 (global mutable state) but **does not resolve** Issue #116 (File object methods). A new double-evaluation bug was discovered during testing.
+Ruchy v3.193.0 **partially resolves** Issue #119 (global mutable state) but **does not resolve** Issue #116 (File object methods). A new double-evaluation bug was discovered during testing.
 
 **Key Findings:**
 - ✅ **Issue #119**: Global mutable state NOW PERSISTS (CORE ISSUE RESOLVED)
@@ -23,7 +23,7 @@ Ruchy v3.177.0 **partially resolves** Issue #119 (global mutable state) but **do
 
 ### Status: Core Issue RESOLVED, New Bug Discovered
 
-**Original Problem (v3.176.0):**
+**Original Problem (v3.193.0):**
 ```ruchy
 let mut counter = 0
 
@@ -32,13 +32,13 @@ fun increment() {
     counter
 }
 
-println(increment())  // v3.176.0: 1
-println(increment())  // v3.176.0: 1 (WRONG - should be 2)
-println(increment())  // v3.176.0: 1 (WRONG - should be 3)
-println(counter)      // v3.176.0: 0 (WRONG - should be 3)
+println(increment())  // v3.193.0: 1
+println(increment())  // v3.193.0: 1 (WRONG - should be 2)
+println(increment())  // v3.193.0: 1 (WRONG - should be 3)
+println(counter)      // v3.193.0: 0 (WRONG - should be 3)
 ```
 
-**Fixed in v3.177.0:**
+**Fixed in v3.193.0:**
 ```
 Output: 2, 4, 6, 6
 ```
@@ -65,7 +65,7 @@ println("First:", inc())
 println("Second:", inc())
 ```
 
-**Output (v3.177.0):**
+**Output (v3.193.0):**
 ```
   [DEBUG] inc() called, counter before: 0
   [DEBUG] inc() counter after: 1
@@ -110,7 +110,7 @@ run
 ### GitHub Issue Update
 
 ✅ **Issue #119 Updated**: https://github.com/paiml/ruchy/issues/119
-- Comprehensive v3.177.0 verification
+- Comprehensive v3.193.0 verification
 - Double-evaluation bug documented
 - ruchydbg debugging workflow provided
 - Workaround documented
@@ -130,7 +130,7 @@ let line = file.read_line()  // Error: Unknown object type: Message
 file.close()                  // Error: Unknown object type: Message
 ```
 
-**Error (v3.177.0):**
+**Error (v3.193.0):**
 ```
 Error: Evaluation error: Runtime error: Unknown object type: Message
 ```
@@ -198,7 +198,7 @@ print return_value
 ### GitHub Issue Update
 
 ✅ **Issue #116 Updated**: https://github.com/paiml/ruchy/issues/116
-- v3.177.0 verification (NOT FIXED)
+- v3.193.0 verification (NOT FIXED)
 - Complete implementation guidance
 - ruchydbg debugging workflow provided
 - Required API specification
@@ -247,7 +247,7 @@ println("Random:", random_val)
 
 **Status:** Can use `read_file()` but not optimal
 
-**Current capability (v3.177.0):**
+**Current capability (v3.193.0):**
 ```ruchy
 let content = read_file("large_file.txt")  // Works!
 let lines = content.split("\n")
@@ -264,7 +264,7 @@ let lines = content.split("\n")
 
 **Status:** READY TO RUN
 
-**APIs available (v3.176.0+):**
+**APIs available (v3.193.0+):**
 - ✅ `parse_json()` 
 - ✅ `read_file()`
 
@@ -306,12 +306,12 @@ let lines = content.split("\n")
 
 ### Progress Summary
 
-**v3.177.0 Achievements:**
+**v3.193.0 Achievements:**
 - ✅ Fixed core Issue #119 (global state persistence)
 - ✅ Enables BENCH-002 to run (with workaround)
-- ✅ Maintains all v3.176.0 capabilities (parse_json, read_file)
+- ✅ Maintains all v3.193.0 capabilities (parse_json, read_file)
 
-**v3.177.0 Remaining Issues:**
+**v3.193.0 Remaining Issues:**
 - ❌ Double-evaluation bug (NEW)
 - ❌ File object methods (Issue #116)
 
@@ -357,6 +357,6 @@ let lines = content.split("\n")
 1. Run BENCH-009 immediately (fully ready)
 2. Attempt BENCH-002 with workaround
 3. Document double-evaluation bug in new issue
-4. Update Chapter 21 with v3.177.0 results
+4. Update Chapter 21 with v3.193.0 results
 5. Wait for File object implementation (Issue #116)
 

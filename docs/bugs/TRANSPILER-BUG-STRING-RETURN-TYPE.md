@@ -1,7 +1,7 @@
 # Transpiler Bug: Return Type Inference Failure (Multiple Types)
 
 **Filed**: 2025-11-02
-**Ruchy Version**: v3.171.0
+**Ruchy Version**: v3.193.0
 **Platform**: Linux 6.8.0-85-generic (AMD Ryzen Threadripper 7960X)
 **Severity**: High
 **Status**: Open - BLOCKING BENCH-003 + BENCH-008

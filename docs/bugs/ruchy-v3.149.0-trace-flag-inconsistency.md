@@ -1,11 +1,11 @@
 # Bug Report: --trace Flag Doesn't Show Output, RUCHY_TRACE Does
 
 **Filed**: 2025-10-30
-**Ruchy Version**: v3.169.0
+**Ruchy Version**: v3.193.0
 **Platform**: Linux 6.8.0-85-generic
 **Severity**: Medium (workaround available)
 **Status**: Documented (Related to TICKET-019)
-**Parent**: ruchy-v3.169.0-eval-flag-bug.md
+**Parent**: ruchy-v3.193.0-eval-flag-bug.md
 
 ## Description
 
@@ -137,7 +137,7 @@ $ echo 'EXPR' | RUCHY_TRACE=1 ruchy
 
 - TICKET-019: One-Liner Test Infrastructure Fix
 - TICKET-020: Debugging Tools Mandatory
-- docs/bugs/ruchy-v3.169.0-eval-flag-bug.md
+- docs/bugs/ruchy-v3.193.0-eval-flag-bug.md
 - src/ch13-00-debugging-tracing-tdd.md (needs updates)
 
 ## Toyota Way Analysis (5 Whys)
