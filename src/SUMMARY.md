@@ -28,6 +28,7 @@
 
 - [Chapter 22: Working with Ruchy Compiler Development](ch22-00-ruchy-compiler-development-tdd.md)
 - [Chapter 23: REPL & Object Inspection](ch23-00-repl-object-inspection.md)
+- [Chapter 24: NASA-Grade Optimization & Production Deployment](ch24-00-nasa-optimization-deployment.md)
 
 ## Part II: Future Chapters (Awaiting Features)
 
