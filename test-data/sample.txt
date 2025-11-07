@@ -1,0 +1,4 @@
+Hello World
+This is a test file for issue-116
+Line 3: Testing file methods
+Line 4: Read, write, append operations

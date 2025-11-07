@@ -1,5 +1,5 @@
 fun main() {
-    let json_str = '{"name": "test", "value": 42}'
+    let json_str = "{\"name\": \"test\", \"value\": 42}"
     println("Parsing JSON:", json_str)
     let data = parse_json(json_str)
     println("Parsed data:", data)
