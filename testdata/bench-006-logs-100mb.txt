@@ -1,0 +1,5 @@
+2025-11-07 10:00:00 INFO Server started on port 8080
+2025-11-07 10:00:01 INFO Request received: GET /api/users
+2025-11-07 10:00:02 WARN Slow query detected: SELECT * FROM users (250ms)
+2025-11-07 10:00:03 INFO Response sent: 200 OK
+2025-11-07 10:00:04 ERROR Connection timeout: database connection lost
