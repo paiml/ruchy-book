@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-04T12:58:24.858Z",
-  "ruchy_version": "ruchy 3.182.0",
-  "chapters_processed": 20,
-  "examples_found": 140,
+  "timestamp": "2025-11-11T09:16:12.629Z",
+  "ruchy_version": "ruchy 3.212.0",
+  "chapters_processed": 21,
+  "examples_found": 145,
   "examples_working": 139,
-  "examples_failing": 1,
-  "success_rate": 99,
+  "examples_failing": 6,
+  "success_rate": 96,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -802,6 +802,25 @@
         }
       ]
     },
+    "ch24-00-nasa-optimization-deployment": {
+      "chapter": "ch24-00-nasa-optimization-deployment",
+      "total_examples": 1,
+      "working_examples": 0,
+      "failing_examples": 1,
+      "examples": [
+        {
+          "file": "src/ch24-00-nasa-optimization-deployment.md",
+          "example_number": 1,
+          "line_number": 292,
+          "code": "// AWS Lambda handler in Ruchy\nfun handle_request(event: Object) -> Object {\n    let name = event.get(\"name\").unwrap_or(\"World\");\n\n    {\n        \"statusCode\": 200,\n        \"body\": \"Hello, \" + name + \"!\"\n    }\n}\n\nfun main() {\n    handle_request({\"name\": \"Lambda\"})\n}",
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Object is missing __type marker\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
+        }
+      ]
+    },
     "ch10-00-input-output-tdd": {
       "chapter": "ch10-00-input-output-tdd",
       "total_examples": 15,
@@ -1220,14 +1239,14 @@
     },
     "ch19-00-structs-oop": {
       "chapter": "ch19-00-structs-oop",
-      "total_examples": 8,
+      "total_examples": 12,
       "working_examples": 8,
-      "failing_examples": 0,
+      "failing_examples": 4,
       "examples": [
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 1,
-          "line_number": 42,
+          "line_number": 47,
           "code": "struct Point {\n    x: i32,\n    y: i32\n}\n\n// Create an instance\nlet p = Point { x: 10, y: 20 }\nprintln(p.x)  // 10\nprintln(p.y)  // 20",
           "passed": true,
           "status": "working"
@@ -1235,7 +1254,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 2,
-          "line_number": 58,
+          "line_number": 63,
           "code": "struct Person {\n    name: String,\n    age: i32,\n    height: f64\n}\n\nlet alice = Person {\n    name: \"Alice\",\n    age: 30,\n    height: 5.6\n}\n\nprintln(alice.name)    // Alice\nprintln(alice.age)     // 30\nprintln(alice.height)  // 5.6",
           "passed": true,
           "status": "working"
@@ -1243,7 +1262,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 3,
-          "line_number": 80,
+          "line_number": 85,
           "code": "struct Counter {\n    count: i32\n}\n\nlet mut c = Counter { count: 0 }\nprintln(c.count)  // 0\n\n// Field mutation now works!\nc.count = 5\nprintln(c.count)  // 5\n\nc.count = c.count + 1\nprintln(c.count)  // 6",
           "passed": true,
           "status": "working"
@@ -1251,7 +1270,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 4,
-          "line_number": 104,
+          "line_number": 109,
           "code": "struct Node {\n    value: i32,\n    next: Option<Node>\n}\n\n// Leaf node\nlet leaf = Node {\n    value: 3,\n    next: None\n}\n\n// Node with a child\nlet parent = Node {\n    value: 1,\n    next: Some(leaf)\n}\n\nprintln(parent.value)  // 1",
           "passed": true,
           "status": "working"
@@ -1259,7 +1278,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 5,
-          "line_number": 133,
+          "line_number": 138,
           "code": "struct Config {\n    debug: bool,\n    port: i32,\n    host: String\n}\n\nlet default_config = Config {\n    debug: false,\n    port: 8080,\n    host: \"localhost\"\n}\n\n// Create a new config with some fields changed\nlet prod_config = Config {\n    debug: false,\n    port: 443,\n    host: \"production.com\"\n}\n\nprintln(prod_config.port)  // 443",
           "passed": true,
           "status": "working"
@@ -1267,7 +1286,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 6,
-          "line_number": 160,
+          "line_number": 165,
           "code": "struct Settings {\n    theme: String = \"dark\",\n    font_size: i32 = 14,\n    auto_save: bool = true\n}\n\n// Use all defaults\nlet default_settings = Settings {}\nprintln(default_settings.theme)      // dark\nprintln(default_settings.font_size)  // 14\n\n// Override specific fields\nlet custom = Settings {\n    font_size: 16\n}\nprintln(custom.font_size)  // 16\nprintln(custom.theme)      // dark (default)",
           "passed": true,
           "status": "working"
@@ -1275,7 +1294,7 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 7,
-          "line_number": 184,
+          "line_number": 189,
           "code": "struct BankAccount {\n    pub owner: String,       // Public field\n    balance: f64,           // Private field (default)\n    pub(crate) id: i32      // Crate-visible field\n}\n\nlet account = BankAccount {\n    owner: \"Alice\",\n    balance: 1000.0,\n    id: 123\n}\n\nprintln(account.owner)  // OK - public field\n// println(account.balance)  // Error - private field",
           "passed": true,
           "status": "working"
@@ -1283,7 +1302,51 @@
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 8,
-          "line_number": 205,
+          "line_number": 214,
+          "code": "struct Calculator {\n    value: i32,\n\n    pub fun new() -> Calculator {\n        Calculator { value: 0 }\n    }\n\n    pub fun add(&mut self, amount: i32) {\n        self.value = self.value + amount\n    }\n\n    pub fun get(&self) -> i32 {\n        self.value\n    }\n}\n\nlet mut calc = Calculator::new()\ncalc.add(5)\ncalc.add(10)\nprintln(calc.get())",
+          "passed": false,
+          "status": "broken",
+          "error": "✗ Syntax error: Expected field name\nError: Syntax error: Expected field name\n",
+          "errorCategory": "PARSER_ERROR",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 9,
+          "line_number": 243,
+          "code": "pub struct Runtime {\n    api_endpoint: String,\n}\n\nimpl Runtime {\n    pub fun new() -> Runtime {\n        let endpoint = String::from(\"127.0.0.1:9001\")\n        Runtime { api_endpoint: endpoint }\n    }\n\n    pub fun get_endpoint(&self) -> String {\n        self.api_endpoint\n    }\n}\n\nlet runtime = Runtime::new()\nprintln(runtime.get_endpoint())",
+          "passed": false,
+          "status": "broken",
+          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
+          "errorCategory": "PARSER_ERROR",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 10,
+          "line_number": 269,
+          "code": "struct Point {\n    x: i32,\n    y: i32\n}\n\nimpl Point {\n    pub fun new(x: i32, y: i32) -> Point {\n        Point { x: x, y: y }\n    }\n\n    pub fun distance(&self) -> i32 {\n        self.x * self.x + self.y * self.y\n    }\n}\n\nlet p = Point::new(3, 4)\nprintln(p.distance())      // 25\nprintln(p.x)               // 3\nprintln(p.y)               // 4",
+          "passed": false,
+          "status": "broken",
+          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
+          "errorCategory": "PARSER_ERROR",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 11,
+          "line_number": 297,
+          "code": "struct Counter {\n    count: i32\n}\n\nimpl Counter {\n    pub fun new() -> Counter {\n        Counter { count: 0 }\n    }\n\n    fun internal_increment(&mut self) {\n        self.count = self.count + 1\n    }\n\n    pub fun increment(&mut self) {\n        self.internal_increment()\n    }\n\n    pub fun get_count(&self) -> i32 {\n        self.count\n    }\n}\n\nlet mut c = Counter::new()\nc.increment()\nprintln(c.get_count())  // 1",
+          "passed": false,
+          "status": "broken",
+          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
+          "errorCategory": "PARSER_ERROR",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 12,
+          "line_number": 344,
           "code": "struct Task {\n    id: i32,\n    title: String,\n    completed: bool\n}\n\nlet tasks = [\n    Task { id: 1, title: \"Write docs\", completed: false },\n    Task { id: 2, title: \"Review PR\", completed: true },\n    Task { id: 3, title: \"Fix bug\", completed: false }\n]\n\n// Count completed tasks\nlet mut completed_count = 0\nfor task in tasks {\n    if task.completed {\n        completed_count = completed_count + 1\n    }\n}\nprintln(completed_count)  // 1",
           "passed": true,
           "status": "working"

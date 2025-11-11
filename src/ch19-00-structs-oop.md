@@ -26,9 +26,12 @@
 - ✅ Mutable structs with `let mut`
 - ✅ Field mutation `struct.field = new_value`
 - ✅ **Impl blocks** with `impl TypeName { methods }` (v3.212.0)
+- ✅ **Class syntax** with `class Name { ... }` (v3.212.0)
 - ✅ **Method receivers** (`self`, `&self`, `&mut self`)
 - ✅ **Method visibility** (`pub fun` vs `fun`)
-- ✅ **Two method styles** (in-struct and impl blocks)
+- ✅ **Three method styles** (in-struct, impl blocks, class syntax)
+- ✅ **Constructors** with `new(params) { body }`
+- ✅ **Inheritance** with `class Child : Parent`
 - ⚠️ String fields require owned `String`, not `&str` (Rust lifetime limitation)
 
 **Working Field Types**:
@@ -205,7 +208,7 @@ println(account.owner)  // OK - public field
 
 ## Methods and Impl Blocks (v3.212.0)
 
-Ruchy supports **two styles** for defining methods on structs. Both are fully supported:
+Ruchy supports **three styles** for defining classes and methods. All three are fully supported:
 
 ### Style 1: Methods in Struct Body (Ruchy's Preferred Style)
 
@@ -290,6 +293,44 @@ println(p.y)               // 4
 
 **Note**: Comments are not yet supported inside impl blocks. Define them outside the block.
 
+### Style 3: Class Syntax (OOP Style)
+
+Full object-oriented class syntax with constructors:
+
+```ruchy
+class Calculator {
+    value: i32
+
+    new(initial: i32) {
+        self.value = initial
+    }
+
+    pub fun add(&mut self, amount: i32) {
+        self.value = self.value + amount
+    }
+
+    pub fun get(&self) -> i32 {
+        self.value
+    }
+}
+
+let mut calc = Calculator::new(10)
+calc.add(5)
+println(calc.get())
+```
+
+**Advantages**: Familiar OOP syntax, explicit constructors with `new`, supports inheritance and traits.
+
+**Advanced Features**:
+- Inheritance: `class Child : Parent { }`
+- Traits: `class MyClass : Parent + Trait1 + Trait2 { }`
+- Visibility: `pub`, `private`, `protected`
+- Modifiers: `static`, `override`, `final`, `abstract`
+- Named constructors: `new square(size: i32) { ... }`
+- Operator overloading: `operator+(self, other) { ... }`
+- Properties with getters/setters
+- Decorators: `@decorator`
+
 ### Method Visibility
 
 Control method visibility with `pub` keyword:
@@ -324,18 +365,26 @@ println(c.get_count())  // 1
 
 ### Which Style Should You Use?
 
-**Use methods in struct body when:**
+**Use methods in struct body (Style 1) when:**
 - Writing small, self-contained types
 - You want compact, readable code
 - All methods fit naturally together
+- Prefer Ruchy's minimalist syntax
 
-**Use impl blocks when:**
+**Use impl blocks (Style 2) when:**
 - Coming from a Rust background
 - Implementing multiple traits
 - Want to separate concerns clearly
 - Working with large types that need organization
 
-Both styles generate identical Rust code and have the same performance.
+**Use class syntax (Style 3) when:**
+- Coming from Python, TypeScript, or Java
+- Need inheritance or trait composition
+- Want explicit OOP features (protected, abstract, override)
+- Working with complex object hierarchies
+- Need advanced features (operator overloading, decorators, properties)
+
+All three styles generate equivalent Rust code and have identical performance.
 
 ## Working with Collections of Structs
 
@@ -375,15 +424,18 @@ Ruchy's struct implementation provides:
 - Option types (None/Some) for nullable fields
 - Nested structs
 - Default field values
-- Visibility modifiers (public/private)
-- **Impl blocks for methods** (two styles supported)
+- Visibility modifiers (public/private/protected)
+- **Three method definition styles** (struct body, impl blocks, class syntax)
 - Method receivers (self, &self, &mut self)
 - Public and private methods
+- **Class syntax** with constructors, inheritance, and traits
+- Advanced OOP features (static, override, final, abstract)
+- Operator overloading
+- Named constructors
 
 🚧 **In Development:**
 - Pattern matching destructuring
 - Derive attributes
-- Generic structs
-- Trait implementations
+- Generic structs (class supports `<T>` generics)
 
-The struct system forms the foundation of Ruchy's object-oriented programming model, enabling you to build complex data structures while maintaining type safety and clean syntax. With both compact (methods-in-struct) and explicit (impl blocks) styles available, Ruchy offers flexibility for different coding preferences and project needs.
+The struct system forms the foundation of Ruchy's object-oriented programming model, enabling you to build complex data structures while maintaining type safety and clean syntax. With **three styles** available (compact struct methods, Rust-style impl blocks, and full OOP class syntax), Ruchy offers maximum flexibility for different coding backgrounds and project needs.
