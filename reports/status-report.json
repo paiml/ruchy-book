@@ -1,26 +1,14 @@
 {
-  "generated_at": "2025-09-02T17:38:44.128Z",
-  "ruchy_version": "ruchy 1.35.0",
+  "generated_at": "2025-11-14T17:25:08.914Z",
+  "ruchy_version": "ruchy 3.89.0",
   "summary": {
-    "total_chapters": 10,
-    "total_examples": 69,
-    "working_examples": 68,
-    "failing_examples": 1,
-    "success_rate": 99
+    "total_chapters": 16,
+    "total_examples": 120,
+    "working_examples": 83,
+    "failing_examples": 37,
+    "success_rate": 69
   },
   "chapters": {
-    "ch02-00-variables-types-tdd": {
-      "total_examples": 8,
-      "working_examples": 8,
-      "failing_examples": 0,
-      "success_rate": 100,
-      "status_breakdown": {
-        "working": 8,
-        "not_implemented": 0,
-        "broken": 0,
-        "planned": 0
-      }
-    },
     "ch21-00-professional-tooling-tdd": {
       "total_examples": 1,
       "working_examples": 1,
@@ -33,27 +21,147 @@
         "planned": 0
       }
     },
-    "conclusion": {
-      "total_examples": 1,
-      "working_examples": 1,
+    "ch16-00-testing-quality-assurance": {
+      "total_examples": 8,
+      "working_examples": 6,
+      "failing_examples": 2,
+      "success_rate": 75,
+      "status_breakdown": {
+        "working": 6,
+        "not_implemented": 0,
+        "broken": 2,
+        "planned": 0
+      }
+    },
+    "ch15-00-binary-compilation-deployment": {
+      "total_examples": 4,
+      "working_examples": 2,
+      "failing_examples": 2,
+      "success_rate": 50,
+      "status_breakdown": {
+        "working": 2,
+        "not_implemented": 0,
+        "broken": 2,
+        "planned": 0
+      }
+    },
+    "ch03-00-functions-tdd": {
+      "total_examples": 11,
+      "working_examples": 8,
+      "failing_examples": 3,
+      "success_rate": 73,
+      "status_breakdown": {
+        "working": 8,
+        "not_implemented": 2,
+        "broken": 1,
+        "planned": 0
+      }
+    },
+    "ch06-00-data-structures-tdd": {
+      "total_examples": 8,
+      "working_examples": 8,
       "failing_examples": 0,
       "success_rate": 100,
       "status_breakdown": {
-        "working": 1,
+        "working": 8,
         "not_implemented": 0,
         "broken": 0,
         "planned": 0
       }
     },
-    "ch14-00-toolchain-mastery-tdd": {
-      "total_examples": 4,
-      "working_examples": 3,
-      "failing_examples": 1,
-      "success_rate": 75,
+    "ch17-00-error-handling-robustness": {
+      "total_examples": 11,
+      "working_examples": 5,
+      "failing_examples": 6,
+      "success_rate": 45,
       "status_breakdown": {
-        "working": 3,
+        "working": 5,
+        "not_implemented": 0,
+        "broken": 6,
+        "planned": 0
+      }
+    },
+    "ch05-00-control-flow-tdd": {
+      "total_examples": 17,
+      "working_examples": 14,
+      "failing_examples": 3,
+      "success_rate": 82,
+      "status_breakdown": {
+        "working": 14,
+        "not_implemented": 0,
+        "broken": 3,
+        "planned": 0
+      }
+    },
+    "ch02-00-variables-types-tdd": {
+      "total_examples": 8,
+      "working_examples": 5,
+      "failing_examples": 3,
+      "success_rate": 63,
+      "status_breakdown": {
+        "working": 5,
+        "not_implemented": 0,
+        "broken": 3,
+        "planned": 0
+      }
+    },
+    "ch19-00-structs-oop": {
+      "total_examples": 9,
+      "working_examples": 0,
+      "failing_examples": 9,
+      "success_rate": 0,
+      "status_breakdown": {
+        "working": 0,
+        "not_implemented": 0,
+        "broken": 9,
+        "planned": 0
+      }
+    },
+    "ch04-00-practical-patterns-tdd": {
+      "total_examples": 10,
+      "working_examples": 6,
+      "failing_examples": 4,
+      "success_rate": 60,
+      "status_breakdown": {
+        "working": 6,
+        "not_implemented": 0,
+        "broken": 4,
+        "planned": 0
+      }
+    },
+    "conclusion": {
+      "total_examples": 1,
+      "working_examples": 0,
+      "failing_examples": 1,
+      "success_rate": 0,
+      "status_breakdown": {
+        "working": 0,
         "not_implemented": 0,
         "broken": 1,
+        "planned": 0
+      }
+    },
+    "ch01-02-hello-world-tdd": {
+      "total_examples": 6,
+      "working_examples": 6,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 6,
+        "not_implemented": 0,
+        "broken": 0,
+        "planned": 0
+      }
+    },
+    "ch18-00-dataframes-data-processing": {
+      "total_examples": 4,
+      "working_examples": 0,
+      "failing_examples": 4,
+      "success_rate": 0,
+      "status_breakdown": {
+        "working": 0,
+        "not_implemented": 0,
+        "broken": 4,
         "planned": 0
       }
     },
@@ -64,30 +172,6 @@
       "success_rate": 100,
       "status_breakdown": {
         "working": 10,
-        "not_implemented": 0,
-        "broken": 0,
-        "planned": 0
-      }
-    },
-    "ch03-00-functions-tdd": {
-      "total_examples": 9,
-      "working_examples": 9,
-      "failing_examples": 0,
-      "success_rate": 100,
-      "status_breakdown": {
-        "working": 9,
-        "not_implemented": 0,
-        "broken": 0,
-        "planned": 0
-      }
-    },
-    "ch05-00-control-flow-tdd": {
-      "total_examples": 14,
-      "working_examples": 14,
-      "failing_examples": 0,
-      "success_rate": 100,
-      "status_breakdown": {
-        "working": 14,
         "not_implemented": 0,
         "broken": 0,
         "planned": 0
@@ -105,25 +189,13 @@
         "planned": 0
       }
     },
-    "ch06-00-data-structures-tdd": {
-      "total_examples": 8,
-      "working_examples": 8,
+    "ch14-00-toolchain-mastery-tdd": {
+      "total_examples": 4,
+      "working_examples": 4,
       "failing_examples": 0,
       "success_rate": 100,
       "status_breakdown": {
-        "working": 8,
-        "not_implemented": 0,
-        "broken": 0,
-        "planned": 0
-      }
-    },
-    "ch01-02-hello-world-tdd": {
-      "total_examples": 6,
-      "working_examples": 6,
-      "failing_examples": 0,
-      "success_rate": 100,
-      "status_breakdown": {
-        "working": 6,
+        "working": 4,
         "not_implemented": 0,
         "broken": 0,
         "planned": 0
@@ -132,14 +204,14 @@
   },
   "oneliners": {
     "total_tests": 20,
-    "passed_tests": 17,
-    "failed_tests": 3,
+    "passed_tests": 12,
+    "failed_tests": 8,
     "planned_tests": 12,
-    "success_rate": 85
+    "success_rate": 60
   },
   "quality_metrics": {
-    "documentation_coverage": 28.57142857142857,
+    "documentation_coverage": 45.714285714285715,
     "example_testing": 100,
-    "implementation_status": 99
+    "implementation_status": 69
   }
 }

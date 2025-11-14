@@ -1,28 +1,28 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-10-01T07:00:00.000Z
-**Ruchy Version**: ruchy 3.62.9
+**Generated**: 2025-11-14T17:17:18.008Z
+**Ruchy Version**: ruchy 3.89.0
 **Book Commit**: latest
 
 ## Executive Summary
-- **Total Examples**: 120 (book chapters + new OOP examples)
-- **Passing**: 92 (77%)
+- **Total Examples**: 120 (book chapters)
+- **Passing**: 83 (69%)
 - **Test Coverage**: Comprehensive testing with dogfooding
 - **Lint Grade**: A+ (100% pass rate)
 - **Syntax Validation**: A+ (100% pass rate)
-- **One-liners**: 12/20 passing (60% - improved!)
+- **One-liners**: 12/20 passing (60%)
 
-## 🎉 MAJOR IMPROVEMENTS - v3.62.9 MILESTONE
-**FIXED**: Critical multi-statement bug resolved (commit 8661b16f)
-**NEW**: Actor system implementation (26/27 actor tests passing internally)
-**IMPROVED**: One-liner success rate: 45% → 60%
-**Status**: v3.62.9 shows continued 77% success rate with MORE examples
+## ⚠️ REGRESSION DETECTED - v3.89.0
+**Status**: Pass rate declined from 77% → 69% (92→83 passing examples)
+**Impact**: 9 examples regressed in latest version
+**Root Cause**: TBD - needs investigation
 
 **Version History**:
 - **v3.38.0 (baseline)**: 82/111 passing (74%)
 - **v3.51.0 (regression)**: 42/111 passing (38%) - transpiler bug
 - **v3.52.0 (recovery)**: 86/111 passing (77%) - bug fixed
-- **v3.62.9 (current)**: 92/120 passing (77%) ✅ MORE FEATURES
+- **v3.62.9 (previous)**: 92/120 passing (77%) ✅ MORE FEATURES
+- **v3.89.0 (current)**: 83/120 passing (69%) ⚠️ REGRESSION
 
 ## Comprehensive Test Results
 
@@ -32,21 +32,21 @@
 ==================================
 📄 Chapters processed: 16
 💻 Code examples found: 120
-✅ Examples working: 92
-❌ Examples failing: 28
-📈 Success rate: 77%
+✅ Examples working: 83
+❌ Examples failing: 37
+📈 Success rate: 69%
 ```
 
 ### One-Liner Tests (Chapter 4.1)
 ```
 📈 Results Summary
 ==================
-Tests Passed: 12  ⬆️ (was 9)
-Tests Failed: 8   ⬇️ (was 11)
+Tests Passed: 12
+Tests Failed: 8
 Tests Planned: 12
 Total Current Tests: 20
 Total All Examples: 32
-Success Rate: 60% ⬆️ (was 45%)
+Success Rate: 60%
 ```
 
 **Working One-Liners (v3.62.9):**
