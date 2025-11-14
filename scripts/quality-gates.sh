@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env -S ../bashrs/target/release/bashrs
 # Quality Gates for TDD-Driven Ruchy Book
 # 
 # This script enforces MANDATORY quality gates

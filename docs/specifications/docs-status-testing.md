@@ -28,7 +28,7 @@ Documentation examples will be automatically annotated with real-time status ind
 ### ✅ **WORKING** - Fully Implemented
 **Criteria**: Example compiles, runs, and produces expected output
 ```ruchy
-// Status: ✅ WORKING (Ruchy v3.38.0+)  
+// Status: ✅ WORKING (Ruchy v3.193.0+)  
 // Last Verified: 2025-08-20
 let x = 42
 let y = x * 2
@@ -38,7 +38,7 @@ println(y)  // Output: 84
 ### ⚠️ **NOT IMPLEMENTED** - Planned Feature  
 **Criteria**: Valid syntax, but runtime/compile-time indicates feature missing
 ```ruchy
-// Status: ⚠️ NOT IMPLEMENTED (Planned: v3.38.0)
+// Status: ⚠️ NOT IMPLEMENTED (Planned: v3.193.0)
 // Error: Method not found: .map()
 // Last Tested: 2025-08-20
 let numbers = [1, 2, 3]
@@ -117,7 +117,7 @@ classification_rules:
 #### Status Header Format
 ```markdown
 <!-- DOC_STATUS_START -->
-**Example Status**: ✅ WORKING (Ruchy v3.38.0+)  
+**Example Status**: ✅ WORKING (Ruchy v3.193.0+)  
 **Last Verified**: 2025-08-20 16:30:00 UTC  
 **Success Rate**: 100% (1/1 examples working)
 <!-- DOC_STATUS_END -->
@@ -134,7 +134,7 @@ println(message)
 <!-- DOC_STATUS_START -->
 **Chapter Status**: ⚠️ PARTIAL (3/7 examples working)  
 **Last Verified**: 2025-08-20 16:30:00 UTC  
-**Next Implementation**: Array methods (v3.38.0)
+**Next Implementation**: Array methods (v3.193.0)
 <!-- DOC_STATUS_END -->
 
 ### Working Examples (3/7)
@@ -143,10 +143,10 @@ println(message)
 ✅ Control flow (if/else, loops)
 
 ### Not Yet Implemented (4/7)  
-⚠️ Array operations (`.map()`, `.filter()`) - Planned v3.38.0  
-⚠️ File I/O operations - Planned v3.38.0  
-⚠️ HTTP client functionality - Planned v3.38.0  
-⚠️ Database connections - Planned v3.38.0
+⚠️ Array operations (`.map()`, `.filter()`) - Planned v3.193.0  
+⚠️ File I/O operations - Planned v3.193.0  
+⚠️ HTTP client functionality - Planned v3.193.0  
+⚠️ Database connections - Planned v3.193.0
 ```
 
 ### 3. **Continuous Documentation Validation**
@@ -488,9 +488,9 @@ print(f\"🦀 Ruchy Version: {data['ruchy_version']}\")
 
 echo ""
 echo "## 📈 Trends"
-echo "- ✅ Math functions implemented in v3.38.0+"
-echo "- ⚠️ Array operations planned for v3.38.0" 
-echo "- 📋 Async/await planned for v3.38.0"
+echo "- ✅ Math functions implemented in v3.193.0+"
+echo "- ⚠️ Array operations planned for v3.193.0" 
+echo "- 📋 Async/await planned for v3.193.0"
 
 echo ""
 echo "## 🔧 Next Actions"

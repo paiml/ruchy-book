@@ -1,9 +1,0 @@
-// ❌ Error
-let s = String::from("hello")
-let r = &s
-let moved = *r  // Cannot move out of borrowed content
-
-// ✅ Fixed
-let s = String::from("hello")
-let r = &s
-let copied = r.clone()  // Clone instead of move

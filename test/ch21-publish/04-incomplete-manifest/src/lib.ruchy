@@ -1,0 +1,5 @@
+// Package with incomplete manifest
+
+fun example() {
+    println("Testing incomplete manifest validation")
+}

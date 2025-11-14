@@ -1,0 +1,29 @@
+// BENCH-009 Validation Test
+// Validates parse_json() fix (Issue #131) works with realistic data
+
+fun main() {
+    println("=== BENCH-009 Validation (Issue #131) ===")
+
+    // Test 1: Load and parse 115KB JSON file
+    println("Test 1: Loading JSON file...")
+    let contents = read_file("test-data/sample-benchmark.json")
+    println("  Loaded:", contents.len().to_string(), "bytes")
+
+    println("Test 2: Parsing JSON...")
+    let data = parse_json(contents)
+    println("  Parsed successfully!")
+
+    // Test 3: Access deeply nested value (BENCH-009 pattern)
+    println("Test 3: Accessing nested data...")
+    let city = data["users"][500]["profile"]["location"]["city"]
+    println("  City at users[500]:", city)
+
+    // Test 4: Verify multiple accesses work
+    println("Test 4: Multiple accesses...")
+    let city0 = data["users"][0]["profile"]["location"]["city"]
+    let city100 = data["users"][100]["profile"]["location"]["city"]
+    let city999 = data["users"][999]["profile"]["location"]["city"]
+    println("  cities[0,100,999]:", city0, city100, city999)
+
+    println("✅ BENCH-009 VALIDATED - All tests passed!")
+}

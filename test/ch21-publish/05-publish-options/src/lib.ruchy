@@ -1,0 +1,5 @@
+// Testing various publish command options
+
+fun demo() {
+    println("Testing --version, --allow-dirty, --registry options")
+}

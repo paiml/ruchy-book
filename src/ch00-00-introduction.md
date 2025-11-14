@@ -14,7 +14,7 @@
 
 </div>
 
-> **Note**: All code examples in this book are automatically tested against Ruchy v1.69.0. The badges above show real-time test results from our continuous integration system.
+> **Note**: All code examples in this book are automatically tested against Ruchy v3.182.0. The badges above show real-time test results from our continuous integration system.
 
 ## What is Ruchy?
 

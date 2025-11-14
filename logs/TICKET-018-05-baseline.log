@@ -1,0 +1,89 @@
+🧪 TICKET-018-05: ruchy test baseline test
+========================================
+
+Testing if any .ruchy files have test functions...
+
+⏭️  tests/extracted/ch01-02-hello-world_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch03-00-functions-tdd_example_9.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_10.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_2.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_3.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_4.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_5.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_6.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_7.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_8.ruchy (no test functions)
+⏭️  tests/extracted/ch10-00-input-output-tdd_example_9.ruchy (no test functions)
+⏭️  tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy (no test functions)
+⏭️  tests/extracted/conclusion_example_1.ruchy (no test functions)
+⏭️  tests/ch04-modules/test_01_basic_module.ruchy (no test functions)
+⏭️  tests/ch04-modules/test_02_use_statement.ruchy (no test functions)
+⏭️  tests/ch04-practical-patterns/test_01_safe_calculator.ruchy (no test functions)
+⏭️  tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy (no test functions)
+
+========================================
+Summary:
+Total files: 69
+No test functions: 69 (100%)
+With tests passing: 0
+With tests failing: 0
+
+=== Analysis ===
+✅ All files have no test functions - this is expected
+   The codebase uses ruchy run for execution, not ruchy test
+   ruchy test expects explicit test_* functions with assertions
+
+Tool Status: ruchy test correctly reports 'no test functions found'
+Validation: Tool works as designed (100% correct behavior)

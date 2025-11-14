@@ -1,3 +1,0 @@
-println("The answer is", 42)
-println("Pi is approximately", 3.14159)
-println("Is Ruchy awesome?", true)

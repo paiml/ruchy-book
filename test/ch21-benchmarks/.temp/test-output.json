@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "timestamp": "2025-11-02T11:09:16.713393546+00:00",
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125GB",
+    "os": "Ubuntu 22.04",
+    "hostname": "noah-Lambda-Vector",
+    "bashrs_version": "6.25.0"
+  },
+  "benchmarks": [
+    {
+      "script": ".temp/test-simple.sh",
+      "iterations": 5,
+      "warmup": 2,
+      "statistics": {
+        "mean_ms": 11.846230199999999,
+        "median_ms": 11.816818,
+        "stddev_ms": 0.18001683748294178,
+        "min_ms": 11.611167,
+        "max_ms": 12.166887,
+        "variance_ms": 0.03240606177735987
+      },
+      "raw_results_ms": [
+        11.611167,
+        11.845631000000001,
+        11.816818,
+        11.790648000000001,
+        12.166887
+      ],
+      "quality": {
+        "lint_passed": true,
+        "determinism_score": 1.0,
+        "output_identical": true
+      }
+    }
+  ]
+}

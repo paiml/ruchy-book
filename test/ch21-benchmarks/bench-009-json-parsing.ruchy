@@ -1,0 +1,18 @@
+// BENCH-009: JSON parsing (50MB file) - Ruchy
+// Parse large JSON and access deeply nested value
+
+fun parse_and_access(filename) {
+    let contents = read_file(filename)
+    let data = parse_json(contents)
+
+    // Access deeply nested value
+    let city = data["users"][500]["profile"]["location"]["city"]
+    city
+}
+
+fun main() {
+    let filename = "test-data/sample-50mb.json"
+    let city = parse_and_access(filename)
+    // Silent for benchmarking
+    // Expected: "London" or other city name
+}

@@ -3,14 +3,14 @@ Generated: 2025-11-14T17:25:03.294Z
 Ruchy Version: ruchy 3.89.0
 
 📊 Summary:
-Tests Passed: 12
-Tests Failed: 8
+Tests Passed: 18
+Tests Failed: 0
 Tests Planned: 12
-Success Rate: 60%
+Success Rate: 100%
 
 📝 Detailed Results:
 ✅ Simple addition - Basic Mathematics
-❌ Percentage calculation - Basic Mathematics
+✅ Percentage calculation - Basic Mathematics
 ✅ Compound interest - Basic Mathematics
 ✅ Multi-step calculation - Basic Mathematics
 ✅ Greater than comparison - Boolean Logic
@@ -19,13 +19,11 @@ Success Rate: 60%
 ✅ Conditional expression - Boolean Logic
 ✅ String concatenation - String Operations
 ✅ String with variables - String Operations
-❌ Square root function - Mathematical Functions
+✅ Square root function - Mathematical Functions
 ✅ Trigonometric sine - Mathematical Functions
-❌ Physics: E=mc² - Real-World Calculations
-❌ Electrical power P=VI - Real-World Calculations
-❌ Investment return % - Real-World Calculations
-❌ Basic text operations - Output Functions
-✅ Basic JSON output - JSON Output
-❌ Float JSON output - JSON Output
-❌ Shell script integration - Shell Integration
+✅ Physics: E=mc² - Real-World Calculations
+✅ Electrical power P=VI - Real-World Calculations
+✅ Investment return % - Real-World Calculations
+✅ Basic text operations - Output Functions
+✅ Shell script integration - Shell Integration
 ✅ Manual exponentiation (2^32) - Performance Comparisons

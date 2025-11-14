@@ -1,0 +1,15 @@
+// BENCH-005: Array Sum (1 million integers) - Ruchy
+// Simple loop benchmark testing array iteration and accumulation
+
+fun array_sum(n) {
+    let mut sum = 0
+    let mut i = 0
+    while i < n {
+        sum = sum + i
+        i = i + 1
+    }
+    sum
+}
+
+let result = array_sum(1000000)
+// Expected: 499999500000

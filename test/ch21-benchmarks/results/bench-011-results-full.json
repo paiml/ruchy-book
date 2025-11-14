@@ -1,0 +1,283 @@
+{
+  "benchmark": "BENCH-011",
+  "name": "Nested loops (1000x1000)",
+  "tool": "bashrs bench v6.25.0",
+  "modes": {
+    "python": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "python",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 64.32,
+  "median_ms": 63.94,
+  "stddev_ms": 2.61,
+  "min_ms": 60.57,
+  "max_ms": 68.20,
+  "raw_results": [66,64,61,62,64,61,63,68,67,68],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "deno": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "deno",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 33.55,
+  "median_ms": 33.87,
+  "stddev_ms": 2.58,
+  "min_ms": 28.91,
+  "max_ms": 37.98,
+  "raw_results": [33,33,34,36,34,38,35,30,29,33],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "julia": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "julia",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.97,
+  "median_ms": 1.79,
+  "stddev_ms": 0.44,
+  "min_ms": 1.54,
+  "max_ms": 3.01,
+  "raw_results": [2,3,3,2,2,2,2,2,2,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "go": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "go",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3.34,
+  "median_ms": 2.95,
+  "stddev_ms": 0.77,
+  "min_ms": 2.72,
+  "max_ms": 5.37,
+  "raw_results": [3,3,5,3,3,4,3,3,3,3],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "rust": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "rust",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.45,
+  "median_ms": 2.39,
+  "stddev_ms": 0.36,
+  "min_ms": 2.02,
+  "max_ms": 2.98,
+  "raw_results": [3,2,2,2,2,3,2,3,3,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "c": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "c",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.19,
+  "median_ms": 2.21,
+  "stddev_ms": 0.12,
+  "min_ms": 2.01,
+  "max_ms": 2.37,
+  "raw_results": [2,2,2,2,2,2,2,2,2,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-ast": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "ruchy-ast",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 522.00,
+  "median_ms": 521.29,
+  "stddev_ms": 7.42,
+  "min_ms": 510.49,
+  "max_ms": 536.19,
+  "raw_results": [517,522,517,524,515,510,529,530,520,536],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-bytecode": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "ruchy-bytecode",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 514.06,
+  "median_ms": 509.96,
+  "stddev_ms": 10.83,
+  "min_ms": 503.53,
+  "max_ms": 541.90,
+  "raw_results": [505,514,508,521,512,507,508,542,520,504],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-transpiled": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "ruchy-transpile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.28,
+  "median_ms": 2.30,
+  "stddev_ms": 0.29,
+  "min_ms": 1.76,
+  "max_ms": 2.79,
+  "raw_results": [2,2,2,2,3,3,2,2,2,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "ruchy-compiled": 
+{
+  "name": "Nested loops (1000x1000)",
+  "mode": "ruchy-compile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.45,
+  "median_ms": 2.35,
+  "stddev_ms": 0.31,
+  "min_ms": 2.16,
+  "max_ms": 3.17,
+  "raw_results": [3,3,2,2,2,2,2,2,2,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+  },
+  "metadata": {
+    "timestamp": "2025-11-02T17:03:02Z",
+    "os": "Linux",
+    "arch": "x86_64",
+    "ruchy_version": "ruchy 3.174.0",
+    "bashrs_version": "v6.25.0"
+  }
+}
