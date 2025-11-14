@@ -1,0 +1,9 @@
+// awesome-ruchy-lib - A simple demonstration library
+
+fun greet(name) {
+    println("Hello, " + name + "!")
+}
+
+fun add(a, b) {
+    a + b
+}

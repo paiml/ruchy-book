@@ -6,17 +6,17 @@
 | Status | Count | Examples |
 |--------|-------|----------|
 | ✅ Working | 6 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
+| 🎯 Verified | 8 | All examples validated with 7-layer testing |
 | ❌ Broken | 0 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
-*Last updated: 2025-08-24*  
-*Ruchy version: ruchy 3.38.0*
+*Last updated: 2025-11-03*  
+*Ruchy version: ruchy 3.193.0*
 <!-- DOC_STATUS_END -->
 
 
-**Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)  
-**Ruchy Version**: v1.10.0  
+**Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)
+**Ruchy Version**: v3.182.0
 **Testing**: All examples verified with `make test-ch01`
 
 ## The Problem

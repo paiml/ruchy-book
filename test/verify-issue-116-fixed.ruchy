@@ -1,0 +1,21 @@
+fun main() {
+    println("Opening file...")
+    let file = open("test/test-data/sample.txt", "r")
+    
+    println("Reading line 1...")
+    let line1 = file.read_line()
+    println("Line 1:", line1)
+    
+    println("Reading line 2...")
+    let line2 = file.read_line()
+    println("Line 2:", line2)
+    
+    println("Reading line 3...")
+    let line3 = file.read_line()
+    println("Line 3:", line3)
+    
+    println("Closing file...")
+    file.close()
+    
+    println("Success! File object methods work.")
+}

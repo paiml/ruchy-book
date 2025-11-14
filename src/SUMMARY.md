@@ -14,17 +14,21 @@
 - [Chapter 5: Control Flow](ch05-00-control-flow-tdd.md)
 - [Chapter 6: Data Structures](ch06-00-data-structures-tdd.md)
 - [Chapter 10: Input and Output](ch10-00-input-output-tdd.md)
+- [Chapter 13: Debugging and Tracing](ch13-00-debugging-tracing-tdd.md)
 - [Chapter 14: The Ruchy Toolchain](ch14-00-toolchain-mastery-tdd.md)
 - [Chapter 15: Binary Compilation & Deployment](ch15-00-binary-compilation-deployment.md)
 - [Chapter 16: Testing & Quality Assurance](ch16-00-testing-quality-assurance.md)
 - [Chapter 17: Error Handling & Robustness](ch17-00-error-handling-robustness.md)
 - [Chapter 18: DataFrames & Data Processing](ch18-00-dataframes-data-processing.md)
 - [Chapter 19: Structs and OOP (NEW)](ch19-00-structs-oop.md)
+- [Chapter 20: HTTP Server - Production-Ready Static File Serving](ch20-00-http-server.md)
+- [Chapter 21: Scientific Benchmarking - Python vs Ruchy](ch21-00-scientific-benchmarking.md)
 
 ## Development and Integration
 
 - [Chapter 22: Working with Ruchy Compiler Development](ch22-00-ruchy-compiler-development-tdd.md)
 - [Chapter 23: REPL & Object Inspection](ch23-00-repl-object-inspection.md)
+- [Chapter 24: NASA-Grade Optimization & Production Deployment](ch24-00-nasa-optimization-deployment.md)
 
 ## Part II: Future Chapters (Awaiting Features)
 
@@ -46,6 +50,7 @@
 ## Appendices
 
 - [Appendix A: Installation Guide](./appendix-a-installation.md)
+- [Appendix B: Ruchy vs Julia - Architecture Deep Dive](./appendix-b-ruchy-vs-julia.md)
 - [Appendix D: Glossary](./appendix-d-glossary.md)
 - [Appendix E: Learning Resources](./appendix-e-resources.md)
 - [Appendix F: Development Roadmap](./appendix-roadmap.md)

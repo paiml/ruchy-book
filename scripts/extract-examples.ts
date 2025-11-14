@@ -76,17 +76,35 @@ class ExampleExtractor {
     let currentExample = "";
     let exampleStartLine = 0;
     let exampleNumber = 1;
+    let skipNext = false;
+    let skipReason = "";
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-      
+
+      // Check for skip-test marker (must be on line before ```ruchy)
+      if (line.trim().startsWith("<!-- skip-test:")) {
+        skipNext = true;
+        // Extract reason from comment
+        const match = line.match(/<!-- skip-test:\s*(.+?)\s*-->/);
+        skipReason = match ? match[1] : "marked as skip-test";
+      }
+
       if (line.trim() === "```ruchy") {
-        inRuchyBlock = true;
-        currentExample = "";
-        exampleStartLine = i + 1;
+        if (skipNext) {
+          // Skip this example - don't set inRuchyBlock
+          console.log(`   ⏭️  Skipping example ${exampleNumber} (${skipReason})`);
+          skipNext = false;
+          skipReason = "";
+          exampleNumber++; // Still increment to keep numbering consistent
+        } else {
+          inRuchyBlock = true;
+          currentExample = "";
+          exampleStartLine = i + 1;
+        }
       } else if (line.trim() === "```" && inRuchyBlock) {
         inRuchyBlock = false;
-        
+
         if (currentExample.trim()) {
           examples.push({
             file: filename,
@@ -112,28 +130,49 @@ class ExampleExtractor {
     
     try {
       await Deno.writeTextFile(tempFile, example.code);
-      
-      // Test compilation with ruchy to catch both syntax and method errors
+
+      // Test with ruchy run (interpreter mode) - v3.82.0+ has true interpreter
+      // Falls back to compile mode if needed
+      // TIMEOUT FIX: 30 second timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds
+
       const cmd = new Deno.Command("ruchy", {
-        args: ["compile", tempFile],
+        args: ["run", tempFile],
         stdout: "piped",
-        stderr: "piped"
+        stderr: "piped",
+        signal: controller.signal
       });
-      
-      const { success, stdout, stderr } = await cmd.output();
-      
-      if (success) {
-        example.passed = true;
-        example.status = "working";
-      } else {
-        const errorText = new TextDecoder().decode(stderr);
-        example.passed = false;
-        example.error = errorText;
-        example.status = this.classifyError(errorText);
-        example.errorCategory = this.categorizeError(errorText);
-        example.rootCause = this.analyzeRootCause(errorText);
+
+      try {
+        const { success, stdout, stderr } = await cmd.output();
+        clearTimeout(timeoutId);
+
+        if (success) {
+          example.passed = true;
+          example.status = "working";
+        } else {
+          const errorText = new TextDecoder().decode(stderr);
+          example.passed = false;
+          example.error = errorText;
+          example.status = this.classifyError(errorText);
+          example.errorCategory = this.categorizeError(errorText);
+          example.rootCause = this.analyzeRootCause(errorText);
+        }
+      } catch (abortError) {
+        clearTimeout(timeoutId);
+        if (abortError.name === "AbortError") {
+          // Compilation timed out - mark as slow test
+          example.passed = false;
+          example.error = "⏱️  SLOW TEST: Compilation timed out after 30 seconds (likely DataFrame/polars dependency issue)";
+          example.status = "broken";
+          example.errorCategory = "TIMEOUT";
+          example.rootCause = "Compilation hung - possibly waiting for polars crate dependency resolution";
+        } else {
+          throw abortError;
+        }
       }
-      
+
     } catch (error) {
       example.passed = false;
       example.error = error.message;

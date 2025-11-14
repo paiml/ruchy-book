@@ -1,0 +1,8 @@
+// Minimal test case for array index assignment bug
+// Expected: Should allow assignment to array indices
+// Actual: Fails with "Invalid assignment target"
+
+let matrix = [[0, 1], [2, 3]]
+matrix[0][1] = 99  // Should work but fails
+println(matrix[0][1])
+// Expected output: 99

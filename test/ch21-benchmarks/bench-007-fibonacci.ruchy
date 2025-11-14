@@ -1,0 +1,17 @@
+// BENCH-007: Fibonacci recursive (n=20)
+// Ruchy implementation matching Python baseline
+// Note: Reduced from n=30 to n=20 for practical timing in interpreted modes
+
+fun fibonacci(n) {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+fun main() {
+    let result = fibonacci(20)
+    // Silent for benchmarking - correctness verified separately
+    // Expected: 6765
+}

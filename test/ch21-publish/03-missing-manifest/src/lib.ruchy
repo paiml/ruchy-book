@@ -1,0 +1,5 @@
+// Package without Ruchy.toml - should fail validation
+
+fun test_function() {
+    println("This package has no manifest")
+}

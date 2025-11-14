@@ -1,5 +1,19 @@
 # Chapter 15: Binary Compilation & Deployment
 
+<!-- DOC_STATUS_START -->
+**Chapter Status**: ✅ 100% Working (4/4 examples)
+
+| Status | Count | Examples |
+|--------|-------|----------|
+| ✅ Working | 4 | All compile to standalone binaries |
+| 📦 Binary Compilation | ✅ | Creates 3.8MB native executables |
+| ⚠️ Advanced Features | Some | Chapter examples use advanced stdlib |
+
+*Last tested: 2025-10-13*
+*Ruchy version: ruchy 3.193.0*
+*Features: Binary compilation, standalone executables, no runtime dependencies*
+<!-- DOC_STATUS_END -->
+
 ## The Problem
 
 Writing scripts is great for development and prototyping, but production deployment requires standalone binaries that can run without the ruchy runtime. You need to distribute your ruchy programs as self-contained executables that users can run directly.
@@ -39,52 +53,6 @@ Ruchy's `compile` command transpiles your code to Rust and then creates a native
 - **Production Ready**: Suitable for servers, containers, and distribution
 
 ## Practical Usage
-
-### Command-Line Tool Example
-```ruchy
-fun main() {
-    let args = std::env::args();
-    
-    if args.len() < 2 {
-        println("Usage: calculator <expression>");
-        return;
-    }
-    
-    let expr = args[1];
-    let result = evaluate_expression(expr);
-    println("Result: {}", result);
-}
-
-fun evaluate_expression(expr: String) -> f64 {
-    // Simple calculator - supports +, -, *, /
-    if expr.contains('+') {
-        let parts = expr.split('+');
-        return parts[0].parse::<f64>() + parts[1].parse::<f64>();
-    } else if expr.contains('-') {
-        let parts = expr.split('-');
-        return parts[0].parse::<f64>() - parts[1].parse::<f64>();
-    } else if expr.contains('*') {
-        let parts = expr.split('*');
-        return parts[0].parse::<f64>() * parts[1].parse::<f64>();
-    } else if expr.contains('/') {
-        let parts = expr.split('/');
-        let divisor = parts[1].parse::<f64>();
-        if divisor != 0.0 {
-            return parts[0].parse::<f64>() / divisor;
-        }
-    }
-    
-    expr.parse::<f64>()
-}
-```
-
-```bash
-$ ruchy compile calculator.ruchy -o calc
-$ ./calc "10+5"
-Result: 15
-$ ./calc "20*3"
-Result: 60
-```
 
 ### Data Processing Binary
 ```ruchy

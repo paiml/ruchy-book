@@ -1,0 +1,47 @@
+// BENCH-008: Prime number generation (first 10K primes)
+// Ruchy implementation matching Python baseline
+// Expected: 10,000th prime is 104,729
+
+fun is_prime(n) {
+    // Check if n is prime using trial division
+    if n < 2 {
+        return false
+    }
+    if n == 2 {
+        return true
+    }
+    if n % 2 == 0 {
+        return false
+    }
+
+    // Check odd divisors up to sqrt(n)
+    let mut i = 3
+    while i * i <= n {
+        if n % i == 0 {
+            return false
+        }
+        i = i + 2
+    }
+    true
+}
+
+fun generate_primes(count) {
+    // Generate first 'count' prime numbers
+    let mut primes = []
+    let mut candidate = 2
+
+    while primes.len() < count {
+        if is_prime(candidate) {
+            primes.push(candidate)
+        }
+        candidate = candidate + 1
+    }
+
+    primes
+}
+
+fun main() {
+    let primes = generate_primes(10000)
+    // Silent for benchmarking - correctness verified separately
+    // Expected: 10,000 primes, last prime is 104,729
+}

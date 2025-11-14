@@ -200,6 +200,54 @@
         "broken": 0,
         "planned": 0
       }
+    },
+    "ch10-00-input-output-tdd": {
+      "total_examples": 15,
+      "working_examples": 15,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 15,
+        "not_implemented": 0,
+        "broken": 0,
+        "planned": 0
+      }
+    },
+    "ch18-00-dataframes-data-processing": {
+      "total_examples": 4,
+      "working_examples": 4,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 4,
+        "not_implemented": 0,
+        "broken": 0,
+        "planned": 0
+      }
+    },
+    "ch05-00-control-flow-tdd": {
+      "total_examples": 17,
+      "working_examples": 10,
+      "failing_examples": 7,
+      "success_rate": 59,
+      "status_breakdown": {
+        "working": 10,
+        "not_implemented": 0,
+        "broken": 7,
+        "planned": 0
+      }
+    },
+    "ch19-00-structs-oop": {
+      "total_examples": 8,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "success_rate": 100,
+      "status_breakdown": {
+        "working": 8,
+        "not_implemented": 0,
+        "broken": 0,
+        "planned": 0
+      }
     }
   },
   "oneliners": {

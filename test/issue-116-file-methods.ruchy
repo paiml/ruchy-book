@@ -1,0 +1,18 @@
+// Issue #116: File object methods not implemented
+// Minimal reproducible test case
+
+fun test_file_io() {
+    let file = open("test-data/sample.txt", "r")
+    
+    let line1 = file.read_line()
+    println("Line 1: ", line1)
+    
+    let line2 = file.read_line()
+    println("Line 2: ", line2)
+    
+    file.close()
+}
+
+fun main() {
+    test_file_io()
+}

@@ -7,17 +7,97 @@
   "examples_failing": 37,
   "success_rate": 69,
   "chapters": {
-    "ch21-00-professional-tooling-tdd": {
-      "chapter": "ch21-00-professional-tooling-tdd",
+    "ch04-00-practical-patterns-tdd": {
+      "chapter": "ch04-00-practical-patterns-tdd",
+      "total_examples": 9,
+      "working_examples": 9,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 1,
+          "line_number": 38,
+          "code": "// Calculator with validation and error handling\nfun safe_calculate(operation: &str, a: i32, b: i32) -> i32 {\n    if operation == \"add\" {\n        a + b\n    } else if operation == \"subtract\" {\n        a - b\n    } else if operation == \"multiply\" {\n        a * b\n    } else if operation == \"divide\" {\n        if b == 0 {\n            println(\"Error: Division by zero\");\n            0  // Safe default\n        } else {\n            a / b\n        }\n    } else {\n        println(\"Error: Unknown operation '{}'\", operation);\n        0  // Safe default\n    }\n}\n\nfun main() {\n    let result1 = safe_calculate(\"add\", 10, 5);\n    let result2 = safe_calculate(\"divide\", 12, 3);\n    let result3 = safe_calculate(\"divide\", 10, 0);\n    \n    println(\"10 + 5 = {}\", result1);\n    println(\"12 / 3 = {}\", result2);\n    println(\"10 / 0 = {}\", result3);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 2,
+          "line_number": 98,
+          "code": "fun validate_user_input(name: &str, age: i32, email: &str) -> bool {\n    // Guard clause: check for empty name\n    if name.len() == 0 {\n        println(\"Error: Name cannot be empty\");\n        return false;\n    }\n    \n    // Guard clause: check age range\n    if age < 0 || age > 150 {\n        println(\"Error: Age must be between 0 and 150\");\n        return false;\n    }\n    \n    // Guard clause: basic email validation\n    if !email.contains('@') {\n        println(\"Error: Invalid email format\");\n        return false;\n    }\n    \n    // All validations passed\n    println(\"User input is valid\");\n    return true;\n}\n\nfun create_user_profile(name: &str, age: i32, email: &str) -> &str {\n    if validate_user_input(name, age, email) {\n        println(\"Creating profile for: {}\", name);\n        return \"Profile created successfully\";\n    } else {\n        return \"Profile creation failed\";\n    }\n}\n\nfun main() {\n    let result1 = create_user_profile(\"Alice\", 25, \"alice@example.com\");\n    let result2 = create_user_profile(\"\", 30, \"bob@example.com\");\n    let result3 = create_user_profile(\"Charlie\", -5, \"charlie@example.com\");\n    \n    println(\"Result 1: {}\", result1);\n    println(\"Result 2: {}\", result2); \n    println(\"Result 3: {}\", result3);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 3,
+          "line_number": 145,
+          "code": "fun process_score(raw_score: i32, max_score: i32) -> f64 {\n    // Step 1: Validate inputs\n    if max_score <= 0 {\n        println(\"Error: Max score must be positive\");\n        return 0.0;\n    }\n    \n    if raw_score < 0 {\n        println(\"Warning: Negative score adjusted to 0\");\n        return 0.0;\n    }\n    \n    if raw_score > max_score {\n        println(\"Warning: Score exceeds maximum, capping at {}\", max_score);\n        return 100.0;\n    }\n    \n    // Step 2: Calculate percentage\n    let percentage = (raw_score as f64) / (max_score as f64) * 100.0;\n    \n    // Step 3: Round to reasonable precision\n    let rounded = (percentage * 10.0).round() / 10.0;\n    \n    // Step 4: Return result\n    rounded\n}\n\nfun grade_assignment(student: &str, raw_score: i32, max_score: i32) -> &str {\n    let percentage = process_score(raw_score, max_score);\n    \n    println(\"Student: {}\", student);\n    println(\"Score: {}/{} ({:.1}%)\", raw_score, max_score, percentage);\n    \n    // Letter grade assignment\n    if percentage >= 90.0 {\n        return \"A\";\n    } else if percentage >= 80.0 {\n        return \"B\";\n    } else if percentage >= 70.0 {\n        return \"C\";\n    } else if percentage >= 60.0 {\n        return \"D\";\n    } else {\n        return \"F\";\n    }\n}\n\nfun main() {\n    let grade1 = grade_assignment(\"Alice\", 95, 100);\n    let grade2 = grade_assignment(\"Bob\", 42, 50);\n    let grade3 = grade_assignment(\"Charlie\", 150, 100);\n    \n    println(\"Grades: {}, {}, {}\", grade1, grade2, grade3);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 4,
+          "line_number": 204,
+          "code": "fun get_setting(setting_name: &str, default_value: i32) -> i32 {\n    // Simulate configuration lookup\n    if setting_name == \"timeout\" {\n        return 30;\n    } else if setting_name == \"max_retries\" {\n        return 3;\n    } else if setting_name == \"buffer_size\" {\n        return 1024;\n    } else {\n        println(\"Warning: Unknown setting '{}', using default {}\", setting_name, default_value);\n        return default_value;\n    }\n}\n\nfun initialize_system() -> bool {\n    println(\"Initializing system...\");\n    \n    // Get settings with defaults\n    let timeout = get_setting(\"timeout\", 15);\n    let retries = get_setting(\"max_retries\", 1);\n    let buffer = get_setting(\"buffer_size\", 512);\n    let unknown = get_setting(\"cache_size\", 256);\n    \n    // Display configuration\n    println(\"Configuration:\");\n    println(\"  Timeout: {} seconds\", timeout);\n    println(\"  Max retries: {}\", retries);\n    println(\"  Buffer size: {} bytes\", buffer);\n    println(\"  Cache size: {} MB\", unknown);\n    \n    // Validate critical settings\n    if timeout <= 0 {\n        println(\"Error: Timeout must be positive\");\n        return false;\n    }\n    \n    if retries < 0 {\n        println(\"Error: Retries cannot be negative\");\n        return false;\n    }\n    \n    println(\"✅ System initialized successfully\");\n    return true;\n}\n\nfun main() {\n    let success = initialize_system();\n    \n    if success {\n        println(\"System is ready for operation\");\n    } else {\n        println(\"System initialization failed\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 5,
+          "line_number": 265,
+          "code": "fun calculate_total(prices: [i32; 5]) -> i32 {\n    let mut total = 0;  // Accumulator starts at zero\n    let mut i = 0;\n    \n    while i < 5 {\n        total = total + prices[i];  // Accumulate each value\n        i = i + 1;\n    }\n    \n    total  // Return accumulated result\n}\n\nfun find_maximum(numbers: [i32; 5]) -> i32 {\n    let mut max_value = numbers[0];  // Accumulator starts with first value\n    let mut i = 1;\n    \n    while i < 5 {\n        if numbers[i] > max_value {\n            max_value = numbers[i];  // Update accumulator if better value found\n        }\n        i = i + 1;\n    }\n    \n    max_value  // Return best value found\n}\n\nfun count_positives(numbers: [i32; 5]) -> i32 {\n    let mut count = 0;  // Counter accumulator\n    let mut i = 0;\n    \n    while i < 5 {\n        if numbers[i] > 0 {\n            count = count + 1;  // Increment counter for matches\n        }\n        i = i + 1;\n    }\n    \n    count  // Return count\n}\n\nfun main() {\n    let prices = [10, 25, 5, 15, 8];\n    let numbers = [-3, 7, -1, 12, 0];\n    \n    let total = calculate_total(prices);\n    let maximum = find_maximum(prices);\n    let positive_count = count_positives(numbers);\n    \n    println(\"Total: {}\", total);\n    println(\"Maximum: {}\", maximum);\n    println(\"Positive numbers: {}\", positive_count);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 6,
+          "line_number": 322,
+          "code": "fun process_order_state(current_state: &str, action: &str) -> &str {\n    if current_state == \"pending\" {\n        if action == \"pay\" {\n            println(\"Payment received, order confirmed\");\n            return \"confirmed\";\n        } else if action == \"cancel\" {\n            println(\"Order cancelled\");\n            return \"cancelled\";\n        } else {\n            println(\"Invalid action '{}' for pending order\", action);\n            return current_state;\n        }\n    } else if current_state == \"confirmed\" {\n        if action == \"ship\" {\n            println(\"Order shipped\");\n            return \"shipped\";\n        } else if action == \"cancel\" {\n            println(\"Confirmed order cancelled, refund processed\");\n            return \"cancelled\";\n        } else {\n            println(\"Invalid action '{}' for confirmed order\", action);\n            return current_state;\n        }\n    } else if current_state == \"shipped\" {\n        if action == \"deliver\" {\n            println(\"Order delivered\");\n            return \"delivered\";\n        } else {\n            println(\"Cannot modify shipped order\");\n            return current_state;\n        }\n    } else if current_state == \"delivered\" {\n        println(\"Order already completed\");\n        return current_state;\n    } else if current_state == \"cancelled\" {\n        println(\"Order was cancelled\");\n        return current_state;\n    } else {\n        println(\"Unknown order state: {}\", current_state);\n        return \"error\";\n    }\n}\n\nfun track_order() -> &str {\n    let mut state = \"pending\";\n    \n    println(\"Order tracking simulation:\");\n    println(\"Initial state: {}\", state);\n    \n    // Process sequence of actions\n    state = process_order_state(state, \"pay\");\n    println(\"Current state: {}\", state);\n    \n    state = process_order_state(state, \"ship\");\n    println(\"Current state: {}\", state);\n    \n    state = process_order_state(state, \"deliver\");\n    println(\"Current state: {}\", state);\n    \n    state\n}\n\nfun main() {\n    let final_state = track_order();\n    println(\"Final order state: {}\", final_state);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 7,
+          "line_number": 393,
+          "code": "fun build_greeting(name: &str, formal: bool, include_time: bool) -> String {\n    let mut greeting = String::new();\n    \n    // Start with appropriate formality\n    if formal {\n        greeting = greeting + \"Good day, \";\n    } else {\n        greeting = greeting + \"Hello, \";\n    }\n    \n    // Add the name\n    greeting = greeting + name;\n    \n    // Add time information if requested\n    if include_time {\n        greeting = greeting + \"! Hope you're having a great day\";\n    } else {\n        greeting = greeting + \"!\";\n    }\n    \n    greeting\n}\n\nfun build_email_subject(priority: &str, department: &str, topic: &str) -> String {\n    let mut subject = String::new();\n    \n    // Add priority prefix\n    if priority == \"urgent\" {\n        subject = subject + \"[URGENT] \";\n    } else if priority == \"high\" {\n        subject = subject + \"[HIGH] \";\n    }\n    \n    // Add department prefix\n    subject = subject + \"[\" + department + \"] \";\n    \n    // Add main topic\n    subject = subject + topic;\n    \n    subject\n}\n\nfun main() {\n    let greeting1 = build_greeting(\"Alice\", true, true);\n    let greeting2 = build_greeting(\"Bob\", false, false);\n    \n    let subject1 = build_email_subject(\"urgent\", \"IT\", \"Server maintenance required\");\n    let subject2 = build_email_subject(\"normal\", \"HR\", \"Team meeting scheduled\");\n    \n    println(\"Greetings:\");\n    println(\"  {}\", greeting1);\n    println(\"  {}\", greeting2);\n    \n    println(\"Email subjects:\");\n    println(\"  {}\", subject1);\n    println(\"  {}\", subject2);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 8,
+          "line_number": 457,
+          "code": "fun process_student_data(name: &str, scores: [i32; 3]) -> String {\n    // Pattern 1: Input validation\n    if name.len() == 0 {\n        return String::from(\"Error: Student name required\");\n    }\n    \n    // Pattern 2: Accumulator for total\n    let mut total = 0;\n    let mut i = 0;\n    while i < 3 {\n        if scores[i] < 0 || scores[i] > 100 {\n            return String::from(\"Error: Scores must be between 0 and 100\");\n        }\n        total = total + scores[i];\n        i = i + 1;\n    }\n    \n    // Pattern 3: Calculation with validation\n    let average = total / 3;\n    \n    // Pattern 4: State-based classification\n    let grade = if average >= 90 {\n        \"A\"\n    } else if average >= 80 {\n        \"B\"\n    } else if average >= 70 {\n        \"C\"\n    } else if average >= 60 {\n        \"D\"\n    } else {\n        \"F\"\n    };\n    \n    // Pattern 5: Builder pattern for result\n    let mut result = String::from(\"Student Report\\n\");\n    result = result + \"Name: \" + name + \"\\n\";\n    result = result + \"Scores: \";\n    \n    // Add individual scores\n    let mut i = 0;\n    while i < 3 {\n        if i > 0 {\n            result = result + \", \";\n        }\n        result = result + &scores[i].to_string();\n        i = i + 1;\n    }\n    \n    result = result + \"\\n\";\n    result = result + \"Average: \" + &average.to_string() + \"\\n\";\n    result = result + \"Grade: \" + grade;\n    \n    result\n}\n\nfun main() {\n    let report1 = process_student_data(\"Alice Johnson\", [95, 87, 92]);\n    let report2 = process_student_data(\"Bob Smith\", [78, 82, 75]);\n    let report3 = process_student_data(\"\", [85, 90, 88]);\n    \n    println(\"{}\\n\", report1);\n    println(\"{}\\n\", report2);  \n    println(\"{}\\n\", report3);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch04-00-practical-patterns-tdd.md",
+          "example_number": 9,
+          "line_number": 528,
+          "code": "// Test helper function\nfun assert_equal(actual: i32, expected: i32, test_name: &str) {\n    if actual == expected {\n        println(\"✅ {}: {} == {}\", test_name, actual, expected);\n    } else {\n        println(\"❌ {}: {} != {} (expected)\", test_name, actual, expected);\n    }\n}\n\nfun assert_string_equal(actual: &str, expected: &str, test_name: &str) {\n    if actual == expected {\n        println(\"✅ {}: strings match\", test_name);\n    } else {\n        println(\"❌ {}: '{}' != '{}' (expected)\", test_name, actual, expected);\n    }\n}\n\n// Function to test\nfun calculate_discount(price: i32, discount_percent: i32) -> i32 {\n    if discount_percent < 0 || discount_percent > 100 {\n        return price;  // No discount for invalid percentage\n    }\n    \n    let discount_amount = (price * discount_percent) / 100;\n    price - discount_amount\n}\n\n// Test suite\nfun test_discount_calculation() {\n    println(\"Testing discount calculation...\");\n    \n    // Normal cases\n    assert_equal(calculate_discount(100, 10), 90, \"10% discount on $100\");\n    assert_equal(calculate_discount(50, 20), 40, \"20% discount on $50\");\n    assert_equal(calculate_discount(200, 0), 200, \"0% discount on $200\");\n    \n    // Edge cases\n    assert_equal(calculate_discount(100, -5), 100, \"Negative discount\");\n    assert_equal(calculate_discount(100, 150), 100, \"Over 100% discount\");\n    assert_equal(calculate_discount(0, 50), 0, \"50% discount on $0\");\n    \n    println(\"Discount tests completed.\\n\");\n}\n\nfun main() {\n    test_discount_calculation();\n    \n    // Demo the actual function\n    println(\"Discount examples:\");\n    println(\"$100 with 15% discount: ${}\", calculate_discount(100, 15));\n    println(\"$250 with 25% discount: ${}\", calculate_discount(250, 25));\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "conclusion": {
+      "chapter": "conclusion",
       "total_examples": 1,
       "working_examples": 1,
       "failing_examples": 0,
       "examples": [
         {
-          "file": "src/ch21-00-professional-tooling-tdd.md",
+          "file": "src/conclusion.md",
           "example_number": 1,
-          "line_number": 23,
-          "code": "// test/tooling/simple_test.ruchy - ✓ VERIFIED WORKING\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}",
+          "line_number": 205,
+          "code": "fun calculate(x: i32, y: i32) -> i32 {\n    return x + y;\n}\n\nfun main() {\n    let result = calculate(10, 20);\n    println(result);  // Output: 30\n}",
           "passed": true,
           "status": "working"
         }
@@ -30,39 +110,39 @@
       "failing_examples": 2,
       "examples": [
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 1,
-          "line_number": 9,
-          "code": "fun add_numbers(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun main() {\n    // Basic functionality test\n    let result = add_numbers(5, 3);\n    assert_eq(result, 8, \"Addition should work correctly\");\n    \n    println(\"✅ All tests passed!\");\n}",
+          "line_number": 51,
+          "code": "fun main() {\n    let greeting = \"Hello\";\n    let name = \"World\";\n    println(greeting);\n    println(name);\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 2,
-          "line_number": 48,
-          "code": "fun factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}\n\nfun test_factorial_base_cases() {\n    assert_eq(factorial(0), 1, \"0! should equal 1\");\n    assert_eq(factorial(1), 1, \"1! should equal 1\");\n    println(\"✅ Base cases pass\");\n}\n\nfun test_factorial_recursive_cases() {\n    assert_eq(factorial(3), 6, \"3! should equal 6\");\n    assert_eq(factorial(4), 24, \"4! should equal 24\");\n    assert_eq(factorial(5), 120, \"5! should equal 120\");\n    println(\"✅ Recursive cases pass\");\n}\n\nfun main() {\n    test_factorial_base_cases();\n    test_factorial_recursive_cases();\n    println(\"🎉 All factorial tests passed!\");\n}",
+          "line_number": 73,
+          "code": "fun main() {\n    let first = \"Hello\";\n    let second = \"Beautiful\";\n    let third = \"World\";\n    println(first);\n    println(second);\n    println(third);\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 3,
-          "line_number": 78,
-          "code": "fun safe_divide(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        println(\"Error: Division by zero\");\n        return 0;\n    }\n    a / b\n}\n\nfun test_division_normal_cases() {\n    assert_eq(safe_divide(10, 2), 5, \"Normal division should work\");\n    assert_eq(safe_divide(15, 3), 5, \"Another normal case\");\n    println(\"✅ Normal division tests pass\");\n}\n\nfun test_division_error_cases() {\n    // Test division by zero handling\n    let result = safe_divide(10, 0);\n    assert_eq(result, 0, \"Division by zero should return 0\");\n    println(\"✅ Error handling tests pass\");\n}\n\nfun main() {\n    test_division_normal_cases();\n    test_division_error_cases();\n    println(\"🎉 All division tests passed!\");\n}",
+          "line_number": 98,
+          "code": "fun main() {\n    let number = 42;\n    let text = \"Answer\";\n    println(text);\n    println(number);\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 4,
-          "line_number": 108,
-          "code": "fun absolute_value(x: i32) -> i32 {\n    if x < 0 {\n        -x\n    } else {\n        x\n    }\n}\n\nfun test_absolute_value_properties() {\n    // Property: abs(x) >= 0 for all x\n    let test_values = [5, -3, 0, 100, -50];\n    let mut i = 0;\n    \n    while i < 5 {\n        let x = test_values[i];\n        let abs_x = absolute_value(x);\n        \n        // Property 1: Result is always non-negative\n        assert(abs_x >= 0, \"Absolute value must be non-negative\");\n        \n        // Property 2: abs(abs(x)) == abs(x) (idempotent)\n        assert_eq(absolute_value(abs_x), abs_x, \"Absolute value should be idempotent\");\n        \n        i = i + 1;\n    }\n    \n    println(\"✅ Property tests pass\");\n}\n\nfun main() {\n    test_absolute_value_properties();\n    println(\"🎉 All property tests passed!\");\n}",
+          "line_number": 120,
+          "code": "fun main() {\n    let text = \"Hello\"\n    println(text.len())\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 5,
           "line_number": 230,
           "code": "// File: calculator_test.ruchy\nfun test_addition() {\n    assert_eq(add(2, 3), 5, \"Basic addition\");\n    assert_eq(add(-1, 1), 0, \"Adding negative numbers\");\n    assert_eq(add(0, 0), 0, \"Adding zeros\");\n    println(\"✅ Addition tests pass\");\n}\n\nfun test_multiplication() {\n    assert_eq(multiply(3, 4), 12, \"Basic multiplication\");\n    assert_eq(multiply(-2, 3), -6, \"Negative multiplication\");\n    assert_eq(multiply(0, 100), 0, \"Multiply by zero\");\n    println(\"✅ Multiplication tests pass\");\n}\n\nfun run_all_tests() {\n    test_addition();\n    test_multiplication();\n    println(\"🎉 Calculator test suite complete!\");\n}\n\nfun main() {\n    run_all_tests();\n}",
@@ -73,7 +153,7 @@
           "rootCause": "Unknown error - needs manual investigation"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 6,
           "line_number": 258,
           "code": "fun fibonacci(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfun test_fibonacci_performance() {\n    // Test reasonable performance expectations\n    let start_time = get_time_ms(); // Placeholder - actual timing would need stdlib\n    let result = fibonacci(20);\n    let end_time = get_time_ms();\n    \n    assert_eq(result, 6765, \"Fibonacci(20) should equal 6765\");\n    \n    // Performance assertion (conceptual)\n    let duration = end_time - start_time;\n    assert(duration < 1000, \"Fibonacci(20) should complete within 1 second\");\n    \n    println(\"✅ Performance test passes\");\n}\n\nfun main() {\n    test_fibonacci_performance();\n}",
@@ -81,7 +161,7 @@
           "status": "working"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 7,
           "line_number": 352,
           "code": "// Clear, specific assertions\nassert_eq(actual, expected, \"Descriptive failure message\");\n\n// Boolean assertions with context\nassert(condition, \"Explain why this should be true\");\n\n// Multiple related assertions\nfun test_range_function() {\n    let result = create_range(1, 5);\n    assert_eq(len(result), 4, \"Range should have 4 elements\");\n    assert_eq(result[0], 1, \"First element should be 1\");  \n    assert_eq(result[3], 4, \"Last element should be 4\");\n}",
@@ -92,7 +172,7 @@
           "rootCause": "Unknown error - needs manual investigation"
         },
         {
-          "file": "src/ch16-00-testing-quality-assurance.md",
+          "file": "src/ch06-00-data-structures-tdd.md",
           "example_number": 8,
           "line_number": 377,
           "code": "fun gcd(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        a\n    } else {\n        gcd(b, a % b)\n    }\n}\n\n// Property: gcd(a, b) divides both a and b\nfun test_gcd_properties() {\n    let a = 48;\n    let b = 18;\n    let result = gcd(a, b);\n    \n    // Property verification\n    assert_eq(a % result, 0, \"GCD should divide first number\");\n    assert_eq(b % result, 0, \"GCD should divide second number\");\n    assert_eq(result, 6, \"GCD(48, 18) should equal 6\");\n    \n    println(\"✅ GCD properties verified\");\n}\n\nfun main() {\n    test_gcd_properties();\n}",
@@ -252,65 +332,180 @@
         }
       ]
     },
-    "ch06-00-data-structures-tdd": {
-      "chapter": "ch06-00-data-structures-tdd",
+    "ch14-00-toolchain-mastery-tdd": {
+      "chapter": "ch14-00-toolchain-mastery-tdd",
+      "total_examples": 4,
+      "working_examples": 4,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 1,
+          "line_number": 54,
+          "code": "fun greet(name: String) -> String {\n    \"Hello, \" + name + \"!\"\n}\n\nfun main() {\n    let message = greet(\"Ruchy Developer\");\n    println(message);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 2,
+          "line_number": 90,
+          "code": "// calculator_test.ruchy\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun test_addition() {\n    let result = add(2, 3);\n    assert_eq(result, 5);\n    println(\"Addition test passed\");\n}\n\nfun main() {\n    test_addition();\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 3,
+          "line_number": 228,
+          "code": "fun calculate_factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * calculate_factorial(n - 1)\n    }\n}\n\nfun main() {\n    let result = calculate_factorial(10);\n    println(result);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "example_number": 4,
+          "line_number": 500,
+          "code": "fun fibonacci_recursive(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)\n    }\n}\n\nfun fibonacci_iterative(n: i32) -> i32 {\n    let mut a = 0;\n    let mut b = 1;\n    let mut i = 0;\n    \n    while i < n {\n        let temp = a + b;\n        a = b;\n        b = temp;\n        i = i + 1;\n    }\n    \n    a\n}\n\nfun main() {\n    let result1 = fibonacci_recursive(10);\n    let result2 = fibonacci_iterative(10);\n    println(result1);\n    println(result2);\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch15-00-binary-compilation-deployment": {
+      "chapter": "ch15-00-binary-compilation-deployment",
+      "total_examples": 3,
+      "working_examples": 3,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch15-00-binary-compilation-deployment.md",
+          "example_number": 1,
+          "line_number": 23,
+          "code": "fun main() {\n    println(\"Hello from compiled Ruchy!\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch15-00-binary-compilation-deployment.md",
+          "example_number": 2,
+          "line_number": 58,
+          "code": "fun main() {\n    let data = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n    \n    let sum = calculate_sum(&data);\n    let avg = calculate_average(&data);\n    let max = find_maximum(&data);\n    \n    println(\"Data Analysis Results:\");\n    println(\"Sum: {}\", sum);\n    println(\"Average: {:.2}\", avg);\n    println(\"Maximum: {}\", max);\n}\n\nfun calculate_sum(data: &Vec<i32>) -> i32 {\n    let mut total = 0;\n    let mut i = 0;\n    while i < data.len() {\n        total = total + data[i];\n        i = i + 1;\n    }\n    total\n}\n\nfun calculate_average(data: &Vec<i32>) -> f64 {\n    let sum = calculate_sum(data);\n    (sum as f64) / (data.len() as f64)\n}\n\nfun find_maximum(data: &Vec<i32>) -> i32 {\n    let mut max = data[0];\n    let mut i = 1;\n    while i < data.len() {\n        if data[i] > max {\n            max = data[i];\n        }\n        i = i + 1;\n    }\n    max\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch15-00-binary-compilation-deployment.md",
+          "example_number": 3,
+          "line_number": 110,
+          "code": "fun main() {\n    println(\"Mathematical Functions Demo\");\n    \n    let n = 10;\n    println(\"Factorial of {}: {}\", n, factorial(n));\n    \n    let x = 25;\n    println(\"Square root of {}: {}\", x, integer_sqrt(x));\n    \n    let a = 48;\n    let b = 18;\n    println(\"GCD of {} and {}: {}\", a, b, gcd(a, b));\n}\n\nfun factorial(n: i32) -> i64 {\n    if n <= 1 {\n        1\n    } else {\n        (n as i64) * factorial(n - 1)\n    }\n}\n\nfun integer_sqrt(n: i32) -> i32 {\n    if n < 2 {\n        return n;\n    }\n    \n    let mut x = n / 2;\n    let mut prev = 0;\n    \n    while x != prev {\n        prev = x;\n        x = (x + n / x) / 2;\n    }\n    \n    x\n}\n\nfun gcd(mut a: i32, mut b: i32) -> i32 {\n    while b != 0 {\n        let temp = b;\n        b = a % b;\n        a = temp;\n    }\n    a\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "appendix-b-ruchy-vs-julia": {
+      "chapter": "appendix-b-ruchy-vs-julia",
+      "total_examples": 4,
+      "working_examples": 3,
+      "failing_examples": 1,
+      "examples": [
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 1,
+          "line_number": 325,
+          "code": "# All types determined at runtime\nfun compute(x, y) {\n    let result = x + y      // Type checked at runtime\n    result * 2              // Type checked again\n}\n\ncompute(1, 2)               // Value::Integer operations\ncompute(1.0, 2.0)           // Value::Float operations\ncompute(\"a\", \"b\")           // Value::String operations",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 2,
+          "line_number": 713,
+          "code": "# CLI tool for log processing\nfun process_logs(file) {\n    let lines = read_file(file).split(\"\\n\")\n    lines.filter(|l| l.contains(\"ERROR\"))\n         .map(|l| parse_log(l))\n         .foreach(|log| println(log.format()))\n}\n\n# Compiles to 2MB binary\n# ruchy compile log-processor.ruchy -o logproc\n# Ship single ./logproc file",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 3,
+          "line_number": 744,
+          "code": "# deploy.ruchy - Production inference in Ruchy\nlet model = parse_json(read_file(\"model.json\"))\nfun predict(input) {\n    model.apply(input)  // Fast inference\n}\n\n// Compile to 2MB binary for edge deployment",
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Failed to read file 'model.json': No such file or directory (os error 2)\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
+        },
+        {
+          "file": "src/appendix-b-ruchy-vs-julia.md",
+          "example_number": 4,
+          "line_number": 755,
+          "code": "// frontend CLI tool (Ruchy)\nfun fetch_data(endpoint) {\n    http_get(endpoint)\n}\n\n// Processes data locally, sends to Julia server",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch01-02-hello-world": {
+      "chapter": "ch01-02-hello-world",
       "total_examples": 8,
       "working_examples": 8,
       "failing_examples": 0,
       "examples": [
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 1,
-          "line_number": 32,
-          "code": "fun main() {\n    let greeting = \"Hello\";\n    let name = \"World\";\n    println(greeting);\n    println(name);\n}",
+          "line_number": 30,
+          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 2,
-          "line_number": 54,
-          "code": "fun main() {\n    let first = \"Hello\";\n    let second = \"Beautiful\";\n    let third = \"World\";\n    println(first);\n    println(second);\n    println(third);\n}",
+          "line_number": 86,
+          "code": "fun main() {\n    println(\"Hello\", \"World\", \"from\", \"Ruchy\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 3,
-          "line_number": 79,
-          "code": "fun main() {\n    let number = 42;\n    let text = \"Answer\";\n    println(text);\n    println(number);\n}",
+          "line_number": 108,
+          "code": "fun main() {\n    let name = \"Alice\";\n\n    // Multiple arguments (comma-separated)\n    println(\"Hello,\", name);\n\n    // String concatenation with +\n    println(\"Hello, \" + name + \"!\");\n\n    // F-string interpolation (modern, clean syntax)\n    println(f\"Hello, {name}!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 4,
-          "line_number": 119,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet message = \"Hello World\";\nlet name = \"Alice\";\nlet greeting = \"Welcome\";",
+          "line_number": 145,
+          "code": "fun main() {\n    println(\"The answer is\", 42);\n    println(\"Pi is approximately\", 3.14159);\n    println(\"Is Ruchy awesome?\", true);\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 5,
-          "line_number": 129,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet text = \"Count\";\nlet number = 100;\nlet flag = true;",
+          "line_number": 170,
+          "code": "// ❌ This won't work - intentional error example\n// println(Hello, World!);\n//\n\n// Always use quotes for literal text.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 6,
-          "line_number": 153,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet first_name = \"John\";\nlet last_name = \"Doe\";\nlet title = \"Mr.\";",
+          "line_number": 190,
+          "code": "// ❌ Quotes don't match - intentional error example\n// println(\"Hello, World!');\n//\n\n// Use either \"...\" or '...' but be consistent.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch06-00-data-structures-tdd.md",
+          "file": "src/ch01-02-hello-world.md",
           "example_number": 7,
-          "line_number": 163,
-          "code": "// Error: ✗ Compilation failed: Compilation failed:\nlet label = \"Temperature\";\nlet value = 72;\nlet unit = \"Fahrenheit\";",
+          "line_number": 210,
+          "code": "// ❌ Wrong capitalization - intentional error example\n// PrintLn(\"Hello, World!\");\n//\n\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
           "passed": true,
           "status": "working"
         },
@@ -504,58 +699,82 @@
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 8,
           "line_number": 236,
-          "code": "fun main() {\n    let x = 10;\n    let y = 5;\n\n    if x > y {\n        println(\"x is greater\");\n    } else if x < y {\n        println(\"y is greater\");\n    } else {\n        println(\"they are equal\");\n    }\n}",
+          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch16-00-testing-quality-assurance": {
+      "chapter": "ch16-00-testing-quality-assurance",
+      "total_examples": 7,
+      "working_examples": 7,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 1,
+          "line_number": 23,
+          "code": "fun add_numbers(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun main() {\n    // Basic functionality test\n    let result = add_numbers(5, 3);\n    assert_eq(result, 8, \"Addition should work correctly\");\n    \n    println(\"✅ All tests passed!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 9,
-          "line_number": 252,
-          "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count: \" + count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration: \" + i);\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 2,
+          "line_number": 62,
+          "code": "fun factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}\n\nfun test_factorial_base_cases() {\n    assert_eq(factorial(0), 1, \"0! should equal 1\");\n    assert_eq(factorial(1), 1, \"1! should equal 1\");\n    println(\"✅ Base cases pass\");\n}\n\nfun test_factorial_recursive_cases() {\n    assert_eq(factorial(3), 6, \"3! should equal 6\");\n    assert_eq(factorial(4), 24, \"4! should equal 24\");\n    assert_eq(factorial(5), 120, \"5! should equal 120\");\n    println(\"✅ Recursive cases pass\");\n}\n\nfun main() {\n    test_factorial_base_cases();\n    test_factorial_recursive_cases();\n    println(\"🎉 All factorial tests passed!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 10,
-          "line_number": 269,
-          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 3,
+          "line_number": 92,
+          "code": "fun safe_divide(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        println(\"Error: Division by zero\");\n        return 0;\n    }\n    a / b\n}\n\nfun test_division_normal_cases() {\n    assert_eq(safe_divide(10, 2), 5, \"Normal division should work\");\n    assert_eq(safe_divide(15, 3), 5, \"Another normal case\");\n    println(\"✅ Normal division tests pass\");\n}\n\nfun test_division_error_cases() {\n    // Test division by zero handling\n    let result = safe_divide(10, 0);\n    assert_eq(result, 0, \"Division by zero should return 0\");\n    println(\"✅ Error handling tests pass\");\n}\n\nfun main() {\n    test_division_normal_cases();\n    test_division_error_cases();\n    println(\"🎉 All division tests passed!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 11,
-          "line_number": 296,
-          "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value: \" + user_input);\n    } else {\n        println(\"Normal value: \" + user_input);\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 4,
+          "line_number": 122,
+          "code": "fun absolute_value(x: i32) -> i32 {\n    if x < 0 {\n        -x\n    } else {\n        x\n    }\n}\n\nfun test_absolute_value_properties() {\n    // Property: abs(x) >= 0 for all x\n    let test_values = [5, -3, 0, 100, -50];\n    let mut i = 0;\n    \n    while i < 5 {\n        let x = test_values[i];\n        let abs_x = absolute_value(x);\n        \n        // Property 1: Result is always non-negative\n        assert(abs_x >= 0, \"Absolute value must be non-negative\");\n        \n        // Property 2: abs(abs(x)) == abs(x) (idempotent)\n        assert_eq(absolute_value(abs_x), abs_x, \"Absolute value should be idempotent\");\n        \n        i = i + 1;\n    }\n    \n    println(\"✅ Property tests pass\");\n}\n\nfun main() {\n    test_absolute_value_properties();\n    println(\"🎉 All property tests passed!\");\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 12,
-          "line_number": 310,
-          "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is: \" + count);\n        count = count + 1;\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 5,
+          "line_number": 244,
+          "code": "// File: calculator_test.ruchy\n\n// Implementation functions being tested\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun multiply(a: i32, b: i32) -> i32 {\n    a * b\n}\n\n// Test functions\nfun test_addition() {\n    assert_eq(add(2, 3), 5, \"Basic addition\");\n    assert_eq(add(-1, 1), 0, \"Adding negative numbers\");\n    assert_eq(add(0, 0), 0, \"Adding zeros\");\n    println(\"✅ Addition tests pass\");\n}\n\nfun test_multiplication() {\n    assert_eq(multiply(3, 4), 12, \"Basic multiplication\");\n    assert_eq(multiply(-2, 3), -6, \"Negative multiplication\");\n    assert_eq(multiply(0, 100), 0, \"Multiply by zero\");\n    println(\"✅ Multiplication tests pass\");\n}\n\nfun run_all_tests() {\n    test_addition();\n    test_multiplication();\n    println(\"🎉 Calculator test suite complete!\");\n}\n\nfun main() {\n    run_all_tests();\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 13,
-          "line_number": 321,
-          "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item \" + i);\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 6,
+          "line_number": 283,
+          "code": "fun fibonacci(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfun test_fibonacci_performance() {\n    // Test reasonable performance expectations\n    let start_time = get_time_ms(); // Placeholder - actual timing would need stdlib\n    let result = fibonacci(20);\n    let end_time = get_time_ms();\n    \n    assert_eq(result, 6765, \"Fibonacci(20) should equal 6765\");\n    \n    // Performance assertion (conceptual)\n    let duration = end_time - start_time;\n    assert(duration < 1000, \"Fibonacci(20) should complete within 1 second\");\n    \n    println(\"✅ Performance test passes\");\n}\n\nfun main() {\n    test_fibonacci_performance();\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch05-00-control-flow-tdd.md",
-          "example_number": 14,
-          "line_number": 330,
-          "code": "fun main() {\n    let status_code = 200;\n    match status_code {\n        200 => println(\"Success\"),\n        404 => println(\"Not Found\"),\n        500 => println(\"Server Error\"),\n        _ => println(\"Unknown Status\")\n    }\n}",
+          "file": "src/ch16-00-testing-quality-assurance.md",
+          "example_number": 8,
+          "line_number": 403,
+          "code": "fun gcd(a: i32, b: i32) -> i32 {\n    if b == 0 {\n        a\n    } else {\n        gcd(b, a % b)\n    }\n}\n\n// Property: gcd(a, b) divides both a and b\nfun test_gcd_properties() {\n    let a = 48;\n    let b = 18;\n    let result = gcd(a, b);\n    \n    // Property verification\n    assert_eq(a % result, 0, \"GCD should divide first number\");\n    assert_eq(b % result, 0, \"GCD should divide second number\");\n    assert_eq(result, 6, \"GCD(48, 18) should equal 6\");\n    \n    println(\"✅ GCD properties verified\");\n}\n\nfun main() {\n    test_gcd_properties();\n}",
           "passed": true,
           "status": "working"
-        },
+        }
+      ]
+    },
+    "ch21-00-professional-tooling-tdd": {
+      "chapter": "ch21-00-professional-tooling-tdd",
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "examples": [
         {
           "file": "src/ch05-00-control-flow-tdd.md",
           "example_number": 15,
@@ -886,7 +1105,7 @@
       "failing_examples": 1,
       "examples": [
         {
-          "file": "src/conclusion.md",
+          "file": "src/ch17-00-error-handling-robustness.md",
           "example_number": 1,
           "line_number": 205,
           "code": "fun calculate(x: i32, y: i32) -> i32 {\n    return x + y;\n}\n\nfun main() {\n    let result = calculate(10, 20);\n    println(result);  // Output: 30\n}",
@@ -1008,14 +1227,14 @@
     },
     "ch10-00-input-output-tdd": {
       "chapter": "ch10-00-input-output-tdd",
-      "total_examples": 10,
-      "working_examples": 10,
+      "total_examples": 15,
+      "working_examples": 15,
       "failing_examples": 0,
       "examples": [
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 1,
-          "line_number": 32,
+          "line_number": 51,
           "code": "fun main() {\n    println(\"=== Output Demo ===\");\n    println(\"Number: \");\n    println(42);\n    println(\"Boolean: \");\n    println(true);\n    println(\"=== End Demo ===\");\n}",
           "passed": true,
           "status": "working"
@@ -1023,7 +1242,7 @@
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 2,
-          "line_number": 60,
+          "line_number": 79,
           "code": "fun main() {\n    let name = \"Alice\";\n    let age = 30;\n    let height = 5.6;\n    \n    println(\"=== User Profile ===\");\n    println(\"Name:\");\n    println(name);\n    println(\"Age:\");\n    println(age);\n    println(\"Height:\");\n    println(height);\n    println(\"================\");\n}",
           "passed": true,
           "status": "working"
@@ -1031,7 +1250,7 @@
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 3,
-          "line_number": 96,
+          "line_number": 115,
           "code": "fun display_menu() {\n    println(\"=== Main Menu ===\");\n    println(\"1. View Profile\");\n    println(\"2. Settings\");\n    println(\"3. Exit\");\n    println(\"=================\");\n}\n\nfun main() {\n    display_menu();\n    println(\"Menu displayed successfully\");\n}",
           "passed": true,
           "status": "working"
@@ -1040,167 +1259,455 @@
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 4,
           "line_number": 147,
-          "code": "fun main() {\n    let variable = \"Hello World\";\n    println(\"text message\");\n    println(variable);\n    println(42);\n    println(true);\n}",
+          "code": "fun main() {\n    let name = \"Bob\"\n    let score = 95\n    println(f\"Player: {name}\")\n    println(f\"Score: {score}\")\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 5,
-          "line_number": 158,
-          "code": "fun main() {\n    let value = \"Important Data\";\n    let data = value;\n    println(\"Label:\");\n    println(data);\n}",
+          "line_number": 169,
+          "code": "fun main() {\n    let x = 10\n    let y = 20\n    let sum = x + y\n    println(f\"Result: {x} + {y} = {sum}\")\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 6,
-          "line_number": 168,
-          "code": "fun display_options() {\n    println(\"=== Menu ===\");\n    println(\"1. Option One\");\n    println(\"2. Option Two\");\n    println(\"============\");\n}",
+          "line_number": 190,
+          "code": "fun display_report(title: &str, value: i32) {\n    println(\"=== Report ===\")\n    println(title)\n    println(value)\n    println(\"==============\")\n}\n\nfun main() {\n    display_report(\"Sales Total\", 1000)\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 7,
-          "line_number": 195,
-          "code": "let value = 100;\nprintln(\"Result:\");\nprintln(value);",
+          "line_number": 218,
+          "code": "fun main() {\n    let numbers = [1, 2, 3, 4, 5]\n    println(\"Array:\")\n    println(numbers)\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 8,
-          "line_number": 205,
-          "code": "// Error: ✗ Compilation failed: Failed to parse Ruchy source\nfun display_report(title: &str, data: i32) {\n    println(\"=== Report ===\");\n    println(title);\n    println(data);\n    println(\"==============\");\n}",
+          "line_number": 239,
+          "code": "fun main() {\n    let person = (\"Alice\", 30, true)\n    println(\"Person data:\")\n    println(person)\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 9,
-          "line_number": 218,
-          "code": "println(\"Processing...\");\n// ... do work ...\nprintln(\"Complete!\");",
+          "line_number": 289,
+          "code": "fun main() {\n    let variable = \"Hello World\";\n    println(\"text message\");\n    println(variable);\n    println(42);\n    println(true);\n}",
           "passed": true,
           "status": "working"
         },
         {
           "file": "src/ch10-00-input-output-tdd.md",
           "example_number": 10,
-          "line_number": 228,
+          "line_number": 300,
+          "code": "fun main() {\n    let value = \"Important Data\";\n    let data = value;\n    println(\"Label:\");\n    println(data);\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 11,
+          "line_number": 310,
+          "code": "fun display_options() {\n    println(\"=== Menu ===\");\n    println(\"1. Option One\");\n    println(\"2. Option Two\");\n    println(\"============\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 12,
+          "line_number": 337,
+          "code": "let value = 100;\nprintln(\"Result:\");\nprintln(value);",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 13,
+          "line_number": 347,
+          "code": "fun display_report(title: &str, data: i32) {\n    println(\"=== Report ===\")\n    println(title)\n    println(data)\n    println(\"==============\")\n}\n\nfun main() {\n    display_report(\"Monthly Sales\", 50000)\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 14,
+          "line_number": 361,
+          "code": "println(\"Processing...\");\n// ... do work ...\nprintln(\"Complete!\");",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch10-00-input-output-tdd.md",
+          "example_number": 15,
+          "line_number": 371,
           "code": "fun show_options() {\n    println(\"Choose an option:\");\n    println(\"1. Start\");\n    println(\"2. Stop\");\n    println(\"3. Help\");\n}",
           "passed": true,
           "status": "working"
         }
       ]
     },
-    "ch01-02-hello-world": {
-      "chapter": "ch01-02-hello-world",
-      "total_examples": 8,
-      "working_examples": 8,
+    "ch13-00-debugging-tracing-tdd": {
+      "chapter": "ch13-00-debugging-tracing-tdd",
+      "total_examples": 11,
+      "working_examples": 11,
       "failing_examples": 0,
       "examples": [
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 1,
-          "line_number": 30,
-          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
+          "line_number": 23,
+          "code": "fun square(x) {\n    x * x\n}\n\nsquare(5)",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 2,
-          "line_number": 86,
-          "code": "fun main() {\n    println(\"Hello\", \"World\", \"from\", \"Ruchy\");\n}",
+          "line_number": 49,
+          "code": "fun greet(name) {\n    \"Hello, \" + name\n}\n\ngreet(\"Alice\")",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 3,
-          "line_number": 106,
-          "code": "fun main() {\n    let name = \"Alice\";\n    println(\"Hello,\", name);\n    \n    // String concatenation (interpolation coming in future versions)\n    println(\"Hello, \" + name + \"!\");\n}",
+          "line_number": 70,
+          "code": "fun add(a, b) {\n    a + b\n}\n\nadd(10, 20)",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 4,
-          "line_number": 131,
-          "code": "fun main() {\n    println(\"The answer is\", 42);\n    println(\"Pi is approximately\", 3.14159);\n    println(\"Is Ruchy awesome?\", true);\n}",
+          "line_number": 90,
+          "code": "fun is_even(n) {\n    n % 2 == 0\n}\n\nis_even(42)",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 5,
-          "line_number": 156,
-          "code": "// ❌ This won't work - intentional error example\n// println(Hello, World!);\n//\n\n// Always use quotes for literal text.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "line_number": 106,
+          "code": "fun divide(a, b) {\n    a / b\n}\n\ndivide(10.5, 2.5)",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 6,
-          "line_number": 176,
-          "code": "// ❌ Quotes don't match - intentional error example\n// println(\"Hello, World!');\n//\n\n// Use either \"...\" or '...' but be consistent.\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "line_number": 122,
+          "code": "fun process(arr) {\n    arr\n}\n\nprocess([1, 2, 3])",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 7,
-          "line_number": 196,
-          "code": "// ❌ Wrong capitalization - intentional error example\n// PrintLn(\"Hello, World!\");\n//\n\n\nfun main() {\n    // ✅ Correct way:\n    println(\"Hello, World!\");\n}",
+          "line_number": 143,
+          "code": "fun factorial(n) {\n    if n <= 1 {\n        1\n    } else {\n        n * factorial(n - 1)\n    }\n}\n\nfactorial(4)",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch01-02-hello-world.md",
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
           "example_number": 8,
-          "line_number": 222,
-          "code": "fun main() {\n    println(\"Hello, World!\");\n}",
+          "line_number": 179,
+          "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nfibonacci(5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 9,
+          "line_number": 237,
+          "code": "fun compute(x) {\n    let y = x * 2\n    y + 10\n}\n\ncompute(5)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 10,
+          "line_number": 263,
+          "code": "fun calculate_discount(price, percent) {\n    price * (1.0 - percent / 100.0)\n}\n\ncalculate_discount(100.0, 20.0)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch13-00-debugging-tracing-tdd.md",
+          "example_number": 11,
+          "line_number": 402,
+          "code": "let mut counter = 0\n\nfun increment() {\n    counter = counter + 1\n    counter\n}\n\nincrement()\nincrement()\nprintln(\"Final: \", counter)",
           "passed": true,
           "status": "working"
         }
       ]
     },
-    "ch14-00-toolchain-mastery-tdd": {
-      "chapter": "ch14-00-toolchain-mastery-tdd",
+    "ch01-00-getting-started": {
+      "chapter": "ch01-00-getting-started",
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch01-00-getting-started.md",
+          "example_number": 1,
+          "line_number": 41,
+          "code": "fun test_addition() {\n    let result = 2 + 3\n    if result == 5 {\n        println!(\"✅ Test passed\")\n    } else {\n        println!(\"❌ Test failed\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch18-00-dataframes-data-processing": {
+      "chapter": "ch18-00-dataframes-data-processing",
       "total_examples": 4,
       "working_examples": 4,
       "failing_examples": 0,
       "examples": [
         {
-          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 1,
-          "line_number": 20,
-          "code": "fun greet(name: String) -> String {\n    \"Hello, \" + name + \"!\"\n}\n\nfun main() {\n    let message = greet(\"Ruchy Developer\");\n    println(message);\n}",
+          "line_number": 46,
+          "code": "fun create_dataframe() {\n    let df = df![\n        \"employee_id\" => [101, 102, 103, 104],\n        \"name\" => [\"Alice\", \"Bob\", \"Charlie\", \"Diana\"],\n        \"department\" => [\"Engineering\", \"Sales\", \"Engineering\", \"HR\"],\n        \"salary\" => [95000, 75000, 105000, 65000]\n    ];\n\n    // Display the DataFrame (returns as last expression)\n    df\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 2,
-          "line_number": 56,
-          "code": "// calculator_test.ruchy\nfun add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nfun test_addition() {\n    let result = add(2, 3);\n    assert_eq(result, 5);\n    println(\"Addition test passed\");\n}\n\nfun main() {\n    test_addition();\n}",
+          "line_number": 64,
+          "code": "fun main() {\n    let sales = df![\n        \"product\" => [\"Widget\", \"Gadget\", \"Gizmo\"],\n        \"quantity\" => [100, 150, 200],\n        \"revenue\" => [999.00, 1499.00, 1999.00]\n    ];\n\n    // Display the DataFrame\n    sales\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 3,
-          "line_number": 121,
-          "code": "fun calculate_factorial(n: i32) -> i32 {\n    if n <= 1 {\n        1\n    } else {\n        n * calculate_factorial(n - 1)\n    }\n}\n\nfun main() {\n    let result = calculate_factorial(10);\n    println(result);\n}",
+          "line_number": 79,
+          "code": "fun work_with_multiple_dataframes() {\n    let customers = df![\n        \"customer_id\" => [1, 2, 3],\n        \"name\" => [\"Alice\", \"Bob\", \"Charlie\"],\n        \"city\" => [\"New York\", \"Los Angeles\", \"Chicago\"]\n    ];\n\n    let orders = df![\n        \"order_id\" => [101, 102, 103],\n        \"customer_id\" => [1, 2, 1],\n        \"amount\" => [99.99, 149.99, 79.99]\n    ];\n\n    // Display both DataFrames\n    customers\n}",
           "passed": true,
           "status": "working"
         },
         {
-          "file": "src/ch14-00-toolchain-mastery-tdd.md",
+          "file": "src/ch18-00-dataframes-data-processing.md",
           "example_number": 4,
-          "line_number": 258,
-          "code": "fun fibonacci_recursive(n: i32) -> i32 {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci_recursive(n - 1) + fibonacci_recursive(n - 2)\n    }\n}\n\nfun fibonacci_iterative(n: i32) -> i32 {\n    let mut a = 0;\n    let mut b = 1;\n    let mut i = 0;\n    \n    while i < n {\n        let temp = a + b;\n        a = b;\n        b = temp;\n        i = i + 1;\n    }\n    \n    a\n}\n\nfun main() {\n    let result1 = fibonacci_recursive(10);\n    let result2 = fibonacci_iterative(10);\n    println(result1);\n    println(result2);\n}",
+          "line_number": 100,
+          "code": "fun conditional_processing() {\n    let df = df![\n        \"status\" => [\"active\", \"pending\", \"closed\"],\n        \"value\" => [1000, 500, 1500]\n    ];\n\n    // Display the DataFrame\n    df\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch21-00-scientific-benchmarking": {
+      "chapter": "ch21-00-scientific-benchmarking",
+      "total_examples": 1,
+      "working_examples": 1,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch21-00-scientific-benchmarking.md",
+          "example_number": 1,
+          "line_number": 181,
+          "code": "fun fibonacci(n) {\n    if n <= 1 {\n        n\n    } else {\n        fibonacci(n - 1) + fibonacci(n - 2)\n    }\n}\n\nlet result = fibonacci(20)\n// Expected: 6765",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch05-00-control-flow-tdd": {
+      "chapter": "ch05-00-control-flow-tdd",
+      "total_examples": 14,
+      "working_examples": 14,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 1,
+          "line_number": 52,
+          "code": "fun main() {\n    let x = 10;\n    if x > 5 {\n        println(\"x is greater than 5\");\n    } else {\n        println(\"x is not greater than 5\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 2,
+          "line_number": 75,
+          "code": "fun main() {\n    let score = 85;\n    if score >= 80 {\n        println(\"Great job!\");\n    }\n    println(\"Score processed\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 3,
+          "line_number": 98,
+          "code": "fun main() {\n    let grade = 75;\n    if grade >= 90 {\n        println(\"A grade\");\n    } else if grade >= 80 {\n        println(\"B grade\");\n    } else if grade >= 70 {\n        println(\"C grade\");\n    } else {\n        println(\"Below C\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 4,
+          "line_number": 125,
+          "code": "fun main() {\n    let mut i = 0;\n    while i < 3 {\n        println(i);\n        i = i + 1;\n    }\n    println(\"Done\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 5,
+          "line_number": 151,
+          "code": "fun main() {\n    for i in 0..3 {\n        println(i);\n    }\n    println(\"For loop done\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 6,
+          "line_number": 175,
+          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 7,
+          "line_number": 199,
+          "code": "fun main() {\n    let mut i = 0;\n    while i < 10 {\n        i = i + 1;\n        if i == 3 {\n            continue;\n        }\n        if i == 6 {\n            break;\n        }\n        println(i);\n    }\n    println(\"Loop ended\");\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 8,
+          "line_number": 256,
+          "code": "fun main() {\n    let x = 10;\n    let y = 5;\n\n    if x > y {\n        println(\"x is greater\");\n    } else if x < y {\n        println(\"y is greater\");\n    } else {\n        println(\"they are equal\");\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 9,
+          "line_number": 272,
+          "code": "fun main() {\n    // While loop\n    let mut count = 0;\n    while count < 3 {\n        println(\"Count:\", count);\n        count = count + 1;\n    }\n\n    // For loop with range\n    for i in 1..4 {\n        println(\"Iteration:\", i);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 10,
+          "line_number": 289,
+          "code": "fun main() {\n    let number = 2;\n    match number {\n        1 => println(\"One\"),\n        2 => println(\"Two\"),\n        3 => println(\"Three\"),\n        _ => println(\"Other\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 11,
+          "line_number": 316,
+          "code": "fun main() {\n    let user_input = 75;\n    let threshold = 50;\n\n    if user_input > threshold {\n        println(\"High value:\", user_input);\n    } else {\n        println(\"Normal value:\", user_input);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 12,
+          "line_number": 330,
+          "code": "fun main() {\n    let mut count = 0;\n    while count < 10 {\n        println(\"Count is:\", count);\n        count = count + 1;\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 13,
+          "line_number": 341,
+          "code": "fun main() {\n    for i in 1..5 {\n        println(\"Processing item\", i);\n    }\n}",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch05-00-control-flow-tdd.md",
+          "example_number": 14,
+          "line_number": 350,
+          "code": "fun main() {\n    let status_code = 200;\n    match status_code {\n        200 => println(\"Success\"),\n        404 => println(\"Not Found\"),\n        500 => println(\"Server Error\"),\n        _ => println(\"Unknown Status\")\n    }\n}",
+          "passed": true,
+          "status": "working"
+        }
+      ]
+    },
+    "ch19-00-structs-oop": {
+      "chapter": "ch19-00-structs-oop",
+      "total_examples": 8,
+      "working_examples": 8,
+      "failing_examples": 0,
+      "examples": [
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 1,
+          "line_number": 42,
+          "code": "struct Point {\n    x: i32,\n    y: i32\n}\n\n// Create an instance\nlet p = Point { x: 10, y: 20 }\nprintln(p.x)  // 10\nprintln(p.y)  // 20",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 2,
+          "line_number": 58,
+          "code": "struct Person {\n    name: String,\n    age: i32,\n    height: f64\n}\n\nlet alice = Person {\n    name: \"Alice\",\n    age: 30,\n    height: 5.6\n}\n\nprintln(alice.name)    // Alice\nprintln(alice.age)     // 30\nprintln(alice.height)  // 5.6",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 3,
+          "line_number": 80,
+          "code": "struct Counter {\n    count: i32\n}\n\nlet mut c = Counter { count: 0 }\nprintln(c.count)  // 0\n\n// Field mutation now works!\nc.count = 5\nprintln(c.count)  // 5\n\nc.count = c.count + 1\nprintln(c.count)  // 6",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 4,
+          "line_number": 104,
+          "code": "struct Node {\n    value: i32,\n    next: Option<Node>\n}\n\n// Leaf node\nlet leaf = Node {\n    value: 3,\n    next: None\n}\n\n// Node with a child\nlet parent = Node {\n    value: 1,\n    next: Some(leaf)\n}\n\nprintln(parent.value)  // 1",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 5,
+          "line_number": 133,
+          "code": "struct Config {\n    debug: bool,\n    port: i32,\n    host: String\n}\n\nlet default_config = Config {\n    debug: false,\n    port: 8080,\n    host: \"localhost\"\n}\n\n// Create a new config with some fields changed\nlet prod_config = Config {\n    debug: false,\n    port: 443,\n    host: \"production.com\"\n}\n\nprintln(prod_config.port)  // 443",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 6,
+          "line_number": 160,
+          "code": "struct Settings {\n    theme: String = \"dark\",\n    font_size: i32 = 14,\n    auto_save: bool = true\n}\n\n// Use all defaults\nlet default_settings = Settings {}\nprintln(default_settings.theme)      // dark\nprintln(default_settings.font_size)  // 14\n\n// Override specific fields\nlet custom = Settings {\n    font_size: 16\n}\nprintln(custom.font_size)  // 16\nprintln(custom.theme)      // dark (default)",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 7,
+          "line_number": 184,
+          "code": "struct BankAccount {\n    pub owner: String,       // Public field\n    balance: f64,           // Private field (default)\n    pub(crate) id: i32      // Crate-visible field\n}\n\nlet account = BankAccount {\n    owner: \"Alice\",\n    balance: 1000.0,\n    id: 123\n}\n\nprintln(account.owner)  // OK - public field\n// println(account.balance)  // Error - private field",
+          "passed": true,
+          "status": "working"
+        },
+        {
+          "file": "src/ch19-00-structs-oop.md",
+          "example_number": 8,
+          "line_number": 205,
+          "code": "struct Task {\n    id: i32,\n    title: String,\n    completed: bool\n}\n\nlet tasks = [\n    Task { id: 1, title: \"Write docs\", completed: false },\n    Task { id: 2, title: \"Review PR\", completed: true },\n    Task { id: 3, title: \"Fix bug\", completed: false }\n]\n\n// Count completed tasks\nlet mut completed_count = 0\nfor task in tasks {\n    if task.completed {\n        completed_count = completed_count + 1\n    }\n}\nprintln(completed_count)  // 1",
           "passed": true,
           "status": "working"
         }

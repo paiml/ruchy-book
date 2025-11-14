@@ -1,5 +1,0 @@
-#[test]
-fn test_function_name() {
-    // Test code here
-    assert_eq!(actual, expected)
-}

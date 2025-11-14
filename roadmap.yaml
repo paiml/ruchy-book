@@ -1,0 +1,1251 @@
+# Ruchy Book Implementation Roadmap
+# Test-Driven Documentation with Zero Defects Quality Gates
+
+meta:
+  project: Ruchy Book
+  approach: Test-Driven Documentation (TDD)
+  repository: https://github.com/paiml/ruchy-book
+  compiler_repo: https://github.com/your-org/ruchy
+  quality_gates:
+    test_pass_rate: 1.00  # 100% of examples must compile
+    coverage: 1.00         # 100% coverage of documented features
+    link_validity: 1.00    # Zero broken links
+    satd_tolerance: 0      # No TODO/FIXME/HACK comments
+    max_examples_per_chapter: 50
+    max_lines_per_example: 100
+  execution:
+    workflow: RED-GREEN-REFACTOR-DOCUMENT
+    commit_strategy: atomic_per_chapter
+    validation: continuous_testing
+    ruchy_version_tracking: exact_pinning
+
+validation_commands:
+  extract_examples:
+    command: "deno task extract-examples"
+    description: "Extract all code examples from markdown"
+    passing_criteria: "All examples extracted successfully"
+
+  test_examples:
+    command: "deno task test-examples"
+    description: "Test all extracted examples with Ruchy compiler"
+    passing_criteria: "100% pass rate"
+
+  test_oneliners:
+    command: "deno task test-oneliners"
+    description: "Test 20 one-liner examples"
+    passing_criteria: "100% pass rate"
+
+  dogfood_full:
+    command: "make dogfood-full"
+    description: "Run all Ruchy tools against book examples"
+    passing_criteria: "A+ quality grade on all tools"
+
+  lint_markdown:
+    command: "deno task lint-markdown"
+    description: "Validate markdown quality"
+    passing_criteria: "Zero warnings"
+
+  test_notebook:
+    command: "make test-notebook"
+    description: "Test all examples in Ruchy notebook"
+    passing_criteria: "100% pass rate via notebook API"
+
+sprints:
+  # SPRINT 1: Foundation & Infrastructure (Current)
+  - id: sprint-1
+    name: "Foundation & Infrastructure"
+    goal: "Establish TDD documentation infrastructure with comprehensive testing"
+    duration: 1_week
+    status: in_progress
+    tickets:
+      - id: BOOK-001
+        title: "Setup test extraction infrastructure"
+        priority: critical
+        status: completed
+        requirements:
+          - "Deno test runner for extracted examples"
+          - "JSON-based test result tracking"
+          - "CI integration for automated testing"
+          - "Status badge generation"
+        tests:
+          - "test_extract_all_ruchy_blocks"
+          - "test_skip_rust_examples"
+          - "test_generate_summary_json"
+          - "test_update_readme_status"
+        acceptance:
+          - "381 book examples extracted correctly"
+          - "20 one-liner examples tested"
+          - "CI runs on every push"
+          - "README shows current status"
+        completed: true
+
+      - id: BOOK-002
+        title: "Create language specification"
+        priority: critical
+        status: completed
+        requirements:
+          - "Complete lexical structure documentation"
+          - "Type system specification"
+          - "Expression and statement grammar"
+          - "Standard library reference"
+        tests:
+          - "Validate against compiler source"
+          - "Cross-reference with actual examples"
+          - "Verify all 68+ tokens documented"
+          - "Confirm 150+ AST nodes covered"
+        acceptance:
+          - "2,105 lines of specification"
+          - "All compiler features documented"
+          - "Examples validate spec"
+        deliverable: "docs/specifications/ruchy-language-spec.md"
+        completed: true
+
+      - id: BOOK-003
+        title: "YAML roadmap conversion"
+        priority: high
+        status: in_progress
+        requirements:
+          - "Convert markdown roadmap to YAML"
+          - "Define quality gates"
+          - "Structure sprints with tickets"
+          - "Add metrics tracking"
+        tests:
+          - "YAML validates against schema"
+          - "All tickets have acceptance criteria"
+          - "Quality gates measurable"
+        acceptance:
+          - "YAML roadmap complete"
+          - "Quality gates defined"
+          - "Sprint structure clear"
+        deliverable: "roadmap.yaml"
+
+      - id: BOOK-004
+        title: "PMAT display configuration"
+        priority: medium
+        status: pending
+        requirements:
+          - "Display settings for book metrics"
+          - "Export formats configuration"
+          - "Performance settings"
+        tests:
+          - "Config loads correctly"
+          - "Display limits enforced"
+        acceptance:
+          - ".paiml-display.yaml created"
+          - "Settings validated"
+        deliverable: ".paiml-display.yaml"
+
+      - id: BOOK-005
+        title: "Integration.md as single source of truth"
+        priority: critical
+        status: completed
+        requirements:
+          - "Time-stamped test results"
+          - "Version-stamped reports"
+          - "Pass/fail rates documented"
+          - "Automated updates from CI"
+        tests:
+          - "INTEGRATION.md auto-updates"
+          - "Contains all test metrics"
+          - "Version tracking accurate"
+        acceptance:
+          - "INTEGRATION.md is authoritative"
+          - "All other status docs point to it"
+          - "Updated automatically"
+        deliverable: "INTEGRATION.md"
+        completed: true
+
+      - id: BOOK-006
+        title: "15-tool testing integration"
+        priority: critical
+        status: in_progress
+        requirements:
+          - "Integrate all 15 Ruchy professional tools"
+          - "Define per-tool quality gates"
+          - "Create dogfood-full target"
+          - "Add tool results to INTEGRATION.md"
+        tests:
+          - "test_all_15_tools_execute"
+          - "test_dogfood_full_completes"
+          - "test_results_tracked"
+          - "test_quality_gates_enforced"
+        acceptance:
+          - "All 15 tools integrated in Makefile"
+          - "make dogfood-full passes"
+          - "Per-tool results in INTEGRATION.md"
+          - "CI/CD runs dogfood on every push"
+        deliverable: "docs/specifications/15-tool-testing-strategy.md"
+        estimated_time: "2 hours"
+        tools:
+          - "ruchy check (syntax validation)"
+          - "ruchy test (enhanced testing)"
+          - "ruchy fmt (format validation)"
+          - "ruchy lint (style analysis)"
+          - "ruchy provability (formal verification)"
+          - "ruchy runtime (performance analysis)"
+          - "ruchy score (quality scoring)"
+          - "ruchy quality-gate (gate enforcement)"
+          - "ruchy coverage (coverage reporting)"
+          - "ruchy optimize (hardware optimization)"
+          - "ruchy prove (theorem proving)"
+          - "ruchy doc (documentation generation)"
+          - "ruchy bench (performance benchmarking)"
+          - "ruchy run (execute code)"
+          - "ruchy compile (standalone binary)"
+
+  # SPRINT 2: Foundation Chapters (Ch 1-3)
+  - id: sprint-2
+    name: "Foundation Chapters"
+    goal: "Complete Ch01-03 with 100% working examples"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 1
+        status: "complete"
+    tickets:
+      - id: BOOK-006
+        title: "Ch01: Installation (100% working)"
+        priority: critical
+        status: pending
+        requirements:
+          - "Installation instructions for all platforms"
+          - "Verification examples"
+          - "Version management"
+          - "Shebang scripts"
+        tests:
+          - "All installation steps verified"
+          - "Hello World compiles"
+          - "Shebang scripts execute"
+        acceptance:
+          - "6/6 examples passing (100%)"
+          - "All platforms covered"
+          - "Zero broken links"
+        estimated_examples: 6
+        target_pass_rate: 1.00
+
+      - id: BOOK-007
+        title: "Ch02: Variables & Types (100% working)"
+        priority: critical
+        status: pending
+        requirements:
+          - "All primitive types covered"
+          - "Type inference examples"
+          - "Mutable vs immutable"
+          - "Type annotations"
+        tests:
+          - "Integer types compile"
+          - "Float types compile"
+          - "String operations work"
+          - "Type inference tests pass"
+        acceptance:
+          - "8/8 examples passing (100%)"
+          - "All types documented"
+          - "Type system clear"
+        estimated_examples: 8
+        target_pass_rate: 1.00
+
+      - id: BOOK-008
+        title: "Ch03: Functions (100% working)"
+        priority: critical
+        status: pending
+        requirements:
+          - "Function definition syntax (fun keyword)"
+          - "Parameters and return types"
+          - "Lambda functions"
+          - "Higher-order functions"
+        tests:
+          - "All function examples compile"
+          - "Lambda syntax validated"
+          - "Higher-order examples work"
+        acceptance:
+          - "9/9 examples passing (100%)"
+          - "fun keyword consistent"
+          - "All patterns covered"
+        estimated_examples: 9
+        target_pass_rate: 1.00
+
+  # SPRINT 3: Core Features (Ch 4-6)
+  - id: sprint-3
+    name: "Core Features"
+    goal: "Complete Ch04-06 with comprehensive examples"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 2
+        status: "complete"
+    tickets:
+      - id: BOOK-009
+        title: "Ch04: Control Flow"
+        priority: high
+        status: pending
+        requirements:
+          - "If expressions"
+          - "Match expressions"
+          - "Loops (for, while, loop)"
+          - "Pattern matching"
+        tests:
+          - "All control flow examples compile"
+          - "Pattern matching works"
+          - "Loop constructs validated"
+        acceptance:
+          - "100% examples passing"
+          - "All patterns covered"
+        estimated_examples: 15
+        target_pass_rate: 1.00
+
+      - id: BOOK-010
+        title: "Ch05: Collections"
+        priority: high
+        status: pending
+        requirements:
+          - "Lists/arrays"
+          - "Sets"
+          - "Maps/dictionaries"
+          - "Tuples"
+        tests:
+          - "Collection creation works"
+          - "Operations compile"
+          - "Iteration examples pass"
+        acceptance:
+          - "100% examples passing"
+          - "All collection types covered"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+      - id: BOOK-011
+        title: "Ch06: Error Handling"
+        priority: high
+        status: pending
+        requirements:
+          - "Result type"
+          - "Option type"
+          - "Try-catch"
+          - "? operator"
+        tests:
+          - "Error handling examples work"
+          - "Result/Option compile"
+          - "Try-catch validated"
+        acceptance:
+          - "100% examples passing"
+          - "All patterns documented"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+  # SPRINT 4: Structs & OOP (Ch 7-9)
+  - id: sprint-4
+    name: "Structs & OOP"
+    goal: "Complete object-oriented programming chapters"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 3
+        status: "complete"
+    tickets:
+      - id: BOOK-012
+        title: "Ch07: Structs"
+        priority: high
+        status: pending
+        requirements:
+          - "Struct definition"
+          - "Field access"
+          - "Methods (impl blocks)"
+          - "Constructors"
+        tests:
+          - "Struct examples compile"
+          - "Methods work correctly"
+          - "Impl blocks validated"
+        acceptance:
+          - "100% examples passing"
+          - "All patterns covered"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+      - id: BOOK-013
+        title: "Ch08: Enums"
+        priority: high
+        status: pending
+        requirements:
+          - "Enum definition"
+          - "Pattern matching"
+          - "Enum with data"
+          - "Option/Result"
+        tests:
+          - "Enum examples compile"
+          - "Pattern matching works"
+          - "Standard enums validated"
+        acceptance:
+          - "100% examples passing"
+          - "All enum types covered"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+      - id: BOOK-014
+        title: "Ch09: Traits"
+        priority: high
+        status: pending
+        requirements:
+          - "Trait definition"
+          - "Trait implementation"
+          - "Trait bounds"
+          - "Generic traits"
+        tests:
+          - "Trait examples compile"
+          - "Implementations work"
+          - "Bounds validated"
+        acceptance:
+          - "100% examples passing"
+          - "All trait features covered"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+  # SPRINT 5: Advanced Features (Ch 10-12)
+  - id: sprint-5
+    name: "Advanced Features"
+    goal: "Complete async, concurrency, and advanced patterns"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 4
+        status: "complete"
+    tickets:
+      - id: BOOK-015
+        title: "Ch10: Async Programming"
+        priority: high
+        status: pending
+        requirements:
+          - "Async functions"
+          - "Await expressions"
+          - "Futures"
+          - "Async blocks"
+        tests:
+          - "Async examples compile"
+          - "Await works correctly"
+          - "Async blocks validated"
+        acceptance:
+          - "100% examples passing"
+          - "All async patterns covered"
+        estimated_examples: 15
+        target_pass_rate: 1.00
+
+      - id: BOOK-016
+        title: "Ch11: Actors"
+        priority: high
+        status: pending
+        requirements:
+          - "Actor definition"
+          - "Spawn/send/ask"
+          - "Message handling"
+          - "Supervision"
+        tests:
+          - "Actor examples compile"
+          - "Message passing works"
+          - "Supervision validated"
+        acceptance:
+          - "100% examples passing"
+          - "Actor model clear"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+      - id: BOOK-017
+        title: "Ch12: DataFrames"
+        priority: high
+        status: pending
+        requirements:
+          - "DataFrame creation"
+          - "Operations (filter, select, etc.)"
+          - "Aggregations"
+          - "Joins"
+        tests:
+          - "DataFrame examples compile"
+          - "Operations work"
+          - "Aggregations validated"
+        acceptance:
+          - "100% examples passing"
+          - "All operations covered"
+        estimated_examples: 15
+        target_pass_rate: 1.00
+
+  # SPRINT 6: Systems Programming (Ch 13-15)
+  - id: sprint-6
+    name: "Systems Programming"
+    goal: "Complete systems programming chapters"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 5
+        status: "complete"
+    tickets:
+      - id: BOOK-018
+        title: "Ch13: File I/O"
+        priority: high
+        status: pending
+        requirements:
+          - "Reading files"
+          - "Writing files"
+          - "File operations"
+          - "Path handling"
+        tests:
+          - "File I/O examples work"
+          - "All operations compile"
+        acceptance:
+          - "100% examples passing"
+          - "All I/O patterns covered"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+      - id: BOOK-019
+        title: "Ch14: Networking"
+        priority: high
+        status: pending
+        requirements:
+          - "HTTP requests"
+          - "JSON parsing"
+          - "REST APIs"
+          - "WebSockets"
+        tests:
+          - "Network examples compile"
+          - "HTTP operations work"
+        acceptance:
+          - "100% examples passing"
+          - "All protocols covered"
+        estimated_examples: 15
+        target_pass_rate: 1.00
+
+      - id: BOOK-020
+        title: "Ch15: Modules & Packages"
+        priority: high
+        status: pending
+        requirements:
+          - "Module system"
+          - "Import/export"
+          - "Package management"
+          - "Dependencies"
+        tests:
+          - "Module examples compile"
+          - "Import/export works"
+        acceptance:
+          - "100% examples passing"
+          - "Module system clear"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+  # SPRINT 7: Professional Tooling (Ch 16-18)
+  - id: sprint-7
+    name: "Professional Tooling"
+    goal: "Document all Ruchy professional tools"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 6
+        status: "complete"
+    tickets:
+      - id: BOOK-021
+        title: "Ch16: Testing"
+        priority: high
+        status: pending
+        requirements:
+          - "Unit testing"
+          - "Integration testing"
+          - "Property-based testing"
+          - "Coverage"
+        tests:
+          - "Test examples compile"
+          - "All patterns work"
+        acceptance:
+          - "100% examples passing"
+          - "Testing comprehensive"
+        estimated_examples: 15
+        target_pass_rate: 1.00
+
+      - id: BOOK-022
+        title: "Ch17: Debugging & Profiling"
+        priority: medium
+        status: pending
+        requirements:
+          - "Debugging techniques"
+          - "Profiling tools"
+          - "Performance analysis"
+          - "Optimization"
+        tests:
+          - "Tool examples work"
+          - "All tools demonstrated"
+        acceptance:
+          - "100% examples passing"
+          - "All tools covered"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+      - id: BOOK-023
+        title: "Ch18: Build & Deploy"
+        priority: medium
+        status: pending
+        requirements:
+          - "Build system"
+          - "Packaging"
+          - "Distribution"
+          - "CI/CD"
+        tests:
+          - "Build examples work"
+          - "All patterns validated"
+        acceptance:
+          - "100% examples passing"
+          - "Complete workflow"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+  # SPRINT 8: Advanced Topics (Ch 19-21)
+  - id: sprint-8
+    name: "Advanced Topics"
+    goal: "Complete advanced language features"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 7
+        status: "complete"
+    tickets:
+      - id: BOOK-024
+        title: "Ch19: Macros"
+        priority: medium
+        status: pending
+        requirements:
+          - "Macro basics"
+          - "Declarative macros"
+          - "Procedural macros"
+          - "Macro hygiene"
+        tests:
+          - "Macro examples compile"
+          - "All macro types work"
+        acceptance:
+          - "100% examples passing"
+          - "Macros comprehensive"
+        estimated_examples: 10
+        target_pass_rate: 1.00
+
+      - id: BOOK-025
+        title: "Ch20: Unsafe & FFI"
+        priority: low
+        status: pending
+        requirements:
+          - "Unsafe blocks"
+          - "FFI basics"
+          - "C interop"
+          - "Safety guidelines"
+        tests:
+          - "Unsafe examples compile"
+          - "FFI examples work"
+        acceptance:
+          - "100% examples passing"
+          - "Safety emphasized"
+        estimated_examples: 8
+        target_pass_rate: 1.00
+
+      - id: BOOK-026
+        title: "Ch21: Performance"
+        priority: medium
+        status: pending
+        requirements:
+          - "Optimization techniques"
+          - "Benchmarking"
+          - "Memory management"
+          - "SIMD"
+        tests:
+          - "Performance examples work"
+          - "Benchmarks validate"
+        acceptance:
+          - "100% examples passing"
+          - "Performance clear"
+        estimated_examples: 12
+        target_pass_rate: 1.00
+
+  # SPRINT 9: Real-World Projects (Ch 22-25)
+  - id: sprint-9
+    name: "Real-World Projects"
+    goal: "Complete end-to-end project chapters"
+    duration: 3_weeks
+    status: pending
+    dependencies:
+      - sprint: 8
+        status: "complete"
+    tickets:
+      - id: BOOK-027
+        title: "Ch22: CLI Application"
+        priority: high
+        status: pending
+        requirements:
+          - "Complete CLI project"
+          - "Argument parsing"
+          - "Error handling"
+          - "Testing"
+        tests:
+          - "CLI application compiles"
+          - "All features work"
+        acceptance:
+          - "100% examples passing"
+          - "Complete working app"
+        estimated_examples: 20
+        target_pass_rate: 1.00
+
+      - id: BOOK-028
+        title: "Ch23: Web API"
+        priority: high
+        status: pending
+        requirements:
+          - "REST API implementation"
+          - "HTTP server"
+          - "Database integration"
+          - "Authentication"
+        tests:
+          - "API examples compile"
+          - "All endpoints work"
+        acceptance:
+          - "100% examples passing"
+          - "Complete API"
+        estimated_examples: 25
+        target_pass_rate: 1.00
+
+      - id: BOOK-029
+        title: "Ch24: Data Processing"
+        priority: high
+        status: pending
+        requirements:
+          - "DataFrame pipeline"
+          - "ETL processes"
+          - "Data analysis"
+          - "Visualization"
+        tests:
+          - "Pipeline examples work"
+          - "All operations validated"
+        acceptance:
+          - "100% examples passing"
+          - "Complete pipeline"
+        estimated_examples: 20
+        target_pass_rate: 1.00
+
+      - id: BOOK-030
+        title: "Ch25: Concurrent System"
+        priority: high
+        status: pending
+        requirements:
+          - "Actor-based system"
+          - "Message passing"
+          - "Supervision trees"
+          - "Fault tolerance"
+        tests:
+          - "System examples compile"
+          - "All actors work"
+        acceptance:
+          - "100% examples passing"
+          - "Complete system"
+        estimated_examples: 25
+        target_pass_rate: 1.00
+
+  # SPRINT 10-15: EXTREME TDD REFACTORING - Reality-Based Documentation Only
+  # Mission: Remove ALL vaporware, validate with 15 tools + notebook, file bugs
+
+  - id: sprint-10
+    name: "Refactoring Sprint 1: Foundation Chapters"
+    goal: "Achieve 100% validated examples in Ch01-03 with zero vaporware"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 9
+        status: "complete"
+    approach: "7-Layer Validation: Spec → Check → Compile → Run → 15-Tools → Notebook → Commit"
+    tickets:
+      - id: REFACTOR-001
+        title: "Ch01: Installation & Hello World - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 6
+          passing: 6
+          pass_rate: 1.00
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Audit for vaporware (coming soon, TODO, future)"
+          - "Cross-reference language spec"
+          - "Test with all 15 tools"
+          - "Test in notebook"
+          - "Remove any unimplemented feature references"
+        validation_stack:
+          layer_1_syntax: "ruchy check (100% required)"
+          layer_2_compile: "ruchy compile (100% required)"
+          layer_3_run: "ruchy run (100% required)"
+          layer_4_tools: "make dogfood-full (15 tools)"
+          layer_5_notebook: "make test-notebook (API execution)"
+          layer_6_spec: "grep language-spec.md (cross-reference)"
+          layer_7_integration: "deno task test-examples (full suite)"
+        acceptance:
+          - "Zero vaporware text (coming soon, TODO, etc.)"
+          - "100% examples compile"
+          - "100% examples run correctly"
+          - "100% pass blocking gates (6/15 tools)"
+          - "90%+ pass advisory gates (9/15 tools)"
+          - "100% work in notebook"
+          - "All features in language spec"
+          - "INTEGRATION.md updated"
+        bug_protocol:
+          - "File bug if spec says works but doesn't"
+          - "Use template in extreme-tdd-refactoring-plan.md"
+          - "Document in docs/bugs/refactoring-bugs.md"
+        deliverable: "Ch01 with 100% validation, zero vaporware"
+
+      - id: REFACTOR-002
+        title: "Ch02: Variables & Types - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 8
+          passing: 5
+          pass_rate: 0.625
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Fix 3 failing examples or remove if unimplemented"
+          - "Test all primitive types (i32, f64, bool, string)"
+          - "Test type inference"
+          - "Test mutable vs immutable"
+          - "Validate with 15 tools"
+          - "Test in notebook"
+        acceptance:
+          - "100% pass rate (8/8 or fewer if removed)"
+          - "All 15 tools pass"
+          - "Notebook execution works"
+          - "Zero vaporware"
+        expected_bugs: "Type system edge cases"
+        deliverable: "Ch02 with 100% validation"
+
+      - id: REFACTOR-003
+        title: "Ch03: Functions - Reality Check"
+        priority: critical
+        status: pending
+        current_state:
+          examples: 9
+          passing: 8
+          pass_rate: 0.889
+          vaporware: "Unknown"
+          notebook_tested: false
+        requirements:
+          - "Fix 1 failing example or remove"
+          - "Verify 'fun' keyword (NOT 'fn')"
+          - "Test parameter types"
+          - "Test return types"
+          - "Test lambdas"
+          - "Validate with 15 tools"
+          - "Test in notebook"
+        acceptance:
+          - "100% pass rate"
+          - "All 15 tools pass"
+          - "Notebook execution works"
+          - "fun keyword consistent"
+        expected_bugs: "Lambda syntax issues"
+        deliverable: "Ch03 with 100% validation"
+
+  - id: sprint-11
+    name: "Refactoring Sprint 2: Core Features"
+    goal: "Achieve 100% validated examples in Ch04-06"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 10
+        status: "complete"
+    tickets:
+      - id: REFACTOR-004
+        title: "Ch04: Practical Patterns - Reality Check"
+        priority: high
+        status: pending
+        requirements:
+          - "Audit all pattern examples"
+          - "Remove unimplemented patterns"
+          - "Validate with 15 tools + notebook"
+        acceptance:
+          - "100% pass rate"
+          - "Zero vaporware"
+
+      - id: REFACTOR-005
+        title: "Ch05: Control Flow - Reality Check"
+        priority: high
+        status: pending
+        current_state:
+          vaporware: "Has TODO/future references"
+        requirements:
+          - "Test if/else, match, for, while, loop"
+          - "Remove unimplemented control flow"
+          - "Validate pattern matching"
+        expected_bugs: "Pattern matching edge cases"
+        acceptance:
+          - "100% pass rate"
+          - "All control flow validated"
+
+      - id: REFACTOR-006
+        title: "Ch06: Data Structures - Reality Check"
+        priority: high
+        status: pending
+        current_state:
+          vaporware: "Has vaporware references"
+        requirements:
+          - "Test arrays, lists, tuples, structs"
+          - "Document only implemented structures"
+          - "Remove collection methods that don't exist"
+        expected_bugs: "Collection method availability"
+        acceptance:
+          - "100% pass rate"
+          - "Only working data structures documented"
+
+  - id: sprint-12
+    name: "Refactoring Sprint 3: Advanced Features Part 1"
+    goal: "Achieve 100% validated examples in Ch10, Ch14-17"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 11
+        status: "complete"
+    tickets:
+      - id: REFACTOR-007
+        title: "Ch10: Input/Output - Reality Check"
+        current_state:
+          vaporware: "Has TODO comments"
+
+      - id: REFACTOR-008
+        title: "Ch14: Toolchain Mastery - Reality Check"
+        requirements:
+          - "Document all 15 tools comprehensively"
+
+      - id: REFACTOR-009
+        title: "Ch15: Binary Compilation - Reality Check"
+
+      - id: REFACTOR-010
+        title: "Ch16: Testing & QA - Reality Check"
+
+      - id: REFACTOR-011
+        title: "Ch17: Error Handling - Reality Check"
+
+  - id: sprint-13
+    name: "Refactoring Sprint 4: Advanced Features Part 2"
+    goal: "Achieve 100% validated examples in Ch18-19, Ch21-23"
+    duration: 2_weeks
+    status: pending
+    dependencies:
+      - sprint: 12
+        status: "complete"
+    tickets:
+      - id: REFACTOR-012
+        title: "Ch18: DataFrames - Reality Check"
+        current_state:
+          vaporware: "May have incomplete features"
+
+      - id: REFACTOR-013
+        title: "Ch19: Structs & OOP - Reality Check"
+
+      - id: REFACTOR-014
+        title: "Ch21: Professional Tooling - Reality Check"
+
+      - id: REFACTOR-015
+        title: "Ch22: Compiler Development - Reality Check"
+
+      - id: REFACTOR-016
+        title: "Ch23: REPL & Object Inspection - Reality Check"
+
+  - id: sprint-14
+    name: "Refactoring Sprint 5: Notebook Integration Complete"
+    goal: "Ensure ALL examples work in notebook"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 13
+        status: "complete"
+    tickets:
+      - id: NOTEBOOK-001
+        title: "Create notebook test script"
+        requirements:
+          - "Deno script to test via notebook API"
+          - "Start/stop notebook server"
+          - "Execute all examples"
+          - "Validate outputs"
+        deliverable: "scripts/test-in-notebook.ts"
+
+      - id: NOTEBOOK-002
+        title: "Add notebook testing to Makefile"
+        requirements:
+          - "make test-notebook target"
+          - "Start notebook on port 8765"
+          - "Run all examples"
+          - "Kill server after"
+        deliverable: "Makefile test-notebook target"
+
+      - id: NOTEBOOK-003
+        title: "Add notebook tests to CI/CD"
+        requirements:
+          - "GitHub Actions workflow"
+          - "Run notebook tests on every push"
+          - "Fail if any example fails in notebook"
+
+      - id: NOTEBOOK-004
+        title: "Validate all 500 examples in notebook"
+        requirements:
+          - "Run make test-notebook"
+          - "Achieve 100% pass rate"
+          - "Document any notebook-specific issues"
+
+  - id: sprint-15
+    name: "Refactoring Sprint 6: Final Validation & Polish"
+    goal: "Complete refactoring with zero defects"
+    duration: 1_week
+    status: pending
+    dependencies:
+      - sprint: 14
+        status: "complete"
+    tickets:
+      - id: FINAL-001
+        title: "Complete bug triage"
+        requirements:
+          - "Review all filed bugs"
+          - "Work with Ruchy team on fixes"
+          - "Document workarounds"
+          - "Update book as fixes land"
+
+      - id: FINAL-002
+        title: "Comprehensive validation"
+        requirements:
+          - "Run make dogfood-full on all chapters"
+          - "Run make test-notebook on all chapters"
+          - "Verify zero vaporware"
+          - "Verify zero SATD comments"
+
+      - id: FINAL-003
+        title: "Update INTEGRATION.md"
+        requirements:
+          - "Final pass rates documented"
+          - "All tool results recorded"
+          - "Notebook results recorded"
+          - "Bug summary included"
+
+      - id: FINAL-004
+        title: "Documentation polish"
+        requirements:
+          - "Fix any broken links"
+          - "Ensure consistent formatting"
+          - "Verify all cross-references"
+          - "Update README with final stats"
+
+quality_gates:
+  mandatory:
+    - gate: "example_compilation"
+      command: "deno task extract-examples && deno task test-examples"
+      threshold: 1.00
+      description: "All code examples must compile without errors"
+      blocking: true
+
+    - gate: "oneliner_validation"
+      command: "deno task test-oneliners"
+      threshold: 1.00
+      description: "All 20 one-liner examples must pass"
+      blocking: true
+
+    - gate: "dogfood_quality"
+      command: "make dogfood-full"
+      threshold: "A+"
+      description: "All Ruchy tools must give A+ grade"
+      blocking: true
+
+    - gate: "link_validation"
+      command: "mdbook-linkcheck"
+      threshold: 1.00
+      description: "Zero broken links in documentation"
+      blocking: true
+
+    - gate: "satd_detection"
+      command: "grep -r 'TODO\\|FIXME\\|HACK' src/"
+      threshold: 0
+      description: "No technical debt comments allowed"
+      blocking: true
+
+    - gate: "version_consistency"
+      command: "make verify-version"
+      threshold: 1.00
+      description: "All version references must match"
+      blocking: true
+
+  advisory:
+    - gate: "coverage"
+      description: "100% of Ruchy features documented"
+      target: 1.00
+      current: 0.85
+
+    - gate: "readability"
+      description: "Flesch reading ease score"
+      target: 60
+      current: 55
+
+metrics:
+  current_status:
+    total_chapters: 25
+    completed_chapters: 3
+    total_examples: 381
+    passing_examples: 231
+    pass_rate: 0.61
+    oneliners_passing: 17
+    oneliners_total: 20
+    oneliner_pass_rate: 0.85
+
+  targets:
+    final_chapters: 25
+    final_examples: 500
+    final_pass_rate: 1.00
+    coverage: 1.00
+
+  per_chapter_limits:
+    max_examples: 50
+    max_lines_per_example: 100
+    min_pass_rate: 1.00
+
+version_management:
+  ruchy_compiler:
+    tracking: "exact_version_pinning"
+    current: "1.17.0"
+    update_frequency: "weekly"
+
+  qualification_protocol:
+    - step: "detect_new_version"
+      command: "cd ../ruchy && cargo metadata --format-version 1 | jq -r '.packages[] | select(.name == \"ruchy\") | .version'"
+
+    - step: "update_all_references"
+      command: "make sync-version"
+
+    - step: "test_all_examples"
+      command: "deno task extract-examples && deno task test-examples"
+
+    - step: "test_oneliners"
+      command: "deno task test-oneliners"
+
+    - step: "update_integration_md"
+      command: "deno task generate-report"
+
+    - step: "commit_results"
+      command: "git add INTEGRATION.md test/ && git commit -m 'feat: Qualify Ruchy vX.Y.Z'"
+
+    - step: "push_to_github"
+      command: "git push origin main"
+      mandatory: true
+
+execution_protocol:
+  chapter_workflow:
+    - step: "write_failing_examples"
+      description: "Write code examples that expose missing features"
+      deliverable: "Red examples documented"
+
+    - step: "verify_compilation"
+      description: "Test examples with current Ruchy compiler"
+      deliverable: "Pass/fail status known"
+
+    - step: "document_working_features"
+      description: "Document only features that work in current compiler"
+      deliverable: "Accurate documentation"
+
+    - step: "update_integration_md"
+      description: "Update INTEGRATION.md with test results"
+      deliverable: "Status documented"
+
+    - step: "atomic_commit"
+      description: "Single commit per chapter"
+      deliverable: "Git log shows chapter complete"
+
+    - step: "push_frequently"
+      description: "Push after each chapter completion"
+      deliverable: "Changes on GitHub"
+
+documentation_standards:
+  format:
+    - "Use mdBook format"
+    - "GitHub Flavored Markdown"
+    - "Code blocks with language tags"
+    - "Collapsible sections for generated code"
+
+  content:
+    - "Every feature must have working example"
+    - "Examples progress from simple to complex"
+    - "Include expected output"
+    - "Show both Ruchy and generated Rust"
+
+  quality:
+    - "No vaporware documentation"
+    - "No TODO/FIXME/HACK comments"
+    - "Zero broken links"
+    - "100% example compilation"
+
+automation:
+  ci_cd:
+    - "GitHub Actions on every push"
+    - "Extract and test all examples"
+    - "Update status badges"
+    - "Deploy book to GitHub Pages"
+    - "Update INTEGRATION.md"
+
+  pre_commit_hooks:
+    - "Lint markdown"
+    - "Check for SATD comments"
+    - "Validate version consistency"
+    - "Run quality gates"
+
+  scheduled_tasks:
+    - task: "weekly_version_check"
+      schedule: "Monday 9am"
+      command: "make sync-version"
+
+    - task: "daily_link_check"
+      schedule: "Daily 6am"
+      command: "mdbook-linkcheck"
+
+deliverables:
+  sprint_1:
+    - "Test extraction infrastructure"
+    - "Language specification"
+    - "YAML roadmap"
+    - "INTEGRATION.md template"
+
+  sprint_2:
+    - "Ch01-03 complete with 100% pass rate"
+    - "23/23 examples passing"
+
+  sprint_3:
+    - "Ch04-06 complete with 100% pass rate"
+    - "37/37 examples passing"
+
+  final:
+    - "25 chapters complete"
+    - "500+ working examples"
+    - "100% compilation rate"
+    - "100% test coverage"
+    - "Published book at book.ruchy.org"
+
+risks:
+  - risk: "Ruchy compiler breaking changes"
+    mitigation: "Exact version pinning + weekly qualification"
+    probability: "medium"
+    impact: "high"
+
+  - risk: "Missing compiler features"
+    mitigation: "Document only what works, file detailed bug reports"
+    probability: "medium"
+    impact: "medium"
+
+  - risk: "Test infrastructure failures"
+    mitigation: "Comprehensive error handling and logging"
+    probability: "low"
+    impact: "high"
+
+  - risk: "Documentation drift from compiler"
+    mitigation: "Continuous testing and INTEGRATION.md updates"
+    probability: "low"
+    impact: "high"
+
+notes: |
+  This is a Test-Driven Documentation (TDD) project where every code example
+  is automatically extracted and tested against the Ruchy compiler.
+
+  The book serves as both:
+  1. Learning resource for Ruchy developers
+  2. Comprehensive test suite for the Ruchy compiler
+
+  Quality is built-in, not bolted-on. Zero tolerance for broken examples.

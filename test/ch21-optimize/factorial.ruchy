@@ -1,0 +1,24 @@
+// Factorial function for optimization testing
+
+fun factorial(n) {
+    if n <= 1 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+fun factorial_iterative(n) {
+    let result = 1
+    let i = 2
+    while i <= n {
+        result = result * i
+        i = i + 1
+    }
+    result
+}
+
+fun main() {
+    println(factorial(5))
+    println(factorial_iterative(5))
+}

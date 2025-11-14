@@ -1,0 +1,141 @@
+🚀 TICKET-018-17: ruchy run validation
+✅ EXPECTED: Tool is FULLY IMPLEMENTED (core execution)
+🎉 MILESTONE: Completing this achieves 75% progress (14/18 tools)!
+============================================================
+
+📊 Found 69 .ruchy files to execute
+
+✅ tests/ch04-practical-patterns/test_01_safe_calculator.ruchy
+✅ tests/ch04-practical-patterns/test_03_accumulator_patterns.ruchy
+❌ tests/ch04-modules/test_02_use_statement.ruchy
+   Error: Error: Evaluation error: Runtime error: Expression type not yet implemented: Module { name: "utils",
+❌ tests/ch04-modules/test_01_basic_module.ruchy
+   Error: Error: Evaluation error: Runtime error: Expression type not yet implemented: Module { name: "math", 
+✅ tests/extracted/ch10-00-input-output-tdd_example_1.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_9.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_8.ruchy
+❌ tests/extracted/ch10-00-input-output-tdd_example_5.ruchy
+   Error: Error: Evaluation error: Runtime error: Undefined variable: value 
+✅ tests/extracted/ch01-02-hello-world_example_5.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_7.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_5.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_5.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_14.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_6.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_1.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_12.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_5.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_6.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_9.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_5.ruchy
+❌ tests/extracted/ch02-00-variables-types-tdd_example_7.ruchy
+   Error: Error: Evaluation error: Runtime error: Undefined variable: initial_value 
+✅ tests/extracted/conclusion_example_1.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_2.ruchy
+❌ tests/extracted/ch02-00-variables-types-tdd_example_6.ruchy
+   Error: Error: Evaluation error: Runtime error: Undefined variable: value1 
+✅ tests/extracted/ch01-02-hello-world_example_8.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_10.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_7.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_8.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_2.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_6.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_2.ruchy
+✅ tests/extracted/ch21-00-professional-tooling-tdd_example_1.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_6.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_2.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_7.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_1.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_5.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_13.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_8.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_1.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_3.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_9.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_3.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_1.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_4.ruchy
+✅ tests/extracted/ch10-00-input-output-tdd_example_10.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_2.ruchy
+✅ tests/extracted/ch01-02-hello-world-tdd_example_6.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_1.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_8.ruchy
+✅ tests/extracted/ch03-00-functions-tdd_example_8.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_3.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_3.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_2.ruchy
+✅ tests/extracted/ch06-00-data-structures-tdd_example_6.ruchy
+✅ tests/extracted/ch01-02-hello-world_example_7.ruchy
+✅ tests/extracted/ch02-00-variables-types-tdd_example_4.ruchy
+✅ tests/extracted/ch05-00-control-flow-tdd_example_11.ruchy
+❌ tests/extracted/ch10-00-input-output-tdd_example_4.ruchy
+   Error: Error: Evaluation error: Runtime error: Undefined variable: variable 
+✅ tests/extracted/ch10-00-input-output-tdd_example_7.ruchy
+
+============================================================
+📈 SUMMARY
+============================================================
+Total files: 69
+Successful executions: 63 (91.3%)
+Failed executions: 6 (8.7%)
+Average execution time: 3ms
+
+Performance distribution:
+  Fast (<50ms): 69 files
+  Medium (50-150ms): 0 files
+  Slow (>150ms): 0 files
+
+============================================================
+🔍 TOOL STATUS ASSESSMENT
+============================================================
+Status: ✅ EXCELLENT - Highly functional execution tool
+Success rate: 91.3% (>90% threshold met)
+
+📋 Failure Analysis:
+  Runtime error: 6 files
+
+============================================================
+📊 PHASE 1E STATUS
+============================================================
+Phase 1E - Documentation & Execution:
+  ✅ TICKET-018-16: ruchy doc (NOT IMPLEMENTED - baseline)
+  ✅ TICKET-018-17: ruchy run (FULLY IMPLEMENTED - core execution!)
+  🔜 TICKET-018-18: ruchy repl (next)
+
+🎉 Phase 1E ADVANCING - Core execution validated!
+
+🎉🎉🎉 **75% MILESTONE ACHIEVED!** 🎉🎉🎉
+Progress: 14/18 tools (77.8%) - Passed 75% threshold!
+
+============================================================
+⚡ PERFORMANCE COMPARISON
+============================================================
+Execution time per file:
+  ruchy run: 3ms avg
+  ruchy compile: ~142ms avg (for comparison)
+  ruchy check: ~3ms avg (static analysis baseline)
+  Note: Execution includes compilation + runtime
+
+============================================================
+📋 TOOL IMPLEMENTATION STATUS
+============================================================
+Fully Implemented Tools:
+  ✅ ruchy check, lint, score, ast, quality-gate, coverage
+  ✅ ruchy compile, test (with caveats)
+  ✅ ruchy runtime, provability (provability has bug #99)
+  ✅ ruchy run (CORE EXECUTION - validated here!)
+
+Not Yet Implemented:
+  ⏳ ruchy bench (placeholder)
+  ⏳ ruchy doc (placeholder)
+
+✅ Validation complete - core execution tool validated!

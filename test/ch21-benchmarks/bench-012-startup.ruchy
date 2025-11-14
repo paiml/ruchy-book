@@ -1,0 +1,4 @@
+// BENCH-012: Startup time (Hello World) - Ruchy
+fun main() {
+    println("Hello, World!")
+}

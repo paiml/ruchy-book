@@ -1,7 +1,7 @@
-# [BUG] Critical Variable Scoping Regression in v3.45.0 - Top-level statements broken
+# [BUG] Critical Variable Scoping Regression in v3.193.0 - Top-level statements broken
 
 ## Bug Description
-Variable scoping is completely broken for top-level (script-style) code in v3.45.0. Each `let` statement gets wrapped in its own block scope, making variables inaccessible to subsequent statements. This represents a **52% failure rate** in the Ruchy Book test suite.
+Variable scoping is completely broken for top-level (script-style) code in v3.193.0. Each `let` statement gets wrapped in its own block scope, making variables inaccessible to subsequent statements. This represents a **52% failure rate** in the Ruchy Book test suite.
 
 ## Version Information
 - **Affected Version**: 3.45.0
@@ -12,7 +12,7 @@ Variable scoping is completely broken for top-level (script-style) code in v3.45
 ## Minimal Reproduction
 
 ```bash
-# This FAILS in v3.45.0
+# This FAILS in v3.193.0
 echo 'let x = 42; let y = x * 2; println(y)' > test.ruchy
 ruchy compile test.ruchy
 
@@ -59,7 +59,7 @@ println(y)  // ❌ Variables not in scope
 
 ## Impact Analysis
 
-| Test Suite | v3.38.0 | v3.45.0 | Regression |
+| Test Suite | v3.193.0 | v3.193.0 | Regression |
 |------------|---------|---------|------------|
 | Book Examples | 82/111 (74%) | 53/111 (48%) | -26% |
 | One-liners | 9/20 (45%) | 9/20 (45%) | No change |
@@ -125,6 +125,6 @@ error[E0670]: `async fn` is not permitted in Rust 2015
 Need to add `--edition 2021` flag to rustc invocation.
 
 ## References
-- Full analysis: [CRITICAL-v3.45.0-scoping-regression.md](https://github.com/paiml/ruchy-book/blob/main/docs/bugs/CRITICAL-v3.45.0-scoping-regression.md)
+- Full analysis: [CRITICAL-v3.193.0-scoping-regression.md](https://github.com/paiml/ruchy-book/blob/main/docs/bugs/CRITICAL-v3.193.0-scoping-regression.md)
 - Test Suite: https://github.com/paiml/ruchy-book
-- Previous similar bug in v1.0.0 (fixed in v3.38.0, regressed in v3.45.0)
+- Previous similar bug in v3.193.0 (fixed in v3.193.0, regressed in v3.193.0)

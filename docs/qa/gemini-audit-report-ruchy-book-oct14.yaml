@@ -1,0 +1,225 @@
+audit_date: 2025-10-14
+project: Ruchy Book
+auditor: Gemini
+ruchy_version: 3.77.0
+
+summary:
+  overall_success_rate: 84% for book examples, 60% for one-liners.
+  key_issues:
+    - Significant gaps in DataFrame examples, error handling, and practical patterns.
+    - DataFrame runtime errors observed in REPL session (indexing and field access).
+    - One-liners section needs attention.
+    - Tooling integration tests are not implemented.
+  positive_notes:
+    - The book build process is working.
+    - A large number of examples are passing, indicating a solid foundation.
+
+working_features:
+  - Basic language features (variables, types, functions, control flow).
+  - Most of the "Hello World" and "Getting Started" examples.
+  - Data structures (except for some advanced cases).
+  - Toolchain mastery and binary compilation (most examples).
+
+broken_features:
+  - feature: "Practical Patterns: Example 6"
+    chapter: ch04-00-practical-patterns-tdd
+    error: "Compilation failed: Failed to parse Ruchy source. Expected RightBrace, found Let"
+    reproduction_steps:
+      - Compile and run the 6th code example in `src/ch04-00-practical-patterns-tdd.md`.
+  - feature: "Practical Patterns: Example 10"
+    chapter: ch04-00-practical-patterns-tdd
+    error: "internal error: entered unreachable code"
+    reproduction_steps:
+      - Compile and run the 10th code example in `src/ch04-00-practical-patterns-tdd.md`.
+  - feature: "Functions: Example 10"
+    chapter: ch03-00-functions-tdd
+    error: "Compilation failed: Cargo build failed: cannot find type `DataFrame` in this scope"
+    reproduction_steps:
+      - Compile and run the 10th code example in `src/ch03-00-functions-tdd.md`.
+  - feature: "Functions: Example 11"
+    chapter: ch03-00-functions-tdd
+    error: "Compilation failed: Cargo build failed: cannot find type `DataFrame` in this scope"
+    reproduction_steps:
+      - Compile and run the 11th code example in `src/ch03-00-functions-tdd.md`.
+  - feature: "Binary Compilation: Example 2"
+    chapter: ch15-00-binary-compilation-deployment
+    error: "Compilation failed: Failed to parse Ruchy source. Expected RightBrace, found If"
+    reproduction_steps:
+      - Compile and run the 2nd code example in `src/ch15-00-binary-compilation-deployment.md`.
+  - feature: "Binary Compilation: Example 4"
+    chapter: ch15-00-binary-compilation-deployment
+    error: "Compilation failed: cannot assign to immutable argument `b`"
+    reproduction_steps:
+      - Compile and run the 4th code example in `src/ch15-00-binary-compilation-deployment.md`.
+  - feature: "Testing & Quality Assurance: Example 5"
+    chapter: ch16-00-testing-quality-assurance
+    error: "Compilation failed: cannot find function `add` in this scope"
+    reproduction_steps:
+      - Compile and run the 5th code example in `src/ch16-00-testing-quality-assurance.md`.
+  - feature: "Testing & Quality Assurance: Example 7"
+    chapter: ch16-00-testing-quality-assurance
+    error: "Compilation failed: cannot find value `actual` in this scope"
+    reproduction_steps:
+      - Compile and run the 7th code example in `src/ch16-00-testing-quality-assurance.md`.
+  - feature: "Error Handling: Example 3"
+    chapter: ch17-00-error-handling-robustness
+    error: "Compilation failed: `if` may be missing an `else` clause"
+    reproduction_steps:
+      - Compile and run the 3rd code example in `src/ch17-00-error-handling-robustness.md`.
+  - feature: "Error Handling: Example 8"
+    chapter: ch17-00-error-handling-robustness
+    error: "internal error: entered unreachable code"
+    reproduction_steps:
+      - Compile and run the 8th code example in `src/ch17-00-error-handling-robustness.md`.
+  - feature: "Error Handling: Example 9"
+    chapter: ch17-00-error-handling-robustness
+    error: "Compilation failed: cannot find function `safe_divide` in this scope"
+    reproduction_steps:
+      - Compile and run the 9th code example in `src/ch17-00-error-handling-robustness.md`.
+  - feature: "DataFrames: Example 1"
+    chapter: ch18-00-dataframes-data-processing
+    error: "Compilation failed: mismatched types: expected `i32`, found `DataFrame`"
+    reproduction_steps:
+      - Compile and run the 1st code example in `src/ch18-00-dataframes-data-processing.md`.
+  - feature: "DataFrames: Example 2"
+    chapter: ch18-00-dataframes-data-processing
+    error: "Compilation failed: mismatched types: expected `()`, found `DataFrame`"
+    reproduction_steps:
+      - Compile and run the 2nd code example in `src/ch18-00-dataframes-data-processing.md`.
+  - feature: "DataFrames: Example 3"
+    chapter: ch18-00-dataframes-data-processing
+    error: "Compilation failed: mismatched types: expected `i32`, found `DataFrame`"
+    reproduction_steps:
+      - Compile and run the 3rd code example in `src/ch18-00-dataframes-data-processing.md`.
+  - feature: "DataFrames: Example 4"
+    chapter: ch18-00-dataframes-data-processing
+    error: "Compilation failed: mismatched types: expected `i32`, found `DataFrame`"
+    reproduction_steps:
+      - Compile and run the 4th code example in `src/ch18-00-dataframes-data-processing.md`.
+  - feature: "Control Flow: Example 15"
+    chapter: ch05-00-control-flow-tdd
+    error: "Compilation failed: use of unresolved module or unlinked crate `polars`"
+    reproduction_steps:
+      - Compile and run the 15th code example in `src/ch05-00-control-flow-tdd.md`.
+  - feature: "Control Flow: Example 16"
+    chapter: ch05-00-control-flow-tdd
+    error: "Compilation failed: use of unresolved module or unlinked crate `polars`"
+    reproduction_steps:
+      - Compile and run the 16th code example in `src/ch05-00-control-flow-tdd.md`.
+  - feature: "Control Flow: Example 17"
+    chapter: ch05-00-control-flow-tdd
+    error: "Compilation failed: use of unresolved module or unlinked crate `polars`"
+    reproduction_steps:
+      - Compile and run the 17th code example in `src/ch05-00-control-flow-tdd.md`.
+  - feature: "Structs & OOP: Example 4"
+    chapter: ch19-00-structs-oop
+    error: "Compilation failed: recursive type `Node` has infinite size"
+    reproduction_steps:
+      - Compile and run the 4th code example in `src/ch19-00-structs-oop.md`.
+  - feature: "Structs & OOP: Example 6"
+    chapter: ch19-00-structs-oop
+    error: "Compilation failed: mismatched types: expected `String`, found `&str`"
+    reproduction_steps:
+      - Compile and run the 6th code example in `src/ch19-00-structs-oop.md`.
+  - feature: "Structs & OOP: Example 9"
+    chapter: ch19-00-structs-oop
+    error: "Compilation failed: cannot find value `point` in this scope"
+    reproduction_steps:
+      - Compile and run the 9th code example in `src/ch19-00-structs-oop.md`.
+  - feature: "One-liner: Percentage calculation"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Percentage calculation".
+  - feature: "One-liner: Square root function"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Square root function".
+  - feature: "One-liner: Physics: E=mc²"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Physics: E=mc²".
+  - feature: "One-liner: Electrical power P=VI"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Electrical power P=VI".
+  - feature: "One-liner: Investment return %"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Investment return %".
+  - feature: "One-liner: Basic text operations"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Basic text operations".
+  - feature: "One-liner: Float JSON output"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Float JSON output".
+  - feature: "One-liner: Shell script integration"
+    chapter: ch04-01-one-liners
+    error: "FAIL"
+    reproduction_steps:
+      - Run `deno task test-oneliners` and observe the failure for "Shell script integration".
+
+repl_sessions:
+  - session: "DataFrame Indexing and Field Access"
+    description: "This session shows that while DataFrame creation is possible, accessing data using indexing or field access results in runtime errors."
+    transcript: |
+      Welcome to Ruchy REPL v3.77.0
+      Type :help for commands, :quit to exit
+
+      🚀 Ruchy REPL v3.22.0 - EXTREME Quality Edition
+      ✨ ALL functions <10 complexity • 90% coverage • TDG A+
+      Type :help for commands or expressions to evaluate
+
+      ruchy> fun create_dataframe() {
+          let df = df![
+              "employee_id" => [101, 102, 103, 104],
+              "name" => ["Alice", "Bob", "Charlie", "Diana"],
+              "department" => ["Engineering", "Sales", "Engineering", "HR"],
+              "salary" => [95000, 75000, 105000, 65000]
+          ];
+
+          // Display the DataFrame (returns as last expression)
+          df
+      }
+
+      <function>
+      ruchy> let df = create_dataframe()
+      DataFrame with 4 columns:
+        employee_id: 4 rows
+        name: 4 rows
+        department: 4 rows
+        salary: 4 rows
+
+      ruchy> df[0]
+      Error: Runtime error: Cannot index dataframe with integer
+      ruchy> df.employee_id
+      Error: Runtime error: Cannot access field 'employee_id' on type dataframe
+      ruchy>
+
+recommendations:
+  - priority: high
+    action: "Fix all `not_implemented` tests."
+    description: "These represent features that are documented but not working."
+  - priority: high
+    action: "Address the DataFrame examples."
+    description: "This is a critical feature for a data-oriented language. The errors seem to be related to missing imports and incorrect function calls. The REPL session also reveals runtime errors with indexing and field access."
+  - priority: medium
+    action: "Review and fix the one-liners."
+    description: "Many of them are failing, which can be frustrating for users looking for quick examples."
+  - priority: medium
+    action: "Implement the tooling integration tests."
+    description: "This is important to ensure the entire development workflow is functioning correctly."
+  - priority: medium
+    action: "Review the error handling chapter."
+    description: "Several examples are failing, which is critical for a chapter that teaches how to handle errors."
+  - priority: low
+    action: "Update the documentation to match the latest Ruchy version."
+    description: "The test failures indicate that there might be a mismatch between the documented code and the latest version of the language."

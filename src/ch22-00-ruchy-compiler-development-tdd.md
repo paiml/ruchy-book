@@ -1,22 +1,18 @@
 # Working with Ruchy Compiler Development
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Test-Driven (Working examples only)
+**Chapter Status**: ✅ 100% Validated (4/4 embedded Ruchy examples)
 
 | Status | Count | Examples |
 |--------|-------|----------|
-| ✅ Working | 8 | All tested with local compiler |
-| ⚠️ Not Implemented | 0 | N/A |
-| ❌ Broken | 0 | Only working patterns documented |
-| 📋 Planned | 0 | Complete as-is |
+| ✅ Working | 4 | All embedded Ruchy code compiles and runs |
+| ⚠️ Meta-Documentation | Yes | Bash workflows for compiler development |
+| ❌ Broken | 0 | - |
 
-*Last updated: 2025-08-24*  
-*Ruchy version: ruchy 3.38.0*
+*Last tested: 2025-10-13*
+*Ruchy version: ruchy 3.193.0*
+*Note: Chapter documents bash workflows; embedded Ruchy code validated*
 <!-- DOC_STATUS_END -->
-
-**Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)  
-**Ruchy Version**: v1.10.0  
-**Testing**: All examples verified with `ruchy compile`
 
 ## The Problem
 
@@ -33,7 +29,7 @@ ruchy --version
 
 **Expected Output:**
 ```
-ruchy 3.38.0
+ruchy 3.193.0
 ```
 
 **What this tells us:**
@@ -72,8 +68,8 @@ fi
 
 **Expected Output:**
 ```
-System: ruchy 3.38.0
-Local: ruchy 3.38.0
+System: ruchy 3.193.0
+Local: ruchy 3.193.0
 ```
 
 ### Example 4: Test Basic Compilation with System Ruchy
@@ -181,8 +177,8 @@ fi
 **Expected Output:**
 ```
 === Ruchy Compiler Status ===
-System ruchy: ruchy 3.38.0
-Local build: ruchy 3.38.0
+System ruchy: ruchy 3.193.0
+Local build: ruchy 3.193.0
 Local build size: 5.2M
 
 === Basic Functionality Test ===
@@ -211,9 +207,9 @@ Compiler functional test
 When creating book content:
 
 1. **Always use system ruchy** for examples
-2. **Check local build** for upcoming features
+2. **Check local build** for feature validation against development version
 3. **Document only working features** in current system version
-4. **Note development features** in roadmap/future sections
+4. **Note incomplete features** in roadmap sections with clear status
 
 ## Compiler Development Workflow
 

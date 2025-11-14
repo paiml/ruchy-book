@@ -1,0 +1,105 @@
+{
+  "benchmark": "BENCH-007",
+  "name": "Fibonacci recursive (n=20)",
+  "modes": {
+    "python": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "python",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 16.20,
+  "median_ms": 16.50,
+  "stddev_ms": 1.23,
+  "min_ms": 14,
+  "max_ms": 18,
+  "raw_results": [16,16,14,18,17,15,15,17,17,17],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-03T09:22:59+01:00"
+  }
+}
+,
+    "ruchy-ast": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-ast",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 115.00,
+  "median_ms": 115.00,
+  "stddev_ms": 2.31,
+  "min_ms": 112,
+  "max_ms": 120,
+  "raw_results": [115,113,112,117,115,113,116,114,120,115],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-03T09:22:59+01:00"
+  }
+}
+,
+    "ruchy-bytecode": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-bytecode",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 3.00,
+  "median_ms": 3.00,
+  "stddev_ms": 0.00,
+  "min_ms": 3,
+  "max_ms": 3,
+  "raw_results": [3,3,3,3,3,3,3,3,3,3],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-03T09:22:59+01:00"
+  }
+}
+,
+    "ruchy-transpiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-transpile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.20,
+  "median_ms": 1.00,
+  "stddev_ms": 0.42,
+  "min_ms": 1,
+  "max_ms": 2,
+  "raw_results": [1,1,2,1,1,1,1,1,1,2],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-03T09:22:59+01:00"
+  }
+}
+,
+    "ruchy-compiled": 
+{
+  "name": "Fibonacci recursive (n=20)",
+  "mode": "ruchy-compile",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 1.10,
+  "median_ms": 1.00,
+  "stddev_ms": 0.32,
+  "min_ms": 1,
+  "max_ms": 2,
+  "raw_results": [1,1,2,1,1,1,1,1,1,1],
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-03T09:22:59+01:00"
+  }
+}
+  }
+}

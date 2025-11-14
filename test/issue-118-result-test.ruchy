@@ -1,0 +1,4 @@
+// Issue #118: Test if read_file() still returns Result
+let content = read_file("/tmp/test-issue-118.txt")
+println("Content: ", content)
+println("Length: ", content.len())

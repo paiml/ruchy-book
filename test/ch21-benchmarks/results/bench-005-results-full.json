@@ -1,0 +1,114 @@
+{
+  "benchmark": "BENCH-005",
+  "name": "Array sum (1M integers)",
+  "tool": "bashrs bench v6.25.0",
+  "modes": {
+    "python": 
+{
+  "name": "Array sum (1M integers)",
+  "mode": "python",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 52.09,
+  "median_ms": 51.21,
+  "stddev_ms": 2.37,
+  "min_ms": 49.42,
+  "max_ms": 57.14,
+  "raw_results": [49,50,57,51,53,53,55,51,51,50],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "deno": 
+{
+  "name": "Array sum (1M integers)",
+  "mode": "deno",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 36.77,
+  "median_ms": 36.51,
+  "stddev_ms": 2.68,
+  "min_ms": 33.51,
+  "max_ms": 42.78,
+  "raw_results": [35,43,34,36,39,38,38,34,38,34],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "julia": 
+{
+  "name": "Array sum (1M integers)",
+  "mode": "julia",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.13,
+  "median_ms": 2.03,
+  "stddev_ms": 0.40,
+  "min_ms": 1.61,
+  "max_ms": 3.20,
+  "raw_results": [2,2,2,3,2,2,2,2,2,2],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "go": 
+{
+  "name": "Array sum (1M integers)",
+  "mode": "go",
+  "iterations": 10,
+  "warmup": 3,
+  "mean_ms": 2.98,
+  "median_ms": 2.90,
+  "stddev_ms": 0.34,
+  "min_ms": 2.70,
+  "max_ms": 3.91,
+  "raw_results": [3,4,3,3,3,3,3,3,3,3],
+  "memory": {
+    "peak_kb": 0,
+    "mean_kb": 0,
+    "peak_mb": 0.00,
+    "mean_mb": 0.00
+  },
+  "environment": {
+    "cpu": "AMD Ryzen Threadripper 7960X 24-Cores",
+    "ram": "125Gi",
+    "os": "Linux 6.8.0-85-generic",
+    "timestamp": "2025-11-02T18:02:40+01:00"
+  },
+  "tool": "bashrs bench v6.25.0"
+}
+,
+    "rust": 

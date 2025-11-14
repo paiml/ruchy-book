@@ -29,70 +29,74 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Use ruchy coverage tool**: `ruchy coverage [file]` validates 100% coverage
 - **No partial examples**: All examples must be complete, working programs
 
-### D. Ruchy Tooling Integration (MANDATORY)
-- **Use ALL ruchy tools**: check, lint, test, coverage, fmt, score, provability
+### D. 19-Tool Comprehensive Testing (MANDATORY) - TICKET-018 + TICKET-020
+- **Use ALL 19 ruchy tools**: MANDATORY for every example
+- **Core execution (3)**: run, compile, wasm
+- **Quality analysis (15)**: check, test, fmt, lint, provability, runtime, score, quality-gate, optimize, prove, doc, bench, ast, coverage, mcp
+- **Debugging (1)** 🆕: ruchydbg validate, ruchy --trace, ruchy dataflow:debug
 - **Tool-driven workflow**: Let tools guide development and validation
-- **Quality verification**: `make dogfood-full` must pass before any commit
+- **Quality verification**: Pre-commit hook enforces comprehensive testing (8 gates including debugging)
 
 ### E. Roadmap-Driven Development with Tickets
 - **Work via tickets only**: All work assigned from roadmap tickets
-- **Roadmap updates mandatory**: Update roadmap after each ticket completion  
+- **Roadmap updates mandatory**: Update roadmap after each ticket completion
 - **Progress tracking**: Link all changes to specific roadmap tickets
 - **No ad-hoc work**: Every change traces back to planned roadmap item
 
+### F. bashrs Integration (MANDATORY) - Bash Script Quality
+- **Use bashrs for ALL bash scripts**: Located at `../bashrs/target/release/bashrs` (v6.20.0)
+- **All bash shebangs updated**: `#!/usr/bin/env -S ../bashrs/target/release/bashrs`
+- **bashrs quality tools (7)**: lint, score, audit, make, format, coverage, test
+- **Makefile integration**: All bashrs tools available via `make bashrs-*` commands
+- **Quality verification**: Use `make bashrs-all` to run comprehensive bash quality checks
+
+**bashrs Quality Tools:**
+```bash
+make bashrs-lint       # Lint all bash scripts for safety issues
+make bashrs-score      # Score bash script quality
+make bashrs-audit      # Comprehensive quality audit
+make bashrs-make       # Makefile purification and verification
+make bashrs-format     # Format all bash scripts
+make bashrs-coverage   # Generate bash script coverage report
+make bashrs-test       # Run bash script tests
+make bashrs-all        # Run ALL bashrs quality tools
+```
+
 ## MANDATORY Quality Gates (BLOCKING - Not Advisory)
 
-### Pre-Commit Hooks (MANDATORY) - Enhanced with Dogfooding
+### Pre-Commit Hooks (MANDATORY) - TICKET-018 Enforcement
+
+**Installation:**
 ```bash
-#!/bin/bash
-# .git/hooks/pre-commit - BLOCKS commits that violate quality
-set -e
-
-echo "🔒 MANDATORY Book Quality Gates..."
-
-# GATE 1: All listings must compile
-cargo test --manifest-path book/Cargo.toml || {
-    echo "❌ BLOCKED: Code examples don't compile"
-    exit 1
-}
-
-# GATE 2: MANDATORY Dogfooding Quality Gates
-echo "🐕 Running MANDATORY dogfooding quality gates..."
-make dogfood-check >/dev/null || {
-    echo "❌ BLOCKED: Syntax validation failed"
-    exit 1
-}
-
-make dogfood-lint >/dev/null || {
-    echo "❌ BLOCKED: Style analysis failed" 
-    exit 1
-}
-
-make dogfood-score | grep -q "A+" || {
-    echo "❌ BLOCKED: Quality score below A+ grade"
-    exit 1
-}
-
-# GATE 3: Strict mode validation
-MDBOOK_PREPROCESSOR__RUCHY__STRICT=true mdbook build || {
-    echo "❌ BLOCKED: Examples fail strict validation"
-    exit 1
-}
-
-# GATE 4: Zero broken links
-mdbook-linkcheck || {
-    echo "❌ BLOCKED: Broken links found"
-    exit 1
-}
-
-# GATE 5: No vaporware documentation
-! grep -r "coming soon\|not yet implemented\|TODO" src/ || {
-    echo "❌ BLOCKED: Vaporware documentation found"
-    exit 1
-}
-
-echo "✅ All quality gates passed (including dogfooding)"
+bash hooks/install.sh
 ```
+
+**Quality Gates Enforced:**
+1. ✅ Verify 19-tool testing infrastructure exists
+2. ✅ Verify ruchy installation and availability
+3. ✅ Extract and test ALL book examples (comprehensive)
+4. ✅ Verify minimum 90% pass rate threshold
+5. ✅ Check for vaporware documentation (no "coming soon")
+6. ✅ Verify function keyword usage (fun vs fn)
+7. ℹ️  TICKET-018/020 status (19-tool testing - info only, not blocking yet)
+8. ✅ Debugging tools validation (ruchydbg + --trace) 🆕
+
+**Current Status:**
+- Testing with: `ruchy run` (interpreter mode)
+- Target (TICKET-018/020): All 19 tools per example (including debugging)
+- Minimum pass rate: 90% required to commit
+- Debugging validation: ruchydbg + --trace tested on commit
+- Pre-commit hook: `hooks/pre-commit` (see file for implementation)
+
+**To bypass (emergency only):**
+```bash
+git commit --no-verify
+```
+
+**NEVER bypass except for:**
+- Emergency hotfixes
+- Documentation-only changes (no code examples)
+- Hook infrastructure fixes
 
 ## Absolute Rules
 
@@ -524,41 +528,253 @@ pre-commit: validate # Run pre-commit quality gates
 - **ruchy provability**: ✅ 100% provability score on simple functions
 - **ruchy runtime**: ✅ O(1) complexity, 100% optimization score
 
-## Bug Reporting Protocol
+## Bug Reporting Protocol (MANDATORY - BLOCKING)
 
-When encountering issues with the Ruchy compiler/runtime:
+**CRITICAL REQUIREMENT**: EVERY Ruchy compiler/runtime bug MUST be reported to GitHub with comprehensive debugging information. This is NOT optional.
 
-1. **File bugs locally first**: Create detailed reports in `docs/bugs/ruchy-runtime-bugs.md`
-2. **Include reproducibility**: Every bug must have exact steps to reproduce
-3. **Document workarounds**: If found, include them to unblock progress
-4. **Track impact**: Describe how the bug affects book testing and documentation
-5. **Version specificity**: Always include `ruchy --version` and platform details
+### MANDATORY Requirements for ALL Bug Reports
 
-### Bug Report Template
-```markdown
-## Bug #XXX: [Title]
+When encountering ANY issue with the Ruchy compiler/runtime, you MUST:
 
-**Filed**: [Date]
-**Ruchy Version**: v[X.Y.Z]
-**Platform**: [OS and architecture]
-**Severity**: Critical/High/Medium/Low
-**Status**: Open/Fixed/Workaround
+1. ✅ **Create GitHub Issue IMMEDIATELY** (not just local documentation)
+2. ✅ **Include minimal reproducible test case** (single .ruchy file)
+3. ✅ **Provide ruchydbg debugging workflow** (GDB commands, breakpoints)
+4. ✅ **Include ruchydbg output** (actual debugging session results)
+5. ✅ **Document impact** on book/benchmarks with specific examples
+6. ✅ **Provide workarounds** if discovered
+7. ✅ **Version specificity**: `ruchy --version`, platform, date
 
-### Description
-[Clear description of the issue]
+**NO EXCEPTIONS**: Do not wait, do not defer, do not document only locally. Create the GitHub issue WITH full debugging immediately.
 
-### Reproduction Steps
-[Exact commands to reproduce]
+### GitHub Issue Creation Workflow (MANDATORY)
 
-### Expected vs Actual
-[What should happen vs what does happen]
+#### Step 1: Create Minimal Reproducible Test Case
+```bash
+# Create single-file test case in test/
+cat > test/issue-XXX-description.ruchy << 'EOF'
+// Issue #XXX: Brief description
+// Minimal reproducible test case
 
-### Impact
-[How this affects book testing]
+// Code that reproduces the bug
+fun demonstrate_bug() {
+    // Minimal working example
+}
 
-### Workaround
-[If any]
+fun main() {
+    demonstrate_bug()
+}
+EOF
+
+# Verify it reproduces the bug
+ruchy run test/issue-XXX-description.ruchy
 ```
+
+#### Step 2: Run ruchydbg Debugging Session
+```bash
+# Run comprehensive debugging
+cd /home/noah/src/ruchy
+ruchydbg validate test/issue-XXX-description.ruchy
+
+# Document the GDB session:
+# - Breakpoints set
+# - Variables inspected
+# - Call stack analyzed
+# - Hypotheses tested
+```
+
+#### Step 3: Create GitHub Issue with Template
+```bash
+# Use gh CLI to create issue
+cd /home/noah/src/ruchy
+gh issue create --title "Issue #XXX: Brief Description" --body-file /tmp/issue-XXX-report.md
+```
+
+### MANDATORY GitHub Issue Template
+
+**EVERY GitHub issue MUST include ALL of these sections:**
+
+```markdown
+# Issue #XXX: [Brief Description]
+
+## Status: ❌ BLOCKING / ⚠️ PARTIAL / ✅ FIXED
+
+## Summary
+
+[2-3 sentence summary of the bug and its impact]
+
+## Minimal Reproducible Test Case
+
+**File**: `test/issue-XXX-description.ruchy`
+
+\`\`\`ruchy
+// Paste complete, runnable test case here
+// Must be single-command reproducible
+
+fun main() {
+    // Demonstrate bug
+}
+\`\`\`
+
+## Reproduction Steps
+
+\`\`\`bash
+# Single command to reproduce
+cd /home/noah/src/ruchy-book
+ruchy run test/issue-XXX-description.ruchy
+
+# Expected output:
+# [paste expected]
+
+# Actual output:
+# [paste actual]
+\`\`\`
+
+## ruchydbg Debugging Workflow (MANDATORY)
+
+### Hypothesis 1: [Most likely cause]
+
+**Location**: `runtime/[file].rs` line [approx]
+
+**GDB Commands**:
+\`\`\`bash
+cd /home/noah/src/ruchy
+ruchydbg validate test/issue-XXX-description.ruchy
+
+# In GDB:
+break [file].rs:[line]
+condition 1 if [condition]
+run
+backtrace
+print [variable]
+info locals
+\`\`\`
+
+**Expected**: [what should happen]
+**Actual**: [what does happen]
+
+### Hypothesis 2: [Second most likely]
+
+[Same format as Hypothesis 1]
+
+### Hypothesis 3: [Third possibility]
+
+[Same format as Hypothesis 1]
+
+## ruchydbg Output (MANDATORY)
+
+**Actual debugging session output**:
+\`\`\`
+[Paste actual ruchydbg/GDB output showing:]
+- Breakpoint hits
+- Variable values
+- Stack traces
+- Any error messages
+\`\`\`
+
+## Expected vs Actual Behavior
+
+**Expected**:
+\`\`\`
+[Exact expected output/behavior]
+\`\`\`
+
+**Actual**:
+\`\`\`
+[Exact actual output/behavior]
+\`\`\`
+
+## Impact Assessment
+
+### Blocked Features/Benchmarks
+
+- ❌ **BENCH-XXX**: [Benchmark name] - Cannot run due to this bug
+- ❌ **Chapter XX**: [Feature] - Documentation incomplete
+- ⚠️ **[Other impact]**: Describe
+
+### Workaround (if any)
+
+\`\`\`ruchy
+// If workaround exists, provide complete code
+fun workaround() {
+    // Alternative approach
+}
+\`\`\`
+
+## Environment
+
+- **Ruchy Version**: v[X.Y.Z] (from `ruchy --version`)
+- **Platform**: [OS] [architecture]
+- **Date**: [ISO-8601]
+- **Hardware**: [CPU, RAM if relevant]
+- **ruchydbg Version**: v[X.Y.Z]
+
+## Implementation Guidance (if applicable)
+
+**Suggested fix location**: `[file]:[line]`
+
+**Code example** (if you know the fix):
+\`\`\`rust
+// Suggested implementation
+pub fn fix_bug() {
+    // ...
+}
+\`\`\`
+
+## Related Issues
+
+- Related to #XXX
+- Blocks #YYY
+- Duplicate of #ZZZ
+
+## Test Files Created
+
+- `test/issue-XXX-description.ruchy` - Minimal reproducible case
+- `test/test-data/sample-XXX.txt` - Test data (if needed)
+```
+
+### Quality Standards for Bug Reports (MANDATORY)
+
+All bug reports MUST meet these standards:
+
+1. ✅ **Single-command reproducible**: `ruchy run test/issue-XXX.ruchy` MUST demonstrate bug
+2. ✅ **Minimal test case**: Remove ALL unnecessary code, keep only what's needed
+3. ✅ **ruchydbg workflow**: Provide 3 testable hypotheses with GDB commands
+4. ✅ **ruchydbg output**: Include actual debugging session output
+5. ✅ **Impact documented**: List specific blocked features/benchmarks
+6. ✅ **Version pinned**: Exact Ruchy version, not "latest"
+7. ✅ **Scientific reproducibility**: Anyone should reproduce with exact steps
+
+### Examples of HIGH QUALITY Bug Reports
+
+See previous exemplary reports:
+- **Issue #119**: Global mutable state (v3.177.0 verification)
+  - https://github.com/paiml/ruchy/issues/119
+  - Includes: Minimal test, debug workflow, hypotheses, impact, workaround
+
+- **Issue #116**: File object methods (v3.177.0 verification)
+  - https://github.com/paiml/ruchy/issues/116
+  - Includes: Implementation guidance, debug workflow, API specification
+
+### NEVER Do This (Anti-Patterns)
+
+❌ **DO NOT**:
+- File bugs only in local docs without GitHub issue
+- Report bugs without reproducible test case
+- Skip ruchydbg debugging workflow
+- Omit ruchydbg output
+- Use vague descriptions like "doesn't work"
+- Forget to document impact on book/benchmarks
+- Skip version information
+- Create issues without minimal test case
+
+✅ **ALWAYS DO**:
+- Create GitHub issue IMMEDIATELY
+- Include complete reproducible test case
+- Provide ruchydbg debugging workflow with 3 hypotheses
+- Include actual ruchydbg/GDB output
+- Document impact with specific examples
+- Pin exact Ruchy version
+- Make it single-command reproducible
 
 ## Testing Commands
 
@@ -943,10 +1159,100 @@ make build
 ### Automation Success Metrics
 
 - 🎯 **One Command**: `make sync-version` handles everything
-- ⏱️ **Time**: Complete update in <2 minutes  
+- ⏱️ **Time**: Complete update in <2 minutes
 - 🔒 **Reliability**: Zero manual steps required
 - ✅ **Verification**: Automated testing of all changes
 - 📊 **Reporting**: Auto-generated status reports
+
+## CRATES.IO RELEASE POLICY (MANDATORY)
+
+### Friday-Only Releases
+
+**RULE**: Ruchy crates.io releases happen **FRIDAY ONLY** (weekly cadence)
+
+### Tag and Release Protocol
+
+#### 1. Tag Format
+- **Format**: `book-vX.Y.Z` (aligns with ruchy crates.io version)
+- **Example**: `book-v3.194.0`
+- **Namespace**: `book-` prefix distinguishes book releases from compiler releases
+
+#### 2. Tag Creation (Friday Only)
+```bash
+# Get current ruchy crates.io version
+RUCHY_VERSION=$(cd ../ruchy && cargo metadata --format-version 1 | jq -r '.packages[] | select(.name == "ruchy") | .version')
+
+# Create annotated tag
+git tag -a "book-v${RUCHY_VERSION}" -m "book-v${RUCHY_VERSION} - [Brief milestone description]
+
+Aligns with ruchy v${RUCHY_VERSION} crates.io release
+
+[Detailed release notes]
+
+Release Policy: Book releases align with ruchy crates.io releases (Fridays only)"
+
+# Push tag to GitHub
+git push origin "book-v${RUCHY_VERSION}"
+```
+
+#### 3. Release Schedule
+- **Day**: Friday only
+- **Frequency**: Weekly (if changes warrant release)
+- **Alignment**: Synchronized with ruchy crates.io version
+- **Time**: After ruchy crates.io release is published
+
+#### 4. What Triggers a Release
+- ✅ Major bug fixes (e.g., Issue #132)
+- ✅ New chapter completion
+- ✅ Significant documentation improvements
+- ✅ Benchmark updates
+- ✅ Test coverage improvements
+- ❌ Minor typo fixes (batched until next Friday)
+- ❌ Work-in-progress changes
+
+#### 5. Pre-Release Checklist (BLOCKING)
+```bash
+# GATE 1: All tests passing
+deno task extract-examples  # Must show >90% pass rate
+
+# GATE 2: Version consistency
+make verify-version
+
+# GATE 3: Book builds successfully
+make build
+
+# GATE 4: Pre-commit hooks pass
+git commit --dry-run  # Verify hooks would pass
+
+# GATE 5: Integration doc updated
+git diff INTEGRATION.md  # Must reflect latest status
+```
+
+#### 6. Emergency Hotfix Exception
+**Only exception to Friday-only rule**: Critical bugs blocking production use
+- Requires explicit approval
+- Must document reason in tag message
+- Example: Transpiler generating unsafe code
+
+### Tag History and Version Tracking
+```bash
+# View all book releases
+git tag -l "book-v*"
+
+# View release details
+git tag -l -n20 "book-v3.194.0"
+
+# Compare releases
+git diff book-v3.193.0..book-v3.194.0
+```
+
+### Automation Notes
+- Tags trigger GitHub release creation (if configured)
+- Book version updates happen via `make sync-version`
+- Release notes generated from commit history
+- Status reports auto-updated in INTEGRATION.md
+
+**REMEMBER**: Tags are permanent. Never force-push or delete pushed tags unless absolutely necessary.
 
 ## Remember
 
