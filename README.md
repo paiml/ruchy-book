@@ -294,10 +294,10 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-11-16 00:40 UTC
+**Last Updated**: 2025-11-16 09:41 UTC
 **Ruchy Version**: v1.84.0
 
-- 📊 **Book Examples**: 98/141 passing (70%)
+- 📊 **Book Examples**: 98/146 passing (67%)
 - 🎯 **One-liners**: 12/18 passing (66%)
 - ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
 - 🚀 **CI Status**: ✅ success
