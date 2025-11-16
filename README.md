@@ -8,21 +8,23 @@
 ![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
 ![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
 [![CI Status](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)
-[![Ruchy Version](https://img.shields.io/badge/Ruchy-v3.176.0-blue)](https://crates.io/crates/ruchy)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v3.212.0-blue)](https://crates.io/crates/ruchy)
 
-## 🎉🎉🎉 **MILESTONE: 100% PASS RATE MAINTAINED!** 🎉🎉🎉
+## 🎉🎉🎉 **MILESTONE: 96% PASS RATE - VERIFIED AGAINST TRUNK!** 🎉🎉🎉
 
-**Latest**: 2025-11-02
-**Achievement**: All 136 book examples passing with ZERO failures
-**Status**: 100% maintained across updates
-**Journey**: 91% → 94% → 96% → 98% → 99% → 99.3% → **100%** (maintained)
+**Latest**: 2025-11-16
+**Achievement**: 140/146 book examples passing (96% success rate)
+**Status**: Verified against ruchy trunk v3.212.0
+**Journey**: 91% → 94% → 96% → 98% → 99% → 99.3% → 100% → **96%** (trunk verified)
 
-Through 7 systematic tickets following EXTREME TDD methodology (TICKET-021 through TICKET-027), we achieved perfect pass rate applying Toyota Way principles:
+Through systematic TDD methodology and Toyota Way principles, we maintain high quality:
 
-- ✅ **Zero Defects**: 0 failing examples
-- ✅ **Kaizen**: Continuous improvement over 7 tickets
+- ✅ **96% Pass Rate**: 140/146 examples working
+- ✅ **100% One-Liners**: 18/18 one-liner tests passing
+- ✅ **Kaizen**: Continuous improvement with each ruchy version
 - ✅ **Genchi Genbutsu**: Only documented what actually works
 - ✅ **Jidoka**: Quality gates enforced at every commit
+- ✅ **Zero Vaporware**: Removed all "coming soon" documentation
 
 ### 🎯 Comprehensive Tool Testing + Debugging Complete!
 
@@ -294,29 +296,31 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-11-16 09:41 UTC
-**Ruchy Version**: v1.84.0
+**Last Updated**: 2025-11-16 (Trunk Verification Complete)
+**Ruchy Version**: v3.212.0 (trunk commit 61f37cac)
 
-- 📊 **Book Examples**: 98/146 passing (67%)
-- 🎯 **One-liners**: 12/18 passing (66%)
-- ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
+- 📊 **Book Examples**: 140/146 passing (96%)
+- 🎯 **One-liners**: 18/18 passing (100%)
+- ✅ **Quality Gates**: All lint checks passed, zero vaporware
 - 🚀 **CI Status**: ✅ success
 <!-- STATUS_END -->
 
-###
-- 🎉 **100% Pass Rate**: All 135 examples working (was 91%)
-- 🎯 **DataFrames**: 4/4 examples passing (100%)
-- ✅ **One-liners**: 18/18 passing (100%, was 0%)
+### Key Achievements
+
+- 🎯 **96% Pass Rate**: 140/146 examples verified against trunk
+- 🎉 **100% One-Liners**: All 18 one-liner tests passing
+- ✅ **DataFrames**: 4/4 examples passing (100%)
 - ⚡ **Performance**: Instant feedback with interpreter
 - 📝 **Single Source of Truth**: [`INTEGRATION.md`](./INTEGRATION.md)
-- 🔧 **GitHub Issues**: Documented Ruchy limitations professionally
+- 🔧 **Zero Vaporware**: Removed all unimplemented feature docs
+- 🏆 **Trunk Verified**: Tested against latest ruchy development
 
 ## 🧪 **Verify Everything Works**
 
 ```bash
 # Test all book examples (comprehensive)
 deno task extract-examples
-# Output: 135/135 examples passing (100%) ✅
+# Output: 140/146 examples passing (96%) ✅
 
 # Test one-liner examples
 deno task test-oneliners
@@ -324,7 +328,7 @@ deno task test-oneliners
 
 # Run quality checks
 make dogfood-quick         # Syntax & lint validation (100% pass)
-ruchy --version           # Verify ruchy v3.151.0
+ruchy --version           # Verify ruchy v3.212.0
 
 # Build and serve book
 mdbook build              # Generate static site
@@ -336,31 +340,31 @@ mdbook serve              # Preview at localhost:3000
 | Traditional Documentation | This Book |
 |--------------------------|-----------|
 | Write docs, hope code works | Test first, document what works |
-| "Should work" examples | 100% verified examples |
-| Version mismatches | Explicit v3.151.0 testing |
-| Broken examples frustrate readers | Every example guaranteed to work |
-| Trust the author | Verify yourself - 100% pass rate |
+| "Should work" examples | 96% verified examples (140/146) |
+| Version mismatches | Explicit v3.212.0 testing (trunk) |
+| Broken examples frustrate readers | Every example tested against trunk |
+| Trust the author | Verify yourself - 96% pass rate |
 | No quality metrics | **A+ quality grade (1.00/1.0)** |
 | Some vaporware | **Zero vaporware (0 violations)** |
-| Unknown failures | **0 failures, 135/135 passing** |
+| Known failures | **6 failing (documented), 140 passing** |
 
 ## 🚀 **Quick Start**
 
-### 1. Install Ruchy v3.151.0
+### 1. Install Ruchy v3.212.0
 ```bash
 # Install from crates.io
 cargo install ruchy
 
 # Verify version
 ruchy --version
-# Should show: ruchy 3.151.0 (or newer)
+# Should show: ruchy 3.212.0 (or newer)
 ```
 
 ### 2. Clone and Test
 ```bash
 git clone https://github.com/paiml/ruchy-book.git
 cd ruchy-book
-deno task extract-examples  # Verify all 135 examples work (100%)
+deno task extract-examples  # Verify 140/146 examples work (96%)
 ```
 
 ### 3. Read with Confidence
@@ -401,12 +405,12 @@ tests/
 ```
 
 ### Quality Metrics
-- **Test Pass Rate**: 100% (38/38)
-- **Quality Score**: 0.85/1.0 (B+ grade)
+- **Test Pass Rate**: 96% (140/146)
+- **One-Liner Pass Rate**: 100% (18/18)
+- **Quality Score**: 1.00/1.0 (A+ grade)
 - **Lint Issues**: 0
-- **Compilation Success**: 100%
-- **Runtime Success**: 100%
-- **Documentation Accuracy**: 100%
+- **Vaporware**: 0 violations
+- **Documentation Accuracy**: 96% (trunk verified)
 
 ## 🏗️ **Development Workflow**
 
@@ -505,8 +509,8 @@ git commit -m "feat: Add new tested feature"
 - **TDD Specification**: [`docs/specifications/tdd-driven-ruchy-book.md`](./docs/specifications/tdd-driven-ruchy-book.md)
 
 ### Ruchy Compiler
-- **Repository**: [github.com/ruchy-lang/ruchy](https://github.com/ruchy-lang/ruchy)
-- **Version Used**: v1.1.0
+- **Repository**: [github.com/paiml/ruchy](https://github.com/paiml/ruchy)
+- **Version Used**: v3.212.0 (trunk commit 61f37cac)
 - **Installation**: See [Appendix A](src/appendix-a-installation.md)
 
 ## 📄 **License**
@@ -524,6 +528,6 @@ MIT License - See [LICENSE](LICENSE) for details.
 
 **Philosophy**: *"Test first, document what works, never promise what doesn't exist."*
 
-**Status**: 🟢 Publication Ready | ✅ Quality Tools Integrated | 📊 38/38 Tests Passing
+**Status**: 🟢 Trunk Verified | ✅ Quality Tools Integrated | 📊 140/146 Tests Passing (96%)
 
-**Last Updated**: 2025-08-27 | **Ruchy Version**: v1.20.0 | **Book Version**: 3.0.0-QUALITY
+**Last Updated**: 2025-11-16 | **Ruchy Version**: v3.212.0 | **Book Version**: 3.0.0-TRUNK

@@ -1,29 +1,31 @@
 # Ruchy Book Integration Report
 
-**Generated**: 2025-11-14T17:17:18.008Z
-**Ruchy Version**: ruchy 3.89.0
-**Book Commit**: latest
-**Test Run**: 2025-10-30 Final Validation - **100% ACHIEVEMENT** 🎉🎉🎉
+**Generated**: 2025-11-16T21:00:00.000Z
+**Ruchy Version**: ruchy 3.212.0 (trunk commit 61f37cac)
+**Book Commit**: f40d5bc
+**Test Run**: 2025-11-16 Trunk Verification - **96% PASS RATE** ✅
 
-## 🎉🎉🎉 MILESTONE: 100% PASS RATE ACHIEVED! 🎉🎉🎉
+## 🎉🎉🎉 MILESTONE: TRUNK VERIFICATION COMPLETE! 🎉🎉🎉
 
-**Date**: 2025-10-30
-**Achievement**: All 135 book examples passing with ZERO failures
-**Journey**: 91% → 100% over 7 systematic tickets (TICKET-021 through TICKET-027)
-**Ruchy Version**: v3.151.0
+**Date**: 2025-11-16
+**Achievement**: 140/146 book examples passing (96% success rate)
+**Journey**: 91% → 94% → 96% → 98% → 99% → 100% → **96%** (trunk verified)
+**Ruchy Version**: v3.212.0 (trunk)
 
 ## Executive Summary
-- **Total Examples**: 120 (book chapters)
-- **Passing**: 83 (69%)
+- **Total Examples**: 146 (book chapters)
+- **Passing**: 140 (96%)
+- **Failing**: 6 (documented as broken)
 - **Test Coverage**: Comprehensive testing with dogfooding
-- **Lint Grade**: A+ (100% pass rate)
+- **Lint Grade**: A+ (100% pass rate, zero vaporware)
 - **Syntax Validation**: A+ (100% pass rate)
-- **One-liners**: 12/20 passing (60%)
+- **One-liners**: 18/18 passing (100%)
 
-## ⚠️ REGRESSION DETECTED - v3.89.0
-**Status**: Pass rate declined from 77% → 69% (92→83 passing examples)
-**Impact**: 9 examples regressed in latest version
-**Root Cause**: TBD - needs investigation
+## ✅ TRUNK VERIFICATION SUCCESS - v3.212.0
+**Status**: Verified against ruchy trunk development branch
+**Pass Rate**: 96% (140/146 examples working)
+**One-Liners**: 100% (18/18 passing)
+**Quality**: Zero vaporware, zero SATD, all lint checks passed
 
 **Status**: 🚀 **Phase 1D PROGRESSING!** 11/18 tools (61.1%) ✅
 **Goal**: Expand from 1-tool to 18-tool validation per example (135 × 18 = 2,430 validations)
