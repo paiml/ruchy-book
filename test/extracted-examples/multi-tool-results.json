@@ -1,0 +1,118 @@
+{
+  "example": "hello_world",
+  "file": "/tmp/test_example.ruchy",
+  "line": 1,
+  "tools": {
+    "run": {
+      "passed": true,
+      "time_ms": 5,
+      "output": "Hello, World!\n",
+      "error": ""
+    },
+    "compile": {
+      "passed": true,
+      "time_ms": 145,
+      "output": "→ Compiling /tmp/test_example.ruchy...\n✓ Successfully compiled to: a.out\nℹ Binary size: 3911432 bytes\n",
+      "error": ""
+    },
+    "wasm": {
+      "passed": true,
+      "time_ms": 6,
+      "output": "✓ Successfully compiled to /tmp/test_example.wasm\n",
+      "error": ""
+    },
+    "check": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "✓ Syntax is valid\n",
+      "error": ""
+    },
+    "test": {
+      "passed": false,
+      "time_ms": 4,
+      "output": "🧪 Running 1 .ruchy test files...\n\nF\n\n📊 Test Results:\n   Total: 1\n   Passed: 0\n   Failed: 1\n\n❌ Failed Tests:\n   /tmp/test_example.ruchy - No test functions found in /tmp/test_example.ruchy\n   Duration: 0.00s\nError: Test failures detected: 1 tests failed\n",
+      "error": ""
+    },
+    "fmt": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "✓ /tmp/test_example.ruchy is properly formatted\n",
+      "error": ""
+    },
+    "lint": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "✓ No issues found in /tmp/test_example.ruchy\n",
+      "error": ""
+    },
+    "provability": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "=== Provability Analysis ===\nFile: /tmp/test_example.ruchy\nProvability Score: 80.0/100\n\n",
+      "error": ""
+    },
+    "runtime": {
+      "passed": true,
+      "time_ms": 3,
+      "output": "=== Performance Analysis ===\nFile: /tmp/test_example.ruchy\n\n",
+      "error": ""
+    },
+    "score": {
+      "passed": true,
+      "time_ms": 3,
+      "output": "=== Quality Score ===\nFile: /tmp/test_example.ruchy\nScore: 1.05/1.0\nAnalysis Depth: standard\n",
+      "error": ""
+    },
+    "quality-gate": {
+      "passed": true,
+      "time_ms": 3,
+      "output": "",
+      "error": ""
+    },
+    "optimize": {
+      "passed": true,
+      "time_ms": 3,
+      "output": "=== Optimization Analysis ===\nFile: /tmp/test_example.ruchy\nHardware Profile: detect\nAnalysis Depth: standard\nThreshold: 5.00%\n\n=== Recommendations ===\n• Consider loop unrolling for tight loops\n• Use const generics where possible\n• Profile-guided optimization recommended\n",
+      "error": ""
+    },
+    "prove": {
+      "passed": true,
+      "time_ms": 3,
+      "output": "✓ Checking proofs in /tmp/test_example.ruchy...\n✅ No proofs found (file valid)\n",
+      "error": ""
+    },
+    "doc": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "✓ Generated documentation: ./docs/test_example.html\n",
+      "error": ""
+    },
+    "bench": {
+      "passed": true,
+      "time_ms": 11,
+      "output": "=== Benchmark Results ===\nFile: /tmp/test_example.ruchy\nWarmup: 10 iterations\nBenchmark: 100 iterations\n\nStatistics:\n├─ Min:     0.045 ms\n├─ Max:     0.125 ms\n├─ Average: 0.050 ms\n└─ StdDev:  0.008 ms\n\n",
+      "error": ""
+    },
+    "ast": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "Expr {\n    kind: Function {\n        name: \"main\",\n        type_params: [],\n        params: [],\n        return_type: None,\n        body: Expr {\n            kind: Block(\n                [\n                    Expr {\n                        kind: Call {\n                            func: Expr {\n                                kind: Identifier(\n                                    \"println\",\n                                ),\n                                span: Span {\n                                ",
+      "error": ""
+    },
+    "coverage": {
+      "passed": true,
+      "time_ms": 4,
+      "output": "<function>\n\n📊 Coverage Report\n==================\n\n📄 /tmp/test_example.ruchy\n   Lines: 3/3 (100.0%)\n   Functions: 1/1 (100.0%)\n   Overall: 100.0%\n\n📈 Summary\n----------\nTotal Lines: 3/3 (100.0%)\nTotal Functions: 1/1 (100.0%)\nOverall Coverage: 100.0%\n\n\n✅ Coverage meets threshold of 80.0%\n",
+      "error": ""
+    },
+    "mcp": {
+      "passed": false,
+      "time_ms": 3,
+      "output": "error: unexpected argument '--check' found\n\nUsage: ruchy mcp [OPTIONS]\n\nFor more information, try '--help'.\n",
+      "error": ""
+    }
+  },
+  "overall_pass": false,
+  "tools_passed": 16,
+  "tools_failed": 2
+}
