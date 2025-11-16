@@ -1,44 +1,28 @@
 # 📊 Ruchy Documentation Status Report
-*Generated: 10/30/2025, 12:16:55 PM*
-*Ruchy Version: ruchy 3.149.0*
+*Generated: 11/14/2025, 6:25:08 PM*
+*Ruchy Version: ruchy 3.89.0*
 
 ## 🎯 Executive Summary
 
-**Overall Status**: 🟢 90% Implementation Complete
-`███████████████████████████░░░` 90%
+**Overall Status**: 🟠 69% Implementation Complete
+`█████████████████████░░░░░░░░░` 69%
 
 | Metric | Value |
 |--------|-------|
 | 📚 Chapters Processed | 16 |
-| 💻 Total Examples | 132 |
-| ✅ Working Examples | 119 |
-| ❌ Failing Examples | 13 |
-| 📈 Success Rate | 90% |
-| 🧮 One-Liner Tests | 0/20 passing |
+| 💻 Total Examples | 120 |
+| ✅ Working Examples | 83 |
+| ❌ Failing Examples | 37 |
+| 📈 Success Rate | 69% |
+| 🧮 One-Liner Tests | 12/20 passing |
 
 ## 📖 Chapter Status Breakdown
-
-### 🟢 Conclusion
-`███████████████` 100% (1/1)
-- ✅ 1 working
-
-### 🟢 Ch06 00 Data Structures Tdd
-`███████████████` 100% (17/17)
-- ✅ 17 working
-
-### 🟢 Ch14 00 Toolchain Mastery Tdd
-`███████████████` 100% (4/4)
-- ✅ 4 working
-
-### 🟢 Ch01 02 Hello World
-`███████████████` 100% (8/8)
-- ✅ 8 working
 
 ### 🟢 Ch21 00 Professional Tooling Tdd
 `███████████████` 100% (1/1)
 - ✅ 1 working
 
-### 🟢 Ch02 00 Variables Types Tdd
+### 🟢 Ch06 00 Data Structures Tdd
 `███████████████` 100% (8/8)
 - ✅ 8 working
 
@@ -47,86 +31,104 @@
 - ✅ 6 working
 
 ### 🟢 Ch10 00 Input Output Tdd
-`███████████████` 100% (15/15)
-- ✅ 15 working
+`███████████████` 100% (10/10)
+- ✅ 10 working
 
-### 🟢 Ch18 00 Dataframes Data Processing
-`███████████████` 100% (4/4)
-- ✅ 4 working
-
-### 🟢 Ch19 00 Structs Oop
+### 🟢 Ch01 02 Hello World
 `███████████████` 100% (8/8)
 - ✅ 8 working
 
-### 🟢 Ch03 00 Functions Tdd
-`██████████████░` 91% (10/11)
-- ✅ 10 working
-- ❌ 1 broken
+### 🟢 Ch14 00 Toolchain Mastery Tdd
+`███████████████` 100% (4/4)
+- ✅ 4 working
 
-### 🟢 Ch04 00 Practical Patterns Tdd
-`██████████████░` 90% (9/10)
-- ✅ 9 working
-- ❌ 1 broken
+### 🟡 Ch05 00 Control Flow Tdd
+`████████████░░░` 82% (14/17)
+- ✅ 14 working
+- ❌ 3 broken
 
 ### 🟡 Ch16 00 Testing Quality Assurance
-`█████████████░░` 86% (6/7)
+`███████████░░░░` 75% (6/8)
 - ✅ 6 working
-- ❌ 1 broken
-
-### 🟡 Ch17 00 Error Handling Robustness
-`████████████░░░` 82% (9/11)
-- ✅ 9 working
 - ❌ 2 broken
 
-### 🟡 Ch15 00 Binary Compilation Deployment
-`███████████░░░░` 75% (3/4)
-- ✅ 3 working
+### 🟠 Ch03 00 Functions Tdd
+`███████████░░░░` 73% (8/11)
+- ✅ 8 working
+- ⚠️ 2 not implemented
 - ❌ 1 broken
 
-### 🟠 Ch05 00 Control Flow Tdd
-`█████████░░░░░░` 59% (10/17)
-- ✅ 10 working
-- ❌ 7 broken
+### 🟠 Ch02 00 Variables Types Tdd
+`█████████░░░░░░` 63% (5/8)
+- ✅ 5 working
+- ❌ 3 broken
+
+### 🟠 Ch04 00 Practical Patterns Tdd
+`█████████░░░░░░` 60% (6/10)
+- ✅ 6 working
+- ❌ 4 broken
+
+### 🟠 Ch15 00 Binary Compilation Deployment
+`████████░░░░░░░` 50% (2/4)
+- ✅ 2 working
+- ❌ 2 broken
+
+### 🔴 Ch17 00 Error Handling Robustness
+`███████░░░░░░░░` 45% (5/11)
+- ✅ 5 working
+- ❌ 6 broken
+
+### 🔴 Ch19 00 Structs Oop
+`░░░░░░░░░░░░░░░` 0% (0/9)
+- ❌ 9 broken
+
+### 🔴 Conclusion
+`░░░░░░░░░░░░░░░` 0% (0/1)
+- ❌ 1 broken
+
+### 🔴 Ch18 00 Dataframes Data Processing
+`░░░░░░░░░░░░░░░` 0% (0/4)
+- ❌ 4 broken
 
 ## 📊 Status Distribution
 
 ```ascii
-Status Distribution (132 total examples):
+Status Distribution (120 total examples):
 
-✅ Working        ███████████████████████░░ 119
-❌ Broken         ██░░░░░░░░░░░░░░░░░░░░░░░ 13
-⚠️  Not Impl      ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
+✅ Working        █████████████████░░░░░░░░ 83
+❌ Broken         ███████░░░░░░░░░░░░░░░░░░ 35
+⚠️  Not Impl      ░░░░░░░░░░░░░░░░░░░░░░░░░ 2
 📋 Planned       ░░░░░░░░░░░░░░░░░░░░░░░░░ 0
 ```
 
 ## 🧮 One-Liner Test Status
 
-**One-Liner Success Rate**: 🔴 0%
-`░░░░░░░░░░░░░░░░░░░░` 0/20 tests passing
+**One-Liner Success Rate**: 🟠 60%
+`████████████░░░░░░░░` 12/20 tests passing
 
 | Category | Status |
 |----------|--------|
-| ✅ Passing Tests | 0 |
-| ❌ Failing Tests | 20 |
+| ✅ Passing Tests | 12 |
+| ❌ Failing Tests | 8 |
 | 📋 Planned Tests | 12 |
-| 🎯 Total Coverage | 0/32 |
+| 🎯 Total Coverage | 12/32 |
 
 ## 🏆 Quality Metrics
 
 **Documentation Coverage**: 🔴 16/35 chapters
 `█████████░░░░░░░░░░░` 46%
 
-**Example Testing**: 🟢 132 examples tested
+**Example Testing**: 🟢 120 examples tested
 `████████████████████` 100%
 
-**Implementation Status**: 🟢 90% working
-`██████████████████░░` 90%
+**Implementation Status**: 🟠 69% working
+`██████████████░░░░░░` 69%
 
 ## 🔧 Recommendations
 
-- 🎉 **Excellent**: Success rate 90% - documentation is production ready!
-- 🔨 Focus on fixing 13 broken examples before implementing new features
+- ⚠️ **Moderate**: Success rate 69% - focus on fixing broken examples
+- 🔨 Focus on fixing 35 broken examples before implementing new features
 
 ---
 *Report generated by Documentation Status Testing system*
-*Last test run: 2025-10-30T11:16:12.345Z*
+*Last test run: 2025-11-14T17:17:18.008Z*
