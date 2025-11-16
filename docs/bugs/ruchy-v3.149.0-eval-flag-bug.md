@@ -1,14 +1,14 @@
 # Bug Report: ruchy -e Flag Produces No Output
 
 **Filed**: 2025-10-30
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 **Platform**: Linux 6.8.0-85-generic
 **Severity**: High (breaks one-liner usage)
 **Status**: Documented (Workaround Available)
 
 ## Description
 
-The `ruchy -e` (eval) flag accepts expressions but produces no output, breaking all one-liner test infrastructure. This caused a complete regression from 100% (v3.193.0) to 0% (v3.193.0) test pass rate.
+The `ruchy -e` (eval) flag accepts expressions but produces no output, breaking all one-liner test infrastructure. This caused a complete regression from 100% (v3.213.0) to 0% (v3.213.0) test pass rate.
 
 ## Reproduction Steps
 
@@ -40,13 +40,13 @@ This suggests the expression is evaluated successfully, but the result is not be
 
 ## Expected vs Actual
 
-**Expected Behavior (v3.193.0)**:
+**Expected Behavior (v3.213.0)**:
 ```bash
 $ ruchy -e "2 + 2"
 4
 ```
 
-**Actual Behavior (v3.193.0)**:
+**Actual Behavior (v3.213.0)**:
 ```bash
 $ ruchy -e "2 + 2"
 (no output)

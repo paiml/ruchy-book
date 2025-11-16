@@ -192,7 +192,7 @@ Based on prototype and current single-tool results:
 ### Required
 - [x] Prototype script: test/tools/test-all-tools.ts (COMPLETED)
 - [x] Extract examples script: scripts/extract-examples.ts (EXISTS)
-- [x] Ruchy v3.212.0 with all tools (INSTALLED)
+- [x] Ruchy v3.213.0 with all tools (INSTALLED)
 
 ### Optional
 - [ ] Parallel execution framework (for performance)

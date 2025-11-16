@@ -12,7 +12,7 @@ The `ruchy bench` command has a complete CLI interface with help text but return
 
 ## Reproduction Steps
 
-**100% reproducible** on any system with ruchy v3.193.0:
+**100% reproducible** on any system with ruchy v3.213.0:
 
 ```bash
 # Step 1: Verify ruchy version
@@ -231,7 +231,7 @@ Command not yet implemented
 
 ## Reproducibility Checklist
 
-- ✅ Exact version specified (v3.193.0)
+- ✅ Exact version specified (v3.213.0)
 - ✅ Commands provided verbatim
 - ✅ Expected vs actual behavior documented
 - ✅ Evidence files referenced

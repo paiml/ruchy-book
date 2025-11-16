@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-11-03*
-*Ruchy version: ruchy 3.193.0*
+*Ruchy version: ruchy 3.213.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (8/8 examples passing)
-**Ruchy Version**: v3.182.0
+**Ruchy Version**: v3.213.0
 **Testing**: All examples verified with `make test-ch02` and 7-layer validation
 
 ## The Problem
@@ -223,4 +223,4 @@ In Chapter 3, we'll explore functions - how to create reusable blocks of code wi
 
 ---
 
-*Every example in this chapter has been tested and verified to work with Ruchy v3.182.0*
+*Every example in this chapter has been tested and verified to work with Ruchy v3.213.0*

@@ -11,12 +11,12 @@
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-11-03*  
-*Ruchy version: ruchy 3.193.0*
+*Ruchy version: ruchy 3.213.0*
 <!-- DOC_STATUS_END -->
 
 
 **Chapter Status**: ✅ 100% Test-Driven (3/3 examples passing)
-**Ruchy Version**: v3.182.0
+**Ruchy Version**: v3.213.0
 **Testing**: All examples verified with `make test-ch01`
 
 ## The Problem

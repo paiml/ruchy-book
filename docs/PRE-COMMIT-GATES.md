@@ -1,7 +1,7 @@
 # Pre-Commit Quality Gates Documentation
 
 **Last Updated**: 2025-11-02
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 **Methodology**: Extreme TDD + Toyota Way (Jidoka)
 
 ## Overview
@@ -83,14 +83,14 @@ The Ruchy Book enforces **10 comprehensive quality gates** on every commit to pr
 2. Scans changed files for version references
 3. Flags mismatches (allows historical context versions)
 
-**Allowed Historical Versions**: v3.193.0, v3.193.0, v3.193.0
+**Allowed Historical Versions**: v3.213.0, v3.213.0, v3.213.0
 **Blocking**: YES - Version drift causes confusion
 
 **Example Detection**:
 ```
 Found version inconsistencies (should be 3.175.0):
 File: src/ch10-00-input-output-tdd.md
-38:*Ruchy version: v3.193.0*
+38:*Ruchy version: v3.213.0*
 ```
 
 ### GATE 10: Enhanced Vaporware & Quality Regression 🆕
@@ -188,8 +188,8 @@ git commit --no-verify
 **Cause**: Chapter references old ruchy version
 **Fix**:
 1. Check current version: `ruchy --version`
-2. Update all references: `v3.193.0` → `v3.193.0`
-3. Keep historical versions for context (v3.193.0, v3.193.0, v3.193.0)
+2. Update all references: `v3.213.0` → `v3.213.0`
+3. Keep historical versions for context (v3.213.0, v3.213.0, v3.213.0)
 
 ### "Found 'fn' in Ruchy code"
 **Cause**: Using Rust syntax `fn` instead of Ruchy syntax `fun`

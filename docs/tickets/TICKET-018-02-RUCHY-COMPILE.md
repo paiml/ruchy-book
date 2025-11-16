@@ -8,7 +8,7 @@
 **Phase**: Phase 1B (Compilation & Testing) - 1/3
 **Predecessor**: TICKET-018-10 (ruchy score - COMPLETE, Phase 1A)
 **Estimated Effort**: 60 minutes
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 
 ## Executive Summary
 
@@ -176,7 +176,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-compile.ts
    - **Pass Rate**: X% (document actual)
    - **Failures**: Document any transpilation issues
    - **Status**: Document overall success/issues
-   - **Tool Version**: ruchy v3.193.0
+   - **Tool Version**: ruchy v3.213.0
    - **Phase 1B**: 1/3 complete
    ```
 
@@ -273,7 +273,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-compile.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.193.0 installed
+- ✅ Ruchy v3.213.0 installed
 - ✅ Phase 1A complete (3/3 tools)
 - ✅ Test infrastructure pattern proven
 - ✅ INTEGRATION.md established

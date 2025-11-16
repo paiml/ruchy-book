@@ -8,7 +8,7 @@
 **Phase**: Phase 1B (Compilation & Testing) - 3/3
 **Predecessor**: TICKET-018-05 (ruchy test - COMPLETE, 100% accuracy)
 **Estimated Effort**: 40 minutes (pattern acceleration)
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 
 ## Executive Summary
 
@@ -206,7 +206,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-coverage.ts
    - **Tool Behavior**: Document actual behavior
    - **Coverage Status**: Document coverage levels
    - **Status**: Document overall success
-   - **Tool Version**: ruchy v3.193.0
+   - **Tool Version**: ruchy v3.213.0
    - **Phase 1B**: 3/3 COMPLETE ✅
    ```
 
@@ -303,7 +303,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-coverage.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.193.0 installed
+- ✅ Ruchy v3.213.0 installed
 - ✅ Phase 1A complete (3/3 tools)
 - ✅ TICKET-018-02 complete (compile, 96.9%)
 - ✅ TICKET-018-05 complete (test, 100% accuracy)

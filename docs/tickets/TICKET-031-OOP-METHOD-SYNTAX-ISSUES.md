@@ -9,7 +9,7 @@
 
 ## Summary
 
-Comprehensive 18-tool testing (TICKET-030) revealed critical OOP syntax issues in ruchy v3.212.0:
+Comprehensive 18-tool testing (TICKET-030) revealed critical OOP syntax issues in ruchy v3.213.0:
 - **Issue 1**: Methods in struct body syntax (Style 1) causes syntax error
 - **Issue 2**: Impl blocks (Style 2) explicitly not supported
 - **Working**: Only class syntax (Style 3) actually works
@@ -149,7 +149,7 @@ From TICKET-030 comprehensive testing:
 ## Upstream Issue
 
 **Filed**: https://github.com/paiml/ruchy/issues/148
-**Title**: Multi-Tool Comprehensive Testing Results - OOP Method Syntax Issues (v3.212.0)
+**Title**: Multi-Tool Comprehensive Testing Results - OOP Method Syntax Issues (v3.213.0)
 **Labels**: bug, documentation
 
 **Includes**:

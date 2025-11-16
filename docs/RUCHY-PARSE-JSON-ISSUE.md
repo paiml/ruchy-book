@@ -1,15 +1,15 @@
 # Issue: parse_json() Returns Message Type Instead of Parsed Object
 
 **Date Reported**: 2025-11-03
-**Affected Version**: v3.193.0
+**Affected Version**: v3.213.0
 **Severity**: HIGH - Blocks BENCH-009 (JSON Parsing)
-**Status**: ✅ **RESOLVED in v3.193.0**
+**Status**: ✅ **RESOLVED in v3.213.0**
 
 ---
 
-## ✅ RESOLUTION (v3.193.0)
+## ✅ RESOLUTION (v3.213.0)
 
-**Fixed in**: Ruchy v3.193.0
+**Fixed in**: Ruchy v3.213.0
 **Date Fixed**: 2025-11-03
 
 The parse_json() function now correctly returns parsed JSON objects instead of Message types:
@@ -17,11 +17,11 @@ The parse_json() function now correctly returns parsed JSON objects instead of M
 ```ruchy
 let data = parse_json('{"name": "test", "value": 42}')
 println("Parsed data:", data)
-// v3.193.0 Output: {name: "test", value: 42}  ✅
+// v3.213.0 Output: {name: "test", value: 42}  ✅
 
 let name = data["name"]
 println("Name:", name)
-// v3.193.0 Output: test  ✅
+// v3.213.0 Output: test  ✅
 ```
 
 **Impact**: BENCH-009 (JSON parsing) is now UNBLOCKED and ready to run!
@@ -30,7 +30,7 @@ See `docs/RUCHY-V3.182.0-VERIFICATION.md` for comprehensive verification.
 
 ---
 
-## Original Issue Report (v3.193.0)
+## Original Issue Report (v3.213.0)
 
 ---
 
@@ -55,7 +55,7 @@ fun main() {
 }
 ```
 
-### Current Output (v3.193.0) ❌
+### Current Output (v3.213.0) ❌
 
 ```
 Parsing JSON: {"name": "test", "value": 42}
@@ -117,9 +117,9 @@ The benchmark CANNOT run until `parse_json()` returns actual parsed JSON objects
 
 ---
 
-## Previous Status (v3.193.0)
+## Previous Status (v3.213.0)
 
-The v3.193.0 benchmark status claimed:
+The v3.213.0 benchmark status claimed:
 
 > **BENCH-009 - JSON Parsing ✅ UNBLOCKED**
 > **Status**: ✅ Ready to run
@@ -188,9 +188,9 @@ gdb --args ruchy run /tmp/test-parse-json.ruchy
 
 ## Related Issues
 
-- **Issue #116**: File object methods (FIXED in v3.193.0) - Same Message type pattern
-- **Issue #117**: JSON API (claimed fixed in v3.193.0) - STILL BROKEN
-- **Issue #121**: Result unwrapping (fixed in v3.193.0) - May be related
+- **Issue #116**: File object methods (FIXED in v3.213.0) - Same Message type pattern
+- **Issue #117**: JSON API (claimed fixed in v3.213.0) - STILL BROKEN
+- **Issue #121**: Result unwrapping (fixed in v3.213.0) - May be related
 
 ---
 
@@ -210,13 +210,13 @@ gdb --args ruchy run /tmp/test-parse-json.ruchy
 
 ## Environment
 
-- **Ruchy Version**: v3.193.0
+- **Ruchy Version**: v3.213.0
 - **Platform**: Linux 6.8.0-85-generic x86_64
 - **Date**: 2025-11-03
 - **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores
 
 ---
 
-**Status**: ❌ BROKEN in v3.193.0
+**Status**: ❌ BROKEN in v3.213.0
 **Impact**: BENCH-009 blocked, cannot run
 **Action**: Requires Ruchy core team fix

@@ -19,7 +19,7 @@
 
 ## Root Cause
 
-These examples document DataFrame features that don't exist in v3.193.0:
+These examples document DataFrame features that don't exist in v3.213.0:
 - `DataFrame::from_csv()` - CSV loading not implemented
 - `df.filter()` - Filtering not implemented
 - `df.iter_rows()` - Row iteration not implemented

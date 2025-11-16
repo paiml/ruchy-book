@@ -1,7 +1,7 @@
 # What Our Benchmarking Proves - Comprehensive Summary
 
 **Date**: 2025-11-03
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 **Benchmarks Completed**: 9 (BENCH-002, 003, 004, 005, 007, 008, 009, 011, 012)
 **Languages Tested**: 10 execution modes
 **Total Test Executions**: ~90 (9 benchmarks × 10 languages)
@@ -85,7 +85,7 @@ Go:                3.34ms (19.26x) ← Slower than Ruchy
 
 ### 5. **Memory Efficiency Validated**
 
-**Proof**: All benchmarks include memory tracking via bashrs bench v3.193.0
+**Proof**: All benchmarks include memory tracking via bashrs bench v3.213.0
 
 **Methodology**:
 - Peak memory (KB) measured per execution
@@ -108,7 +108,7 @@ Go:                3.34ms (19.26x) ← Slower than Ruchy
 | BENCH-005 | Array Sum | Array iteration |
 | BENCH-007 | Fibonacci | Recursive algorithms |
 | BENCH-008 | Primes | CPU-bound computation |
-| BENCH-009 | JSON Parsing | I/O + parsing (v3.193.0 unblocked!) |
+| BENCH-009 | JSON Parsing | I/O + parsing (v3.213.0 unblocked!) |
 | BENCH-011 | Nested Loops | Raw computation |
 | BENCH-012 | Startup Time | Process overhead |
 
@@ -226,7 +226,7 @@ rustc -O optimized.rs
 ### 5. **Memory + CPU Both Tracked**
 
 **Scientific Rigor**:
-- ✅ bashrs bench v3.193.0 (production-grade benchmarking tool)
+- ✅ bashrs bench v3.213.0 (production-grade benchmarking tool)
 - ✅ 10 iterations per test (statistical significance)
 - ✅ Warmup runs (eliminate cold-start bias)
 - ✅ Memory tracking (peak + mean KB)
@@ -238,7 +238,7 @@ rustc -O optimized.rs
 
 ## 📈 **Geometric Mean Performance (Cross-Benchmark Average)**
 
-**From v3.193.0 comprehensive testing (7 benchmarks)**:
+**From v3.213.0 comprehensive testing (7 benchmarks)**:
 
 ```
 🥇 Julia:            24.79x faster  ⚡ JIT + LLVM dominance
@@ -269,7 +269,7 @@ rustc -O optimized.rs
 3. **Statistical Rigor** - 10 iterations, warmup runs, standard deviation
 4. **Memory Tracking** - Not just CPU time
 5. **Reproducible** - All benchmarks scripted with bashrs bench
-6. **Versioned** - Exact versions documented (Ruchy v3.193.0, rustc, etc.)
+6. **Versioned** - Exact versions documented (Ruchy v3.213.0, rustc, etc.)
 7. **Hardware Spec** - AMD Threadripper 7960X (professional-grade)
 
 **What this proves**: Results meet publication-quality scientific standards.
@@ -327,7 +327,7 @@ Ruchy delivers on its core promise. You CAN have both:
 
 ---
 
-## 📊 **Benchmark Status: v3.193.0**
+## 📊 **Benchmark Status: v3.213.0**
 
 **Completed**: 9/12 benchmarks (75% coverage)
 
@@ -339,13 +339,13 @@ Ruchy delivers on its core promise. You CAN have both:
 | BENCH-005 | ✅ Complete | 10/10 | Array sum |
 | BENCH-007 | ✅ Complete | 10/10 | Fibonacci |
 | BENCH-008 | ✅ Complete | 10/10 | Prime generation |
-| BENCH-009 | ✅ Complete | 10/10 | JSON parsing (v3.193.0 unblocked!) |
+| BENCH-009 | ✅ Complete | 10/10 | JSON parsing (v3.213.0 unblocked!) |
 | BENCH-011 | ✅ Complete | 10/10 | Nested loops (star benchmark!) |
 | BENCH-012 | ✅ Complete | 10/10 | Startup time |
 
 **Blocked**: BENCH-001 (not implemented), BENCH-010 (HTTP API needed)
 
-**Quality**: All benchmarks include CPU time + memory metrics via bashrs bench v3.193.0
+**Quality**: All benchmarks include CPU time + memory metrics via bashrs bench v3.213.0
 
 ---
 
@@ -364,7 +364,7 @@ Ruchy delivers on its core promise. You CAN have both:
 ---
 
 **Generated**: 2025-11-03
-**Ruchy Version**: v3.193.0
-**Benchmark Tool**: bashrs bench v3.193.0
+**Ruchy Version**: v3.213.0
+**Benchmark Tool**: bashrs bench v3.213.0
 **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM
 **Methodology**: Following "Are We Fast Yet?" (DLS 2016) best practices

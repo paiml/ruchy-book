@@ -1,17 +1,17 @@
-# Trunk v3.193.0 Verification Report
+# Trunk v3.213.0 Verification Report
 
 **Date**: 2025-11-04
-**Ruchy Version**: v3.193.0 (trunk commit 68eb77f8)
-**Previous Book Version**: v3.193.0
+**Ruchy Version**: v3.213.0 (trunk commit 68eb77f8)
+**Previous Book Version**: v3.213.0
 **Test Environment**: AMD Ryzen Threadripper 7960X, Linux 6.8.0-85-generic
 
 ---
 
 ## Executive Summary
 
-✅ **ALL BOOK EXAMPLES COMPATIBLE** - Trunk v3.193.0 maintains 99% pass rate with no regressions.
+✅ **ALL BOOK EXAMPLES COMPATIBLE** - Trunk v3.213.0 maintains 99% pass rate with no regressions.
 
-❌ **CRITICAL: TRANSPILER STILL BROKEN** - Global state bug NOT FIXED in v3.193.0.
+❌ **CRITICAL: TRANSPILER STILL BROKEN** - Global state bug NOT FIXED in v3.213.0.
 
 **Key Findings:**
 - ✅ PARSER-079 fix verified: Labeled loop tokens now parse correctly
@@ -64,9 +64,9 @@
 **Pass Rate Comparison:**
 | Version | Pass Rate | Working | Failing | Status |
 |---------|-----------|---------|---------|--------|
-| v3.193.0 | 99% | 139/140 | 1/140 | ✅ Baseline |
-| v3.193.0 | 99% | 139/140 | 1/140 | ✅ Same |
-| v3.193.0 | 99% | 139/140 | 1/140 | ✅ Same |
+| v3.213.0 | 99% | 139/140 | 1/140 | ✅ Baseline |
+| v3.213.0 | 99% | 139/140 | 1/140 | ✅ Same |
+| v3.213.0 | 99% | 139/140 | 1/140 | ✅ Same |
 
 **Conclusion**: PARSER-079 fix introduced **zero regressions**.
 
@@ -116,7 +116,7 @@ error[E0425]: cannot find value `value` in this scope
 - ❌ 2/10 execution modes unavailable (20% coverage lost)
 - ✅ 8/10 modes work (interpreter, bytecode, all reference languages)
 
-**When Will This Be Fixed:** Unknown - not addressed in v3.193.0 release
+**When Will This Be Fixed:** Unknown - not addressed in v3.213.0 release
 
 **Workaround:** Use `ruchy run` or `ruchy --vm-mode bytecode run` for all code with global mutable state
 
@@ -145,24 +145,24 @@ error[E0425]: cannot find value `value` in this scope
 
 ### Short Term (Current State)
 
-**Book Status:** ✅ PRODUCTION READY with v3.193.0 references
+**Book Status:** ✅ PRODUCTION READY with v3.213.0 references
 
-**Why not update to v3.193.0 yet:**
-1. **crates.io blocked**: v3.193.0 not published yet
+**Why not update to v3.213.0 yet:**
+1. **crates.io blocked**: v3.213.0 not published yet
 2. **Reader reproducibility**: Users need `cargo install ruchy --version X.Y.Z`
-3. **No breaking changes**: v3.193.0 is 100% backward compatible
-4. **Current references accurate**: v3.193.0 is what readers can install
+3. **No breaking changes**: v3.213.0 is 100% backward compatible
+4. **Current references accurate**: v3.213.0 is what readers can install
 
-**Recommendation:** Keep v3.193.0 references until v3.193.0 or later published to crates.io.
+**Recommendation:** Keep v3.213.0 references until v3.213.0 or later published to crates.io.
 
 ---
 
 ### Medium Term (Next Release)
 
-**When v3.193.0+ published to crates.io:**
+**When v3.213.0+ published to crates.io:**
 
 **Required updates:**
-1. Update all version numbers: v3.193.0 → v3.193.0+
+1. Update all version numbers: v3.213.0 → v3.213.0+
 2. Update timestamps: 2025-11-03 → [publication date]
 3. Add PARSER-079 to changelog (if reader-visible)
 4. Re-test full book examples (expected: same 99% pass rate)
@@ -211,7 +211,7 @@ error[E0425]: cannot find value `value` in this scope
 - OS: Linux 6.8.0-85-generic x86_64
 
 **Tool Versions:**
-- Ruchy: v3.193.0 (trunk)
+- Ruchy: v3.213.0 (trunk)
 - Deno: v1.x (test runner)
 - rustc: 1.83.0-nightly
 
@@ -240,7 +240,7 @@ error[E0425]: cannot find value `value` in this scope
 - ✅ Use `ruchy run` (interpreter mode)
 - ✅ Use `ruchy --vm-mode bytecode run`
 
-**When Fixed:** Unknown - NOT addressed in v3.193.0, no ETA available
+**When Fixed:** Unknown - NOT addressed in v3.213.0, no ETA available
 
 **Upstream Status:** Bug reported, awaiting fix
 
@@ -260,11 +260,11 @@ error[E0425]: cannot find value `value` in this scope
 
 ### Immediate Actions
 
-1. ✅ **Keep v3.193.0 references** in book until crates.io unblocked
+1. ✅ **Keep v3.213.0 references** in book until crates.io unblocked
 2. ✅ **Document PARSER-079 fix** for changelog when published
 3. ✅ **Continue testing trunk** to catch issues early
 
-### When v3.193.0+ Published
+### When v3.213.0+ Published
 
 1. 🔄 **Bulk update version numbers** with `make sync-version`
 2. 🔄 **Re-test all examples** (expected: same 99% pass rate)
@@ -297,7 +297,7 @@ error[E0425]: cannot find value `value` in this scope
 
 ## Conclusion
 
-**Trunk v3.193.0 is production-ready** and fully compatible with the Ruchy Book. The PARSER-079 fix improves parser robustness without breaking any existing functionality.
+**Trunk v3.213.0 is production-ready** and fully compatible with the Ruchy Book. The PARSER-079 fix improves parser robustness without breaking any existing functionality.
 
 **Book status:** ✅ VERIFIED COMPATIBLE
 

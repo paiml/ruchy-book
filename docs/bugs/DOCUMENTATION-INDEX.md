@@ -1,7 +1,7 @@
-# 📁 Ruchy v3.193.0 Bug Report Documentation Index
+# 📁 Ruchy v3.213.0 Bug Report Documentation Index
 
 **Last Updated**: August 23, 2025  
-**Ruchy Version**: v3.193.0 (commit: 6f47c6d)  
+**Ruchy Version**: v3.213.0 (commit: 6f47c6d)  
 **Analysis Tool**: Claude Code Analysis System
 
 ---
@@ -9,7 +9,7 @@
 ## 🚨 CRITICAL REPORTS
 
 ### Primary Bug Report
-**File**: `/home/noah/src/ruchy-book/docs/bugs/CRITICAL-v3.193.0-transpiler-bugs.md`
+**File**: `/home/noah/src/ruchy-book/docs/bugs/CRITICAL-v3.213.0-transpiler-bugs.md`
 - **Type**: Comprehensive transpiler bug analysis
 - **Findings**: 3 critical bugs blocking 96% of file-based programs
 - **Status**: Ready for Ruchy compiler team action
@@ -119,16 +119,16 @@
 ## 🔄 HISTORICAL TRACKING
 
 ### Version Compatibility Progression
-- **v3.193.0**: 44% (122/280) - Parse-based testing (INACCURATE)
-- **v3.193.0**: 45% (126/280) - Parse-based testing (INACCURATE)  
-- **v3.193.0**: 4% (10/280) - Compile-based testing (ACCURATE)
+- **v3.213.0**: 44% (122/280) - Parse-based testing (INACCURATE)
+- **v3.213.0**: 45% (126/280) - Parse-based testing (INACCURATE)  
+- **v3.213.0**: 4% (10/280) - Compile-based testing (ACCURATE)
 
 **Key Insight**: The dramatic drop from 45% to 4% reveals that previous testing was fundamentally flawed, not that the language regressed.
 
 ### Git References
 - **Book Repository**: `/home/noah/src/ruchy-book/`
 - **Language Repository**: `/home/noah/src/ruchy/`
-- **Critical Commit**: `6f47c6d` - "RELEASE v3.193.0: Perfect Language Compatibility Achieved"
+- **Critical Commit**: `6f47c6d` - "RELEASE v3.213.0: Perfect Language Compatibility Achieved"
 - **Contradiction**: Claims 100% compatibility, actual file compilation at 4%
 
 ---
@@ -136,7 +136,7 @@
 ## 📨 DISTRIBUTION LIST
 
 ### For Ruchy Compiler Team
-**Primary Report**: `/home/noah/src/ruchy-book/docs/bugs/CRITICAL-v3.193.0-transpiler-bugs.md`
+**Primary Report**: `/home/noah/src/ruchy-book/docs/bugs/CRITICAL-v3.213.0-transpiler-bugs.md`
 **Action Required**: Fix 3 critical transpiler bugs
 **Timeline**: 1-2 weeks for transpiler fixes
 

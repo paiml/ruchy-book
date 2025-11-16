@@ -1,8 +1,8 @@
 # Ruchy Book Project Status - 2025-11-03
 
 **Date**: November 3, 2025
-**Ruchy Version**: v3.193.0
-**bashrs Version**: v3.193.0
+**Ruchy Version**: v3.213.0
+**bashrs Version**: v3.213.0
 **Last Major Update**: Appendix B (Julia comparison) + Chapter 21 accuracy updates
 
 ---
@@ -22,10 +22,10 @@ The Ruchy Book project has made significant progress in documentation quality, b
 
 **Major Achievements Today:**
 1. ✅ Created Appendix B: Ruchy vs Julia Architecture Deep Dive (~4,500 words)
-2. ✅ Updated Chapter 21 for accuracy with v3.193.0 measurements
+2. ✅ Updated Chapter 21 for accuracy with v3.213.0 measurements
 3. ✅ Clarified Julia's JIT execution model in benchmarking chapter
 4. ✅ Updated GitHub Issues #116, #119 with comprehensive debugging workflows
-5. ✅ Validated 6/7 working benchmarks with v3.193.0
+5. ✅ Validated 6/7 working benchmarks with v3.213.0
 
 ---
 
@@ -35,7 +35,7 @@ The Ruchy Book project has made significant progress in documentation quality, b
 
 **Part I: Test-Driven Chapters (100% Working)**
 
-All chapters in Part I have 100% working examples validated against Ruchy v3.193.0:
+All chapters in Part I have 100% working examples validated against Ruchy v3.213.0:
 
 | Chapter | Status | Examples | Pass Rate | Notes |
 |---------|--------|----------|-----------|-------|
@@ -81,7 +81,7 @@ All chapters in Part I have 100% working examples validated against Ruchy v3.193
 - Trade-offs: Julia's 250MB runtime vs Ruchy's 2MB deployment
 
 **Chapter 21 Updates**:
-- Updated all version references: v3.193.0 → v3.193.0, bashrs v3.193.0 → v3.193.0
+- Updated all version references: v3.213.0 → v3.213.0, bashrs v3.213.0 → v3.213.0
 - Added comprehensive Julia JIT execution model explanation
 - Updated BENCH-012 results with actual measurements
 - Clarified startup time comparison (Julia 2.03ms, Ruchy 2.64ms, C 3.02ms)
@@ -94,7 +94,7 @@ All chapters in Part I have 100% working examples validated against Ruchy v3.193
 
 ### Working Benchmarks (7/12 - 58% Complete)
 
-All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
+All 7 working benchmarks validated with Ruchy v3.213.0 on 2025-11-03:
 
 | Benchmark | Status | Description | Modes | Results File |
 |-----------|--------|-------------|-------|--------------|
@@ -134,13 +134,13 @@ All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
 - **Debugging**: Comprehensive ruchydbg workflow documented in Issue #116
 - **Action**: Awaiting File object implementation
 - **GitHub**: https://github.com/paiml/ruchy/issues/116
-- **Workaround**: Can use `read_file()` for whole-file reading (v3.193.0)
+- **Workaround**: Can use `read_file()` for whole-file reading (v3.213.0)
 
 ### Partially Unblocked (1/12)
 
 **BENCH-001: File I/O - Read 10MB Text File**
 - **Status**: ⚠️ PARTIALLY UNBLOCKED
-- **Issue**: #118 - Result unwrapping (✅ RESOLVED in v3.193.0!)
+- **Issue**: #118 - Result unwrapping (✅ RESOLVED in v3.213.0!)
 - **Test Case**: `test/issue-118-result-test.ruchy`
 - **Impact**: Can now use `read_file()` for simple file reading
 - **Still Needs**: Streaming I/O (Issue #116) for full benchmark implementation
@@ -150,7 +150,7 @@ All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
 
 **BENCH-009: JSON Parsing (50MB File)**
 - **Status**: ✅ READY
-- **Issues**: #117, #121 - JSON API (✅ RESOLVED in v3.193.0!)
+- **Issues**: #117, #121 - JSON API (✅ RESOLVED in v3.213.0!)
 - **APIs**: `parse_json()` + `read_file()` both working
 - **Validation**: Manually tested with 50MB JSON file (~1.4s execution)
 - **Runner Script**: `run-bench-009-full.sh` created and ready
@@ -192,10 +192,10 @@ All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
 
 ## Section 3: GitHub Issues & Upstream Dependencies
 
-### Issues Resolved in v3.193.0 (2 issues)
+### Issues Resolved in v3.213.0 (2 issues)
 
 **Issue #118: Result Type Unwrapping** ✅ CLOSED
-- **Status**: ✅ RESOLVED in v3.193.0
+- **Status**: ✅ RESOLVED in v3.213.0
 - **Impact**: `read_file()` now returns unwrapped String instead of Result
 - **Test Case**: `test/issue-118-result-test.ruchy` - Verified working
 - **Verification**: `.len()` method works directly on returned string
@@ -203,14 +203,14 @@ All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
 - **GitHub**: Closed with verification test case
 
 **Issue #117: JSON Plain Function API** ✅ CLOSED
-- **Status**: ✅ RESOLVED in v3.193.0
+- **Status**: ✅ RESOLVED in v3.213.0
 - **Feature**: `parse_json()` plain function now available
 - **Impact**: Simple JSON parsing without object syntax
 - **Benchmarks Unblocked**: BENCH-009 fully unblocked
 - **GitHub**: Closed with working implementation
 
 **Issue #121: read_file() Unwrapped Return** ✅ CLOSED
-- **Status**: ✅ RESOLVED in v3.193.0 (related to #118)
+- **Status**: ✅ RESOLVED in v3.213.0 (related to #118)
 - **Impact**: Simplified file reading API
 - **Benchmarks Unblocked**: BENCH-009 fully unblocked
 - **GitHub**: Closed as part of #118 resolution
@@ -254,7 +254,7 @@ All 7 working benchmarks validated with Ruchy v3.193.0 on 2025-11-03:
   file.close()
   ```
 - **Actual**: `open()` returns Message, no methods available
-- **Workaround**: `read_file()` works for whole-file reading (v3.193.0)
+- **Workaround**: `read_file()` works for whole-file reading (v3.213.0)
 - **Debugging Documentation**:
   - Comprehensive ruchydbg workflow added to issue
   - Implementation guidance for File object
@@ -317,7 +317,7 @@ All test cases located in `test/` directory:
 
 2. ✅ **Ruchy Installation Check**
    - Confirms `ruchy` command available
-   - Version: v3.193.0
+   - Version: v3.213.0
    - Status: PASS
 
 3. ✅ **Extract and Test All Book Examples**
@@ -349,7 +349,7 @@ All test cases located in `test/` directory:
 
 8. ✅ **Version Consistency Check**
    - Validates all version references consistent
-   - Current: v3.193.0 throughout
+   - Current: v3.213.0 throughout
    - Status: PASS
 
 9. ⚠️  **Enhanced Vaporware & Quality Regression** (Non-blocking)
@@ -402,7 +402,7 @@ deno task test-tooling
 
 ### Documentation Quality Tools
 
-**bashrs Integration (v3.193.0):**
+**bashrs Integration (v3.213.0):**
 All bash scripts quality-checked with bashrs:
 
 ```bash
@@ -442,7 +442,7 @@ make bashrs-all        # ✅ All checks passing
 | Testing | ✅ | ✅ | ✅ |
 | Compilation | ✅ | ✅ | ✅ |
 | Global Mutable State | ✅ | ⚠️ | ❌ (Issue #119) |
-| JSON Parsing | ✅ | ✅ | ✅ (v3.193.0) |
+| JSON Parsing | ✅ | ✅ | ✅ (v3.213.0) |
 
 **Benchmark Coverage:**
 - Working: 7/12 (58%)
@@ -469,7 +469,7 @@ make bashrs-all        # ✅ All checks passing
    - **Status**: Complete, committed, pushed to GitHub
 
 2. **Chapter 21 Accuracy Updates** ✅
-   - Updated all version references (v3.193.0 → v3.193.0, bashrs v3.193.0 → v3.193.0)
+   - Updated all version references (v3.213.0 → v3.213.0, bashrs v3.213.0 → v3.213.0)
    - Added comprehensive Julia JIT execution model explanation
    - Updated BENCH-012 results with actual measurements
    - Corrected startup time data with real benchmark results
@@ -487,8 +487,8 @@ make bashrs-all        # ✅ All checks passing
 4. **Benchmark Validation Framework** ✅
    - Created `validate-ruchy-benchmarks.sh` - quick validation script
    - Created `run-all-benchmarks.sh` - full suite runner
-   - Created `BENCHMARK-STATUS-v3.193.0.md` - comprehensive status
-   - Validated 6/7 working benchmarks with v3.193.0
+   - Created `BENCHMARK-STATUS-v3.213.0.md` - comprehensive status
+   - Validated 6/7 working benchmarks with v3.213.0
    - Completed BENCH-012 full 10-mode run
    - **Status**: Complete, framework operational
 
@@ -511,7 +511,7 @@ make bashrs-all        # ✅ All checks passing
    - Time: ~10-15 minutes
    - Action: Execute full 10-mode benchmark
 
-2. **Re-run Working Benchmarks with v3.193.0**
+2. **Re-run Working Benchmarks with v3.213.0**
    - Status: 6/7 validated, can re-run full suite
    - Script: `test/ch21-benchmarks/run-all-benchmarks.sh`
    - Time: ~30-40 minutes
@@ -539,7 +539,7 @@ make bashrs-all        # ✅ All checks passing
 
 **Priority 1: Complete Available Benchmarks**
 - [ ] Run BENCH-009 full 10-mode test (~15 min)
-- [ ] Re-run all 7 working benchmarks with v3.193.0 (~40 min)
+- [ ] Re-run all 7 working benchmarks with v3.213.0 (~40 min)
 - [ ] Update Chapter 21 with fresh BENCH-009 results
 - [ ] Generate updated geometric mean with 8 benchmarks
 
@@ -624,7 +624,7 @@ make bashrs-all        # ✅ All checks passing
 - ✅ 6 appendices including technical deep-dives
 
 **Benchmarking Infrastructure:**
-- ✅ bashrs bench v3.193.0 integration
+- ✅ bashrs bench v3.213.0 integration
 - ✅ 10 execution modes supported
 - ✅ Scientific rigor (warmup, statistics, determinism)
 - ✅ 7 complete benchmarks with results
@@ -639,7 +639,7 @@ make bashrs-all        # ✅ All checks passing
 - ✅ Bytecode mode matches C within 0.26% (BENCH-008)
 
 **Upstream Collaboration:**
-- ✅ 3 issues resolved in v3.193.0 (#117, #118, #121)
+- ✅ 3 issues resolved in v3.213.0 (#117, #118, #121)
 - ✅ Comprehensive debugging workflows for open issues
 - ✅ Minimal reproducible test cases for all issues
 - ✅ GDB commands and hypothesis testing documentation
@@ -767,7 +767,7 @@ The Ruchy Book project is in excellent health with comprehensive documentation, 
 **What's Working Exceptionally Well:**
 - ✅ 99% example pass rate (139/140)
 - ✅ 23 complete chapters
-- ✅ 7 benchmarks validated with v3.193.0
+- ✅ 7 benchmarks validated with v3.213.0
 - ✅ Comprehensive quality gates
 - ✅ Scientific benchmarking infrastructure
 - ✅ Technical deep-dive content (Appendix B)
@@ -778,7 +778,7 @@ The Ruchy Book project is in excellent health with comprehensive documentation, 
 
 **What We Can Do Now:**
 - 🚀 Run BENCH-009 (JSON parsing) - fully unblocked
-- 🚀 Re-run all 7 working benchmarks with v3.193.0
+- 🚀 Re-run all 7 working benchmarks with v3.213.0
 - 🚀 Enhance documentation (appendices, tutorials)
 - 🚀 Improve quality (fix failing one-liner)
 - 🚀 Prepare for community (contributing guide)
@@ -797,7 +797,7 @@ The project is making excellent progress. The waiting period for upstream fixes 
 **Documentation:**
 - `src/` - Book chapters (23 complete)
 - `src/appendix-b-ruchy-vs-julia.md` - Technical comparison (NEW)
-- `test/ch21-benchmarks/BENCHMARK-STATUS-v3.193.0.md` - Benchmark status
+- `test/ch21-benchmarks/BENCHMARK-STATUS-v3.213.0.md` - Benchmark status
 
 **Testing:**
 - `hooks/pre-commit` - Quality gates (9 gates)

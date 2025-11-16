@@ -1,7 +1,7 @@
 [0m[32mTask[0m [0m[36mextract-examples[0m deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
 🔍 Extracting ALL Ruchy examples from book chapters...
 =====================================================
-🦀 Ruchy version: ruchy 3.212.0
+🦀 Ruchy version: ruchy 3.213.0
 
 🔍 Scanning chapters for Ruchy examples...
 

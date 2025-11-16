@@ -1,8 +1,8 @@
-# Comprehensive Testing Results - Ruchy v3.194.0
+# Comprehensive Testing Results - Ruchy v3.213.0
 
 **Date**: 2025-11-04
-**Ruchy Version**: v3.194.0 (commit a9bffd56+)
-**Testing Tool**: ruchydbg v1.26.0, rustc 1.83.0-nightly
+**Ruchy Version**: v3.213.0 (commit a9bffd56+)
+**Testing Tool**: ruchydbg v3.213.0, rustc 1.83.0-nightly
 **Status**: ✅ **ISSUE #132 FIXED - TRANSPILE MODE RESTORED**
 
 ---
@@ -20,7 +20,7 @@
 2. ✅ **Book Examples: 99% Pass Rate**
    - 139/140 examples passing
    - 20 chapters tested
-   - Verified with ruchy v3.194.0
+   - Verified with ruchy v3.213.0
 
 3. ✅ **Execution Modes: 9/10 Working (90%)**
    - Interpreter mode: 100% ✅
@@ -201,7 +201,7 @@ Acceptance criteria: 2/6 (33%)
 Book examples: 139/140 passing (99%)
 ```
 
-### AFTER Fix (Commit a9bffd56 / v3.194.0)
+### AFTER Fix (Commit a9bffd56 / v3.213.0)
 ```
 Transpile mode: 100% functional ✅
 Compile mode: 0% functional ❌ (different bug)
@@ -277,7 +277,7 @@ ruchy compile example.ruchy -o example  # ❌ Fails with different bug
   - Type mismatches (i32 vs i64, i32 vs f64)
   - Function return types
 
-**Other Benchmarks**: Not yet tested with v3.194.0
+**Other Benchmarks**: Not yet tested with v3.213.0
 
 ---
 
@@ -333,11 +333,11 @@ rustc example.rs -o example
 
 ### For Ruchy-Book Development
 
-1. ✅ **Update to ruchy v3.194.0** (or later)
+1. ✅ **Update to ruchy v3.213.0** (or later)
 2. ✅ **Use transpile mode** for all examples and benchmarks
 3. ✅ **Document transpile workflow** in chapters
 4. ❌ **Skip compile mode** until separate bug is fixed
-5. ✅ **Update INTEGRATION.md** with v3.194.0 results
+5. ✅ **Update INTEGRATION.md** with v3.213.0 results
 6. ✅ **Remove "BLOCKED" notes** for transpile mode
 
 ### For Ruchy Compiler Team
@@ -386,7 +386,7 @@ rustc example.rs -o example
 - [x] 6/6 acceptance criteria met
 - [x] Book examples 99% passing (139/140)
 - [x] Documentation updated (INTEGRATION.md, ISSUE-132-FIXED.md)
-- [x] Tag pushed (book-v3.194.0)
+- [x] Tag pushed (book-v3.213.0)
 - [x] Release policy documented (CLAUDE.md)
 
 ### ❌ KNOWN ISSUES (Future Work)
@@ -402,12 +402,12 @@ rustc example.rs -o example
 - **Issue #132 Fix**: `docs/ISSUE-132-FIXED.md`
 - **Integration Report**: `INTEGRATION.md`
 - **Release Policy**: `CLAUDE.md` (Friday-only releases)
-- **GitHub Tag**: `book-v3.194.0`
+- **GitHub Tag**: `book-v3.213.0`
 
 ### GitHub
 - **Issue**: https://github.com/paiml/ruchy/issues/132
 - **Commit**: a9bffd56 - [ISSUE-132] Fix transpile/compile modes
-- **Tag**: book-v3.194.0
+- **Tag**: book-v3.213.0
 
 ### Test Files
 - **Book Examples**: `test/extracted-examples/`
@@ -416,7 +416,7 @@ rustc example.rs -o example
 
 ---
 
-**Verified By**: Comprehensive testing with ruchy v3.194.0
+**Verified By**: Comprehensive testing with ruchy v3.213.0
 **Verification Date**: 2025-11-04
-**Verification Tools**: ruchydbg v1.26.0, rustc 1.83.0-nightly
+**Verification Tools**: ruchydbg v3.213.0, rustc 1.83.0-nightly
 **Status**: ✅ **PRODUCTION READY - TRANSPILE MODE FULLY FUNCTIONAL**

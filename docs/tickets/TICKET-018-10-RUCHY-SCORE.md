@@ -8,7 +8,7 @@
 **Parent**: TICKET-018 (Comprehensive 18-Tool Testing)
 **Predecessor**: TICKET-018-07 (ruchy lint - COMPLETE)
 **Estimated Effort**: 50 minutes (pattern maturity)
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 
 ## Executive Summary
 
@@ -22,7 +22,7 @@ $ cd /home/noah/src/ruchy-book
 $ make dogfood-score
 ```
 
-**Expected Results (v3.193.0)**:
+**Expected Results (v3.213.0)**:
 - Files Tested: 69/69
 - Quality Grade: A+ (1.00/1.0 from previous dogfooding)
 - Status: ✅ All examples meet quality standards
@@ -189,7 +189,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-score.ts
    - **Average Score**: 1.00/1.0 (or document actual)
    - **Grade Distribution**: 69 A+ (or document distribution)
    - **Status**: ✅ All examples meet A+ quality standards
-   - **Tool Version**: ruchy v3.193.0
+   - **Tool Version**: ruchy v3.213.0
    - **Last Updated**: 2025-10-30
    - **Phase 1A**: COMPLETE (check ✅, lint ✅, score ✅)
    ```
@@ -287,7 +287,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-score.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.193.0 installed
+- ✅ Ruchy v3.213.0 installed
 - ✅ 100% pass rate achieved (135/135 examples)
 - ✅ Test infrastructure operational
 - ✅ INTEGRATION.md established
