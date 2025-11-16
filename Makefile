@@ -22,8 +22,9 @@ help:
 	@echo "  make serve             - Serve the book locally with auto-reload"
 	@echo "  make clean             - Remove all build artifacts"
 	@echo ""
-	@echo "🧪 TESTING OPERATIONS:"
-	@echo "  make test              - Test all TDD examples"
+	@echo "🧪 TESTING OPERATIONS (TICKET-030: 18-TOOL MANDATORY):"
+	@echo "  make test              - MANDATORY: Test ALL 146 examples with ALL 18 tools (2,628 validations)"
+	@echo "  make test-multi-tool   - Same as 'make test' (18-tool comprehensive testing)"
 	@echo "  make test-ch01         - Test Chapter 1: Hello World"
 	@echo "  make test-ch02         - Test Chapter 2: Variables"
 	@echo "  make test-ch03         - Test Chapter 3: Functions"
@@ -125,10 +126,29 @@ serve: install-deps
 	@mdbook serve --open
 
 # Test EVERYTHING - all examples, one-liners, and tooling
-test: test-comprehensive
+test: test-multi-tool
 
-# Test all basic TDD examples only
+# MANDATORY: 18-Tool Comprehensive Testing (TICKET-030)
+# This is now the DEFAULT and ONLY way to validate the book
+test-multi-tool:
+	@echo "🚀 TICKET-030: MANDATORY 18-Tool Comprehensive Testing"
+	@echo "Testing ALL 146 examples across ALL 18 ruchy tools"
+	@echo "This is the ONLY approved validation method for the book"
+	@echo ""
+	@deno run --allow-all test/tools/run-multi-tool-full.ts
+
+# Legacy single-tool testing (DEPRECATED - DO NOT USE)
+test-single-tool-deprecated:
+	@echo "⚠️  WARNING: Single-tool testing is DEPRECATED"
+	@echo "⚠️  Use 'make test' (18-tool testing) instead"
+	@echo ""
+	@deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+
+# Test all basic TDD examples only (DEPRECATED)
 test-basic:
+	@echo "⚠️  WARNING: test-basic is DEPRECATED"
+	@echo "⚠️  Use 'make test' (18-tool testing) instead"
+	@echo ""
 	@echo "🧪 Testing all TDD examples..."
 	@PASS=0; FAIL=0; \
 	for file in tests/*/*.ruchy; do \
@@ -611,17 +631,11 @@ release: clean validate build verify-version
 	@echo "📦 Release validation complete"
 
 # Comprehensive testing (Toyota Way - all quality gates)
-test-comprehensive:
-	@echo "🧪 Running COMPREHENSIVE test suite (all examples, one-liners, tooling)..."
-	@echo ""
-	@echo "1️⃣  Testing all book examples..."
-	@deno run --allow-read --allow-write --allow-run scripts/extract-examples.ts
+test-comprehensive: test-multi-tool
+	@echo "✅ TICKET-030: Multi-tool testing complete"
 	@echo ""
 	@echo "2️⃣  Testing one-liners..."
 	@deno run --allow-read --allow-write --allow-run scripts/test-oneliners.ts
-	@echo ""
-	@echo "3️⃣  Testing ruchy tooling integration..."
-	@deno run --allow-read --allow-write --allow-run scripts/test-tooling.ts || echo "⚠️  Tooling test not yet implemented"
 	@echo ""
 	@echo "4️⃣  Validating book build..."
 	@mdbook build >/dev/null 2>&1 && echo "✅ Book builds successfully" || echo "❌ Book build failed"
