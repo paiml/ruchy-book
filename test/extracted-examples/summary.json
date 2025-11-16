@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-11-16T09:38:13.930Z",
-  "ruchy_version": "ruchy 3.212.0",
+  "timestamp": "2025-11-16T13:41:08.306Z",
+  "ruchy_version": "ruchy 3.213.0",
   "chapters_processed": 21,
   "examples_found": 146,
-  "examples_working": 140,
-  "examples_failing": 6,
-  "success_rate": 96,
+  "examples_working": 143,
+  "examples_failing": 3,
+  "success_rate": 98,
   "chapters": {
     "ch04-00-practical-patterns-tdd": {
       "chapter": "ch04-00-practical-patterns-tdd",
@@ -1240,8 +1240,8 @@
     "ch19-00-structs-oop": {
       "chapter": "ch19-00-structs-oop",
       "total_examples": 13,
-      "working_examples": 9,
-      "failing_examples": 4,
+      "working_examples": 12,
+      "failing_examples": 1,
       "examples": [
         {
           "file": "src/ch19-00-structs-oop.md",
@@ -1304,52 +1304,43 @@
           "example_number": 8,
           "line_number": 217,
           "code": "struct Calculator {\n    value: i32,\n\n    pub fun new() -> Calculator {\n        Calculator { value: 0 }\n    }\n\n    pub fun add(&mut self, amount: i32) {\n        self.value = self.value + amount\n    }\n\n    pub fun get(&self) -> i32 {\n        self.value\n    }\n}\n\nlet mut calc = Calculator::new()\ncalc.add(5)\ncalc.add(10)\nprintln(calc.get())",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Syntax error: Expected field name\nError: Syntax error: Expected field name\n",
-          "errorCategory": "PARSER_ERROR",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 9,
           "line_number": 246,
           "code": "pub struct Runtime {\n    api_endpoint: String,\n}\n\nimpl Runtime {\n    pub fun new() -> Runtime {\n        let endpoint = String::from(\"127.0.0.1:9001\")\n        Runtime { api_endpoint: endpoint }\n    }\n\n    pub fun get_endpoint(&self) -> String {\n        self.api_endpoint\n    }\n}\n\nlet runtime = Runtime::new()\nprintln(runtime.get_endpoint())",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
-          "errorCategory": "PARSER_ERROR",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 10,
           "line_number": 272,
           "code": "struct Point {\n    x: i32,\n    y: i32\n}\n\nimpl Point {\n    pub fun new(x: i32, y: i32) -> Point {\n        Point { x: x, y: y }\n    }\n\n    pub fun distance(&self) -> i32 {\n        self.x * self.x + self.y * self.y\n    }\n}\n\nlet p = Point::new(3, 4)\nprintln(p.distance())      // 25\nprintln(p.x)               // 3\nprintln(p.y)               // 4",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
-          "errorCategory": "PARSER_ERROR",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 11,
           "line_number": 300,
           "code": "class Calculator {\n    value: i32\n\n    new(initial: i32) {\n        self.value = initial\n    }\n\n    pub fun add(&mut self, amount: i32) {\n        self.value = self.value + amount\n    }\n\n    pub fun get(&self) -> i32 {\n        self.value\n    }\n}\n\nlet mut calc = Calculator::new(10)\ncalc.add(5)\nprintln(calc.get())",
-          "passed": true,
-          "status": "working"
+          "passed": false,
+          "status": "broken",
+          "error": "Error: Evaluation error: Runtime error: Undefined variable: self\n",
+          "errorCategory": "UNKNOWN",
+          "rootCause": "Unknown error - needs manual investigation"
         },
         {
           "file": "src/ch19-00-structs-oop.md",
           "example_number": 12,
           "line_number": 338,
           "code": "struct Counter {\n    count: i32\n}\n\nimpl Counter {\n    pub fun new() -> Counter {\n        Counter { count: 0 }\n    }\n\n    fun internal_increment(&mut self) {\n        self.count = self.count + 1\n    }\n\n    pub fun increment(&mut self) {\n        self.internal_increment()\n    }\n\n    pub fun get_count(&self) -> i32 {\n        self.count\n    }\n}\n\nlet mut c = Counter::new()\nc.increment()\nprintln(c.get_count())  // 1",
-          "passed": false,
-          "status": "broken",
-          "error": "✗ Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\nError: Syntax error: impl blocks are not supported. In Ruchy, methods should be defined inside the struct body. \n\nExample:\nstruct Point {\n    x: i32,\n    y: i32,\n\n    fun new(x: i32, y: i32) -> Point {\n        Point { x, y }\n    }\n}\n",
-          "errorCategory": "PARSER_ERROR",
-          "rootCause": "Unknown error - needs manual investigation"
+          "passed": true,
+          "status": "working"
         },
         {
           "file": "src/ch19-00-structs-oop.md",

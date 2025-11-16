@@ -18,7 +18,7 @@ git clone https://github.com/paiml/ruchy-book.git
 cd ruchy-book
 
 # Verify Ruchy version
-ruchy --version  # Must be v3.193.0 or later
+ruchy --version  # Must be v3.213.0 or later
 
 # Run existing tests
 make test        # Should show: 11 passed, 0 failed
@@ -110,7 +110,7 @@ git add tests/ src/ INTEGRATION.md Makefile
 git commit -m "feat: Add if statement support with test
 
 - Created test: tests/ch04-control-flow/test_01_if_statement.ruchy
-- Test passes with Ruchy v3.193.0
+- Test passes with Ruchy v3.213.0
 - Documented in ch04-control-flow.md
 - Updated INTEGRATION.md metrics"
 
@@ -291,7 +291,7 @@ make build
 ## 📞 Getting Help
 
 ### When Tests Fail
-1. Check Ruchy version: `ruchy --version` (must be v3.193.0)
+1. Check Ruchy version: `ruchy --version` (must be v3.213.0)
 2. Verify test isolation: Run test alone
 3. Check compilation output: Look for warnings
 4. Compare with working tests: See tests/ch01-03/
@@ -324,7 +324,7 @@ git commit -m "feat: Add [feature] with [N] tests
 
 - Tests: tests/ch*/test_*.ruchy
 - Pass rate: 100% (N/N)
-- Ruchy version: v3.193.0
+- Ruchy version: v3.213.0
 - Documentation: src/ch*.md"
 
 # Fix with test
@@ -348,4 +348,4 @@ git commit -m "refactor: Improve [what]
 
 **Last Updated**: 2025-08-23
 **Workflow Version**: 2.0-TDD
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0

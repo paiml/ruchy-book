@@ -2,11 +2,11 @@
 
 ## Summary
 
-DataFrame (`df![]` macro) code fails in both REPL and transpiler modes. Tests across 5 consecutive versions (v3.193.0 - v3.193.0) show identical failures with 0% improvement.
+DataFrame (`df![]` macro) code fails in both REPL and transpiler modes. Tests across 5 consecutive versions (v3.213.0 - v3.213.0) show identical failures with 0% improvement.
 
 ## Environment
 
-- **Ruchy Version**: v3.193.0 (also tested v3.193.0, v3.193.0, v3.193.0, v3.193.0 - all identical)
+- **Ruchy Version**: v3.213.0 (also tested v3.213.0, v3.213.0, v3.213.0, v3.213.0 - all identical)
 - **OS**: Linux 6.8.0-85-generic
 - **Platform**: x86_64
 - **Source**: Book documentation (https://github.com/paiml/ruchy-book)
@@ -120,7 +120,7 @@ expected `i32`, found `DataFrame`
 
 ### Why I Might Be Right
 
-1. **Consistent Failures**: 5 versions (v3.193.0-v3.193.0) show identical failures - suggests systemic issue
+1. **Consistent Failures**: 5 versions (v3.213.0-v3.213.0) show identical failures - suggests systemic issue
 2. **Test Suite Evidence**: Ruchy repo has RED (failing) tests in `tests/dataframe_001_transpilation_tdd.rs` marked `#[ignore]`
 3. **Documentation Claims**: Ch18 documents DataFrame support, suggesting it should work
 4. **Parser Errors**: Even REPL mode fails to parse `df![]` syntax - fundamental parser gap
@@ -171,11 +171,11 @@ Tested across **5 consecutive versions** with **134 book examples**:
 
 | Version | Success Rate | DataFrame Tests | Status |
 |---------|--------------|-----------------|--------|
-| v3.193.0 | 84% (113/134) | 0/4 passing | FAIL |
-| v3.193.0 | 84% (113/134) | 0/4 passing | FAIL |
-| v3.193.0 | 84% (113/134) | 0/4 passing | FAIL |
-| v3.193.0 | 84% (113/134) | 0/4 passing | FAIL |
-| v3.193.0 | 84% (113/134) | 0/4 passing | FAIL |
+| v3.213.0 | 84% (113/134) | 0/4 passing | FAIL |
+| v3.213.0 | 84% (113/134) | 0/4 passing | FAIL |
+| v3.213.0 | 84% (113/134) | 0/4 passing | FAIL |
+| v3.213.0 | 84% (113/134) | 0/4 passing | FAIL |
+| v3.213.0 | 84% (113/134) | 0/4 passing | FAIL |
 
 **Conclusion**: DataFrame support is **not implemented** in transpiler mode across all tested versions.
 
@@ -307,7 +307,7 @@ ruchy transpile test_df.ruchy 2>&1 | head -50
 ## Additional Context
 
 - Testing infrastructure: https://github.com/paiml/ruchy-book/blob/main/scripts/extract-examples.ts
-- Comprehensive analysis: https://github.com/paiml/ruchy-book/blob/main/docs/qa/comprehensive-audit-analysis-v3.193.0.md
+- Comprehensive analysis: https://github.com/paiml/ruchy-book/blob/main/docs/qa/comprehensive-audit-analysis-v3.213.0.md
 - External audit: https://github.com/paiml/ruchy-book/blob/main/docs/qa/gemini-audit-report-ruchy-book-oct14.yaml
 
 ---
@@ -320,10 +320,10 @@ $ ruchy compile test_df.ruchy 2>&1
 → Compiling test_df.ruchy...
    Updating crates.io index
    Locking 162 packages to latest compatible versions
-   Adding polars v3.193.0
-   Compiling version_check v3.193.0
+   Adding polars v3.213.0
+   Compiling version_check v3.213.0
    ... [162 crates compile] ...
-   Compiling ruchy_binary v3.193.0
+   Compiling ruchy_binary v3.213.0
 error[E0308]: mismatched types
  --> src/main.rs:1:X
   | expected `()`, found `DataFrame`
@@ -332,7 +332,7 @@ error[E0308]: mismatched types
 ### REPL Session
 ```bash
 $ ruchy repl
-Welcome to Ruchy REPL v3.193.0
+Welcome to Ruchy REPL v3.213.0
 > let df = df!["x" => [1, 2]]
 Error: Expected RightBrace, found Let
 Error: Unexpected token: FatArrow

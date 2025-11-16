@@ -8,7 +8,7 @@
 **Predecessor**: TICKET-018-13 (ruchy runtime - COMPLETE, Phase 1D 1/3)
 **Milestone**: 11/18 tools (61.1%) - Approaching 75%
 **Actual Effort**: 30 minutes (incl. Five Whys, source code analysis, bug filing)
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 **Bug Filed**: GitHub issue #99
 
 ## ⚠️ IMPORTANT: Tool Limitations Discovered
@@ -328,7 +328,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-provability.ts
    - **Provability Scores**: All 0.0/100 (EXPECTED - no formal specs)
    - **Tool Limitations**: Loop detection broken, verbose not working
    - **Status**: Phase 1D tool 2/3 - baseline established
-   - **Tool Version**: ruchy v3.193.0
+   - **Tool Version**: ruchy v3.213.0
    ```
 
 2. **README.md**: Update progress to 61.1%

@@ -1,7 +1,7 @@
-let number = 2;
+let number = 2
 match number {
-    1 => println("One"),
-    2 => println("Two"),
-    3 => println("Three"),
-    _ => println("Other")
+  Literal(Integer(1, None)) => println("One"),
+  Literal(Integer(2, None)) => println("Two"),
+  Literal(Integer(3, None)) => println("Three"),
+  Wildcard => println("Other"),
 }

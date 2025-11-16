@@ -6,12 +6,12 @@
 | Status | Count | Examples |
 |--------|-------|----------|
 | ✅ Working | 1 | Ready for production use |
-| ⚠️ Not Implemented | 0 | Planned for future versions |
+| ⚠️ Not Implemented | 0 | See roadmap for planned features |
 | ❌ Broken | 1 | Known issues, needs fixing |
 | 📋 Planned | 0 | Future roadmap features |
 
 *Last updated: 2025-08-24*  
-*Ruchy version: ruchy 3.193.0*
+*Ruchy version: ruchy 3.213.0*
 <!-- DOC_STATUS_END -->
 
 

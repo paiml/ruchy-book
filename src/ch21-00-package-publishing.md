@@ -7,7 +7,7 @@
 
 *Created: 2025-11-01*
 *Validated: 2025-11-01*
-*Ruchy version: ruchy 3.193.0*
+*Ruchy version: ruchy 3.213.0*
 
 **Tools Covered**:
 - ✅ `ruchy publish` - Package publishing to registry (5 examples validated)

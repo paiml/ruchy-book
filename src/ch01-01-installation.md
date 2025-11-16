@@ -14,7 +14,7 @@ cargo install --path . --force
 
 # Verify installation
 ruchy --version
-# Should show: ruchy 3.193.0
+# Should show: ruchy 3.213.0
 ```
 
 ## Installation Methods
@@ -57,9 +57,7 @@ cargo build --release
 
 ### Method 3: Package Managers (Future)
 
-*Coming soon:*
-- `cargo install ruchy` (when published to crates.io)
-- Homebrew formula for macOS
+**Note**: Package manager support is planned for future releases. Currently, use Method 1 or Method 2 above.
 - APT packages for Ubuntu/Debian
 
 ## Editor Setup (Optional but Recommended)
@@ -85,7 +83,7 @@ After installation, verify your complete Ruchy development environment:
 ```bash
 # Check compiler is accessible
 ruchy --version
-# Output: ruchy 3.193.0
+# Output: ruchy 3.213.0
 
 # View available commands
 ruchy --help

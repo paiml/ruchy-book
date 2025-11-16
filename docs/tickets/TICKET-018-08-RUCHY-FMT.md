@@ -8,7 +8,7 @@
 **Phase**: Phase 1C (Code Quality & Formatting) - 1/3
 **Predecessor**: TICKET-018-17 (ruchy coverage - COMPLETE, Phase 1B)
 **Estimated Effort**: 35 minutes (pattern acceleration)
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 
 ## Executive Summary
 
@@ -190,7 +190,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-fmt.ts
    - **Pass Rate**: X% (document actual)
    - **Common Violations**: Document patterns
    - **Status**: Phase 1C tool 1/3
-   - **Tool Version**: ruchy v3.193.0
+   - **Tool Version**: ruchy v3.213.0
    ```
 
 2. **README.md**: Update progress
@@ -285,7 +285,7 @@ deno run --allow-read --allow-run test/tools/test-ruchy-fmt.ts
 ## Dependencies
 
 ### Prerequisites (Completed ✅)
-- ✅ Ruchy v3.193.0 installed
+- ✅ Ruchy v3.213.0 installed
 - ✅ Phase 1A complete (3/3 tools)
 - ✅ Phase 1B complete (3/3 tools)
 - ✅ Test infrastructure pattern proven

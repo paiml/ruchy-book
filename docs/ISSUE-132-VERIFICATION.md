@@ -1,7 +1,7 @@
 # Issue #132 Verification Report - Transpiler Global State Bug
 
 **Date**: 2025-11-04
-**Ruchy Version Tested**: v3.193.0 (trunk commit 3651d7d6)
+**Ruchy Version Tested**: v3.213.0 (trunk commit 3651d7d6)
 **Verification Status**: ❌ **FAILED** - Bug NOT Fixed
 **Impact**: Transpiler/Compile modes remain BLOCKED
 
@@ -43,7 +43,7 @@ fun main() {
 }
 ```
 
-### 2. Comprehensive Testing with ruchydbg v1.26.0
+### 2. Comprehensive Testing with ruchydbg v3.213.0
 
 #### Step 1: Tokenization ✅
 ```bash
@@ -338,7 +338,7 @@ Ok(quote! {
 
 ---
 
-**Verified By**: ruchydbg v1.26.0
+**Verified By**: ruchydbg v3.213.0
 **Evidence Files**:
 - `/tmp/issue132-verification-FAILED.md`
 - `/tmp/issue132-ROOT-CAUSE-FOUND.md`

@@ -17,7 +17,7 @@ Validate `ruchydbg run --trace` flag (type-aware tracing) following EXTREME TDD 
 ### RED Phase - Test Infrastructure
 - [x] Create `test/tools/test-ruchydbg-trace.ts` with validation
 - [x] Test basic tracing output
-- [x] Test type-aware tracing (available in v3.193.0!)
+- [x] Test type-aware tracing (available in v3.213.0!)
 - [x] Verify trace shows function calls
 - [x] Verify trace shows argument/return types
 - [x] Generate baseline performance metrics
@@ -43,7 +43,7 @@ Based on `ruchydbg run --help`:
 # Basic execution with type-aware tracing
 ruchydbg run test.ruchy --trace
 
-# Expected output (Ruchy v3.193.0+):
+# Expected output (Ruchy v3.213.0+):
 # TRACE: → square(5: integer)
 # TRACE: ← square = 25: integer
 
@@ -66,7 +66,7 @@ Tracing adds overhead but should be reasonable:
 ### Expected Performance
 - Tracing overhead: 10-50% slower than normal execution
 - Output: Function call traces
-- Type information: If available in v3.193.0+
+- Type information: If available in v3.213.0+
 - Debugging value: High
 
 ### Success Thresholds
@@ -202,4 +202,4 @@ git push origin main
 - Phase 2D: 8/8 (100%) ✅
 
 **TICKET-028 comprehensive tool expansion: COMPLETE!**
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0

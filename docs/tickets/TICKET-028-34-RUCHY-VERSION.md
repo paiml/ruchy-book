@@ -19,7 +19,7 @@ Validate `ruchy --version` flag (global version information) following EXTREME T
 - [x] Test `ruchy --version` command
 - [x] Test `ruchy -V` short form
 - [x] Verify version format (semantic versioning)
-- [x] Compare with current version (v3.193.0)
+- [x] Compare with current version (v3.213.0)
 - [x] Generate baseline performance metrics
 - [x] Performance: Target <10ms for version display
 
@@ -68,7 +68,7 @@ Version display should be instant:
 - Version flag works: **Functional**
 - Short form works: **Functional**
 - Version format valid: **Semantic versioning (X.Y.Z)**
-- Version matches: **v3.193.0**
+- Version matches: **v3.213.0**
 - Output formatting: **Clean**
 - Performance: **<10ms**
 

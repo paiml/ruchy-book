@@ -1,14 +1,14 @@
-# Ruchy v3.193.0 Verification Report
+# Ruchy v3.213.0 Verification Report
 
 **Date**: 2025-11-03  
-**Ruchy Version**: v3.193.0  
-**Previous Version**: v3.193.0
+**Ruchy Version**: v3.213.0  
+**Previous Version**: v3.213.0
 
 ---
 
 ## 🎉 Executive Summary
 
-Ruchy v3.193.0 **COMPLETELY RESOLVES** both blocking issues:
+Ruchy v3.213.0 **COMPLETELY RESOLVES** both blocking issues:
 - ✅ **Issue #119**: Double-evaluation bug - Functions now called ONCE per println()
 - ✅ **Issue #116**: File object methods - Full streaming I/O implemented
 
@@ -36,7 +36,7 @@ fun main() {
 }
 ```
 
-### v3.193.0 Output ✅
+### v3.213.0 Output ✅
 ```
   [TRACE] Function called, count is now: 1
 Test 1: 1
@@ -49,7 +49,7 @@ Final count: 3
 
 **Analysis**: ✅ Functions called ONCE per println() (3 total calls, not 6)
 
-### v3.193.0 Output ❌ (Previous)
+### v3.213.0 Output ❌ (Previous)
 ```
   [TRACE] Function called, count is now: 1
   [TRACE] Function called, count is now: 2
@@ -94,7 +94,7 @@ fun main() {
 }
 ```
 
-### v3.193.0 Output ✅
+### v3.213.0 Output ✅
 ```
 Opening file...
 Reading line 1...
@@ -109,7 +109,7 @@ Success! File object methods work.
 
 **Analysis**: ✅ All File methods work correctly
 
-### v3.193.0 Output ❌ (Previous)
+### v3.213.0 Output ❌ (Previous)
 ```
 Opening file...
 Reading line 1...
@@ -129,7 +129,7 @@ Error: Evaluation error: Runtime error: Unknown object type: Message
 | **BENCH-002** | ✅ UNBLOCKED | Issue #119 fixed - global state + no double-eval |
 | **BENCH-006** | ✅ UNBLOCKED | Issue #116 fixed - streaming file I/O works |
 | **BENCH-001** | ✅ UNBLOCKED | Issue #116 fixed - optimal file reading |
-| **BENCH-009** | ✅ READY | Already unblocked in v3.193.0 |
+| **BENCH-009** | ✅ READY | Already unblocked in v3.213.0 |
 
 ### Already Working Benchmarks
 
@@ -184,17 +184,17 @@ Error: Evaluation error: Runtime error: Unknown object type: Message
 
 ✅ **Issue #119**: https://github.com/paiml/ruchy/issues/119
 - Status: CLOSED
-- Resolution: v3.193.0
+- Resolution: v3.213.0
 - Verification: Comprehensive test case provided
 
 ✅ **Issue #116**: https://github.com/paiml/ruchy/issues/116
 - Status: CLOSED
-- Resolution: v3.193.0
+- Resolution: v3.213.0
 - Verification: Comprehensive test case provided
 
 ---
 
-## API Changes in v3.193.0
+## API Changes in v3.213.0
 
 ### Fixed: Function Evaluation
 - Functions now evaluated ONCE when used as arguments
@@ -239,12 +239,12 @@ Error: Evaluation error: Runtime error: Unknown object type: Message
    - Optimal memory-efficient approach
 
 5. ✅ **Re-run all 7 working benchmarks**
-   - Validate with v3.193.0
+   - Validate with v3.213.0
    - Update results
 
 ### Documentation Updates
 
-1. [ ] Update Chapter 21 with v3.193.0 results
+1. [ ] Update Chapter 21 with v3.213.0 results
 2. [ ] Update benchmark status documentation
 3. [ ] Document File API in relevant chapters
 4. [ ] Create performance comparison report
@@ -253,7 +253,7 @@ Error: Evaluation error: Runtime error: Unknown object type: Message
 
 ## Environment
 
-- **Ruchy Version**: v3.193.0 (verified with `ruchy --version`)
+- **Ruchy Version**: v3.213.0 (verified with `ruchy --version`)
 - **Platform**: Linux 6.8.0-85-generic x86_64
 - **Date**: 2025-11-03
 - **Hardware**: AMD Ryzen Threadripper 7960X 24-Cores, 125Gi RAM
@@ -263,7 +263,7 @@ Error: Evaluation error: Runtime error: Unknown object type: Message
 
 ## Conclusion
 
-Ruchy v3.193.0 represents a **major milestone**:
+Ruchy v3.213.0 represents a **major milestone**:
 - ✅ Both critical blocking issues resolved
 - ✅ 92% benchmark coverage (11/12 ready)
 - ✅ Full streaming file I/O capability

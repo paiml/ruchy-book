@@ -1,7 +1,7 @@
-# CRITICAL: Ruchy v3.193.0 Transpiler Regression
+# CRITICAL: Ruchy v3.213.0 Transpiler Regression
 
 **Filed**: 2025-09-27
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 **Platform**: Linux x86_64
 **Severity**: CRITICAL - Blocks all function compilation
 **Status**: Open
@@ -9,11 +9,11 @@
 
 ## Executive Summary
 
-🚨 **CRITICAL TRANSPILER BUG**: Ruchy v3.193.0 generates malformed Rust code for simple function returns, causing 36% regression in book example success rate (74% → 38%).
+🚨 **CRITICAL TRANSPILER BUG**: Ruchy v3.213.0 generates malformed Rust code for simple function returns, causing 36% regression in book example success rate (74% → 38%).
 
 ## Description
 
-The Ruchy v3.193.0 transpiler incorrectly generates `HashSet<T>` operations instead of direct return values for simple function expressions. This affects ALL functions that return values, breaking fundamental language functionality.
+The Ruchy v3.213.0 transpiler incorrectly generates `HashSet<T>` operations instead of direct return values for simple function expressions. This affects ALL functions that return values, breaking fundamental language functionality.
 
 ## Reproduction Steps
 
@@ -53,7 +53,7 @@ fn add(a: i32, b: i32) -> i32 {
 }
 ```
 
-**v3.193.0 incorrectly produces:**
+**v3.213.0 incorrectly produces:**
 ```rust
 fn add(a: i32, b: i32) -> i32 {
     {
@@ -67,8 +67,8 @@ fn add(a: i32, b: i32) -> i32 {
 ## Impact Assessment
 
 ### Book Testing Results:
-- **Previous (v3.193.0)**: 82/111 examples passing (74%)
-- **Current (v3.193.0)**: 42/111 examples passing (38%)
+- **Previous (v3.213.0)**: 82/111 examples passing (74%)
+- **Current (v3.213.0)**: 42/111 examples passing (38%)
 - **Regression**: -40 examples (-36% success rate)
 
 ### Affected Examples:
@@ -78,9 +78,9 @@ fn add(a: i32, b: i32) -> i32 {
 
 ### Testing Evidence:
 ```bash
-# v3.193.0 (working) vs v3.193.0 (broken)
-../ruchy/target/release/ruchy compile test.ruchy  # v3.193.0: ✓ SUCCESS
-ruchy compile test.ruchy                          # v3.193.0: ❌ FAIL
+# v3.213.0 (working) vs v3.213.0 (broken)
+../ruchy/target/release/ruchy compile test.ruchy  # v3.213.0: ✓ SUCCESS
+ruchy compile test.ruchy                          # v3.213.0: ❌ FAIL
 ```
 
 ## Root Cause Analysis
@@ -93,7 +93,7 @@ The transpiler appears to be incorrectly wrapping return expressions in HashSet 
 
 ## Affected Functionality
 
-### ❌ Broken in v3.193.0:
+### ❌ Broken in v3.213.0:
 - Function return values (any type)
 - Basic arithmetic expressions in functions
 - Simple data transformations
@@ -129,7 +129,7 @@ Linux 6.8.0-84-generic x86_64
 
 ## Workaround
 
-**IMMEDIATE ACTION**: Use Ruchy v3.193.0 or earlier until transpiler fix available.
+**IMMEDIATE ACTION**: Use Ruchy v3.213.0 or earlier until transpiler fix available.
 
 ```bash
 # Use local build instead of system ruchy
@@ -139,16 +139,16 @@ alias ruchy='../ruchy/target/release/ruchy'
 ## Recommended Actions
 
 ### For Ruchy Compiler Team:
-1. **URGENT**: Revert transpiler changes between v3.193.0 and v3.193.0
+1. **URGENT**: Revert transpiler changes between v3.213.0 and v3.213.0
 2. **Investigate**: HashSet code generation logic in return expression handling
 3. **Test**: Run comprehensive transpiler test suite on simple functions
-4. **Release**: Hotfix version (v3.193.0) with transpiler regression fix
+4. **Release**: Hotfix version (v3.213.0) with transpiler regression fix
 
 ### For ruchy-book Team:
-1. **BLOCK**: Do not qualify v3.193.0 for book
-2. **DOWNGRADE**: Use v3.193.0 for all testing until fix available
-3. **MONITOR**: Watch for v3.193.0 release with transpiler fix
-4. **DOCUMENT**: Update all version references to warn about v3.193.0
+1. **BLOCK**: Do not qualify v3.213.0 for book
+2. **DOWNGRADE**: Use v3.213.0 for all testing until fix available
+3. **MONITOR**: Watch for v3.213.0 release with transpiler fix
+4. **DOCUMENT**: Update all version references to warn about v3.213.0
 
 ## Related Issues
 
@@ -161,16 +161,16 @@ This transpiler regression may be related to:
 
 | Version | Simple Function | Complex Function | Book Examples |
 |---------|----------------|------------------|---------------|
-| v3.193.0 | ✅ Working     | ✅ Working       | 74% Pass      |
-| v3.193.0 | ✅ Working     | ✅ Working       | Not tested    |
-| v3.193.0 | ❌ **BROKEN**  | ❌ **BROKEN**    | 38% Pass      |
+| v3.213.0 | ✅ Working     | ✅ Working       | 74% Pass      |
+| v3.213.0 | ✅ Working     | ✅ Working       | Not tested    |
+| v3.213.0 | ❌ **BROKEN**  | ❌ **BROKEN**    | 38% Pass      |
 
 ## Contact Information
 
 **Reporter**: Claude Code (claude.ai/code)
 **Team**: ruchy-book documentation team
 **Repository**: https://github.com/your-org/ruchy-book
-**Bug Report Location**: `docs/bugs/CRITICAL-v3.193.0-transpiler-regression.md`
+**Bug Report Location**: `docs/bugs/CRITICAL-v3.213.0-transpiler-regression.md`
 
 ---
 

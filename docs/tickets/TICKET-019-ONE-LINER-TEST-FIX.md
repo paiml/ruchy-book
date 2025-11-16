@@ -10,11 +10,11 @@
 
 ## ✅ RESOLUTION SUMMARY
 
-One-liner tests are **100% PASSING** with Ruchy v3.193.0. The ticket was filed based on outdated information.
+One-liner tests are **100% PASSING** with Ruchy v3.213.0. The ticket was filed based on outdated information.
 
 ### Verified Current State (2025-11-02)
 - **One-liner tests**: 18/18 passing (100%) ✅
-- **Ruchy version**: v3.193.0
+- **Ruchy version**: v3.213.0
 - **Success rate**: 100%
 - **Status**: NO REGRESSION - all tests passing
 
@@ -32,17 +32,17 @@ One-liner tests are **100% PASSING** with Ruchy v3.193.0. The ticket was filed b
 
 ## Original Problem Statement (NO LONGER VALID)
 
-~~One-liner tests have completely regressed from 100% passing (v3.193.0) to 0% passing (v3.193.0). This is a CRITICAL BLOCKING issue preventing verification of Chapter 4.1 one-liner examples.~~
+~~One-liner tests have completely regressed from 100% passing (v3.213.0) to 0% passing (v3.213.0). This is a CRITICAL BLOCKING issue preventing verification of Chapter 4.1 one-liner examples.~~
 
 ### ~~Current State~~ OUTDATED
 - ~~**One-liner tests**: 0/20 passing (0%)~~ → **ACTUAL: 18/18 passing (100%)**
-- ~~**Previous state**: 100% passing (v3.193.0)~~ → **CURRENT: 100% passing (v3.193.0)**
+- ~~**Previous state**: 100% passing (v3.213.0)~~ → **CURRENT: 100% passing (v3.213.0)**
 - ~~**Regression**: COMPLETE FAILURE~~ → **NO REGRESSION**
 - ~~**Impact**: Cannot verify one-liner functionality~~ → **All functionality verified**
 
 ### Evidence
 ```
-📈 Results Summary (v3.193.0 - CURRENT)
+📈 Results Summary (v3.213.0 - CURRENT)
 ========================================
 Tests Passed: 0/20   ❌ (REGRESSION!)
 Tests Failed: 20/20  ❌
@@ -58,7 +58,7 @@ Success Rate: 0%     ❌ (CRITICAL REGRESSION from 100%)
 - Test script may have wrong expectations or invocation method
 
 **WHY #3**: Why might expectations be wrong?
-- Ruchy version changed from v3.193.0 to v3.193.0
+- Ruchy version changed from v3.213.0 to v3.213.0
 - Output format may have changed
 - Test infrastructure may need updating
 
@@ -117,7 +117,7 @@ Success Rate: 0%     ❌ (CRITICAL REGRESSION from 100%)
 ### Must Have (BLOCKING)
 - [ ] All 20 one-liner tests pass (100% success rate)
 - [ ] Test infrastructure properly invokes ruchy
-- [ ] Output validation matches ruchy v3.193.0 format
+- [ ] Output validation matches ruchy v3.213.0 format
 - [ ] Tests documented with expected vs actual output
 - [ ] INTEGRATION.md updated with results
 
@@ -158,7 +158,7 @@ ruchy -e "2 + 2"
 ruchy -e '"Hello " + "World"'
 ruchy -e '10 > 5'
 
-# Compare with v3.193.0 expectations
+# Compare with v3.213.0 expectations
 # Document differences
 ```
 
@@ -237,7 +237,7 @@ ruchy -e '10 > 5'
 ## Risks and Mitigations
 
 ### Risk: Ruchy behavior changed
-**Mitigation**: Document actual v3.193.0 behavior, update expectations
+**Mitigation**: Document actual v3.213.0 behavior, update expectations
 
 ### Risk: Test infrastructure fundamentally broken
 **Mitigation**: Rewrite from scratch if needed, using TDD approach
@@ -250,7 +250,7 @@ ruchy -e '10 > 5'
 
 ## Dependencies
 
-- Ruchy v3.193.0 (current)
+- Ruchy v3.213.0 (current)
 - test-oneliners.ts (TypeScript test script)
 - deno runtime (for running TypeScript)
 - bashrs (for test script quality)

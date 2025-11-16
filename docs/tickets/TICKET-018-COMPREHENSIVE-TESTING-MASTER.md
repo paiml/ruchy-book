@@ -4,7 +4,7 @@
 **Status**: IN PROGRESS
 **Priority**: P0 (Critical - Foundation for Quality)
 **Estimated Effort**: 4 weeks
-**Ruchy Version**: v3.193.0
+**Ruchy Version**: v3.213.0
 
 ## Executive Summary
 
@@ -18,7 +18,7 @@ With 100% pass rate achieved (135/135 examples), expand testing depth by validat
 - **Depth**: 1x → 18x validation per example
 - **Quality**: Basic correctness → Comprehensive assurance
 
-### Baseline Metrics (v3.193.0)
+### Baseline Metrics (v3.213.0)
 - ✅ **ruchy run**: 135/135 passing (100%)
 - ✅ **ruchy check**: 69/69 files passing (syntax validation)
 - ✅ **ruchy lint**: 69/69 files passing (style analysis)
@@ -259,7 +259,7 @@ make dogfood-[tool]
 - ✅ Comprehensive test infrastructure
 
 ### External Dependencies
-- Ruchy v3.193.0 or later
+- Ruchy v3.213.0 or later
 - All 18 tools installed and operational
 - Sufficient CI/CD resources for expanded testing
 - Documentation generation infrastructure
