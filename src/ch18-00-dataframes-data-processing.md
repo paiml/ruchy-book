@@ -9,7 +9,7 @@
 | ⚠️ Transpiler Mode | 0 | Optional - requires polars crate for production binaries |
 
 *Last tested: 2025-11-03*
-*Ruchy version: ruchy 3.193.0 (BREAKTHROUGH RELEASE)*
+*Ruchy version: ruchy 3.212.0 (BREAKTHROUGH RELEASE)*
 *Note: DataFrames fully working in v3.82.0 interpreter - all 4 examples passing*
 <!-- DOC_STATUS_END -->
 
@@ -115,17 +115,6 @@ Currently supported operations in **interpreter mode**:
 
 - `df!["col" => [data], ...]` - Create a DataFrame using the macro syntax
 - Display by returning the DataFrame as the last expression in a function
-
-## Future Operations (Coming Soon)
-
-The following operations are planned for future releases:
-
-- `.rows()` - Get the number of rows
-- `.columns()` - Get the number of columns
-- `.filter()` - Filter rows based on conditions
-- `.select()` - Select specific columns
-- `.join()` - Join multiple DataFrames
-- Method chaining and more!
 
 ## Summary
 
