@@ -296,16 +296,16 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 ### Current Status (Auto-Updated)
 
 <!-- STATUS_START -->
-**Last Updated**: 2025-11-16 (Trunk Verification Complete)
-**Ruchy Version**: v3.212.0 (trunk commit 61f37cac)
+**Last Updated**: 2025-11-16 09:47 UTC
+**Ruchy Version**: v1.84.0
 
-- 📊 **Book Examples**: 140/146 passing (96%)
-- 🎯 **One-liners**: 18/18 passing (100%)
-- ✅ **Quality Gates**: All lint checks passed, zero vaporware
+- 📊 **Book Examples**: 98/146 passing (67%)
+- 🎯 **One-liners**: 12/18 passing (66%)
+- ✅ **Quality Gates**: 0 files pass syntax check, 0 files pass lint
 - 🚀 **CI Status**: ✅ success
 <!-- STATUS_END -->
 
-### Key Achievements
+###
 
 - 🎯 **96% Pass Rate**: 140/146 examples verified against trunk
 - 🎉 **100% One-Liners**: All 18 one-liner tests passing
