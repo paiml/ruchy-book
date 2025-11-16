@@ -1,9 +1,9 @@
 {
-  "timestamp": "2025-11-11T09:16:13.158Z",
-  "ruchy_version": "ruchy 3.212.0",
-  "total_tests": 18,
-  "passed_tests": 18,
-  "failed_tests": 0,
+  "timestamp": "2025-11-14T17:25:03.294Z",
+  "ruchy_version": "ruchy 3.89.0",
+  "total_tests": 20,
+  "passed_tests": 12,
+  "failed_tests": 8,
   "planned_tests": 12,
   "success_rate": 100,
   "results": [
