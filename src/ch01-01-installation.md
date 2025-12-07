@@ -55,11 +55,6 @@ cargo build --release
 ./target/release/ruchy --version
 ```
 
-### Method 3: Package Managers (Future)
-
-**Note**: Package manager support is planned for future releases. Currently, use Method 1 or Method 2 above.
-- APT packages for Ubuntu/Debian
-
 ## Editor Setup (Optional but Recommended)
 
 Install professional syntax highlighting and editor support:
