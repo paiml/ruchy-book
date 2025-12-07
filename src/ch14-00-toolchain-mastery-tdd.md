@@ -1,7 +1,7 @@
 # Chapter 14: The Ruchy Toolchain - Professional Development Tools
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Validated (5/5 code examples) + 🆕 3 New Tools Documented
+**Chapter Status**: ✅ 100% Validated (5/5 code examples) + 🆕 4 New Tools Documented
 
 **Chapter Type**: Tooling Documentation (not language features)
 
@@ -30,6 +30,7 @@
 - 🆕 ruchy publish - Package publishing (v3.169.0)
 - 🆕 ruchy mcp - Real-time quality server (v3.169.0)
 - 🆕 ruchy optimize - Hardware optimization analysis (v3.169.0)
+- 🆕 Oracle - ML-powered error diagnosis and fix suggestions (v3.213.0)
 
 **Note**: This chapter documents HOW to use Ruchy's professional tooling suite. All code examples have been validated to compile and run successfully.
 <!-- DOC_STATUS_END -->
@@ -551,6 +552,55 @@ Functions: 5/5 (100%)
 Missing Coverage:
 - Line 23: Error handling branch
 - Line 31: Edge case validation
+```
+
+### Oracle - ML-Powered Error Diagnosis
+
+The Ruchy Oracle uses machine learning to classify compilation errors and suggest fixes:
+
+```bash
+# When you encounter an error, Oracle provides intelligent suggestions
+$ ruchy check broken.ruchy
+error[Syntax]: expected `i32`, found `String`
+  --> broken.ruchy:5:12
+   5 | let x: i32 = "hello"
+     |              ^^^^^^^
+
+help: [Oracle 92%] Check type annotation matches assigned value
+      suggested fix: Change type annotation to String or use parse()
+
+help: [Oracle 85%] Use type conversion
+      suggested fix: `"hello".parse::<i32>().unwrap()`
+```
+
+**Oracle Error Categories**:
+- `TypeMismatch` - Type annotation doesn't match value
+- `BorrowChecker` - Ownership and borrowing violations
+- `LifetimeError` - Lifetime annotation issues
+- `TraitBound` - Missing trait implementations
+- `MissingImport` - Module or import not found
+- `MutabilityError` - Mutation without `mut`
+- `SyntaxError` - General syntax issues
+
+**Using Oracle Suggestions**:
+
+The Oracle confidence percentage indicates how certain the ML classifier is:
+- **90%+**: High confidence - apply suggestion directly
+- **70-90%**: Good confidence - review before applying
+- **50-70%**: Moderate confidence - use as a hint
+- **<50%**: Low confidence - investigate manually
+
+**Example with Module Errors**:
+
+```bash
+$ ruchy check main.ruchy
+error: Module 'scanner' not found
+  --> main.ruchy:1:1
+   1 | mod scanner;
+     | ^^^^^^^^^^^
+
+help: [Oracle 85%] Ensure module file exists in same directory
+      suggested fix: Create scanner.ruchy file
 ```
 
 ## Real-World Development Workflow
