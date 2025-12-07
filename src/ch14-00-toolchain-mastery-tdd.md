@@ -1,7 +1,7 @@
 # Chapter 14: The Ruchy Toolchain - Professional Development Tools
 
 <!-- DOC_STATUS_START -->
-**Chapter Status**: ✅ 100% Validated (5/5 code examples) + 🆕 4 New Tools Documented
+**Chapter Status**: ✅ 100% Validated (5/5 code examples) + 🆕 6 New Tools Documented
 
 **Chapter Type**: Tooling Documentation (not language features)
 
@@ -31,6 +31,8 @@
 - 🆕 ruchy mcp - Real-time quality server (v3.169.0)
 - 🆕 ruchy optimize - Hardware optimization analysis (v3.169.0)
 - 🆕 Oracle - ML-powered error diagnosis and fix suggestions (v3.213.0)
+- 🆕 ruchy hunt - Hunt Mode: automated defect resolution with PDCA cycle (v3.213.0)
+- 🆕 ruchy report - Transpilation reports in multiple formats (v3.213.0)
 
 **Note**: This chapter documents HOW to use Ruchy's professional tooling suite. All code examples have been validated to compile and run successfully.
 <!-- DOC_STATUS_END -->
@@ -602,6 +604,130 @@ error: Module 'scanner' not found
 help: [Oracle 85%] Ensure module file exists in same directory
       suggested fix: Create scanner.ruchy file
 ```
+
+### Hunt Mode - Automated Defect Resolution (NEW v3.213.0)
+
+Hunt Mode implements Toyota Production System principles for automated defect resolution using PDCA (Plan-Do-Check-Act) cycles:
+
+```bash
+# Run Hunt Mode on your project
+$ ruchy hunt ./examples --cycles 5 --andon
+🎯 Hunt Mode: Automated Defect Resolution
+   Target: ./examples
+   PDCA Cycles: 5
+
+Found 178 .ruchy files to analyze
+
+━━━ PDCA Cycle 1/5 ━━━
+  Analyzing files...
+  Pattern PAT-E0308: Type mismatch (12 occurrences)
+  Attempting repair with TypeCoercion mutator...
+  Fix applied with 85% confidence
+
+┌─────────────────────────────────────┐
+│       ANDON DASHBOARD               │
+├─────────────────────────────────────┤
+│  🟢 GREEN - All systems nominal     │
+├─────────────────────────────────────┤
+│  Compilation Rate:   95.0%          │
+│  Total Cycles:          5           │
+│  Fixes Applied:        12           │
+└─────────────────────────────────────┘
+```
+
+**Hunt Mode Principles (Toyota Way)**:
+- **Jidoka** - Automation with quality gates (stops when uncertain)
+- **Kaizen** - Continuous improvement through iterative cycles
+- **Heijunka** - Level workload by prioritizing high-impact patterns
+- **Poka-Yoke** - Error prevention with minimal reproduction cases
+- **Andon** - Visual management dashboard for status
+- **Genchi Genbutsu** - Go and see (analyze actual code)
+
+**Command Options**:
+
+```bash
+# Basic usage
+$ ruchy hunt ./src
+
+# Specify number of PDCA cycles
+$ ruchy hunt ./src --cycles 10
+
+# Show Andon dashboard (visual status)
+$ ruchy hunt ./src --andon
+
+# Enable Five Whys root cause analysis
+$ ruchy hunt ./src --five-whys
+
+# Export Hansei (lessons learned) report
+$ ruchy hunt ./src --hansei-report ./report.md
+
+# Verbose output
+$ ruchy hunt ./src --verbose
+```
+
+**Hansei Report Example**:
+
+```markdown
+# Hansei Report (反省 - Lessons Learned)
+
+## Summary
+- **Total PDCA Cycles**: 10
+- **Final Compilation Rate**: 98.5%
+- **Cumulative Fixes**: 47
+
+## Toyota Way Principles Applied
+- **Jidoka**: Automated quality inspection
+- **Kaizen**: Continuous improvement through PDCA
+- **Genchi Genbutsu**: Go and see the actual code
+
+## Recommendations
+1. Focus on patterns with highest occurrence count
+2. Use Five Whys analysis for recurring errors
+```
+
+### Report Command - Transpilation Diagnostics (NEW v3.213.0)
+
+Generate comprehensive transpilation reports in multiple formats:
+
+```bash
+# Human-readable report
+$ ruchy report ./examples
+📊 Generating Transpilation Report
+   Target: ./examples
+   Format: human
+
+Transpilation Report
+========================================
+
+Total: 178 files
+Success: 165
+Failed: 13
+
+[OK] ./examples/hello_world.ruchy
+[OK] ./examples/fibonacci.ruchy
+[FAIL] ./examples/broken.ruchy
+     Error: Parse error: unexpected token
+
+━━━ Report Summary ━━━
+  Total Files: 178
+  165 Successful
+  13 Failed
+
+# JSON format for CI/CD integration
+$ ruchy report ./src --format json --output report.json
+
+# Markdown for documentation
+$ ruchy report ./src --format markdown --output TRANSPILE_STATUS.md
+
+# SARIF format for IDE integration
+$ ruchy report ./src --format sarif --output results.sarif
+```
+
+**Report Formats**:
+- `human` - Terminal-friendly colored output (default)
+- `json` - Machine-readable JSON for CI/CD pipelines
+- `markdown` - Documentation-friendly format
+- `sarif` - Static Analysis Results Interchange Format (IDE integration)
 
 ## Real-World Development Workflow
 
