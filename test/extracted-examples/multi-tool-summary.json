@@ -1,20 +1,20 @@
 {
-  "timestamp": "2025-11-16T10:01:14.227Z",
-  "ruchy_version": "ruchy 3.212.0",
+  "timestamp": "2025-11-16T13:45:55.803Z",
+  "ruchy_version": "ruchy 3.213.0",
   "total_examples": 146,
   "total_tools": 18,
   "total_validations": 2628,
-  "execution_time_ms": 512900,
+  "execution_time_ms": 361525,
   "per_tool_stats": {
     "run": {
-      "passed": 140,
-      "failed": 6,
-      "rate": 96
+      "passed": 143,
+      "failed": 3,
+      "rate": 98
     },
     "compile": {
-      "passed": 119,
-      "failed": 27,
-      "rate": 82
+      "passed": 122,
+      "failed": 24,
+      "rate": 84
     },
     "wasm": {
       "passed": 87,
@@ -22,14 +22,14 @@
       "rate": 60
     },
     "check": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "test": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "fmt": {
       "passed": 21,
@@ -37,59 +37,59 @@
       "rate": 14
     },
     "lint": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "provability": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "runtime": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "score": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "quality-gate": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "optimize": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "prove": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "doc": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "bench": {
-      "passed": 141,
-      "failed": 5,
-      "rate": 97
+      "passed": 144,
+      "failed": 2,
+      "rate": 99
     },
     "ast": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "coverage": {
-      "passed": 142,
-      "failed": 4,
-      "rate": 97
+      "passed": 146,
+      "failed": 0,
+      "rate": 100
     },
     "mcp": {
       "passed": 146,
