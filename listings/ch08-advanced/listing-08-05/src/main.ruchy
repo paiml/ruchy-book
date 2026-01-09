@@ -1,0 +1,57 @@
+// Ruchy 2.0: Async/Await
+// Asynchronous programming with async functions and await
+
+// Simple async function returning a value
+async fun fetch_user(id) {
+    f"User {id}"
+}
+
+// Async function with computation
+async fun compute_score(base) {
+    base * 10 + 5
+}
+
+// Async function calling other async functions
+async fun get_user_profile(user_id) {
+    let user = await fetch_user(user_id)
+    let score = await compute_score(user_id)
+    f"{user} has score {score}"
+}
+
+// Test basic await
+let result1 = await fetch_user(42)
+println(f"Result 1: {result1}")
+
+// Test await with computation
+let result2 = await compute_score(7)
+println(f"Result 2: {result2}")
+
+// Test chained awaits
+let result3 = await get_user_profile(3)
+println(f"Result 3: {result3}")
+
+// Async function for data fetching simulation
+async fun fetch_data(source) {
+    f"Data from {source}"
+}
+
+// Fetch multiple data sources
+let data1 = await fetch_data("database")
+let data2 = await fetch_data("api")
+let data3 = await fetch_data("cache")
+
+println(f"Fetched: {data1}")
+println(f"Fetched: {data2}")
+println(f"Fetched: {data3}")
+
+// Async with calculations
+async fun calculate_total(items) {
+    let mut total = 0
+    for item in items {
+        total = total + item
+    }
+    total
+}
+
+let sum = await calculate_total([10, 20, 30, 40])
+println(f"Total: {sum}")
