@@ -1,0 +1,64 @@
+// Ruchy 2.0: Advanced Pattern Matching
+// Pattern matching with guards and complex patterns
+
+// Basic match with guards
+fun categorize_number(n) {
+    match n {
+        0 => "zero",
+        1 => "one",
+        x if x < 0 => "negative",
+        x if x > 100 => "large (>100)",
+        x if x % 2 == 0 => "even",
+        _ => "odd"
+    }
+}
+
+println(f"0: {categorize_number(0)}")
+println(f"1: {categorize_number(1)}")
+println(f"-5: {categorize_number(-5)}")
+println(f"200: {categorize_number(200)}")
+println(f"42: {categorize_number(42)}")
+println(f"17: {categorize_number(17)}")
+
+// HTTP status codes
+fun http_status(code) {
+    match code {
+        200 => "OK",
+        201 => "Created",
+        204 => "No Content",
+        c if c >= 300 && c < 400 => "Redirect",
+        400 => "Bad Request",
+        401 => "Unauthorized",
+        403 => "Forbidden",
+        404 => "Not Found",
+        c if c >= 500 => "Server Error",
+        _ => "Unknown"
+    }
+}
+
+println(f"200: {http_status(200)}")
+println(f"301: {http_status(301)}")
+println(f"404: {http_status(404)}")
+println(f"500: {http_status(500)}")
+
+// Grade calculation with match
+fun letter_grade(score) {
+    match score {
+        s if s >= 97 => "A+",
+        s if s >= 93 => "A",
+        s if s >= 90 => "A-",
+        s if s >= 87 => "B+",
+        s if s >= 83 => "B",
+        s if s >= 80 => "B-",
+        s if s >= 77 => "C+",
+        s if s >= 73 => "C",
+        s if s >= 70 => "C-",
+        s if s >= 60 => "D",
+        _ => "F"
+    }
+}
+
+println(f"Score 98: {letter_grade(98)}")
+println(f"Score 85: {letter_grade(85)}")
+println(f"Score 72: {letter_grade(72)}")
+println(f"Score 55: {letter_grade(55)}")
