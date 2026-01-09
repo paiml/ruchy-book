@@ -1,0 +1,92 @@
+// Ruchy 2.0: The ? Operator
+// Propagate errors elegantly
+
+// Functions that may fail
+fun validate_age(age) {
+    if age < 0 {
+        Err("Age cannot be negative")
+    } else if age > 150 {
+        Err("Age seems unrealistic")
+    } else {
+        Ok(age)
+    }
+}
+
+fun validate_name(name) {
+    if name == "" {
+        Err("Name cannot be empty")
+    } else {
+        Ok(name)
+    }
+}
+
+// Using ? to propagate errors
+fun create_user(name, age) {
+    let valid_name = validate_name(name)?
+    let valid_age = validate_age(age)?
+    Ok(f"{valid_name} (age {valid_age})")
+}
+
+// Test successful case
+match create_user("Alice", 30) {
+    Ok(user) => println(f"Created: {user}"),
+    Err(e) => println(f"Error: {e}")
+}
+
+// Test name error
+match create_user("", 25) {
+    Ok(user) => println(f"Created: {user}"),
+    Err(e) => println(f"Error: {e}")
+}
+
+// Test age error
+match create_user("Bob", -5) {
+    Ok(user) => println(f"Created: {user}"),
+    Err(e) => println(f"Error: {e}")
+}
+
+// Chaining multiple operations with ?
+fun get_data(id) {
+    if id > 0 {
+        Ok(id * 10)
+    } else {
+        Err("Invalid ID")
+    }
+}
+
+fun process_data(data) {
+    if data > 50 {
+        Ok(data + 100)
+    } else {
+        Err("Data too small")
+    }
+}
+
+fun transform_data(processed) {
+    Ok(processed * 2)
+}
+
+// Pipeline with ? operator
+fun full_pipeline(id) {
+    let data = get_data(id)?
+    let processed = process_data(data)?
+    let result = transform_data(processed)?
+    Ok(result)
+}
+
+// Test the pipeline
+println("\nPipeline tests:")
+match full_pipeline(10) {
+    Ok(r) => println(f"Pipeline result: {r}"),
+    Err(e) => println(f"Pipeline failed: {e}")
+}
+
+match full_pipeline(3) {
+    Ok(r) => println(f"Pipeline result: {r}"),
+    Err(e) => println(f"Pipeline failed: {e}")
+}
+
+match full_pipeline(-1) {
+    Ok(r) => println(f"Pipeline result: {r}"),
+    Err(e) => println(f"Pipeline failed: {e}")
+}
