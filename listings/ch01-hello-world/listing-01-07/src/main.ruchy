@@ -1,0 +1,27 @@
+// Ruchy 2.0: F-string interpolation with expressions
+// F-strings allow embedding expressions directly in strings
+
+let x = 10
+let y = 5
+
+// Basic interpolation
+println(f"x = {x}, y = {y}")
+
+// Expressions inside f-strings
+println(f"Sum: {x} + {y} = {x + y}")
+println(f"Product: {x} * {y} = {x * y}")
+println(f"Division: {x} / {y} = {x / y}")
+
+// Nested expressions
+let numbers = [1, 2, 3, 4, 5]
+println(f"Array length: {numbers.len()}")
+println(f"First element: {numbers[0]}")
+
+// Conditional in f-string
+let is_positive = x > 0
+println(f"Is x positive? {is_positive}")
+
+// Multi-variable formatting
+let name = "Ruchy"
+let version = "2.0"
+println(f"{name} version {version} is ready!")

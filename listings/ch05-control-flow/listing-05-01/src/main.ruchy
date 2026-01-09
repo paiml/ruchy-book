@@ -1,0 +1,51 @@
+// Ruchy 2.0: if/else expressions
+// In Ruchy, if/else can be used as expressions that return values
+
+// Basic if/else
+let score = 85
+
+if score >= 90 {
+    println("Grade: A")
+} else if score >= 80 {
+    println("Grade: B")
+} else if score >= 70 {
+    println("Grade: C")
+} else {
+    println("Grade: F")
+}
+
+// if as expression (returns a value)
+let status = if score >= 60 { "Pass" } else { "Fail" }
+println(f"Status: {status}")
+
+// Nested if expressions
+let age = 25
+let has_license = true
+
+let can_drive = if age >= 16 {
+    if has_license { "Yes" } else { "No - needs license" }
+} else {
+    "No - too young"
+}
+println(f"Can drive? {can_drive}")
+
+// if in function
+fun absolute(n) {
+    if n < 0 { -n } else { n }
+}
+
+println(f"abs(-5) = {absolute(-5)}")
+println(f"abs(3) = {absolute(3)}")
+
+// Chained conditions
+let temp = 72
+let weather = if temp < 32 {
+    "freezing"
+} else if temp < 60 {
+    "cold"
+} else if temp < 80 {
+    "pleasant"
+} else {
+    "hot"
+}
+println(f"Weather at {temp}F: {weather}")

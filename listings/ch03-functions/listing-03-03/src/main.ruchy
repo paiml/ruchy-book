@@ -1,0 +1,44 @@
+// Ruchy 2.0: Higher-order functions
+// Functions can take other functions as arguments
+
+// A function that applies another function to a value
+fun apply_twice(f, x) {
+    f(f(x))
+}
+
+// Simple functions to pass
+fun double(n) {
+    n * 2
+}
+
+fun increment(n) {
+    n + 1
+}
+
+fun square(n) {
+    n * n
+}
+
+// Apply functions
+let result1 = apply_twice(double, 5)      // double(double(5)) = 20
+println(f"Double twice of 5: {result1}")
+
+let result2 = apply_twice(increment, 10)  // increment(increment(10)) = 12
+println(f"Increment twice of 10: {result2}")
+
+let result3 = apply_twice(square, 2)      // square(square(2)) = 16
+println(f"Square twice of 2: {result3}")
+
+// Array methods with functions
+let numbers = [1, 2, 3, 4, 5]
+
+// Map: apply function to each element
+let doubled = numbers.map(double)
+println(f"Doubled: {doubled[0]}, {doubled[1]}, {doubled[2]}")
+
+// Filter: keep elements matching condition
+fun is_greater_than_two(n) {
+    n > 2
+}
+let filtered = numbers.filter(is_greater_than_two)
+println(f"Filtered (>2): {filtered.len()} elements")

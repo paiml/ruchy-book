@@ -1,0 +1,39 @@
+// Ruchy 2.0: Functions with parameters and return values
+// Functions are defined with 'fun' keyword
+
+// Simple function with parameters
+fun greet(name) {
+    println(f"Hello, {name}!")
+}
+
+// Function with return value
+fun add(a, b) {
+    a + b
+}
+
+// Function with explicit return
+fun multiply(x, y) {
+    return x * y
+}
+
+// Function returning boolean
+fun is_even(n) {
+    n % 2 == 0
+}
+
+// Call functions
+greet("World")
+greet("Ruchy")
+
+let sum = add(10, 20)
+println(f"10 + 20 = {sum}")
+
+let product = multiply(6, 7)
+println(f"6 * 7 = {product}")
+
+// Use return value in expression
+println(f"Sum + Product = {add(10, 20) + multiply(6, 7)}")
+
+// Boolean function
+println(f"Is 4 even? {is_even(4)}")
+println(f"Is 7 even? {is_even(7)}")

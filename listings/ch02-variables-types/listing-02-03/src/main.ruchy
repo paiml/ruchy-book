@@ -1,0 +1,30 @@
+// Ruchy 2.0: Type inference (Algorithm W)
+// Ruchy automatically infers types - you don't always need annotations
+
+// Integer inference
+let count = 42           // inferred as i64
+let negative = -10       // inferred as i64
+
+// Float inference
+let pi = 3.14159         // inferred as f64
+let temperature = -5.5   // inferred as f64
+
+// String inference
+let greeting = "Hello"   // inferred as String
+
+// Boolean inference
+let is_valid = true      // inferred as bool
+
+// Array type inference
+let nums = [1, 2, 3]     // inferred as [i64]
+let words = ["a", "b"]   // inferred as [String]
+
+// Expression type inference
+let sum = count + negative      // result inferred as i64
+let product = pi * 2.0          // result inferred as f64
+
+println(f"Count: {count}")
+println(f"Sum: {sum}")
+println(f"Product: {product}")
+println(f"Greeting: {greeting}")
+println(f"Valid: {is_valid}")

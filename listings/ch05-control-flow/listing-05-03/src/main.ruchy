@@ -1,0 +1,56 @@
+// Ruchy 2.0: Match expressions
+// Pattern matching for clean, expressive code
+
+// Basic match on integers
+fun describe_number(n) {
+    match n {
+        0 => "zero",
+        1 => "one",
+        2 => "two",
+        _ => "many"
+    }
+}
+
+println(f"0 is {describe_number(0)}")
+println(f"1 is {describe_number(1)}")
+println(f"5 is {describe_number(5)}")
+
+// Match with ranges (using if guards)
+fun grade_letter(score) {
+    match score {
+        s if s >= 90 => "A",
+        s if s >= 80 => "B",
+        s if s >= 70 => "C",
+        s if s >= 60 => "D",
+        _ => "F"
+    }
+}
+
+println(f"Score 95: {grade_letter(95)}")
+println(f"Score 82: {grade_letter(82)}")
+println(f"Score 55: {grade_letter(55)}")
+
+// Match returning values in expression
+let day = 3
+let day_name = match day {
+    1 => "Monday",
+    2 => "Tuesday",
+    3 => "Wednesday",
+    4 => "Thursday",
+    5 => "Friday",
+    6 => "Saturday",
+    7 => "Sunday",
+    _ => "Invalid"
+}
+println(f"Day {day} is {day_name}")
+
+// Match in calculations
+fun fibonacci_match(n) {
+    match n {
+        0 => 0,
+        1 => 1,
+        _ => fibonacci_match(n - 1) + fibonacci_match(n - 2)
+    }
+}
+
+println(f"fib(8) = {fibonacci_match(8)}")

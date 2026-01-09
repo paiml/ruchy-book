@@ -1,0 +1,51 @@
+// Ruchy 2.0: Loops - for, while, and loop
+// Multiple loop constructs for different use cases
+
+// for loop with range
+println("Counting 1 to 5:")
+for i in 1..6 {
+    println(f"  {i}")
+}
+
+// for loop with array
+let fruits = ["apple", "banana", "cherry"]
+println("Fruits:")
+for fruit in fruits {
+    println(f"  - {fruit}")
+}
+
+// while loop
+println("Countdown:")
+let mut n = 5
+while n > 0 {
+    println(f"  {n}")
+    n = n - 1
+}
+println("  Liftoff!")
+
+// while with condition
+let mut sum = 0
+let mut i = 1
+while sum < 100 {
+    sum = sum + i
+    i = i + 1
+}
+println(f"Sum exceeded 100 at i={i-1}, sum={sum}")
+
+// Nested loops
+println("Multiplication table (1-3):")
+for i in 1..4 {
+    for j in 1..4 {
+        println(f"  {i} x {j} = {i * j}")
+    }
+}
+
+// Loop with break
+let mut found = -1
+for i in 0..10 {
+    if i * i > 50 {
+        found = i
+        break
+    }
+}
+println(f"First i where i*i > 50: {found}")

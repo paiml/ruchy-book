@@ -1,0 +1,42 @@
+// Ruchy 2.0: Closures - anonymous functions
+// Closures capture variables from their enclosing scope
+
+// Basic closure syntax
+let add_one = |x| x + 1
+let multiply_by = |x, y| x * y
+
+println(f"add_one(5) = {add_one(5)}")
+println(f"multiply_by(3, 4) = {multiply_by(3, 4)}")
+
+// Closure capturing outer variable
+let multiplier = 10
+let scale = |x| x * multiplier
+println(f"scale(5) with multiplier={multiplier}: {scale(5)}")
+
+// Using closures with array methods
+let numbers = [1, 2, 3, 4, 5]
+
+// Map with closure
+let squared = numbers.map(|n| n * n)
+println(f"Squared: {squared[0]}, {squared[1]}, {squared[2]}")
+
+// Filter with closure
+let evens = numbers.filter(|n| n % 2 == 0)
+println(f"Even numbers: {evens.len()} found")
+
+// Chaining operations
+let result = [1, 2, 3, 4, 5, 6]
+    .filter(|n| n % 2 == 0)    // Keep evens: [2, 4, 6]
+    .map(|n| n * 10)           // Multiply: [20, 40, 60]
+
+println(f"Chained result: {result[0]}, {result[1]}, {result[2]}")
+
+// Closure in loop
+let mut sum = 0
+let accumulate = |n| {
+    sum = sum + n
+}
+for n in [10, 20, 30] {
+    accumulate(n)
+}
+println(f"Accumulated sum: {sum}")

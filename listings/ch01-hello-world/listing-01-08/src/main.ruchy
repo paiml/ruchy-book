@@ -1,0 +1,33 @@
+// Ruchy 2.0: Working with arrays and loops
+// Arrays are fundamental data structures in Ruchy
+
+// Creating arrays
+let fruits = ["apple", "banana", "cherry"]
+let numbers = [1, 2, 3, 4, 5]
+
+// Array length
+println(f"We have {fruits.len()} fruits")
+
+// Accessing elements
+println(f"First fruit: {fruits[0]}")
+println(f"Last number: {numbers[numbers.len() - 1]}")
+
+// Iterating with for loop
+println("All fruits:")
+for fruit in fruits {
+    println(f"  - {fruit}")
+}
+
+// Summing numbers
+let mut total = 0
+for n in numbers {
+    total = total + n
+}
+println(f"Sum of numbers: {total}")
+
+// Creating array with push
+let mut colors = []
+colors.push("red")
+colors.push("green")
+colors.push("blue")
+println(f"Colors: {colors.len()} items added")
