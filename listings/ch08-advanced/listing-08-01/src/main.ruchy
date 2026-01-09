@@ -1,0 +1,48 @@
+// Ruchy 2.0: Generic Functions
+// Generic functions work with any type
+
+// Identity function - returns what it receives
+fun identity<T>(x: T) -> T {
+    x
+}
+
+// Works with different types
+let num = identity(42)
+let text = identity("hello")
+let flag = identity(true)
+let decimal = identity(3.14)
+
+println(f"Number: {num}")
+println(f"Text: {text}")
+println(f"Boolean: {flag}")
+println(f"Float: {decimal}")
+
+// Generic with arrays
+fun first<T>(arr: [T]) -> T {
+    arr[0]
+}
+
+let numbers = [10, 20, 30]
+let names = ["Alice", "Bob", "Charlie"]
+
+println(f"First number: {first(numbers)}")
+println(f"First name: {first(names)}")
+
+// Generic pair function
+fun make_pair<A, B>(a: A, b: B) {
+    println(f"Pair: ({a}, {b})")
+}
+
+make_pair(1, "one")
+make_pair("x", 10)
+make_pair(true, 3.14)
+
+// Generic swap function
+fun swap<T>(arr, i, j) {
+    let temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+}
+
+let mut data = [1, 2, 3]
+println(f"Before swap: {data[0]}, {data[1]}")

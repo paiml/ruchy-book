@@ -1,0 +1,53 @@
+// Ruchy 2.0: Default and Named Parameters
+// Functions can have default values for parameters
+
+// Default parameter value
+fun greet(name, greeting = "Hello") {
+    println(f"{greeting}, {name}!")
+}
+
+// Using default
+greet("Alice")
+greet("Bob")
+
+// Overriding default
+greet("Charlie", "Welcome")
+greet("Diana", "Hi")
+
+// Multiple defaults
+fun create_user(name, role = "user", active = true) {
+    println(f"Created {role}: {name} (active: {active})")
+}
+
+create_user("Alice")                    // Uses all defaults
+create_user("Bob", "admin")             // Override role
+create_user("Charlie", "moderator", false)  // Override both
+
+// Default with calculations
+fun repeat_string(s, times = 3) {
+    let mut result = ""
+    let mut i = 0
+    while i < times {
+        result = result + s
+        i = i + 1
+    }
+    result
+}
+
+println(f"Default: {repeat_string('ha')}")
+println(f"Custom: {repeat_string('ho', 5)}")
+
+// Defaults in mathematical functions
+fun power(base, exponent = 2) {
+    let mut result = 1
+    let mut i = 0
+    while i < exponent {
+        result = result * base
+        i = i + 1
+    }
+    result
+}
+
+println(f"5^2 = {power(5)}")        // Uses default exponent
+println(f"2^8 = {power(2, 8)}")     // Custom exponent
+println(f"3^4 = {power(3, 4)}")
