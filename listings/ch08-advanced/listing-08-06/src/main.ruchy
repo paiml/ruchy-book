@@ -1,0 +1,57 @@
+// Ruchy 2.0: Module System
+// Organizing code into reusable modules
+
+// Math utilities module
+mod math {
+    pub fun add(a, b) { a + b }
+    pub fun subtract(a, b) { a - b }
+    pub fun multiply(a, b) { a * b }
+    pub fun divide(a, b) { a / b }
+    pub fun square(x) { x * x }
+    pub fun cube(x) { x * x * x }
+}
+
+// String utilities module
+mod strings {
+    pub fun greet(name) {
+        f"Hello, {name}!"
+    }
+
+    pub fun repeat(s, n) {
+        let mut result = ""
+        let mut i = 0
+        while i < n {
+            result = result + s
+            i = i + 1
+        }
+        result
+    }
+
+    pub fun uppercase_first(s) {
+        // Simple demonstration
+        f"[{s}]"
+    }
+}
+
+// Test math module
+println("Math operations:")
+println(f"  2 + 3 = {math.add(2, 3)}")
+println(f"  10 - 4 = {math.subtract(10, 4)}")
+println(f"  6 * 7 = {math.multiply(6, 7)}")
+println(f"  20 / 4 = {math.divide(20, 4)}")
+println(f"  5^2 = {math.square(5)}")
+println(f"  3^3 = {math.cube(3)}")
+
+// Test strings module
+println("\nString operations:")
+println(strings.greet("World"))
+println(f"  Repeat 'ha' 4 times: {strings.repeat('ha', 4)}")
+println(f"  Formatted: {strings.uppercase_first('test')}")
+
+// Chain module calls
+println("\nChained operations:")
+let result = math.add(math.multiply(2, 3), math.square(2))
+println(f"  2*3 + 2^2 = {result}")
+
+let complex = math.cube(math.add(1, 1))
+println(f"  (1+1)^3 = {complex}")
