@@ -1,0 +1,46 @@
+// Ruchy 2.0: Structs - custom data types
+// Structs let you create your own types with named fields
+
+// Define a struct
+struct Point {
+    x: i64,
+    y: i64
+}
+
+// Define a more complex struct
+struct Person {
+    name: String,
+    age: i64,
+    active: bool
+}
+
+// Create struct instances
+let origin = Point { x: 0, y: 0 }
+let target = Point { x: 10, y: 20 }
+
+println(f"Origin: ({origin.x}, {origin.y})")
+println(f"Target: ({target.x}, {target.y})")
+
+// Calculate distance (simplified)
+let dx = target.x - origin.x
+let dy = target.y - origin.y
+println(f"Distance components: dx={dx}, dy={dy}")
+
+// Create a person
+let alice = Person {
+    name: "Alice",
+    age: 28,
+    active: true
+}
+
+println(f"Person: {alice.name}, {alice.age} years old")
+println(f"Active: {alice.active}")
+
+// Struct in array
+let points = [
+    Point { x: 0, y: 0 },
+    Point { x: 1, y: 1 },
+    Point { x: 2, y: 4 }
+]
+
+println(f"Number of points: {points.len()}")

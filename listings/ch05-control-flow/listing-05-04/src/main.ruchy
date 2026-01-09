@@ -1,0 +1,74 @@
+// Ruchy 2.0: Error handling with try/catch
+// Graceful error handling for robust programs
+
+// try/catch basic usage
+fun safe_divide(a, b) {
+    try {
+        if b == 0 {
+            throw "Division by zero"
+        }
+        a / b
+    } catch e {
+        println(f"Error caught: {e}")
+        0
+    }
+}
+
+println(f"10 / 2 = {safe_divide(10, 2)}")
+println(f"10 / 0 = {safe_divide(10, 0)}")
+
+// Simple validation
+fun check_positive(n) {
+    try {
+        if n < 0 {
+            throw "Number must be positive"
+        }
+        println(f"Valid: {n}")
+        true
+    } catch e {
+        println(f"Invalid: {e}")
+        false
+    }
+}
+
+check_positive(42)
+check_positive(-5)
+
+// Processing with error recovery
+fun sum_positive(arr) {
+    let mut total = 0
+    for x in arr {
+        try {
+            if x < 0 {
+                throw "Negative value skipped"
+            }
+            total = total + x
+        } catch e {
+            println(f"  Skipping: {e}")
+        }
+    }
+    total
+}
+
+let mixed = [10, 20, 30]
+println(f"Sum of positives: {sum_positive(mixed)}")
+
+// Validation example
+fun validate_score(score) {
+    try {
+        if score < 0 {
+            throw "Score cannot be negative"
+        }
+        if score > 100 {
+            throw "Score cannot exceed 100"
+        }
+        println(f"Valid score: {score}")
+        score
+    } catch e {
+        println(f"Invalid score: {e}")
+        0
+    }
+}
+
+validate_score(85)
+validate_score(150)

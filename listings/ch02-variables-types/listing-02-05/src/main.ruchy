@@ -1,0 +1,47 @@
+// Ruchy 2.0: Arrays - working with collections
+// Arrays are ordered collections of the same type
+
+// Creating arrays
+let numbers = [1, 2, 3, 4, 5]
+let names = ["Alice", "Bob", "Charlie"]
+let empty = []
+
+// Array length
+println(f"Numbers has {numbers.len()} elements")
+println(f"Names has {names.len()} elements")
+
+// Accessing elements by index
+println(f"First number: {numbers[0]}")
+println(f"Last name: {names[names.len() - 1]}")
+
+// Building arrays with push
+let mut colors = []
+colors.push("red")
+colors.push("green")
+colors.push("blue")
+println(f"Colors: {colors.len()} items")
+
+// Iterating over arrays
+println("All numbers:")
+for n in numbers {
+    println(f"  {n}")
+}
+
+// Array in function
+fun sum_array(arr) {
+    let mut total = 0
+    for x in arr {
+        total = total + x
+    }
+    total
+}
+
+println(f"Sum of numbers: {sum_array(numbers)}")
+
+// Nested arrays (2D)
+let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+println(f"Matrix center: {matrix[1][1]}")

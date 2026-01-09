@@ -1,0 +1,38 @@
+// Ruchy 2.0: Mutability with let mut
+// By default, variables are immutable. Use 'mut' for mutable variables.
+
+// Immutable variable (default)
+let name = "Alice"
+// name = "Bob"  // This would cause an error!
+
+// Mutable variable
+let mut score = 0
+println(f"Initial score: {score}")
+
+score = score + 10
+println(f"After bonus: {score}")
+
+score = score + 25
+println(f"After quest: {score}")
+
+// Mutable counter
+let mut counter = 0
+let mut i = 0
+while i < 5 {
+    counter = counter + 1
+    i = i + 1
+}
+println(f"Counter reached: {counter}")
+
+// Mutable array
+let mut items = []
+items.push("sword")
+items.push("shield")
+items.push("potion")
+println(f"Inventory has {items.len()} items")
+
+// Shadowing (creating new binding)
+let x = 5
+let x = x + 1       // New binding, shadows previous
+let x = x * 2       // New binding again
+println(f"Final x: {x}")

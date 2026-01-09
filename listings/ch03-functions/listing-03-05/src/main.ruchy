@@ -1,0 +1,56 @@
+// Ruchy 2.0: Recursion
+// Functions can call themselves to solve problems
+
+// Classic factorial
+fun factorial(n) {
+    if n <= 1 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
+println(f"5! = {factorial(5)}")
+println(f"10! = {factorial(10)}")
+
+// Fibonacci sequence
+fun fibonacci(n) {
+    if n <= 1 {
+        n
+    } else {
+        fibonacci(n - 1) + fibonacci(n - 2)
+    }
+}
+
+println("Fibonacci sequence:")
+let mut i = 0
+while i < 10 {
+    println(f"  fib({i}) = {fibonacci(i)}")
+    i = i + 1
+}
+
+// Sum of array using recursion
+fun sum_array(arr, index) {
+    if index >= arr.len() {
+        0
+    } else {
+        arr[index] + sum_array(arr, index + 1)
+    }
+}
+
+let numbers = [1, 2, 3, 4, 5]
+let total = sum_array(numbers, 0)
+println(f"Sum of [1,2,3,4,5] = {total}")
+
+// Countdown
+fun countdown(n) {
+    if n > 0 {
+        println(f"  {n}...")
+        countdown(n - 1)
+    } else {
+        println("  Liftoff!")
+    }
+}
+
+println("Countdown:")
+countdown(5)
