@@ -1,0 +1,82 @@
+// Ruchy 2.0: Labeled Loops
+// Control nested loops with @label: syntax
+
+// Breaking out of nested loops
+println("=== Search with break ===")
+let mut found = false
+
+@search: for i in 0..5 {
+    for j in 0..5 {
+        if i * j == 12 {
+            println(f"Found pair: ({i}, {j}) where i*j=12")
+            found = true
+            break @search
+        }
+    }
+}
+println(f"Search complete, found={found}")
+
+// Continue to outer loop
+println("\n=== Skip with continue ===")
+@outer: for row in 0..3 {
+    for col in 0..3 {
+        if col == 1 {
+            // Skip rest of this row
+            continue @outer
+        }
+        println(f"Processing ({row}, {col})")
+    }
+}
+
+// Labeled while loops
+println("\n=== Labeled while ===")
+let mut x = 0
+@main_loop: while x < 10 {
+    let mut y = 0
+    while y < 5 {
+        if x == 3 && y == 2 {
+            println(f"Breaking main at x={x}, y={y}")
+            break @main_loop
+        }
+        y = y + 1
+    }
+    x = x + 1
+}
+println(f"Exited with x={x}")
+
+// Finding prime factors
+println("\n=== Prime factor search ===")
+let n = 30
+let mut num = n
+let mut factor = 2
+
+@factorize: while num > 1 {
+    while num % factor == 0 {
+        println(f"Factor: {factor}")
+        num = num / factor
+        if num == 1 {
+            break @factorize
+        }
+    }
+    factor = factor + 1
+}
+
+// Matrix search pattern
+println("\n=== Matrix search ===")
+let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+let target = 5
+let mut found_pos = None
+
+@matrix_search: for i in 0..3 {
+    for j in 0..3 {
+        if matrix[i][j] == target {
+            found_pos = Some(f"({i}, {j})")
+            break @matrix_search
+        }
+    }
+}
+
+match found_pos {
+    Some(pos) => println(f"Found {target} at {pos}"),
+    None => println(f"{target} not found")
+}

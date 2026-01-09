@@ -1,0 +1,78 @@
+// Ruchy 2.0: Result and Option Types
+// Safe error handling without exceptions
+
+// Option: Some(value) or None
+let maybe_user = Some("Alice")
+match maybe_user {
+    Some(name) => println(f"Found user: {name}"),
+    None => println("No user found")
+}
+
+let empty = None
+match empty {
+    Some(x) => println(f"Value: {x}"),
+    None => println("Nothing here")
+}
+
+// Result: Ok(value) or Err(error)
+fun divide(a, b) {
+    if b == 0 {
+        Err("Division by zero")
+    } else {
+        Ok(a / b)
+    }
+}
+
+// Handle successful result
+match divide(10, 2) {
+    Ok(result) => println(f"10 / 2 = {result}"),
+    Err(e) => println(f"Error: {e}")
+}
+
+// Handle error result
+match divide(10, 0) {
+    Ok(result) => println(f"Result: {result}"),
+    Err(e) => println(f"Error: {e}")
+}
+
+// Chaining with Option
+fun find_user(id) {
+    if id > 0 {
+        Some(f"User_{id}")
+    } else {
+        None
+    }
+}
+
+fun get_email(user) {
+    Some(f"{user}@example.com")
+}
+
+// Find and get email
+let user = find_user(42)
+match user {
+    Some(u) => {
+        match get_email(u) {
+            Some(email) => println(f"Email: {email}"),
+            None => println("No email")
+        }
+    },
+    None => println("User not found")
+}
+
+// Working with Result in real scenarios
+fun parse_number(s) {
+    if s == "42" {
+        Ok(42)
+    } else if s == "100" {
+        Ok(100)
+    } else {
+        Err(f"Cannot parse: {s}")
+    }
+}
+
+let parsed = parse_number("42")
+match parsed {
+    Ok(n) => println(f"Parsed: {n}"),
+    Err(e) => println(f"Parse error: {e}")
+}
