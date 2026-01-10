@@ -1,7 +1,7 @@
 # Ruchy Book Integration Report
 
 **Generated**: 2025-11-16T21:00:00.000Z
-**Ruchy Version**: ruchy 3.212.0 (trunk commit 61f37cac)
+**Ruchy Version**: ruchy 4.0.0
 **Book Commit**: f40d5bc
 **Test Run**: 2025-11-16 Trunk Verification - **96% PASS RATE** ✅
 
