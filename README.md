@@ -8,7 +8,7 @@
 ![One-liners](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/oneliners.json)
 ![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
 [![CI Status](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)
-[![Ruchy Version](https://img.shields.io/badge/Ruchy-v3.212.0-blue)](https://crates.io/crates/ruchy)
+[![Ruchy Version](https://img.shields.io/badge/Ruchy-v4.0.0-blue)](https://crates.io/crates/ruchy)
 
 ## 🎉🎉🎉 **MILESTONE: 96% PASS RATE - VERIFIED AGAINST TRUNK!** 🎉🎉🎉
 
