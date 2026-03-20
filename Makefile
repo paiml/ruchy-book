@@ -125,6 +125,16 @@ serve: install-deps
 	@echo "🚀 Starting local server..."
 	@mdbook serve --open
 
+# Fast test - build book only (no full tool validation)
+test-fast: build
+	@echo "Fast test: book builds successfully"
+
+# Coverage - report test pass rate
+coverage:
+	@echo "Running coverage analysis..."
+	@deno run --allow-all test/tools/run-multi-tool-full.ts 2>&1 | tail -20
+	@echo "Coverage report complete"
+
 # Test EVERYTHING - all examples, one-liners, and tooling
 test: test-multi-tool
 

@@ -1,6 +1,10 @@
-# The Ruchy Programming Language Book 📚
+<p align="center">
+  <img src="docs/hero.svg" alt="ruchy-book" width="600"/>
+</p>
 
-**Test-Driven Documentation for the Ruchy Programming Language**
+<h1 align="center">The Ruchy Programming Language Book</h1>
+
+<p align="center">Test-Driven Documentation for the Ruchy Programming Language</p>
 
 <!-- Live test status from CI -->
 ![Tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/tests.json)
@@ -9,6 +13,50 @@
 ![Quality](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/paiml/ruchy-book/badges/quality.json)
 [![CI Status](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml/badge.svg)](https://github.com/paiml/ruchy-book/actions/workflows/test-book.yml)
 [![Ruchy Version](https://img.shields.io/badge/Ruchy-v4.0.0-blue)](https://crates.io/crates/ruchy)
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Book Structure](#-book-structure)
+- [Testing Infrastructure](#-testing-infrastructure)
+- [Development Workflow](#️-development-workflow)
+- [Contributing](#-contributing)
+- [License](#-license)
+
+## Features
+
+- 146 runnable code examples validated against ruchy trunk
+- 18-tool comprehensive testing (2,628 total validations per run)
+- Test-driven documentation: every example is verified in CI
+- mdBook-based with syntax highlighting for Ruchy
+- Toyota Way quality gates enforced at every commit
+- One-liner test suite for quick validation
+
+## Installation
+
+```bash
+# Install required tools
+cargo install ruchy mdbook
+
+# Clone the repository
+git clone https://github.com/paiml/ruchy-book.git
+cd ruchy-book
+```
+
+## Usage
+
+```bash
+# Build and serve the book locally
+make serve
+
+# Run the full test suite
+make test
+
+# Quick build validation
+make test-fast
+```
 
 ## 🎉🎉🎉 **MILESTONE: 96% PASS RATE - VERIFIED AGAINST TRUNK!** 🎉🎉🎉
 
