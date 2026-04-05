@@ -5,6 +5,10 @@ edition = "2021"
 authors = ["PAIML Team"]
 description = "Test framework for Ruchy book code examples"
 
+[lib]
+name = "ruchy_book_tests"
+path = "rust/lib.rs"
+
 [dependencies]
 # Exact version pinning - no ranges allowed
 ruchy = "=0.9.1"
@@ -14,14 +18,6 @@ ruchy = "=0.9.1"
 insta = "1.39"
 tempfile = "3.10"
 walkdir = "2.5"
-
-[[test]]
-name = "listings"
-path = "tests/listings.rs"
-
-[[test]]
-name = "test_all_examples"
-path = "tests/test_all_examples.rs"
 
 [features]
 # Unstable features for future chapters (when available)
