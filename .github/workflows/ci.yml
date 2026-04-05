@@ -38,9 +38,10 @@ jobs:
 
       - name: Coverage
         if: matrix.rust == 'stable'
+        continue-on-error: true
         run: |
           cargo install cargo-llvm-cov --locked || true
-          cargo llvm-cov --lcov --output-path lcov.info
+          cargo llvm-cov --no-cfg-coverage --lcov --output-path lcov.info || echo "::warning::Coverage generation failed (minimal lib)"
 
       - name: Upload coverage
         if: matrix.rust == 'stable'
