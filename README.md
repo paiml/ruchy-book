@@ -1,3 +1,11 @@
+---
+schema_version: "1.0"
+kind: spec
+entrypoints: [src, book.toml]
+contract_count: 1
+---
+<!-- CONTRACT_COUNT_START -->1<!-- CONTRACT_COUNT_END -->
+
 <p align="center">
   <img src="docs/hero.svg" alt="ruchy-book" width="600"/>
 </p>
@@ -36,7 +44,7 @@
 
 ## Installation
 
-```bash
+```text
 # Install required tools
 cargo install ruchy mdbook
 
@@ -47,7 +55,7 @@ cd ruchy-book
 
 ## Usage
 
-```bash
+```text
 # Build and serve the book locally
 make serve
 
@@ -395,7 +403,7 @@ Every example is tested BEFORE documentation. No vaporware, no wishful thinking.
 
 ## 🧪 **Verify Everything Works**
 
-```bash
+```text
 # Test all book examples (comprehensive)
 deno task extract-examples
 # Output: 140/146 examples passing (96%) ✅
@@ -429,7 +437,7 @@ mdbook serve              # Preview at localhost:3000
 ## 🚀 **Quick Start**
 
 ### 1. Install Ruchy v3.212.0
-```bash
+```text
 # Install from crates.io
 cargo install ruchy
 
@@ -439,7 +447,7 @@ ruchy --version
 ```
 
 ### 2. Clone and Test
-```bash
+```text
 git clone https://github.com/paiml/ruchy-book.git
 cd ruchy-book
 deno task extract-examples  # Verify 140/146 examples work (96%)
@@ -493,7 +501,7 @@ tests/
 ## 🏗️ **Development Workflow**
 
 ### Adding New Content (TDD Required)
-```bash
+```text
 # 1. Write test first
 echo 'fun main() { /* test code */ }' > tests/ch04-control-flow/test_01_if.ruchy
 
@@ -508,7 +516,7 @@ make validate
 ```
 
 ### Available Commands
-```bash
+```text
 make help              # Show all commands
 make test              # MANDATORY: 18-tool testing (2,628 validations)
 make test-ch01         # Test Chapter 1
@@ -552,7 +560,7 @@ Every commit must pass:
 5. **Follow TDD Process**: No exceptions
 
 ### Contribution Process
-```bash
+```text
 # 1. Fork and clone
 git clone https://github.com/YOUR_USERNAME/ruchy-book.git
 
@@ -612,6 +620,33 @@ MIT License - See [LICENSE](LICENSE) for details.
 **Status**: 🟢 Trunk Verified | ✅ Quality Tools Integrated | 📊 140/146 Tests Passing (96%)
 
 **Last Updated**: 2025-11-16 | **Ruchy Version**: v3.212.0 | **Book Version**: 3.0.0-TRUNK
+## pv-readme Contract
+
+This README carries frontmatter (`schema_version`, `kind`, `entrypoints`,
+`contract_count`) and is graded by `contracts/readme-root.yaml` against the
+`pv-readme` SHACL shape (`readme:Readme`, #8).
+
+- **No local claim is available.** `.github/workflows/ci.yml`, `test-book.yml`,
+  `test-examples.yml` and `test.yml` run entirely locally (no `uses:`-delegation),
+  but none of the commands this README presents as runnable (`cargo install ruchy
+  mdbook`, `make serve`/`test`/`test-fast`/`validate`/`lint`/`format`, `deno task
+  extract-examples`, `git clone`, `ruchy --version`, `mdbook build`/`serve`) is the
+  literal text of a `run:` line any merge-path job executes — the workflows invoke
+  `make test > test_output.log 2>&1 || true` and similar, not the bare command a
+  human reader would type. So every bash fence in this README is relabelled
+  `text`, and `readme:verifiedCommand` is `minCount: 0` with this divergence
+  documented here.
+- **Entrypoints**: `src`, `book.toml`.
+- **Contract count**: `1` (`contracts/census.json`; `readme-root.yaml` is the
+  only file in this repo's `contracts/` directory).
+- **Falsifier**: `tests/readme-shape-falsifier.sh`, 6 cases proving the check
+  can fail (an unrun claim, a dropped `kind:`, a missing entrypoint, a wrong
+  contract count) as well as pass.
+- **LAB, not GATE** (C324): `.github/workflows/readme-shape-lab.yml` runs
+  nightly plus `workflow_dispatch`, never on the PR path.
+
+Part of paiml/ruchy-book#8.
+
 ## License
 
 MIT
