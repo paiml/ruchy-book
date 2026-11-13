@@ -1029,6 +1029,14 @@ sprints:
           - "Verify all cross-references"
           - "Update README with final stats"
 
+      - id: FINAL-005
+        title: "Main green again: test-book reads the runner's summary; no direct push to main"
+        status: in_progress
+        github_issues: [12, 13, 14]
+        requirements:
+          - "Test Ruchy Book Examples passes on push, schedule and pull_request"
+          - "No workflow step pushes to main"
+
 quality_gates:
   mandatory:
     - gate: "example_compilation"
